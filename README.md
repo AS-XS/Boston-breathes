@@ -14,15 +14,10 @@ Rather than simply adding university enrollment to Census population, which woul
 
 A simplified version of the model is:
 
-$$
-P_{\text{effective}}(t)
-=
-P_{\text{baseline}}(y)
-+
-\Delta P_{\text{students}}(t)
-$$
+**P<sub>effective</sub>(t) = P<sub>baseline</sub>(y) + ΔP<sub>students</sub>(t)**
 
-where $P_{\text{baseline}}(y)$ is Boston's annual resident population and $\Delta P_{\text{students}}(t)$ represents the seasonal change in student presence during a particular week or month.
+where P<sub>baseline</sub>(y) is Boston's annual resident population and ΔP<sub>students</sub>(t) represents the seasonal change in student presence during a particular week or month.
+
 
 The final goal is to create an interactive visualization that allows users to move through a year and watch Boston's estimated population rise and fall with the academic calendar.
 
