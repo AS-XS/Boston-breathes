@@ -22,7 +22,7 @@ P_{\text{baseline}}(y)
 \Delta P_{\text{students}}(t)
 $$
 
-where $$(P_{\text{baseline}}(y))$$ is Boston's annual resident population and $$(\Delta P_{\text{students}}(t))$$ represents the seasonal change in student presence during a particular week or month.
+where $P_{\text{baseline}}(y)$ is Boston's annual resident population and $\Delta P_{\text{students}}(t)$ represents the seasonal change in student presence during a particular week or month.
 
 The final goal is to create an interactive visualization that allows users to move through a year and watch Boston's estimated population rise and fall with the academic calendar.
 
