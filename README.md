@@ -1,25 +1,27 @@
-# Boston Breathes: Measuring Boston's Seasonal Population
+# Boston Breathes: Measuring Greater Boston's Seasonal Population
 
 ## Project Description
 
-Boston has an unusually large university population, and the number of people physically present in the city changes noticeably throughout the academic year. Students arrive at the beginning of each semester, leave during winter and summer breaks, and temporarily leave during shorter academic breaks.
+Greater Boston has an unusually large university population, and the number of people physically present in the area changes noticeably throughout the academic year. Students arrive at the beginning of each semester, leave during winter and summer breaks, and temporarily leave during shorter academic breaks.
+
+In this project, **Greater Boston** refers to the municipalities served by the Bluebikes bike-share system. The core study area is **Boston, Cambridge, Somerville, and Brookline**, which together contain most of the region's major universities, including Boston University, Northeastern, Harvard, MIT, and Tufts. Other municipalities in the Bluebikes network may be added after evaluating their data coverage.
 
 The key question here would be:
 
-> **How does Boston's effective population change throughout the year, and how much of that variation can be explained by university students?**
+> **How does Greater Boston's effective population change throughout the year, and how much of that variation can be explained by university students?**
 
-The project will estimate Boston's population over time by combining a relatively stable **resident population baseline** with a **seasonal student population component**.
+The project will estimate Greater Boston's population over time by combining a relatively stable **resident population baseline** with a **seasonal student population component**.
 
-Rather than simply adding university enrollment to Census population, which would double-count some students already considered Boston residents, the project will estimate how student presence changes relative to its typical annual level.
+Rather than simply adding university enrollment to Census population, which would double-count some students already counted as residents of the study area, the project will estimate how student presence changes relative to its typical annual level.
 
 A simplified version of the model is:
 
 **P<sub>effective</sub>(t) = P<sub>baseline</sub>(y) + ΔP<sub>students</sub>(t)**
 
-where P<sub>baseline</sub>(y) is Boston's annual resident population and ΔP<sub>students</sub>(t) represents the seasonal change in student presence during a particular week or month.
+where P<sub>baseline</sub>(y) is the combined annual resident population of the study-area municipalities and ΔP<sub>students</sub>(t) represents the seasonal change in student presence during a particular week or month.
 
 
-The final goal is to create an interactive visualization that allows users to move through a year and watch Boston's estimated population rise and fall with the academic calendar.
+The final goal is to create an interactive visualization that allows users to move through a year and watch Greater Boston's estimated population rise and fall with the academic calendar.
 
 ---
 
@@ -27,15 +29,15 @@ The final goal is to create an interactive visualization that allows users to mo
 
 The project has three main goals.
 
-### 1. Estimate Boston's seasonal population
+### 1. Estimate Greater Boston's seasonal population
 
-Construct a weekly or monthly estimate of Boston's effective population for approximately the last 10–12 years.
+Construct a weekly or monthly estimate of Greater Boston's effective population for approximately the last 10–12 years.
 
 This will combine:
 
-* annual Boston resident population;
+* annual resident population of each study-area municipality;
 * university enrollment;
-* the number or proportion of students living in Boston;
+* the number or proportion of students living in the study area;
 * academic calendars and semester breaks.
 
 
@@ -58,21 +60,21 @@ The final visualization will allow users to select a year and move through the w
 
 It will show:
 
-* Boston's resident population baseline;
+* Greater Boston's resident population baseline;
 * estimated seasonal student contribution;
 * estimated effective population;
 * Bluebikes activity;
 * major academic periods such as semesters, summer break, winter break, and national holiday.
 
-This will allow the user to visually explore how Boston "breathes" throughout the year.
+This will allow the user to visually explore how Greater Boston "breathes" throughout the year.
 
 ---
 
 ## Data Sources and Collection
 
-### Boston Resident Population
+### Resident Population
 
-Annual Boston population estimates will be collected from the **U.S. Census Bureau** or **American Community Survey**.
+Annual population estimates for each study-area municipality will be collected from the **U.S. Census Bureau** or **American Community Survey** and combined into a single study-area total.
 
 These values will provide the relatively stable population baseline for each year.
 
@@ -81,13 +83,14 @@ These values will provide the relatively stable population baseline for each yea
 Enrollment and student housing data will be collected from sources such as:
 
 * City of Boston Student Housing / University Accountability reports;
+* City of Cambridge Town Gown reports;
 * IPEDS enrollment data.
 
 These datasets contain information about university enrollment and, in some cases, where students live.
 
 ### Academic Calendars
 
-Historical academic calendars will be collected from major Boston universities.
+Historical academic calendars will be collected from major universities in the study area.
 
 Important dates include:
 
@@ -97,7 +100,7 @@ Important dates include:
 * Thanksgiving break;
 * summer period.
 
-The project may initially focus on the largest Boston universities and expand if time permits.
+The project may initially focus on the largest universities in the study area and expand if time permits.
 
 ### Bluebikes
 
@@ -105,9 +108,11 @@ Historical Bluebikes trip data will be used to measure observable city activity.
 
 Trips will be aggregated by week, and variables such as total trips, trips per active station, and activity near major university areas may be examined.
 
+Each station will be assigned to a municipality based on its location, so activity can be analyzed both for the whole study area and for each municipality.
+
 ### Weather
 
-Historical weather data for Boston will be used to control for variables such as temperature, rain, and snow, which strongly affect bicycle usage.
+Historical weather data for the Boston area will be used to control for variables such as temperature, rain, and snow, which strongly affect bicycle usage.
 
 ---
 
@@ -119,6 +124,7 @@ The main cleaning challenges will include:
 * handling missing enrollment or housing data;
 * matching different datasets to a common weekly or monthly timeline;
 * accounting for changes in Bluebikes stations over time;
+* assigning Bluebikes stations to municipalities and handling municipalities that joined the network during the study period;
 * identifying unusual periods such as COVID-19.
 
 The main derived feature will be a **Student Presence Index**, based on enrollment, student residence, and the academic calendar.
@@ -137,7 +143,7 @@ Additional features may include:
 
 The main modeling question is:
 
-> **Does information about student presence improve our ability to explain or predict changes in Boston activity?**
+> **Does information about student presence improve our ability to explain or predict changes in Greater Boston activity?**
 
 An initial regression model will predict weekly Bluebikes activity using weather, seasonal, and time-based variables.
 
@@ -191,8 +197,8 @@ Additional visualizations may include:
 
 The final project will produce:
 
-* a historical estimate of Boston's seasonal population;
+* a historical estimate of Greater Boston's seasonal population;
 * a Student Presence Index;
 * an analysis of whether student presence corresponds to observable changes in city activity;
-* an interactive visualization showing Boston's annual population "pulse";
+* an interactive visualization showing Greater Boston's annual population "pulse";
 * a reproducible GitHub repository containing the full data-processing and analysis pipeline.
