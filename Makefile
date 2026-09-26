@@ -1,14 +1,14 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather test clean-interim
 
 install:
 	python3 -m venv .venv
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-data: weeks bluebikes municipalities
+data: weeks bluebikes municipalities weather
 
 weeks:
 	$(RUN) boston_breathes.weeks
@@ -24,6 +24,10 @@ bluebikes-weekly:
 # Assign stations to towns and split weekly activity by town.
 municipalities:
 	$(RUN) boston_breathes.municipalities
+
+# Daily Boston Logan weather from NOAA, summarized by week.
+weather:
+	$(RUN) boston_breathes.weather
 
 test:
 	$(PYTHON) -m pytest -q
