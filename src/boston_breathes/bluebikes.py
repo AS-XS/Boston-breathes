@@ -341,8 +341,15 @@ def process_month(month: str, key: str, keep_raw: bool = False) -> dict:
     return qa
 
 
-def build_weekly(station_day_all: pl.DataFrame, coverage_start: date, coverage_end: date) -> pl.DataFrame:
+def build_weekly(
+    station_day_all: pl.DataFrame,
+    coverage_start: date,
+    coverage_end: date,
+    by: tuple[str, ...] = (),
+) -> pl.DataFrame:
     """Weekly Bluebikes activity on the shared Monday-to-Sunday timeline.
+
+    `by` adds grouping columns present in `station_day_all` (e.g. municipality).
 
     Network size is the average number of stations with at least one trip per
     day. Counting distinct station IDs per week would double count the week
@@ -351,7 +358,7 @@ def build_weekly(station_day_all: pl.DataFrame, coverage_start: date, coverage_e
     """
     weeks = build_weeks().select("week_start", "week_end", "iso_year", "iso_week")
     week_start = (pl.col("date") - pl.duration(days=pl.col("date").dt.weekday() - 1)).alias("week_start")
-    daily = station_day_all.group_by("date").agg(
+    daily = station_day_all.group_by("date", *by).agg(
         pl.col("trips").sum(),
         pl.col("member_trips").sum(),
         pl.col("casual_trips").sum(),
@@ -360,7 +367,7 @@ def build_weekly(station_day_all: pl.DataFrame, coverage_start: date, coverage_e
         pl.col("trips").filter(pl.col("station_id").is_null()).sum().alias("no_station_trips"),
         pl.col("station_id").drop_nulls().n_unique().alias("active_stations"),
     ).with_columns(week_start)
-    weekly = daily.group_by("week_start").agg(
+    weekly = daily.group_by("week_start", *by).agg(
         pl.len().alias("days_with_data"),
         pl.col("trips", "member_trips", "casual_trips", "classic_trips", "electric_trips", "no_station_trips").sum(),
         pl.col("active_stations").mean().round(1).alias("avg_daily_active_stations"),
@@ -373,7 +380,7 @@ def build_weekly(station_day_all: pl.DataFrame, coverage_start: date, coverage_e
             .round(2).alias("trips_per_active_station"),
         )
         .drop("week_end")
-        .sort("week_start")
+        .sort("week_start", *by)
     )
 
 
@@ -394,23 +401,37 @@ def combine_stations(frames: list[pl.DataFrame]) -> pl.DataFrame:
     return busiest.join(spans, on="station_id").sort("station_id")
 
 
+def read_interim(name: str) -> pl.DataFrame:
+    return pl.concat([pl.read_parquet(f) for f in sorted((INTERIM_DIR / name).glob("*.parquet"))])
+
+
+def load_station_day() -> tuple[pl.DataFrame, int, int]:
+    """All station-day counts, with unseen out-of-month trips added back.
+
+    Returns the table plus how many out-of-month trips were added and found.
+    """
+    spill = read_interim("spill")
+    extra = unseen_spill(spill, read_interim("edge_keys"))
+    return pl.concat([read_interim("station_day"), station_day(extra)]), len(extra), len(spill)
+
+
+def coverage() -> tuple[date, date]:
+    """First and last day covered by the processed monthly files."""
+    months = sorted(f.stem for f in (INTERIM_DIR / "station_day").glob("*.parquet"))
+    start = month_bounds(months[0])[0].date()
+    end = date.fromordinal(month_bounds(months[-1])[1].toordinal() - 1)
+    return start, end
+
+
 def combine() -> None:
     PROCESSED.mkdir(parents=True, exist_ok=True)
     sd_files = sorted((INTERIM_DIR / "station_day").glob("*.parquet"))
     if not sd_files:
         raise FileNotFoundError("No processed months found; run the download step first.")
 
-    def read_all(name: str) -> pl.DataFrame:
-        return pl.concat([pl.read_parquet(f) for f in sorted((INTERIM_DIR / name).glob("*.parquet"))])
-
-    spill, edge_keys = read_all("spill"), read_all("edge_keys")
-    extra = unseen_spill(spill, edge_keys)
-    print(f"Out-of-month trips: {len(spill):,}; {len(spill) - len(extra):,} were duplicates, {len(extra):,} added")
-
-    station_day_all = pl.concat([read_all("station_day"), station_day(extra)])
-    months = [f.stem for f in sd_files]
-    coverage_start = month_bounds(months[0])[0].date()
-    coverage_end = date.fromordinal(month_bounds(months[-1])[1].toordinal() - 1)
+    station_day_all, extra_trips, spill_trips = load_station_day()
+    print(f"Out-of-month trips: {spill_trips:,}; {spill_trips - extra_trips:,} were duplicates, {extra_trips:,} added")
+    coverage_start, coverage_end = coverage()
     build_weekly(station_day_all, coverage_start, coverage_end).write_csv(PROCESSED / "bluebikes_weekly.csv")
 
     st_files = sorted((INTERIM_DIR / "stations").glob("*.parquet"))

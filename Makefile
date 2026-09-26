@@ -1,14 +1,14 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities test clean-interim
 
 install:
 	python3 -m venv .venv
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-data: weeks bluebikes
+data: weeks bluebikes municipalities
 
 weeks:
 	$(RUN) boston_breathes.weeks
@@ -20,6 +20,10 @@ bluebikes:
 # Rebuild the weekly table from already-processed months without downloading.
 bluebikes-weekly:
 	$(RUN) boston_breathes.bluebikes --weekly-only
+
+# Assign stations to towns and split weekly activity by town.
+municipalities:
+	$(RUN) boston_breathes.municipalities
 
 test:
 	$(PYTHON) -m pytest -q

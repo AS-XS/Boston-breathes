@@ -1,0 +1,1162 @@
+station_id,station_name,lat,lng,total_trips,first_date,last_date,municipality,border_distance_m,nearest_other_municipality,changed_municipality,in_study_area
+10,B.U. Central - 725 Comm. Ave.,42.350406,-71.108279,104115,2015-04-17,2023-03-31,Boston,31.0,Brookline,false,true
+100,Davis Square,42.396969,-71.123024,99944,2015-04-17,2023-03-31,Somerville,293.0,Cambridge,false,true
+101,Ball Sq,42.39920335720869,-71.11102235516228,9345,2019-07-17,2023-03-31,Somerville,60.0,Medford,false,true
+102,Powder House Circle - Nathan Tufts Park,42.400877,-71.116772,25398,2015-04-17,2023-03-31,Somerville,206.0,Medford,false,true
+103,JFK Crossing at Harvard St. / Thorndike St.,42.346551241753566,-71.1283321143128,29010,2015-04-17,2023-03-31,Brookline,278.0,Boston,false,true
+104,Harvard University Radcliffe Quadrangle at Shepard St / Garden St,42.380287,-71.125107,72635,2015-01-01,2023-03-31,Cambridge,788.0,Boston,false,true
+105,Lower Cambridgeport at Magazine St / Riverside Rd,42.357218503176526,-71.1138716340065,139730,2015-01-01,2023-03-31,Cambridge,261.0,Boston,false,true
+106,Dudley Town Common - Mt Pleasant Ave at Blue Hill Ave,42.325333,-71.075354,5158,2015-04-21,2023-03-30,Boston,,,false,true
+107,Ames St at Main St,42.3625,-71.08822,207113,2015-01-01,2023-03-31,Cambridge,728.0,Boston,false,true
+108,Harvard University / SEAS Cruft-Pierce Halls at 29 Oxford St,42.377945,-71.116865,82941,2015-01-01,2023-03-31,Cambridge,602.0,Somerville,false,true
+109,TD Garden - Causeway at Portal Park #1,42.365942,-71.060515,58592,2015-04-17,2023-03-31,Boston,448.0,Cambridge,false,true
+11,Longwood Ave at Binney St,42.338629,-71.1065,117883,2015-04-17,2023-03-31,Boston,373.0,Brookline,false,true
+110,Harvard University Gund Hall at Quincy St / Kirkland St,42.376369,-71.114025,86387,2015-01-01,2023-03-31,Cambridge,551.0,Somerville,false,true
+111,Packard Ave at Powderhouse Blvd,42.40449,-71.123413,22610,2015-04-17,2023-03-31,Somerville,322.0,Medford,false,true
+112,Clarendon Hill at Broadway,42.406302,-71.132446,13249,2015-04-17,2023-03-31,Somerville,139.0,Arlington,false,true
+113,Andrew T Stop - Dorchester Ave at Dexter St,42.330473650415165,-71.05701684951782,26263,2015-04-17,2022-11-09,Boston,,,false,true
+114,Teele Square at 239 Holland St,42.402763,-71.126908,19390,2015-04-17,2023-03-31,Somerville,375.0,Cambridge,false,true
+115,Porter Square Station,42.387995,-71.119084,100778,2015-01-01,2023-03-31,Cambridge,76.0,Somerville,false,true
+116,359 Broadway - Broadway at Fayette Street,42.370803,-71.104412,102731,2015-01-01,2023-03-31,Cambridge,404.0,Somerville,false,true
+117,Binney St / Sixth St,42.36608797388682,-71.08633603909765,61782,2015-01-01,2023-03-31,Cambridge,800.0,Somerville,false,true
+118,Linear Park - Mass. Ave. at Cameron Ave.,42.397828,-71.130516,53326,2015-01-01,2023-03-31,Cambridge,173.0,Somerville,false,true
+119,South Boston Library - 646 E Broadway,42.335741,-71.03877,59107,2015-04-17,2023-03-31,Boston,,,false,true
+12,Ruggles T Stop - Columbus Ave at Melnea Cass Blvd,42.33624444796878,-71.08798563480377,116559,2015-04-17,2023-03-31,Boston,,,false,true
+120,Beacon St at Charles St,42.356052,-71.069849,90419,2015-04-19,2022-11-14,Boston,703.0,Cambridge,false,true
+121,W Broadway at Dorchester St,42.335958979433094,-71.04622899561036,61452,2015-04-17,2023-03-31,Boston,,,false,true
+122,Burlington Ave at Brookline Ave,42.345733,-71.100694,39646,2015-04-17,2023-03-31,Boston,448.0,Brookline,false,true
+123,JP Center - Centre Street at Myrtle Street,42.313156,-71.11414,2094,2015-04-17,2015-11-17,Boston,,,false,true
+124,Curtis Hall - South St at Centre St,42.309054,-71.11543,21763,2015-04-17,2023-03-31,Boston,,,false,true
+125,Hyde Square - Barbara St at Centre St,42.32176525723952,-71.10984160567114,39923,2015-04-17,2023-03-31,Boston,602.0,Brookline,false,true
+126,Egleston Square - Atherton St at Washington St,42.315692,-71.098634,10425,2015-04-17,2023-03-31,Boston,,,false,true
+128,E Cottage St at Columbia Rd,42.320561,-71.06198,12839,2015-04-18,2023-03-31,Boston,,,false,true
+129,Hayes Square - Vine St at Moulton St,42.377022,-71.056605,17969,2015-04-17,2022-11-14,Boston,,,false,true
+13,Boston Medical Center - E Concord St at Harrison Ave,42.33639915372498,-71.07306711393903,72869,2015-04-17,2023-03-31,Boston,,,false,true
+130,Uphams Corner,42.31727474327453,-71.06537003967787,7827,2015-04-17,2023-03-30,Boston,,,false,true
+131,Jackson Square T Stop,42.32293117195949,-71.10014140605927,45791,2015-04-18,2023-03-31,Boston,,,false,true
+132,Summer St at Cutter St,42.394002,-71.120406,1563,2015-06-10,2015-11-24,Somerville,57.0,Cambridge,false,true
+133,Green Street T Stop - Green St at Amory St,42.310579,-71.107341,33488,2015-04-17,2023-03-31,Boston,,,false,true
+134,Boylston St at Dartmouth St,42.350413,-71.07655,29105,2015-04-24,2020-07-27,Boston,891.0,Cambridge,false,true
+135,ID Building East,42.344827,-71.028664,24853,2015-04-17,2023-03-31,Boston,,,false,true
+136,ID Building West,42.344796,-71.031614,35436,2015-04-17,2023-03-31,Boston,,,false,true
+137,Magoun Square at Trum Field,42.39778339961249,-71.10594004465383,22892,2015-04-17,2023-03-31,Somerville,30.0,Medford,false,true
+138,Newmarket Square T Stop - Massachusetts Ave at Newmarket Square,42.326599,-71.066498,21388,2015-04-19,2023-03-31,Boston,,,false,true
+139,Dana Park,42.361780439606044,-71.10809952020645,84503,2015-04-17,2023-03-31,Cambridge,711.0,Boston,false,true
+14,HMS/HSPH - Avenue Louis Pasteur at Longwood Ave,42.3374174845973,-71.10286116600037,89494,2015-04-17,2023-03-31,Boston,665.0,Brookline,false,true
+140,Danehy Park,42.388966,-71.132788,25197,2015-01-01,2023-03-31,Cambridge,867.0,Somerville,false,true
+141,Kendall Street,42.363560158429884,-71.08216792345047,61781,2015-01-01,2023-03-31,Cambridge,576.0,Boston,false,true
+142,Alewife Station at Russell Field,42.396105,-71.139459,27731,2015-01-01,2023-03-31,Cambridge,336.0,Arlington,false,true
+143,EF - North Point Park,42.369885,-71.069957,71365,2015-01-01,2023-03-31,Cambridge,101.0,Boston,false,true
+144,Rogers St & Land Blvd,42.366446738529454,-71.07654601335526,25659,2018-08-09,2023-03-31,Cambridge,291.0,Boston,false,true
+145,Rindge Avenue - O'Neill Library,42.392766,-71.129042,20159,2015-01-03,2023-03-31,Cambridge,377.0,Somerville,false,true
+146,Murphy Skating Rink - 1880 Day Blvd,42.336448,-71.023739,39219,2016-03-17,2023-03-31,Boston,,,false,true
+149,175 N Harvard St,42.363796,-71.129164,86300,2015-04-17,2023-03-31,Boston,617.0,Cambridge,false,true
+15,Brighton Mills - 370 Western Ave,42.3615457081725,-71.13776206970215,37240,2015-04-17,2023-03-31,Boston,366.0,Cambridge,false,true
+150,State Street at Channel Center,42.344137,-71.052608,50318,2015-04-17,2023-03-31,Boston,,,false,true
+151,Surface Rd at India St,42.358155,-71.052163,74008,2015-04-17,2023-03-31,Boston,,,false,true
+152,Ink Block - Harrison Ave at Herald St,42.345901,-71.063187,56199,2015-04-17,2023-03-31,Boston,,,false,true
+155,Huntington Ave at Mass Art,42.33651909304393,-71.0989692435578,716,2018-09-05,2018-10-23,Boston,971.0,Brookline,false,true
+156,Somerville Hospital,42.390449490184295,-71.10855950047153,12218,2018-07-31,2023-03-31,Somerville,709.0,Cambridge,false,true
+157,Seaport Blvd at Sleeper St,42.35317809186252,-71.04817356923377,91330,2017-10-26,2023-03-31,Boston,,,false,true
+159,S Huntington Ave at Heath St,42.32760387040573,-71.11089169979095,22584,2015-10-15,2023-03-31,Boston,313.0,Brookline,false,true
+16,Back Bay T Stop - Dartmouth St at Stuart St,42.34807412317439,-71.07657015323639,138293,2015-04-17,2023-03-31,Boston,,,false,true
+160,Wentworth Institute of Technology - Huntington Ave at Vancouver St,42.33758601097239,-71.09627097845076,44332,2015-10-02,2023-03-31,Boston,,,false,true
+161,W Broadway at D St,42.3391085,-71.0514432,74189,2015-10-02,2023-03-31,Boston,,,false,true
+162,Franklin Park - Seaver St at Humbolt Ave,42.309796,-71.092225,5328,2015-10-05,2023-03-30,Boston,,,false,true
+163,The Lawn on D,42.344792,-71.044024,44971,2015-10-06,2023-03-31,Boston,,,false,true
+167,Ryan Playground - Dorchester Ave at Harbor View St,42.317642,-71.056664,12821,2015-10-05,2022-11-01,Boston,,,false,true
+168,Harvard Ave at Brainerd Rd,42.349561885454115,-71.1302706227616,1050,2018-08-10,2018-10-23,Boston,87.0,Brookline,false,true
+169,Edwards Playground - Main St at Eden St,42.378965,-71.068607,24851,2015-10-06,2023-03-31,Boston,513.0,Somerville,false,true
+17,Soldiers Field Park - 111 Western Ave,42.364263440638524,-71.1182756971175,72498,2015-04-17,2023-03-31,Boston,111.0,Cambridge,false,true
+170,Franklin Park Zoo - Franklin Park Rd at Blue Hill Ave,42.303469,-71.085347,6182,2015-10-06,2023-03-31,Boston,,,false,true
+171,Bunker Hill Community College,42.37408991426522,-71.06905996799469,23903,2015-10-15,2023-03-31,Boston,214.0,Cambridge,false,true
+173,Savin Hill T Stop - S Sydney St at Bay St,42.3106,-71.0539,8047,2016-04-21,2023-03-31,Boston,,,false,true
+174,Washington St at Brock St,42.3489528466951,-71.16031676530838,12898,2015-10-09,2023-03-30,Boston,956.0,Newton,false,true
+175,Brighton Center - Washington St at Cambridge St,42.34894857235593,-71.15027189254761,30152,2015-10-11,2023-03-31,Boston,,,false,true
+176,Lesley University,42.38674802045056,-71.11901879310608,40744,2015-11-05,2023-03-31,Cambridge,138.0,Somerville,false,true
+177,University Park,42.36264779118595,-71.10006093978882,123043,2015-11-04,2023-03-31,Cambridge,,,false,true
+178,MIT Pacific St at Purrington St,42.35957320109044,-71.10129475593567,207122,2015-11-04,2023-03-31,Cambridge,752.0,Boston,false,true
+179,MIT Vassar St,42.355601213279265,-71.10394477844238,185795,2015-11-04,2023-03-31,Cambridge,349.0,Boston,false,true
+180,Mt Auburn,42.37478628706384,-71.13320231437683,28450,2015-11-05,2023-03-31,Cambridge,197.0,Boston,false,true
+181,Huron Ave At Vassal Lane,42.381650612901176,-71.13426981498378,17241,2017-10-27,2023-03-31,Cambridge,903.0,Boston,false,true
+182,Museum of Science,42.36769018024484,-71.07116281986237,28609,2017-05-11,2023-03-31,Cambridge,16.0,Boston,false,true
+183,Alewife MBTA at Steel Place,42.395588457167094,-71.14260613918304,26092,2016-09-01,2023-03-31,Cambridge,218.0,Arlington,false,true
+184,Sidney Research Campus/Erie Street at Waverly,42.35775309465199,-71.10393404960632,60731,2016-10-05,2023-03-31,Cambridge,586.0,Boston,false,true
+185,Third at Binney,42.36544486137399,-71.08277142047882,73201,2016-10-27,2023-03-31,Cambridge,683.0,Boston,false,true
+186,Congress St at Northern Ave,42.3481,-71.03764,47010,2016-04-11,2023-03-31,Boston,,,false,true
+187,Cypress St at Clark Playground,42.32784317478686,-71.1253622174263,8560,2018-07-26,2023-03-31,Brookline,542.0,Boston,false,true
+188,Foss Park,42.39108438146733,-71.09039425849915,13288,2018-07-31,2023-03-31,Somerville,930.0,Medford,false,true
+189,Kendall T,42.362427842912396,-71.08495473861694,172464,2016-03-18,2023-03-31,Cambridge,610.0,Boston,false,true
+19,Park Dr at Buswell St,42.347241,-71.105301,78533,2015-04-17,2023-03-31,Boston,152.0,Brookline,false,true
+190,Nashua Street at Red Auerbach Way,42.365673,-71.064263,154182,2016-03-04,2023-03-31,Boston,370.0,Cambridge,false,true
+191,Tappan St at Brookline Hills MBTA,42.331370168043215,-71.1268836054569,7960,2018-07-25,2023-03-31,Brookline,942.0,Boston,false,true
+192,Purchase St at Pearl St,42.354659,-71.053181,53808,2016-04-16,2023-03-31,Boston,,,false,true
+193,Brookline Town Hall,42.33376472623494,-71.12046446660315,24146,2016-04-28,2023-03-31,Brookline,621.0,Boston,false,true
+194,Broadway St at Mt Pleasant St,42.386141411639564,-71.07828140258789,19045,2016-04-29,2023-03-31,Somerville,63.0,Boston,false,true
+195,Child St at North St,42.37228487344452,-71.07383824772114,46683,2016-06-30,2023-03-31,Cambridge,46.0,Somerville,false,true
+196,Roxbury YMCA - Warren St at MLK Blvd,42.31787329345602,-71.08243077993393,7733,2016-07-21,2023-03-31,Boston,,,false,true
+197,MLK Blvd at Washington St,42.32143814183195,-71.09126061201096,9498,2016-07-16,2023-03-31,Boston,,,false,true
+199,Uphams Corner T Stop - Magnolia St at Dudley St,42.318697341722434,-71.0697814822197,3877,2016-07-25,2023-03-30,Boston,,,false,true
+20,Aquarium T Stop - 200 Atlantic Ave,42.35991176110118,-71.0514298081398,111280,2015-04-17,2023-03-31,Boston,,,false,true
+200,Washington St at Melnea Cass Blvd,42.332817,-71.081198,19416,2016-07-21,2023-03-31,Boston,,,false,true
+201,NCAAA - Walnut Ave at Crawford St,42.316902,-71.091946,5690,2016-08-07,2023-03-31,Boston,,,false,true
+202,Grove Hall Library - 41 Geneva Ave,42.30791,-71.080952,3732,2016-08-19,2023-03-30,Boston,,,false,true
+203,Columbia Rd at Ceylon St,42.309572,-71.0729,2841,2016-08-08,2023-03-30,Boston,,,false,true
+204,Walnut Ave at Warren St,42.324081,-71.083235,4419,2016-08-08,2023-03-30,Boston,,,false,true
+205,Bowdoin St at Quincy St,42.30785224238503,-71.06512248516083,6513,2016-08-16,2023-03-31,Boston,,,false,true
+206,Government Center - Cambridge St at Court St,42.3598253979878,-71.05979576244862,56646,2018-04-18,2023-03-31,Boston,,,false,true
+207,Faneuil St at Market St,42.35484,-71.150226,954,2016-08-31,2018-10-09,Boston,642.0,Watertown Town,false,true
+208,Oak Square - 615 Washington St,42.35057,-71.166491,11798,2016-08-31,2023-03-31,Boston,608.0,Newton,false,true
+209,Chelsea St at Saratoga St,42.379772,-71.027448,2357,2016-09-27,2021-04-23,Boston,475.0,Chelsea,false,true
+21,Prudential Center - 101 Huntington Ave,42.34652003998412,-71.08065776545118,109852,2015-04-17,2023-03-31,Boston,,,false,true
+210,Bennington St at Byron St,42.383532520117896,-71.01619094610214,3775,2016-09-27,2023-03-31,Boston,578.0,Chelsea,false,true
+211,Piers Park,42.3648929326648,-71.03497177362442,9723,2016-09-30,2023-03-30,Boston,,,false,true
+212,Maverick Square - Lewis Mall,42.368844082898356,-71.03977829217911,17746,2016-09-28,2023-03-31,Boston,,,false,true
+213,East Boston Neighborhood Health Center - 20 Maverick Square,42.369536,-71.039431,10302,2016-09-29,2023-03-31,Boston,,,false,true
+214,Airport T Stop - Bremen St at Brooks St,42.37535497133996,-71.03133335709572,16654,2016-09-29,2023-03-31,Boston,,,false,true
+215,The Eddy - New St at Sumner St,42.370744,-71.044201,7237,2016-09-29,2023-03-31,Boston,,,false,true
+216,Glendon St at Condor St,42.38240377674137,-71.03024303913116,2228,2016-09-30,2023-03-31,Boston,215.0,Chelsea,false,true
+217,Orient Heights T Stop - Bennington St at Saratoga St,42.386781,-71.006098,8788,2016-09-30,2023-03-31,Boston,790.0,Revere,false,true
+218,Watermark Seaport - Boston Wharf Rd at Seaport Blvd,42.351586001198456,-71.04569256305693,67849,2016-10-05,2023-03-31,Boston,,,false,true
+219,Boston East - 126 Border St,42.373312125824704,-71.0410200806291,6177,2016-11-16,2023-03-30,Boston,,,false,true
+22,South Station - 700 Atlantic Ave,42.352175,-71.055547,228728,2015-04-17,2023-03-31,Boston,,,false,true
+220,Grove St at Community Path,42.3963838795032,-71.12010508775711,1897,2018-07-31,2018-10-23,Somerville,306.0,Cambridge,false,true
+221,Verizon Innovation Hub 10 Ware Street,42.37250864997261,-71.11305356025696,49490,2017-06-07,2023-03-31,Cambridge,640.0,Boston,false,true
+222,Troy Boston,42.343749,-71.062256,27126,2017-10-27,2023-03-31,Boston,,,false,true
+223,Mobile Temporary Station 2,0.0,0.0,3,2019-08-23,2019-08-27,unknown,,,false,false
+224,Fresh Pond Reservation,42.38267827521855,-71.143478951426,13967,2017-06-27,2023-03-31,Cambridge,823.0,Watertown Town,false,true
+225,Cambridge Dept. of Public Works -147 Hampshire St.,42.37119727759414,-71.09759867191315,62765,2017-08-10,2023-03-31,Cambridge,358.0,Somerville,false,true
+226,Commonwealth Ave At Babcock St,42.35154734791375,-71.12126246094704,57015,2017-07-26,2023-03-31,Brookline,13.0,Boston,false,true
+227,Silber Way,42.34949599514002,-71.10057592391968,67046,2017-07-26,2023-03-31,Boston,363.0,Cambridge,false,true
+228,One Memorial Drive,42.361619320766856,-71.0804355052096,34257,2017-09-21,2023-03-31,Cambridge,363.0,Boston,false,true
+23,Boston City Hall - 28 State St,42.35892,-71.057629,135977,2015-04-17,2023-03-31,Boston,,,false,true
+231,Washington St at Myrtle St,42.38172115782515,-71.08376650152422,915,2018-08-01,2018-10-23,Somerville,238.0,Boston,false,true
+232,Four Corners - 157 Washington St,42.304127927390155,-71.07929527759552,1907,2017-12-19,2023-03-31,Boston,,,false,true
+233,St Mary's,42.346197076555455,-71.10728681087494,43557,2018-08-13,2023-03-31,Brookline,37.0,Boston,false,true
+234,Broadway at Central St,42.39517150121575,-71.09850591982195,13872,2018-07-27,2023-03-31,Somerville,195.0,Medford,false,true
+235,East Somerville Library (Broadway and Illinois),42.3876281075134,-71.08318716287613,10709,2018-07-31,2023-03-31,Somerville,497.0,Boston,false,true
+236,Assembly Square T,42.392232840046276,-71.07746601104736,15009,2018-07-31,2023-03-31,Somerville,278.0,Everett,false,true
+237,699 Mt Auburn St,42.37497659215716,-71.14863030630659,845,2018-08-09,2018-10-23,Cambridge,31.0,Watertown Town,false,true
+238,Mass Ave at Hadley/Walden,42.39138548863825,-71.12288117408751,877,2018-08-09,2018-10-23,Cambridge,110.0,Somerville,false,true
+239,Community Path at Cedar Street,42.39407223665884,-71.11133694648743,30519,2018-08-10,2023-03-31,Somerville,589.0,Medford,false,true
+24,Seaport Square - Seaport Blvd at Northern Ave,42.35148193460858,-71.04436084628105,85224,2015-04-17,2023-03-31,Boston,,,false,true
+240,Harvard St at Greene-Rose Heritage Park,42.36599406030789,-71.09516322612761,2326,2018-08-14,2018-10-23,Cambridge,922.0,Somerville,false,true
+241,Mattapan T Stop,42.267902,-71.093641,88,2018-08-30,2018-10-22,Boston,85.0,Milton,false,true
+242,Roslindale Village - South St,42.287072,-71.127754,156,2018-08-30,2018-10-23,Boston,,,false,true
+243,Commonwealth Ave at Kelton St,42.348368023549895,-71.13997621466297,672,2018-09-05,2018-10-24,Boston,468.0,Brookline,false,true
+244,Archdale Rd at Washington St,42.292706,-71.121145,271,2018-08-31,2018-10-23,Boston,,,false,true
+245,Blue Hill Ave at Almont St,42.27454525528758,-71.09372016051566,33,2018-08-26,2018-10-22,Boston,646.0,Milton,false,true
+246,Roslindale Village - Washington St,42.2861532,-71.1283744,65,2018-08-30,2018-10-23,Boston,,,false,true
+247,Boylston St at Jersey St,42.344695708662215,-71.09723791480063,1269,2018-09-06,2018-10-24,Boston,689.0,Brookline,false,true
+248,Morton St T,42.280753829614476,-71.08621831150231,46,2018-08-25,2018-10-24,Boston,,,false,true
+249,Commonwealth Ave at Chiswick Rd,42.3402177416592,-71.1517309399278,223,2018-09-05,2018-10-24,Boston,487.0,Brookline,false,true
+25,South End Library - Tremont St at W Newton St,42.341332,-71.076847,72270,2015-04-17,2023-03-31,Boston,,,false,true
+250,Park Plaza at Charles St (former),42.35186,-71.067688,499,2018-09-26,2018-10-24,Boston,,,false,true
+252,Cleveland Circle,42.33553091872319,-71.15072786808014,307,2018-09-07,2018-10-24,Boston,58.0,Brookline,false,true
+253,Thetford Ave at Norfolk St (former),42.286251,-71.079463,41,2018-09-07,2018-10-21,Boston,,,false,true
+254,Talbot Ave At Blue Hill Ave,42.2945833,-71.087111,38,2018-09-01,2018-10-23,Boston,,,false,true
+255,Park St at Norwell St,42.29442578670662,-71.07821760713703,825,2018-08-24,2022-10-31,Boston,,,false,true
+256,Washington St at Talbot Ave,42.290333,-71.071806,90,2018-08-24,2018-10-22,Boston,,,false,true
+257,Codman Square Library,42.2873611,-71.0711111,66,2018-08-25,2018-10-23,Boston,,,false,true
+258,Gallivan Blvd at Adams St,42.28297567840305,-71.05466698296368,3482,2018-08-24,2023-03-30,Boston,618.0,Milton,false,true
+259,Washington St at Bowdoin St,42.299164979365884,-71.07345871645519,1318,2018-08-25,2022-11-01,Boston,,,false,true
+26,Washington St at Waltham St,42.341574718737476,-71.06890439987183,78145,2015-04-17,2023-03-31,Boston,,,false,true
+260,Fields Corner T Stop,42.299633488420625,-71.06068975823291,4380,2018-08-26,2023-03-30,Boston,,,false,true
+262,Faneuil St at Arlington St (former),42.3528611,-71.1600278,266,2018-08-31,2018-10-24,Boston,688.0,Watertown Town,false,true
+263,Mattapan Library,42.2773889,-71.09325,64,2018-08-26,2018-10-28,Boston,912.0,Milton,false,true
+264,Washington St at Egremont Rd,42.3429444,-71.1413333,616,2018-08-30,2018-10-29,Boston,143.0,Brookline,false,true
+27,Roxbury Crossing T Stop - Columbus Ave at Tremont St,42.331184,-71.095171,78231,2015-04-17,2023-03-31,Boston,,,false,true
+271,Ashmont T Stop,42.2856944,-71.0641389,4368,2019-07-09,2023-03-31,Boston,,,false,true
+272,Shawmut T Stop,42.292917,-71.06575,3022,2019-07-02,2023-03-31,Boston,,,false,true
+273,Forest Hills,42.300923,-71.114249,25448,2019-07-02,2023-03-31,Boston,,,false,true
+274,Bennington St at Constitution Beach,42.385249,-71.010601,29,2018-09-20,2018-10-26,Boston,828.0,Chelsea,false,true
+277,Charlestown Navy Yard (former),42.374010653844934,-71.0548335313797,677,2018-09-20,2018-10-29,Boston,942.0,Cambridge,false,true
+278,Centre St at Seaverns Ave (former),42.312120283566095,-71.11429806807791,337,2018-09-21,2018-10-30,Boston,,,false,true
+279,Williams St at Washington St,42.306539,-71.107669,12942,2018-09-20,2023-03-31,Boston,,,false,true
+280,Main St at Baldwin St,42.380857,-71.070629,16088,2018-09-20,2023-03-31,Boston,417.0,Somerville,false,true
+281,Medford St at Charlestown BCYF (former),42.380584,-71.060875,270,2018-09-19,2018-10-30,Boston,694.0,Everett,false,true
+282,Stony Brook T Stop,42.316966,-71.104374,25996,2018-09-20,2023-03-31,Boston,,,false,true
+283,Main St at Thompson Sq (former),42.374917,-71.063829,436,2018-09-19,2018-10-23,Boston,438.0,Cambridge,false,true
+284,One Brigham Circle (former),42.333919727205775,-71.10446777203833,429,2018-09-20,2018-10-30,Boston,554.0,Brookline,false,true
+286,30 Dane St. (former),42.38112284630097,-71.10410027224134,170,2018-10-12,2018-10-23,Somerville,365.0,Cambridge,false,true
+29,Innovation Lab - 125 Western Ave at Batten Way,42.36371276003581,-71.12459778785706,40993,2015-04-17,2023-03-31,Boston,592.0,Cambridge,false,true
+293,Bartlett St at John Elliot Sq (former),42.32946325922549,-71.09015820552486,54,2018-09-30,2018-10-30,Boston,,,false,true
+294,Deerfield St at Commonwealth Ave (former),42.349205689770685,-71.09727063041646,1447,2018-09-27,2018-10-30,Boston,437.0,Cambridge,false,true
+295,Columbia Rd at Tierney Community Center (former),42.33023264684929,-71.0505741463021,144,2018-09-27,2018-10-30,Boston,,,false,true
+296,Farragut Rd at E. 6th St,42.3334,-71.02495,23416,2018-09-27,2023-03-31,Boston,,,false,true
+299,Harrison Ave at Mullins Way (former),42.34510857037852,-71.06392078119825,314,2018-10-09,2018-10-30,Boston,,,false,true
+3,Colleges of the Fenway - Fenway at Avenue Louis Pasteur,42.34011512249236,-71.10061883926392,57545,2015-04-17,2023-03-31,Boston,576.0,Brookline,false,true
+30,Brigham Circle - Francis St at Huntington Ave,42.33462893055976,-71.10407917767589,66914,2015-04-17,2023-03-31,Boston,565.0,Brookline,false,true
+300,Tremont St at Northampton St (former),42.33884970690809,-71.08140613892829,306,2018-10-09,2018-10-30,Boston,,,false,true
+302,Harrison Ave at Bennet St (former),42.3493102175903,-71.06210500001907,246,2018-10-03,2018-10-30,Boston,,,false,true
+306,Blue Hill Ave at Southwood St (former),42.31784,-71.07796,15,2018-10-01,2018-10-28,Boston,,,false,true
+307,Broadway T Stop (former),42.3428,-71.05751,347,2018-09-27,2018-10-30,Boston,,,false,true
+308,BCBS Hingham,42.16722555541654,-70.90555783370291,462,2018-10-29,2022-11-07,Hingham,207.0,Rockland,false,false
+31,Seaport Hotel,42.348833,-71.041747,51142,2015-04-17,2023-03-31,Boston,,,false,true
+311,Vassal Lane at Tobin/VLUS (former),42.383928224564585,-71.13962350417751,40,2018-10-17,2018-10-30,Cambridge,,,false,true
+317,BCBS Quincy,42.27600498756665,-71.03924982267927,293,2018-10-29,2022-11-28,Quincy,279.0,Milton,false,false
+318,Ames St at Broadway,42.3636929,-71.0875672,60240,2018-10-25,2023-03-31,Cambridge,827.0,Boston,false,true
+319,84 Cambridgepark Dr,42.3936,-71.143941,8431,2018-10-18,2023-03-31,Cambridge,424.0,Arlington,false,true
+32,Landmark Center - Brookline Ave at Park Dr,42.343690557197476,-71.10235286881107,109044,2015-04-17,2023-03-31,Boston,261.0,Brookline,false,true
+327,Main St at Thompson Sq,42.374878467440965,-71.06383498767171,19860,2018-10-23,2023-03-31,Boston,434.0,Cambridge,false,true
+328,Grove St at Community Path,42.396386809455,-71.12011306006025,36768,2018-10-23,2023-03-31,Somerville,306.0,Cambridge,false,true
+329,Washington St at Myrtle St,42.3817508,-71.0839523,13244,2018-10-23,2023-03-31,Somerville,252.0,Boston,false,true
+33,Kenmore Square,42.348706,-71.097009,127155,2015-04-24,2023-03-31,Boston,496.0,Cambridge,false,true
+330,30 Dane St,42.38100143038052,-71.10402522613185,42205,2018-10-23,2023-03-31,Somerville,364.0,Cambridge,false,true
+331,Huntington Ave at Mass Art,42.336585554561154,-71.0988699646623,40005,2018-10-23,2023-03-31,Boston,970.0,Brookline,false,true
+332,Harvard Ave at Brainerd Rd,42.34953016890375,-71.13022770741735,47496,2018-10-23,2023-03-31,Boston,82.0,Brookline,false,true
+333,699 Mt Auburn St,42.37500235137831,-71.14871613699506,17612,2018-10-23,2023-03-31,Cambridge,36.0,Watertown Town,false,true
+334,Mass Ave at Hadley/Walden,42.39120971915856,-71.12260755160605,19101,2018-10-23,2023-03-31,Cambridge,133.0,Somerville,false,true
+335,Harvard St at Greene-Rose Heritage Park,42.36599432867437,-71.09522221614498,53705,2018-10-23,2023-03-31,Cambridge,922.0,Somerville,false,true
+336,Mattapan T Stop,42.267902,-71.093641,2074,2018-10-24,2023-03-28,Boston,85.0,Milton,false,true
+337,Roslindale Village - South St,42.287072,-71.127754,3590,2018-10-24,2023-03-31,Boston,,,false,true
+338,Commonwealth Ave at Kelton St,42.348358628170445,-71.13997217276847,29392,2018-10-24,2023-03-31,Boston,467.0,Brookline,false,true
+339,Archdale Rd at Washington St,42.29266592872725,-71.12119538714069,3045,2018-10-25,2023-03-30,Boston,,,false,true
+340,Blue Hill Ave at Almont St,42.274620671812244,-71.09372552493369,664,2018-10-25,2023-03-28,Boston,654.0,Milton,false,true
+341,Roslindale Village - Washington St,42.28630716010807,-71.12820532182013,2350,2018-10-28,2023-03-31,Boston,,,false,true
+342,Boylston St at Jersey St,42.344650628878306,-71.09732501226972,102867,2018-10-24,2023-03-31,Boston,681.0,Brookline,false,true
+343,Morton St T,42.280725142920296,-71.08617242434775,575,2018-11-01,2022-10-29,Boston,,,false,true
+344,Commonwealth Ave at Chiswick Rd,42.34024644768889,-71.15168806174552,11007,2018-10-24,2023-03-31,Boston,485.0,Brookline,false,true
+345,Park Plaza at Charles St S.,42.351828068920675,-71.06781138111728,39010,2018-10-24,2023-03-31,Boston,,,false,true
+346,Cleveland Circle,42.335543083570826,-71.15061519672052,16671,2018-10-24,2023-03-31,Boston,51.0,Brookline,false,true
+347,Thetford Ave at Norfolk St,42.286212948246096,-71.07942931372236,909,2018-10-26,2023-03-31,Boston,,,false,true
+348,Talbot Ave At Blue Hill Ave,42.2945833,-71.087111,1950,2018-10-25,2023-03-24,Boston,,,false,true
+349,Washington St at Talbot Ave,42.290333,-71.071806,2062,2018-10-26,2023-03-29,Boston,,,false,true
+35,Arch St at Franklin St,42.355335019412564,-71.0582291708306,85134,2015-04-21,2023-03-31,Boston,,,false,true
+350,Codman Square Library,42.2873611,-71.071111,2284,2018-10-26,2023-03-27,Boston,,,false,true
+351,Faneuil St at Arlington St,42.35276620545606,-71.15988485533308,7970,2018-10-25,2023-03-18,Boston,701.0,Watertown Town,false,true
+352,Ring Rd,42.348278385426255,-71.08044855314802,36755,2018-10-25,2022-06-23,Boston,976.0,Cambridge,false,true
+353,Mattapan Library,42.2773889,-71.09325,719,2018-10-30,2023-03-30,Boston,912.0,Milton,false,true
+354,Washington St at Egremont Rd,42.34286835071959,-71.14127840855872,15631,2018-10-29,2023-03-31,Boston,134.0,Brookline,false,true
+355,Bennington St at Constitution Beach,42.385223935870535,-71.01063068965232,5596,2018-10-31,2023-03-29,Boston,827.0,Chelsea,false,true
+356,Charlestown Navy Yard,42.374124549426526,-71.05481199938367,51383,2018-10-29,2023-03-31,Boston,951.0,Cambridge,false,true
+357,Centre St at Seaverns Ave,42.3121203,-71.1142981,11884,2018-10-30,2022-11-08,Boston,,,false,true
+358,Medford St at Charlestown BCYF,42.380429474494896,-71.06055721676967,15208,2018-10-30,2023-03-31,Boston,713.0,Everett,false,true
+359,One Brigham Circle,42.333922701369964,-71.10446508982932,38579,2018-10-30,2023-03-31,Boston,554.0,Brookline,false,true
+36,Copley Square - Dartmouth St at Boylston St,42.34992828230057,-71.07739206866427,153651,2015-04-24,2023-03-31,Boston,911.0,Cambridge,false,true
+360,Bartlett St at John Elliot Sq,42.3294633,-71.0901582,15491,2018-10-31,2023-03-31,Boston,,,false,true
+361,Deerfield St at Commonwealth Ave,42.34924376955301,-71.09728209692548,84029,2018-10-30,2023-03-31,Boston,433.0,Cambridge,false,true
+362,Columbia Rd at Tierney Community Center,42.33023070528729,-71.05060093123029,18458,2018-10-31,2023-03-31,Boston,,,false,true
+363,Harrison Ave at Mullins Way,42.34521562115022,-71.0638403149278,47814,2018-10-30,2023-03-31,Boston,,,false,true
+364,Tremont St at Northampton St,42.338431795290944,-71.08169049924982,42304,2018-10-30,2023-03-31,Boston,,,false,true
+365,Harrison Ave at Bennet St,42.34942609892521,-71.06209959843909,29527,2018-10-30,2023-03-31,Boston,,,false,true
+366,Broadway T Stop,42.34278116224413,-71.05747275072645,10231,2018-10-30,2023-03-31,Boston,,,false,true
+367,Vassal Lane at Tobin/VLUS,42.3839322489048,-71.13961271959852,6895,2018-10-31,2023-03-31,Cambridge,,,false,true
+368,Blue Hill Ave at Southwood St,42.317860205899876,-71.07798628527235,2180,2018-11-05,2022-10-27,Boston,,,false,true
+369,Boston Public Market,42.36254854409333,-71.0573735833168,32512,2018-11-01,2021-05-18,Boston,904.0,Cambridge,false,true
+37,New Balance - 20 Guest St,42.35732921867706,-71.14673539996147,19212,2015-04-17,2023-03-31,Boston,441.0,Watertown Town,false,true
+370,Dartmouth St at Newbury St,42.35096144421219,-71.07782810926437,62097,2018-11-01,2023-02-08,Boston,792.0,Cambridge,false,true
+371,700 Huron Ave,42.380788172914286,-71.15412890911102,7057,2018-11-07,2023-03-31,Cambridge,145.0,Belmont,false,true
+372,Boylston St at Exeter St,42.349589423682445,-71.0794677917329,61148,2018-11-08,2023-03-31,Boston,876.0,Cambridge,false,true
+373,Belgrade Ave at Walworth St,42.28634589486312,-71.13672129828046,2088,2018-11-11,2023-03-31,Boston,,,false,true
+374,Tremont St at Hamilton Pl,42.35668334969929,-71.06166645884514,60717,2018-11-21,2023-03-31,Boston,,,false,true
+376,Honan Library,42.36027370454934,-71.12852452327388,26532,2018-12-01,2023-03-31,Boston,971.0,Cambridge,false,true
+377,Perry Park,42.37927324600841,-71.10341902831351,30685,2018-12-04,2023-03-31,Somerville,331.0,Cambridge,false,true
+378,191 Beacon St,42.38032335045416,-71.10878612855231,29195,2018-12-06,2023-03-31,Somerville,14.0,Cambridge,false,true
+379,Tremont St at W. Dedham St,42.34254913737952,-71.07421449387857,32456,2019-01-10,2023-03-31,Boston,,,false,true
+38,TD Garden - Causeway at Portal Park #2,42.366222,-71.059914,20870,2015-04-17,2016-09-22,Boston,460.0,Cambridge,false,true
+380,Mass Ave at Albany St,42.36135837662249,-71.09670273977825,93556,2019-01-10,2023-03-31,Cambridge,874.0,Boston,false,true
+381,Inman Square at Springfield St.,42.37426713524931,-71.10026478767395,65086,2019-01-17,2023-03-31,Cambridge,13.0,Somerville,false,true
+384,Clarendon St at Newbury St,42.35159662465317,-71.0756166279316,35644,2019-04-18,2022-11-15,Boston,802.0,Cambridge,false,true
+385,Albany St at E. Brookline St,42.33664795427071,-71.0689445958451,21045,2019-05-13,2023-03-31,Boston,,,false,true
+386,Sennott Park Broadway at Norfolk Street,42.36860524248197,-71.09930185605663,60845,2019-05-22,2023-03-31,Cambridge,644.0,Somerville,false,true
+387,Norman St at Kelvin St,42.41143222973408,-71.06823265090497,6054,2019-06-14,2023-03-31,Everett,313.0,Medford,false,false
+388,Main Street at Carter Street,42.406151572663504,-71.0604074504954,666,2019-06-16,2020-10-15,Everett,900.0,Medford,false,false
+389,Everett Square (Broadway at Chelsea St),42.406956789102416,-71.05650289605819,3457,2019-06-15,2023-03-30,Everett,,,false,false
+39,Washington St at Rutland St,42.338514601785995,-71.07404083013535,121733,2015-04-17,2023-03-31,Boston,,,false,true
+390,Broadway at Lynde St,42.39648358247693,-71.06546759905541,5315,2019-06-16,2023-03-31,Everett,227.0,Boston,false,false
+391,Encore,42.39329263225162,-71.0724475979805,4595,2019-06-23,2023-03-31,Everett,147.0,Somerville,false,false
+392,Glendale Square (Ferry St at Broadway),42.41427294293992,-71.04479655659816,2774,2019-06-20,2023-03-30,Everett,897.0,Chelsea,false,false
+393,Swan St. Park,42.412504507772105,-71.05842225271772,1439,2019-06-25,2023-03-28,Everett,418.0,Malden,false,false
+394,Broadway at Maple St,42.410346909767846,-71.05260457852637,2116,2019-06-22,2023-03-30,Everett,893.0,Malden,false,false
+395,Chelsea St at Vine St,42.40328056972533,-71.04762639859473,3233,2019-06-25,2023-03-31,Everett,505.0,Chelsea,false,false
+396,Wasgott Playground,42.4093300667225,-71.06381878293178,1689,2019-06-22,2023-03-30,Everett,664.0,Malden,false,false
+397,Broadway at Beacham St,42.39836059620832,-71.06373842814719,5108,2019-06-22,2023-03-31,Everett,480.0,Boston,false,false
+398,75 Binney St,42.36550728505653,-71.0801375997653,32455,2019-07-02,2023-03-31,Cambridge,481.0,Boston,false,true
+399,Shawmut Ave at Oak St W,42.34854543411198,-71.06559185315746,19019,2019-07-09,2023-03-31,Boston,,,false,true
+4,Tremont St at E Berkeley St,42.345392,-71.069616,87287,2015-04-17,2023-03-31,Boston,,,false,true
+40,Lewis Wharf at Atlantic Ave,42.363871,-71.050877,121790,2015-04-17,2023-03-31,Boston,,,false,true
+400,Lansdowne T Stop,42.34734473177431,-71.1001680795016,24279,2019-07-10,2023-03-31,Boston,556.0,Brookline,false,true
+401,High St at Cypress St,42.32464510949409,-71.12135231494904,6481,2019-07-11,2023-03-31,Brookline,86.0,Boston,false,true
+402,Washington Sq,42.33985827126298,-71.13421171095978,13551,2019-07-11,2023-03-31,Brookline,522.0,Boston,false,true
+403,Marion St at Harvard St,42.340122426966424,-71.12070563810447,29043,2019-07-10,2023-03-31,Brookline,805.0,Boston,false,true
+404,Mass Ave T Station,42.34135615767354,-71.08336953450817,41725,2019-07-15,2023-03-31,Boston,,,false,true
+405,Sydney St at Carson St,42.32039374304257,-71.05355408051764,6390,2019-07-17,2023-03-31,Boston,,,false,true
+406,Somerville City Hall Annex,42.39189811591863,-71.09745375830244,5943,2019-07-16,2023-03-31,Somerville,538.0,Medford,false,true
+407,Craigie at Summer St,42.38828872616418,-71.11071459967206,9256,2019-07-23,2023-03-31,Somerville,524.0,Cambridge,false,true
+408,Edgerly Education Center,42.38717463348314,-71.08714388528824,11137,2019-07-23,2023-03-31,Somerville,756.0,Boston,false,true
+409,Elm St at White St,42.38952436305763,-71.11694140364307,22581,2019-07-24,2023-03-31,Somerville,13.0,Cambridge,false,true
+41,Packard's Corner - Commonwealth Ave at Brighton Ave,42.352261,-71.123831,125756,2015-04-17,2023-03-31,Boston,81.0,Brookline,false,true
+410,Adams St at Lonsdale St,42.291679428741226,-71.05726346409938,1880,2019-07-31,2022-11-09,Boston,,,false,true
+411,Dorchester Ave at King St,42.29175621632091,-71.0625918023743,691,2019-08-01,2021-06-10,Boston,,,false,true
+412,Washington St at Peters Park,42.34303291130257,-71.06688730436872,21262,2019-07-31,2022-11-09,Boston,,,false,true
+413,Kennedy-Longfellow School 158 Spring St,42.36955297756508,-71.08579014980933,50838,2019-08-13,2023-03-31,Cambridge,425.0,Somerville,false,true
+414,Discovery Park - 30 Acorn Park Drive,42.39790817368333,-71.14797130814623,10856,2019-08-14,2023-03-31,Cambridge,120.0,Arlington,false,true
+415,Stuart St at Berkeley St,42.34954403114251,-71.0724207387284,35593,2019-08-14,2023-03-31,Boston,,,false,true
+416,Blossom St at Charles St,42.36435589027983,-71.0695936904267,30935,2019-08-14,2023-03-31,Boston,309.0,Cambridge,false,true
+417,Columbus Ave at W. Canton St,42.34474224772802,-71.07648162175792,38357,2019-08-14,2023-03-31,Boston,,,false,true
+419,Central Square East Boston,42.37544912547037,-71.03918548682486,8707,2019-08-22,2023-03-31,Boston,959.0,Chelsea,false,true
+42,Boylston St at Arlington St,42.35200960743121,-71.07060294892108,112527,2015-04-17,2023-03-31,Boston,962.0,Cambridge,false,true
+420,Charles St at Pinckney St,42.35872530462163,-71.07079532006537,2915,2019-08-21,2019-11-21,Boston,473.0,Cambridge,false,true
+421,Northbourne Rd at Hyde Park Ave,42.29118034790426,-71.117736660035,1111,2019-08-22,2023-03-30,Boston,,,false,true
+422,American Legion Hwy at Cummins Hwy,42.278811581565975,-71.11687703062671,792,2019-08-23,2023-03-26,Boston,,,false,true
+423,Mt. Hope St at Hyde Park Ave,42.28484472443536,-71.11874517062459,1209,2019-08-24,2023-03-31,Boston,,,false,true
+424,Jamaica St at South St,42.3060456272408,-71.11570891001975,5271,2019-08-28,2023-03-31,Boston,,,false,true
+425,The Dimock Center,42.3193094317828,-71.09639923859504,2960,2019-08-27,2023-03-31,Boston,,,false,true
+426,Surface Rd at Summer St,42.35294569782581,-71.05656400803126,33537,2019-08-27,2023-03-31,Boston,,,false,true
+427,Washington St at Denton Terr,42.280728147169015,-71.13423757273267,1189,2019-08-30,2022-11-02,Boston,,,false,true
+428,Western Ave at Richardson St,42.361787410661876,-71.14393111327445,12034,2019-08-29,2023-03-31,Boston,222.0,Watertown Town,false,true
+43,Rowes Wharf - Atlantic Ave,42.357143,-71.050699,84606,2015-04-17,2023-03-31,Boston,,,false,true
+430,Washington St at Walsh Playground,42.277194696397906,-71.06955613950048,778,2019-09-04,2022-11-08,Boston,660.0,Milton,false,true
+431,Washington St at Fuller St,42.281986277339136,-71.07147924620222,546,2019-09-07,2022-11-08,Boston,,,false,true
+432,Centre St at W. Roxbury Post Office,42.286331991127746,-71.15344755369732,1116,2019-09-05,2023-03-31,Boston,924.0,Brookline,false,true
+433,Centre St at Parkway YMCA,42.28277901074054,-71.15728851416861,897,2019-09-09,2023-03-26,Boston,,,false,true
+434,Spring St at Powell St,42.277484442008216,-71.16341467955863,1001,2019-09-17,2023-03-31,Boston,944.0,Dedham,false,true
+435,Central Ave at River St,42.27094707029229,-71.07337901405117,1280,2019-09-10,2022-11-01,Boston,66.0,Milton,false,true
+436,Maverick St at Massport Path,42.36774122306014,-71.0333597474255,5016,2019-09-11,2023-03-29,Boston,,,false,true
+437,Berkshire Street at Cambridge Street,42.37207657915397,-71.08995433905875,57873,2019-09-12,2023-03-31,Cambridge,202.0,Somerville,false,true
+438,Mobile Temporary Station,42.34397624831833,-71.08598473086202,40,2019-09-17,2019-11-15,Boston,,,true,true
+44,Congress St at Boston City Hall,42.36041774637169,-71.05752243543975,56218,2015-04-17,2023-03-31,Boston,,,false,true
+440,Boston Landing,42.356560923089404,-71.14167537549292,10727,2019-10-16,2023-03-31,Boston,733.0,Watertown Town,false,true
+441,Sullivan Square,42.384452256358436,-71.07514854529654,10186,2019-10-17,2023-03-31,Boston,253.0,Somerville,false,true
+442,Hyde Park Ave at Walk Hill St,42.29606704649873,-71.11601199963843,3295,2019-10-18,2023-03-31,Boston,,,false,true
+443,Whittier St Health Center,42.332862884862635,-71.09218861916816,4688,2019-10-17,2023-03-31,Boston,,,false,true
+445,Geiger Gibson Community Health Center,42.31886468217537,-71.04536797860419,10907,2019-10-31,2023-03-31,Boston,,,false,true
+446,700 Commonwealth Ave.,42.34960945333059,-71.10391523698127,49359,2019-10-30,2023-03-31,Boston,221.0,Brookline,false,true
+447,The Overlook at St. Gabriel's,42.34679008347347,-71.14549813806661,5631,2020-06-06,2023-03-31,Boston,684.0,Brookline,false,true
+448,Hale Park,42.4206487,-71.0437126,867,2020-06-12,2022-11-26,Everett,290.0,Malden,false,false
+45,Jersey St. at Boylston St.,42.3446808403874,-71.09785348176956,45861,2015-04-17,2018-11-14,Boston,639.0,Brookline,false,true
+450,Beacon St at Englewood Ave,42.337369153709254,-71.14485977232107,802,2020-07-01,2020-08-25,Brookline,107.0,Boston,false,true
+451,Washington Sq,42.33940659197945,-71.13489642273635,1569,2020-07-03,2020-10-15,Brookline,514.0,Boston,false,true
+452,1200 Beacon St,42.34414898749529,-71.11467361450195,19183,2020-07-02,2023-03-31,Brookline,530.0,Boston,false,true
+453,Beacon St at Hawes St,42.34496783328529,-71.11040176903771,2028,2020-07-02,2020-10-15,Brookline,324.0,Boston,false,true
+454,Boylston St at Dartmouth St,42.35019319808638,-71.07744187116623,17046,2020-07-27,2022-11-21,Boston,883.0,Cambridge,false,true
+455,Coolidge Sq.,42.372076114722866,-71.15683130688922,3926,2020-07-31,2023-03-31,Watertown Town,362.0,Belmont,false,false
+456,Graham and Parks School – Linnaean St at Walker St,42.38294430172271,-71.12449831038248,15927,2020-08-05,2023-03-31,Cambridge,753.0,Somerville,false,true
+457,N. Beacon St at N. Beacon Ct,42.36444157139109,-71.18091373646166,297,2020-08-05,2020-12-06,Watertown Town,429.0,Newton,false,false
+458,Watertown Sq,42.365260317694485,-71.18573324459247,5121,2020-08-05,2023-03-31,Watertown Town,534.0,Newton,false,false
+459,Canal St at Causeway St,42.36530094929082,-71.06092190993877,42326,2020-08-19,2023-03-31,Boston,485.0,Cambridge,false,true
+46,Christian Science Plaza - Massachusetts Ave at Westland Ave,42.3436658245146,-71.08582377433777,186880,2015-04-17,2023-03-31,Boston,,,false,true
+460,Broad St at Central St,42.35849449039304,-71.05426469875965,11564,2020-08-25,2023-03-31,Boston,,,false,true
+461,Railroad Lot and Minuteman Bikeway,42.41606457115141,-71.15336636682059,6336,2020-09-10,2023-03-31,Arlington,947.0,Medford,false,false
+462,Linwood St at Minuteman Bikeway,42.40935395518158,-71.14906518727366,7145,2020-09-11,2023-03-31,Arlington,962.0,Belmont,false,false
+463,Smith Pl at Wilson Rd,42.39239749145834,-71.15058331757609,4825,2020-09-12,2023-03-31,Cambridge,576.0,Belmont,false,true
+464,Mass Ave at Grafton St,42.40726052447951,-71.14382132425817,2478,2020-09-16,2022-10-24,Arlington,782.0,Somerville,false,false
+465,Broadway at Grafton St,42.40994213011757,-71.14009319811885,1565,2020-09-16,2022-10-24,Arlington,605.0,Somerville,false,false
+466,Centre St at Washington St,42.35574334805774,-71.18641942508475,774,2020-10-03,2023-01-08,Newton,395.0,Watertown Town,false,false
+467,Washington St at Crafts St,42.35389024396587,-71.19943707257335,987,2020-10-01,2022-12-30,Newton,916.0,Watertown Town,false,false
+468,Nonantum Library,42.36068455768156,-71.20146199598821,1131,2020-10-03,2023-01-09,Newton,443.0,Watertown Town,false,false
+469,Bacon St at Washington St,42.35711920909866,-71.1860453666327,1567,2020-10-03,2023-01-09,Newton,240.0,Watertown Town,false,false
+47,Cross St at Hanover St,42.362811,-71.056067,149958,2015-04-17,2023-03-31,Boston,952.0,Cambridge,false,true
+470,Union St at Herrick Rd – Newton Centre Green Line,42.32956868185623,-71.19367271661758,561,2020-10-02,2022-12-10,Newton,,,false,false
+471,MIT Carleton St at Amherst St,42.36054174140606,-71.08669817447662,53393,2020-10-07,2023-03-31,Cambridge,478.0,Boston,false,true
+472,MIT Hayward St at Amherst St,42.36085937353302,-71.08551858007559,42486,2020-10-07,2023-03-31,Cambridge,470.0,Boston,false,true
+473,West Newton,42.349600498642076,-71.2262749671936,850,2020-10-10,2022-12-10,Newton,,,false,false
+474,Watertown St at Albemarle Rd,42.354104081396585,-71.21382214128971,392,2020-10-09,2023-01-05,Newton,,,false,false
+475,Arsenal Yards,42.36277388549605,-71.15764854490408,9376,2020-10-08,2023-03-31,Watertown Town,320.0,Boston,false,false
+476,Boylston St at Charles St,42.3525760946701,-71.06764405041758,4598,2020-10-04,2022-12-06,Boston,,,false,true
+477,Marion St at White St,42.38066930871317,-71.03907315999093,1464,2020-10-07,2023-03-31,Boston,474.0,Chelsea,false,true
+478,Gove St at Orleans St,42.37057753242139,-71.03558540113227,3913,2020-10-06,2023-03-31,Boston,,,false,true
+479,Galileo Galilei Way at Main Street,42.363003781560096,-71.08974037706501,31858,2020-10-14,2023-03-31,Cambridge,830.0,Boston,false,true
+48,Post Office Square,42.356755,-71.055407,53848,2015-04-17,2022-11-20,Boston,,,false,true
+480,Thorndike Field at Minuteman Bikeway,42.40016804853787,-71.14456963094199,5628,2020-10-15,2023-03-31,Arlington,233.0,Cambridge,false,false
+481,645 Summer St,42.341780891371904,-71.03987016504107,5760,2020-10-16,2023-03-31,Boston,,,false,true
+482,Kearins Playground,42.406161241322444,-71.06041654944418,950,2020-10-18,2023-03-31,Everett,900.0,Medford,false,false
+483,Porzio Park,42.364119035231525,-71.02876782417297,3701,2020-10-23,2023-03-31,Boston,,,false,true
+484,Revere Public Library,42.408088,-71.008942,536,2020-11-09,2023-03-30,Revere,670.0,Chelsea,false,false
+485,Revere City Hall,42.40741,-71.0139,788,2020-10-28,2023-03-28,Revere,505.0,Chelsea,false,false
+486,Langley Lot,42.330528,-71.192861,957,2020-11-01,2023-01-07,Newton,,,false,false
+487,Community Path at Lowell St,42.392525,-71.105587,13526,2020-10-28,2023-03-31,Somerville,550.0,Medford,false,true
+488,Martha Eliot Health Center,42.324173,-71.10196,4648,2020-11-02,2023-03-31,Boston,,,false,true
+489,Day Sq,42.379295,-71.027733,2145,2020-10-31,2023-03-30,Boston,527.0,Chelsea,false,true
+49,Stuart St at Charles St,42.351146,-71.066289,68198,2015-04-17,2023-03-31,Boston,,,false,true
+490,Blue Hill Ave at Havelock St,42.286012,-71.090986,446,2020-11-05,2023-03-24,Boston,,,false,true
+491,Harrison Ave at E. Dedham St,42.339194,-71.06975,16634,2020-11-12,2023-03-31,Boston,,,false,true
+492,Harvard Stadium: N. Harvard St at Soldiers Field Rd,42.368019,-71.1242,26401,2020-11-17,2023-03-31,Boston,131.0,Cambridge,false,true
+493,2 Hummingbird Lane at Olmsted Green,42.28887,-71.095003,166,2020-12-26,2023-03-30,Boston,,,false,true
+494,Watertown Town Hall,42.367621,-71.187936,1494,2020-12-09,2023-03-03,Watertown Town,429.0,Newton,false,false
+495,Union Square East,42.380078,-71.090098,10638,2020-12-09,2023-03-31,Somerville,674.0,Cambridge,false,true
+496,Trum Field @ Cedar St (Temp Winter Station),42.398444,-71.107833,603,2020-12-09,2023-03-13,Somerville,28.0,Medford,false,true
+497,Washington St @ New Washington St (Temp Winter Station),42.38103731531107,-71.08709779349738,1362,2020-12-09,2023-03-08,Somerville,520.0,Boston,false,true
+498,Broadway Opposite Norwood Ave  (Temp Winter Station),42.396764,-71.102376,369,2020-12-10,2023-03-13,Somerville,12.0,Medford,false,true
+499,Conway Park @ Bleachery Ct (Temp Winter Station),42.3836409294306,-71.10868692398071,1941,2020-12-10,2023-03-09,Somerville,274.0,Cambridge,false,true
+5,Northeastern University - North Parking Lot,42.341814,-71.090179,80553,2015-04-17,2022-11-15,Boston,,,false,true
+50,Boylston St at Berkeley St,42.3511419825475,-71.07329249382019,64770,2015-04-28,2023-03-31,Boston,927.0,Cambridge,false,true
+502,160 Arsenal,42.36466403441681,-71.17569386959076,3168,2021-03-06,2023-03-31,Watertown Town,568.0,Newton,false,false
+503,Cary Square,42.398135645582464,-71.030709722545,561,2021-03-06,2023-03-27,Chelsea,917.0,Everett,false,false
+504,Bellingham Square,42.3931961102951,-71.03344559669495,630,2021-03-03,2023-03-31,Chelsea,839.0,Boston,false,false
+505,Chelsea Square,42.390226711033826,-71.03857017704286,1241,2021-03-04,2023-03-30,Chelsea,381.0,Boston,false,false
+506,Broadway at Gerrish Ave,42.39453079292221,-71.03085594484583,637,2021-03-05,2023-03-24,Chelsea,,,false,false
+507,Chelsea Station,42.39636527849676,-71.03987179230899,1824,2021-03-07,2023-03-29,Chelsea,491.0,Everett,false,false
+508,855 Broadway,42.398417726101584,-71.02390923402707,924,2021-03-17,2023-03-31,Chelsea,620.0,Revere,false,false
+509,Nichols Ave. at Watertown Greenway,42.36762048745005,-71.1565663665533,3472,2021-03-27,2023-03-31,Watertown Town,842.0,Belmont,false,false
+51,Washington St at Lenox St,42.3350989929096,-71.07903778553009,36894,2015-04-17,2023-03-31,Boston,,,false,true
+510,Mass Ave at Broadway,42.414202132001854,-71.15051883389242,2429,2021-04-08,2022-10-23,Arlington,864.0,Medford,false,false
+511,Bellevue T Stop,42.28611420958351,-71.14636927843094,346,2021-06-02,2022-11-08,Boston,,,false,true
+512,Knoll St at Centre St,42.29376656473529,-71.1365658044815,706,2021-06-05,2022-11-08,Boston,873.0,Brookline,false,true
+513,Roseland St At Dorchester Ave,42.2911685327193,-71.06300890445709,478,2021-06-11,2023-03-26,Boston,,,false,true
+514,Gilman Square T at Medford St,42.3867355,-71.0946444,2285,2021-06-08,2023-03-31,Somerville,,,false,true
+515,955 Mass Ave,42.36895180540729,-71.10998779535294,37470,2021-06-10,2023-03-31,Cambridge,622.0,Boston,false,true
+516,Salem Ferry Landing,42.52189284110247,-70.8806911110878,1016,2021-06-16,2022-12-01,Salem,,,false,false
+517,Salem Willows Park,42.53466911383265,-70.87021440267563,1600,2021-06-16,2022-11-27,Salem,891.0,Beverly,false,false
+518,Shetland Park - Congress at Peabody St,42.51836788262243,-70.88952362537384,1410,2021-06-16,2023-03-31,Salem,,,false,false
+519,Mayor Salvo Path at Mill St,42.51803519796769,-70.89570075273514,2011,2021-06-16,2023-03-31,Salem,,,false,false
+52,Newbury St at Hereford St,42.348717,-71.085954,137740,2015-04-28,2022-11-16,Boston,747.0,Cambridge,false,true
+520,Salem MBTA - Washington at Federal St,42.52345239346618,-70.89611113071442,2447,2021-06-16,2023-03-30,Salem,,,false,false
+521,Lafayette at Leach St,42.51142784358897,-70.89183300733566,991,2021-06-18,2023-03-31,Salem,,,false,false
+522,Salem State University - Bike Path at Loring Ave,42.50182398896298,-70.89478075504303,2367,2021-06-18,2023-03-31,Salem,758.0,Marblehead,false,false
+523,Boston College T,42.33987891612856,-71.16708934307098,4709,2021-06-20,2023-01-08,Newton,21.0,Boston,false,false
+524,Newton Highlands T,42.322065656952944,-71.2063729763031,913,2021-06-20,2023-01-08,Newton,,,false,false
+525,California at Chapel,42.365148708129546,-71.20236039161682,1627,2021-06-23,2023-01-07,Newton,74.0,Watertown Town,false,false
+526,Beacon at Walnut,42.330062324402995,-71.20668411254883,554,2021-06-24,2023-01-09,Newton,,,false,false
+527,Newton Library,42.336203368830134,-71.207794547081,352,2021-06-26,2023-01-09,Newton,,,false,false
+528,Washington St at Walnut St,42.351458116963016,-71.20764970779419,783,2021-07-07,2023-01-04,Newton,,,false,false
+529,One Beacon St,42.358477644348106,-71.06135129928589,9623,2021-07-08,2023-03-31,Boston,,,false,true
+53,Beacon St at Massachusetts Ave,42.35082680669095,-71.0898108780384,181225,2015-04-17,2022-11-16,Boston,407.0,Cambridge,false,true
+530,Foley St at Grand Union Blvd,42.39301840035393,-71.08071684837341,7378,2021-07-08,2023-03-31,Somerville,487.0,Everett,false,true
+531,Harvard St and Stedman St,42.3443517550051,-71.12490355968475,13231,2021-07-23,2023-03-31,Brookline,639.0,Boston,false,true
+532,Concord Ave at Spinelli Place,42.390719,-71.1538877,2137,2021-07-27,2023-03-31,Cambridge,284.0,Belmont,false,true
+533,Danehy Park at New Street,42.389456,-71.139019,5352,2021-07-28,2023-03-31,Cambridge,961.0,Arlington,false,true
+534,Adams Branch Library,42.286011,-71.054689,178,2021-07-30,2021-11-18,Boston,947.0,Milton,false,true
+535,Auburndale,42.34805541493346,-71.2477594614029,501,2021-08-06,2023-01-07,Newton,896.0,Waltham,false,false
+536,Clinton St at North St,42.3607028354884,-71.05524927377701,10479,2021-08-05,2023-03-31,Boston,,,false,true
+537,Charles River Greenway - California St. at Fifth Ave,42.36455361053197,-71.19100391864777,759,2021-08-06,2022-08-14,Watertown Town,139.0,Newton,false,false
+538,Circuit Drive at American Legion Hwy,42.29704126420948,-71.09171926975249,873,2021-08-24,2023-03-31,Boston,,,false,true
+539,Walnut Ave at School St,42.31242399029812,-71.09616905450821,1739,2021-08-25,2023-03-31,Boston,,,false,true
+54,Tremont St at West St,42.354979,-71.063348,103982,2015-04-17,2023-03-31,Boston,,,false,true
+540,Sumner St at Shirley Ave,42.408337058129746,-70.99804848432541,1102,2021-08-26,2023-03-31,Revere,,,false,false
+541,Orr Sq (Shirley Ave),42.40715655698643,-70.99272429943085,2405,2021-08-26,2023-03-31,Revere,,,false,false
+542,Hyde Park Ave at Arlington St,42.26286746177123,-71.12163126468657,150,2021-08-30,2022-11-02,Boston,818.0,Milton,false,true
+543,American Legion Hwy at Hyde Park Ave,42.27265394101898,-71.119903922081,108,2021-08-31,2022-11-05,Boston,,,false,true
+544,Old Morse Park at Putnam Ave,42.35766247889882,-71.1084133386612,19602,2021-09-10,2023-03-31,Cambridge,570.0,Boston,false,true
+545,Morton St at Gallivan Blvd,42.278747,-71.080286,222,2021-09-15,2023-03-31,Boston,967.0,Milton,false,true
+546,Cleary Sq,42.2556,-71.12444,229,2021-09-22,2023-03-31,Boston,994.0,Milton,false,true
+547,606 American Legion Hwy at Canterbury St,42.28578,-71.109725,406,2021-09-30,2023-03-28,Boston,,,false,true
+548,555 Metropolitan Ave,42.2681,-71.11924,90,2021-11-02,2023-03-19,Boston,,,false,true
+549,Valenti Way at Haverhill St,42.36473898691789,-71.05934903025626,24758,2021-09-30,2023-03-31,Boston,612.0,Cambridge,false,true
+55,Boylston St at Massachusetts Ave,42.34740620525209,-71.08678414955648,144635,2015-04-16,2023-03-31,Boston,852.0,Cambridge,false,true
+550,Somerville High School & Central Library,42.3864,-71.09601,3913,2021-10-12,2023-03-31,Somerville,,,false,true
+553,Cambridge Crossing at North First Street,42.371141,-71.076198,26484,2021-10-29,2023-03-31,Cambridge,218.0,Somerville,false,true
+554,Forsyth St at Huntington Ave,42.339202,-71.090511,41961,2021-12-01,2023-03-31,Boston,,,false,true
+555,Hyde Park Library,42.2568376,-71.122509,171,2022-02-01,2023-03-27,Boston,798.0,Milton,false,true
+556,Ross Playground,42.2645666,-71.1145523,201,2022-03-08,2023-03-31,Boston,493.0,Milton,false,true
+557,Galileo Galilei Way at Fulkerson St/Binney St,42.3664204,-71.0885418,8121,2022-01-27,2023-03-31,Cambridge,772.0,Somerville,false,true
+558,St. Alphonsus St at Tremont St,42.33329254719182,-71.10124647617339,15065,2022-02-16,2023-03-31,Boston,828.0,Brookline,false,true
+559,Centre St at Commonwealth Ave,42.3362358,-71.1934421,244,2022-03-23,2023-01-09,Newton,,,false,false
+56,Dudley Square - Bolling Building,42.329842993518085,-71.08386572459494,18798,2015-04-22,2023-03-31,Boston,,,false,true
+560,Flat 9 at Whittier,42.33420351352245,-71.08767616843123,1543,2022-03-05,2023-03-31,Boston,,,false,true
+561,Pier 4 Blvd at Autumn Ln,42.3502102,-71.0446705,7293,2022-03-03,2023-03-31,Boston,,,false,true
+562,Hawthorne Boulevard,42.5223714,-70.8903331,1454,2022-03-30,2023-03-30,Salem,,,false,false
+563,Addison St at Saratoga St,42.38518146513944,-71.0151367,934,2022-05-14,2023-03-29,Boston,520.0,Chelsea,false,true
+564,Raymond Park at Walden St,42.38736953747185,-71.12761001482795,3046,2022-05-27,2023-03-31,Cambridge,674.0,Somerville,false,true
+565,Wellington MBTA,42.4023682,-71.07573182424781,1361,2022-06-11,2023-03-31,Medford,129.0,Everett,false,false
+566,Main Street/Albany Street/Technology Square,42.3629016,-71.0915669,11001,2022-07-12,2023-03-31,Cambridge,881.0,Boston,false,true
+567,Brighton Ave at Linden St,42.3528376,-71.1296752,5726,2022-08-09,2022-11-15,Boston,357.0,Brookline,false,true
+568,Shawmut Ave at Lenox St,42.33584612997077,-71.08038157224655,1662,2022-08-11,2023-03-31,Boston,,,false,true
+569,Hood Park,42.38004534693313,-71.0730457305908,1187,2022-08-12,2023-03-31,Boston,200.0,Somerville,false,true
+57,Massachusetts Ave at Columbus Ave,42.340814,-71.0816197,64992,2015-04-17,2022-11-16,Boston,,,false,true
+570,Salem State University - North Campus,42.503332,-70.891444,549,2022-08-24,2023-03-30,Salem,638.0,Marblehead,false,false
+571,Forest River Park,42.506395,-70.88693,335,2022-08-26,2023-03-27,Salem,562.0,Marblehead,false,false
+572,Essex St at Dalton Parkway,42.516223,-70.905535,191,2022-08-25,2023-03-31,Salem,,,false,false
+573,Salem MBTA - Lower Level,42.523994,-70.89684,140,2022-09-09,2023-03-28,Salem,,,false,false
+574,Community Life Center,42.520136,-70.906271,30,2022-09-25,2023-03-28,Salem,982.0,Peabody,false,false
+575,Goodhue St at Grove St,42.520897,-70.910528,72,2022-09-09,2023-03-30,Salem,622.0,Peabody,false,false
+576,Main St at Brooks Park,42.411709,-71.110444,312,2022-09-21,2023-03-31,Medford,841.0,Somerville,false,false
+577,Medford Sq - Riverside Ave at River St,42.417724,-71.108102,422,2022-09-22,2023-03-31,Medford,,,false,false
+578,Tufts Sq - Main St at Medford St,42.401697,-71.106128,717,2022-09-23,2023-03-31,Medford,359.0,Somerville,false,false
+58,Mugar Way at Beacon St,42.355536284897084,-71.07286870479584,139996,2015-04-17,2023-03-31,Boston,549.0,Cambridge,false,true
+582,Gore Street at Lambert Street,42.373079797934935,-71.08634233665725,6800,2022-09-27,2023-03-31,Cambridge,48.0,Somerville,false,true
+583,Broad Canal Way at Third Street,42.36304549626695,-71.08287078916874,2912,2022-09-28,2023-03-31,Cambridge,603.0,Boston,false,true
+584,Malden Center T Station,42.426541,-71.073179,453,2022-10-06,2023-03-31,Malden,,,false,false
+585,Northern Strand at Main St,42.42386,-71.067793,372,2022-10-06,2023-03-31,Malden,967.0,Everett,false,false
+586,Gramsdorf Playground,42.408156,-71.0429,305,2022-10-17,2023-03-31,Everett,471.0,Chelsea,false,false
+587,Malden High School,42.426537658440544,-71.06393694877625,209,2022-10-21,2023-03-31,Malden,,,false,false
+589,North St at Liberty Hill Ave,42.52989964975891,-70.90614259243011,23,2022-11-07,2023-03-27,Salem,558.0,Peabody,false,false
+59,Chinatown Gate Plaza,42.351356,-71.059367,78663,2015-04-17,2023-03-31,Boston,,,false,true
+590,John Ahern Field at Kennedy-Longfellow School,42.36903566594827,-71.08630959910442,1241,2022-11-26,2023-03-31,Cambridge,474.0,Somerville,false,true
+591,515 Somerville Ave (Temp. Winter Location),42.38322726839113,-71.10606908798218,1192,2022-11-23,2023-03-09,Somerville,397.0,Cambridge,false,true
+592,87-101 Cambridgepark Drive,42.395221870310664,-71.14421904097979,161,2023-02-09,2023-03-31,Cambridge,249.0,Arlington,false,true
+593,Boynton Yards at 101 South Street,42.375447604963405,-71.09117388747109,203,2023-02-17,2023-03-31,Somerville,154.0,Cambridge,false,true
+594,Riverway at Brookline Ave,42.33661005730433,-71.11004680395126,7,2023-03-27,2023-03-31,Boston,74.0,Brookline,false,true
+6,Cambridge St at Joy St,42.36125721646537,-71.06528744101524,136567,2015-04-17,2023-03-31,Boston,798.0,Cambridge,false,true
+60,Charles Circle - Charles St at Cambridge St,42.36079296858265,-71.07118962337152,214138,2015-04-17,2023-03-31,Boston,379.0,Cambridge,false,true
+61,Boylston St at Fairfield St,42.34908155168097,-71.08192384243011,119041,2015-04-24,2023-03-31,Boston,845.0,Cambridge,false,true
+63,Dorchester Ave at Gillette Park,42.344040510016356,-71.05737626552582,31910,2015-04-17,2023-03-31,Boston,,,false,true
+64,Congress / Sleeper,42.3511,-71.0496,66438,2015-04-17,2022-11-14,Boston,,,false,true
+65,Boston Convention and Exhibition Center - Summer St at West Side Dr,42.347763454147454,-71.0453599691391,31181,2015-04-17,2023-03-31,Boston,,,false,true
+66,Commonwealth Ave at Griggs St,42.34922469338298,-71.13275302578586,68356,2015-04-17,2023-03-31,Boston,169.0,Brookline,false,true
+67,MIT at Mass Ave / Amherst St,42.3581,-71.093198,419808,2015-01-01,2023-03-31,Cambridge,448.0,Boston,false,true
+68,Central Square at Mass Ave / Essex St,42.36507,-71.1031,324274,2015-01-01,2023-03-31,Cambridge,,,false,true
+69,Coolidge Corner - Beacon St at Centre St,42.341598,-71.123338,92012,2015-04-21,2023-03-31,Brookline,963.0,Boston,false,true
+7,Fan Pier,42.3533905070523,-71.04457139968872,42701,2015-04-17,2023-03-31,Boston,,,false,true
+70,Harvard Kennedy School at Bennett St / Eliot St,42.3722168027866,-71.12188071012497,97589,2015-01-01,2023-03-31,Cambridge,313.0,Boston,false,true
+71,Conway Park - Somerville Avenue,42.383638948222654,-71.10853672027588,61569,2015-04-17,2023-03-31,Somerville,282.0,Cambridge,false,true
+72,One Broadway / Kendall Sq at Main St / 3rd St,42.36224178650923,-71.0831107199192,88252,2015-01-01,2023-03-31,Cambridge,529.0,Boston,false,true
+73,Harvard Square at Brattle St / Eliot St,42.373328798874056,-71.12098601080106,112463,2015-01-01,2023-03-31,Cambridge,447.0,Boston,false,true
+74,Harvard Square at Mass Ave/ Dunster,42.373268,-71.118579,257534,2015-01-01,2023-03-31,Cambridge,502.0,Boston,false,true
+75,Lafayette Square at Mass Ave / Main St / Columbia St,42.36346469304347,-71.10057324171066,139634,2015-01-01,2023-03-31,Cambridge,,,false,true
+76,Central Sq Post Office / Cambridge City Hall at Mass Ave / Pleasant St,42.366426,-71.105495,157462,2015-01-01,2023-03-31,Cambridge,898.0,Somerville,false,true
+77,Somerville City Hall,42.386844,-71.09812,30174,2015-04-17,2023-03-31,Somerville,,,false,true
+78,Union Square - Somerville,42.37964789967527,-71.09540475672475,73538,2015-04-17,2023-03-31,Somerville,590.0,Cambridge,false,true
+79,Beacon St at Washington / Kirkland,42.37875351212593,-71.10707223415375,58273,2015-06-10,2023-03-31,Somerville,61.0,Cambridge,false,true
+8,Union Square - Brighton Ave at Cambridge St,42.353334,-71.137313,61193,2015-04-17,2023-03-31,Boston,756.0,Brookline,false,true
+80,MIT Stata Center at Vassar St / Main St,42.3621312344991,-71.09115600585936,235084,2015-01-01,2023-03-31,Cambridge,789.0,Boston,false,true
+81,Chinatown T Stop,42.352409,-71.062679,121260,2015-04-17,2023-03-31,Boston,,,false,true
+82,Beacon St at Tappan St,42.33826680058037,-71.13894682028331,34195,2015-04-28,2023-03-31,Brookline,331.0,Boston,false,true
+84,CambridgeSide Galleria - CambridgeSide PL at Land Blvd,42.367074071490926,-71.07679277658461,93266,2015-01-01,2023-03-31,Cambridge,348.0,Boston,false,true
+85,Spaulding Rehabilitation Hospital - Charlestown Navy Yard,42.378338,-71.048927,51020,2015-04-17,2023-03-31,Boston,662.0,Chelsea,false,true
+86,Brookline Village - Station Street at MBTA,42.33274392304887,-71.11626680949485,39075,2015-04-17,2023-03-31,Brookline,258.0,Boston,false,true
+87,Harvard University Housing - 115 Putnam Ave at Peabody Terrace,42.366621,-71.114214,95223,2015-01-01,2023-03-31,Cambridge,242.0,Boston,false,true
+88,Inman Square at Vellucci Plaza / Hampshire St,42.374035,-71.101427,52524,2015-01-01,2019-01-17,Cambridge,37.0,Somerville,false,true
+89,Harvard Law School at Mass Ave / Jarvis St,42.379011,-71.119945,75733,2015-01-01,2023-03-31,Cambridge,717.0,Somerville,false,true
+9,Commonwealth Ave at Agganis Way,42.35169201885973,-71.11903488636017,141977,2015-04-17,2023-03-31,Boston,31.0,Brookline,true,true
+90,Lechmere Station at Cambridge St / First St,42.370677,-71.076529,101070,2015-01-01,2022-04-11,Cambridge,275.0,Somerville,false,true
+91,One Kendall Square at Hampshire St / Portland St,42.366277,-71.09169,154083,2015-01-01,2023-03-31,Cambridge,859.0,Somerville,false,true
+92,University of Massachusetts Boston - Campus Center,42.31218918475612,-71.03648586203235,10886,2015-06-11,2023-03-30,Boston,,,false,true
+93,JFK/UMass T Stop,42.32033973515723,-71.05118036270142,20066,2015-04-17,2023-03-31,Boston,,,false,true
+94,Main St at Austin St,42.375603,-71.064608,49063,2015-04-17,2023-03-31,Boston,469.0,Cambridge,false,true
+95,Cambridge St - at Columbia St / Webster Ave,42.372969,-71.094445,93396,2015-01-01,2023-03-31,Cambridge,145.0,Somerville,false,true
+96,Cambridge Main Library at Broadway / Trowbridge St,42.373379,-71.111075,93377,2015-01-01,2023-03-31,Cambridge,568.0,Somerville,false,true
+97,Harvard University River Houses at DeWolfe St / Cowperthwaite St,42.369239074859216,-71.11687034368515,125468,2015-01-01,2023-03-31,Cambridge,163.0,Boston,false,true
+98,Warren St at Chelsea St,42.371848,-71.060292,106356,2015-04-17,2023-03-31,Boston,440.0,Cambridge,false,true
+99,Wilson Square,42.38567578752914,-71.11412136298895,33794,2015-04-17,2023-03-31,Somerville,129.0,Cambridge,false,true
+A23097,Webster Ave at Norfolk St,42.374606,-71.094757,229,2026-08-18,2026-08-31,Somerville,35.0,Cambridge,false,true
+A32000,Fan Pier,42.3533905070523,-71.04457139968872,32805,2023-04-01,2026-08-31,Boston,,,false,true
+A32001,Union Square - Brighton Ave at Cambridge St,42.353334,-71.137313,44458,2023-04-01,2026-08-31,Boston,756.0,Brookline,false,true
+A32002,Commonwealth Ave at Agganis Way,42.35169201885973,-71.11903488636017,114489,2023-04-01,2026-08-31,Boston,31.0,Brookline,false,true
+A32003,B.U. Central - 725 Comm. Ave.,42.350406,-71.108279,52914,2023-04-01,2026-08-31,Boston,31.0,Brookline,false,true
+A32004,Longwood Ave at Binney St,42.338629,-71.1065,86452,2023-04-01,2026-08-31,Boston,373.0,Brookline,false,true
+A32005,Brighton Mills - 370 Western Ave,42.3615457081725,-71.13776206970215,26460,2023-04-01,2026-08-31,Boston,366.0,Cambridge,false,true
+A32006,Soldiers Field Park - 111 Western Ave,42.364263440638524,-71.1182756971175,46809,2023-04-01,2026-08-31,Boston,111.0,Cambridge,false,true
+A32008,Park Dr at Buswell St,42.347241,-71.105301,41780,2023-04-01,2026-08-31,Boston,152.0,Brookline,false,true
+A32009,South End Library - Tremont St at W Newton St,42.341332,-71.076847,40545,2023-04-01,2026-08-31,Boston,,,false,true
+A32010,South Station - 700 Atlantic Ave,42.352175,-71.055547,115454,2023-04-01,2026-08-31,Boston,,,false,true
+A32011,Innovation Lab - 125 Western Ave at Batten Way,42.36371276003581,-71.12459778785706,36753,2023-04-01,2026-08-31,Boston,592.0,Cambridge,false,true
+A32012,Packard's Corner - Commonwealth Ave at Brighton Ave,42.352261,-71.123831,60691,2023-04-01,2026-08-31,Boston,81.0,Brookline,false,true
+A32013,Surface Rd at India St,42.358155,-71.052163,40883,2023-04-01,2026-08-31,Boston,,,false,true
+A32014,Stadium Rd at Western Ave,42.3630602068896,-71.1250450322948,12965,2025-06-05,2026-08-31,Boston,670.0,Cambridge,false,true
+A32015,N. Harvard St at Harvard Way,42.36678297,-71.12517547,9364,2025-07-21,2026-08-31,Boston,289.0,Cambridge,false,true
+A32016,Gardner St at Alcorn St,42.35320766,-71.1233029,3661,2025-09-10,2026-08-31,Boston,154.0,Brookline,false,true
+A32017,Commonwealth Ave at Griggs St,42.34922469338298,-71.13275302578586,40618,2023-04-01,2026-08-31,Boston,169.0,Brookline,false,true
+A32018,Harborwalk at Central Wharf,42.35846813,-71.05040243,2475,2026-04-28,2026-08-31,Boston,,,false,true
+A32019,175 N Harvard St,42.364474565180565,-71.12840831285212,46437,2023-04-01,2026-08-31,Boston,589.0,Cambridge,false,true
+A32020,Atlantic Ave at Beach St,42.35070811,-71.05658926,5068,2025-09-09,2026-08-31,Boston,,,false,true
+A32021,Nashua Street at Red Auerbach Way [Extension],42.3658584571002,-71.064157369577,14063,2025-04-28,2026-08-31,Boston,349.0,Cambridge,false,true
+A32022,Edwards Playground - Main St at Eden St,42.378965,-71.068607,16857,2023-04-01,2026-08-31,Boston,513.0,Somerville,false,true
+A32023,Bunker Hill Community College,42.37408991426522,-71.06905996799469,21894,2023-04-01,2026-08-31,Boston,214.0,Cambridge,false,true
+A32024,Staniford St at Merrimac St,42.36358,-71.063721,24134,2024-10-02,2026-08-31,Boston,603.0,Cambridge,false,true
+A32025,Nashua Street at Red Auerbach Way,42.365673,-71.064263,66253,2023-04-01,2026-08-31,Boston,370.0,Cambridge,false,true
+A32026,Purchase St at Pearl St,42.354659,-71.053181,39555,2023-04-01,2026-08-31,Boston,,,false,true
+A32028,Bennington St at Byron St,42.383532520117896,-71.01619094610214,5984,2023-04-01,2026-08-31,Boston,578.0,Chelsea,false,true
+A32029,Piers Park,42.36501119822304,-71.03528559207916,7167,2023-04-01,2026-08-31,Boston,,,false,true
+A32030,Maverick Square - Lewis Mall,42.368844082898356,-71.03977829217911,16957,2023-04-01,2026-08-31,Boston,,,false,true
+A32031,East Boston Neighborhood Health Center - 20 Maverick Square,42.369536,-71.039431,14017,2023-04-02,2026-08-31,Boston,,,false,true
+A32032,Bremen St at Marion St,42.37410622047334,-71.03276252757496,9588,2023-04-01,2026-08-31,Boston,,,false,true
+A32033,The Eddy - New St at Sumner St,42.370744,-71.044201,6261,2023-04-01,2026-08-31,Boston,,,false,true
+A32034,Glendon St at Condor St,42.38240377674137,-71.03024303913116,2009,2023-04-01,2026-08-31,Boston,215.0,Chelsea,false,true
+A32035,Orient Heights T Stop - Bennington St at Saratoga St,42.386781,-71.006098,9022,2023-04-02,2026-08-31,Boston,790.0,Revere,false,true
+A32036,Boston East - 126 Border St,42.373312125824704,-71.0410200806291,5086,2023-04-01,2026-08-31,Boston,,,false,true
+A32037,Washington St at Corey Rd,42.34237144862031,-71.14018043851446,25480,2023-04-01,2026-08-31,Boston,30.0,Brookline,false,true
+A32039,Bennington St at Constitution Beach,42.385223935870535,-71.01063068965232,6456,2023-04-01,2026-08-31,Boston,827.0,Chelsea,false,true
+A32040,Honan Library,42.36027370454934,-71.12852452327388,29386,2023-04-01,2026-08-31,Boston,971.0,Cambridge,false,true
+A32041,Central Square East Boston,42.37544912547037,-71.03918548682486,15391,2023-04-01,2026-08-31,Boston,959.0,Chelsea,false,true
+A32042,Surface Rd at Summer St,42.35294569782581,-71.05656400803126,52208,2023-04-01,2026-08-31,Boston,,,false,true
+A32043,Western Ave at Richardson St,42.361787410661876,-71.14393111327445,7544,2023-04-01,2024-09-20,Boston,222.0,Watertown Town,false,true
+A32044,Maverick St at Massport Path,42.36774122306014,-71.0333597474255,6769,2023-04-02,2026-08-31,Boston,,,false,true
+A32045,Boston Landing,42.356560923089404,-71.14167537549292,23467,2023-04-01,2026-08-31,Boston,733.0,Watertown Town,false,true
+A32046,Canal St at Causeway St,42.365188,-71.060788,71280,2023-04-01,2026-08-31,Boston,502.0,Cambridge,false,true
+A32047,Broad St at Central St,42.35849449039304,-71.05426469875965,20156,2023-04-01,2026-08-31,Boston,,,false,true
+A32048,Marion St at White St,42.38066930871317,-71.03907315999093,9712,2023-04-01,2026-08-31,Boston,474.0,Chelsea,false,true
+A32049,Gove St at Orleans St,42.37057753242139,-71.03558540113227,7940,2023-04-01,2026-08-31,Boston,,,false,true
+A32050,Porzio Park,42.364119035231525,-71.02876782417297,8901,2023-04-01,2026-08-31,Boston,,,false,true
+A32051,Day Sq,42.379295,-71.027733,6622,2023-04-02,2026-08-31,Boston,527.0,Chelsea,false,true
+A32052,Harvard Stadium: N. Harvard St at Soldiers Field Rd,42.368019,-71.1242,41218,2023-04-01,2026-08-31,Boston,131.0,Cambridge,false,true
+A32053,Valenti Way at Haverhill St,42.36473898691789,-71.05934903025626,71265,2023-04-01,2026-08-31,Boston,612.0,Cambridge,false,true
+A32054,Addison St at Saratoga St,42.38518146513944,-71.0151367,6950,2023-04-02,2026-08-31,Boston,520.0,Chelsea,false,true
+A32055,Airport T Stop - Bremen St at Brooks St,42.375578,-71.031243,9269,2023-06-28,2026-08-31,Boston,976.0,Chelsea,false,true
+A32056,Riverway at Brookline Ave,42.33661005730433,-71.11004680395126,33967,2023-04-04,2026-08-31,Boston,74.0,Brookline,false,true
+A32057,Lewis Mall Wharf,42.365678711213775,-71.04030132293701,9943,2023-07-20,2026-08-31,Boston,,,false,true
+A32058,Tremont St at Court St,42.35946019932843,-71.0596445066082,23572,2023-12-05,2026-08-31,Boston,,,false,true
+A32059,High St at Federal St,42.35352778,-71.05622222,18588,2024-09-12,2026-08-31,Boston,,,false,true
+A32061,Commercial St at Charter St,42.36817,-71.056847,23649,2024-10-16,2026-08-31,Boston,601.0,Cambridge,false,true
+A32062,Western Ave at Everett St,42.363168,-71.134719,11343,2024-11-13,2026-08-31,Boston,397.0,Cambridge,false,true
+A32063,Herter Park,42.365723613644,-71.13539289,7444,2025-01-09,2026-08-31,Boston,153.0,Cambridge,false,true
+A32064,Western Ave at Leo Birmingham Pkwy,42.36155856,-71.14506038,10175,2025-01-17,2026-08-31,Boston,158.0,Watertown Town,false,true
+A32065,Ashley St at Boardman,42.389155,-71.010409,968,2025-01-23,2026-08-31,Boston,632.0,Chelsea,false,true
+A32066,Bennington St at Marion St,42.37590859,-71.03598452,2697,2025-01-17,2026-08-31,Boston,,,false,true
+A32067,Surface Rd at State Street,42.359743,-71.052602,14209,2025-03-06,2026-08-31,Boston,,,false,true
+A32068,Wood Island T Stop - Vienna St at Bennington St,42.380024,-71.024441,2089,2025-04-10,2026-08-31,Boston,521.0,Chelsea,false,true
+A32070,Ringer Park - Webley St at Armington St,42.35225564,-71.13718336,2349,2025-08-04,2026-08-31,Boston,649.0,Brookline,false,true
+B32000,Newbury St at Hereford St,42.348717,-71.085954,85275,2023-04-19,2026-08-31,Boston,747.0,Cambridge,false,true
+B32001,Fenway at Museum Rd,42.33919988,-71.09662527,3680,2025-10-01,2026-08-31,Boston,894.0,Brookline,false,true
+B32002,Ruggles T Stop - Columbus Ave at Melnea Cass Blvd,42.33624444796878,-71.08798563480377,102075,2023-04-01,2026-08-31,Boston,,,false,true
+B32003,HMS/HSPH - Avenue Louis Pasteur at Longwood Ave,42.3374174845973,-71.10286116600037,53430,2023-04-01,2026-08-31,Boston,665.0,Brookline,false,true
+B32004,Aquarium T Stop - 200 Atlantic Ave,42.359912,-71.05143,55548,2023-04-01,2026-08-31,Boston,,,false,true
+B32005,Christian Science Plaza - Massachusetts Ave at Westland Ave,42.3436658245146,-71.08582377433777,128144,2023-04-01,2026-08-31,Boston,,,false,true
+B32006,Colleges of the Fenway - Fenway at Avenue Louis Pasteur,42.34011512249236,-71.10061883926392,33881,2023-04-01,2026-08-31,Boston,576.0,Brookline,false,true
+B32007,Seaport Square - Seaport Blvd at Northern Ave,42.35148193460858,-71.04436084628105,56909,2023-04-01,2026-08-31,Boston,,,false,true
+B32008,Boston City Hall - 28 State St,42.35892,-71.057629,74193,2023-04-01,2026-08-31,Boston,,,false,true
+B32009,Fenway at Forsyth Way,42.34102248,-71.09210481,7040,2025-09-05,2026-08-31,Boston,,,false,true
+B32010,Kenmore Square,42.348706,-71.097009,66436,2023-04-01,2026-08-31,Boston,496.0,Cambridge,false,true
+B32011,Kenmore Square - 660 Beacon St,42.34922,-71.095751,18116,2025-06-19,2026-08-31,Boston,460.0,Cambridge,false,true
+B32012,Northeastern University - North Parking Lot,42.341814,-71.090179,30364,2023-04-13,2026-08-31,Boston,,,false,true
+B32013,Brigham Circle - Francis St at Huntington Ave,42.33462893055976,-71.10407917767589,46820,2023-04-01,2026-08-31,Boston,565.0,Brookline,false,true
+B32014,Seaport Hotel - Congress St at Seaport Ln,42.34898004239155,-71.04217991144988,30029,2023-04-01,2026-08-31,Boston,,,false,true
+B32015,Landmark Center - Brookline Ave at Park Dr,42.343690557197476,-71.10235286881107,102503,2023-04-01,2026-08-31,Boston,261.0,Brookline,false,true
+B32016,Beacon St at Massachusetts Ave,42.35082680669095,-71.0898108780384,133479,2023-04-26,2026-08-31,Boston,407.0,Cambridge,false,true
+B32017,Nubian Square - Bolling Building,42.329842993518085,-71.08386572459494,19129,2023-04-02,2026-08-31,Boston,,,false,true
+B32018,Boylston St at Massachusetts Ave,42.34740620525209,-71.08678414955648,90926,2023-04-01,2026-08-31,Boston,852.0,Cambridge,false,true
+B32019,New Edgerly Plaza - Westland Ave at Edgerly Rd,42.34367194,-71.08742,12208,2025-09-22,2026-08-31,Boston,,,false,true
+B32020,Burlington Ave at Brookline Ave,42.345733,-71.100694,30004,2023-04-01,2026-08-31,Boston,448.0,Brookline,false,true
+B32021,Wentworth Institute of Technology - Huntington Ave at Vancouver St,42.33758601097239,-71.09627097845076,21355,2023-04-01,2026-08-31,Boston,,,false,true
+B32022,Roxbury YMCA - Warren St at MLK Blvd,42.31787329345602,-71.08243077993393,8652,2023-04-01,2026-08-31,Boston,,,false,true
+B32023,MLK Blvd at Washington St,42.32143814183195,-71.09126061201096,13071,2023-04-01,2026-08-31,Boston,,,false,true
+B32024,Pilgrim Rd at Brookline Ave,42.3425995,-71.104903,3739,2025-10-29,2026-08-31,Boston,138.0,Brookline,false,true
+B32025,Uphams Corner T Stop - Magnolia St at Dudley St,42.318697341722434,-71.0697814822197,5103,2023-04-03,2026-08-31,Boston,,,false,true
+B32026,Washington St at Melnea Cass Blvd,42.332817,-71.081198,18676,2023-04-01,2026-08-31,Boston,,,false,true
+B32027,NCAAA - Walnut Ave at Crawford St,42.316902,-71.091946,8236,2023-04-01,2026-08-31,Boston,,,false,true
+B32028,Grove Hall Library - 41 Geneva Ave,42.30791,-71.080952,4339,2023-04-06,2026-08-31,Boston,,,false,true
+B32029,Columbia Rd at Ceylon St,42.309572,-71.0729,4643,2023-04-02,2026-08-31,Boston,,,false,true
+B32030,Walnut Ave at Warren St,42.324081,-71.083235,7290,2023-04-02,2026-08-31,Boston,,,false,true
+B32031,Bowdoin St at Quincy St,42.30785224238503,-71.06512248516083,8317,2023-04-01,2026-08-31,Boston,,,false,true
+B32032,Government Center - Cambridge St at Court St,42.3598253979878,-71.05979576244862,74964,2023-04-01,2026-08-31,Boston,,,false,true
+B32033,Huntington Ave at Mass Art,42.336585554561154,-71.0988699646623,32003,2023-04-01,2026-08-31,Boston,970.0,Brookline,false,true
+B32034,Boylston St at Jersey St,42.344650628878306,-71.09732501226972,92859,2023-04-01,2026-08-31,Boston,681.0,Brookline,false,true
+B32035,Cleveland Circle,42.335543083570826,-71.15061519672052,17363,2023-04-01,2026-08-31,Boston,51.0,Brookline,false,true
+B32036,One Brigham Circle,42.333922701369964,-71.10446508982932,41351,2023-04-01,2026-08-31,Boston,554.0,Brookline,false,true
+B32037,Deerfield St at Commonwealth Ave,42.34924376955301,-71.09728209692548,73382,2023-04-01,2026-08-31,Boston,433.0,Cambridge,false,true
+B32038,Chestnut Hill Ave at Ledgemere Rd,42.343706,-71.153257,5940,2024-06-19,2026-08-31,Boston,809.0,Brookline,false,true
+B32039,Huntington Ave at Colburn St,42.33268137,-71.11083321,6304,2025-08-11,2026-08-31,Boston,151.0,Brookline,false,true
+B32040,Ipswich St at Van Ness St,42.3458089,-71.09548545,15379,2025-09-02,2026-08-31,Boston,836.0,Cambridge,false,true
+B32041,Chestnut Hill Ave at Winship St,42.34560832,-71.15276024,1983,2025-09-18,2026-08-31,Boston,932.0,Brookline,false,true
+B32043,Reservoir Rd at Beacon St,42.331459,-71.157672,988,2025-09-19,2026-08-31,Boston,40.0,Newton,false,true
+B32045,Walnut Ave at Humboldt Ave,42.32072017,-71.08632798,364,2026-05-20,2026-08-31,Boston,,,false,true
+B32055,Bartlett St at John Elliot Sq,42.3294633,-71.0901582,16427,2023-04-01,2026-08-31,Boston,,,false,true
+B32056,Tremont St at Hamilton Pl,42.35668334969929,-71.06166645884514,46493,2023-04-01,2026-08-31,Boston,,,false,true
+B32057,Blue Hill Ave at Southwood St,42.317860205899876,-71.07798628527235,3367,2023-04-14,2026-08-31,Boston,,,false,true
+B32058,Lansdowne T Stop,42.34734473177431,-71.1001680795016,56362,2023-04-01,2026-08-31,Boston,556.0,Brookline,false,true
+B32059,Whittier St Health Center,42.332862884862635,-71.09218861916816,5776,2023-04-01,2026-08-31,Boston,,,false,true
+B32060,700 Commonwealth Ave.,42.34960945333059,-71.10391523698127,56427,2023-04-01,2026-08-31,Boston,221.0,Brookline,false,true
+B32061,One Beacon St,42.358477644348106,-71.06135129928589,23729,2023-04-01,2026-08-31,Boston,,,false,true
+B32062,Forsyth St at Huntington Ave,42.339202,-71.090511,112089,2023-04-01,2026-08-31,Boston,,,false,true
+B32063,St. Alphonsus St at Tremont St,42.33329254719182,-71.10124647617339,52678,2023-04-01,2026-08-31,Boston,828.0,Brookline,false,true
+B32064,Flat 9 at Whittier,42.33420351352245,-71.08767616843123,7537,2023-04-01,2026-08-31,Boston,,,false,true
+B32065,Massachusetts Ave at Boylston St.,42.34752,-71.088012,91533,2024-11-06,2026-08-31,Boston,803.0,Cambridge,false,true
+B32066,Commonwealth Ave at Granby St,42.349856,-71.103825,9,2025-02-25,2025-02-25,Boston,226.0,Brookline,false,true
+B32067,Commonwealth Ave at Blandford Mall,42.349,-71.10047179,11990,2025-04-08,2026-08-31,Boston,419.0,Cambridge,false,true
+B32068,Park Street T Stop - Tremont St at Park St,42.3566271,-71.062457,22437,2025-06-12,2026-08-31,Boston,,,false,true
+B32069,Huntington Ave at St. Alphonsus St,42.33611341,-71.09921672,6311,2025-08-18,2026-08-31,Boston,951.0,Brookline,false,true
+B32070,Smith St at Parker St,42.33290175,-71.09683344,5467,2025-08-25,2026-08-31,Boston,,,false,true
+B32071,St. Alphonsus St at Horadan Way,42.33506481,-71.0998929,5792,2025-10-07,2026-08-31,Boston,901.0,Brookline,false,true
+B32072,Prentiss St at Mindoro St,42.333708232457695,-71.09362667378566,457,2026-05-27,2026-08-31,Boston,,,false,true
+B32092,Congress St at Boston Wharf Rd,42.34951487,-71.046713,6522,2025-09-25,2026-08-31,Boston,,,false,true
+BCBS01,BCBS Hingham,42.16722555541654,-70.90555783370291,139,2023-04-14,2026-08-15,Hingham,207.0,Rockland,false,false
+BCBS02,BCBS Quincy,42.276005,-71.03925,11,2023-04-27,2023-09-16,Quincy,279.0,Milton,false,false
+C23015,Pope John Paul II Park - Neponset Trail at Hallet St,42.279774,-71.046085,3195,2024-12-29,2026-08-31,Boston,304.0,Milton,false,true
+C23045,Morton St T,42.280725142920296,-71.08617242434775,809,2023-04-02,2026-08-30,Boston,,,false,true
+C23109,Cedar Grove T Stop,42.27960759693163,-71.06022119527552,412,2023-10-18,2026-08-30,Boston,603.0,Milton,false,true
+C32000,Tremont St at E Berkeley St,42.345392,-71.069616,55011,2023-04-01,2026-08-31,Boston,,,false,true
+C32001,Roxbury Crossing T Stop - Columbus Ave at Tremont St,42.331184,-71.095171,59676,2023-04-01,2026-08-31,Boston,,,false,true
+C32002,Boston Medical Center - E Concord St at Harrison Ave,42.33639915372498,-71.07306711393903,43265,2023-04-01,2026-08-31,Boston,,,false,true
+C32003,Back Bay T Stop - Dartmouth St at Stuart St,42.34807412317439,-71.07657015323639,82714,2023-04-01,2026-08-31,Boston,,,false,true
+C32004,Massachusetts Ave at Columbus Ave,42.340835,-71.0816197,49498,2023-04-10,2026-08-31,Boston,,,false,true
+C32005,Washington St at Lenox St,42.3350989929096,-71.07903778553009,28831,2023-04-01,2026-08-31,Boston,,,false,true
+C32006,Washington St at Rutland St,42.338514601785995,-71.07404083013535,68610,2023-04-01,2026-08-31,Boston,,,false,true
+C32007,Prudential Center - 101 Huntington Ave,42.34652003998412,-71.08065776545118,66535,2023-04-01,2026-08-31,Boston,,,false,true
+C32008,Boylston St at Fairfield St,42.348803822833936,-71.08236908912659,124232,2023-04-01,2026-08-31,Boston,858.0,Cambridge,false,true
+C32009,Dorchester Ave at Gillette Park,42.344040510016356,-71.05737626552582,15616,2023-04-01,2026-08-31,Boston,,,false,true
+C32010,Congress St at Sleeper St,42.351004495946704,-71.04930013418198,31661,2023-04-11,2026-08-31,Boston,,,false,true
+C32011,Harbor St at Channel St,42.34514378,-71.03645329,8471,2025-01-21,2026-08-31,Boston,,,false,true
+C320111,Andrew T Stop - Dorchester Ave (West),42.330187,-71.057088,1259,2026-06-09,2026-08-31,Boston,,,false,true
+C320112,Andrew T Stop - Dorchester Ave (East),42.330517,-71.056875,818,2026-06-09,2026-08-31,Boston,,,false,true
+C32012,Andrew T Stop - Dorchester Ave at Dexter St,42.33073332585453,-71.05699850837482,13061,2023-04-12,2025-12-09,Boston,,,false,true
+C320121,Adams St at Robinson St,42.30285514213805,-71.0605474270783,394,2026-05-22,2026-08-31,Boston,,,false,true
+C32013,JFK/UMass T Stop,42.32033973515723,-71.05118036270142,18089,2023-04-01,2026-08-31,Boston,,,false,true
+C32014,University of Massachusetts Boston - Campus Center,42.31218918475612,-71.03648586203235,9472,2023-04-01,2026-08-31,Boston,,,false,true
+C32015,Dudley Town Common - Mt Pleasant Ave at Blue Hill Ave,42.325333,-71.075354,12615,2023-04-01,2026-08-31,Boston,,,false,true
+C32016,W Broadway at Dorchester St,42.335958979433094,-71.04622899561036,47265,2023-04-01,2026-08-31,Boston,,,false,true
+C32017,South Boston Library - 646 E Broadway,42.335741,-71.03877,49103,2023-04-01,2026-08-31,Boston,,,false,true
+C32018,E Cottage St at Columbia Rd,42.320561,-71.06198,15847,2023-04-01,2026-08-31,Boston,,,false,true
+C32019,Uphams Corner,42.31727474327453,-71.06537003967787,5813,2023-04-01,2026-08-31,Boston,,,false,true
+C32020,ID Building East,42.344827,-71.028664,22553,2023-04-01,2026-08-31,Boston,,,false,true
+C32021,ID Building West,42.344796,-71.031614,20366,2023-04-01,2026-08-31,Boston,,,false,true
+C32022,Newmarket Square T Stop - Massachusetts Ave at Newmarket Square,42.326599,-71.066498,22972,2023-04-01,2026-08-31,Boston,,,false,true
+C32023,Murphy Skating Rink - 1880 Day Blvd,42.336448,-71.023739,21971,2023-04-01,2026-08-31,Boston,,,false,true
+C32024,State Street at Channel Center,42.344137,-71.052608,28132,2023-04-01,2026-08-31,Boston,,,false,true
+C32025,Ink Block - Harrison Ave at Herald St,42.345901,-71.063187,34820,2023-04-01,2026-08-31,Boston,,,false,true
+C32026,Au Bon Pain Way at Fid Kennedy Ave,42.3461009,-71.0291997,2094,2024-08-07,2026-08-31,Boston,,,false,true
+C32027,Franklin Park - Seaver St at Humboldt Ave,42.309796,-71.092225,5464,2023-04-01,2026-08-31,Boston,,,false,true
+C32028,The Lawn on D,42.344792,-71.044024,29221,2023-04-01,2026-08-31,Boston,,,false,true
+C32029,W Broadway at D St,42.3391085,-71.0514432,55948,2023-04-01,2026-08-31,Boston,,,false,true
+C32030,Franklin Park Zoo - Franklin Park Rd at Blue Hill Ave,42.303469,-71.085347,4967,2023-04-01,2026-08-31,Boston,,,false,true
+C32031,Ryan Playground - Dorchester Ave at Harbor View St,42.317642,-71.056664,12457,2023-04-04,2026-08-31,Boston,,,false,true
+C32032,Congress St at Northern Ave,42.3481,-71.03764,37328,2023-04-01,2026-08-31,Boston,,,false,true
+C32033,Savin Hill T Stop - S Sydney St at Bay St,42.3106,-71.0539,7896,2023-04-01,2026-08-31,Boston,,,false,true
+C32034,Watermark Seaport - Boston Wharf Rd at Seaport Blvd,42.351586001198456,-71.04569256305693,55921,2023-04-01,2026-08-31,Boston,,,false,true
+C32035,Troy Boston,42.343749,-71.062256,21939,2023-04-01,2026-08-31,Boston,,,false,true
+C32036,Seaport Blvd at Sleeper St,42.35317809186252,-71.04817356923377,76300,2023-04-01,2026-08-31,Boston,,,false,true
+C32037,Four Corners - 157 Washington St,42.304128,-71.079295,2406,2023-04-03,2026-08-31,Boston,,,false,true
+C32038,Washington St at Talbot Ave,42.290333,-71.071806,3313,2023-04-03,2026-08-31,Boston,,,false,true
+C32039,Park St at Norwell St,42.29442578670662,-71.07821760713703,928,2023-04-15,2026-08-31,Boston,,,false,true
+C32040,Gallivan Blvd at Adams St,42.28297567840305,-71.05466698296368,2642,2023-04-05,2026-08-31,Boston,618.0,Milton,false,true
+C32041,Fields Corner T Stop,42.299633488420625,-71.06068975823291,7899,2023-04-01,2026-08-31,Boston,,,false,true
+C32042,Washington St at Bowdoin St,42.299164979365884,-71.07345871645519,2219,2023-04-07,2026-08-31,Boston,,,false,true
+C32043,Talbot Ave At Blue Hill Ave,42.2945833,-71.087111,2284,2023-04-02,2026-08-31,Boston,,,false,true
+C32044,Blue Hill Ave at Almont St,42.274620671812244,-71.09372552493369,760,2023-04-11,2026-08-29,Boston,654.0,Milton,false,true
+C32045,Mattapan T Stop,42.267902,-71.093641,2341,2023-04-02,2026-08-31,Boston,85.0,Milton,false,true
+C32046,Roslindale Village - Washington St,42.28630716010807,-71.12820532182013,3921,2023-04-01,2026-08-31,Boston,,,false,true
+C32047,Roslindale Village - South St,42.287072,-71.127754,4848,2023-04-01,2026-08-31,Boston,,,false,true
+C32048,Archdale Rd at Washington St,42.29266592872725,-71.12119538714069,3092,2023-04-04,2026-08-31,Boston,,,false,true
+C32049,Thetford Ave at Norfolk St,42.286212948246096,-71.07942931372236,1512,2023-04-03,2026-08-31,Boston,,,false,true
+C32050,Mattapan Library,42.2773889,-71.09325,1214,2023-04-01,2026-08-31,Boston,912.0,Milton,false,true
+C32051,Farragut Rd at E. 6th St,42.3334,-71.02495,21471,2023-04-01,2026-08-31,Boston,,,false,true
+C32052,Columbia Rd at Tierney Community Center,42.33023070528729,-71.05060093123029,18022,2023-04-01,2026-08-31,Boston,,,false,true
+C32053,Broadway T Stop,42.343048583900966,-71.05803430091328,27695,2023-04-01,2026-08-31,Boston,,,false,true
+C32054,Shawmut Ave at Herald St,42.346647,-71.066049,6070,2024-10-02,2026-08-31,Boston,,,false,true
+C32055,Codman Square Library,42.2873611,-71.071111,3427,2023-04-02,2026-08-31,Boston,,,false,true
+C32056,Tremont St at Northampton St,42.338431795290944,-71.08169049924982,32556,2023-04-01,2026-08-31,Boston,,,false,true
+C32057,Harrison Ave at Mullins Way,42.34521562115022,-71.0638403149278,52494,2023-04-01,2026-08-31,Boston,,,false,true
+C32059,Belgrade Ave at Walworth St,42.28634589486312,-71.13672129828046,2450,2023-04-02,2026-08-31,Boston,,,false,true
+C32060,Tremont St at W. Dedham St,42.34254913737952,-71.07421449387857,34262,2023-04-01,2026-08-31,Boston,,,false,true
+C32061,Albany St at E. Brookline St,42.33664795427071,-71.0689445958451,27962,2023-04-01,2026-08-31,Boston,,,false,true
+C32062,Ashmont T Stop,42.2856944,-71.0641389,5549,2023-04-01,2026-08-31,Boston,,,false,true
+C32063,Mass Ave T Station,42.34135615767354,-71.08336953450817,48979,2023-04-01,2026-08-31,Boston,,,false,true
+C32064,Sydney St at Carson St,42.32039374304257,-71.05355408051764,11909,2023-04-01,2026-08-31,Boston,,,false,true
+C32065,Adams St at Lonsdale St,42.291679428741226,-71.05726346409938,3104,2023-04-13,2026-08-31,Boston,,,false,true
+C32066,Dorchester Ave at King St,42.291718,-71.062571,3397,2023-07-11,2026-08-31,Boston,,,false,true
+C32067,Washington St at Peters Park,42.342958,-71.067052,28480,2023-04-12,2026-08-31,Boston,,,false,true
+C32068,Northampton St at Fellows St,42.333586070395285,-71.075188,10814,2024-06-20,2026-08-31,Boston,,,false,true
+C32069,Damrell St at Old Colony,42.3324824,-71.0542411,12364,2024-09-18,2026-08-31,Boston,,,false,true
+C32070,300 Summer St,42.34976682032281,-71.04900020083362,10684,2025-01-30,2026-08-31,Boston,,,false,true
+C32071,Northern Ave at Haul Rd,42.347181,-71.035796,8023,2025-02-03,2026-08-31,Boston,,,false,true
+C32072,Washington St at Northampton St,42.33625888,-71.07756446,14561,2025-04-16,2026-08-31,Boston,,,false,true
+C32073,Walk Hill St at American Legion,42.28801503,-71.10730608,449,2025-09-16,2026-08-31,Boston,,,false,true
+C32074,Harambee Park - Westview St at Blue Hill Ave,42.2912605,-71.088675,986,2025-09-23,2026-08-31,Boston,,,false,true
+C32075,Huntington Ave at Exeter St,42.34785628,-71.078951,7056,2025-09-24,2026-08-31,Boston,,,false,true
+C32076,Warren Ave at Dartmouth St,42.3443104650768,-71.0740339266782,7881,2025-05-28,2026-08-31,Boston,,,false,true
+C32077,Columbus Ave at W. Canton St,42.34474224772802,-71.07648162175792,47561,2023-04-01,2026-08-31,Boston,,,false,true
+C32078,Northbourne Rd at Hyde Park Ave,42.29118034790426,-71.117736660035,2596,2023-04-03,2026-08-31,Boston,,,false,true
+C32079,American Legion Hwy at Cummins Hwy,42.278811581565975,-71.11687703062671,1967,2023-04-02,2026-08-31,Boston,,,false,true
+C32080,Mt. Hope St at Hyde Park Ave,42.28484472443536,-71.11874517062459,1541,2023-04-03,2026-08-31,Boston,,,false,true
+C32081,Washington St at Denton Terr,42.280728147169015,-71.13423757273267,3038,2023-04-11,2026-08-31,Boston,,,false,true
+C32082,Bike Town at Moakley Park,42.32586,-71.049142,5488,2025-05-21,2026-08-31,Boston,,,false,true
+C32083,Washington St at Walsh Playground,42.277194696397906,-71.06955613950048,1104,2023-04-04,2026-08-31,Boston,660.0,Milton,false,true
+C32084,Washington St at Fuller St,42.281986277339136,-71.07147924620222,1205,2023-04-07,2026-08-31,Boston,,,false,true
+C32085,Centre St at W. Roxbury Post Office,42.286331991127746,-71.15344755369732,2779,2023-04-04,2026-08-31,Boston,924.0,Brookline,false,true
+C32086,Centre St at Parkway YMCA,42.28277901074054,-71.15728851416861,1937,2023-04-08,2026-08-31,Boston,,,false,true
+C32087,Spring St at Powell St,42.277484442008216,-71.16341467955863,2072,2023-04-01,2026-08-31,Boston,944.0,Dedham,false,true
+C32088,Central Ave at River St,42.27094707029229,-71.07337901405117,2676,2023-04-20,2026-08-30,Boston,66.0,Milton,false,true
+C32089,Hyde Park Ave at Walk Hill St,42.29606704649873,-71.11601199963843,4647,2023-04-01,2026-08-31,Boston,,,false,true
+C32090,Geiger Gibson Community Health Center,42.31886468217537,-71.04536797860419,11607,2023-04-01,2026-08-31,Boston,,,false,true
+C32091,645 Summer St,42.341780891371904,-71.03987016504107,12706,2023-04-01,2026-08-31,Boston,,,false,true
+C32092,Blue Hill Ave at Havelock St,42.286012,-71.090986,1738,2023-04-02,2026-08-31,Boston,,,false,true
+C32093,Harrison Ave at E. Dedham St,42.339194,-71.06975,42580,2023-04-01,2026-08-31,Boston,,,false,true
+C32094,2 Hummingbird Lane at Olmsted Green,42.28887,-71.095003,739,2023-04-13,2026-08-31,Boston,,,false,true
+C32095,Bellevue T Stop,42.28611420958351,-71.14636927843094,1367,2023-04-01,2026-08-31,Boston,,,false,true
+C32096,Knoll St at Centre St,42.29376656473529,-71.1365658044815,1927,2023-04-04,2026-08-31,Boston,873.0,Brookline,false,true
+C32097,Roseland St At Dorchester Ave,42.291169,-71.063009,122,2023-04-02,2023-07-04,Boston,,,false,true
+C32099,Circuit Drive at American Legion Hwy,42.29704126420948,-71.09171926975249,3630,2023-04-01,2026-08-31,Boston,,,false,true
+C32100,Hyde Park Ave at Arlington St,42.26286746177123,-71.12163126468657,346,2023-04-13,2026-08-30,Boston,818.0,Milton,false,true
+C32101,American Legion Hwy at Hyde Park Ave,42.27265394101898,-71.119903922081,393,2023-04-03,2026-08-29,Boston,,,false,true
+C32102,Walnut Ave at School St,42.31242399029812,-71.09616905450821,8654,2023-04-01,2026-08-31,Boston,,,false,true
+C32103,Morton St at Gallivan Blvd,42.278747,-71.080286,1402,2023-04-03,2026-08-31,Boston,967.0,Milton,false,true
+C32104,Cleary Sq,42.2556,-71.12444,2076,2023-04-02,2026-08-31,Boston,994.0,Milton,false,true
+C32105,606 American Legion Hwy at Canterbury St,42.28578,-71.109725,3164,2023-04-03,2026-08-31,Boston,,,false,true
+C32106,555 Metropolitan Ave,42.2681,-71.11924,1137,2023-05-05,2026-08-31,Boston,,,false,true
+C32107,Pier 4 Blvd at Autumn Ln,42.3502102,-71.0446705,40651,2023-04-01,2026-08-31,Boston,,,false,true
+C32108,Beach St at Freeport St,42.303674088927075,-71.05425953865051,1670,2023-10-11,2026-08-30,Boston,,,false,true
+C32109,Centre St at Allandale St,42.300806,-71.127436,3084,2024-07-31,2026-08-31,Boston,954.0,Brookline,false,true
+C32110,Talbot Ave T Station,42.29225148276875,-71.07797205453608,1394,2023-10-14,2026-08-31,Boston,,,false,true
+C32111,Four Corners/Geneva T Stop,42.30321534982497,-71.07820987712329,2250,2023-10-12,2026-08-31,Boston,,,false,true
+C32112,Meaney Playground - Pleasant St at E Cottage St,42.3186,-71.058766,11875,2023-10-24,2026-08-31,Boston,,,false,true
+C32113,Hancock St at Pleasant St,42.30981924861789,-71.06019938382815,6908,2023-10-25,2026-08-31,Boston,,,false,true
+C32114,780 Morrissey Blvd,42.295305,-71.047186,2775,2024-09-17,2026-08-31,Boston,826.0,Quincy,false,true
+C32115,Washington St at W Dedham St,42.34033571273476,-71.07179929523453,4741,2025-06-04,2026-08-31,Boston,,,false,true
+C32116,Dorchester Ave at Savin Hill Ave,42.31298010564324,-71.05751099999999,1719,2025-08-19,2026-08-31,Boston,,,false,true
+C32117,135 Morrissey Blvd,42.31556927,-71.04841571,838,2025-12-06,2026-08-31,Boston,,,false,true
+C32118,Melnea Cass Blvd at Hampden St,42.330976,-71.075478,385,2025-12-11,2026-03-24,Boston,,,false,true
+C32119,C St at Baxter St,42.33695202,-71.055482,4115,2026-01-06,2026-08-31,Boston,,,false,true
+C32120,Mary Ellen McCormack - Sterling Square,42.32642265,-71.054011,808,2026-01-08,2026-08-31,Boston,,,false,true
+C3298,Moraine St at Centre St,42.31958808,-71.11196872,1883,2026-05-13,2026-08-31,Boston,613.0,Brookline,false,true
+C33086,Alabama St at Messinger St,42.275499,-71.10280577,64,2026-05-20,2026-08-30,Boston,,,false,true
+C45102,Myrtle St at Fellsway (Rt. 28),42.416235,-71.085073,22,2026-08-20,2026-08-31,Medford,74.0,Malden,false,false
+C82345,99 Harvard St,42.336389,-71.120917,425,2026-08-11,2026-08-31,Brookline,770.0,Boston,false,true
+D32000,Cambridge St at Joy St,42.36125721646537,-71.06528744101524,93476,2023-04-01,2026-08-31,Boston,798.0,Cambridge,false,true
+D32001,New Balance - 20 Guest St,42.35732921867706,-71.14673539996147,17972,2023-04-01,2026-08-31,Boston,441.0,Watertown Town,false,true
+D32002,Washington St at Waltham St,42.341574718737476,-71.06890439987183,41333,2023-04-01,2026-08-31,Boston,,,false,true
+D32003,Faneuil St at Bothwell Rd,42.35334878,-71.159358,2687,2025-07-29,2026-08-31,Boston,649.0,Watertown Town,false,true
+D32004,Arch St at Franklin St,42.355335019412564,-71.0582291708306,45387,2023-04-01,2026-08-31,Boston,,,false,true
+D32005,Copley Square - Dartmouth St at Boylston St,42.34992828230057,-71.07739206866427,80050,2023-04-01,2026-08-31,Boston,911.0,Cambridge,false,true
+D32006,Lewis Wharf at Atlantic Ave,42.363871,-71.050877,77761,2023-04-01,2026-08-31,Boston,,,false,true
+D32007,Boylston St at Arlington St,42.352052,-71.07036,73751,2023-04-01,2026-08-31,Boston,971.0,Cambridge,false,true
+D32008,Rowes Wharf at Atlantic Ave,42.357143,-71.050699,47538,2023-04-01,2026-08-31,Boston,,,false,true
+D32009,Congress St at Boston City Hall,42.36041774637169,-71.05752243543975,32970,2023-04-01,2026-08-31,Boston,,,false,true
+D32010,Cross St at Hanover St,42.362811,-71.056067,90229,2023-04-01,2026-08-31,Boston,952.0,Cambridge,false,true
+D32011,Stuart St at Charles St,42.351146,-71.066289,36610,2023-04-01,2026-08-31,Boston,,,false,true
+D32012,Post Office Square,42.35585435522005,-71.05459745998814,26045,2023-04-11,2026-08-31,Boston,,,false,true
+D32013,Boylston St at Berkeley St,42.3511419825475,-71.07329249382019,69426,2023-04-01,2026-08-31,Boston,927.0,Cambridge,false,true
+D32014,Tremont St at West St,42.354979,-71.063348,50092,2023-04-01,2026-08-31,Boston,,,false,true
+D32015,Chinatown Gate Plaza,42.351356,-71.059367,46059,2023-04-01,2026-08-31,Boston,,,false,true
+D32016,Charles Circle - Charles St at Cambridge St,42.36079296858265,-71.07118962337152,148475,2023-04-01,2026-08-31,Boston,379.0,Cambridge,false,true
+D32017,Mugar Way at Beacon St,42.355536284897084,-71.07286870479584,82477,2023-04-01,2026-08-31,Boston,549.0,Cambridge,false,true
+D32018,Boston Convention and Exhibition Center - Summer St at West Side Dr,42.347763454147454,-71.0453599691391,31108,2023-04-01,2026-08-31,Boston,,,false,true
+D32019,Chinatown T Stop,42.352409,-71.062679,91407,2023-04-01,2026-08-31,Boston,,,false,true
+D32020,Main St at Austin St,42.375603,-71.064608,30115,2023-04-01,2026-08-31,Boston,469.0,Cambridge,false,true
+D32021,Warren St at Chelsea St,42.371848,-71.060292,58320,2023-04-01,2026-08-31,Boston,440.0,Cambridge,false,true
+D32022,West End Park,42.36590788445084,-71.06446668505669,13679,2023-04-01,2025-04-28,Boston,344.0,Cambridge,false,true
+D32023,Spaulding Rehabilitation Hospital - Charlestown Navy Yard,42.378338,-71.048927,30960,2023-04-01,2026-08-31,Boston,662.0,Chelsea,false,true
+D32024,Beacon St at Charles St,42.356052,-71.069849,91690,2023-04-05,2026-08-31,Boston,703.0,Cambridge,false,true
+D32025,Charles St S at Stuart St,42.35077778,-71.06669444,5617,2024-12-26,2026-08-31,Boston,,,false,true
+D32026,Hayes Square - Vine St at Moulton St,42.377022,-71.056605,10928,2023-04-11,2026-08-31,Boston,,,false,true
+D32027,Boston Public Market - Surface Rd at Sudbury St,42.362561,-71.057489,18801,2025-01-14,2026-08-31,Boston,897.0,Cambridge,false,true
+D32028,Brighton Center - Washington St at Cambridge St,42.34894857235593,-71.15027189254761,24521,2023-04-01,2026-08-31,Boston,,,false,true
+D32029,Washington St at Brock St,42.3489528466951,-71.16031676530838,13345,2023-04-01,2026-08-31,Boston,956.0,Newton,false,true
+D32030,Washington St at Temple Pl,42.35496799,-71.06097685,34261,2024-09-12,2026-08-31,Boston,,,false,true
+D32031,Oak Square - 615 Washington St,42.35057,-71.166491,14695,2023-04-01,2026-08-31,Boston,608.0,Newton,false,true
+D32032,Silber Way,42.349496,-71.100576,58616,2023-04-01,2026-08-31,Boston,363.0,Cambridge,false,true
+D32033,Commonwealth Ave at Chiswick Rd,42.34024644768889,-71.15168806174552,16835,2023-04-01,2026-08-31,Boston,485.0,Brookline,false,true
+D32034,Commonwealth Ave at Kelton St,42.348358628170445,-71.13997217276847,31859,2023-04-01,2026-08-31,Boston,467.0,Brookline,false,true
+D32035,Harvard Ave at Brainerd Rd,42.34953016890375,-71.13022770741735,43374,2023-04-01,2026-08-31,Boston,82.0,Brookline,false,true
+D32036,Main St at Baldwin St,42.380857,-71.070629,16041,2023-04-01,2026-08-31,Boston,417.0,Somerville,false,true
+D32037,Medford St at Charlestown BCYF,42.380429474494896,-71.06055721676967,18727,2023-04-01,2026-08-31,Boston,713.0,Everett,false,true
+D32038,Main St at Thompson Sq,42.374878467440965,-71.06383498767171,20337,2023-04-01,2026-08-31,Boston,434.0,Cambridge,false,true
+D32039,Charlestown Navy Yard,42.374124549426526,-71.05481199938367,64411,2023-04-01,2026-08-31,Boston,951.0,Cambridge,false,true
+D32040,Williams St at Washington St,42.306539,-71.107669,20019,2023-04-01,2026-08-31,Boston,,,false,true
+D32041,Stony Brook T Stop,42.316966,-71.104374,30439,2023-04-01,2026-08-31,Boston,,,false,true
+D32042,Park Plaza at Charles St S.,42.351828068920675,-71.06781138111728,34286,2023-04-01,2026-08-31,Boston,,,false,true
+D32043,Harrison Ave at Bennet St,42.34942609892521,-71.06209959843909,34488,2023-04-01,2026-08-31,Boston,,,false,true
+D32044,Pearl St at Milk St,42.35677593,-71.05549774,15843,2025-01-21,2026-08-31,Boston,,,false,true
+D32045,Dartmouth St at Newbury St,42.35096144421219,-71.07782810926437,55187,2023-09-14,2026-08-31,Boston,792.0,Cambridge,false,true
+D32046,Boylston St at Exeter St,42.349589423682445,-71.0794677917329,74608,2023-04-01,2026-08-31,Boston,876.0,Cambridge,false,true
+D32047,Clarendon St at Newbury St,42.35158970719186,-71.07571057475647,46481,2023-04-05,2026-08-31,Boston,800.0,Cambridge,false,true
+D32048,Shawmut Ave at Oak St W,42.34854543411198,-71.06559185315746,28565,2023-04-01,2026-08-31,Boston,,,false,true
+D32049,Stuart St at Berkeley St,42.34954403114251,-71.0724207387284,47213,2023-04-01,2026-08-31,Boston,,,false,true
+D32050,Blossom St at Charles St,42.36435589027983,-71.0695936904267,34958,2023-04-01,2026-08-31,Boston,309.0,Cambridge,false,true
+D32051,Main St at Devens St,42.37401575,-71.06331387,8295,2025-04-14,2026-08-31,Boston,397.0,Cambridge,false,true
+D32052,Jamaica St at South St,42.3060456272408,-71.11570891001975,7244,2023-04-01,2026-08-31,Boston,,,false,true
+D32053,Sullivan Square,42.384452256358436,-71.07514854529654,17160,2023-04-01,2026-08-31,Boston,253.0,Somerville,false,true
+D32054,The Overlook at St. Gabriel's,42.34679008347347,-71.14549813806661,17538,2023-04-01,2026-08-31,Boston,684.0,Brookline,false,true
+D32055,Boylston St at Dartmouth St,42.350193,-71.077442,25198,2023-04-19,2026-08-31,Boston,883.0,Cambridge,false,true
+D32057,Clinton St at North St,42.3607028354884,-71.05524927377701,20970,2023-04-01,2026-08-31,Boston,,,false,true
+D32058,Brighton Ave at Linden St,42.3528376,-71.1296752,41627,2023-04-13,2026-08-31,Boston,357.0,Brookline,false,true
+D32059,Shawmut Ave at Lenox St,42.33584612997077,-71.08038157224655,8552,2023-04-01,2026-08-31,Boston,,,false,true
+D32060,Hood Park,42.38004534693313,-71.0730457305908,13215,2023-04-02,2026-08-31,Boston,200.0,Somerville,false,true
+D32061,Lenox St at Kendall St,42.33759485033856,-71.08255058528357,16674,2023-05-10,2026-08-31,Boston,,,false,true
+D32062,Stuart St at Church St,42.35066667,-71.06830556,9301,2024-10-23,2026-08-31,Boston,,,false,true
+D32063,Commonwealth Ave at Fidelis Way,42.345865,-71.141902,5124,2025-01-09,2026-08-31,Boston,397.0,Brookline,false,true
+D32064,Main St at Salem St,42.3771,-71.06646,7401,2025-04-14,2026-08-31,Boston,585.0,Cambridge,false,true
+D32065,Constitution Rd at Chelsea St,42.3736,-71.05843,8655,2025-04-15,2026-08-31,Boston,681.0,Cambridge,false,true
+D32066,Medford St at McNulty Ct,42.37916,-71.0578627,3176,2025-04-15,2026-08-31,Boston,869.0,Everett,false,true
+D32067,Chelsea St at Medford St,42.37857,-71.05298,8616,2025-04-15,2026-08-31,Boston,865.0,Chelsea,false,true
+D320670,Commonwealth Ave at Chestnut Hill Dr,42.338415,-71.154428,1940,2025-08-22,2026-08-31,Boston,498.0,Brookline,false,true
+D32068,Cross St at Stillman St,42.36370786,-71.05749336,8090,2025-04-21,2026-08-31,Boston,799.0,Cambridge,false,true
+D32069,Shawmut Ave at E Berkeley St,42.344607,-71.06702,4795,2025-05-07,2026-08-31,Boston,,,false,true
+D32070,Rutherford Ave at Bunker Hill Industrial Park,42.379352,-71.071371,1557,2025-05-23,2026-08-31,Boston,308.0,Somerville,false,true
+D32071,Rutherford Ave at Main St,42.38385,-71.073114,4105,2025-07-09,2026-08-31,Boston,433.0,Somerville,false,true
+D32072,Walbridge St at Commonwealth Ave,42.34708220716352,-71.13458870331844,9846,2025-07-24,2026-08-31,Boston,61.0,Brookline,false,true
+D32073,39 Brighton Ave,42.35299558,-71.126578,5444,2025-07-28,2026-08-31,Boston,251.0,Brookline,false,true
+D32074,Market St at Mapleton St,42.35207673,-71.151571,2921,2025-07-30,2026-08-31,Boston,915.0,Watertown Town,false,true
+D32075,Gardner St at Harvard Ave,42.353508,-71.131932,8901,2025-07-31,2026-08-31,Boston,506.0,Brookline,false,true
+D32076,Oak Square - Washington St at Bigelow St,42.35062298,-71.16744293,3045,2025-08-05,2026-08-31,Boston,543.0,Newton,false,true
+D32077,Washington St at Mina Way,42.35298248,-71.17322383,700,2025-08-06,2026-08-31,Boston,67.0,Newton,false,true
+D32078,Franklin St at Cambridge St,42.35579247,-71.13286475,6106,2025-08-07,2026-08-31,Boston,764.0,Brookline,false,true
+D32079,Cambridge St at Warren St,42.350225,-71.146678,3370,2025-09-11,2026-08-31,Boston,,,false,true
+D32080,Rugg Rd at Braintree St,42.35608219,-71.13538923,2630,2025-10-09,2026-08-31,Boston,904.0,Brookline,false,true
+D32081,Boylston T Stop,42.35250593,-71.06528293,9090,2025-10-21,2026-08-31,Boston,,,false,true
+D32082,Charlestown Navy Yard Ferry Terminal,42.37336492612888,-71.05283945767223,3227,2026-04-29,2026-08-31,Boston,,,false,true
+E32001,Curtis Hall - South St at Centre St,42.309054,-71.11543,14702,2023-04-01,2026-08-31,Boston,,,false,true
+E32002,Jamaicaway at Perkins St,42.321251,-71.116483,3884,2025-01-17,2026-08-31,Boston,265.0,Brookline,false,true
+E32003,Hyde Square - Centre St at Perkins St,42.32176525723952,-71.10984160567114,37873,2023-04-01,2026-08-31,Boston,602.0,Brookline,false,true
+E32004,Egleston Square - Atherton St at Washington St,42.315692,-71.098634,11191,2023-04-01,2026-08-31,Boston,,,false,true
+E32005,Green Street T Stop - Green St at Amory St,42.310579,-71.107341,25334,2023-04-01,2026-08-31,Boston,,,false,true
+E32006,Jackson Square T Stop,42.32293117195949,-71.10014140605927,33421,2023-04-01,2026-08-31,Boston,,,false,true
+E32007,S Huntington at Heath St,42.32767224924457,-71.11102356004498,17387,2023-04-01,2026-08-31,Boston,301.0,Brookline,false,true
+E32008,Centre St at Seaverns Ave,42.3121203,-71.1142981,14461,2023-04-06,2026-08-31,Boston,,,false,true
+E32009,Shawmut T Stop,42.292917,-71.06575,5902,2023-04-01,2026-08-31,Boston,,,false,true
+E32010,Forest Hills,42.300923,-71.114249,30759,2023-04-01,2026-08-31,Boston,,,false,true
+E32011,The Dimock Center,42.3193094317828,-71.09639923859504,6285,2023-04-01,2026-08-31,Boston,,,false,true
+E32012,Martha Eliot Health Center,42.324173,-71.10196,10502,2023-04-01,2026-08-31,Boston,,,false,true
+E32013,Hyde Park Library,42.2568376,-71.122509,640,2023-04-04,2026-08-31,Boston,798.0,Milton,false,true
+E32014,Ross Playground,42.264606595,-71.114605308,894,2023-04-01,2026-08-29,Boston,499.0,Milton,false,true
+E32015,Lincoln St at Empire St,42.357651,-71.128513,16954,2023-12-21,2026-08-31,Boston,770.0,Brookline,false,true
+E32016,Commonwealth Ave at Naples Rd,42.351911,-71.123798,21704,2023-12-21,2026-08-31,Boston,43.0,Brookline,false,true
+E32017,Butler T Stop,42.272548,-71.062882,2378,2023-12-22,2026-08-31,Boston,278.0,Milton,false,true
+E32018,Truman Parkway at Fairmount Ave,42.252287,-71.118358,360,2025-05-07,2026-08-30,Boston,734.0,Milton,false,true
+E32044,Heath St at Columbus Ave,42.32505648,-71.09947309,439,2026-07-27,2026-08-31,Boston,,,false,true
+F32001,Main St at Brooks Park,42.411709,-71.110444,5861,2023-04-01,2026-08-31,Medford,841.0,Somerville,false,false
+F32002,Medford Sq - Riverside Ave at River St,42.417724,-71.108102,6048,2023-04-01,2026-08-31,Medford,,,false,false
+F32003,Tufts Sq - Main St at Medford St,42.401697,-71.106128,7655,2023-04-01,2026-08-31,Medford,359.0,Somerville,false,false
+F32004,Harris Park,42.41081837243052,-71.08152866385353,2837,2023-05-21,2026-08-31,Medford,459.0,Malden,false,false
+F32005,Haines Square,42.423331368452885,-71.09124541293568,3181,2023-05-26,2026-08-31,Medford,252.0,Malden,false,false
+F32006,Hormel Stadium,42.40721644126376,-71.09651505947113,9094,2023-05-16,2026-08-31,Medford,764.0,Somerville,false,false
+F32007,West Medford Square (Bower St at Harvard Ave),42.420647,-71.133483,5025,2023-12-15,2026-08-31,Medford,471.0,Somerville,false,false
+F32008,Logan Park,42.41800742890374,-71.0965722102992,2216,2023-12-15,2026-08-31,Medford,840.0,Malden,false,false
+F32009,Hickey Park,42.424981,-71.098973,2102,2024-05-01,2026-08-30,Medford,809.0,Malden,false,false
+F32011,Carr Park,42.434365,-71.094755,837,2024-07-31,2026-08-30,Medford,616.0,Malden,false,false
+F32012,Steve Miller Dr at Winthrop St (Medford High),42.428086,-71.12636,1272,2024-08-01,2026-08-31,Medford,859.0,Winchester,false,false
+F32013,Governors Ave at Lawrence Rd,42.425178,-71.110386,1051,2024-08-02,2026-08-31,Medford,,,false,false
+F32014,Winthrop Circle,42.421361,-71.117556,848,2024-09-26,2026-08-31,Medford,817.0,Somerville,false,false
+F32015,Mystic Valley Parkway at River Station,42.415091,-71.139177,1126,2025-05-31,2026-08-31,Arlington,76.0,Medford,false,false
+F32016,Mystic Ave at Crescent St,42.41081,-71.106276,741,2025-09-04,2026-08-31,Medford,989.0,Somerville,false,false
+G32001,Malden Center T Station,42.426541,-71.073179,11257,2023-04-01,2026-08-31,Malden,,,false,false
+G32002,Northern Strand at Main St,42.42386,-71.067793,7492,2023-04-01,2026-08-31,Malden,967.0,Everett,false,false
+G32003,Malden High School,42.426537658440544,-71.06393694877625,6385,2023-04-02,2026-08-31,Malden,,,false,false
+G32004,Northern Strand at Bike Kitchen,42.42083422873447,-71.07216525162619,1650,2025-05-05,2026-08-31,Malden,656.0,Everett,false,false
+G32005,Kierstead Park,42.4293383849641,-71.05191290060668,1969,2025-05-07,2026-08-31,Malden,739.0,Everett,false,false
+G32006,Maplewood Square,42.43359,-71.046279,1290,2025-07-02,2026-08-31,Malden,992.0,Melrose,false,false
+H32001,Cary Square,42.398135645582464,-71.030709722545,1447,2023-04-02,2026-08-31,Chelsea,917.0,Everett,false,false
+H320010,615 Broadway,42.394541,-71.030828,1265,2024-09-06,2026-08-31,Chelsea,,,false,false
+H32002,Bellingham Square,42.3931961102951,-71.03344559669495,2406,2023-04-01,2026-08-31,Chelsea,839.0,Boston,false,false
+H32003,Chelsea Square,42.390156149999996,-71.03863221399999,3958,2023-04-02,2026-08-31,Chelsea,373.0,Boston,false,false
+H32004,Broadway at Gerrish Ave,42.394531,-71.030856,306,2023-04-02,2024-04-29,Chelsea,,,false,false
+H32005,Chelsea Station,42.39636527849676,-71.03987179230899,5776,2023-04-01,2026-08-31,Chelsea,491.0,Everett,false,false
+H32006,855 Broadway,42.398417726101584,-71.02390923402707,2079,2023-04-01,2026-08-31,Chelsea,620.0,Revere,false,false
+H32007,Broadway and Cabot,42.4021215,-71.0195408,525,2024-04-29,2024-11-13,Chelsea,147.0,Revere,false,false
+K13452,Upper Falls Greenway Pettee Square,42.30920039,-71.22031015,12,2026-08-26,2026-08-31,Newton,299.0,Needham,false,false
+K22004,Babcock St at Dwight St,42.345889,-71.121639,264,2026-08-12,2026-08-31,Brookline,628.0,Boston,false,true
+K32001,Coolidge Corner - Beacon St at Centre St,42.341598,-71.123338,53476,2023-04-01,2026-08-31,Brookline,963.0,Boston,false,true
+K32002,Beacon St at Tappan St,42.33826680058037,-71.13894682028331,21176,2023-04-01,2026-08-31,Brookline,331.0,Boston,false,true
+K32003,Brookline Village - Station Street at MBTA,42.33274392304887,-71.11626680949485,37805,2023-04-01,2026-08-31,Brookline,258.0,Boston,false,true
+K32004,JFK Crossing at Harvard St. / Thorndike St.,42.346551241753566,-71.1283321143128,19236,2023-04-01,2026-08-31,Brookline,278.0,Boston,false,true
+K32005,Brookline Town Hall,42.33376472623494,-71.12046446660315,17901,2023-04-01,2026-08-31,Brookline,621.0,Boston,false,true
+K32006,Commonwealth Ave At Babcock St,42.351547,-71.121262,40826,2023-04-01,2026-08-31,Brookline,13.0,Boston,false,true
+K32007,St Mary's,42.346197076555455,-71.10728681087494,44260,2023-04-01,2026-08-31,Brookline,37.0,Boston,false,true
+K32008,Tappan St at Brookline Hills MBTA,42.331370168043215,-71.1268836054569,11027,2023-04-01,2026-08-31,Brookline,942.0,Boston,false,true
+K32009,Cypress St at Clark Playground,42.32784317478686,-71.1253622174263,12866,2023-04-01,2026-08-31,Brookline,542.0,Boston,false,true
+K32010,High St at Cypress St,42.32464510949409,-71.12135231494904,9835,2023-04-01,2026-08-31,Brookline,86.0,Boston,false,true
+K32011,Washington Sq,42.33985827126298,-71.13421171095978,23034,2023-04-01,2026-08-31,Brookline,522.0,Boston,false,true
+K32012,Marion St at Harvard St,42.340122426966424,-71.12070563810447,45471,2023-04-01,2026-08-31,Brookline,805.0,Boston,false,true
+K32015,1200 Beacon St,42.34414898749529,-71.11467361450195,28918,2023-04-01,2026-08-31,Brookline,530.0,Boston,false,true
+K32017,Harvard St and Stedman St,42.3443517550051,-71.12490355968475,35563,2023-04-01,2026-08-31,Brookline,639.0,Boston,false,true
+K32506,Marion St at Park St,42.340152,-71.123866,475,2026-08-05,2026-08-31,Brookline,,,false,true
+K32507,Parkway Rd at Brookline Ave,42.335423,-71.111443,365,2026-08-06,2026-08-31,Brookline,41.0,Boston,false,true
+K32511,Washington St at Pond Ave,42.331805,-71.113557,476,2026-08-13,2026-08-31,Brookline,15.0,Boston,false,true
+K36346,Pleasant St at Beacon St,42.342722,-71.12025,740,2026-08-10,2026-08-31,Brookline,836.0,Boston,false,true
+L32001,Railroad Lot and Minuteman Bikeway,42.41606457115141,-71.15336636682059,10362,2023-04-01,2026-08-31,Arlington,947.0,Medford,false,false
+L320013,Mass Ave at Alewife Greenway,42.401364806487635,-71.13655772883486,4866,2025-06-02,2026-08-31,Arlington,39.0,Cambridge,false,false
+L32002,Linwood St at Minuteman Bikeway,42.40935395518158,-71.14906518727366,11801,2023-04-01,2026-08-31,Arlington,962.0,Belmont,false,false
+L32003,Mass Ave at Grafton St,42.40726052447951,-71.14382132425817,5960,2023-04-18,2026-08-31,Arlington,782.0,Somerville,false,false
+L32004,Broadway at Grafton St,42.40994213011757,-71.14009319811885,3534,2023-04-17,2026-08-31,Arlington,605.0,Somerville,false,false
+L32005,Thorndike Field at Minuteman Bikeway,42.40016804853787,-71.14456963094199,10195,2023-04-01,2026-08-31,Arlington,233.0,Cambridge,false,false
+L32006,Mass Ave at Broadway,42.414202,-71.150519,1376,2023-04-19,2023-10-25,Arlington,864.0,Medford,false,false
+L32007,Swan Place at Minuteman Bikeway,42.414705,-71.152377,7529,2024-09-25,2026-08-31,Arlington,950.0,Medford,false,false
+L32008,Lake St. at Minuteman Bikeway,42.4041703390082,-71.14690375265656,5006,2024-10-09,2026-08-31,Arlington,535.0,Cambridge,false,false
+L32009,Mill St. at Minuteman Bikeway,42.4186027386165,-71.15753579744356,4757,2024-10-10,2026-08-31,Arlington,,,false,false
+L32010,Medford St at Warren St,42.41649057463282,-71.14813429053619,1386,2024-10-11,2026-08-31,Arlington,551.0,Medford,false,false
+M32002,One Kendall Square at Hampshire St / Portland St,42.366277,-71.09169,87434,2023-04-01,2026-08-31,Cambridge,859.0,Somerville,false,true
+M32003,One Broadway / Kendall Sq at Main St / 3rd St,42.36224178650923,-71.0831107199192,65594,2023-04-01,2026-08-31,Cambridge,529.0,Boston,false,true
+M32004,Kendall T,42.362427842912396,-71.08495473861694,97096,2023-04-01,2026-08-31,Cambridge,610.0,Boston,false,true
+M32005,MIT Stata Center at Vassar St / Main St,42.3621312344991,-71.09115600585936,112791,2023-04-01,2026-08-31,Cambridge,789.0,Boston,false,true
+M32006,MIT at Mass Ave / Amherst St,42.3581,-71.093198,278033,2023-04-01,2026-08-31,Cambridge,448.0,Boston,false,true
+M32007,Cambridge St - at Columbia St / Webster Ave,42.372969,-71.094445,55454,2023-04-01,2026-08-31,Cambridge,145.0,Somerville,false,true
+M32009,Lafayette Square at Mass Ave / Main St / Columbia St,42.363465,-71.100573,51686,2023-04-01,2026-08-31,Cambridge,,,false,true
+M32011,Central Square at Mass Ave / Essex St,42.36507,-71.1031,219357,2023-04-01,2026-08-31,Cambridge,,,false,true
+M32012,Central Sq Post Office / Cambridge City Hall at Mass Ave / Pleasant St,42.366426,-71.105495,100224,2023-04-01,2026-08-31,Cambridge,898.0,Somerville,false,true
+M32013,Cambridge Main Library at Broadway / Trowbridge St,42.373379,-71.111075,72047,2023-04-01,2026-08-31,Cambridge,568.0,Somerville,false,true
+M32014,Harvard University Housing - 115 Putnam Ave at Peabody Terrace,42.366621,-71.114214,47914,2023-04-01,2026-08-31,Cambridge,242.0,Boston,false,true
+M32015,Vassal Lane at Tobin VLUS,42.384233,-71.140329,2558,2025-09-12,2026-08-31,Cambridge,,,false,true
+M32016,Harvard Kennedy School at Bennett St / Eliot St,42.3722168027866,-71.12188071012497,67347,2023-04-01,2026-08-31,Cambridge,313.0,Boston,false,true
+M32017,Harvard Square at Brattle St / Eliot St,42.373328798874056,-71.12098601080106,78865,2023-04-01,2026-08-31,Cambridge,447.0,Boston,false,true
+M32018,Harvard Square at Mass Ave/ Dunster,42.373268,-71.118579,193449,2023-04-01,2026-08-31,Cambridge,502.0,Boston,false,true
+M32019,Cambridgeside Pl at Land Blvd,42.366929,-71.076512,46805,2023-04-01,2026-08-31,Cambridge,320.0,Boston,false,true
+M32020,Harvard Law School at Mass Ave / Jarvis St,42.379011,-71.119945,62037,2023-04-01,2026-08-31,Cambridge,717.0,Somerville,false,true
+M32021,Harvard University Gund Hall at Quincy St / Kirkland St,42.376369,-71.114025,54316,2023-04-01,2026-08-31,Cambridge,551.0,Somerville,false,true
+M32022,Lower Cambridgeport at Magazine St / Riverside Rd,42.357218503176526,-71.1138716340065,88440,2023-04-01,2026-08-31,Cambridge,261.0,Boston,false,true
+M32023,Harvard University / SEAS Cruft-Pierce Halls at 29 Oxford St,42.377945,-71.116865,58112,2023-04-01,2026-08-31,Cambridge,602.0,Somerville,false,true
+M32024,Harvard University Radcliffe Quadrangle at Shepard St / Garden St,42.380287,-71.125107,50934,2023-04-01,2026-08-31,Cambridge,788.0,Boston,false,true
+M32025,Linear Park - Mass. Ave. at Cameron Ave.,42.397828,-71.130516,34168,2023-04-01,2026-08-31,Cambridge,173.0,Somerville,false,true
+M32026,359 Broadway - Broadway at Fayette Street,42.370803,-71.104412,61104,2023-04-01,2026-08-31,Cambridge,404.0,Somerville,false,true
+M32027,Binney St / Sixth St,42.36608797388682,-71.08633603909765,27338,2023-04-01,2026-08-31,Cambridge,800.0,Somerville,false,true
+M32028,359 Broadway,42.370801,-71.104451,212,2025-05-16,2025-05-20,Cambridge,405.0,Somerville,false,true
+M32029,Porter Square Station,42.387995,-71.119084,69925,2023-04-01,2026-08-31,Cambridge,76.0,Somerville,false,true
+M32030,Dana Park,42.361780439606044,-71.10809952020645,48788,2023-04-01,2026-08-31,Cambridge,711.0,Boston,false,true
+M32031,Danehy Park,42.388966,-71.132788,15759,2023-04-01,2026-08-31,Cambridge,867.0,Somerville,false,true
+M32032,Kendall Street,42.363076,-71.082321,24270,2023-04-01,2026-08-31,Cambridge,573.0,Boston,false,true
+M32033,Alewife Station at Russell Field,42.396232033400906,-71.13978801815482,24135,2023-04-01,2026-08-31,Cambridge,306.0,Arlington,false,true
+M32034,EF - North Point Park,42.369885,-71.069957,48795,2023-04-01,2026-08-31,Cambridge,101.0,Boston,false,true
+M32035,Rogers St & Land Blvd,42.366446738529454,-71.07654601335526,24265,2023-04-01,2026-08-31,Cambridge,291.0,Boston,false,true
+M32036,Rindge Avenue - O'Neill Library,42.392766,-71.129042,15448,2023-04-01,2026-08-31,Cambridge,377.0,Somerville,false,true
+M32037,Ames St at Main St,42.3625,-71.08822,139373,2023-04-01,2026-08-31,Cambridge,728.0,Boston,false,true
+M32038,Harvard University River Houses at DeWolfe St / Cowperthwaite St,42.369239074859216,-71.11687034368515,88369,2023-04-01,2026-08-31,Cambridge,163.0,Boston,false,true
+M32039,Lesley University,42.38674802045056,-71.11901879310608,34728,2023-04-01,2026-08-31,Cambridge,138.0,Somerville,false,true
+M32040,University Park,42.36264779118595,-71.10006093978882,59043,2023-04-01,2026-08-31,Cambridge,,,false,true
+M32041,MIT Pacific St at Purrington St,42.35957320109044,-71.10129475593567,152494,2023-04-01,2026-08-31,Cambridge,752.0,Boston,false,true
+M32042,MIT Vassar St,42.355601213279265,-71.10394477844238,167532,2023-04-01,2026-08-31,Cambridge,349.0,Boston,false,true
+M32043,Mt Auburn,42.37478628706384,-71.13320231437683,19434,2023-04-01,2026-08-31,Cambridge,197.0,Boston,false,true
+M32044,Huron Ave At Vassal Lane,42.381650612901176,-71.13426981498378,18855,2023-04-01,2026-08-31,Cambridge,903.0,Boston,false,true
+M32045,Museum of Science,42.36769,-71.071163,22358,2023-04-01,2026-08-31,Cambridge,16.0,Boston,false,true
+M32046,Alewife MBTA at Steel Place,42.395588457167094,-71.14260613918304,30722,2023-04-01,2026-08-31,Cambridge,218.0,Arlington,false,true
+M32047,Sidney Research Campus/Erie Street at Waverly,42.35775309465199,-71.10393404960632,43024,2023-04-01,2026-08-31,Cambridge,586.0,Boston,false,true
+M32048,Third at Binney,42.36544486137399,-71.08277142047882,48487,2023-04-01,2026-08-31,Cambridge,683.0,Boston,false,true
+M32049,Child Street at Brian P. Murphy Staircase,42.371977,-71.072005,37701,2023-04-01,2026-08-31,Cambridge,66.0,Boston,false,true
+M32050,Verizon Innovation Hub 10 Ware Street,42.37250864997261,-71.11305356025696,45100,2023-04-01,2026-08-31,Cambridge,640.0,Boston,false,true
+M32051,Fresh Pond Reservation,42.38267827521855,-71.143478951426,10108,2023-04-01,2026-08-31,Cambridge,823.0,Watertown Town,false,true
+M32052,Cambridge Dept. of Public Works -147 Hampshire St.,42.37119727759414,-71.09759867191315,62400,2023-04-01,2026-08-31,Cambridge,358.0,Somerville,false,true
+M32053,One Memorial Drive,42.361619320766856,-71.0804355052096,24855,2023-04-01,2026-08-31,Cambridge,363.0,Boston,false,true
+M32054,699 Mt Auburn St,42.37500235137831,-71.14871613699506,26305,2023-04-01,2026-08-31,Cambridge,36.0,Watertown Town,false,true
+M32055,Harvard St at Greene-Rose Heritage Park,42.36599432867437,-71.09522221614498,63540,2023-04-01,2026-08-31,Cambridge,922.0,Somerville,false,true
+M32056,Mass Ave at Hadley/Walden,42.39120971915856,-71.12260755160605,28503,2023-04-01,2026-08-31,Cambridge,133.0,Somerville,false,true
+M32057,Vassal Lane at Tobin/VLUS,42.38536765218425,-71.13775670528412,6604,2023-04-01,2026-08-31,Cambridge,,,false,true
+M32058,84 Cambridgepark Dr,42.3936,-71.143941,6578,2023-04-01,2026-08-31,Cambridge,424.0,Arlington,false,true
+M32059,Ames St at Broadway,42.3636929,-71.0875672,56279,2023-04-01,2026-08-30,Cambridge,827.0,Boston,false,true
+M32060,700 Huron Ave,42.380788172914286,-71.15412890911102,9412,2023-04-01,2026-08-31,Cambridge,145.0,Belmont,false,true
+M32061,Mass Ave at Albany St,42.36135837662249,-71.09670273977825,108415,2023-04-01,2026-08-31,Cambridge,874.0,Boston,false,true
+M32062,Inman Square at Springfield St.,42.37426713524931,-71.10026478767395,84942,2023-04-01,2026-08-31,Cambridge,13.0,Somerville,false,true
+M32063,Sennott Park Broadway at Norfolk Street,42.36860524248197,-71.09930185605663,78957,2023-04-01,2026-08-31,Cambridge,644.0,Somerville,false,true
+M32064,75 Binney St,42.36550728505653,-71.0801375997653,42502,2023-04-01,2026-08-31,Cambridge,481.0,Boston,false,true
+M32065,Kennedy-Longfellow School 158 Spring St,42.36955297756508,-71.08579014980933,56149,2023-04-01,2026-08-31,Cambridge,425.0,Somerville,false,true
+M32066,Discovery Park - 30 Acorn Park Drive,42.39790817368333,-71.14797130814623,15587,2023-04-01,2026-08-31,Cambridge,120.0,Arlington,false,true
+M32067,Berkshire Street at Cambridge Street,42.37207657915397,-71.08995433905875,63575,2023-04-01,2026-08-31,Cambridge,202.0,Somerville,false,true
+M32068,Graham and Parks School – Linnaean St at Walker St,42.38294430172271,-71.12449831038248,26949,2023-04-01,2026-08-31,Cambridge,753.0,Somerville,false,true
+M32069,Smith Pl at Wilson Rd,42.392397,-71.150583,4348,2023-04-01,2026-08-31,Cambridge,576.0,Belmont,false,true
+M32070,MIT Carleton St at Amherst St,42.36054174140606,-71.08669817447662,83288,2023-04-01,2026-08-31,Cambridge,478.0,Boston,false,true
+M32071,MIT Hayward St at Amherst St,42.36085937353302,-71.08551858007559,81189,2023-04-01,2026-08-31,Cambridge,470.0,Boston,false,true
+M32072,Galileo Galilei Way at Main Street,42.363003781560096,-71.08974037706501,45867,2023-04-01,2026-08-31,Cambridge,830.0,Boston,false,true
+M32073,955 Mass Ave,42.36895180540729,-71.10998779535294,90897,2023-04-01,2026-08-31,Cambridge,622.0,Boston,false,true
+M32074,Concord Ave at Spinelli Place,42.390719,-71.1538877,6527,2023-04-01,2026-08-31,Cambridge,284.0,Belmont,false,true
+M32075,Danehy Park at New Street,42.389456,-71.139019,15660,2023-04-01,2026-08-31,Cambridge,961.0,Arlington,false,true
+M32076,Old Morse Park at Putnam Ave,42.35766247889882,-71.1084133386612,53178,2023-04-01,2026-08-31,Cambridge,570.0,Boston,false,true
+M32077,Cambridge Crossing at North First Street,42.371141,-71.076198,54703,2023-04-01,2026-08-31,Cambridge,218.0,Somerville,false,true
+M32078,Galileo Galilei Way at Fulkerson St/Binney St,42.36642,-71.088542,27242,2023-04-01,2026-08-31,Cambridge,772.0,Somerville,false,true
+M32079,Raymond Park at Walden St,42.38736953747185,-71.12761001482795,18120,2023-04-01,2026-08-31,Cambridge,674.0,Somerville,false,true
+M32080,Main Street/Albany Street/Technology Square,42.3629016,-71.0915669,62237,2023-04-01,2026-08-31,Cambridge,881.0,Boston,false,true
+M32081,Gore Street at Lambert Street,42.373079797934935,-71.08634233665725,75927,2023-04-01,2026-08-31,Cambridge,48.0,Somerville,false,true
+M32082,Broad Canal Way at Third Street,42.36304549626695,-71.08287078916874,38133,2023-04-01,2026-08-31,Cambridge,603.0,Boston,false,true
+M32083,John Ahern Field at Kennedy-Longfellow School,42.369036,-71.08631,29509,2023-04-01,2026-08-31,Cambridge,474.0,Somerville,false,true
+M32084,87-101 Cambridgepark Drive,42.395221870310664,-71.14421904097979,12765,2023-04-01,2026-08-31,Cambridge,249.0,Arlington,false,true
+M32085,Mass Ave/Lafayette Square,42.36356498989399,-71.10044184048091,121631,2023-05-25,2026-08-31,Cambridge,,,false,true
+M32086,Morgan Ave at North First St,42.37197725963389,-71.07585847383234,46026,2023-07-27,2026-08-31,Cambridge,128.0,Somerville,false,true
+M32087,Church St,42.37433925370521,-71.11966431146357,34185,2023-08-10,2026-08-31,Cambridge,602.0,Boston,false,true
+M32088,55 Wheeler Street,42.390821,-71.143946,18251,2023-10-04,2026-08-31,Cambridge,733.0,Arlington,false,true
+M32089,Moore Youth Center,42.363539,-71.111698,29281,2023-12-20,2026-08-31,Cambridge,429.0,Boston,false,true
+M32090,O'Brien Highway at First Street,42.370982,-71.076638,15961,2024-02-29,2026-08-31,Cambridge,254.0,Somerville,false,true
+M32091,325 Binney St.,42.36722,-71.08903,27768,2024-03-05,2026-08-31,Cambridge,693.0,Somerville,false,true
+M32092,Elevate at One Leighton,42.369931,-71.073526,25959,2024-05-07,2026-08-31,Cambridge,299.0,Somerville,false,true
+M32093,101 Smith Place,42.392568,-71.150761,1081,2024-07-06,2026-08-31,Cambridge,566.0,Belmont,false,true
+M32094,40 Thorndike St,42.369061,-71.079999,23050,2024-08-21,2026-08-31,Cambridge,531.0,Somerville,false,true
+M32095,Lechmere Canal Park,42.36984,-71.076079,11582,2024-12-17,2026-08-31,Cambridge,333.0,Somerville,false,true
+M32096,Craigie St at Brattle St/Sparks St,42.377923377417865,-71.1300602747914,2471,2025-12-17,2026-08-31,Cambridge,454.0,Boston,false,true
+M32097,125 Cambridgepark Dr,42.395856980560616,-71.14510800606898,528,2026-05-30,2026-08-31,Cambridge,211.0,Arlington,false,true
+M32098,Broad Canal Way North,42.363219,-71.082811,1683,2026-06-03,2026-08-31,Cambridge,616.0,Boston,false,true
+M32099,Center Plaza,42.364275,-71.08773,673,2026-07-15,2026-08-31,Cambridge,891.0,Boston,false,true
+N32000,Centre St at Washington St,42.35574334805774,-71.18641942508475,1921,2023-04-03,2026-08-30,Newton,395.0,Watertown Town,false,false
+N32001,Washington St at Crafts St,42.35389,-71.199437,1948,2023-04-03,2026-08-31,Newton,916.0,Watertown Town,false,false
+N32002,Nonantum Library,42.360685,-71.201462,2889,2023-04-04,2026-08-31,Newton,443.0,Watertown Town,false,false
+N32003,Bacon St at Washington St,42.35711920909866,-71.1860453666327,3459,2023-04-04,2026-08-31,Newton,240.0,Watertown Town,false,false
+N32005,West Newton,42.349600498642076,-71.2262749671936,1375,2023-09-27,2026-08-30,Newton,,,false,false
+N32006,Watertown St at Albemarle Rd,42.354104081396585,-71.21382214128971,1649,2023-04-07,2026-08-31,Newton,,,false,false
+N32008,Union St at Herrick Rd,42.329607,-71.193701,2803,2023-04-05,2026-08-31,Newton,,,false,false
+N32009,Boston College T,42.33987891612856,-71.16708934307098,13931,2023-04-06,2026-08-31,Newton,21.0,Boston,false,false
+N32010,Newton Highlands T,42.322065656952944,-71.2063729763031,2483,2023-04-06,2026-08-31,Newton,,,false,false
+N32011,California at Chapel,42.365148708129546,-71.20236039161682,4210,2023-04-09,2026-08-31,Newton,74.0,Watertown Town,false,false
+N32012,Beacon at Walnut,42.330062324402995,-71.20668411254883,1668,2023-04-09,2026-08-31,Newton,,,false,false
+N32013,Newton Library,42.336203368830134,-71.207794547081,982,2023-04-10,2026-08-31,Newton,,,false,false
+N32014,Washington St at Walnut St,42.351458116963016,-71.20764970779419,2957,2023-04-11,2026-08-30,Newton,,,false,false
+N32015,Auburndale,42.34805541493346,-71.2477594614029,1698,2023-04-08,2026-08-31,Newton,896.0,Waltham,false,false
+N32018,Centre St at Commonwealth Ave,42.3362358,-71.1934421,1389,2023-04-11,2026-08-30,Newton,,,false,false
+R32001,Sumner St at Shirley Ave,42.408341467499994,-70.99804848432541,1672,2023-04-02,2025-06-25,Revere,,,false,false
+R32002,Orr Sq (Shirley Ave),42.40715655698643,-70.99272429943085,5767,2023-04-01,2026-08-31,Revere,,,false,false
+R32003,Beachmont Square at Suffolk Downs,42.3976083,-70.99307222,1500,2025-01-08,2026-08-31,Revere,315.0,Boston,false,false
+R32004,Northern Strand at Salem Street,42.441956,-71.01468,1833,2025-06-25,2026-08-31,Revere,204.0,Saugus,false,false
+R32006,Revere City Hall,42.40741,-71.0139,2508,2023-04-01,2026-08-31,Revere,505.0,Chelsea,false,false
+R32007,Revere Public Library,42.408088,-71.008942,1098,2023-04-04,2026-08-31,Revere,670.0,Chelsea,false,false
+R32008,Eliot Circle Revere Beach,42.402889,-70.989972,3212,2024-09-19,2026-08-31,Revere,906.0,Boston,false,false
+R32009,Revere Beach - Markey Footbridge,42.414019,-70.989609,3687,2024-09-18,2026-08-31,Revere,,,false,false
+R32010,Griswald Fields,42.42821,-71.02316,50,2026-07-30,2026-08-31,Revere,214.0,Malden,false,false
+S32001,Somerville City Hall,42.386844,-71.09812,22075,2023-04-01,2026-08-31,Somerville,,,false,true
+S32002,Union Square - Somerville,42.37964789967527,-71.09540475672475,60609,2023-04-01,2026-08-31,Somerville,590.0,Cambridge,false,true
+S32003,Beacon St at Washington / Kirkland,42.37875351212593,-71.10707223415375,44315,2023-04-01,2026-08-31,Somerville,61.0,Cambridge,false,true
+S32004,Conway Park - Somerville Avenue,42.383638948222654,-71.10853672027588,36789,2023-04-01,2026-08-31,Somerville,282.0,Cambridge,false,true
+S32005,Wilson Square,42.38567578752914,-71.11412136298895,23362,2023-04-01,2026-08-31,Somerville,129.0,Cambridge,false,true
+S32006,Davis Square,42.396969,-71.123024,64298,2023-04-01,2026-08-31,Somerville,293.0,Cambridge,false,true
+S32007,Ball Sq,42.39936816059618,-71.11111521723615,18517,2023-04-01,2026-08-31,Somerville,47.0,Medford,false,true
+S32008,Powder House Circle - Nathan Tufts Park,42.400877,-71.116772,16696,2023-04-01,2026-08-31,Somerville,206.0,Medford,false,true
+S32009,Packard Ave at Powderhouse Blvd,42.40449,-71.123413,17258,2023-04-01,2026-08-31,Somerville,322.0,Medford,false,true
+S32010,Clarendon Hill at Broadway,42.406302,-71.132446,11818,2023-04-01,2026-08-31,Somerville,139.0,Arlington,false,true
+S32011,Teele Square,42.40087950159558,-71.12590793383788,21133,2023-04-01,2026-08-31,Somerville,330.0,Cambridge,false,true
+S32013,Magoun Square at Trum Field,42.39778339961249,-71.10594004465383,14892,2023-04-01,2026-08-31,Somerville,30.0,Medford,false,true
+S32014,Broadway St at Mt Pleasant St,42.386141411639564,-71.07828140258789,19306,2023-04-01,2026-08-31,Somerville,63.0,Boston,false,true
+S32015,Foss Park,42.39108438146733,-71.09039425849915,19128,2023-04-01,2026-08-31,Somerville,930.0,Medford,false,true
+S32016,Broadway at Central St,42.39517150121575,-71.09850591982195,22459,2023-04-01,2026-08-31,Somerville,195.0,Medford,false,true
+S32017,East Somerville Library (Broadway and Illinois),42.3876281075134,-71.08318716287613,15787,2023-04-01,2026-08-31,Somerville,497.0,Boston,false,true
+S32018,Assembly Square T,42.392232840046276,-71.07746601104736,15282,2023-04-01,2026-08-31,Somerville,278.0,Everett,false,true
+S32019,Grove St at Community Path,42.396386809455,-71.12011306006025,53433,2023-04-01,2026-08-31,Somerville,306.0,Cambridge,false,true
+S32020,Somerville Hospital,42.390446,-71.108566,3591,2023-04-01,2023-12-11,Somerville,708.0,Cambridge,false,true
+S32021,Washington St at Myrtle St,42.3817508,-71.0839523,22794,2023-04-01,2026-08-31,Somerville,252.0,Boston,false,true
+S32022,Community Path at Cedar Street,42.39407223665884,-71.11133694648743,30005,2023-04-01,2026-08-31,Somerville,589.0,Medford,false,true
+S32023,30 Dane St,42.38100143038052,-71.10402522613185,52329,2023-04-01,2026-08-31,Somerville,364.0,Cambridge,false,true
+S32034,Perry Park,42.37927324600841,-71.10341902831351,33183,2023-04-01,2026-08-31,Somerville,331.0,Cambridge,false,true
+S32035,191 Beacon St,42.38032335045416,-71.10878612855231,35483,2023-04-01,2026-08-31,Somerville,14.0,Cambridge,false,true
+S32036,Somerville City Hall Annex,42.39189811591863,-71.09745375830244,10629,2023-04-01,2026-08-31,Somerville,538.0,Medford,false,true
+S32037,Craigie St at Summer St,42.38831607584243,-71.1106824874878,15961,2023-04-01,2026-08-31,Somerville,528.0,Cambridge,false,true
+S32038,Edgerly Education Center,42.38717463348314,-71.08714388528824,21810,2023-04-01,2026-08-31,Somerville,756.0,Boston,false,true
+S32039,Elm St at White St,42.38952436305763,-71.11694140364307,29666,2023-04-01,2025-12-11,Somerville,13.0,Cambridge,false,true
+S32040,Community Path at Lowell St,42.392525,-71.105587,31531,2023-04-01,2026-08-31,Somerville,550.0,Medford,false,true
+S32041,Union Square East,42.380078,-71.090098,27164,2023-04-01,2026-08-31,Somerville,674.0,Cambridge,false,true
+S32042,Trum Field @ Cedar St (Temp Winter Station),42.398304343,-71.1075685025,233,2023-12-05,2024-03-11,Somerville,33.0,Medford,false,true
+S32043,Washington St @ New Washington St (Temp Winter Station),42.38103731531107,-71.08709779349738,1575,2023-11-29,2024-03-27,Somerville,520.0,Boston,false,true
+S32045,Conway Park @ Bleachery Ct (Temp Winter Station),42.3834575023727,-71.10771059989929,951,2023-12-04,2024-03-12,Somerville,314.0,Cambridge,false,true
+S32046,Gilman Square T at Medford St,42.3867355,-71.0946444,23219,2023-04-01,2026-08-31,Somerville,,,false,true
+S32047,Foley St at Grand Union Blvd,42.39301840035393,-71.08071684837341,20660,2023-04-01,2026-08-31,Somerville,487.0,Everett,false,true
+S32048,Somerville High School & Central Library,42.3864,-71.09601,11234,2023-04-01,2026-08-31,Somerville,,,false,true
+S32049,515 Somerville Ave (Temp. Winter Location),42.38322726839113,-71.10606908798218,1161,2023-11-29,2024-03-12,Somerville,397.0,Cambridge,false,true
+S32050,Boynton Yards at 101 South Street,42.37546,-71.091217,17123,2023-04-01,2026-08-31,Somerville,155.0,Cambridge,false,true
+S32051,Foss Park 2 (temp for winter),42.390509,-71.089455,124,2023-12-06,2024-03-11,Somerville,,,false,true
+S32052,Somerville Hospital,42.390413,-71.108571,12720,2023-12-11,2026-08-31,Somerville,707.0,Cambridge,false,true
+S32053,Chestnut St at Poplar St,42.377636,-71.085954,5759,2023-12-15,2026-08-31,Somerville,401.0,Cambridge,false,true
+S32054,Union Square Station,42.377309,-71.094428,20210,2023-12-13,2026-08-31,Somerville,336.0,Cambridge,false,true
+S32055,Grand Union Blvd at Revolution Dr,42.391658,-71.080351,5479,2024-06-26,2026-08-31,Somerville,495.0,Boston,false,true
+S32056,Conway Park at Central Street (Temporary Winter Location),42.38338951163148,-71.10732447486727,9098,2024-11-11,2026-08-31,Somerville,333.0,Cambridge,false,true
+S32057,Innerbelt at East Somerville Station,42.37960965003606,-71.0864374968312,1694,2024-12-19,2026-08-31,Somerville,498.0,Boston,false,true
+S32060,Middlesex Ave at Foley St,42.392821,-71.083186,1303,2025-10-21,2026-08-31,Somerville,645.0,Medford,false,true
+T32001,Salem Ferry Landing,42.521893,-70.880691,2099,2023-04-12,2026-08-31,Salem,,,false,false
+T32002,Salem Willows Park,42.53466911383265,-70.87021440267563,3718,2023-04-04,2026-08-31,Salem,891.0,Beverly,false,false
+T32003,Shetland Park - Congress at Peabody St,42.51836788262243,-70.88952362537384,2356,2023-04-04,2026-08-31,Salem,,,false,false
+T32004,Mayor Salvo Path at Mill St,42.518035,-70.895701,4644,2023-04-01,2026-08-31,Salem,,,false,false
+T32005,Salem MBTA - Washington at Federal St,42.52345239346618,-70.89611113071442,6838,2023-04-02,2026-08-31,Salem,,,false,false
+T32006,Lafayette at Leach St,42.51142784358897,-70.89183300733566,1987,2023-04-03,2026-08-31,Salem,,,false,false
+T32007,Salem State University - Bike Path at Loring Ave,42.501824,-70.894781,5054,2023-04-01,2026-08-31,Salem,758.0,Marblehead,false,false
+T32008,Hawthorne Boulevard,42.5223714,-70.8903331,4107,2023-04-02,2026-08-31,Salem,,,false,false
+T32009,Salem State University - North Campus,42.503332,-70.891444,1384,2023-04-04,2026-08-31,Salem,638.0,Marblehead,false,false
+T32010,Forest River Park,42.506395,-70.88693,2568,2023-04-01,2026-08-31,Salem,562.0,Marblehead,false,false
+T32011,Essex St at Dalton Parkway,42.516223,-70.905535,1861,2023-04-01,2026-08-31,Salem,,,false,false
+T32012,Salem MBTA - Lower Level,42.523994,-70.89684,1096,2023-04-09,2025-12-18,Salem,,,false,false
+T32013,Community Life Center,42.520136,-70.906271,289,2023-04-04,2025-11-12,Salem,982.0,Peabody,false,false
+T32014,Goodhue St at Grove St,42.520897,-70.910528,1271,2023-04-06,2026-08-29,Salem,622.0,Peabody,false,false
+T32015,North St at Liberty Hill Ave,42.5299,-70.906143,797,2023-04-06,2026-08-30,Salem,558.0,Peabody,false,false
+T32016,Bridge Street Neck,42.52810051875824,-70.88971138000488,1711,2023-06-08,2026-08-31,Salem,937.0,Beverly,false,false
+T32017,Vinnin Square,42.48628784971989,-70.90166732668875,564,2023-06-08,2026-08-31,Salem,104.0,Swampscott,false,false
+T32018,Derby Street,42.520096183311445,-70.8913904428482,3978,2023-06-04,2026-08-31,Salem,,,false,false
+T32019,Flint St. at Bridge St.,42.521393,-70.905806,258,2025-11-17,2026-08-30,Salem,932.0,Peabody,false,false
+V32001,7 Acre Park,42.41143222973408,-71.06823265090497,9073,2023-04-01,2026-08-31,Everett,313.0,Medford,false,false
+V32003,Everett Square (Broadway at Norwood St),42.407381,-71.055356,4657,2023-04-03,2026-08-31,Everett,,,false,false
+V32004,Broadway at Lynde St,42.39648358247693,-71.06546759905541,8400,2023-04-01,2026-08-31,Everett,227.0,Boston,false,false
+V32005,Encore,42.39329263225162,-71.0724475979805,9705,2023-04-02,2026-08-31,Everett,147.0,Somerville,false,false
+V32006,Glendale Square (Ferry St at Broadway),42.41427294293992,-71.04479655659816,3183,2023-04-02,2026-08-31,Everett,897.0,Chelsea,false,false
+V32007,Swan St. Park,42.412504507772105,-71.05842225271772,3352,2023-04-04,2026-08-31,Everett,418.0,Malden,false,false
+V32008,Broadway at Maple St,42.410346909767846,-71.05260457852637,5050,2023-04-01,2026-08-31,Everett,893.0,Malden,false,false
+V32009,Pope John High School,42.420348701645025,-71.04419767862055,2237,2023-04-01,2026-08-31,Everett,319.0,Malden,false,false
+V32010,Wasgott Playground,42.40933,-71.063819,301,2023-04-01,2023-08-28,Everett,664.0,Malden,false,false
+V32011,Broadway at Beacham St,42.39836059620832,-71.06373842814719,6415,2023-04-01,2026-08-31,Everett,480.0,Boston,false,false
+V32012,Hale Park,42.415327096032044,-71.05281829839441,2010,2023-08-30,2026-08-31,Everett,493.0,Malden,false,false
+V32013,Kearins Playground,42.406161241322444,-71.06041654944418,2312,2023-04-01,2026-08-31,Everett,900.0,Medford,false,false
+V32014,Wellington MBTA,42.4023682,-71.07573182424781,7966,2023-04-01,2026-08-31,Medford,129.0,Everett,false,false
+V32015,Gramsdorf Playground,42.408156,-71.0429,3742,2023-04-01,2026-08-31,Everett,471.0,Chelsea,false,false
+V32016,Chelsea St at Vine St,42.403369462300134,-71.04731440549585,4276,2023-09-04,2026-08-31,Everett,495.0,Chelsea,false,false
+V32017,Northern Strand - West St & Wellington Ave,42.403444,-71.063278,3143,2024-08-27,2026-08-31,Everett,752.0,Medford,false,false
+V32018,Santilli Hwy,42.40592508816271,-71.06697536768286,518,2026-05-28,2026-08-31,Everett,373.0,Medford,false,false
+W32001,Coolidge Sq.,42.37251369069782,-71.15708406221674,7007,2023-04-01,2026-08-31,Watertown Town,324.0,Belmont,false,false
+W32002,Watertown Sq,42.365260317694485,-71.18573324459247,7145,2023-04-01,2026-08-31,Watertown Town,534.0,Newton,false,false
+W32004,Arsenal Yards,42.36277388549605,-71.15764854490408,22546,2023-04-01,2026-08-31,Watertown Town,320.0,Boston,false,false
+W32005,Watertown Town Hall,42.367593,-71.187514,3757,2023-04-01,2026-08-31,Watertown Town,456.0,Newton,false,false
+W32006,160 Arsenal St,42.36466403441681,-71.17569386959076,6228,2023-04-01,2026-08-31,Watertown Town,568.0,Newton,false,false
+W32007,Nichols Ave. at Watertown Greenway,42.36762,-71.156566,9127,2023-04-01,2026-08-31,Watertown Town,843.0,Belmont,false,false
+W32009,Arsenal on the Charles,42.36349850640871,-71.16421658177295,3991,2024-06-28,2026-08-31,Watertown Town,469.0,Boston,false,false
+W32010,Watertown St at 5th Ave,42.36289,-71.19127,1636,2024-08-30,2026-08-31,Watertown Town,240.0,Newton,false,false
+W32011,99 Coolidge Ave,42.363675,-71.151786,2784,2024-12-16,2026-08-31,Watertown Town,342.0,Boston,false,false
+W32012,Galen St at Watertown St,42.36428,-71.18573,2038,2025-01-13,2026-08-31,Watertown Town,498.0,Newton,false,false
+Z32997,Parker St at Huntington Ave,42.3384884941905,-71.09261138044758,31259,2023-10-18,2026-08-31,Boston,,,false,true
+Z32998,Broadway at Kittie Knox Bike Path,42.36412658996667,-71.0873863200095,25161,2023-10-18,2026-08-31,Cambridge,864.0,Boston,false,true
+Z32999,Cummins Highway at Blue Hill Ave T Stop,42.269988465946064,-71.09746182817616,361,2023-10-24,2025-09-28,Boston,431.0,Milton,false,true
+ZZ32996,Auburn St. at Mystic River,42.41759089672136,-71.12608127863496,3593,2023-10-20,2026-08-31,Medford,6.0,Somerville,false,false
+c32014,Damrell St at Old Colony Ave,42.3324824,-71.0542411,885,2024-08-06,2024-09-18,Boston,,,false,true
