@@ -46,7 +46,7 @@ def test_build_weekly():
     assert first["rain_days"] == 2
     assert first["heavy_rain_days"] == 1
     assert first["snow_total_mm"] == 15.0 and first["snow_days"] == 1
-    assert first["freezing_days"] == 1
+    assert first["ice_days"] == 1
     assert first["hot_days"] == 0
 
     second = weekly.row(1, named=True)

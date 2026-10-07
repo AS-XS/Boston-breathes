@@ -57,6 +57,11 @@ SECONDARY_CAMPUSES = {
     "Simmons College": "167783",
 }
 
+# Institutions that merged into another, keyed by IPEDS UNITID: their campus
+# points belong to the successor (Wheelock College's campus became Boston
+# University's Wheelock College of Education in 2018).
+SUCCESSORS = {"168290": "164988"}
+
 MAJOR_MIN_STUDENTS = 1000
 CAMPUS_M = 400  # about a five-minute walk
 NEAR_M = 1000
@@ -117,6 +122,7 @@ def campus_points(universities: pl.DataFrame, enrollment: pl.DataFrame, boston: 
     names = universities.select("unitid", pl.col("name").alias("institution"))
     return (
         pl.concat([ipeds, boston])
+        .with_columns(pl.col("unitid").replace(SUCCESSORS))
         .join(names, on="unitid", how="inner")
         .join(typical_in_person(enrollment), on="unitid", how="left")
         .with_columns((pl.col("typical_in_person") >= MAJOR_MIN_STUDENTS).fill_null(False).alias("major"))

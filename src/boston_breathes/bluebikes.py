@@ -369,7 +369,7 @@ def process_month(month: str, key: str, keep_raw: bool = False) -> dict:
         "rows_out_of_month": len(spill),
         "first_start": str(first_start),
         "last_start": str(last_start),
-        "n_stations": int(in_month["start_station_id"].n_unique()),
+        "n_stations": int(in_month["start_station_id"].drop_nulls().n_unique()),
     }
     qa_path.parent.mkdir(parents=True, exist_ok=True)
     qa_path.write_text(json.dumps(qa, indent=2))

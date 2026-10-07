@@ -21,7 +21,8 @@ Breaks reported as Monday-Friday are widened to the surrounding weekend.
 Outputs in data/processed/:
   * academic_calendar.csv - every event, marked verified, estimated, none
     (did not happen) or missing
-  * academic_weekly.csv   - days in session per university and week, null
+  * academic_weekly.csv   - days in session and summer-break days per
+    university and week, null
     where an event needed to tell is missing
 """
 
@@ -215,14 +216,19 @@ def thanksgiving_break(year: int) -> tuple[date, date]:
 
 
 def session_days(calendar: pl.DataFrame) -> pl.DataFrame:
-    """In-session status of every day, per university: True, False or null (unknown)."""
+    """In-session and summer-break status of every day, per university: True, False or null (unknown).
+
+    Summer break runs from the day after spring exams end to the day before
+    fall classes start. Summer terms are smaller and optional, so summer days
+    are not counted as in session; they are flagged separately instead.
+    """
     rows = []
     for (unitid, institution, year), group in calendar.group_by("unitid", "institution", "academic_year"):
         ev = {r["event"]: (r["date"], r["status"]) for r in group.iter_rows(named=True)}
         start_year = start_year_of(year)
         terms = []
         fall_start, fall_end = ev["fall_classes_start"][0], ev["fall_exams_end"][0]
-        terms.append((date(start_year, 8, 1), date(start_year, 12, 31), fall_start, fall_end,
+        terms.append(("fall", date(start_year, 8, 1), date(start_year, 12, 31), fall_start, fall_end,
                       [thanksgiving_break(start_year)]))
         spring_start, spring_end = ev["spring_classes_start"][0], ev["spring_exams_end"][0]
         brk_start, brk_end = ev["spring_break_start"], ev["spring_break_end"]
@@ -232,9 +238,9 @@ def session_days(calendar: pl.DataFrame) -> pl.DataFrame:
             breaks = [widen_to_weekend(brk_start[0], brk_end[0])]
         else:
             breaks = None  # break exists but its dates are unknown
-        terms.append((date(start_year + 1, 1, 1), date(start_year + 1, 7, 31), spring_start, spring_end, breaks))
+        terms.append(("spring", date(start_year + 1, 1, 1), date(start_year + 1, 7, 31), spring_start, spring_end, breaks))
 
-        for window_start, window_end, start, end, breaks in terms:
+        for term, window_start, window_end, start, end, breaks in terms:
             d = window_start
             while d <= window_end:
                 if is_summer(d):
@@ -247,13 +253,22 @@ def session_days(calendar: pl.DataFrame) -> pl.DataFrame:
                     status = None
                 else:
                     status = not any(b0 <= d <= b1 for b0, b1 in breaks)
-                rows.append({"unitid": unitid, "institution": institution, "date": d, "in_session": status})
+                edge = start if term == "fall" else end
+                if is_summer(d):
+                    summer = True
+                elif edge is None:
+                    summer = None
+                else:
+                    summer = d < edge if term == "fall" else d > edge
+                rows.append({"unitid": unitid, "institution": institution, "date": d,
+                             "in_session": status, "summer_break": summer})
                 d += timedelta(days=1)
-    return pl.DataFrame(rows, schema={"unitid": pl.Utf8, "institution": pl.Utf8, "date": pl.Date, "in_session": pl.Boolean})
+    return pl.DataFrame(rows, schema={"unitid": pl.Utf8, "institution": pl.Utf8, "date": pl.Date,
+                                      "in_session": pl.Boolean, "summer_break": pl.Boolean})
 
 
 def weekly_session(days: pl.DataFrame) -> pl.DataFrame:
-    """Days in session per university and Monday-to-Sunday week (null if any day is unknown)."""
+    """Days in session and summer-break days per university and week (null if any day is unknown)."""
     weeks = build_weeks().select("week_start")
     week_start = (pl.col("date") - pl.duration(days=pl.col("date").dt.weekday() - 1)).alias("week_start")
     return (
@@ -263,6 +278,9 @@ def weekly_session(days: pl.DataFrame) -> pl.DataFrame:
             pl.when(pl.col("in_session").null_count() == 0)
             .then(pl.col("in_session").sum())
             .alias("days_in_session"),
+            pl.when(pl.col("summer_break").null_count() == 0)
+            .then(pl.col("summer_break").sum())
+            .alias("summer_break_days"),
             pl.len().alias("days_covered"),
         )
         .join(weeks, on="week_start", how="inner")

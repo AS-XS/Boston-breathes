@@ -47,6 +47,19 @@ def test_campus_points_flags_major_institutions():
     assert points["typical_in_person"].to_list() == [30000, 30000, 400]
 
 
+def test_merged_institution_campus_belongs_to_successor(monkeypatch):
+    monkeypatch.setattr(campus, "SUCCESSORS", {"9": "1"})
+    universities = pl.DataFrame({
+        "unitid": ["1", "9"], "name": ["Big U", "Old College"], "lat": [42.35, 42.34], "lng": [-71.1, -71.09],
+    })
+    enrollment = pl.DataFrame({"unitid": ["1", "9"], "in_person": [30000, 1200]})
+    boston = pl.DataFrame(schema={"unitid": pl.Utf8, "campus_name": pl.Utf8, "lat": pl.Float64,
+                                  "lng": pl.Float64, "source": pl.Utf8})
+    points = campus.campus_points(universities, enrollment, boston)
+    old = points.filter(pl.col("campus_name") == "Old College").row(0, named=True)
+    assert (old["unitid"], old["institution"], old["typical_in_person"]) == ("1", "Big U", 30000)
+
+
 def lat_lng(x: float, y: float) -> tuple[float, float]:
     pt = gpd.GeoSeries.from_xy([x], [y], crs=mun.MA_CRS).to_crs("EPSG:4326")[0]
     return pt.y, pt.x

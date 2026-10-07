@@ -128,6 +128,10 @@ def test_weekly_session_days(tmp_path):
     assert days[date(2019, 3, 4)] == 5  # break starts Saturday
     assert days[date(2019, 3, 11)] == 0
     assert days[date(2019, 7, 15)] == 0
+    summer = dict(zip(w["week_start"].to_list(), w["summer_break_days"].to_list()))
+    assert summer[date(2018, 12, 24)] == 0  # winter break is not summer
+    assert summer[date(2019, 7, 15)] == 7
+    assert summer[date(2018, 9, 3)] == 1  # Monday before classes start
 
 
 def test_cancelled_break_and_unknown_break(tmp_path):

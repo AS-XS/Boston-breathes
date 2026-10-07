@@ -16,6 +16,12 @@ Student Presence Index
     enrollment uses each institution's fall 2019 count of online-only
     students instead; the extra online-only students count as away.
 
+Summer break share
+    The enrollment-weighted share of students whose institution is on summer
+    break (after spring exams, before fall classes). Summer terms are smaller
+    and optional, so summer is not counted as in session; this column lets
+    summer be told apart from winter and spring breaks.
+
 Effective population
     The Census counts college students where they live during the school
     year, so the resident population already includes students living in the
@@ -82,19 +88,26 @@ def enrollment_by_week(weeks: pl.DataFrame, enrollment: pl.DataFrame) -> pl.Data
     return w.join(per_year.rename({"fall_year": "enrollment_year"}), on="enrollment_year", how="inner")
 
 
+SHARES = {"session_share": "days_in_session", "summer_share": "summer_break_days"}
+
+
 def session_share(enrolled: pl.DataFrame, academic_weekly: pl.DataFrame) -> pl.DataFrame:
-    """Add each institution's share of the week in session and where it came from."""
-    own = academic_weekly.select("week_start", "unitid", (pl.col("days_in_session") / 7).alias("own_share"))
+    """Add each institution's share of the week in session and on summer break, and where it came from."""
+    own = academic_weekly.select("week_start", "unitid", *[(pl.col(days) / 7).alias(f"_own_{share}")
+                                                           for share, days in SHARES.items()])
     df = enrolled.join(own, on=["week_start", "unitid"], how="left")
-    known = df.filter(pl.col("own_share").is_not_null())
-    typical = known.group_by("week_start").agg(
-        ((pl.col("own_share") * pl.col("in_person")).sum() / pl.col("in_person").sum()).alias("typical_share")
-    )
-    return df.join(typical, on="week_start", how="left").with_columns(
-        pl.coalesce("own_share", "typical_share").alias("session_share"),
-        pl.when(pl.col("own_share").is_not_null()).then(pl.lit("own calendar"))
+    for share in SHARES:
+        known = df.filter(pl.col(f"_own_{share}").is_not_null())
+        typical = known.group_by("week_start").agg(
+            ((pl.col(f"_own_{share}") * pl.col("in_person")).sum() / pl.col("in_person").sum()).alias(f"_typical_{share}")
+        )
+        df = df.join(typical, on="week_start", how="left").with_columns(
+            pl.coalesce(f"_own_{share}", f"_typical_{share}").alias(share)
+        ).drop(f"_typical_{share}")
+    return df.with_columns(
+        pl.when(pl.col("_own_session_share").is_not_null()).then(pl.lit("own calendar"))
         .otherwise(pl.lit("typical calendar")).alias("calendar_source"),
-    ).drop("own_share", "typical_share")
+    ).drop(*[f"_own_{share}" for share in SHARES])
 
 
 def apply_covid(df: pl.DataFrame) -> pl.DataFrame:
@@ -132,6 +145,8 @@ def build(
             pl.col("in_person").sum().alias("in_person_enrollment"),
             pl.col("normal_in_person").sum().alias("normal_enrollment"),
             pl.col("students_in_session").sum().round(0),
+            ((pl.col("in_person") * pl.col("summer_share")).sum() / pl.col("in_person").sum())
+            .round(4).alias("summer_break_share"),
             (pl.col("in_person").filter(pl.col("calendar_source") == "own calendar").sum()
              / pl.col("in_person").sum()).round(3).alias("own_calendar_share"),
             pl.col("enrollment_imputed").any(),
@@ -149,14 +164,14 @@ def build(
         .with_columns((pl.col("census_population") + pl.col("student_change")).alias("effective_population"))
         .sort("week_start")
         .select(
-            "week_start", "presence_index", "students_in_session", "in_person_enrollment", "normal_enrollment",
-            "own_calendar_share",
+            "week_start", "presence_index", "summer_break_share", "students_in_session", "in_person_enrollment",
+            "normal_enrollment", "own_calendar_share",
             "resident_undergrads", "resident_grads", "census_population", "student_change", "effective_population",
             "enrollment_imputed", "population_extrapolated", "covid_away",
         )
     )
     by_inst = per_inst.select(
-        "week_start", "unitid", "name", "in_person", "session_share", "calendar_source",
+        "week_start", "unitid", "name", "in_person", "session_share", "summer_share", "calendar_source",
         pl.col("students_in_session").round(1), "enrollment_imputed", "covid_away",
     ).sort("week_start", "unitid")
     return weekly, by_inst

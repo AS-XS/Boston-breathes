@@ -22,7 +22,9 @@ unitid,institution,campus_name,source,lat,lng,typical_in_person,major
 164988,Boston University,Boston University School of Law,boston_open_data,42.35116191700007,-71.10977291399996,31411.0,true
 164988,Boston University,Boston University School of Management,boston_open_data,42.349437849000026,-71.09810862499995,31411.0,true
 164988,Boston University,Boston University School of Medicine,boston_open_data,42.33638764900007,-71.07096966899996,31411.0,true
+164988,Boston University,Wheelock College,boston_open_data,42.34174000000007,-71.10641999999996,31411.0,true
 164988,Boston University,Boston University,ipeds,42.351118,-71.107942,31411.0,true
+164988,Boston University,Wheelock College,ipeds,42.349707,-71.100868,31411.0,true
 165112,Bunker Hill Community College,Bunker Hill Community College,boston_open_data,42.37511655000003,-71.06957165799997,10986.0,true
 165112,Bunker Hill Community College,Bunker Hill Community College,ipeds,42.374806,-71.069263,10986.0,true
 165167,Cambridge College,Cambridge College,ipeds,42.381091,-71.072646,1982.0,true
@@ -78,8 +80,6 @@ unitid,institution,campus_name,source,lat,lng,typical_in_person,major
 168148,Tufts University,Tufts University,ipeds,42.40855,-71.118293,11402.0,true
 168227,Wentworth Institute of Technology,Wentworth Institute of Technology,boston_open_data,42.33662000000004,-71.09493999899996,4129.0,true
 168227,Wentworth Institute of Technology,Wentworth Institute of Technology,ipeds,42.336632,-71.094983,4129.0,true
-168290,Wheelock College,Wheelock College,boston_open_data,42.34174000000007,-71.10641999999996,1037.0,true
-168290,Wheelock College,Wheelock College,ipeds,42.349707,-71.100868,1037.0,true
 429128,Urban College of Boston,Urban College of Boston,boston_open_data,42.35289000000006,-71.06407999899994,768.0,false
 429128,Urban College of Boston,Urban College of Boston,ipeds,42.352922,-71.0642,768.0,false
 452054,Le Cordon Bleu College of Culinary Arts-Cambridge,Le Cordon Bleu College of Culinary Arts-Cambridge,ipeds,42.364249,-71.078675,239.0,false

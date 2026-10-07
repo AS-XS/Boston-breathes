@@ -41,10 +41,12 @@ def test_session_share_falls_back_to_the_typical_calendar():
     enrolled = pl.DataFrame({
         "week_start": [MON[0]] * 3, "unitid": ["1", "2", "3"], "in_person": [100, 300, 50],
     })
-    academic = pl.DataFrame({"week_start": [MON[0]] * 2, "unitid": ["1", "2"], "days_in_session": [7, 0]})
+    academic = pl.DataFrame({"week_start": [MON[0]] * 2, "unitid": ["1", "2"],
+                             "days_in_session": [7, 0], "summer_break_days": [0, 7]})
     out = presence.session_share(enrolled, academic).sort("unitid")
     assert out["session_share"].to_list() == pytest.approx([1.0, 0.0, 0.25])  # 100 / (100 + 300)
     assert out["calendar_source"].to_list() == ["own calendar", "own calendar", "typical calendar"]
+    assert out["summer_share"].to_list() == pytest.approx([0.0, 1.0, 0.75])  # 300 / (100 + 300)
 
 
 def test_covid_weeks_are_away():
@@ -61,6 +63,7 @@ def test_build_effective_population():
         "week_start": MON * 2,
         "unitid": ["1"] * 3 + ["2"] * 3,
         "days_in_session": [7, 7, 0, 7, 0, 0],
+        "summer_break_days": [0, 0, 7, 0, 0, 0],
     })
     residents = pl.DataFrame({
         "acs_year": [2019, 2019], "undergrad": [300, 100], "graduate": [50, 50],
@@ -68,6 +71,7 @@ def test_build_effective_population():
     population = pl.DataFrame({"week_start": MON, "study_area": [10_000] * 3, "extrapolated": [False] * 3})
     weekly, by_inst = presence.build(weeks(MON), e, academic, residents, population)
     assert weekly["presence_index"].to_list() == [1.0, 0.5, 0.0]
+    assert weekly["summer_break_share"].to_list() == [0.0, 0.0, 0.5]
     # Undergraduates (400) leave when out of session; graduate students stay.
     assert weekly["student_change"].to_list() == [0, -200, -400]
     assert weekly["effective_population"].to_list() == [10_000, 9_800, 9_600]

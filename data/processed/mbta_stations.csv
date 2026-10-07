@@ -35,7 +35,7 @@ place-jfk,JFK/UMass,42.320685,-71.052391,Boston,true,away,University of Massachu
 place-kencl,Kenmore,42.348949,-71.095169,Boston,true,campus,Boston University,248.0,2014-01-01,2026-08-31,26317652
 place-knncl,Kendall/MIT,42.3624908,-71.0861765,Cambridge,true,near,Massachusetts Institute of Technology,684.0,2014-01-01,2026-08-31,42474898
 place-lech,Lechmere,42.371572,-71.076584,Cambridge,true,near,Hult International Business School,521.0,2014-01-01,2026-08-31,12971217
-place-longw,Longwood,42.341702,-71.109956,Brookline,true,campus,Wheelock College,291.0,2026-05-06,2026-08-20,12
+place-longw,Longwood,42.341702,-71.109956,Brookline,true,campus,Boston University,291.0,2026-05-06,2026-08-20,12
 place-masta,Massachusetts Avenue,42.341512,-71.083423,Boston,true,near,Northeastern University,473.0,2014-01-01,2026-08-31,16989738
 place-matt,Mattapan Line,42.26762,-71.092486,Boston,true,away,University of Massachusetts-Boston,6755.0,2022-07-01,2026-08-31,3852556
 place-mdftf,Medford/Tufts,42.407975,-71.117044,Medford,false,campus,Tufts University,121.0,2022-11-29,2026-08-31,796312

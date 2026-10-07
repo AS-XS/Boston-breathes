@@ -26,7 +26,7 @@ RAW_PATH = RAW / "weather" / f"noaa_daily_{STATION}.csv"
 RAIN_DAY_MM = 1.0  # a "wet day" in climatology
 HEAVY_RAIN_MM = 10.0
 SNOW_DAY_MM = 10.0  # 1 cm of new snow
-FREEZING_C = 0.0
+FREEZING_C = 0.0  # an "ice day" stays below freezing all day (maximum < 0 C)
 HOT_C = 30.0
 
 
@@ -93,7 +93,7 @@ def build_weekly(daily: pl.DataFrame) -> pl.DataFrame:
         (pl.col("prcp_mm") >= HEAVY_RAIN_MM).sum().alias("heavy_rain_days"),
         pl.col("snow_mm").sum().round(1).alias("snow_total_mm"),
         (pl.col("snow_mm") >= SNOW_DAY_MM).sum().alias("snow_days"),
-        (pl.col("tmax_c") < FREEZING_C).sum().alias("freezing_days"),
+        (pl.col("tmax_c") < FREEZING_C).sum().alias("ice_days"),
         (pl.col("tmax_c") >= HOT_C).sum().alias("hot_days"),
         pl.col("wind_ms").mean().round(2).alias("wind_mean_ms"),
     )
