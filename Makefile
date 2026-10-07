@@ -1,14 +1,14 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown campus population calendars student-residents test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown campus population calendars student-residents mbta test clean-interim
 
 install:
 	python3 -m venv .venv
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-data: weeks bluebikes municipalities weather universities town-gown campus population calendars student-residents
+data: weeks bluebikes municipalities weather universities town-gown campus population calendars student-residents mbta
 
 weeks:
 	$(RUN) boston_breathes.weeks
@@ -52,6 +52,10 @@ calendars:
 # College students living in each study-area municipality (Census ACS).
 student-residents:
 	$(RUN) boston_breathes.student_residents
+
+# MBTA gated station entries by station and week (needs campus).
+mbta:
+	$(RUN) boston_breathes.mbta
 
 test:
 	$(PYTHON) -m pytest -q

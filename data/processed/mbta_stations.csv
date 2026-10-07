@@ -1,0 +1,73 @@
+stop_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_institution,campus_distance_m,first_date,last_date,total_entries
+name-longwood,Longwood,,,unknown,false,unknown,,,2026-05-06,2026-08-20,12
+place-alfcl,Alewife,42.39583,-71.141287,Cambridge,true,away,Tufts University,2362.0,2014-01-01,2026-08-31,29502858
+place-andrw,Andrew,42.330154,-71.057655,Boston,true,away,Boston University,1286.0,2014-01-01,2026-08-31,17389390
+place-aport,Airport,42.374262,-71.030395,Boston,true,away,MGH Institute of Health Professions,1943.0,2014-01-01,2026-08-31,25986656
+place-aqucl,Aquarium,42.359784,-71.051652,Boston,true,near,Suffolk University,790.0,2014-01-01,2026-08-31,16387509
+place-armnl,Arlington,42.351902,-71.070893,Boston,true,near,Emerson College,426.0,2014-01-01,2026-08-31,19847700
+place-asmnl,Ashmont,42.28452,-71.063777,Boston,true,away,University of Massachusetts-Boston,3833.0,2014-01-01,2026-08-31,24330199
+place-astao,Assembly,42.392811,-71.077257,Somerville,true,away,Cambridge College,1356.0,2014-08-30,2026-08-31,10307118
+place-balsq,Ball Square,42.399889,-71.111003,Medford,false,away,Tufts University,1134.0,2022-11-30,2026-08-31,542322
+place-bbsta,Back Bay,42.34735,-71.075727,Boston,true,near,Emerson College,985.0,2014-01-01,2026-08-31,43341820
+place-bmmnl,Beachmont,42.3975423,-70.9923194,Revere,false,away,MGH Institute of Health Professions,5662.0,2014-01-01,2026-08-31,10399769
+place-bomnl,Bowdoin,42.361365,-71.062037,Boston,true,campus,Suffolk University,273.0,2014-01-01,2026-08-31,6706219
+place-boyls,Boylston,42.35302,-71.06459,Boston,true,campus,Emerson College,112.0,2014-01-01,2026-08-31,18429198
+place-brdwy,Broadway,42.342622,-71.056967,Boston,true,near,Tufts University,880.0,2014-01-01,2026-08-31,17242794
+place-brntn,Braintree,42.2078543,-71.0011385,Braintree Town,false,away,University of Massachusetts-Boston,12032.0,2014-01-01,2026-08-31,12063275
+place-ccmnl,Community College,42.373622,-71.069533,Boston,true,campus,Bunker Hill Community College,133.0,2014-01-01,2026-08-31,11550532
+place-chmnl,Charles/MGH,42.361166,-71.070628,Boston,true,near,Suffolk University,758.0,2014-01-01,2026-08-31,29814943
+place-chncl,Chinatown,42.352547,-71.062752,Boston,true,campus,Emerson College,220.0,2014-01-01,2026-08-31,17718550
+place-cntsq,Central,42.365486,-71.103802,Cambridge,true,away,Massachusetts Institute of Technology,1114.0,2014-01-01,2026-08-31,44166306
+place-coecl,Copley,42.349974,-71.077447,Boston,true,near,Emerson College,997.0,2014-01-01,2026-08-31,39096724
+place-crtst,Courthouse,42.35245,-71.04685,Boston,true,away,Tufts University,1242.0,2014-01-01,2026-08-31,6323232
+place-davis,Davis,42.39674,-71.121815,Somerville,true,away,Tufts University,1343.0,2014-01-01,2026-08-31,31022955
+place-dwnxg,Downtown Crossing,42.355518,-71.060225,Boston,true,campus,Suffolk University,276.0,2014-01-01,2026-08-31,63413058
+place-esomr,East Somerville,42.379467,-71.086625,Somerville,true,away,Cambridge College,1165.0,2022-12-12,2026-08-31,245292
+place-fldcr,Fields Corner,42.300093,-71.061667,Boston,true,away,University of Massachusetts-Boston,2398.0,2014-01-01,2026-08-31,14492473
+place-forhl,Forest Hills,42.300713,-71.113943,Boston,true,away,Roxbury Community College,3514.0,2014-01-01,2026-08-31,36175583
+place-gilmn,Gilman Square,42.387928,-71.096766,Somerville,true,away,Lesley University,1901.0,2022-12-01,2026-08-31,919823
+place-gover,Government Center,42.359705,-71.059215,Boston,true,campus,Suffolk University,241.0,2014-01-01,2026-08-31,18387761
+place-grnst,Green Street,42.310525,-71.107414,Boston,true,away,Roxbury Community College,2299.0,2014-01-01,2026-08-31,8885716
+place-haecl,Haymarket,42.363021,-71.05829,Boston,true,near,Suffolk University,548.0,2014-01-01,2026-08-31,34602829
+place-harsq,Harvard,42.373362,-71.118956,Cambridge,true,campus,Harvard University,134.0,2014-01-01,2026-08-31,58113703
+place-hymnl,Hynes Convention Center,42.347888,-71.087903,Boston,true,campus,Berklee College of Music,161.0,2014-01-01,2026-08-31,24679539
+place-jaksn,Jackson Square,42.323132,-71.099592,Boston,true,near,Roxbury Community College,757.0,2014-01-01,2026-08-31,15787691
+place-jfk,JFK/UMass,42.320685,-71.052391,Boston,true,away,University of Massachusetts-Boston,1329.0,2014-01-01,2026-08-31,22074189
+place-kencl,Kenmore,42.348949,-71.095169,Boston,true,campus,Boston University,248.0,2014-01-01,2026-08-31,26317652
+place-knncl,Kendall/MIT,42.3624908,-71.0861765,Cambridge,true,near,Massachusetts Institute of Technology,684.0,2014-01-01,2026-08-31,42474898
+place-lech,Lechmere,42.371572,-71.076584,Cambridge,true,near,Hult International Business School,521.0,2014-01-01,2026-08-31,12971217
+place-masta,Massachusetts Avenue,42.341512,-71.083423,Boston,true,near,Northeastern University,473.0,2014-01-01,2026-08-31,16989738
+place-matt,Mattapan Line,42.26762,-71.092486,Boston,true,away,University of Massachusetts-Boston,6755.0,2022-07-01,2026-08-31,3852556
+place-mdftf,Medford/Tufts,42.407975,-71.117044,Medford,false,campus,Tufts University,121.0,2022-11-29,2026-08-31,796312
+place-mgngl,Magoun Square,42.393682,-71.1063879,Somerville,true,away,Lesley University,1754.0,2022-11-29,2026-08-31,469812
+place-mlmnl,Malden Center,42.426632,-71.07411,Malden,false,away,Tufts University,4154.0,2014-01-01,2026-08-31,31109052
+place-mvbcl,Maverick,42.3691186,-71.0395296,Boston,true,away,MGH Institute of Health Professions,1353.0,2014-01-01,2026-08-31,36006989
+place-north,North Station,42.365577,-71.06129,Boston,true,near,Suffolk University,743.0,2014-01-01,2026-08-31,48356396
+place-nqncy,North Quincy,42.275275,-71.029583,Quincy,false,away,University of Massachusetts-Boston,4220.0,2014-01-01,2026-08-31,17472732
+place-ogmnl,Oak Grove,42.43668,-71.071097,Malden,false,away,Tufts University,4985.0,2014-01-01,2026-08-31,17018626
+place-orhte,Orient Heights,42.386867,-71.004736,Boston,true,away,MGH Institute of Health Professions,4265.0,2014-01-01,2026-08-31,13967353
+place-pktrm,Park Street,42.3563946,-71.0624242,Boston,true,campus,Suffolk University,212.0,2014-01-01,2026-08-31,52356059
+place-portr,Porter,42.3884,-71.119149,Cambridge,true,near,Lesley University,932.0,2014-01-01,2026-08-31,22457103
+place-prmnl,Prudential,42.34557,-71.081696,Boston,true,near,Berklee College of Music,615.0,2014-01-01,2026-08-31,10804714
+place-qamnl,Quincy Adams,42.233391,-71.007153,Quincy,false,away,University of Massachusetts-Boston,9163.0,2014-01-01,2026-08-31,10832262
+place-qnctr,Quincy Center,42.251809,-71.005409,Quincy,false,away,University of Massachusetts-Boston,7263.0,2014-01-01,2026-08-31,20318842
+place-rbmnl,Revere Beach,42.4078425,-70.9925332,Revere,false,away,MGH Institute of Health Professions,6238.0,2014-01-01,2026-08-31,10865685
+place-rcmnl,Roxbury Crossing,42.331397,-71.095451,Boston,true,campus,Roxbury Community College,239.0,2014-01-01,2026-08-31,13076064
+place-river,Riverside,42.337352,-71.252685,Newton,false,away,Boston College,6848.0,2014-01-01,2026-08-31,5598418
+place-rugg,Ruggles,42.336377,-71.088961,Boston,true,near,Northeastern University Professional Programs,402.0,2014-01-01,2026-08-31,26827093
+place-sbmnl,Stony Brook,42.317062,-71.104248,Boston,true,away,Roxbury Community College,1533.0,2014-01-01,2026-08-31,9695778
+place-sdmnl,Suffolk Downs,42.3905007,-70.9971226,Boston,true,away,MGH Institute of Health Professions,4990.0,2014-01-01,2026-08-31,2200127
+place-shmnl,Savin Hill,42.31129,-71.053331,Boston,true,away,University of Massachusetts-Boston,1198.0,2014-01-01,2026-08-31,6500639
+place-smmnl,Shawmut,42.2931258,-71.065738,Boston,true,away,University of Massachusetts-Boston,3173.0,2014-01-01,2026-08-31,6415464
+place-spmnl,Science Park,42.366664,-71.067666,Boston,true,near,Hult International Business School,441.0,2014-01-01,2026-08-31,2843479
+place-sstat,South Station,42.352271,-71.055242,Boston,true,near,Tufts University,583.0,2014-01-01,2026-08-31,63771721
+place-state,State Street,42.358978,-71.057598,Boston,true,campus,Suffolk University,297.0,2014-01-01,2026-08-31,39224496
+place-sull,Sullivan Square,42.383975,-71.076994,Boston,true,near,Cambridge College,480.0,2014-01-01,2026-08-31,25281823
+place-symcl,Symphony,42.342687,-71.085056,Boston,true,near,Northeastern University,429.0,2014-01-01,2026-06-01,5110683
+place-tumnl,Tufts Medical Center,42.349662,-71.063917,Boston,true,campus,Tufts University,201.0,2014-01-01,2026-08-31,17306280
+place-unsqu,Union Square,42.377359,-71.094761,Somerville,true,away,Cambridge College,1868.0,2022-03-20,2026-08-31,1118419
+place-welln,Wellington,42.40237,-71.077082,Medford,false,away,Cambridge College,2392.0,2014-01-01,2026-08-31,19576093
+place-wimnl,Wood Island,42.3796403,-71.0228654,Boston,true,away,MGH Institute of Health Professions,2615.0,2014-01-01,2026-08-31,6757203
+place-wlsta,Wollaston,42.2665139,-71.0203369,Quincy,false,away,University of Massachusetts-Boston,5328.0,2014-01-01,2026-08-31,8813954
+place-wondl,Wonderland,42.41342,-70.991648,Revere,false,away,MGH Institute of Health Professions,6675.0,2014-01-01,2026-08-31,19479174
+place-wtcst,World Trade Center,42.34863,-71.04246,Boston,true,away,Tufts University,1573.0,2014-01-01,2026-08-31,4679103
