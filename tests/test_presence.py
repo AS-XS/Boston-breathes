@@ -69,10 +69,52 @@ def test_build_effective_population():
         "acs_year": [2019, 2019], "undergrad": [300, 100], "graduate": [50, 50],
     })
     population = pl.DataFrame({"week_start": MON, "study_area": [10_000] * 3, "extrapolated": [False] * 3})
-    weekly, by_inst = presence.build(weeks(MON), e, academic, residents, population)
+    weekly, by_inst = presence.build(weeks(MON), e, academic, residents, population, POLICY)
     assert weekly["presence_index"].to_list() == [1.0, 0.5, 0.0]
     assert weekly["summer_break_share"].to_list() == [0.0, 0.0, 0.5]
     # Undergraduates (400) leave when out of session; graduate students stay.
     assert weekly["student_change"].to_list() == [0, -200, -400]
     assert weekly["effective_population"].to_list() == [10_000, 9_800, 9_600]
     assert len(by_inst) == 6
+    assert weekly["covid_period"].to_list() == ["normal"] * 3
+    assert weekly["covid_remote_share"].to_list() == [None] * 3
+
+
+POLICY = pl.DataFrame({
+    "unitid": ["1", "1", "2"], "term": ["fall_2020", "spring_2021", "fall_2020"],
+    "instruction": ["remote", "hybrid", "hybrid"], "housing": ["limited", "open", "open"],
+})
+
+
+def test_covid_terms():
+    df = weeks([date(2020, 3, 16), date(2020, 8, 10), date(2020, 8, 17), date(2020, 12, 28),
+                date(2021, 1, 4), date(2021, 8, 9), date(2021, 8, 16)])
+    terms = df.select(presence.covid_term(pl.col("week_start"))).to_series().to_list()
+    # Thursdays: Mar 19 and Aug 13 2020 are lockdown, Dec 31 is fall, Aug 19 2021 is after.
+    assert terms == [None, None, "fall_2020", "fall_2020", "spring_2021", "spring_2021", None]
+
+
+def test_remote_share_in_2020_21():
+    fall = [date(2020, 9, 14)]
+    e = enrollment([("1", "A", 2019, 300, 0, 300), ("1", "A", 2020, 300, 200, 100),
+                    ("2", "B", 2019, 100, 0, 100), ("2", "B", 2020, 100, 0, 100),
+                    ("3", "C", 2019, 100, 0, 100), ("3", "C", 2020, 100, 0, 100)])
+    academic = pl.DataFrame({"week_start": fall * 3, "unitid": ["1", "2", "3"],
+                             "days_in_session": [7, 7, 7], "summer_break_days": [0, 0, 0]})
+    residents = pl.DataFrame({"acs_year": [2020], "undergrad": [10], "graduate": [0]})
+    population = pl.DataFrame({"week_start": fall, "study_area": [1000], "extrapolated": [False]})
+    weekly, by_inst = presence.build(weeks(fall), e, academic, residents, population, POLICY)
+    row = weekly.row(0, named=True)
+    assert row["covid_period"] == "remote_year"
+    # Normal enrollment 300 + 100 + 100; A (300) taught remotely; C has no policy recorded.
+    assert (row["covid_remote_share"], row["covid_policy_known_share"]) == (0.6, 0.8)
+    assert by_inst.sort("unitid")["covid_housing"].to_list() == ["limited", "open", None]
+
+
+def test_load_covid_policy_rejects_unknown_values(tmp_path):
+    path = tmp_path / "policy.csv"
+    path.write_text("unitid,institution,term,instruction,housing,checked,source_url,note\n"
+                    "1,A,fall_2020,online,open,page,https://example.org,\n"
+                    "1,A,fall_2020,remote,open,page,https://example.org,\n")
+    with pytest.raises(ValueError, match="(?s)'online'.*duplicate"):
+        presence.load_covid_policy(path)

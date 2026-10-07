@@ -40,16 +40,24 @@ COVID-19
     calendars still show the spring 2020 term in session; from fall 2020 the
     in-person enrollment already reflects remote study.
 
+    The 2020-21 academic year (fall 2020 and spring 2021) is flagged, because
+    universities' policies differed and IPEDS records how courses were taught
+    rather than where students lived. data/manual/covid_policy.csv records,
+    per university and term, whether teaching was remote or hybrid and
+    whether housing was open, limited or closed, with its source. Weekly
+    outputs give `covid_period` (normal, lockdown, remote_year) and the share
+    of normal enrollment at universities teaching remotely.
+
 Outputs in data/processed/:
   * student_presence_weekly.csv
   * student_presence_by_institution.csv
 """
 
-from datetime import date
+from datetime import date, timedelta
 
 import polars as pl
 
-from boston_breathes.paths import PROCESSED
+from boston_breathes.paths import DATA, PROCESSED
 from boston_breathes.weeks import build_weeks
 
 # Share of resident students away from the area when not in session.
@@ -59,6 +67,15 @@ GRAD_AWAY = 0.0
 COVID_START = date(2020, 3, 16)  # most universities sent students home that week
 COVID_END = date(2020, 8, 15)
 REMOTE_FALL = 2020  # fall term taught mostly online
+COVID_YEAR_END = date(2021, 8, 15)  # end of the 2020-21 academic year
+
+COVID_POLICY_PATH = DATA / "manual" / "covid_policy.csv"
+POLICY_VALUES = {
+    "term": {"fall_2020", "spring_2021"},
+    "instruction": {"remote", "hybrid", "in_person"},
+    "housing": {"open", "limited", "closed", "none", "unknown"},
+    "checked": {"page", "search"},
+}
 
 
 def fall_year(week_start: pl.Expr) -> pl.Expr:
@@ -118,6 +135,41 @@ def apply_covid(df: pl.DataFrame) -> pl.DataFrame:
     )
 
 
+def load_covid_policy(path=COVID_POLICY_PATH) -> pl.DataFrame:
+    """Read the hand-collected 2020-21 policies; raise listing all problems."""
+    policy = pl.read_csv(path, schema_overrides={"unitid": pl.Utf8})
+    problems = []
+    for col, allowed in POLICY_VALUES.items():
+        for value in set(policy[col]) - allowed:
+            problems.append(f"{col}: unknown value {value!r}")
+    for r in policy.filter(~pl.col("source_url").str.starts_with("http")).iter_rows(named=True):
+        problems.append(f"{r['institution']} {r['term']}: missing source URL")
+    for r in policy.filter(pl.struct("unitid", "term").is_duplicated()).unique(["unitid", "term"]).iter_rows(named=True):
+        problems.append(f"{r['institution']} {r['term']}: duplicate row")
+    if problems:
+        raise ValueError("COVID policy problems:\n  " + "\n  ".join(problems))
+    return policy.select("unitid", "term", "instruction", "housing")
+
+
+def covid_term(week_start: pl.Expr) -> pl.Expr:
+    """Term of the 2020-21 academic year a week belongs to (by its Thursday), else null."""
+    thursday = week_start + pl.duration(days=3)
+    return (
+        pl.when(thursday.is_between(COVID_END + timedelta(days=1), date(2020, 12, 31))).then(pl.lit("fall_2020"))
+        .when(thursday.is_between(date(2021, 1, 1), COVID_YEAR_END)).then(pl.lit("spring_2021"))
+    )
+
+
+def add_covid_policy(per_inst: pl.DataFrame, policy: pl.DataFrame) -> pl.DataFrame:
+    """Each institution's 2020-21 teaching and housing policy for the week's term (null outside it)."""
+    return (
+        per_inst.with_columns(covid_term(pl.col("week_start")).alias("term"))
+        .join(policy, on=["unitid", "term"], how="left")
+        .rename({"instruction": "covid_instruction", "housing": "covid_housing"})
+        .drop("term")
+    )
+
+
 def resident_students(weeks: pl.DataFrame, residents: pl.DataFrame) -> pl.DataFrame:
     """Study-area resident undergraduate and graduate students for each week."""
     totals = residents.group_by("acs_year").agg(
@@ -136,10 +188,12 @@ def build(
     academic_weekly: pl.DataFrame,
     residents: pl.DataFrame,
     population: pl.DataFrame,
+    covid_policy: pl.DataFrame,
 ) -> tuple[pl.DataFrame, pl.DataFrame]:
-    per_inst = apply_covid(session_share(enrollment_by_week(weeks, enrollment), academic_weekly)).with_columns(
-        (pl.col("in_person") * pl.col("session_share")).alias("students_in_session")
-    )
+    per_inst = add_covid_policy(
+        apply_covid(session_share(enrollment_by_week(weeks, enrollment), academic_weekly)), covid_policy
+    ).with_columns((pl.col("in_person") * pl.col("session_share")).alias("students_in_session"))
+    remote_year = covid_term(pl.col("week_start")).is_not_null()
     weekly = (
         per_inst.group_by("week_start").agg(
             pl.col("in_person").sum().alias("in_person_enrollment"),
@@ -151,6 +205,16 @@ def build(
              / pl.col("in_person").sum()).round(3).alias("own_calendar_share"),
             pl.col("enrollment_imputed").any(),
             pl.col("covid_away").any(),
+            (pl.col("normal_in_person").filter(pl.col("covid_instruction") == "remote").sum()
+             / pl.col("normal_in_person").sum()).round(3).alias("covid_remote_share"),
+            (pl.col("normal_in_person").filter(pl.col("covid_instruction").is_not_null()).sum()
+             / pl.col("normal_in_person").sum()).round(3).alias("covid_policy_known_share"),
+        )
+        .with_columns(
+            pl.when(pl.col("covid_away")).then(pl.lit("lockdown"))
+            .when(remote_year).then(pl.lit("remote_year"))
+            .otherwise(pl.lit("normal")).alias("covid_period"),
+            *[pl.when(remote_year).then(pl.col(c)).alias(c) for c in ("covid_remote_share", "covid_policy_known_share")],
         )
         .with_columns((pl.col("students_in_session") / pl.col("normal_enrollment")).round(4).alias("presence_index"))
         .join(resident_students(weeks, residents), on="week_start", how="left")
@@ -168,11 +232,13 @@ def build(
             "normal_enrollment", "own_calendar_share",
             "resident_undergrads", "resident_grads", "census_population", "student_change", "effective_population",
             "enrollment_imputed", "population_extrapolated", "covid_away",
+            "covid_period", "covid_remote_share", "covid_policy_known_share",
         )
     )
     by_inst = per_inst.select(
         "week_start", "unitid", "name", "in_person", "session_share", "summer_share", "calendar_source",
         pl.col("students_in_session").round(1), "enrollment_imputed", "covid_away",
+        "covid_instruction", "covid_housing",
     ).sort("week_start", "unitid")
     return weekly, by_inst
 
@@ -183,7 +249,7 @@ def main() -> None:
     academic = pl.read_csv(PROCESSED / "academic_weekly.csv", schema_overrides={"unitid": pl.Utf8}, try_parse_dates=True)
     residents = pl.read_csv(PROCESSED / "student_residents_annual.csv")
     population = pl.read_csv(PROCESSED / "population_weekly.csv", try_parse_dates=True)
-    weekly, by_inst = build(weeks, enrollment, academic, residents, population)
+    weekly, by_inst = build(weeks, enrollment, academic, residents, population, load_covid_policy())
     weekly.write_csv(PROCESSED / "student_presence_weekly.csv")
     by_inst.write_csv(PROCESSED / "student_presence_by_institution.csv")
 
