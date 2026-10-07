@@ -1,1 +1,12 @@
 proposal.md
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Data: raw downloads and intermediate files are rebuilt by `make data`
+data/raw/
+data/interim/
