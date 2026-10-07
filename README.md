@@ -177,7 +177,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 6. Enrollment | IPEDS fall enrollment and distance education; City of Cambridge Town Gown reports | Done | `enrollment_annual.csv`, `cambridge_town_gown.csv` |
 | 7. Bluebikes rider age | Bluebikes trip files, January 2015 – April 2020 | Done | `college_age_trips` and `college_age_share` in the weekly Bluebikes tables |
 | 8. Campus-area activity | Bluebikes stations matched to campus locations from IPEDS and City of Boston open data | Done | `campus_points.csv`, `bluebikes_station_campus.csv`, `bluebikes_weekly_by_campus_zone.csv`, `bluebikes_weekly_by_institution.csv` |
-| 9. Resident population | U.S. Census population estimates | Planned | annual population per municipality |
+| 9. Resident population | U.S. Census population estimates (2010–2020 intercensal and latest vintage) | Done | `population_annual.csv`, `population_weekly.csv` |
 | 10. Academic calendars | University calendars, collected by hand, with archived versions for past years | Planned | semester, break, and commencement dates per university and year |
 | 11. Student housing | City of Boston and City of Cambridge reports; Census survey data for Somerville and Brookline | Planned | students living in each municipality per year |
 | 12. MBTA ridership | MBTA / MassDOT gated station entries | Planned | weekly entries per station, including stations near campuses |
@@ -192,6 +192,7 @@ Processing decisions so far:
 * **Month boundaries.** Some monthly files repeat trips from the previous month; repeated trips are counted once.
 * **Network size.** Measured as the average number of stations with at least one trip per day, which accounts for winter closures and network growth.
 * **Electric bikes.** Trips are split by bike type, since electric bikes (introduced in 2023) changed ridership.
+* **Resident population.** Annual July 1 estimates come from the Census 2010–2020 intercensal series before 2020 and the latest postcensal vintage from 2020; both are based on the 2020 Census, so they join without a break. Weekly values are interpolated between July 1 estimates and held at the latest estimate afterwards. The Census counts college students where they live during the school year, so these totals already include students living in the area.
 * **Campus zones.** Campus locations combine each institution's main campus from IPEDS with campus locations from City of Boston open data, which adds secondary campuses such as Harvard's business and medical schools and Boston University's medical campus. Only institutions with typically at least 1,000 students present in person define zones: stations within 400 m of such a campus are "campus", within 1 km "near", and otherwise "away". Comparisons use study-area stations only.
 * **Rider age.** Riders aged 18–24 are counted as college age. Birth year 1969 is the system default for riders who gave no birth year, so it is treated as unknown, as are ages below 16 or above 90.
 * **Municipalities.** Stations are assigned to a town month by month, because some stations moved over time.
