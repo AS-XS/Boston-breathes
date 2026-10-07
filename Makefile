@@ -1,14 +1,14 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown campus population calendars test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown campus population calendars student-residents test clean-interim
 
 install:
 	python3 -m venv .venv
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-data: weeks bluebikes municipalities weather universities town-gown campus population calendars
+data: weeks bluebikes municipalities weather universities town-gown campus population calendars student-residents
 
 weeks:
 	$(RUN) boston_breathes.weeks
@@ -48,6 +48,10 @@ population:
 # Validate hand-collected academic calendars and compute weekly in-session days.
 calendars:
 	$(RUN) boston_breathes.calendars
+
+# College students living in each study-area municipality (Census ACS).
+student-residents:
+	$(RUN) boston_breathes.student_residents
 
 test:
 	$(PYTHON) -m pytest -q
