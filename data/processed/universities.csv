@@ -1,0 +1,46 @@
+unitid,name,city,municipality,in_study_area,sector,lat,lng,first_fall,last_fall
+164368,Hult International Business School,Cambridge,Cambridge,true,2,42.369968,-71.070645,2015,2023
+164438,New England College of Business and Finance,Boston,Boston,true,3,42.353619,-71.056671,2015,2019
+164614,Boston Baptist College,Boston,Boston,true,2,42.254037,-71.1103,2015,2023
+164641,Bay State College,Boston,Boston,true,3,42.350966,-71.071615,2015,2023
+164748,Berklee College of Music,Boston,Boston,true,2,42.346646,-71.089405,2015,2023
+164872,Boston Architectural College,Boston,Boston,true,2,42.348467,-71.085786,2015,2023
+164915,Boston Graduate School of Psychoanalysis Inc,Brookline,Brookline,true,2,42.33912,-71.133151,2015,2023
+164924,Boston College,Chestnut Hill,Newton,false,2,42.336213,-71.169242,2015,2023
+164933,The Boston Conservatory,Boston,Boston,true,2,42.346149,-71.090142,2015,2016
+164988,Boston University,Boston,Boston,true,2,42.351118,-71.107942,2015,2023
+165112,Bunker Hill Community College,Boston,Boston,true,4,42.374806,-71.069263,2015,2023
+165167,Cambridge College,Boston,Boston,true,2,42.381091,-71.072646,2015,2023
+165662,Emerson College,Boston,Boston,true,2,42.352202,-71.065384,2015,2023
+165671,Emmanuel College,Boston,Boston,true,2,42.340602,-71.103634,2015,2023
+165705,Episcopal Divinity School,Cambridge,Cambridge,true,2,42.376931,-71.124806,2015,2017
+165802,Fisher College,Boston,Boston,true,2,42.355253,-71.074125,2015,2023
+165884,Benjamin Franklin Cummings Institute of Technology,Boston,Boston,true,2,42.346023,-71.070231,2015,2023
+166027,Harvard University,Cambridge,Cambridge,true,2,42.374471,-71.118313,2015,2023
+166054,Hellenic College-Holy Cross Greek Orthodox School of Theology,Brookline,Brookline,true,2,42.317018,-71.129418,2015,2023
+166452,Lesley University,Cambridge,Cambridge,true,2,42.38012,-71.117303,2015,2023
+166489,Longy School of Music of Bard College,Cambridge,Cambridge,true,2,42.378657,-71.123479,2015,2023
+166638,University of Massachusetts-Boston,Boston,Boston,true,1,42.312881,-71.036865,2015,2023
+166656,MCPHS University,Boston,Boston,true,2,42.336825,-71.101244,2015,2023
+166674,Massachusetts College of Art and Design,Boston,Boston,true,1,42.336862,-71.099275,2015,2023
+166683,Massachusetts Institute of Technology,Cambridge,Cambridge,true,2,42.359243,-71.093226,2015,2023
+166869,MGH Institute of Health Professions,Boston,Boston,true,2,42.375018,-71.054002,2015,2023
+166984,School of the Museum of Fine Arts at Tufts University,Boston,Boston,true,2,42.338505,-71.096556,2015,2017
+167057,The New England Conservatory of Music,Boston,Boston,true,2,42.340946,-71.08629,2015,2023
+167093,New England College of Optometry,Boston,Boston,true,2,42.351853,-71.086829,2015,2023
+167215,New England Law-Boston,Boston,Boston,true,2,42.350833,-71.0665,2015,2023
+167251,Newbury College,Brookline,Brookline,true,2,42.331032,-71.142082,2015,2019
+167321,The New England Institute of Art,Brookline,Brookline,true,3,42.332336,-71.116939,2015,2017
+167358,Northeastern University,Boston,Boston,true,2,42.339992,-71.088782,2015,2023
+167455,Pine Manor College,Chestnut Hill,Brookline,true,2,42.320827,-71.156464,2015,2022
+167631,Roxbury Community College,Roxbury Crossing,Boston,true,4,42.329249,-71.09549,2015,2023
+167677,Saint John's Seminary,Brighton,Boston,true,2,42.344146,-71.161998,2015,2023
+167783,Simmons University,Boston,Boston,true,2,42.3393,-71.099967,2015,2023
+168005,Suffolk University,Boston,Boston,true,2,42.357945,-71.060917,2015,2023
+168148,Tufts University,Medford,Medford,false,2,42.40855,-71.118293,2015,2023
+168227,Wentworth Institute of Technology,Boston,Boston,true,2,42.336632,-71.094983,2015,2023
+168290,Wheelock College,Boston,Boston,true,2,42.349707,-71.100868,2015,2018
+429128,Urban College of Boston,Boston,Boston,true,5,42.352922,-71.0642,2015,2023
+452054,Le Cordon Bleu College of Culinary Arts-Cambridge,Cambridge,Cambridge,true,6,42.364249,-71.078675,2015,2017
+482705,Northeastern University Professional Programs,Boston,Boston,true,2,42.339992,-71.088782,2015,2023
+494542,Sattler College,Boston,Boston,true,2,42.36064,-71.062111,2023,2023
