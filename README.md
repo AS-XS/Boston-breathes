@@ -163,6 +163,41 @@ Additional features may include:
 
 ---
 
+## Data Processing Plan
+
+Every source is processed onto a common **Monday-to-Sunday weekly timeline** covering 2015–2026. Raw downloads are not stored in the repository; each step rebuilds them from the original source, and only small processed tables are kept in `data/processed/`.
+
+| Step | Source | Status | Processed output |
+|---|---|---|---|
+| 1. Weekly timeline | Calendar with U.S. federal and Massachusetts holidays | Done | `weeks.csv` |
+| 2. Bluebikes trips | Bluebikes monthly trip files, January 2015 onward | Done | `bluebikes_weekly.csv`, `bluebikes_stations.csv`, `bluebikes_monthly_qa.csv` |
+| 3. Station municipalities | U.S. Census town boundaries (county subdivisions) | Done | `bluebikes_station_municipalities.csv`, `bluebikes_weekly_by_municipality.csv` |
+| 4. Weather | NOAA daily observations, Boston Logan Airport | Done | `weather_daily.csv`, `weather_weekly.csv` |
+| 5. Universities and campus locations | IPEDS institution directory | Planned | list of study-area institutions with campus coordinates |
+| 6. Enrollment | IPEDS fall enrollment | Planned | annual enrollment per institution |
+| 7. Bluebikes rider age | Bluebikes trip files, 2015–2022 | Planned | weekly trips by riders of typical college age and by older riders |
+| 8. Campus-area activity | Bluebikes stations matched to nearby campuses | Planned | weekly trips near campuses and elsewhere |
+| 9. Resident population | U.S. Census population estimates | Planned | annual population per municipality |
+| 10. Academic calendars | University calendars, collected by hand, with archived versions for past years | Planned | semester, break, and commencement dates per university and year |
+| 11. Student housing | City of Boston and City of Cambridge reports; Census survey data for Somerville and Brookline | Planned | students living in each municipality per year |
+| 12. MBTA ridership | MBTA / MassDOT gated station entries | Planned | weekly entries per station, including stations near campuses |
+| 13. Traffic and rideshare | MassDOT traffic counts; Massachusetts rideshare data | Exploratory | used only if available weekly or monthly |
+| 14. Student Presence Index and effective population | Combination of steps 5–11 | Planned | weekly index and population estimate |
+| 15. Modeling table | Combination of all steps | Planned | one row per week with activity, weather, calendar, and student features |
+
+Processing decisions so far:
+
+* **Bluebikes file formats.** The trip files changed layout and station ID format in 2023; both layouts are converted to the same columns, and stations are matched across the change by location.
+* **Trip cleaning.** Trips shorter than 60 seconds or longer than 24 hours, trips with invalid times, and trips at warehouse, depot, and test stations are removed, using the same rules for every year.
+* **Month boundaries.** Some monthly files repeat trips from the previous month; repeated trips are counted once.
+* **Network size.** Measured as the average number of stations with at least one trip per day, which accounts for winter closures and network growth.
+* **Electric bikes.** Trips are split by bike type, since electric bikes (introduced in 2023) changed ridership.
+* **Municipalities.** Stations are assigned to a town month by month, because some stations moved over time.
+* **Weather.** Logan Airport does not report daily average temperature, so it is taken as the midpoint of the daily maximum and minimum.
+* **Enrollment coverage.** IPEDS fall enrollment is currently published through 2023, so later years will need to be carried forward or estimated.
+
+---
+
 ## Modeling and Evaluation
 
 The main modeling question is:
