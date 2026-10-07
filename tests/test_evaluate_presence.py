@@ -48,13 +48,13 @@ def test_street_count_pairs_match_june_and_september_weekdays():
     assert pairs["log_vehicles"][0] == 0
 
 
-def test_effective_population_drop_scales_with_share_away():
+def test_bounds_on_students_away():
     weeks = [date(2019, 1, 7), date(2019, 7, 8)]
-    presence = pl.DataFrame({"week_start": weeks, "presence_index": [1.0, 0.0],
-                             "census_population": [1000, 1000], "resident_undergrads": [100, 100]})
+    presence = pl.DataFrame({"week_start": weeks, "max_students_away": [0, 100], "census_population": [1000, 1000]})
     residents = pl.DataFrame({"municipality": ["Cambridge"], "acs_year": [2019], "undergrad": [80], "graduate": [20]})
     town_gown = pl.DataFrame({"fall_year": [2019], "students_in_dorms": [40]})
-    rows = {(r["subset"], r["metric"]): r["value"] for r in ev.effective_rows(presence, residents, town_gown)}
-    assert rows[("2019, undergrads away 50%", "seasonal_drop")] == 50
-    assert rows[("2019, undergrads away 100%", "seasonal_drop")] == 100
-    assert rows[("Cambridge, fall 2019", "dorm_residents_share_of_resident_students")] == 0.4
+    rows = {(r["subset"], r["metric"]): r["value"] for r in ev.bound_rows(presence, residents, town_gown)}
+    assert rows[("study area, 2019", "max_students_away")] == 100
+    assert rows[("study area, 2019", "max_students_away_pct_of_census")] == 10
+    assert rows[("Cambridge, 2019-20", "min_students_away_dorm_residents")] == 40
+    assert rows[("Cambridge, 2019-20", "min_share_away")] == 0.4

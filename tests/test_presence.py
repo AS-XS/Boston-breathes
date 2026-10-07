@@ -57,7 +57,7 @@ def test_covid_weeks_are_away():
     assert out["covid_away"].to_list() == [False, True, False]
 
 
-def test_build_effective_population():
+def test_build_bounds_students_away():
     e = enrollment([("1", "A", 2019, 1000, 0, 1000), ("2", "B", 2019, 1000, 0, 1000)])
     academic = pl.DataFrame({
         "week_start": MON * 2,
@@ -72,9 +72,9 @@ def test_build_effective_population():
     weekly, by_inst = presence.build(weeks(MON), e, academic, residents, population, POLICY)
     assert weekly["presence_index"].to_list() == [1.0, 0.5, 0.0]
     assert weekly["summer_break_share"].to_list() == [0.0, 0.0, 0.5]
-    # Undergraduates (400) leave when out of session; graduate students stay.
-    assert weekly["student_change"].to_list() == [0, -200, -400]
-    assert weekly["effective_population"].to_list() == [10_000, 9_800, 9_600]
+    # At most all 500 resident students (400 undergraduate, 100 graduate) are away.
+    assert weekly["max_students_away"].to_list() == [0, 250, 500]
+    assert weekly["min_effective_population"].to_list() == [10_000, 9_750, 9_500]
     assert len(by_inst) == 6
     assert weekly["covid_period"].to_list() == ["normal"] * 3
     assert weekly["covid_remote_share"].to_list() == [None] * 3

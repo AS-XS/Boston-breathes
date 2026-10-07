@@ -15,9 +15,10 @@ whether the index moves with activity where students should matter most.
    same year, bicycle counts near campuses should rise more than elsewhere.
 4. Summer: whether the summer-break share adds to the index in explaining
    the campus share (least squares with a constant per year).
-5. Effective population: how the 2019 seasonal drop depends on the share of
-   resident undergraduates assumed to leave, with Cambridge's dormitory
-   counts as a lower bound on that share.
+5. Bounds on students away: how many students leave is to be measured from
+   activity, not assumed. The data bound it: at most every resident college
+   student (ACS) is away when out of session, and in Cambridge at least the
+   students living in dormitories leave in summer (Town Gown reports).
 
 Output: data/processed/presence_evaluation.csv, one row per check, subset
 and metric.
@@ -31,7 +32,6 @@ from boston_breathes.paths import PROCESSED
 CAMPUS, AWAY = "campus", "away"
 BREAK_MAX_DAYS = 2  # a break week has at most this many days in session
 REFERENCE_WEEKS = 3  # in-session weeks this close to a break are its reference
-AWAY_SHARES = (0.5, 0.75, 1.0)
 
 
 def row(check: str, subset: str, metric: str, value: float | None, n: int) -> dict:
@@ -179,24 +179,26 @@ def summer_rows(ratio: pl.DataFrame, presence: pl.DataFrame, source: str) -> lis
 # ------------------------------------------------------------ effective population
 
 
-def effective_rows(presence: pl.DataFrame, residents: pl.DataFrame, town_gown: pl.DataFrame,
-                   year: int = 2019) -> list[dict]:
-    rows = []
+def bound_rows(presence: pl.DataFrame, residents: pl.DataFrame, town_gown: pl.DataFrame,
+               year: int = 2019) -> list[dict]:
+    """Upper and lower bounds on resident students away, from data only."""
     y = presence.filter(pl.col("week_start").dt.year() == year)
-    for away in AWAY_SHARES:
-        eff = y["census_population"] - (1 - y["presence_index"]) * away * y["resident_undergrads"]
-        drop = eff.max() - eff.min()
-        rows.append(row("effective_population", f"{year}, undergrads away {away:.0%}", "seasonal_drop", drop, len(y)))
-        rows.append(row("effective_population", f"{year}, undergrads away {away:.0%}", "seasonal_drop_pct_of_census",
-                        drop / y["census_population"].mean() * 100, len(y)))
+    most = y["max_students_away"].max()
+    rows = [
+        row("students_away_bounds", f"study area, {year}", "max_students_away", most, len(y)),
+        row("students_away_bounds", f"study area, {year}", "max_students_away_pct_of_census",
+            most / y["census_population"].mean() * 100, len(y)),
+    ]
     cambridge = residents.filter((pl.col("municipality") == "Cambridge") & (pl.col("acs_year") == year))
     dorms = town_gown.filter(pl.col("fall_year") == year)
     if len(cambridge) and len(dorms):
-        resident_students = cambridge["undergrad"][0] + cambridge["graduate"][0]
-        rows.append(row("effective_population", f"Cambridge, fall {year}", "dorm_residents_share_of_resident_students",
-                        dorms["students_in_dorms"][0] / resident_students, 1))
-        rows.append(row("effective_population", f"Cambridge, fall {year}", "dorm_residents_vs_resident_undergrads",
-                        dorms["students_in_dorms"][0] / cambridge["undergrad"][0], 1))
+        in_dorms = dorms["students_in_dorms"][0]
+        resident = cambridge["undergrad"][0] + cambridge["graduate"][0]
+        rows += [
+            row("students_away_bounds", f"Cambridge, {year}-{(year + 1) % 100:02d}", "min_students_away_dorm_residents", in_dorms, 1),
+            row("students_away_bounds", f"Cambridge, {year}-{(year + 1) % 100:02d}", "max_students_away_resident_students", resident, 1),
+            row("students_away_bounds", f"Cambridge, {year}-{(year + 1) % 100:02d}", "min_share_away", in_dorms / resident, 1),
+        ]
     return rows
 
 
@@ -224,7 +226,7 @@ def main() -> None:
         + street_rows(street_count_pairs(counts))
         + summer_rows(bike_ratio, presence, "Bluebikes")
         + summer_rows(mbta_ratio, presence, "MBTA")
-        + effective_rows(presence, residents, town_gown)
+        + bound_rows(presence, residents, town_gown)
     )
     out = pl.DataFrame(rows, schema={"check": pl.Utf8, "subset": pl.Utf8, "metric": pl.Utf8,
                                      "value": pl.Float64, "n": pl.Int64})

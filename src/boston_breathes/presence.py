@@ -22,15 +22,15 @@ Summer break share
     and optional, so summer is not counted as in session; this column lets
     summer be told apart from winter and spring breaks.
 
-Effective population
-    The Census counts college students where they live during the school
-    year, so the resident population already includes students living in the
-    study area all year round. The effective population removes the resident
-    students who are away when not in session:
+Bounds on students away
+    How many students actually leave when not in session is what the project
+    measures, from city activity; it is not assumed here. The Census counts
+    college students where they live during the school year, so the resident
+    population already includes the students living in the study area. At
+    most, all of them are away when out of session:
 
-        effective = Census population
-                    - (1 - presence index) * (UNDERGRAD_AWAY * resident undergraduates
-                                              + GRAD_AWAY * resident graduate students)
+        max_students_away        = (1 - presence index) * resident college students
+        min_effective_population = Census population - max_students_away
 
     Resident students come from the ACS 5-year estimate ending in the year of
     the fall term (the latest available estimate for later years).
@@ -59,10 +59,6 @@ import polars as pl
 
 from boston_breathes.paths import DATA, PROCESSED
 from boston_breathes.weeks import build_weeks
-
-# Share of resident students away from the area when not in session.
-UNDERGRAD_AWAY = 1.0
-GRAD_AWAY = 0.0
 
 COVID_START = date(2020, 3, 16)  # most universities sent students home that week
 COVID_END = date(2020, 8, 15)
@@ -221,16 +217,16 @@ def build(
         .join(population.select("week_start", pl.col("study_area").alias("census_population"),
                                 pl.col("extrapolated").alias("population_extrapolated")), on="week_start", how="left")
         .with_columns(
-            (-(1 - pl.col("presence_index"))
-             * (UNDERGRAD_AWAY * pl.col("resident_undergrads") + GRAD_AWAY * pl.col("resident_grads")))
-            .round(0).alias("student_change")
+            ((1 - pl.col("presence_index")) * (pl.col("resident_undergrads") + pl.col("resident_grads")))
+            .round(0).cast(pl.Int64).alias("max_students_away")
         )
-        .with_columns((pl.col("census_population") + pl.col("student_change")).alias("effective_population"))
+        .with_columns((pl.col("census_population") - pl.col("max_students_away")).alias("min_effective_population"))
         .sort("week_start")
         .select(
             "week_start", "presence_index", "summer_break_share", "students_in_session", "in_person_enrollment",
             "normal_enrollment", "own_calendar_share",
-            "resident_undergrads", "resident_grads", "census_population", "student_change", "effective_population",
+            "resident_undergrads", "resident_grads", "census_population", "max_students_away",
+            "min_effective_population",
             "enrollment_imputed", "population_extrapolated", "covid_away",
             "covid_period", "covid_remote_share", "covid_policy_known_share",
         )
@@ -255,8 +251,7 @@ def main() -> None:
 
     y = weekly.filter(pl.col("week_start").dt.year() == 2019)
     print(f"Student presence: {len(weekly)} weeks; in 2019 the index ranged {y['presence_index'].min():.2f}-"
-          f"{y['presence_index'].max():.2f} and the effective population "
-          f"{y['effective_population'].min():,.0f}-{y['effective_population'].max():,.0f}")
+          f"{y['presence_index'].max():.2f}; at most {y['max_students_away'].max():,.0f} resident students away")
     print(f"Share of enrollment with its own calendar: median {weekly['own_calendar_share'].median():.0%}")
 
 
