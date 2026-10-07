@@ -1,0 +1,67 @@
+check,subset,metric,value,n
+campus_share,"Bluebikes, normal",corr_log_ratio_vs_index,0.272,534
+campus_share,"Bluebikes, remote_year",corr_log_ratio_vs_index,0.8069,52
+campus_share,"Bluebikes, 2015",corr_log_ratio_vs_index,-0.1536,52
+campus_share,"Bluebikes, 2016",corr_log_ratio_vs_index,-0.1215,52
+campus_share,"Bluebikes, 2017",corr_log_ratio_vs_index,0.3608,52
+campus_share,"Bluebikes, 2018",corr_log_ratio_vs_index,0.2413,53
+campus_share,"Bluebikes, 2019",corr_log_ratio_vs_index,0.4055,52
+campus_share,"Bluebikes, 2021",corr_log_ratio_vs_index,0.8933,20
+campus_share,"Bluebikes, 2022",corr_log_ratio_vs_index,0.8324,52
+campus_share,"Bluebikes, 2023",corr_log_ratio_vs_index,0.8239,52
+campus_share,"Bluebikes, 2024",corr_log_ratio_vs_index,0.8658,53
+campus_share,"Bluebikes, 2025",corr_log_ratio_vs_index,0.9007,52
+campus_share,"Bluebikes, 2026",corr_log_ratio_vs_index,0.8868,34
+campus_share,"Bluebikes, normal years",median_within_year_corr,0.8239,11
+campus_share,"MBTA, normal",corr_log_ratio_vs_index,0.1132,535
+campus_share,"MBTA, remote_year",corr_log_ratio_vs_index,-0.212,52
+campus_share,"MBTA, 2015",corr_log_ratio_vs_index,0.3783,52
+campus_share,"MBTA, 2016",corr_log_ratio_vs_index,0.3143,52
+campus_share,"MBTA, 2017",corr_log_ratio_vs_index,0.4718,52
+campus_share,"MBTA, 2018",corr_log_ratio_vs_index,0.1609,53
+campus_share,"MBTA, 2019",corr_log_ratio_vs_index,0.4675,52
+campus_share,"MBTA, 2021",corr_log_ratio_vs_index,0.1895,20
+campus_share,"MBTA, 2022",corr_log_ratio_vs_index,0.2463,52
+campus_share,"MBTA, 2023",corr_log_ratio_vs_index,0.2613,52
+campus_share,"MBTA, 2024",corr_log_ratio_vs_index,-0.1209,53
+campus_share,"MBTA, 2025",corr_log_ratio_vs_index,0.2034,52
+campus_share,"MBTA, 2026",corr_log_ratio_vs_index,0.2242,34
+campus_share,"MBTA, normal years",median_within_year_corr,0.2463,11
+break_dips,"Boston University, spring",median_change_in_campus_share_pct,-15.1195,10
+break_dips,"Boston University, thanksgiving",median_change_in_campus_share_pct,-11.0225,10
+break_dips,"Boston University, winter",median_change_in_campus_share_pct,-25.5799,33
+break_dips,"Harvard University, spring",median_change_in_campus_share_pct,-20.0281,10
+break_dips,"Harvard University, thanksgiving",median_change_in_campus_share_pct,-2.7672,10
+break_dips,"Harvard University, winter",median_change_in_campus_share_pct,-16.3665,52
+break_dips,"Massachusetts Institute of Technology, spring",median_change_in_campus_share_pct,-21.0816,10
+break_dips,"Massachusetts Institute of Technology, thanksgiving",median_change_in_campus_share_pct,2.0288,10
+break_dips,"Massachusetts Institute of Technology, winter",median_change_in_campus_share_pct,-12.087,48
+break_dips,"Northeastern University, spring",median_change_in_campus_share_pct,-40.0251,5
+break_dips,"Northeastern University, thanksgiving",median_change_in_campus_share_pct,-28.2988,9
+break_dips,"Northeastern University, winter",median_change_in_campus_share_pct,-53.5152,23
+break_dips,"Tufts University, spring",median_change_in_campus_share_pct,11.6311,9
+break_dips,"Tufts University, thanksgiving",median_change_in_campus_share_pct,5.5441,10
+break_dips,"Tufts University, winter",median_change_in_campus_share_pct,19.3415,28
+break_dips,all universities and breaks,share_of_breaks_with_a_drop,0.7581,277
+street_counts,"campus, bikes",median_sept_vs_june_change_pct,17.5044,66
+street_counts,"campus, vehicles",median_sept_vs_june_change_pct,3.1063,66
+street_counts,"near, bikes",median_sept_vs_june_change_pct,11.1561,66
+street_counts,"near, vehicles",median_sept_vs_june_change_pct,0.9139,61
+street_counts,"away, bikes",median_sept_vs_june_change_pct,1.3363,127
+street_counts,"away, vehicles",median_sept_vs_june_change_pct,-1.2215,120
+summer,Bluebikes,r2_year_and_index,0.719,534
+summer,Bluebikes,r2_year_index_and_summer,0.7604,534
+summer,Bluebikes,summer_coefficient_log_ratio,0.1374,534
+summer,Bluebikes,index_coefficient_log_ratio,0.2132,534
+summer,MBTA,r2_year_and_index,0.4722,535
+summer,MBTA,r2_year_index_and_summer,0.503,535
+summer,MBTA,summer_coefficient_log_ratio,0.0588,535
+summer,MBTA,index_coefficient_log_ratio,0.072,535
+effective_population,"2019, undergrads away 50%",seasonal_drop,56179.0,52
+effective_population,"2019, undergrads away 50%",seasonal_drop_pct_of_census,5.9794,52
+effective_population,"2019, undergrads away 75%",seasonal_drop,81519.0,52
+effective_population,"2019, undergrads away 75%",seasonal_drop_pct_of_census,8.6764,52
+effective_population,"2019, undergrads away 100%",seasonal_drop,106859.0,52
+effective_population,"2019, undergrads away 100%",seasonal_drop_pct_of_census,11.3735,52
+effective_population,"Cambridge, fall 2019",dorm_residents_share_of_resident_students,0.4892,1
+effective_population,"Cambridge, fall 2019",dorm_residents_vs_resident_undergrads,0.8295,1
