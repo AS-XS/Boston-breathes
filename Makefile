@@ -1,14 +1,14 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown campus test clean-interim
 
 install:
 	python3 -m venv .venv
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-data: weeks bluebikes municipalities weather universities town-gown
+data: weeks bluebikes municipalities weather universities town-gown campus
 
 weeks:
 	$(RUN) boston_breathes.weeks
@@ -36,6 +36,10 @@ universities:
 # Cambridge universities' annual Town Gown reports (enrollment and housing).
 town-gown:
 	$(RUN) boston_breathes.town_gown
+
+# Match stations to nearby university campuses (needs bluebikes and universities).
+campus:
+	$(RUN) boston_breathes.campus
 
 test:
 	$(PYTHON) -m pytest -q

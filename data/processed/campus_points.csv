@@ -1,0 +1,87 @@
+unitid,institution,campus_name,source,lat,lng,typical_in_person,major
+164368,Hult International Business School,Hult International Business School,ipeds,42.369968,-71.070645,2072.0,true
+164438,New England College of Business and Finance,New England College of Business and Finance,boston_open_data,42.353530000000035,-71.05672999999996,0.0,false
+164438,New England College of Business and Finance,New England College of Business and Finance,ipeds,42.353619,-71.056671,0.0,false
+164614,Boston Baptist College,Boston Baptist College,boston_open_data,42.254000000000076,-71.11025999999998,63.0,false
+164614,Boston Baptist College,Boston Baptist College,ipeds,42.254037,-71.1103,63.0,false
+164641,Bay State College,Bay State College,boston_open_data,42.351770000000045,-71.07693999999998,544.0,false
+164641,Bay State College,Bay State College,ipeds,42.350966,-71.071615,544.0,false
+164748,Berklee College of Music,Berklee College of Music,boston_open_data,42.34668904200004,-71.08901120899998,5664.0,true
+164748,Berklee College of Music,Berklee College of Music,ipeds,42.346646,-71.089405,5664.0,true
+164872,Boston Architectural College,Boston Architectural College,boston_open_data,42.348460000000046,-71.08579999999995,541.0,false
+164872,Boston Architectural College,Boston Architectural College,ipeds,42.348467,-71.085786,541.0,false
+164915,Boston Graduate School of Psychoanalysis Inc,Boston Graduate School of Psychoanalysis Inc,ipeds,42.33912,-71.133151,143.0,false
+164924,Boston College,Boston College,boston_open_data,42.33383264300005,-71.16971925499996,14473.0,true
+164924,Boston College,Boston College,ipeds,42.336213,-71.169242,14473.0,true
+164933,The Boston Conservatory,The Boston Conservatory,boston_open_data,42.34605822300006,-71.09001132999998,798.0,false
+164933,The Boston Conservatory,The Boston Conservatory,ipeds,42.346149,-71.090142,798.0,false
+164988,Boston University,Boston University,boston_open_data,42.349559758000055,-71.09970931099997,31411.0,true
+164988,Boston University,Boston University Public Health,boston_open_data,42.335319353000045,-71.07162395799998,31411.0,true
+164988,Boston University,Boston University Research,boston_open_data,42.35083298500007,-71.10900119299998,31411.0,true
+164988,Boston University,Boston University Sargent College,boston_open_data,42.34983461100006,-71.10204532299997,31411.0,true
+164988,Boston University,Boston University School of Law,boston_open_data,42.35116191700007,-71.10977291399996,31411.0,true
+164988,Boston University,Boston University School of Management,boston_open_data,42.349437849000026,-71.09810862499995,31411.0,true
+164988,Boston University,Boston University School of Medicine,boston_open_data,42.33638764900007,-71.07096966899996,31411.0,true
+164988,Boston University,Boston University,ipeds,42.351118,-71.107942,31411.0,true
+165112,Bunker Hill Community College,Bunker Hill Community College,boston_open_data,42.37511655000003,-71.06957165799997,10986.0,true
+165112,Bunker Hill Community College,Bunker Hill Community College,ipeds,42.374806,-71.069263,10986.0,true
+165167,Cambridge College,Cambridge College,ipeds,42.381091,-71.072646,1982.0,true
+165662,Emerson College,Emerson College,boston_open_data,42.35221938300003,-71.06573578099994,4488.0,true
+165662,Emerson College,Emerson College,ipeds,42.352202,-71.065384,4488.0,true
+165671,Emmanuel College,Emmanuel College,boston_open_data,42.34151633400006,-71.10347795399997,2067.0,true
+165671,Emmanuel College,Emmanuel College,ipeds,42.340602,-71.103634,2067.0,true
+165705,Episcopal Divinity School,Episcopal Divinity School,ipeds,42.376931,-71.124806,48.0,false
+165802,Fisher College,Fisher College,boston_open_data,42.35525000000007,-71.07414000099993,737.0,false
+165802,Fisher College,Fisher College,ipeds,42.355253,-71.074125,737.0,false
+165884,Benjamin Franklin Cummings Institute of Technology,Benjamin Franklin Institute of Technology,boston_open_data,42.346102717000065,-71.07018646599994,573.0,false
+165884,Benjamin Franklin Cummings Institute of Technology,Benjamin Franklin Cummings Institute of Technology,ipeds,42.346023,-71.070231,573.0,false
+166027,Harvard University,Harvard Business School,boston_open_data,42.365226997000036,-71.12005612099995,27210.0,true
+166027,Harvard University,Harvard Medical School,boston_open_data,42.336500888000046,-71.10247008999994,27210.0,true
+166027,Harvard University,Harvard University of Public Health,boston_open_data,42.33506645500006,-71.10352994999994,27210.0,true
+166027,Harvard University,Harvard University,ipeds,42.374471,-71.118313,27210.0,true
+166054,Hellenic College-Holy Cross Greek Orthodox School of Theology,Hellenic College-Holy Cross Greek Orthodox School of Theology,ipeds,42.317018,-71.129418,130.0,false
+166452,Lesley University,Lesley University,ipeds,42.38012,-71.117303,4040.0,true
+166489,Longy School of Music of Bard College,Longy School of Music of Bard College,ipeds,42.378657,-71.123479,244.0,false
+166638,University of Massachusetts-Boston,University of Massachusetts-Boston,boston_open_data,42.313809357000025,-71.03920215999995,14545.0,true
+166638,University of Massachusetts-Boston,University of Massachusetts-Boston,ipeds,42.312881,-71.036865,14545.0,true
+166656,MCPHS University,MCPHS University,boston_open_data,42.336880000000065,-71.10112000099997,6343.0,true
+166656,MCPHS University,MCPHS University,ipeds,42.336825,-71.101244,6343.0,true
+166674,Massachusetts College of Art and Design,Massachusetts College of Art and Design,boston_open_data,42.33638374000003,-71.10034042299998,1982.0,true
+166674,Massachusetts College of Art and Design,Massachusetts College of Art and Design,ipeds,42.336862,-71.099275,1982.0,true
+166683,Massachusetts Institute of Technology,Massachusetts Institute of Technology,ipeds,42.359243,-71.093226,11474.0,true
+166869,MGH Institute of Health Professions,MGH Institute of Health Professions,boston_open_data,42.37491705800005,-71.05397174099994,1175.0,true
+166869,MGH Institute of Health Professions,MGH Institute of Health Professions,ipeds,42.375018,-71.054002,1175.0,true
+166984,School of the Museum of Fine Arts at Tufts University,School of the Museum of Fine Arts-Boston,boston_open_data,42.33853793900005,-71.09669362899996,492.0,false
+166984,School of the Museum of Fine Arts at Tufts University,School of the Museum of Fine Arts at Tufts University,ipeds,42.338505,-71.096556,492.0,false
+167057,The New England Conservatory of Music,The New England Conservatory of Music,boston_open_data,42.34109300000006,-71.08644600099996,819.0,false
+167057,The New England Conservatory of Music,The New England Conservatory of Music,ipeds,42.340946,-71.08629,819.0,false
+167093,New England College of Optometry,New England College of Optometry,boston_open_data,42.35185000000007,-71.08680999899997,528.0,false
+167093,New England College of Optometry,New England College of Optometry,ipeds,42.351853,-71.086829,528.0,false
+167215,New England Law-Boston,New England School of Law,boston_open_data,42.350770287000046,-71.06642450999993,688.0,false
+167215,New England Law-Boston,New England Law-Boston,ipeds,42.350833,-71.0665,688.0,false
+167251,Newbury College,Newbury College,ipeds,42.331032,-71.142082,658.0,false
+167321,The New England Institute of Art,The New England Institute of Art,ipeds,42.332336,-71.116939,178.0,false
+167358,Northeastern University,Northeastern University,boston_open_data,42.34004790300003,-71.08889159299997,21998.0,true
+167358,Northeastern University,Northeastern University,ipeds,42.339992,-71.088782,21998.0,true
+167455,Pine Manor College,Pine Manor College,boston_open_data,42.328790000000026,-71.11021999999997,404.0,false
+167455,Pine Manor College,Pine Manor College,ipeds,42.320827,-71.156464,404.0,false
+167631,Roxbury Community College,Roxbury Community College,boston_open_data,42.32923535000003,-71.09549441999997,1660.0,true
+167631,Roxbury Community College,Roxbury Community College,ipeds,42.329249,-71.09549,1660.0,true
+167677,Saint John's Seminary,Saint John's Seminary,boston_open_data,42.344322960000056,-71.16304875399999,120.0,false
+167677,Saint John's Seminary,Saint John's Seminary,ipeds,42.344146,-71.161998,120.0,false
+167783,Simmons University,Simmons,boston_open_data,42.33918733100006,-71.09993990499999,3383.0,true
+167783,Simmons University,Simmons College,boston_open_data,42.341050342000074,-71.10589563899998,3383.0,true
+167783,Simmons University,Simmons University,ipeds,42.3393,-71.099967,3383.0,true
+168005,Suffolk University,Suffolk University,boston_open_data,42.358904851000034,-71.06194810599999,7081.0,true
+168005,Suffolk University,Suffolk University,ipeds,42.357945,-71.060917,7081.0,true
+168148,Tufts University,Tufts University School of Medicine,boston_open_data,42.34980000000007,-71.06148999899995,11402.0,true
+168148,Tufts University,Tufts University,ipeds,42.40855,-71.118293,11402.0,true
+168227,Wentworth Institute of Technology,Wentworth Institute of Technology,boston_open_data,42.33662000000004,-71.09493999899996,4129.0,true
+168227,Wentworth Institute of Technology,Wentworth Institute of Technology,ipeds,42.336632,-71.094983,4129.0,true
+168290,Wheelock College,Wheelock College,boston_open_data,42.34174000000007,-71.10641999999996,1037.0,true
+168290,Wheelock College,Wheelock College,ipeds,42.349707,-71.100868,1037.0,true
+429128,Urban College of Boston,Urban College of Boston,boston_open_data,42.35289000000006,-71.06407999899994,768.0,false
+429128,Urban College of Boston,Urban College of Boston,ipeds,42.352922,-71.0642,768.0,false
+452054,Le Cordon Bleu College of Culinary Arts-Cambridge,Le Cordon Bleu College of Culinary Arts-Cambridge,ipeds,42.364249,-71.078675,239.0,false
+482705,Northeastern University Professional Programs,Northeastern University Professional Programs,ipeds,42.339992,-71.088782,6250.0,true
+494542,Sattler College,Sattler College,ipeds,42.36064,-71.062111,58.0,false

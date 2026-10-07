@@ -99,21 +99,30 @@ def station_months() -> pl.DataFrame:
     ])
 
 
-def tag_station_day(station_day_all: pl.DataFrame, monthly_towns: pl.DataFrame, station_towns: pl.DataFrame) -> pl.DataFrame:
-    """Add a municipality to each station-day row.
+def tag_station_day(
+    station_day_all: pl.DataFrame,
+    monthly: pl.DataFrame,
+    overall: pl.DataFrame,
+    columns: dict[str, object] | None = None,
+) -> pl.DataFrame:
+    """Add station attributes (by default the municipality) to station-day rows.
 
-    Uses the station's town in that month, falling back to its town at its
-    busiest location, and "unknown" for trips without a station.
+    `columns` maps each attribute to its value when nothing is known. Uses the
+    station's value in that month (from `monthly`, keyed by station_id and
+    month), falling back to its value at its busiest location (`overall`), and
+    the default for trips without a station.
     """
-    monthly = monthly_towns.select("station_id", "month", pl.col("municipality").alias("_monthly"))
-    overall = station_towns.select("station_id", pl.col("municipality").alias("_overall"))
-    return (
+    columns = columns or {"municipality": UNKNOWN}
+    by_month = monthly.select("station_id", "month", *[pl.col(c).alias(f"_m_{c}") for c in columns])
+    by_station = overall.select("station_id", *[pl.col(c).alias(f"_o_{c}") for c in columns])
+    tagged = (
         station_day_all.with_columns(pl.col("date").dt.strftime("%Y%m").alias("month"))
-        .join(monthly, on=["station_id", "month"], how="left")
-        .join(overall, on="station_id", how="left")
-        .with_columns(pl.coalesce("_monthly", "_overall", pl.lit(UNKNOWN)).alias("municipality"))
-        .drop("month", "_monthly", "_overall")
+        .join(by_month, on=["station_id", "month"], how="left")
+        .join(by_station, on="station_id", how="left")
     )
+    return tagged.with_columns(
+        pl.coalesce(f"_m_{c}", f"_o_{c}", pl.lit(default)).alias(c) for c, default in columns.items()
+    ).drop("month", *[f"_m_{c}" for c in columns], *[f"_o_{c}" for c in columns])
 
 
 def main() -> None:
