@@ -74,7 +74,7 @@ POLICY_VALUES = {
     "term": {"fall_2020", "spring_2021"},
     "instruction": {"remote", "hybrid", "in_person"},
     "housing": {"open", "limited", "closed", "none", "unknown"},
-    "checked": {"page", "search"},
+    "checked": {"page", "partial", "search"},
 }
 
 
