@@ -1,4 +1,78 @@
 unitid,institution,academic_year,event,date,weekday,source_url,note
+164924,Boston College,2015-16,commencement,2016-05-23,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2015-16,fall_classes_start,2015-08-31,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2015-16,spring_break_end,2016-03-11,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2015-16,spring_break_start,2016-03-07,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2015-16,spring_classes_start,2016-01-19,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2016-17,commencement,2017-05-22,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2016-17,fall_classes_start,2016-08-29,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2016-17,spring_break_end,2017-03-10,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2016-17,spring_break_start,2017-03-06,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2016-17,spring_classes_start,2017-01-17,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2017-18,commencement,2018-05-21,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2017-18,fall_classes_start,2017-08-28,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2017-18,spring_break_end,2018-03-09,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2017-18,spring_break_start,2018-03-05,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2017-18,spring_classes_start,2018-01-16,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2018-19,commencement,2019-05-20,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2018-19,spring_break_end,2019-03-08,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2018-19,spring_break_start,2019-03-04,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2018-19,spring_classes_start,2019-01-14,,https://calendar.google.com/calendar/ical/bc.edu_03dskrofm885q7aq1lq5pleio0%40group.calendar.google.com/public/basic.ics,"School of Theology and Ministry calendar; matches university class, break and commencement dates where both exist"
+164924,Boston College,2019-20,fall_classes_start,2019-08-26,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2019-20,fall_exams_end,2019-12-19,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2019-20,spring_break_end,2020-03-07,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2019-20,spring_break_start,2020-03-02,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2019-20,spring_classes_start,2020-01-13,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2019-20,spring_exams_end,2020-05-12,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2020-21,commencement,2021-05-24,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2020-21,fall_classes_start,2020-08-31,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2020-21,fall_exams_end,2020-12-21,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2020-21,spring_break_end,none,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,No spring vacation in spring 2021 (COVID-19)
+164924,Boston College,2020-21,spring_break_start,none,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,No spring vacation in spring 2021 (COVID-19)
+164924,Boston College,2020-21,spring_classes_start,2021-01-28,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2020-21,spring_exams_end,2021-05-18,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2021-22,commencement,2022-05-23,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2021-22,fall_classes_start,2021-08-30,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2021-22,fall_exams_end,2021-12-21,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2021-22,spring_break_end,2022-03-12,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2021-22,spring_break_start,2022-03-07,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2021-22,spring_classes_start,2022-01-18,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2021-22,spring_exams_end,2022-05-17,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2022-23,commencement,2023-05-22,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2022-23,fall_classes_start,2022-08-29,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2022-23,fall_exams_end,2022-12-21,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2022-23,spring_break_end,2023-03-11,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2022-23,spring_break_start,2023-03-06,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2022-23,spring_classes_start,2023-01-17,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2022-23,spring_exams_end,2023-05-16,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2023-24,commencement,2024-05-20,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2023-24,fall_classes_start,2023-08-28,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2023-24,fall_exams_end,2023-12-20,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2023-24,spring_break_end,2024-03-09,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2023-24,spring_break_start,2024-03-04,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2023-24,spring_classes_start,2024-01-16,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2023-24,spring_exams_end,2024-05-14,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2024-25,commencement,2025-05-19,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2024-25,fall_classes_start,2024-08-26,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2024-25,fall_exams_end,2024-12-19,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2024-25,spring_break_end,2025-03-08,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2024-25,spring_break_start,2025-03-03,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2024-25,spring_classes_start,2025-01-13,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2024-25,spring_exams_end,2025-05-13,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2025-26,commencement,2026-05-18,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2025-26,fall_classes_start,2025-08-25,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2025-26,fall_exams_end,2025-12-18,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2025-26,spring_break_end,2026-03-07,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2025-26,spring_break_start,2026-03-02,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2025-26,spring_classes_start,2026-01-12,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2025-26,spring_exams_end,2026-05-12,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2026-27,commencement,2027-05-24,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2026-27,fall_classes_start,2026-08-31,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2026-27,fall_exams_end,2026-12-21,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2026-27,spring_break_end,2027-03-13,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2026-27,spring_break_start,2027-03-08,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2026-27,spring_classes_start,2027-01-19,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
+164924,Boston College,2026-27,spring_exams_end,2027-05-18,,https://calendar.google.com/calendar/ical/bc.edu_s713lgtah4c7vkh0rgmct642gg%40group.calendar.google.com/public/basic.ics,Boston College Academic Calendar
 164988,Boston University,2014-15,commencement,2015-05-17,Sunday,https://www.bu.edu/reg/files/2015/05/Academic-Calendar-2014-20151.pdf,Commencement Weekend May 15-17; last day recorded
 164988,Boston University,2014-15,fall_classes_start,2014-09-02,Tuesday,https://www.bu.edu/reg/files/2015/05/Academic-Calendar-2014-20151.pdf,
 164988,Boston University,2014-15,fall_exams_end,2014-12-19,Friday,https://www.bu.edu/reg/files/2015/05/Academic-Calendar-2014-20151.pdf,
@@ -121,10 +195,76 @@ unitid,institution,academic_year,event,date,weekday,source_url,note
 166027,Harvard University,2026-27,spring_break_start,2027-03-13,Saturday,https://registrar.fas.harvard.edu/news/2026/07/2026-2027-academic-calendar-now-available,
 166027,Harvard University,2026-27,spring_classes_start,2027-01-25,Monday,https://registrar.fas.harvard.edu/news/2026/07/2026-2027-academic-calendar-now-available,
 166027,Harvard University,2026-27,spring_exams_end,2027-05-15,Saturday,https://registrar.fas.harvard.edu/news/2026/07/2026-2027-academic-calendar-now-available,
-166683,Massachusetts Institute of Technology,2024-25,fall_classes_start,2024-09-04,Wednesday,https://registrar.mit.edu/sites/default/files/2024-08/Key_catalog_and_schedule_dates_2024-2025.pdf,
-166683,Massachusetts Institute of Technology,2024-25,spring_break_end,2025-03-28,Friday,https://registrar.mit.edu/sites/default/files/2024-08/Key_catalog_and_schedule_dates_2024-2025.pdf,Spring vacation
-166683,Massachusetts Institute of Technology,2024-25,spring_break_start,2025-03-24,Monday,https://registrar.mit.edu/sites/default/files/2024-08/Key_catalog_and_schedule_dates_2024-2025.pdf,Spring vacation
-166683,Massachusetts Institute of Technology,2024-25,spring_exams_end,2025-05-21,Wednesday,https://registrar.mit.edu/sites/default/files/2024-08/Key_catalog_and_schedule_dates_2024-2025.pdf,Final exam period May 16-21
+166683,Massachusetts Institute of Technology,2015-16,commencement,2016-06-03,,https://catalog.mit.edu/archive/2015-2016/academic-calendar/,Last day recorded
+166683,Massachusetts Institute of Technology,2015-16,fall_classes_start,2015-09-09,Wednesday,https://catalog.mit.edu/archive/2015-2016/academic-calendar/,
+166683,Massachusetts Institute of Technology,2015-16,fall_exams_end,2015-12-18,,https://catalog.mit.edu/archive/2015-2016/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2015-16,spring_break_end,2016-03-25,,https://catalog.mit.edu/archive/2015-2016/academic-calendar/,
+166683,Massachusetts Institute of Technology,2015-16,spring_break_start,2016-03-21,,https://catalog.mit.edu/archive/2015-2016/academic-calendar/,
+166683,Massachusetts Institute of Technology,2015-16,spring_classes_start,2016-02-02,Tuesday,https://catalog.mit.edu/archive/2015-2016/academic-calendar/,
+166683,Massachusetts Institute of Technology,2015-16,spring_exams_end,2016-05-20,,https://catalog.mit.edu/archive/2015-2016/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2016-17,commencement,2017-06-09,,https://catalog.mit.edu/archive/2016-2017/academic-calendar/,Last day recorded
+166683,Massachusetts Institute of Technology,2016-17,fall_classes_start,2016-09-07,Wednesday,https://catalog.mit.edu/archive/2016-2017/academic-calendar/,
+166683,Massachusetts Institute of Technology,2016-17,fall_exams_end,2016-12-22,,https://catalog.mit.edu/archive/2016-2017/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2016-17,spring_break_end,2017-03-31,,https://catalog.mit.edu/archive/2016-2017/academic-calendar/,
+166683,Massachusetts Institute of Technology,2016-17,spring_break_start,2017-03-27,,https://catalog.mit.edu/archive/2016-2017/academic-calendar/,
+166683,Massachusetts Institute of Technology,2016-17,spring_classes_start,2017-02-07,Tuesday,https://catalog.mit.edu/archive/2016-2017/academic-calendar/,
+166683,Massachusetts Institute of Technology,2016-17,spring_exams_end,2017-05-26,,https://catalog.mit.edu/archive/2016-2017/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2017-18,commencement,2018-06-08,,https://catalog.mit.edu/archive/2017-2018/academic-calendar/,Last day recorded
+166683,Massachusetts Institute of Technology,2017-18,fall_classes_start,2017-09-06,Wednesday,https://catalog.mit.edu/archive/2017-2018/academic-calendar/,
+166683,Massachusetts Institute of Technology,2017-18,fall_exams_end,2017-12-22,,https://catalog.mit.edu/archive/2017-2018/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2017-18,spring_break_end,2018-03-30,,https://catalog.mit.edu/archive/2017-2018/academic-calendar/,
+166683,Massachusetts Institute of Technology,2017-18,spring_break_start,2018-03-26,,https://catalog.mit.edu/archive/2017-2018/academic-calendar/,
+166683,Massachusetts Institute of Technology,2017-18,spring_classes_start,2018-02-06,Tuesday,https://catalog.mit.edu/archive/2017-2018/academic-calendar/,
+166683,Massachusetts Institute of Technology,2017-18,spring_exams_end,2018-05-25,,https://catalog.mit.edu/archive/2017-2018/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2018-19,commencement,2019-06-07,,https://catalog.mit.edu/archive/2018-2019/academic-calendar/,Last day recorded
+166683,Massachusetts Institute of Technology,2018-19,fall_classes_start,2018-09-05,Wednesday,https://catalog.mit.edu/archive/2018-2019/academic-calendar/,
+166683,Massachusetts Institute of Technology,2018-19,fall_exams_end,2018-12-21,,https://catalog.mit.edu/archive/2018-2019/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2018-19,spring_break_end,2019-03-29,,https://catalog.mit.edu/archive/2018-2019/academic-calendar/,
+166683,Massachusetts Institute of Technology,2018-19,spring_break_start,2019-03-25,,https://catalog.mit.edu/archive/2018-2019/academic-calendar/,
+166683,Massachusetts Institute of Technology,2018-19,spring_classes_start,2019-02-05,Tuesday,https://catalog.mit.edu/archive/2018-2019/academic-calendar/,
+166683,Massachusetts Institute of Technology,2018-19,spring_exams_end,2019-05-24,,https://catalog.mit.edu/archive/2018-2019/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2019-20,commencement,2020-05-29,,https://catalog.mit.edu/archive/2019-2020/academic-calendar/,Last day recorded
+166683,Massachusetts Institute of Technology,2019-20,fall_classes_start,2019-09-04,Wednesday,https://catalog.mit.edu/archive/2019-2020/academic-calendar/,
+166683,Massachusetts Institute of Technology,2019-20,fall_exams_end,2019-12-20,,https://catalog.mit.edu/archive/2019-2020/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2019-20,spring_break_end,2020-03-27,,https://catalog.mit.edu/archive/2019-2020/academic-calendar/,
+166683,Massachusetts Institute of Technology,2019-20,spring_break_start,2020-03-23,,https://catalog.mit.edu/archive/2019-2020/academic-calendar/,
+166683,Massachusetts Institute of Technology,2019-20,spring_classes_start,2020-02-03,Monday,https://catalog.mit.edu/archive/2019-2020/academic-calendar/,
+166683,Massachusetts Institute of Technology,2019-20,spring_exams_end,2020-05-20,,https://catalog.mit.edu/archive/2019-2020/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2020-21,commencement,2021-06-04,,https://catalog.mit.edu/archive/2020-2021/academic-calendar/,Last day recorded
+166683,Massachusetts Institute of Technology,2020-21,fall_classes_start,2020-09-01,Tuesday,https://catalog.mit.edu/archive/2020-2021/academic-calendar/,
+166683,Massachusetts Institute of Technology,2020-21,fall_exams_end,2020-12-18,,https://catalog.mit.edu/archive/2020-2021/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2020-21,spring_break_end,none,,https://catalog.mit.edu/archive/2020-2021/academic-calendar/,No spring break in spring 2021 (COVID-19)
+166683,Massachusetts Institute of Technology,2020-21,spring_break_start,none,,https://catalog.mit.edu/archive/2020-2021/academic-calendar/,No spring break in spring 2021 (COVID-19); single student holidays instead
+166683,Massachusetts Institute of Technology,2020-21,spring_classes_start,2021-02-16,Tuesday,https://catalog.mit.edu/archive/2020-2021/academic-calendar/,
+166683,Massachusetts Institute of Technology,2020-21,spring_exams_end,2021-05-27,,https://catalog.mit.edu/archive/2020-2021/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2021-22,commencement,2022-05-27,,https://catalog.mit.edu/archive/2021-2022/academic-calendar/,Last day recorded
+166683,Massachusetts Institute of Technology,2021-22,fall_classes_start,2021-09-08,Wednesday,https://catalog.mit.edu/archive/2021-2022/academic-calendar/,
+166683,Massachusetts Institute of Technology,2021-22,fall_exams_end,2021-12-17,,https://catalog.mit.edu/archive/2021-2022/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2021-22,spring_break_end,2022-03-25,,https://catalog.mit.edu/archive/2021-2022/academic-calendar/,
+166683,Massachusetts Institute of Technology,2021-22,spring_break_start,2022-03-21,,https://catalog.mit.edu/archive/2021-2022/academic-calendar/,
+166683,Massachusetts Institute of Technology,2021-22,spring_classes_start,2022-01-31,Monday,https://catalog.mit.edu/archive/2021-2022/academic-calendar/,
+166683,Massachusetts Institute of Technology,2021-22,spring_exams_end,2022-05-18,,https://catalog.mit.edu/archive/2021-2022/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2022-23,commencement,2023-06-02,,https://catalog.mit.edu/archive/2022-2023/academic-calendar/,Last day recorded
+166683,Massachusetts Institute of Technology,2022-23,fall_classes_start,2022-09-07,Wednesday,https://catalog.mit.edu/archive/2022-2023/academic-calendar/,
+166683,Massachusetts Institute of Technology,2022-23,fall_exams_end,2022-12-22,,https://catalog.mit.edu/archive/2022-2023/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2022-23,spring_break_end,2023-03-31,,https://catalog.mit.edu/archive/2022-2023/academic-calendar/,
+166683,Massachusetts Institute of Technology,2022-23,spring_break_start,2023-03-27,,https://catalog.mit.edu/archive/2022-2023/academic-calendar/,
+166683,Massachusetts Institute of Technology,2022-23,spring_classes_start,2023-02-06,Monday,https://catalog.mit.edu/archive/2022-2023/academic-calendar/,
+166683,Massachusetts Institute of Technology,2022-23,spring_exams_end,2023-05-24,,https://catalog.mit.edu/archive/2022-2023/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2023-24,commencement,2024-05-31,,https://catalog.mit.edu/archive/2023-2024/academic-calendar/,Last day recorded
+166683,Massachusetts Institute of Technology,2023-24,fall_classes_start,2023-09-06,Wednesday,https://catalog.mit.edu/archive/2023-2024/academic-calendar/,
+166683,Massachusetts Institute of Technology,2023-24,fall_exams_end,2023-12-22,,https://catalog.mit.edu/archive/2023-2024/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2023-24,spring_break_end,2024-03-29,,https://catalog.mit.edu/archive/2023-2024/academic-calendar/,
+166683,Massachusetts Institute of Technology,2023-24,spring_break_start,2024-03-25,,https://catalog.mit.edu/archive/2023-2024/academic-calendar/,
+166683,Massachusetts Institute of Technology,2023-24,spring_classes_start,2024-02-05,Monday,https://catalog.mit.edu/archive/2023-2024/academic-calendar/,
+166683,Massachusetts Institute of Technology,2023-24,spring_exams_end,2024-05-22,,https://catalog.mit.edu/archive/2023-2024/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2024-25,commencement,2025-05-30,,https://catalog.mit.edu/archive/2024-2025/academic-calendar/,Last day recorded
+166683,Massachusetts Institute of Technology,2024-25,fall_classes_start,2024-09-04,Wednesday,https://catalog.mit.edu/archive/2024-2025/academic-calendar/,
+166683,Massachusetts Institute of Technology,2024-25,fall_exams_end,2024-12-20,,https://catalog.mit.edu/archive/2024-2025/academic-calendar/,Last day of final exam period
+166683,Massachusetts Institute of Technology,2024-25,spring_break_end,2025-03-28,,https://catalog.mit.edu/archive/2024-2025/academic-calendar/,
+166683,Massachusetts Institute of Technology,2024-25,spring_break_start,2025-03-24,,https://catalog.mit.edu/archive/2024-2025/academic-calendar/,
+166683,Massachusetts Institute of Technology,2024-25,spring_classes_start,2025-02-03,Monday,https://catalog.mit.edu/archive/2024-2025/academic-calendar/,
+166683,Massachusetts Institute of Technology,2024-25,spring_exams_end,2025-05-21,,https://catalog.mit.edu/archive/2024-2025/academic-calendar/,Last day of final exam period
 166683,Massachusetts Institute of Technology,2025-26,commencement,2026-05-29,Friday,https://registrar.mit.edu/calendar,Commencement activities May 27-29; last day recorded
 166683,Massachusetts Institute of Technology,2025-26,fall_classes_start,2025-09-03,Wednesday,https://registrar.mit.edu/sites/default/files/2025-07/Key_catalog_and_schedule_dates_2025-2026.pdf,
 166683,Massachusetts Institute of Technology,2025-26,fall_exams_end,2025-12-19,Friday,https://registrar.mit.edu/sites/default/files/2025-07/Key_catalog_and_schedule_dates_2025-2026.pdf,Final exam period December 15-19
@@ -223,3 +363,7 @@ unitid,institution,academic_year,event,date,weekday,source_url,note
 167358,Northeastern University,2026-27,spring_break_start,2027-03-08,,https://registrar.northeastern.edu/wp-content/uploads/sites/9/2026-2027-Academic-Calendar.pdf,
 167358,Northeastern University,2026-27,spring_classes_start,2027-01-13,,https://registrar.northeastern.edu/wp-content/uploads/sites/9/2026-2027-Academic-Calendar.pdf,
 167358,Northeastern University,2026-27,spring_exams_end,2027-05-02,,https://registrar.northeastern.edu/wp-content/uploads/sites/9/2026-2027-Academic-Calendar.pdf,Last day of spring final exam period
+168148,Tufts University,2026-27,fall_exams_end,2026-12-23,,https://m.tufts.edu/students/device/text/student_athletic_calendar/index?feed=calendar_student_life_academic,Final Examinations end
+168148,Tufts University,2026-27,spring_break_end,2027-03-28,,https://m.tufts.edu/students/device/text/student_athletic_calendar/index?feed=calendar_student_life_academic,Classes resume 2027-03-29
+168148,Tufts University,2026-27,spring_break_start,2027-03-20,,https://m.tufts.edu/students/device/text/student_athletic_calendar/index?feed=calendar_student_life_academic,Spring Recess begins
+168148,Tufts University,2026-27,spring_classes_start,2027-01-20,,https://m.tufts.edu/students/device/text/student_athletic_calendar/index?feed=calendar_student_life_academic,Classes begin for full-term courses
