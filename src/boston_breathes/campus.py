@@ -29,9 +29,9 @@ import io
 
 import geopandas as gpd
 import polars as pl
-import requests
 
 from boston_breathes import bluebikes as bb
+from boston_breathes import http
 from boston_breathes.municipalities import MA_CRS, UNKNOWN, assign, load_towns, station_months, tag_station_day
 from boston_breathes.paths import PROCESSED, RAW, STUDY_AREA
 
@@ -73,7 +73,7 @@ ZONE_COLUMNS = {
 
 
 def download_boston_campuses() -> str:
-    resp = requests.get(BOSTON_CAMPUSES_URL, timeout=120)
+    resp = http.get(BOSTON_CAMPUSES_URL, timeout=120)
     resp.raise_for_status()
     BOSTON_CAMPUSES_PATH.parent.mkdir(parents=True, exist_ok=True)
     BOSTON_CAMPUSES_PATH.write_text(resp.text)

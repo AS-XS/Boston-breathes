@@ -13,8 +13,8 @@ from datetime import date, timedelta
 import io
 
 import polars as pl
-import requests
 
+from boston_breathes import http
 from boston_breathes.paths import PROCESSED, RAW, STUDY_END, STUDY_START
 from boston_breathes.weeks import build_weeks
 
@@ -42,7 +42,7 @@ def download(start: date = STUDY_START, end: date | None = None) -> str:
         "format": "csv",
         "includeAttributes": "false",
     }
-    resp = requests.get(API_URL, params=params, timeout=120)
+    resp = http.get(API_URL, params=params, timeout=120)
     resp.raise_for_status()
     RAW_PATH.parent.mkdir(parents=True, exist_ok=True)
     RAW_PATH.write_text(resp.text)

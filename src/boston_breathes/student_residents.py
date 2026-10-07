@@ -22,8 +22,8 @@ import zipfile
 from datetime import date
 
 import polars as pl
-import requests
 
+from boston_breathes import http
 from boston_breathes.paths import PROCESSED, RAW, STUDY_START
 
 BASE_URL = "https://www2.census.gov/programs-surveys/acs/summary_file/"
@@ -44,7 +44,7 @@ LINES = {"population_3plus": 1, "undergrad": 17, "graduate": 18}
 
 
 def get(url: str, timeout: int = 600) -> bytes | None:
-    resp = requests.get(url, timeout=timeout)
+    resp = http.get(url, timeout=timeout)
     if resp.status_code == 404:
         return None
     resp.raise_for_status()

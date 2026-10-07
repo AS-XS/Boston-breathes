@@ -16,9 +16,9 @@ Outputs in data/processed/:
 
 import geopandas as gpd
 import polars as pl
-import requests
 
 from boston_breathes import bluebikes as bb
+from boston_breathes import http
 from boston_breathes.paths import PROCESSED, RAW, STUDY_AREA
 
 BOUNDARY_URL = "https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_25_cousub_500k.zip"
@@ -38,7 +38,7 @@ def download_boundaries() -> None:
     if BOUNDARY_PATH.exists():
         return
     BOUNDARY_PATH.parent.mkdir(parents=True, exist_ok=True)
-    resp = requests.get(BOUNDARY_URL, timeout=120)
+    resp = http.get(BOUNDARY_URL, timeout=120)
     resp.raise_for_status()
     BOUNDARY_PATH.write_bytes(resp.content)
 

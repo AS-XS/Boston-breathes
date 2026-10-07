@@ -24,8 +24,8 @@ import zipfile
 from datetime import timedelta
 
 import polars as pl
-import requests
 
+from boston_breathes import http
 from boston_breathes.campus import nearest_campus
 from boston_breathes.municipalities import UNKNOWN, assign, load_towns
 from boston_breathes.paths import INTERIM, PROCESSED, RAW, STUDY_AREA
@@ -39,7 +39,7 @@ INTERIM_DIR = INTERIM / "mbta"
 
 def download() -> bytes:
     if not RAW_PATH.exists():
-        resp = requests.get(HISTORICAL_URL, timeout=900)
+        resp = http.get(HISTORICAL_URL, timeout=900)
         resp.raise_for_status()
         RAW_PATH.parent.mkdir(parents=True, exist_ok=True)
         RAW_PATH.write_bytes(resp.content)
@@ -106,7 +106,7 @@ def read_all(zip_bytes: bytes) -> pl.DataFrame:
 
 def all_stations() -> pl.DataFrame:
     """Every parent station in the MBTA V3 API (ID and name)."""
-    resp = requests.get(STOPS_URL, params={"filter[location_type]": "1"}, timeout=60)
+    resp = http.get(STOPS_URL, params={"filter[location_type]": "1"}, timeout=60)
     resp.raise_for_status()
     rows = [{"stop_id": s["id"], "api_name": s["attributes"]["name"]} for s in resp.json()["data"]]
     return pl.DataFrame(rows, schema={"stop_id": pl.Utf8, "api_name": pl.Utf8})
@@ -140,7 +140,7 @@ def station_locations(stop_ids: list[str]) -> pl.DataFrame:
     """Name and coordinates of each station from the MBTA V3 API."""
     rows = []
     for i in range(0, len(stop_ids), 50):
-        resp = requests.get(STOPS_URL, params={"filter[id]": ",".join(stop_ids[i:i + 50])}, timeout=60)
+        resp = http.get(STOPS_URL, params={"filter[id]": ",".join(stop_ids[i:i + 50])}, timeout=60)
         resp.raise_for_status()
         for s in resp.json()["data"]:
             a = s["attributes"]

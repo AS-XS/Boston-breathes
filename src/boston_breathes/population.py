@@ -27,8 +27,8 @@ import re
 from datetime import date
 
 import polars as pl
-import requests
 
+from boston_breathes import http
 from boston_breathes.paths import PROCESSED, RAW, STUDY_AREA, STUDY_START
 from boston_breathes.weeks import build_weeks
 
@@ -47,7 +47,7 @@ def fetch(url: str, name: str) -> str | None:
     path = RAW_DIR / name
     if path.exists():
         return path.read_text(encoding="latin-1")
-    resp = requests.get(url, timeout=300)
+    resp = http.get(url, timeout=300)
     if resp.status_code == 404:
         return None
     resp.raise_for_status()

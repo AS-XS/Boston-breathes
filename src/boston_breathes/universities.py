@@ -29,8 +29,8 @@ import zipfile
 from datetime import date
 
 import polars as pl
-import requests
 
+from boston_breathes import http
 from boston_breathes.municipalities import assign, load_towns
 from boston_breathes.paths import PROCESSED, RAW, STUDY_AREA, STUDY_START
 
@@ -72,7 +72,7 @@ def download(name: str) -> bytes | None:
     path = RAW_DIR / f"{name}.zip"
     if path.exists():
         return path.read_bytes()
-    resp = requests.get(BASE_URL + f"{name}.zip", timeout=120)
+    resp = http.get(BASE_URL + f"{name}.zip", timeout=120)
     if resp.status_code == 404:
         return None
     resp.raise_for_status()

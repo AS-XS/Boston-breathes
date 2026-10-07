@@ -21,8 +21,8 @@ Output: data/processed/boston_street_counts.csv, one row per location and day.
 import io
 
 import polars as pl
-import requests
 
+from boston_breathes import http
 from boston_breathes.campus import nearest_campus
 from boston_breathes.municipalities import assign, load_towns
 from boston_breathes.paths import PROCESSED, RAW
@@ -35,7 +35,7 @@ RAW_PATH = RAW / "boston" / "streets_daily_bike_counts.csv"
 
 
 def download() -> str:
-    resp = requests.get(DATASET_URL, timeout=120)
+    resp = http.get(DATASET_URL, timeout=120)
     resp.raise_for_status()
     RAW_PATH.parent.mkdir(parents=True, exist_ok=True)
     RAW_PATH.write_bytes(resp.content)

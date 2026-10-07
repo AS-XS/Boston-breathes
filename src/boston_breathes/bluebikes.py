@@ -40,6 +40,7 @@ from pathlib import Path
 import polars as pl
 import requests
 
+from boston_breathes import http
 from boston_breathes.paths import INTERIM, PROCESSED, RAW
 from boston_breathes.weeks import build_weeks
 
@@ -105,7 +106,7 @@ MODERN_BIKE = {"classic_bike": "classic", "docked_bike": "classic", "electric_bi
 
 def list_month_files() -> dict[str, str]:
     """Map YYYYMM -> S3 object key for every monthly trip file in the bucket."""
-    resp = requests.get(BUCKET_URL, timeout=60)
+    resp = http.get(BUCKET_URL, timeout=60)
     resp.raise_for_status()
     keys = re.findall(r"<Key>([^<]+)</Key>", resp.text)
     if "<IsTruncated>true</IsTruncated>" in resp.text:
@@ -125,7 +126,7 @@ def download(key: str, dest: Path, retries: int = 4) -> Path:
     tmp = dest.with_suffix(dest.suffix + ".part")
     for attempt in range(retries + 1):
         try:
-            with requests.get(BUCKET_URL + key, stream=True, timeout=120) as resp:
+            with http.get(BUCKET_URL + key, stream=True, timeout=120) as resp:
                 resp.raise_for_status()
                 with open(tmp, "wb") as f:
                     for chunk in resp.iter_content(chunk_size=1 << 20):

@@ -17,8 +17,8 @@ Output: data/processed/cambridge_town_gown.csv, one row per report year.
 import io
 
 import polars as pl
-import requests
 
+from boston_breathes import http
 from boston_breathes.paths import PROCESSED, RAW
 
 DATASET_URL = "https://data.cambridgema.gov/api/views/46sm-9zs4/rows.csv?accessType=DOWNLOAD"
@@ -43,7 +43,7 @@ COLUMNS = {
 
 
 def download() -> str:
-    resp = requests.get(DATASET_URL, timeout=120)
+    resp = http.get(DATASET_URL, timeout=120)
     resp.raise_for_status()
     RAW_PATH.parent.mkdir(parents=True, exist_ok=True)
     RAW_PATH.write_text(resp.text)
