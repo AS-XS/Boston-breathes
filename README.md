@@ -174,7 +174,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 3. Station municipalities | U.S. Census town boundaries (county subdivisions) | Done | `bluebikes_station_municipalities.csv`, `bluebikes_weekly_by_municipality.csv` |
 | 4. Weather | NOAA daily observations, Boston Logan Airport | Done | `weather_daily.csv`, `weather_weekly.csv` |
 | 5. Universities and campus locations | IPEDS institution directory | Done | `universities.csv` |
-| 6. Enrollment | IPEDS fall enrollment and distance education | Done | `enrollment_annual.csv` |
+| 6. Enrollment | IPEDS fall enrollment and distance education; City of Cambridge Town Gown reports | Done | `enrollment_annual.csv`, `cambridge_town_gown.csv` |
 | 7. Bluebikes rider age | Bluebikes trip files, 2015–2022 | Planned | weekly trips by riders of typical college age and by older riders |
 | 8. Campus-area activity | Bluebikes stations matched to nearby campuses | Planned | weekly trips near campuses and elsewhere |
 | 9. Resident population | U.S. Census population estimates | Planned | annual population per municipality |
@@ -196,7 +196,7 @@ Processing decisions so far:
 * **Weather.** Logan Airport does not report daily average temperature, so it is taken as the midpoint of the daily maximum and minimum.
 * **Universities.** Institutions are selected by the location of their main campus, using the same town boundaries as Bluebikes stations, and include degree-granting institutions in the four study-area municipalities plus Boston College and Tufts University just outside them. Institutions that closed or merged during the period are kept for the years they reported.
 * **Students present in person.** Students enrolled only in online programs are subtracted from enrollment, since they are not physically in the area; this also captures the shift to remote learning in fall 2020.
-* **Enrollment coverage.** IPEDS fall enrollment is currently published through 2023, so later years will need to be carried forward or estimated. IPEDS gives one location per institution, so universities with several campuses are placed at their main campus.
+* **Enrollment coverage.** IPEDS fall enrollment is currently published through 2023. Cambridge's Town Gown reports, which are published sooner, add fall 2024 for Harvard, MIT, Lesley, and Hult; each report year describes the previous fall. Other institutions and later years will need to be carried forward or estimated. IPEDS gives one location per institution, so universities with several campuses are placed at their main campus.
 
 ---
 
