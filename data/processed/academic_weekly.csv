@@ -6,7 +6,7 @@ week_start,unitid,institution,days_in_session
 2015-01-05,164988,Boston University,0
 2015-01-05,166027,Harvard University,0
 2015-01-05,166683,Massachusetts Institute of Technology,0
-2015-01-05,167358,Northeastern University,7
+2015-01-05,167358,Northeastern University,0
 2015-01-12,164988,Boston University,0
 2015-01-12,166027,Harvard University,0
 2015-01-12,166683,Massachusetts Institute of Technology,0
@@ -214,7 +214,7 @@ week_start,unitid,institution,days_in_session
 2016-01-04,164988,Boston University,0
 2016-01-04,166027,Harvard University,0
 2016-01-04,166683,Massachusetts Institute of Technology,0
-2016-01-04,167358,Northeastern University,7
+2016-01-04,167358,Northeastern University,0
 2016-01-11,164988,Boston University,0
 2016-01-11,166027,Harvard University,0
 2016-01-11,166683,Massachusetts Institute of Technology,0
@@ -630,7 +630,7 @@ week_start,unitid,institution,days_in_session
 2018-01-01,164988,Boston University,0
 2018-01-01,166027,Harvard University,0
 2018-01-01,166683,Massachusetts Institute of Technology,0
-2018-01-01,167358,Northeastern University,7
+2018-01-01,167358,Northeastern University,0
 2018-01-08,164988,Boston University,0
 2018-01-08,166027,Harvard University,0
 2018-01-08,166683,Massachusetts Institute of Technology,0
@@ -870,15 +870,15 @@ week_start,unitid,institution,days_in_session
 2019-02-25,164988,Boston University,7
 2019-02-25,166027,Harvard University,7
 2019-02-25,166683,Massachusetts Institute of Technology,7
-2019-02-25,167358,Northeastern University,7
+2019-02-25,167358,Northeastern University,5
 2019-03-04,164988,Boston University,5
 2019-03-04,166027,Harvard University,7
 2019-03-04,166683,Massachusetts Institute of Technology,7
-2019-03-04,167358,Northeastern University,5
+2019-03-04,167358,Northeastern University,0
 2019-03-11,164988,Boston University,0
 2019-03-11,166027,Harvard University,5
 2019-03-11,166683,Massachusetts Institute of Technology,7
-2019-03-11,167358,Northeastern University,0
+2019-03-11,167358,Northeastern University,7
 2019-03-18,164988,Boston University,7
 2019-03-18,166027,Harvard University,0
 2019-03-18,166683,Massachusetts Institute of Technology,5
@@ -902,11 +902,11 @@ week_start,unitid,institution,days_in_session
 2019-04-22,164988,Boston University,7
 2019-04-22,166027,Harvard University,7
 2019-04-22,166683,Massachusetts Institute of Technology,7
-2019-04-22,167358,Northeastern University,7
+2019-04-22,167358,Northeastern University,5
 2019-04-29,164988,Boston University,7
 2019-04-29,166027,Harvard University,7
 2019-04-29,166683,Massachusetts Institute of Technology,7
-2019-04-29,167358,Northeastern University,5
+2019-04-29,167358,Northeastern University,0
 2019-05-06,164988,Boston University,6
 2019-05-06,166027,Harvard University,7
 2019-05-06,166683,Massachusetts Institute of Technology,7
@@ -1078,15 +1078,15 @@ week_start,unitid,institution,days_in_session
 2020-02-24,164988,Boston University,7
 2020-02-24,166027,Harvard University,7
 2020-02-24,166683,Massachusetts Institute of Technology,7
-2020-02-24,167358,Northeastern University,7
+2020-02-24,167358,Northeastern University,5
 2020-03-02,164988,Boston University,5
 2020-03-02,166027,Harvard University,7
 2020-03-02,166683,Massachusetts Institute of Technology,7
-2020-03-02,167358,Northeastern University,5
+2020-03-02,167358,Northeastern University,0
 2020-03-09,164988,Boston University,0
 2020-03-09,166027,Harvard University,5
 2020-03-09,166683,Massachusetts Institute of Technology,7
-2020-03-09,167358,Northeastern University,0
+2020-03-09,167358,Northeastern University,7
 2020-03-16,164988,Boston University,7
 2020-03-16,166027,Harvard University,0
 2020-03-16,166683,Massachusetts Institute of Technology,5
@@ -1110,11 +1110,11 @@ week_start,unitid,institution,days_in_session
 2020-04-20,164988,Boston University,7
 2020-04-20,166027,Harvard University,7
 2020-04-20,166683,Massachusetts Institute of Technology,7
-2020-04-20,167358,Northeastern University,7
+2020-04-20,167358,Northeastern University,5
 2020-04-27,164988,Boston University,7
 2020-04-27,166027,Harvard University,7
 2020-04-27,166683,Massachusetts Institute of Technology,7
-2020-04-27,167358,Northeastern University,5
+2020-04-27,167358,Northeastern University,0
 2020-05-04,164988,Boston University,6
 2020-05-04,166027,Harvard University,7
 2020-05-04,166683,Massachusetts Institute of Technology,7
@@ -1258,15 +1258,15 @@ week_start,unitid,institution,days_in_session
 2021-01-04,164988,Boston University,0
 2021-01-04,166027,Harvard University,0
 2021-01-04,166683,Massachusetts Institute of Technology,0
-2021-01-04,167358,Northeastern University,7
+2021-01-04,167358,Northeastern University,0
 2021-01-11,164988,Boston University,0
 2021-01-11,166027,Harvard University,0
 2021-01-11,166683,Massachusetts Institute of Technology,0
-2021-01-11,167358,Northeastern University,7
+2021-01-11,167358,Northeastern University,0
 2021-01-18,164988,Boston University,0
 2021-01-18,166027,Harvard University,0
 2021-01-18,166683,Massachusetts Institute of Technology,0
-2021-01-18,167358,Northeastern University,7
+2021-01-18,167358,Northeastern University,6
 2021-01-25,164988,Boston University,7
 2021-01-25,166027,Harvard University,7
 2021-01-25,166683,Massachusetts Institute of Technology,0
@@ -1290,11 +1290,11 @@ week_start,unitid,institution,days_in_session
 2021-03-01,164988,Boston University,7
 2021-03-01,166027,Harvard University,7
 2021-03-01,166683,Massachusetts Institute of Technology,7
-2021-03-01,167358,Northeastern University,5
+2021-03-01,167358,Northeastern University,7
 2021-03-08,164988,Boston University,7
 2021-03-08,166027,Harvard University,5
 2021-03-08,166683,Massachusetts Institute of Technology,7
-2021-03-08,167358,Northeastern University,0
+2021-03-08,167358,Northeastern University,7
 2021-03-15,164988,Boston University,7
 2021-03-15,166027,Harvard University,0
 2021-03-15,166683,Massachusetts Institute of Technology,5
@@ -1466,15 +1466,15 @@ week_start,unitid,institution,days_in_session
 2022-01-03,164988,Boston University,0
 2022-01-03,166027,Harvard University,0
 2022-01-03,166683,Massachusetts Institute of Technology,0
-2022-01-03,167358,Northeastern University,7
+2022-01-03,167358,Northeastern University,0
 2022-01-10,164988,Boston University,0
 2022-01-10,166027,Harvard University,0
 2022-01-10,166683,Massachusetts Institute of Technology,0
-2022-01-10,167358,Northeastern University,7
+2022-01-10,167358,Northeastern University,0
 2022-01-17,164988,Boston University,4
 2022-01-17,166027,Harvard University,0
 2022-01-17,166683,Massachusetts Institute of Technology,0
-2022-01-17,167358,Northeastern University,7
+2022-01-17,167358,Northeastern University,6
 2022-01-24,164988,Boston University,7
 2022-01-24,166027,Harvard University,7
 2022-01-24,166683,Massachusetts Institute of Technology,0
@@ -1498,15 +1498,15 @@ week_start,unitid,institution,days_in_session
 2022-02-28,164988,Boston University,5
 2022-02-28,166027,Harvard University,7
 2022-02-28,166683,Massachusetts Institute of Technology,7
-2022-02-28,167358,Northeastern University,5
+2022-02-28,167358,Northeastern University,7
 2022-03-07,164988,Boston University,0
 2022-03-07,166027,Harvard University,5
 2022-03-07,166683,Massachusetts Institute of Technology,7
-2022-03-07,167358,Northeastern University,0
+2022-03-07,167358,Northeastern University,5
 2022-03-14,164988,Boston University,7
 2022-03-14,166027,Harvard University,0
 2022-03-14,166683,Massachusetts Institute of Technology,5
-2022-03-14,167358,Northeastern University,7
+2022-03-14,167358,Northeastern University,0
 2022-03-21,164988,Boston University,7
 2022-03-21,166027,Harvard University,7
 2022-03-21,166683,Massachusetts Institute of Technology,0
@@ -1530,11 +1530,11 @@ week_start,unitid,institution,days_in_session
 2022-04-25,164988,Boston University,7
 2022-04-25,166027,Harvard University,7
 2022-04-25,166683,Massachusetts Institute of Technology,7
-2022-04-25,167358,Northeastern University,5
+2022-04-25,167358,Northeastern University,7
 2022-05-02,164988,Boston University,7
 2022-05-02,166027,Harvard University,7
 2022-05-02,166683,Massachusetts Institute of Technology,7
-2022-05-02,167358,Northeastern University,0
+2022-05-02,167358,Northeastern University,5
 2022-05-09,164988,Boston University,5
 2022-05-09,166027,Harvard University,6
 2022-05-09,166683,Massachusetts Institute of Technology,7
@@ -1674,7 +1674,7 @@ week_start,unitid,institution,days_in_session
 2023-01-02,164988,Boston University,0
 2023-01-02,166027,Harvard University,0
 2023-01-02,166683,Massachusetts Institute of Technology,0
-2023-01-02,167358,Northeastern University,7
+2023-01-02,167358,Northeastern University,0
 2023-01-09,164988,Boston University,0
 2023-01-09,166027,Harvard University,0
 2023-01-09,166683,Massachusetts Institute of Technology,0
@@ -1882,7 +1882,7 @@ week_start,unitid,institution,days_in_session
 2024-01-01,164988,Boston University,0
 2024-01-01,166027,Harvard University,0
 2024-01-01,166683,Massachusetts Institute of Technology,0
-2024-01-01,167358,Northeastern University,7
+2024-01-01,167358,Northeastern University,0
 2024-01-08,164988,Boston University,0
 2024-01-08,166027,Harvard University,0
 2024-01-08,166683,Massachusetts Institute of Technology,0
@@ -2122,15 +2122,15 @@ week_start,unitid,institution,days_in_session
 2025-02-24,164988,Boston University,7
 2025-02-24,166027,Harvard University,7
 2025-02-24,166683,Massachusetts Institute of Technology,7
-2025-02-24,167358,Northeastern University,7
+2025-02-24,167358,Northeastern University,5
 2025-03-03,164988,Boston University,5
 2025-03-03,166027,Harvard University,7
 2025-03-03,166683,Massachusetts Institute of Technology,7
-2025-03-03,167358,Northeastern University,5
+2025-03-03,167358,Northeastern University,0
 2025-03-10,164988,Boston University,0
 2025-03-10,166027,Harvard University,5
 2025-03-10,166683,Massachusetts Institute of Technology,7
-2025-03-10,167358,Northeastern University,0
+2025-03-10,167358,Northeastern University,7
 2025-03-17,164988,Boston University,7
 2025-03-17,166027,Harvard University,0
 2025-03-17,166683,Massachusetts Institute of Technology,5
@@ -2154,11 +2154,11 @@ week_start,unitid,institution,days_in_session
 2025-04-21,164988,Boston University,7
 2025-04-21,166027,Harvard University,7
 2025-04-21,166683,Massachusetts Institute of Technology,7
-2025-04-21,167358,Northeastern University,7
+2025-04-21,167358,Northeastern University,5
 2025-04-28,164988,Boston University,7
 2025-04-28,166027,Harvard University,7
 2025-04-28,166683,Massachusetts Institute of Technology,7
-2025-04-28,167358,Northeastern University,5
+2025-04-28,167358,Northeastern University,0
 2025-05-05,164988,Boston University,5
 2025-05-05,166027,Harvard University,7
 2025-05-05,166683,Massachusetts Institute of Technology,7
@@ -2286,7 +2286,7 @@ week_start,unitid,institution,days_in_session
 2025-12-08,164988,Boston University,7
 2025-12-08,166027,Harvard University,7
 2025-12-08,166683,Massachusetts Institute of Technology,7
-2025-12-08,167358,Northeastern University,5
+2025-12-08,167358,Northeastern University,7
 2025-12-15,164988,Boston University,5
 2025-12-15,166027,Harvard University,5
 2025-12-15,166683,Massachusetts Institute of Technology,5
@@ -2302,7 +2302,7 @@ week_start,unitid,institution,days_in_session
 2026-01-05,164988,Boston University,0
 2026-01-05,166027,Harvard University,0
 2026-01-05,166683,Massachusetts Institute of Technology,0
-2026-01-05,167358,Northeastern University,7
+2026-01-05,167358,Northeastern University,5
 2026-01-12,164988,Boston University,0
 2026-01-12,166027,Harvard University,0
 2026-01-12,166683,Massachusetts Institute of Technology,0
@@ -2330,15 +2330,15 @@ week_start,unitid,institution,days_in_session
 2026-02-23,164988,Boston University,7
 2026-02-23,166027,Harvard University,7
 2026-02-23,166683,Massachusetts Institute of Technology,7
-2026-02-23,167358,Northeastern University,7
+2026-02-23,167358,Northeastern University,5
 2026-03-02,164988,Boston University,5
 2026-03-02,166027,Harvard University,7
 2026-03-02,166683,Massachusetts Institute of Technology,7
-2026-03-02,167358,Northeastern University,5
+2026-03-02,167358,Northeastern University,0
 2026-03-09,164988,Boston University,0
 2026-03-09,166027,Harvard University,5
 2026-03-09,166683,Massachusetts Institute of Technology,7
-2026-03-09,167358,Northeastern University,0
+2026-03-09,167358,Northeastern University,7
 2026-03-16,164988,Boston University,7
 2026-03-16,166027,Harvard University,0
 2026-03-16,166683,Massachusetts Institute of Technology,5
@@ -2366,7 +2366,7 @@ week_start,unitid,institution,days_in_session
 2026-04-27,164988,Boston University,7
 2026-04-27,166027,Harvard University,7
 2026-04-27,166683,Massachusetts Institute of Technology,7
-2026-04-27,167358,Northeastern University,5
+2026-04-27,167358,Northeastern University,0
 2026-05-04,164988,Boston University,5
 2026-05-04,166027,Harvard University,7
 2026-05-04,166683,Massachusetts Institute of Technology,7
@@ -2498,7 +2498,7 @@ week_start,unitid,institution,days_in_session
 2026-12-14,164988,Boston University,5
 2026-12-14,166027,Harvard University,6
 2026-12-14,166683,Massachusetts Institute of Technology,5
-2026-12-14,167358,Northeastern University,5
+2026-12-14,167358,Northeastern University,7
 2026-12-21,164988,Boston University,0
 2026-12-21,166027,Harvard University,0
 2026-12-21,166683,Massachusetts Institute of Technology,0
