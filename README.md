@@ -43,14 +43,25 @@ This will combine:
 
 ### 2. Test whether the estimated population reflects real city activity
 
-Bluebikes ridership will be used as the main external activity signal.
+City activity will be measured with several independent signals rather than Bluebikes alone:
 
-The project will test whether student presence helps explain changes in ridership after accounting for factors such as:
+* Bluebikes ridership (main signal);
+* MBTA subway station entries;
+* road traffic counts and rideshare trips, where data is available at a weekly or monthly level.
+
+The project will test whether student presence helps explain changes in these activity measures after accounting for factors such as:
 
 * weather;
 * season;
 * year;
-* changes in the size of the Bluebikes network.
+* holidays;
+* changes in service, such as the size of the Bluebikes network.
+
+None of these sources identify riders as students, so student activity will be separated from resident activity in three ways:
+
+* comparing activity near university campuses with activity elsewhere;
+* for 2015–2022 Bluebikes trips, which include rider birth year, comparing riders of typical college age with older riders;
+* checking whether changes line up with academic calendar dates, which differ from year to year and from general seasonal patterns.
 
 A baseline model will be compared with a model that includes the estimated student population.
 
@@ -63,7 +74,7 @@ It will show:
 * Greater Boston's resident population baseline;
 * estimated seasonal student contribution;
 * estimated effective population;
-* Bluebikes activity;
+* city activity measures, such as Bluebikes and MBTA ridership;
 * major academic periods such as semesters, summer break, winter break, and national holiday.
 
 This will allow the user to visually explore how Greater Boston "breathes" throughout the year.
@@ -110,9 +121,19 @@ Trips will be aggregated by week, and variables such as total trips, trips per a
 
 Each station will be assigned to a municipality based on its location, so activity can be analyzed both for the whole study area and for each municipality.
 
+For 2015–2022, trip records include rider birth year, which allows trips by riders of typical college age to be compared with trips by other riders.
+
+### MBTA Ridership
+
+Gated station entries from the **MBTA / MassDOT open data portal** will be used as a second activity signal, with particular attention to stations serving major universities, such as Kenmore, Harvard, and Kendall/MIT.
+
+### Traffic and Rideshare
+
+Road traffic counts from **MassDOT** and rideshare trip data published by the **Commonwealth of Massachusetts** will be explored as additional signals. They will be used only if they are available at a weekly or monthly level for the study area.
+
 ### Weather
 
-Historical weather data for the Boston area will be used to control for variables such as temperature, rain, and snow, which strongly affect bicycle usage.
+Historical weather data for the Boston area will be used to control for variables such as temperature, rain, and snow, which strongly affect bicycle use and travel in general.
 
 ---
 
@@ -125,6 +146,7 @@ The main cleaning challenges will include:
 * matching different datasets to a common weekly or monthly timeline;
 * accounting for changes in Bluebikes stations over time;
 * assigning Bluebikes stations to municipalities and handling municipalities that joined the network during the study period;
+* matching Bluebikes stations and MBTA stations to nearby university campuses;
 * identifying unusual periods such as COVID-19.
 
 The main derived feature will be a **Student Presence Index**, based on enrollment, student residence, and the academic calendar.
@@ -135,6 +157,8 @@ Additional features may include:
 * summer and winter break indicators;
 * weather variables;
 * Bluebikes network size;
+* distance from stations to university campuses;
+* share of Bluebikes trips by riders of typical college age (2015–2022);
 * year and season.
 
 ---
@@ -145,7 +169,7 @@ The main modeling question is:
 
 > **Does information about student presence improve our ability to explain or predict changes in Greater Boston activity?**
 
-An initial regression model will predict weekly Bluebikes activity using weather, seasonal, and time-based variables.
+An initial regression model will predict weekly city activity (Bluebikes trips and MBTA station entries) using weather, seasonal, and time-based variables.
 
 A second model will add the Student Presence Index.
 
