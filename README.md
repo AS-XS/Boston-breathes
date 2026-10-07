@@ -60,7 +60,7 @@ The project will test whether student presence helps explain changes in these ac
 None of these sources identify riders as students, so student activity will be separated from resident activity in three ways:
 
 * comparing activity near university campuses with activity elsewhere;
-* for 2015–2022 Bluebikes trips, which include rider birth year, comparing riders of typical college age with older riders;
+* for Bluebikes trips from 2015 to April 2020, which include rider birth year, comparing riders of typical college age with older riders;
 * checking whether changes line up with academic calendar dates, which differ from year to year and from general seasonal patterns.
 
 A baseline model will be compared with a model that includes the estimated student population.
@@ -121,7 +121,7 @@ Trips will be aggregated by week, and variables such as total trips, trips per a
 
 Each station will be assigned to a municipality based on its location, so activity can be analyzed both for the whole study area and for each municipality.
 
-For 2015–2022, trip records include rider birth year, which allows trips by riders of typical college age to be compared with trips by other riders.
+From January 2015 to April 2020, trip records include rider birth year, which allows trips by riders of typical college age to be compared with trips by other riders. From May 2020 the records include a postal code instead, which may later help identify riders living in student-heavy areas.
 
 ### MBTA Ridership
 
@@ -158,7 +158,7 @@ Additional features may include:
 * weather variables;
 * Bluebikes network size;
 * distance from stations to university campuses;
-* share of Bluebikes trips by riders of typical college age (2015–2022);
+* share of Bluebikes trips by riders of typical college age (2015 – April 2020);
 * year and season.
 
 ---
@@ -175,7 +175,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 4. Weather | NOAA daily observations, Boston Logan Airport | Done | `weather_daily.csv`, `weather_weekly.csv` |
 | 5. Universities and campus locations | IPEDS institution directory | Done | `universities.csv` |
 | 6. Enrollment | IPEDS fall enrollment and distance education; City of Cambridge Town Gown reports | Done | `enrollment_annual.csv`, `cambridge_town_gown.csv` |
-| 7. Bluebikes rider age | Bluebikes trip files, 2015–2022 | Planned | weekly trips by riders of typical college age and by older riders |
+| 7. Bluebikes rider age | Bluebikes trip files, January 2015 – April 2020 | Done | `college_age_trips` and `college_age_share` in the weekly Bluebikes tables |
 | 8. Campus-area activity | Bluebikes stations matched to nearby campuses | Planned | weekly trips near campuses and elsewhere |
 | 9. Resident population | U.S. Census population estimates | Planned | annual population per municipality |
 | 10. Academic calendars | University calendars, collected by hand, with archived versions for past years | Planned | semester, break, and commencement dates per university and year |
@@ -192,6 +192,7 @@ Processing decisions so far:
 * **Month boundaries.** Some monthly files repeat trips from the previous month; repeated trips are counted once.
 * **Network size.** Measured as the average number of stations with at least one trip per day, which accounts for winter closures and network growth.
 * **Electric bikes.** Trips are split by bike type, since electric bikes (introduced in 2023) changed ridership.
+* **Rider age.** Riders aged 18–24 are counted as college age. Birth year 1969 is the system default for riders who gave no birth year, so it is treated as unknown, as are ages below 16 or above 90.
 * **Municipalities.** Stations are assigned to a town month by month, because some stations moved over time.
 * **Weather.** Logan Airport does not report daily average temperature, so it is taken as the midpoint of the daily maximum and minimum.
 * **Universities.** Institutions are selected by the location of their main campus, using the same town boundaries as Bluebikes stations, and include degree-granting institutions in the four study-area municipalities plus Boston College and Tufts University just outside them. Institutions that closed or merged during the period are kept for the years they reported.

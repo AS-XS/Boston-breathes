@@ -5,6 +5,7 @@ import polars as pl
 import pytest
 from shapely.geometry import box
 
+from boston_breathes import bluebikes as bb
 from boston_breathes import municipalities as mun
 
 # Two adjacent 1 km squares in Massachusetts State Plane meters:
@@ -60,7 +61,7 @@ def test_no_neighbour_within_search_radius(towns):
 
 
 def test_tag_station_day_uses_monthly_town_then_fallback():
-    counts = {c: [1, 1, 1, 1] for c in ["trips", "member_trips", "casual_trips", "classic_trips", "electric_trips"]}
+    counts = {c: [1, 1, 1, 1] for c in bb.COUNT_COLUMNS}
     sd = pl.DataFrame({
         "date": [date(2019, 1, 5), date(2019, 2, 5), date(2019, 3, 5), date(2019, 3, 5)],
         "station_id": ["9", "9", "9", None],

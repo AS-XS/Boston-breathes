@@ -21,6 +21,11 @@ Bluebikes has published two file layouts:
   * "modern" (2023 onward): ride_id, rideable_type, started_at, member_casual, ...
 Station IDs also changed format between them (e.g. "115" -> "A32042"), so
 stations are only comparable across the switch by location, not by ID.
+
+Rider birth year is only published until April 2020 (later legacy files have
+a postal code instead). Birth year 1969 is the system's default for riders
+who gave none, so it is treated as unknown. Trips by riders aged 18-24 are
+counted as "college age".
 """
 
 import argparse
@@ -44,6 +49,11 @@ MONTH_KEY = re.compile(r"^(\d{6})-(?:hubway|bluebikes)-tripdata(?:\.csv)?\.zip$"
 RAW_DIR = RAW / "bluebikes"
 INTERIM_DIR = INTERIM / "bluebikes"
 
+COLLEGE_AGE = (18, 24)
+MIN_RIDER_AGE, MAX_RIDER_AGE = 16, 90
+# Birth year recorded when riders give none.
+PLACEHOLDER_BIRTH_YEARS = (1969,)
+
 MIN_DURATION_S = 60
 MAX_DURATION_S = 24 * 3600
 # Stations used for maintenance or testing rather than by riders, including
@@ -61,6 +71,18 @@ STANDARD_COLUMNS = [
     "end_station_name",
     "rider_type",
     "bike_type",
+    "birth_year",
+]
+
+# Per-day trip counts summed by the station-day and weekly tables.
+COUNT_COLUMNS = [
+    "trips",
+    "member_trips",
+    "casual_trips",
+    "classic_trips",
+    "electric_trips",
+    "age_known_trips",
+    "college_age_trips",
 ]
 
 LEGACY_RENAME = {
@@ -154,6 +176,7 @@ def standardize(raw: pl.DataFrame) -> pl.DataFrame:
         df = raw.rename(LEGACY_RENAME).with_columns(
             pl.col("rider_type").replace_strict(LEGACY_RIDER, default="other"),
             pl.lit("classic").alias("bike_type"),
+            (pl.col("birth year") if "birth year" in raw.columns else pl.lit(None, dtype=pl.Utf8)).alias("birth_year"),
             # Legacy files have no trip ID; start time + bike + station is unique.
             pl.concat_str(["started_at", "bikeid", "start_station_id"], separator="|").alias("trip_key"),
         )
@@ -162,6 +185,7 @@ def standardize(raw: pl.DataFrame) -> pl.DataFrame:
             pl.col("member_casual").alias("rider_type"),
             pl.col("rideable_type").replace_strict(MODERN_BIKE, default="other").alias("bike_type"),
             pl.col("ride_id").alias("trip_key"),
+            pl.lit(None, dtype=pl.Utf8).alias("birth_year"),
         )
 
     df = df.select(["trip_key", *STANDARD_COLUMNS]).with_columns(
@@ -175,6 +199,7 @@ def standardize(raw: pl.DataFrame) -> pl.DataFrame:
             for c in ["start_station_id", "start_station_name", "end_station_id", "end_station_name"]
         ],
         pl.col("rider_type").str.to_lowercase(),
+        pl.col("birth_year").cast(pl.Int64, strict=False),
     )
     # Times are local clock times, so trips spanning the November fall-back
     # (first Sunday, 2am -> 1am) look up to an hour shorter than they were.
@@ -228,6 +253,7 @@ def station_day(df: pl.DataFrame) -> pl.DataFrame:
     Trips without a start station (dockless) are kept under a null station ID
     so that daily totals stay complete.
     """
+    age = rider_age()
     return (
         df.with_columns(pl.col("started_at").dt.date().alias("date"))
         .group_by("date", "start_station_id")
@@ -237,13 +263,24 @@ def station_day(df: pl.DataFrame) -> pl.DataFrame:
             (pl.col("rider_type") == "casual").sum().alias("casual_trips"),
             (pl.col("bike_type") == "classic").sum().alias("classic_trips"),
             (pl.col("bike_type") == "electric").sum().alias("electric_trips"),
+            age.is_not_null().sum().alias("age_known_trips"),
+            age.is_between(*COLLEGE_AGE).sum().alias("college_age_trips"),
         )
         .rename({"start_station_id": "station_id"})
-        .with_columns(pl.col(c).cast(pl.Int64) for c in [
-            "trips", "member_trips", "casual_trips", "classic_trips", "electric_trips"
-        ])
+        .with_columns(pl.col(*COUNT_COLUMNS).cast(pl.Int64))
         .sort("date", "station_id")
     )
+
+
+def rider_age() -> pl.Expr:
+    """Rider age in the trip year; null when unknown, a placeholder, or implausible."""
+    age = pl.col("started_at").dt.year() - pl.col("birth_year")
+    valid = (
+        pl.col("birth_year").is_not_null()
+        & ~pl.col("birth_year").is_in(PLACEHOLDER_BIRTH_YEARS)
+        & age.is_between(MIN_RIDER_AGE, MAX_RIDER_AGE)
+    )
+    return pl.when(valid).then(age)
 
 
 def stations(df: pl.DataFrame) -> pl.DataFrame:
@@ -266,7 +303,7 @@ def stations(df: pl.DataFrame) -> pl.DataFrame:
 
 # ---------------------------------------------------------- month edges
 
-SPILL_COLUMNS = ["trip_key", "started_at", "start_station_id", "rider_type", "bike_type"]
+SPILL_COLUMNS = ["trip_key", "started_at", "start_station_id", "rider_type", "bike_type", "birth_year"]
 EDGE_HOURS = 48
 
 
@@ -359,17 +396,13 @@ def build_weekly(
     weeks = build_weeks().select("week_start", "week_end", "iso_year", "iso_week")
     week_start = (pl.col("date") - pl.duration(days=pl.col("date").dt.weekday() - 1)).alias("week_start")
     daily = station_day_all.group_by("date", *by).agg(
-        pl.col("trips").sum(),
-        pl.col("member_trips").sum(),
-        pl.col("casual_trips").sum(),
-        pl.col("classic_trips").sum(),
-        pl.col("electric_trips").sum(),
+        pl.col(*COUNT_COLUMNS).sum(),
         pl.col("trips").filter(pl.col("station_id").is_null()).sum().alias("no_station_trips"),
         pl.col("station_id").drop_nulls().n_unique().alias("active_stations"),
     ).with_columns(week_start)
     weekly = daily.group_by("week_start", *by).agg(
         pl.len().alias("days_with_data"),
-        pl.col("trips", "member_trips", "casual_trips", "classic_trips", "electric_trips", "no_station_trips").sum(),
+        pl.col(*COUNT_COLUMNS, "no_station_trips").sum(),
         pl.col("active_stations").mean().round(1).alias("avg_daily_active_stations"),
     )
     return (
@@ -378,6 +411,10 @@ def build_weekly(
             ((pl.col("week_start") >= coverage_start) & (pl.col("week_end") <= coverage_end)).alias("complete_week"),
             (pl.col("trips") - pl.col("no_station_trips")).truediv(pl.col("avg_daily_active_stations"))
             .round(2).alias("trips_per_active_station"),
+            # Null for weeks without any trips of known rider age (after April 2020).
+            pl.when(pl.col("age_known_trips") > 0)
+            .then((pl.col("college_age_trips") / pl.col("age_known_trips")).round(4))
+            .alias("college_age_share"),
         )
         .drop("week_end")
         .sort("week_start", *by)

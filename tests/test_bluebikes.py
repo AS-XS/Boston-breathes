@@ -93,7 +93,7 @@ def test_station_id_change_is_not_double_counted():
     sd = pl.DataFrame({
         "date": [date(2023, 3, 31), date(2023, 4, 1)],
         "station_id": ["81", "A32042"],
-        **{c: [1, 1] for c in ["trips", "member_trips", "casual_trips", "classic_trips", "electric_trips"]},
+        **{c: [1, 1] for c in bb.COUNT_COLUMNS},
     })
     row = bb.build_weekly(sd, date(2023, 3, 1), date(2023, 4, 30)).row(0, named=True)
     assert row["avg_daily_active_stations"] == 1.0
@@ -174,3 +174,36 @@ def test_month_key_pattern():
 ])
 def test_non_public_station_pattern(name, expected):
     assert bool(pl.Series([name]).str.contains(bb.NON_PUBLIC_STATION)[0]) is expected
+
+
+AGE_CSV = LEGACY_CSV.splitlines()[0] + "\n" + "\n".join(
+    f'600,"2019-06-05 09:00:00","2019-06-05 09:10:00",81,"Chinatown T Stop",42.35,-71.06,48,'
+    f'"Post Office Square",42.35,-71.05,{i},"Subscriber",{birth},1'
+    for i, birth in enumerate(["2000", "1995", "1994", "1969", "\\N", "2010", "1920", "1980"])
+) + "\n"
+
+
+def test_rider_age_and_college_age_counts():
+    df, _ = bb.clean(bb.standardize(read(AGE_CSV)))
+    ages = df.select(bb.rider_age().alias("age"))["age"].to_list()
+    # 1969 is the "no answer" default; \N is missing; 9 and 99 are implausible.
+    assert ages == [19, 24, 25, None, None, None, None, 39]
+    sd = bb.station_day(df)
+    row = sd.row(0, named=True)
+    assert (row["trips"], row["age_known_trips"], row["college_age_trips"]) == (8, 4, 2)
+
+
+def test_modern_files_have_unknown_age():
+    df, _ = bb.clean(bb.standardize(read(MODERN_CSV)))
+    assert df["birth_year"].null_count() == len(df)
+    assert bb.station_day(df)["age_known_trips"].sum() == 0
+
+
+def test_college_age_share_is_null_without_known_ages():
+    df, _ = bb.clean(bb.standardize(read(MODERN_CSV)))
+    weekly = bb.build_weekly(bb.station_day(df), date(2026, 8, 1), date(2026, 8, 31))
+    assert weekly["college_age_share"].to_list() == [None]
+
+    df, _ = bb.clean(bb.standardize(read(AGE_CSV)))
+    weekly = bb.build_weekly(bb.station_day(df), date(2019, 6, 1), date(2019, 6, 30))
+    assert weekly["college_age_share"].to_list() == [0.5]
