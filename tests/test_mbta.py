@@ -64,3 +64,19 @@ def test_weekly_flags_partial_weeks():
     assert w["entries"].to_list() == [70, 30]
     assert w["days_with_data"].to_list() == [7, 3]
     assert w["complete_week"].to_list() == [True, False]
+
+
+def test_placeholder_ids_matched_by_exact_name():
+    daily = pl.DataFrame({
+        "date": [date(2026, 6, 1)] * 3,
+        "stop_id": ["name-longwood", "place-longw", "name-mattapan-line"],
+        "station_name": ["Longwood", "Longwood", "Mattapan Line"],
+        "entries": [3, 10, 5],
+    })
+    stations = pl.DataFrame({
+        "stop_id": ["place-longw", "place-lngmd", "place-a", "place-b"],
+        "api_name": ["Longwood", "Longwood Medical Area", "Twin", "Twin"],
+    })
+    out = mbta.match_placeholder_ids(daily, stations)
+    by_id = dict(zip(out["stop_id"], out["entries"]))
+    assert by_id == {"place-longw": 13, "name-mattapan-line": 5}

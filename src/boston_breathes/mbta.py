@@ -7,7 +7,9 @@ gates of subway, Silver Line and light rail stations, per service date
 fare evasion, free riders and times when gates are held open, so they track
 change in activity rather than total ridership.
 
-Station locations come from the MBTA V3 API. Stations are assigned to a
+Station locations come from the MBTA V3 API. Stations whose rows never carry
+a stop ID (e.g. Longwood, gated in 2026) get the ID of the API station with
+exactly the same name. Stations are assigned to a
 municipality and a campus zone with the same rules as Bluebikes stations.
 
 Outputs in data/processed/:
@@ -102,6 +104,38 @@ def read_all(zip_bytes: bytes) -> pl.DataFrame:
     )
 
 
+def all_stations() -> pl.DataFrame:
+    """Every parent station in the MBTA V3 API (ID and name)."""
+    resp = requests.get(STOPS_URL, params={"filter[location_type]": "1"}, timeout=60)
+    resp.raise_for_status()
+    rows = [{"stop_id": s["id"], "api_name": s["attributes"]["name"]} for s in resp.json()["data"]]
+    return pl.DataFrame(rows, schema={"stop_id": pl.Utf8, "api_name": pl.Utf8})
+
+
+def match_placeholder_ids(daily: pl.DataFrame, stations: pl.DataFrame) -> pl.DataFrame:
+    """Replace placeholder IDs ("name-...") with the API ID of a station with the same name.
+
+    Only names matching exactly one API station are replaced; rows are summed
+    again in case the station also appears under its real ID.
+    """
+    unique = (
+        stations.with_columns(pl.col("api_name").str.to_lowercase().alias("_name"))
+        .filter(pl.len().over("_name") == 1)
+        .select("_name", pl.col("stop_id").alias("_api_id"))
+    )
+    return (
+        daily.with_columns(pl.col("station_name").str.to_lowercase().alias("_name"))
+        .join(unique, on="_name", how="left")
+        .with_columns(
+            pl.when(pl.col("stop_id").str.starts_with("name-") & pl.col("_api_id").is_not_null())
+            .then(pl.col("_api_id")).otherwise(pl.col("stop_id")).alias("stop_id")
+        )
+        .group_by("date", "stop_id")
+        .agg(pl.col("station_name").first(), pl.col("entries").sum())
+        .sort("date", "stop_id")
+    )
+
+
 def station_locations(stop_ids: list[str]) -> pl.DataFrame:
     """Name and coordinates of each station from the MBTA V3 API."""
     rows = []
@@ -134,7 +168,7 @@ def weekly(daily: pl.DataFrame, by: tuple[str, ...]) -> pl.DataFrame:
 
 
 def main() -> None:
-    daily = read_all(download())
+    daily = match_placeholder_ids(read_all(download()), all_stations())
     INTERIM_DIR.mkdir(parents=True, exist_ok=True)
     daily.write_parquet(INTERIM_DIR / "station_daily.parquet")
 

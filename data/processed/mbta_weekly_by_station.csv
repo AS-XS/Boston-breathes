@@ -38765,7 +38765,6 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-04-27,2026,18,place-wlsta,11630,7,true
 2026-04-27,2026,18,place-wondl,28013,7,true
 2026-04-27,2026,18,place-wtcst,8998,7,true
-2026-05-04,2026,19,name-longwood,1,1,true
 2026-05-04,2026,19,place-alfcl,42539,7,true
 2026-05-04,2026,19,place-andrw,20558,7,true
 2026-05-04,2026,19,place-aport,33942,5,true
@@ -38802,6 +38801,7 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-05-04,2026,19,place-kencl,45467,7,true
 2026-05-04,2026,19,place-knncl,61316,7,true
 2026-05-04,2026,19,place-lech,1130,7,true
+2026-05-04,2026,19,place-longw,1,1,true
 2026-05-04,2026,19,place-masta,26016,7,true
 2026-05-04,2026,19,place-matt,30719,7,true
 2026-05-04,2026,19,place-mdftf,742,7,true
@@ -38837,7 +38837,6 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-05-04,2026,19,place-wlsta,11369,7,true
 2026-05-04,2026,19,place-wondl,22643,5,true
 2026-05-04,2026,19,place-wtcst,8535,7,true
-2026-05-11,2026,20,name-longwood,1,1,true
 2026-05-11,2026,20,place-alfcl,46344,7,true
 2026-05-11,2026,20,place-andrw,16477,7,true
 2026-05-11,2026,20,place-aport,46955,7,true
@@ -38874,6 +38873,7 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-05-11,2026,20,place-kencl,46772,7,true
 2026-05-11,2026,20,place-knncl,66087,7,true
 2026-05-11,2026,20,place-lech,1095,7,true
+2026-05-11,2026,20,place-longw,1,1,true
 2026-05-11,2026,20,place-masta,26713,7,true
 2026-05-11,2026,20,place-matt,23055,7,true
 2026-05-11,2026,20,place-mdftf,859,7,true
@@ -39051,7 +39051,6 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-05-25,2026,22,place-wlsta,8356,7,true
 2026-05-25,2026,22,place-wondl,26840,7,true
 2026-05-25,2026,22,place-wtcst,9872,7,true
-2026-06-01,2026,23,name-longwood,1,1,true
 2026-06-01,2026,23,place-alfcl,48397,7,true
 2026-06-01,2026,23,place-andrw,26583,7,true
 2026-06-01,2026,23,place-aport,47195,7,true
@@ -39088,6 +39087,7 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-06-01,2026,23,place-kencl,39782,7,true
 2026-06-01,2026,23,place-knncl,64948,7,true
 2026-06-01,2026,23,place-lech,1187,7,true
+2026-06-01,2026,23,place-longw,1,1,true
 2026-06-01,2026,23,place-masta,33890,7,true
 2026-06-01,2026,23,place-matt,34408,7,true
 2026-06-01,2026,23,place-mdftf,703,7,true
@@ -39193,7 +39193,6 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-06-08,2026,24,place-wlsta,12958,7,true
 2026-06-08,2026,24,place-wondl,32351,7,true
 2026-06-08,2026,24,place-wtcst,10621,7,true
-2026-06-15,2026,25,name-longwood,2,2,true
 2026-06-15,2026,25,place-alfcl,50407,7,true
 2026-06-15,2026,25,place-andrw,28057,7,true
 2026-06-15,2026,25,place-aport,48664,7,true
@@ -39230,6 +39229,7 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-06-15,2026,25,place-kencl,42705,7,true
 2026-06-15,2026,25,place-knncl,62954,7,true
 2026-06-15,2026,25,place-lech,1151,7,true
+2026-06-15,2026,25,place-longw,2,2,true
 2026-06-15,2026,25,place-masta,30180,7,true
 2026-06-15,2026,25,place-matt,33783,7,true
 2026-06-15,2026,25,place-mdftf,898,7,true
@@ -39264,7 +39264,6 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-06-15,2026,25,place-wlsta,14263,7,true
 2026-06-15,2026,25,place-wondl,26589,7,true
 2026-06-15,2026,25,place-wtcst,9695,7,true
-2026-06-22,2026,26,name-longwood,2,2,true
 2026-06-22,2026,26,place-alfcl,50037,7,true
 2026-06-22,2026,26,place-andrw,27882,7,true
 2026-06-22,2026,26,place-aport,48148,7,true
@@ -39301,6 +39300,7 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-06-22,2026,26,place-kencl,50084,7,true
 2026-06-22,2026,26,place-knncl,68071,7,true
 2026-06-22,2026,26,place-lech,1145,7,true
+2026-06-22,2026,26,place-longw,2,2,true
 2026-06-22,2026,26,place-masta,30230,7,true
 2026-06-22,2026,26,place-matt,33885,7,true
 2026-06-22,2026,26,place-mdftf,951,7,true
@@ -39475,7 +39475,6 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-07-06,2026,28,place-wlsta,14083,7,true
 2026-07-06,2026,28,place-wondl,35102,7,true
 2026-07-06,2026,28,place-wtcst,14543,7,true
-2026-07-13,2026,29,name-longwood,1,1,true
 2026-07-13,2026,29,place-alfcl,51184,7,true
 2026-07-13,2026,29,place-andrw,26722,7,true
 2026-07-13,2026,29,place-aport,47157,7,true
@@ -39512,6 +39511,7 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-07-13,2026,29,place-kencl,45356,7,true
 2026-07-13,2026,29,place-knncl,70207,7,true
 2026-07-13,2026,29,place-lech,2308,7,true
+2026-07-13,2026,29,place-longw,1,1,true
 2026-07-13,2026,29,place-masta,30921,7,true
 2026-07-13,2026,29,place-matt,33380,7,true
 2026-07-13,2026,29,place-mdftf,3178,7,true
@@ -39616,7 +39616,6 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-07-20,2026,30,place-wlsta,13709,7,true
 2026-07-20,2026,30,place-wondl,26286,7,true
 2026-07-20,2026,30,place-wtcst,10517,7,true
-2026-07-27,2026,31,name-longwood,1,1,true
 2026-07-27,2026,31,place-alfcl,14421,7,true
 2026-07-27,2026,31,place-andrw,24281,7,true
 2026-07-27,2026,31,place-aport,45426,7,true
@@ -39653,6 +39652,7 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-07-27,2026,31,place-kencl,24877,7,true
 2026-07-27,2026,31,place-knncl,19425,7,true
 2026-07-27,2026,31,place-lech,2223,7,true
+2026-07-27,2026,31,place-longw,1,1,true
 2026-07-27,2026,31,place-masta,35795,7,true
 2026-07-27,2026,31,place-matt,30164,7,true
 2026-07-27,2026,31,place-mdftf,2109,7,true
@@ -39687,7 +39687,6 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-07-27,2026,31,place-wlsta,13347,7,true
 2026-07-27,2026,31,place-wondl,30048,7,true
 2026-07-27,2026,31,place-wtcst,10335,7,true
-2026-08-03,2026,32,name-longwood,2,2,true
 2026-08-03,2026,32,place-alfcl,45233,7,true
 2026-08-03,2026,32,place-andrw,26145,7,true
 2026-08-03,2026,32,place-aport,46005,7,true
@@ -39724,6 +39723,7 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-08-03,2026,32,place-kencl,36378,6,true
 2026-08-03,2026,32,place-knncl,66088,7,true
 2026-08-03,2026,32,place-lech,2076,7,true
+2026-08-03,2026,32,place-longw,2,2,true
 2026-08-03,2026,32,place-masta,34437,7,true
 2026-08-03,2026,32,place-matt,31531,7,true
 2026-08-03,2026,32,place-mdftf,1371,7,true
@@ -39827,7 +39827,6 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-08-10,2026,33,place-wlsta,14042,7,true
 2026-08-10,2026,33,place-wondl,29348,7,true
 2026-08-10,2026,33,place-wtcst,9771,7,true
-2026-08-17,2026,34,name-longwood,1,1,true
 2026-08-17,2026,34,place-alfcl,41821,7,true
 2026-08-17,2026,34,place-andrw,24282,7,true
 2026-08-17,2026,34,place-aport,38609,7,true
@@ -39864,6 +39863,7 @@ week_start,iso_year,iso_week,stop_id,entries,days_with_data,complete_week
 2026-08-17,2026,34,place-kencl,45622,7,true
 2026-08-17,2026,34,place-knncl,58612,7,true
 2026-08-17,2026,34,place-lech,2089,7,true
+2026-08-17,2026,34,place-longw,1,1,true
 2026-08-17,2026,34,place-masta,18896,7,true
 2026-08-17,2026,34,place-matt,30510,7,true
 2026-08-17,2026,34,place-mdftf,1720,7,true
