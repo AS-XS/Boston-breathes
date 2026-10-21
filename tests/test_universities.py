@@ -92,32 +92,25 @@ def point(x: float, y: float) -> tuple[float, float]:
     return pt.y, pt.x
 
 
-def test_select_institutions(towns, monkeypatch):
-    monkeypatch.setattr(uni, "NEARBY_INSTITUTIONS", {"3": "Nearby University"})
+def test_select_institutions_by_each_falls_location(towns, monkeypatch):
+    monkeypatch.setattr(uni, "STUDY_AREA", ("Boston",))
     boston, newton = point(235500, 900500), point(234000, 900500)
-    latest = pl.DataFrame({
-        "unitid": ["1", "2", "3", "4", "5"],
-        "name": ["City University", "Admin Office", "Nearby University", "Suburban College", "Barber School"],
-        "city": ["Boston"] * 5,
-        "sector": [2, 0, 2, 2, 9],
-        "degree_granting": [1, 2, 1, 1, 2],
-        "lat": [boston[0], boston[0], newton[0], newton[0], boston[0]],
-        "lng": [boston[1], boston[1], newton[1], newton[1], boston[1]],
-        "first_fall": [2015] * 5,
-        "last_fall": [2023] * 5,
-    })
-    selected = uni.select_institutions(latest, towns)
-    assert selected["unitid"].to_list() == ["1", "3"]
-    assert selected["in_study_area"].to_list() == [True, False]
-    assert selected["municipality"].to_list() == ["Boston", "Newton"]
-
-
-def test_select_institutions_requires_nearby_ones(towns, monkeypatch):
-    monkeypatch.setattr(uni, "NEARBY_INSTITUTIONS", {"999": "Missing University"})
-    latest = pl.DataFrame({
-        "unitid": ["1"], "name": ["City University"], "city": ["Boston"], "sector": [2],
-        "degree_granting": [1], "lat": [point(235500, 900500)[0]], "lng": [point(235500, 900500)[1]],
-        "first_fall": [2015], "last_fall": [2023],
-    })
-    with pytest.raises(ValueError, match="Missing University"):
-        uni.select_institutions(latest, towns)
+    rows = [  # unitid, name, sector, degree_granting, location, fall
+        ("1", "City University", 2, 1, boston, 2015),
+        ("1", "City University", 2, 1, boston, 2016),
+        ("2", "Admin Office", 0, 1, boston, 2015),
+        ("3", "Moving College", 2, 1, boston, 2015),
+        ("3", "Moving College", 2, 1, newton, 2016),
+        ("4", "Suburban College", 2, 1, newton, 2015),
+        ("5", "Barber School", 9, 2, boston, 2015),
+    ]
+    directories = pl.DataFrame(
+        [(u, n, "Boston", sector, deg, lat, lng, fall) for u, n, sector, deg, (lat, lng), fall in rows],
+        schema=["unitid", "name", "city", "sector", "degree_granting", "lat", "lng", "fall_year"], orient="row",
+    )
+    institutions, falls = uni.select_institutions(directories, towns)
+    assert institutions["unitid"].to_list() == ["1", "3"]
+    assert institutions["municipality"].to_list() == ["Boston", "Boston"]
+    # The college that moved out counts only for the fall it was in the study area.
+    assert institutions["last_fall"].to_list() == [2016, 2015]
+    assert sorted(falls.rows()) == [("1", 2015), ("1", 2016), ("3", 2015)]

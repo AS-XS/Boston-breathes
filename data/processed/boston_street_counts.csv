@@ -32,7 +32,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2016-06-21,Tuesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,190,19020,4,2308,153,2254
 60,Washington Street north of Bexley Road,2016-06-21,Tuesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,361,17414,55,2017,95,2181
 65,Western Avenue east of Hague Street,2016-06-21,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,884,11917,179,1699,213,1762
-8,Blue Hill Avenue north of Rexford Street,2016-06-21,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,62,29005,6,3572,8,3722
+8,Blue Hill Avenue north of Rexford Street,2016-06-21,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,62,29005,6,3572,8,3722
 1,A Street north of Iron Street,2016-06-22,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,845,12144,175,1627,191,1613
 28,D Street south of Fargo Street,2016-06-22,Wednesday,42.345,-71.0436,Boston,away,Tufts University,1568.0,359,8172,56,1075,56,1100
 34,Franklin Street north of Alcott Street,2016-06-22,Wednesday,42.3581,-71.1331,Boston,away,Harvard University,1335.0,797,1648,111,228,145,217
@@ -91,10 +91,10 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 60,Washington Street north of Bexley Road,2016-09-27,Tuesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,136,16291,25,1855,31,2164
 62,Washington Street south of Hayward Place,2016-09-27,Tuesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,415,5527,93,661,76,690
 63,Washington Street south of Herald Street,2016-09-27,Tuesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,256,8687,55,1482,57,1048
-64,Weld Street west of Centre Street,2016-09-27,Tuesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,12,3311,2,458,6,549
+64,Weld Street west of Centre Street,2016-09-27,Tuesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,12,3311,2,458,6,549
 65,Western Avenue east of Hague Street,2016-09-27,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,546,11624,93,1562,150,1631
 66,Western Avenue west of Waverly Street,2016-09-27,Tuesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,243,13856,52,1820,50,2114
-8,Blue Hill Avenue north of Rexford Street,2016-09-27,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,48,25573,2,3351,15,3109
+8,Blue Hill Avenue north of Rexford Street,2016-09-27,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,48,25573,2,3351,15,3109
 9,Blue Hill Avenue north of Seaver Street,2016-09-27,Tuesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,42,23511,2,2691,10,2862
 10,Brighton Avenue east of St. Lukes Road,2016-09-28,Wednesday,42.3523,-71.126,Boston,away,Boston University,1343.0,1108,19182,194,1995,193,2765
 11,Brookline Avenue south of Francis Street,2016-09-28,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,368,22900,90,2614,61,3280
@@ -150,10 +150,10 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 60,Washington Street north of Bexley Road,2016-09-28,Wednesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,190,16841,42,1794,26,2347
 62,Washington Street south of Hayward Place,2016-09-28,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,501,5610,158,623,62,670
 63,Washington Street south of Herald Street,2016-09-28,Wednesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,381,8495,100,1376,62,958
-64,Weld Street west of Centre Street,2016-09-28,Wednesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,33,3418,6,471,9,547
+64,Weld Street west of Centre Street,2016-09-28,Wednesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,33,3418,6,471,9,547
 65,Western Avenue east of Hague Street,2016-09-28,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,723,12265,135,1540,152,1709
 66,Western Avenue west of Waverly Street,2016-09-28,Wednesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,342,14045,66,1814,77,2230
-8,Blue Hill Avenue north of Rexford Street,2016-09-28,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,33,27439,8,3394,7,3456
+8,Blue Hill Avenue north of Rexford Street,2016-09-28,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,33,27439,8,3394,7,3456
 10,Brighton Avenue east of St. Lukes Road,2016-09-29,Thursday,42.3523,-71.126,Boston,away,Boston University,1343.0,1127,20321,190,1994,214,2886
 11,Brookline Avenue south of Francis Street,2016-09-29,Thursday,42.3367,-71.1096,Boston,near,Harvard University,532.0,363,23143,78,2623,61,3230
 13,Cambridge Street east of Lincoln Street,2016-09-29,Thursday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,368,45902,104,5852,52,5300
@@ -263,8 +263,8 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2017-10-04,Wednesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,93,14928,11,1689,9,1806
 62,Washington Street south of Hayward Place,2017-10-04,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,667,5483,221,636,92,638
 63,Washington Street south of Herald Street,2017-10-04,Wednesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,466,7931,123,1176,77,1025
-64,Weld Street west of Centre Street,2017-10-04,Wednesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,50,3433,5,450,14,560
-8,Blue Hill Avenue north of Rexford Street,2017-10-04,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,60,29394,9,3781,10,3646
+64,Weld Street west of Centre Street,2017-10-04,Wednesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,50,3433,5,450,14,560
+8,Blue Hill Avenue north of Rexford Street,2017-10-04,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,60,29394,9,3781,10,3646
 9,Blue Hill Avenue north of Seaver Street,2017-10-04,Wednesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,45,24626,0,2877,7,2885
 1,A Street north of Iron Street,2017-10-05,Thursday,42.3459,-71.052,Boston,near,Tufts University,894.0,716,11940,169,1667,186,1400
 13,Cambridge Street east of Lincoln Street,2017-10-05,Thursday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,269,40184,47,4936,49,4791
@@ -308,8 +308,8 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2017-10-05,Thursday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,140,14865,5,1740,17,1646
 62,Washington Street south of Hayward Place,2017-10-05,Thursday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,667,5540,211,671,99,636
 63,Washington Street south of Herald Street,2017-10-05,Thursday,42.3462,-71.0647,Boston,near,Tufts University,479.0,429,8373,100,1209,72,1014
-64,Weld Street west of Centre Street,2017-10-05,Thursday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,38,3459,5,419,8,558
-8,Blue Hill Avenue north of Rexford Street,2017-10-05,Thursday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,52,30277,6,4151,12,3598
+64,Weld Street west of Centre Street,2017-10-05,Thursday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,38,3459,5,419,8,558
+8,Blue Hill Avenue north of Rexford Street,2017-10-05,Thursday,42.2714,-71.0937,Boston,away,Curry College,4155.0,52,30277,6,4151,12,3598
 9,Blue Hill Avenue north of Seaver Street,2017-10-05,Thursday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,47,24684,2,3003,7,2867
 1,A Street north of Iron Street,2018-06-12,Tuesday,42.3459,-71.052,Boston,near,Tufts University,894.0,895,11317,214,1602,234,1378
 11,Brookline Avenue south of Francis Street,2018-06-12,Tuesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,250,22312,66,2535,34,2688
@@ -334,7 +334,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2018-06-12,Tuesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,506,18592,63,2137,154,2210
 60,Washington Street north of Bexley Road,2018-06-12,Tuesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,363,16870,74,1895,89,2245
 65,Western Avenue east of Hague Street,2018-06-12,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,724,11164,144,1625,190,1432
-8,Blue Hill Avenue north of Rexford Street,2018-06-12,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,43,30434,11,3935,3,3641
+8,Blue Hill Avenue north of Rexford Street,2018-06-12,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,43,30434,11,3935,3,3641
 1,A Street north of Iron Street,2018-06-13,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,814,11444,208,1571,221,1446
 11,Brookline Avenue south of Francis Street,2018-06-13,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,234,22505,38,2408,46,3257
 13,Cambridge Street east of Lincoln Street,2018-06-13,Wednesday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,306,40124,57,4636,56,4872
@@ -358,7 +358,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2018-06-13,Wednesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,420,18668,47,2216,127,2191
 60,Washington Street north of Bexley Road,2018-06-13,Wednesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,298,16955,60,1839,75,2158
 65,Western Avenue east of Hague Street,2018-06-13,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,674,11767,134,1620,166,1572
-8,Blue Hill Avenue north of Rexford Street,2018-06-13,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,37,30407,3,3988,8,3590
+8,Blue Hill Avenue north of Rexford Street,2018-06-13,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,37,30407,3,3988,8,3590
 1,A Street north of Iron Street,2018-09-27,Thursday,42.3459,-71.052,Boston,near,Tufts University,894.0,750,12474,153,1727,203,1583
 10,Brighton Avenue east of St. Lukes Road,2018-09-27,Thursday,42.3523,-71.126,Boston,away,Boston University,1343.0,1173,16842,219,1576,255,2284
 11,Brookline Avenue south of Francis Street,2018-09-27,Thursday,42.3367,-71.1096,Boston,near,Harvard University,532.0,290,23021,74,2381,42,3235
@@ -415,10 +415,10 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2018-09-27,Thursday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,104,16427,14,1910,9,1968
 62,Washington Street south of Hayward Place,2018-09-27,Thursday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,554,5946,189,648,63,826
 63,Washington Street south of Herald Street,2018-09-27,Thursday,42.3462,-71.0647,Boston,near,Tufts University,479.0,398,8193,121,1237,74,1132
-64,Weld Street west of Centre Street,2018-09-27,Thursday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,33,3156,1,387,7,516
+64,Weld Street west of Centre Street,2018-09-27,Thursday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,33,3156,1,387,7,516
 65,Western Avenue east of Hague Street,2018-09-27,Thursday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,708,11622,144,1599,175,1462
 66,Western Avenue west of Waverly Street,2018-09-27,Thursday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,365,13188,77,1736,94,2123
-8,Blue Hill Avenue north of Rexford Street,2018-09-27,Thursday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,31,29883,2,3764,7,3472
+8,Blue Hill Avenue north of Rexford Street,2018-09-27,Thursday,42.2714,-71.0937,Boston,away,Curry College,4155.0,31,29883,2,3764,7,3472
 9,Blue Hill Avenue north of Seaver Street,2018-09-27,Thursday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,37,24407,6,2813,6,2790
 1,A Street north of Iron Street,2018-09-28,Friday,42.3459,-71.052,Boston,near,Tufts University,894.0,257,12646,26,1758,63,1432
 10,Brighton Avenue east of St. Lukes Road,2018-09-28,Friday,42.3523,-71.126,Boston,away,Boston University,1343.0,619,18078,78,1591,130,2437
@@ -475,13 +475,13 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2018-09-28,Friday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,51,17577,4,1853,8,2100
 62,Washington Street south of Hayward Place,2018-09-28,Friday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,226,6472,31,659,47,753
 63,Washington Street south of Herald Street,2018-09-28,Friday,42.3462,-71.0647,Boston,near,Tufts University,479.0,196,8789,24,1347,39,1086
-64,Weld Street west of Centre Street,2018-09-28,Friday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,12,3116,0,374,3,461
+64,Weld Street west of Centre Street,2018-09-28,Friday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,12,3116,0,374,3,461
 65,Western Avenue east of Hague Street,2018-09-28,Friday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,336,11875,58,1427,73,1527
 66,Western Avenue west of Waverly Street,2018-09-28,Friday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,161,12965,31,1544,36,1929
-8,Blue Hill Avenue north of Rexford Street,2018-09-28,Friday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,15,30565,0,3692,1,3663
+8,Blue Hill Avenue north of Rexford Street,2018-09-28,Friday,42.2714,-71.0937,Boston,away,Curry College,4155.0,15,30565,0,3692,1,3663
 9,Blue Hill Avenue north of Seaver Street,2018-09-28,Friday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,26,25519,2,2946,1,2950
-76,Cummins Highway east of Rugby Road,2018-10-24,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,48,17730,3,1896,6,2672
-76,Cummins Highway east of Rugby Road,2018-10-25,Thursday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,60,18412,5,1913,8,2764
+76,Cummins Highway east of Rugby Road,2018-10-24,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,48,17730,3,1896,6,2672
+76,Cummins Highway east of Rugby Road,2018-10-25,Thursday,42.2709,-71.1027,Boston,away,Curry College,3822.0,60,18412,5,1913,8,2764
 1,A Street north of Iron Street,2019-06-04,Tuesday,42.3459,-71.052,Boston,near,Tufts University,894.0,854,11250,146,1688,239,1324
 11,Brookline Avenue south of Francis Street,2019-06-04,Tuesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,243,22054,37,2442,50,3010
 13,Cambridge Street east of Lincoln Street,2019-06-04,Tuesday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,315,41092,59,4941,69,5141
@@ -505,7 +505,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2019-06-04,Tuesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,487,17945,48,2172,172,2159
 60,Washington Street north of Bexley Road,2019-06-04,Tuesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,406,17086,70,1979,84,2273
 65,Western Avenue east of Hague Street,2019-06-04,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,597,10869,124,1457,155,1547
-8,Blue Hill Avenue north of Rexford Street,2019-06-04,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,54,29421,5,3753,3,3485
+8,Blue Hill Avenue north of Rexford Street,2019-06-04,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,54,29421,5,3753,3,3485
 1,A Street north of Iron Street,2019-06-05,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,890,11988,200,1746,217,1531
 11,Brookline Avenue south of Francis Street,2019-06-05,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,280,22467,47,2374,50,3081
 13,Cambridge Street east of Lincoln Street,2019-06-05,Wednesday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,351,42187,62,5057,53,5014
@@ -529,7 +529,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2019-06-05,Wednesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,474,18425,49,2071,170,2256
 60,Washington Street north of Bexley Road,2019-06-05,Wednesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,423,17117,79,1978,105,2292
 65,Western Avenue east of Hague Street,2019-06-05,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,581,11060,116,1459,156,1639
-8,Blue Hill Avenue north of Rexford Street,2019-06-05,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,40,28965,4,3504,2,3382
+8,Blue Hill Avenue north of Rexford Street,2019-06-05,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,40,28965,4,3504,2,3382
 1,A Street north of Iron Street,2019-06-06,Thursday,42.3459,-71.052,Boston,near,Tufts University,894.0,690,12677,148,1789,177,1548
 11,Brookline Avenue south of Francis Street,2019-06-06,Thursday,42.3367,-71.1096,Boston,near,Harvard University,532.0,291,23071,67,2482,62,3022
 13,Cambridge Street east of Lincoln Street,2019-06-06,Thursday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,264,42556,51,5270,30,4865
@@ -551,7 +551,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2019-06-06,Thursday,42.3496,-71.0939,Boston,campus,Boston University,347.0,372,18580,31,2109,113,2141
 60,Washington Street north of Bexley Road,2019-06-06,Thursday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,312,17257,54,1944,72,2227
 65,Western Avenue east of Hague Street,2019-06-06,Thursday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,494,12026,106,1504,121,1824
-8,Blue Hill Avenue north of Rexford Street,2019-06-06,Thursday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,44,30120,8,3850,13,3542
+8,Blue Hill Avenue north of Rexford Street,2019-06-06,Thursday,42.2714,-71.0937,Boston,away,Curry College,4155.0,44,30120,8,3850,13,3542
 1,A Street north of Iron Street,2019-09-17,Tuesday,42.3459,-71.052,Boston,near,Tufts University,894.0,1017,10208,246,1575,269,979
 10,Brighton Avenue east of St. Lukes Road,2019-09-17,Tuesday,42.3523,-71.126,Boston,away,Boston University,1343.0,1370,17099,237,1749,316,2454
 11,Brookline Avenue south of Francis Street,2019-09-17,Tuesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,413,22809,113,2490,79,3140
@@ -612,10 +612,10 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2019-09-17,Tuesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,102,14499,15,1716,8,1793
 62,Washington Street south of Hayward Place,2019-09-17,Tuesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,684,4974,248,569,87,590
 63,Washington Street south of Herald Street,2019-09-17,Tuesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,506,7864,124,1386,94,847
-64,Weld Street west of Centre Street,2019-09-17,Tuesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,43,3103,4,415,13,515
+64,Weld Street west of Centre Street,2019-09-17,Tuesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,43,3103,4,415,13,515
 65,Western Avenue east of Hague Street,2019-09-17,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,649,10917,118,1734,185,1456
 66,Western Avenue west of Waverly Street,2019-09-17,Tuesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,379,14063,64,1939,107,2143
-8,Blue Hill Avenue north of Rexford Street,2019-09-17,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,50,28398,4,3779,6,3381
+8,Blue Hill Avenue north of Rexford Street,2019-09-17,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,50,28398,4,3779,6,3381
 9,Blue Hill Avenue north of Seaver Street,2019-09-17,Tuesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,54,21588,6,2749,13,2199
 1,A Street north of Iron Street,2019-09-18,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,1002,10850,217,1673,251,1098
 10,Brighton Avenue east of St. Lukes Road,2019-09-18,Wednesday,42.3523,-71.126,Boston,away,Boston University,1343.0,1354,16915,207,1693,283,2482
@@ -677,10 +677,10 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2019-09-18,Wednesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,121,14531,10,1722,10,1772
 62,Washington Street south of Hayward Place,2019-09-18,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,630,5353,205,688,71,620
 63,Washington Street south of Herald Street,2019-09-18,Wednesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,486,8150,117,1417,66,956
-64,Weld Street west of Centre Street,2019-09-18,Wednesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,44,3121,7,405,13,557
+64,Weld Street west of Centre Street,2019-09-18,Wednesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,44,3121,7,405,13,557
 65,Western Avenue east of Hague Street,2019-09-18,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,635,10581,133,1373,158,1434
 66,Western Avenue west of Waverly Street,2019-09-18,Wednesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,381,14132,75,1889,91,2155
-8,Blue Hill Avenue north of Rexford Street,2019-09-18,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,44,28833,1,3656,10,3591
+8,Blue Hill Avenue north of Rexford Street,2019-09-18,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,44,28833,1,3656,10,3591
 9,Blue Hill Avenue north of Seaver Street,2019-09-18,Wednesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,51,22346,7,2699,14,2529
 1,A Street north of Iron Street,2020-03-17,Tuesday,42.3459,-71.052,Boston,near,Tufts University,894.0,82,5039,11,658,22,594
 15,Cambridge Street west of Staniford Street,2020-03-17,Tuesday,42.3613,-71.0642,Boston,campus,Suffolk University,324.0,209,11304,26,1520,55,1383
@@ -752,8 +752,8 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2020-06-09,Tuesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,284,10517,23,1237,48,1256
 60,Washington Street north of Bexley Road,2020-06-09,Tuesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,277,13184,27,1181,66,1800
 65,Western Avenue east of Hague Street,2020-06-09,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,257,5006,19,490,61,522
-7,Belgrade Avenue east of Anawan Avenue,2020-06-09,Tuesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,78,8601,6,883,18,1263
-8,Blue Hill Avenue north of Rexford Street,2020-06-09,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,71,23879,7,2278,14,3062
+7,Belgrade Avenue east of Anawan Avenue,2020-06-09,Tuesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,78,8601,6,883,18,1263
+8,Blue Hill Avenue north of Rexford Street,2020-06-09,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,71,23879,7,2278,14,3062
 1,A Street north of Iron Street,2020-06-10,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,575,5604,43,560,128,676
 11,Brookline Avenue south of Francis Street,2020-06-10,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,257,16751,27,1770,41,2196
 13,Cambridge Street east of Lincoln Street,2020-06-10,Wednesday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,271,27025,27,2695,53,3773
@@ -783,14 +783,14 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2020-06-10,Wednesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,230,10603,13,1339,59,1268
 60,Washington Street north of Bexley Road,2020-06-10,Wednesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,343,13618,32,1302,68,1853
 65,Western Avenue east of Hague Street,2020-06-10,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,297,5296,25,544,68,590
-7,Belgrade Avenue east of Anawan Avenue,2020-06-10,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,105,9088,10,966,21,1308
-8,Blue Hill Avenue north of Rexford Street,2020-06-10,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,93,23549,12,2147,16,3079
+7,Belgrade Avenue east of Anawan Avenue,2020-06-10,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,105,9088,10,966,21,1308
+8,Blue Hill Avenue north of Rexford Street,2020-06-10,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,93,23549,12,2147,16,3079
 15,Cambridge Street west of Staniford Street,2020-06-16,Tuesday,42.3613,-71.0642,Boston,campus,Suffolk University,324.0,283,5331,43,735,56,621
 15,Cambridge Street west of Staniford Street,2020-06-17,Wednesday,42.3613,-71.0642,Boston,campus,Suffolk University,324.0,254,5603,43,741,54,647
-76,Cummins Highway east of Rugby Road,2020-08-12,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,80,14923,0,1347,12,2115
-76,Cummins Highway east of Rugby Road,2020-08-13,Thursday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,88,15288,4,1441,13,2220
-76,Cummins Highway east of Rugby Road,2020-09-16,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,72,15026,5,1433,11,2169
-76,Cummins Highway east of Rugby Road,2020-09-17,Thursday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,93,15276,3,1467,11,2229
+76,Cummins Highway east of Rugby Road,2020-08-12,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,80,14923,0,1347,12,2115
+76,Cummins Highway east of Rugby Road,2020-08-13,Thursday,42.2709,-71.1027,Boston,away,Curry College,3822.0,88,15288,4,1441,13,2220
+76,Cummins Highway east of Rugby Road,2020-09-16,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,72,15026,5,1433,11,2169
+76,Cummins Highway east of Rugby Road,2020-09-17,Thursday,42.2709,-71.1027,Boston,away,Curry College,3822.0,93,15276,3,1467,11,2229
 1,A Street north of Iron Street,2020-09-23,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,549,7032,79,806,143,886
 10,Brighton Avenue east of St. Lukes Road,2020-09-23,Wednesday,42.3523,-71.126,Boston,away,Boston University,1343.0,958,12222,123,1044,218,1867
 11,Brookline Avenue south of Francis Street,2020-09-23,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,422,19027,82,2150,80,2523
@@ -851,11 +851,11 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2020-09-23,Wednesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,90,14679,11,1459,24,1960
 62,Washington Street south of Hayward Place,2020-09-23,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,127,2947,20,315,18,340
 63,Washington Street south of Herald Street,2020-09-23,Wednesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,395,6431,50,810,74,740
-64,Weld Street west of Centre Street,2020-09-23,Wednesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,52,2299,6,263,11,343
+64,Weld Street west of Centre Street,2020-09-23,Wednesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,52,2299,6,263,11,343
 65,Western Avenue east of Hague Street,2020-09-23,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,433,6240,51,728,106,711
 66,Western Avenue west of Waverly Street,2020-09-23,Wednesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,309,10231,49,1227,70,1399
-7,Belgrade Avenue east of Anawan Avenue,2020-09-23,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,84,10363,7,1212,23,1643
-8,Blue Hill Avenue north of Rexford Street,2020-09-23,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,82,25002,2,2608,17,3248
+7,Belgrade Avenue east of Anawan Avenue,2020-09-23,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,84,10363,7,1212,23,1643
+8,Blue Hill Avenue north of Rexford Street,2020-09-23,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,82,25002,2,2608,17,3248
 9,Blue Hill Avenue north of Seaver Street,2020-09-23,Wednesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,62,21088,2,2192,17,2720
 1,A Street north of Iron Street,2020-09-24,Thursday,42.3459,-71.052,Boston,near,Tufts University,894.0,566,7340,92,794,146,897
 10,Brighton Avenue east of St. Lukes Road,2020-09-24,Thursday,42.3523,-71.126,Boston,away,Boston University,1343.0,969,12595,98,1219,196,1871
@@ -917,11 +917,11 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2020-09-24,Thursday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,103,14591,5,1450,11,1877
 62,Washington Street south of Hayward Place,2020-09-24,Thursday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,157,3118,15,325,30,402
 63,Washington Street south of Herald Street,2020-09-24,Thursday,42.3462,-71.0647,Boston,near,Tufts University,479.0,444,6661,54,956,69,757
-64,Weld Street west of Centre Street,2020-09-24,Thursday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,34,2331,5,311,5,356
+64,Weld Street west of Centre Street,2020-09-24,Thursday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,34,2331,5,311,5,356
 65,Western Avenue east of Hague Street,2020-09-24,Thursday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,424,6243,42,757,107,738
 66,Western Avenue west of Waverly Street,2020-09-24,Thursday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,283,10354,38,1241,54,1462
-7,Belgrade Avenue east of Anawan Avenue,2020-09-24,Thursday,42.2861,-71.1471,Boston,away,Boston College,5620.0,77,10549,8,1213,12,1665
-8,Blue Hill Avenue north of Rexford Street,2020-09-24,Thursday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,78,25195,6,2740,9,3253
+7,Belgrade Avenue east of Anawan Avenue,2020-09-24,Thursday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,77,10549,8,1213,12,1665
+8,Blue Hill Avenue north of Rexford Street,2020-09-24,Thursday,42.2714,-71.0937,Boston,away,Curry College,4155.0,78,25195,6,2740,9,3253
 9,Blue Hill Avenue north of Seaver Street,2020-09-24,Thursday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,70,21699,2,2072,16,2740
 1,A Street north of Iron Street,2020-12-08,Tuesday,42.3459,-71.052,Boston,near,Tufts University,894.0,140,6553,29,779,12,975
 15,Cambridge Street west of Staniford Street,2020-12-08,Tuesday,42.3613,-71.0642,Boston,campus,Suffolk University,324.0,280,13675,41,1859,67,1775
@@ -945,8 +945,8 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 58,Warren Street north of Walnut Avenue,2020-12-08,Tuesday,42.3244,-71.0829,Boston,away,Roxbury Community College,1169.0,54,17832,8,1998,3,2215
 60,Washington Street north of Bexley Road,2020-12-08,Tuesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,117,13590,20,1395,20,1836
 68,Arlington Street south of Marlborough Street,2020-12-08,Tuesday,42.3545,-71.072,Boston,near,Emerson College,575.0,204,11382,31,1563,44,1703
-76,Cummins Highway east of Rugby Road,2020-12-08,Tuesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,1,13567,0,1385,0,1943
-78,American Legion Highway north of Mount Hope Street,2020-12-08,Tuesday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,11,24508,2,2587,1,3250
+76,Cummins Highway east of Rugby Road,2020-12-08,Tuesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,1,13567,0,1385,0,1943
+78,American Legion Highway north of Mount Hope Street,2020-12-08,Tuesday,42.2831,-71.114,Boston,away,Curry College,5007.0,11,24508,2,2587,1,3250
 1,A Street north of Iron Street,2020-12-09,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,206,6580,33,773,36,823
 15,Cambridge Street west of Staniford Street,2020-12-09,Wednesday,42.3613,-71.0642,Boston,campus,Suffolk University,324.0,293,14012,48,1891,59,1640
 16,Centre Street north of Harris Avenue,2020-12-09,Wednesday,42.3113,-71.1145,Boston,away,Roxbury Community College,2534.0,200,12196,21,1317,40,1589
@@ -968,8 +968,8 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 56,Summer Street east of Dorchester Avenue,2020-12-09,Wednesday,42.351,-71.0519,Boston,near,Tufts University,801.0,213,11428,38,1375,23,1394
 58,Warren Street north of Walnut Avenue,2020-12-09,Wednesday,42.3244,-71.0829,Boston,away,Roxbury Community College,1169.0,51,17962,9,1838,6,2222
 60,Washington Street north of Bexley Road,2020-12-09,Wednesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,115,13924,25,1547,20,1782
-76,Cummins Highway east of Rugby Road,2020-12-09,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,0,13411,0,1364,0,1937
-78,American Legion Highway north of Mount Hope Street,2020-12-09,Wednesday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,11,24465,0,2573,2,3259
+76,Cummins Highway east of Rugby Road,2020-12-09,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,0,13411,0,1364,0,1937
+78,American Legion Highway north of Mount Hope Street,2020-12-09,Wednesday,42.2831,-71.114,Boston,away,Curry College,5007.0,11,24465,0,2573,2,3259
 1,A Street north of Iron Street,2021-03-17,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,217,7330,27,822,47,968
 15,Cambridge Street west of Staniford Street,2021-03-17,Wednesday,42.3613,-71.0642,Boston,campus,Suffolk University,324.0,394,16240,51,2154,92,1937
 16,Centre Street north of Harris Avenue,2021-03-17,Wednesday,42.3113,-71.1145,Boston,away,Roxbury Community College,2534.0,278,12698,35,1374,65,1675
@@ -1012,10 +1012,10 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 56,Summer Street east of Dorchester Avenue,2021-03-18,Thursday,42.351,-71.0519,Boston,near,Tufts University,801.0,137,12187,29,1383,10,1630
 58,Warren Street north of Walnut Avenue,2021-03-18,Thursday,42.3244,-71.0829,Boston,away,Roxbury Community College,1169.0,39,19793,10,2208,3,2497
 60,Washington Street north of Bexley Road,2021-03-18,Thursday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,85,14740,18,1735,7,1942
-78,American Legion Highway north of Mount Hope Street,2021-05-12,Wednesday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,42,27313,2,3032,13,3683
-78,American Legion Highway north of Mount Hope Street,2021-05-13,Thursday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,55,28208,2,3220,8,3715
-76,Cummins Highway east of Rugby Road,2021-05-25,Tuesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,29,15759,4,1649,4,2305
-76,Cummins Highway east of Rugby Road,2021-05-26,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,53,15580,1,1643,1,2122
+78,American Legion Highway north of Mount Hope Street,2021-05-12,Wednesday,42.2831,-71.114,Boston,away,Curry College,5007.0,42,27313,2,3032,13,3683
+78,American Legion Highway north of Mount Hope Street,2021-05-13,Thursday,42.2831,-71.114,Boston,away,Curry College,5007.0,55,28208,2,3220,8,3715
+76,Cummins Highway east of Rugby Road,2021-05-25,Tuesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,29,15759,4,1649,4,2305
+76,Cummins Highway east of Rugby Road,2021-05-26,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,53,15580,1,1643,1,2122
 1,A Street north of Iron Street,2021-06-09,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,485,8902,80,923,102,1120
 11,Brookline Avenue south of Francis Street,2021-06-09,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,360,21888,76,2323,55,2889
 13,Cambridge Street east of Lincoln Street,2021-06-09,Wednesday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,330,38174,40,4494,59,5297
@@ -1047,8 +1047,8 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2021-06-09,Wednesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,232,13886,20,1684,78,1902
 60,Washington Street north of Bexley Road,2021-06-09,Wednesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,311,16859,40,1863,60,2233
 65,Western Avenue east of Hague Street,2021-06-09,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,392,6700,58,828,95,874
-7,Belgrade Avenue east of Anawan Avenue,2021-06-09,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,75,11514,16,1366,12,1720
-8,Blue Hill Avenue north of Rexford Street,2021-06-09,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,50,27714,9,3275,7,3214
+7,Belgrade Avenue east of Anawan Avenue,2021-06-09,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,75,11514,16,1366,12,1720
+8,Blue Hill Avenue north of Rexford Street,2021-06-09,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,50,27714,9,3275,7,3214
 1,A Street north of Iron Street,2021-06-10,Thursday,42.3459,-71.052,Boston,near,Tufts University,894.0,552,9049,93,991,131,1144
 11,Brookline Avenue south of Francis Street,2021-06-10,Thursday,42.3367,-71.1096,Boston,near,Harvard University,532.0,383,22117,58,2417,74,2880
 13,Cambridge Street east of Lincoln Street,2021-06-10,Thursday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,358,38604,39,4435,66,5149
@@ -1080,10 +1080,10 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2021-06-10,Thursday,42.3496,-71.0939,Boston,campus,Boston University,347.0,302,13590,34,1683,97,1745
 60,Washington Street north of Bexley Road,2021-06-10,Thursday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,357,16961,45,1903,80,2224
 65,Western Avenue east of Hague Street,2021-06-10,Thursday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,487,6423,74,813,95,807
-7,Belgrade Avenue east of Anawan Avenue,2021-06-10,Thursday,42.2861,-71.1471,Boston,away,Boston College,5620.0,89,11777,11,1385,13,1781
-8,Blue Hill Avenue north of Rexford Street,2021-06-10,Thursday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,73,28283,11,3291,18,3506
-76,Cummins Highway east of Rugby Road,2021-06-15,Tuesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,20,13851,3,1333,2,1985
-76,Cummins Highway east of Rugby Road,2021-06-16,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,14,14423,0,1385,3,2036
+7,Belgrade Avenue east of Anawan Avenue,2021-06-10,Thursday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,89,11777,11,1385,13,1781
+8,Blue Hill Avenue north of Rexford Street,2021-06-10,Thursday,42.2714,-71.0937,Boston,away,Curry College,4155.0,73,28283,11,3291,18,3506
+76,Cummins Highway east of Rugby Road,2021-06-15,Tuesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,20,13851,3,1333,2,1985
+76,Cummins Highway east of Rugby Road,2021-06-16,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,14,14423,0,1385,3,2036
 1,A Street north of Iron Street,2021-09-29,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,604,9526,99,1089,143,1234
 10,Brighton Avenue east of St. Lukes Road,2021-09-29,Wednesday,42.3523,-71.126,Boston,away,Boston University,1343.0,1350,15307,178,1542,269,2334
 11,Brookline Avenue south of Francis Street,2021-09-29,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,465,21734,96,2419,80,2876
@@ -1144,11 +1144,11 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2021-09-29,Wednesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,74,15075,7,1839,13,1852
 62,Washington Street south of Hayward Place,2021-09-29,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,598,3469,133,406,98,429
 63,Washington Street south of Herald Street,2021-09-29,Wednesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,495,7087,98,1027,82,914
-64,Weld Street west of Centre Street,2021-09-29,Wednesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,35,2653,6,388,6,426
+64,Weld Street west of Centre Street,2021-09-29,Wednesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,35,2653,6,388,6,426
 65,Western Avenue east of Hague Street,2021-09-29,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,820,7588,128,978,172,1048
 66,Western Avenue west of Waverly Street,2021-09-29,Wednesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,377,11148,54,1507,98,1599
-7,Belgrade Avenue east of Anawan Avenue,2021-09-29,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,71,11342,6,1471,10,1720
-8,Blue Hill Avenue north of Rexford Street,2021-09-29,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,56,28693,7,3658,12,3570
+7,Belgrade Avenue east of Anawan Avenue,2021-09-29,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,71,11342,6,1471,10,1720
+8,Blue Hill Avenue north of Rexford Street,2021-09-29,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,56,28693,7,3658,12,3570
 9,Blue Hill Avenue north of Seaver Street,2021-09-29,Wednesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,55,22084,7,2825,12,2582
 1,A Street north of Iron Street,2021-09-30,Thursday,42.3459,-71.052,Boston,near,Tufts University,894.0,547,9659,97,1080,139,1197
 10,Brighton Avenue east of St. Lukes Road,2021-09-30,Thursday,42.3523,-71.126,Boston,away,Boston University,1343.0,1242,15710,158,1520,233,2287
@@ -1209,11 +1209,11 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2021-09-30,Thursday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,72,14981,8,1828,9,1822
 62,Washington Street south of Hayward Place,2021-09-30,Thursday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,567,3603,115,388,98,453
 63,Washington Street south of Herald Street,2021-09-30,Thursday,42.3462,-71.0647,Boston,near,Tufts University,479.0,401,6970,75,1038,80,941
-64,Weld Street west of Centre Street,2021-09-30,Thursday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,30,2656,8,350,8,420
+64,Weld Street west of Centre Street,2021-09-30,Thursday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,30,2656,8,350,8,420
 65,Western Avenue east of Hague Street,2021-09-30,Thursday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,705,7479,115,945,151,1056
 66,Western Avenue west of Waverly Street,2021-09-30,Thursday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,348,11646,53,1509,78,1649
-7,Belgrade Avenue east of Anawan Avenue,2021-09-30,Thursday,42.2861,-71.1471,Boston,away,Boston College,5620.0,64,11491,11,1452,12,1736
-8,Blue Hill Avenue north of Rexford Street,2021-09-30,Thursday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,35,28741,7,3742,3,3503
+7,Belgrade Avenue east of Anawan Avenue,2021-09-30,Thursday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,64,11491,11,1452,12,1736
+8,Blue Hill Avenue north of Rexford Street,2021-09-30,Thursday,42.2714,-71.0937,Boston,away,Curry College,4155.0,35,28741,7,3742,3,3503
 9,Blue Hill Avenue north of Seaver Street,2021-09-30,Thursday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,33,22550,4,2741,5,2768
 68,Arlington Street south of Marlborough Street,2021-11-03,Wednesday,42.3545,-71.072,Boston,near,Emerson College,575.0,503,17590,86,2217,147,2558
 69,Beacon Street west of Charles Street,2021-11-03,Wednesday,42.356,-71.0703,Boston,near,Emerson College,564.0,651,14189,63,1579,207,2122
@@ -1324,7 +1324,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 58,Warren Street north of Walnut Avenue,2022-06-14,Tuesday,42.3244,-71.0829,Boston,away,Roxbury Community College,1169.0,151,21409,19,2520,32,2605
 6,Beacon Street east of Raleigh Street,2022-06-14,Tuesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,324,13768,36,1482,99,1656
 62,Washington Street south of Hayward Place,2022-06-14,Tuesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,573,3567,76,387,100,455
-67,Neponset Greenway east of Blue Hill Avenue,2022-06-14,Tuesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,133,,16,,32,
+67,Neponset Greenway east of Blue Hill Avenue,2022-06-14,Tuesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,133,,16,,32,
 1,A Street north of Iron Street,2022-06-15,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,569,10099,102,1176,130,1213
 11,Brookline Avenue south of Francis Street,2022-06-15,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,475,14308,57,1762,101,1685
 13,Cambridge Street east of Lincoln Street,2022-06-15,Wednesday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,313,38023,54,4405,58,5071
@@ -1356,9 +1356,9 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 60,Washington Street north of Bexley Road,2022-06-15,Wednesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,386,17520,55,2129,91,2351
 62,Washington Street south of Hayward Place,2022-06-15,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,799,3713,91,441,117,414
 65,Western Avenue east of Hague Street,2022-06-15,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,618,7828,125,1053,148,1074
-67,Neponset Greenway east of Blue Hill Avenue,2022-06-15,Wednesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,163,,25,,29,
-7,Belgrade Avenue east of Anawan Avenue,2022-06-15,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,94,12153,9,1600,16,1846
-8,Blue Hill Avenue north of Rexford Street,2022-06-15,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,36,29003,4,3768,13,3568
+67,Neponset Greenway east of Blue Hill Avenue,2022-06-15,Wednesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,163,,25,,29,
+7,Belgrade Avenue east of Anawan Avenue,2022-06-15,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,94,12153,9,1600,16,1846
+8,Blue Hill Avenue north of Rexford Street,2022-06-15,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,36,29003,4,3768,13,3568
 1,A Street north of Iron Street,2022-06-16,Thursday,42.3459,-71.052,Boston,near,Tufts University,894.0,557,10683,103,1185,122,1175
 11,Brookline Avenue south of Francis Street,2022-06-16,Thursday,42.3367,-71.1096,Boston,near,Harvard University,532.0,486,13470,61,1608,125,1580
 13,Cambridge Street east of Lincoln Street,2022-06-16,Thursday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,356,38483,60,4334,86,4889
@@ -1381,8 +1381,8 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 56,Summer Street east of Dorchester Avenue,2022-06-16,Thursday,42.351,-71.0519,Boston,near,Tufts University,801.0,741,20080,123,2137,144,2686
 60,Washington Street north of Bexley Road,2022-06-16,Thursday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,390,16917,59,2005,58,2202
 65,Western Avenue east of Hague Street,2022-06-16,Thursday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,546,7704,86,976,145,961
-7,Belgrade Avenue east of Anawan Avenue,2022-06-16,Thursday,42.2861,-71.1471,Boston,away,Boston College,5620.0,85,12216,13,1569,11,1846
-8,Blue Hill Avenue north of Rexford Street,2022-06-16,Thursday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,37,28681,4,3812,7,3358
+7,Belgrade Avenue east of Anawan Avenue,2022-06-16,Thursday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,85,12216,13,1569,11,1846
+8,Blue Hill Avenue north of Rexford Street,2022-06-16,Thursday,42.2714,-71.0937,Boston,away,Curry College,4155.0,37,28681,4,3812,7,3358
 68,Arlington Street south of Marlborough Street,2022-06-22,Wednesday,42.3545,-71.072,Boston,near,Emerson College,575.0,872,17860,131,2341,227,2644
 69,Beacon Street west of Charles Street,2022-06-22,Wednesday,42.356,-71.0703,Boston,near,Emerson College,564.0,1051,16390,104,1589,322,2733
 70,Boylston Street east of Arlington Street,2022-06-22,Wednesday,42.3522,-71.0694,Boston,campus,Emerson College,302.0,1436,9582,292,1163,274,1424
@@ -1408,7 +1408,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 46,Mt. Vernon Street west of Harbor Point Boulevard,2022-09-27,Tuesday,42.3188,-71.0451,Boston,near,University of Massachusetts-Boston,737.0,176,9891,15,1183,24,1250
 51,Quincy Street west of Ceylon Street,2022-09-27,Tuesday,42.3121,-71.0726,Boston,away,Boston University,2580.0,75,13361,13,1600,15,1720
 66,Western Avenue west of Waverly Street,2022-09-27,Tuesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,512,11137,82,1519,116,1635
-67,Neponset Greenway east of Blue Hill Avenue,2022-09-27,Tuesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,123,,10,,34,
+67,Neponset Greenway east of Blue Hill Avenue,2022-09-27,Tuesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,123,,10,,34,
 82,North Beacon Street west of Glencoe Street,2022-09-27,Tuesday,42.3559,-71.1482,Boston,away,Harvard University,2539.0,165,10899,23,1407,34,1740
 9,Blue Hill Avenue north of Seaver Street,2022-09-27,Tuesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,51,21584,9,2618,10,2732
 90,Boylston Street west of Fairfield Street,2022-09-27,Tuesday,42.3487,-71.0824,Boston,near,Berklee College of Music,589.0,583,10904,89,1162,101,1632
@@ -1464,12 +1464,12 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2022-09-28,Wednesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,58,14963,3,1809,12,1805
 62,Washington Street south of Hayward Place,2022-09-28,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,840,3687,196,378,131,480
 63,Washington Street south of Herald Street,2022-09-28,Wednesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,518,7655,98,1091,91,1006
-64,Weld Street west of Centre Street,2022-09-28,Wednesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,53,2627,13,367,10,389
+64,Weld Street west of Centre Street,2022-09-28,Wednesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,53,2627,13,367,10,389
 65,Western Avenue east of Hague Street,2022-09-28,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,921,7716,153,1047,192,1061
 66,Western Avenue west of Waverly Street,2022-09-28,Wednesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,587,11800,72,1501,121,1748
-67,Neponset Greenway east of Blue Hill Avenue,2022-09-28,Wednesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,109,,14,,21,
-7,Belgrade Avenue east of Anawan Avenue,2022-09-28,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,74,11747,14,1525,13,1775
-8,Blue Hill Avenue north of Rexford Street,2022-09-28,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,57,29355,9,3564,16,3565
+67,Neponset Greenway east of Blue Hill Avenue,2022-09-28,Wednesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,109,,14,,21,
+7,Belgrade Avenue east of Anawan Avenue,2022-09-28,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,74,11747,14,1525,13,1775
+8,Blue Hill Avenue north of Rexford Street,2022-09-28,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,57,29355,9,3564,16,3565
 82,North Beacon Street west of Glencoe Street,2022-09-28,Wednesday,42.3559,-71.1482,Boston,away,Harvard University,2539.0,164,11329,27,1436,31,1685
 90,Boylston Street west of Fairfield Street,2022-09-28,Wednesday,42.3487,-71.0824,Boston,near,Berklee College of Music,589.0,590,11785,71,1151,100,1739
 1,A Street north of Iron Street,2022-09-29,Thursday,42.3459,-71.052,Boston,near,Tufts University,894.0,550,10107,109,1332,123,1304
@@ -1520,10 +1520,10 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2022-09-29,Thursday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,53,14975,10,1761,5,1878
 62,Washington Street south of Hayward Place,2022-09-29,Thursday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,821,3784,167,361,132,522
 63,Washington Street south of Herald Street,2022-09-29,Thursday,42.3462,-71.0647,Boston,near,Tufts University,479.0,472,7709,99,1111,84,1009
-64,Weld Street west of Centre Street,2022-09-29,Thursday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,45,2666,7,376,10,389
+64,Weld Street west of Centre Street,2022-09-29,Thursday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,45,2666,7,376,10,389
 65,Western Avenue east of Hague Street,2022-09-29,Thursday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,945,7680,162,999,199,1031
-7,Belgrade Avenue east of Anawan Avenue,2022-09-29,Thursday,42.2861,-71.1471,Boston,away,Boston College,5620.0,63,12315,8,1569,13,1986
-8,Blue Hill Avenue north of Rexford Street,2022-09-29,Thursday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,40,29526,4,3742,9,3573
+7,Belgrade Avenue east of Anawan Avenue,2022-09-29,Thursday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,63,12315,8,1569,13,1986
+8,Blue Hill Avenue north of Rexford Street,2022-09-29,Thursday,42.2714,-71.0937,Boston,away,Curry College,4155.0,40,29526,4,3742,9,3573
 9,Blue Hill Avenue north of Seaver Street,2022-09-29,Thursday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,50,21418,4,2679,8,2610
 20,Chestnut Hill Avenue north of Embassy Road,2022-10-04,Tuesday,42.3417,-71.1544,Boston,away,Boston College,1367.0,124,12997,21,1654,23,1915
 20,Chestnut Hill Avenue north of Embassy Road,2022-10-05,Wednesday,42.3417,-71.1544,Boston,away,Boston College,1367.0,65,12062,7,1549,18,1776
@@ -1672,9 +1672,9 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 60,Washington Street north of Bexley Road,2023-06-06,Tuesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,316,16854,65,2013,59,2307
 62,Washington Street south of Hayward Place,2023-06-06,Tuesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,739,3611,193,409,95,428
 65,Western Avenue east of Hague Street,2023-06-06,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,554,6548,106,856,162,907
-67,Neponset Greenway east of Blue Hill Avenue,2023-06-06,Tuesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,170,1,11,1,26,0
-7,Belgrade Avenue east of Anawan Avenue,2023-06-06,Tuesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,79,11704,15,1501,10,1700
-8,Blue Hill Avenue north of Rexford Street,2023-06-06,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,59,27124,7,3608,17,3205
+67,Neponset Greenway east of Blue Hill Avenue,2023-06-06,Tuesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,170,1,11,1,26,0
+7,Belgrade Avenue east of Anawan Avenue,2023-06-06,Tuesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,79,11704,15,1501,10,1700
+8,Blue Hill Avenue north of Rexford Street,2023-06-06,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,59,27124,7,3608,17,3205
 1,A Street north of Iron Street,2023-06-07,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,680,11436,161,1664,152,1269
 11,Brookline Avenue south of Francis Street,2023-06-07,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,454,22694,113,2513,72,3083
 13,Cambridge Street east of Lincoln Street,2023-06-07,Wednesday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,379,38061,67,4431,76,4959
@@ -1706,9 +1706,9 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 60,Washington Street north of Bexley Road,2023-06-07,Wednesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,339,16742,65,2040,70,2268
 62,Washington Street south of Hayward Place,2023-06-07,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,781,3589,194,372,99,446
 65,Western Avenue east of Hague Street,2023-06-07,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,558,6387,104,844,157,893
-67,Neponset Greenway east of Blue Hill Avenue,2023-06-07,Wednesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,144,1,34,1,33,0
-7,Belgrade Avenue east of Anawan Avenue,2023-06-07,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,86,11782,12,1576,18,1706
-8,Blue Hill Avenue north of Rexford Street,2023-06-07,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,53,26992,2,3550,10,3093
+67,Neponset Greenway east of Blue Hill Avenue,2023-06-07,Wednesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,144,1,34,1,33,0
+7,Belgrade Avenue east of Anawan Avenue,2023-06-07,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,86,11782,12,1576,18,1706
+8,Blue Hill Avenue north of Rexford Street,2023-06-07,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,53,26992,2,3550,10,3093
 19,Charles Street north of Revere Street,2023-06-08,Thursday,42.3597,-71.0708,Boston,near,Suffolk University,735.0,613,5377,147,686,112,845
 21,Columbia Road south of Quincy Street,2023-06-08,Thursday,42.3107,-71.0713,Boston,away,University of Massachusetts-Boston,2669.0,85,29243,10,3330,8,3422
 19,Charles Street north of Revere Street,2023-06-09,Friday,42.3597,-71.0708,Boston,near,Suffolk University,735.0,429,5165,102,575,64,808
@@ -1759,7 +1759,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 62,Washington Street south of Hayward Place,2023-09-20,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,851,4034,201,399,145,529
 65,Western Avenue east of Hague Street,2023-09-20,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,599,7219,95,993,155,862
 66,Western Avenue west of Waverly Street,2023-09-20,Wednesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,494,11368,86,1709,124,1600
-67,Neponset Greenway east of Blue Hill Avenue,2023-09-20,Wednesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,124,1,28,0,37,0
+67,Neponset Greenway east of Blue Hill Avenue,2023-09-20,Wednesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,124,1,28,0,37,0
 68,Arlington Street south of Marlborough Street,2023-09-20,Wednesday,42.3545,-71.072,Boston,near,Emerson College,575.0,1161,20001,234,2554,284,2489
 69,Beacon Street west of Charles Street,2023-09-20,Wednesday,42.356,-71.0703,Boston,near,Emerson College,564.0,1176,18996,107,2128,382,3087
 70,Boylston Street east of Arlington Street,2023-09-20,Wednesday,42.3522,-71.0694,Boston,campus,Emerson College,302.0,1688,10737,392,1391,311,1569
@@ -1811,7 +1811,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 62,Washington Street south of Hayward Place,2023-09-21,Thursday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,897,3880,194,380,145,432
 65,Western Avenue east of Hague Street,2023-09-21,Thursday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,780,7443,148,1027,186,945
 66,Western Avenue west of Waverly Street,2023-09-21,Thursday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,569,11399,80,1546,129,1589
-67,Neponset Greenway east of Blue Hill Avenue,2023-09-21,Thursday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,117,1,11,0,17,0
+67,Neponset Greenway east of Blue Hill Avenue,2023-09-21,Thursday,42.2672,-71.0934,Boston,away,Curry College,3758.0,117,1,11,0,17,0
 19,Charles Street north of Revere Street,2023-09-23,Saturday,42.3597,-71.0708,Boston,near,Suffolk University,735.0,303,4883,41,475,28,777
 12,BU Bridge north of Commonwealth Avenue,2023-09-26,Tuesday,42.3523,-71.1107,Boston,campus,Boston University,148.0,2279,28581,506,3870,528,3776
 16,Centre Street north of Harris Avenue,2023-09-26,Tuesday,42.3113,-71.1145,Boston,away,Roxbury Community College,2534.0,362,12541,51,1682,93,1475
@@ -1832,8 +1832,8 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 59,Washington Street East of Beethoven Street,2023-09-26,Tuesday,42.3154,-71.0987,Boston,away,Roxbury Community College,1559.0,62,12883,10,1267,11,1368
 60,Washington Street north of Bexley Road,2023-09-26,Tuesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,347,16383,57,2021,94,2311
 63,Washington Street south of Herald Street,2023-09-26,Tuesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,451,8451,94,1339,68,1110
-64,Weld Street west of Centre Street,2023-09-26,Tuesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,46,2936,10,439,13,479
-7,Belgrade Avenue east of Anawan Avenue,2023-09-26,Tuesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,80,11531,6,1597,18,1790
+64,Weld Street west of Centre Street,2023-09-26,Tuesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,46,2936,10,439,13,479
+7,Belgrade Avenue east of Anawan Avenue,2023-09-26,Tuesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,80,11531,6,1597,18,1790
 9,Blue Hill Avenue north of Seaver Street,2023-09-26,Tuesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,48,20780,5,2718,8,2423
 12,BU Bridge north of Commonwealth Avenue,2023-09-27,Wednesday,42.3523,-71.1107,Boston,campus,Boston University,148.0,2318,29375,506,3931,561,3934
 16,Centre Street north of Harris Avenue,2023-09-27,Wednesday,42.3113,-71.1145,Boston,away,Roxbury Community College,2534.0,368,12866,53,1555,89,1538
@@ -1854,11 +1854,11 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 59,Washington Street East of Beethoven Street,2023-09-27,Wednesday,42.3154,-71.0987,Boston,away,Roxbury Community College,1559.0,71,12615,6,1230,14,1466
 60,Washington Street north of Bexley Road,2023-09-27,Wednesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,323,16769,61,2015,67,2267
 63,Washington Street south of Herald Street,2023-09-27,Wednesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,496,8165,87,1414,97,1062
-64,Weld Street west of Centre Street,2023-09-27,Wednesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,43,2973,8,412,5,461
-7,Belgrade Avenue east of Anawan Avenue,2023-09-27,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,84,11779,7,1555,23,1748
+64,Weld Street west of Centre Street,2023-09-27,Wednesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,43,2973,8,412,5,461
+7,Belgrade Avenue east of Anawan Avenue,2023-09-27,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,84,11779,7,1555,23,1748
 9,Blue Hill Avenue north of Seaver Street,2023-09-27,Wednesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,34,21179,4,2671,6,2510
-8,Blue Hill Avenue north of Rexford Street,2023-10-03,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,43,28085,11,3549,12,3439
-8,Blue Hill Avenue north of Rexford Street,2023-10-04,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,41,28354,3,3758,7,3389
+8,Blue Hill Avenue north of Rexford Street,2023-10-03,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,43,28085,11,3549,12,3439
+8,Blue Hill Avenue north of Rexford Street,2023-10-04,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,41,28354,3,3758,7,3389
 1,A Street north of Iron Street,2023-12-05,Tuesday,42.3459,-71.052,Boston,near,Tufts University,894.0,392,11020,102,1738,88,1199
 15,Cambridge Street west of Staniford Street,2023-12-05,Tuesday,42.3613,-71.0642,Boston,campus,Suffolk University,324.0,1040,19152,204,2739,266,2521
 16,Centre Street north of Harris Avenue,2023-12-05,Tuesday,42.3113,-71.1145,Boston,away,Roxbury Community College,2534.0,269,12102,46,1447,62,1439
@@ -1950,7 +1950,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 73,Tremont Street north of Boylston Street,2024-03-13,Wednesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,667,13372,43,1400,210,1843
 74,Tremont Street north of School Street,2024-03-13,Wednesday,42.3586,-71.06,Boston,campus,Suffolk University,105.0,674,14183,130,1805,148,1861
 75,Huntington Avenue west of Evans Way,2024-03-13,Wednesday,42.3365,-71.0986,Boston,campus,Massachusetts College of Art and Design,69.0,666,21170,119,2759,126,2476
-76,Cummins Highway east of Rugby Road,2024-03-13,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,11,16082,2,1764,1,2280
+76,Cummins Highway east of Rugby Road,2024-03-13,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,11,16082,2,1764,1,2280
 77,Tremont Street west of Union Park,2024-03-13,Wednesday,42.3434,-71.0727,Boston,near,Boston University,792.0,355,9550,61,1311,74,1271
 91,Meridian Street south of Nay Street,2024-03-13,Wednesday,42.3829,-71.0393,Boston,away,MGH Institute of Health Professions,1494.0,100,19293,9,1948,19,2608
 1,A Street north of Iron Street,2024-03-14,Thursday,42.3459,-71.052,Boston,near,Tufts University,894.0,374,10135,85,1409,92,1169
@@ -1986,7 +1986,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 73,Tremont Street north of Boylston Street,2024-03-14,Thursday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,719,14052,64,1398,222,1832
 74,Tremont Street north of School Street,2024-03-14,Thursday,42.3586,-71.06,Boston,campus,Suffolk University,105.0,800,14925,164,1707,161,1985
 75,Huntington Avenue west of Evans Way,2024-03-14,Thursday,42.3365,-71.0986,Boston,campus,Massachusetts College of Art and Design,69.0,767,21752,117,2588,132,2536
-76,Cummins Highway east of Rugby Road,2024-03-14,Thursday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,10,15976,0,1686,4,2269
+76,Cummins Highway east of Rugby Road,2024-03-14,Thursday,42.2709,-71.1027,Boston,away,Curry College,3822.0,10,15976,0,1686,4,2269
 77,Tremont Street west of Union Park,2024-03-14,Thursday,42.3434,-71.0727,Boston,near,Boston University,792.0,344,10261,51,1294,88,1292
 91,Meridian Street south of Nay Street,2024-03-14,Thursday,42.3829,-71.0393,Boston,away,MGH Institute of Health Professions,1494.0,103,20480,13,2116,9,2682
 1,A Street north of Iron Street,2024-06-11,Tuesday,42.3459,-71.052,Boston,near,Tufts University,894.0,790,10024,149,1439,188,1076
@@ -2029,24 +2029,24 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2024-06-11,Tuesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,61,14757,6,1724,10,1716
 62,Washington Street south of Hayward Place,2024-06-11,Tuesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,939,4302,242,398,148,548
 63,Washington Street south of Herald Street,2024-06-11,Tuesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,573,7803,110,1207,92,1070
-64,Weld Street west of Centre Street,2024-06-11,Tuesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,68,3150,12,474,12,476
+64,Weld Street west of Centre Street,2024-06-11,Tuesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,68,3150,12,474,12,476
 65,Western Avenue east of Hague Street,2024-06-11,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,451,7044,74,898,125,902
 66,Western Avenue west of Waverly Street,2024-06-11,Tuesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,482,10475,71,1371,101,1506
 68,Arlington Street south of Marlborough Street,2024-06-11,Tuesday,42.3545,-71.072,Boston,near,Emerson College,575.0,976,18550,190,2491,280,2252
 69,Beacon Street west of Charles Street,2024-06-11,Tuesday,42.356,-71.0703,Boston,near,Emerson College,564.0,1446,16796,133,1942,438,2877
-7,Belgrade Avenue east of Anawan Avenue,2024-06-11,Tuesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,98,12048,9,1576,26,1787
+7,Belgrade Avenue east of Anawan Avenue,2024-06-11,Tuesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,98,12048,9,1576,26,1787
 70,Boylston Street east of Arlington Street,2024-06-11,Tuesday,42.3522,-71.0694,Boston,campus,Emerson College,302.0,1486,9911,374,1299,247,1370
 71,Charles Street north of Boylston Street,2024-06-11,Tuesday,42.353,-71.0676,Boston,campus,Emerson College,176.0,945,15212,94,2025,279,2503
 73,Tremont Street north of Boylston Street,2024-06-11,Tuesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,1142,12212,118,1198,337,1631
 74,Tremont Street north of School Street,2024-06-11,Tuesday,42.3586,-71.06,Boston,campus,Suffolk University,105.0,1102,13220,221,1622,240,1869
-76,Cummins Highway east of Rugby Road,2024-06-11,Tuesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,13,12645,0,1416,3,1762
-78,American Legion Highway north of Mount Hope Street,2024-06-11,Tuesday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,60,24053,10,2663,4,3376
-8,Blue Hill Avenue north of Rexford Street,2024-06-11,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,63,28746,10,3527,10,3275
-80,Centre Street east of Willow Street,2024-06-11,Tuesday,42.2874,-71.1513,Boston,away,Boston College,5376.0,105,13134,15,1548,25,1865
+76,Cummins Highway east of Rugby Road,2024-06-11,Tuesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,13,12645,0,1416,3,1762
+78,American Legion Highway north of Mount Hope Street,2024-06-11,Tuesday,42.2831,-71.114,Boston,away,Curry College,5007.0,60,24053,10,2663,4,3376
+8,Blue Hill Avenue north of Rexford Street,2024-06-11,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,63,28746,10,3527,10,3275
+80,Centre Street east of Willow Street,2024-06-11,Tuesday,42.2874,-71.1513,Boston,away,Mount Ida College,3520.0,105,13134,15,1548,25,1865
 81,Berkeley Street north of Chandler Street,2024-06-11,Tuesday,42.3473,-71.0711,Boston,near,Emerson College,703.0,188,8802,41,1434,31,982
 82,North Beacon Street west of Glencoe Street,2024-06-11,Tuesday,42.3559,-71.1482,Boston,away,Harvard University,2539.0,156,11373,26,1473,25,1673
 84,Melnea Cass Boulevard east of Tremont Street,2024-06-11,Tuesday,42.3351,-71.0855,Boston,near,Northeastern University,607.0,328,29864,60,3217,84,3863
-85,Hyde Park Avenue north of Cleary Square,2024-06-11,Tuesday,42.2564,-71.124,Boston,away,Roxbury Community College,8425.0,43,13568,7,1590,9,1646
+85,Hyde Park Avenue north of Cleary Square,2024-06-11,Tuesday,42.2564,-71.124,Boston,away,Curry College,2128.0,43,13568,7,1590,9,1646
 86,Saratoga Street east of Annavoy Street,2024-06-11,Tuesday,42.3831,-70.9968,Boston,away,MGH Institute of Health Professions,4795.0,107,22879,11,2405,16,3019
 9,Blue Hill Avenue north of Seaver Street,2024-06-11,Tuesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,60,20782,7,2327,2,2559
 91,Meridian Street south of Nay Street,2024-06-11,Tuesday,42.3829,-71.0393,Boston,away,MGH Institute of Health Professions,1494.0,248,21438,20,2125,42,2655
@@ -2090,23 +2090,23 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2024-06-12,Wednesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,66,15094,8,1742,13,1810
 62,Washington Street south of Hayward Place,2024-06-12,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,998,4145,233,428,141,523
 63,Washington Street south of Herald Street,2024-06-12,Wednesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,600,7629,112,1124,84,907
-64,Weld Street west of Centre Street,2024-06-12,Wednesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,80,3243,18,451,12,489
+64,Weld Street west of Centre Street,2024-06-12,Wednesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,80,3243,18,451,12,489
 65,Western Avenue east of Hague Street,2024-06-12,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,464,6945,74,846,109,901
 66,Western Avenue west of Waverly Street,2024-06-12,Wednesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,424,10059,71,1323,77,1481
 68,Arlington Street south of Marlborough Street,2024-06-12,Wednesday,42.3545,-71.072,Boston,near,Emerson College,575.0,929,19472,188,2479,202,2713
-7,Belgrade Avenue east of Anawan Avenue,2024-06-12,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,93,12242,15,1532,28,1713
+7,Belgrade Avenue east of Anawan Avenue,2024-06-12,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,93,12242,15,1532,28,1713
 70,Boylston Street east of Arlington Street,2024-06-12,Wednesday,42.3522,-71.0694,Boston,campus,Emerson College,302.0,1603,10245,363,1506,287,1328
 71,Charles Street north of Boylston Street,2024-06-12,Wednesday,42.353,-71.0676,Boston,campus,Emerson College,176.0,822,15493,101,2127,249,2105
 73,Tremont Street north of Boylston Street,2024-06-12,Wednesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,1196,13034,105,1265,353,1749
 74,Tremont Street north of School Street,2024-06-12,Wednesday,42.3586,-71.06,Boston,campus,Suffolk University,105.0,1179,14095,239,1513,232,1921
-76,Cummins Highway east of Rugby Road,2024-06-12,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,5,12730,0,1404,4,1700
-78,American Legion Highway north of Mount Hope Street,2024-06-12,Wednesday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,107,25692,12,2919,16,3499
-8,Blue Hill Avenue north of Rexford Street,2024-06-12,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,73,29496,9,3849,13,3356
-80,Centre Street east of Willow Street,2024-06-12,Wednesday,42.2874,-71.1513,Boston,away,Boston College,5376.0,113,13313,16,1594,25,1819
+76,Cummins Highway east of Rugby Road,2024-06-12,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,5,12730,0,1404,4,1700
+78,American Legion Highway north of Mount Hope Street,2024-06-12,Wednesday,42.2831,-71.114,Boston,away,Curry College,5007.0,107,25692,12,2919,16,3499
+8,Blue Hill Avenue north of Rexford Street,2024-06-12,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,73,29496,9,3849,13,3356
+80,Centre Street east of Willow Street,2024-06-12,Wednesday,42.2874,-71.1513,Boston,away,Mount Ida College,3520.0,113,13313,16,1594,25,1819
 81,Berkeley Street north of Chandler Street,2024-06-12,Wednesday,42.3473,-71.0711,Boston,near,Emerson College,703.0,205,8702,39,1386,42,1055
 82,North Beacon Street west of Glencoe Street,2024-06-12,Wednesday,42.3559,-71.1482,Boston,away,Harvard University,2539.0,149,11069,23,1348,29,1711
 84,Melnea Cass Boulevard east of Tremont Street,2024-06-12,Wednesday,42.3351,-71.0855,Boston,near,Northeastern University,607.0,370,31268,69,3535,78,3854
-85,Hyde Park Avenue north of Cleary Square,2024-06-12,Wednesday,42.2564,-71.124,Boston,away,Roxbury Community College,8425.0,38,14034,2,1593,7,1697
+85,Hyde Park Avenue north of Cleary Square,2024-06-12,Wednesday,42.2564,-71.124,Boston,away,Curry College,2128.0,38,14034,2,1593,7,1697
 86,Saratoga Street east of Annavoy Street,2024-06-12,Wednesday,42.3831,-70.9968,Boston,away,MGH Institute of Health Professions,4795.0,121,23243,19,2446,13,2970
 9,Blue Hill Avenue north of Seaver Street,2024-06-12,Wednesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,61,20793,8,2435,7,2350
 91,Meridian Street south of Nay Street,2024-06-12,Wednesday,42.3829,-71.0393,Boston,away,MGH Institute of Health Professions,1494.0,226,21858,13,2101,46,2903
@@ -2208,23 +2208,23 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2024-10-29,Tuesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,88,13580,8,1488,15,1644
 62,Washington Street south of Hayward Place,2024-10-29,Tuesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,984,4901,257,414,161,458
 63,Washington Street south of Herald Street,2024-10-29,Tuesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,542,8351,107,1206,113,1090
-64,Weld Street west of Centre Street,2024-10-29,Tuesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,50,3256,13,466,11,495
+64,Weld Street west of Centre Street,2024-10-29,Tuesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,50,3256,13,466,11,495
 65,Western Avenue east of Hague Street,2024-10-29,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,739,7064,143,872,149,977
 66,Western Avenue west of Waverly Street,2024-10-29,Tuesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,391,10122,69,1457,77,1514
-67,Neponset Greenway east of Blue Hill Avenue,2024-10-29,Tuesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,33,1,7,0,5,0
+67,Neponset Greenway east of Blue Hill Avenue,2024-10-29,Tuesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,33,1,7,0,5,0
 68,Arlington Street south of Marlborough Street,2024-10-29,Tuesday,42.3545,-71.072,Boston,near,Emerson College,575.0,719,18694,177,2571,176,2294
 69,Beacon Street west of Charles Street,2024-10-29,Tuesday,42.356,-71.0703,Boston,near,Emerson College,564.0,1060,16421,132,1692,327,2462
-7,Belgrade Avenue east of Anawan Avenue,2024-10-29,Tuesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,63,11212,6,1423,13,1718
+7,Belgrade Avenue east of Anawan Avenue,2024-10-29,Tuesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,63,11212,6,1423,13,1718
 70,Boylston Street east of Arlington Street,2024-10-29,Tuesday,42.3522,-71.0694,Boston,campus,Emerson College,302.0,1476,9998,361,1350,254,1399
 71,Charles Street north of Boylston Street,2024-10-29,Tuesday,42.353,-71.0676,Boston,campus,Emerson College,176.0,720,15048,91,1881,197,2361
 72,Stuart Street east of Tremont Street,2024-10-29,Tuesday,42.351,-71.0642,Boston,campus,Emerson College,165.0,780,18346,162,1963,153,2151
 73,Tremont Street north of Boylston Street,2024-10-29,Tuesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,1088,13188,113,1223,315,1670
 74,Tremont Street north of School Street,2024-10-29,Tuesday,42.3586,-71.06,Boston,campus,Suffolk University,105.0,1143,14993,222,1580,247,1776
 75,Huntington Avenue west of Evans Way,2024-10-29,Tuesday,42.3365,-71.0986,Boston,campus,Massachusetts College of Art and Design,69.0,1143,21039,181,2673,210,2500
-76,Cummins Highway east of Rugby Road,2024-10-29,Tuesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,17,9496,1,1081,4,1442
+76,Cummins Highway east of Rugby Road,2024-10-29,Tuesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,17,9496,1,1081,4,1442
 77,Tremont Street west of Union Park,2024-10-29,Tuesday,42.3434,-71.0727,Boston,near,Boston University,792.0,592,10743,91,1419,153,1302
 79,American Legion Highway north of Franklin Hill Avenue,2024-10-29,Tuesday,42.2966,-71.0918,Boston,away,Roxbury Community College,3638.0,46,22490,4,2660,5,3203
-8,Blue Hill Avenue north of Rexford Street,2024-10-29,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,64,27488,11,3759,8,3237
+8,Blue Hill Avenue north of Rexford Street,2024-10-29,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,64,27488,11,3759,8,3237
 81,Berkeley Street north of Chandler Street,2024-10-29,Tuesday,42.3473,-71.0711,Boston,near,Emerson College,703.0,195,8776,47,1447,30,945
 9,Blue Hill Avenue north of Seaver Street,2024-10-29,Tuesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,71,20736,11,2465,5,2398
 91,Meridian Street south of Nay Street,2024-10-29,Tuesday,42.3829,-71.0393,Boston,away,MGH Institute of Health Professions,1494.0,280,18906,4,2242,6,2180
@@ -2287,23 +2287,23 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2024-10-30,Wednesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,101,13490,4,1430,22,1750
 62,Washington Street south of Hayward Place,2024-10-30,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,1100,5093,247,367,185,519
 63,Washington Street south of Herald Street,2024-10-30,Wednesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,547,8459,104,1214,106,1120
-64,Weld Street west of Centre Street,2024-10-30,Wednesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,44,3357,14,488,12,559
+64,Weld Street west of Centre Street,2024-10-30,Wednesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,44,3357,14,488,12,559
 65,Western Avenue east of Hague Street,2024-10-30,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,683,7084,120,885,149,1076
 66,Western Avenue west of Waverly Street,2024-10-30,Wednesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,444,11045,71,1399,102,1774
-67,Neponset Greenway east of Blue Hill Avenue,2024-10-30,Wednesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,110,3,8,0,17,0
+67,Neponset Greenway east of Blue Hill Avenue,2024-10-30,Wednesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,110,3,8,0,17,0
 68,Arlington Street south of Marlborough Street,2024-10-30,Wednesday,42.3545,-71.072,Boston,near,Emerson College,575.0,846,19137,190,2445,208,2411
 69,Beacon Street west of Charles Street,2024-10-30,Wednesday,42.356,-71.0703,Boston,near,Emerson College,564.0,1182,18078,174,1773,334,2784
-7,Belgrade Avenue east of Anawan Avenue,2024-10-30,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,72,11228,8,1445,14,1721
+7,Belgrade Avenue east of Anawan Avenue,2024-10-30,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,72,11228,8,1445,14,1721
 70,Boylston Street east of Arlington Street,2024-10-30,Wednesday,42.3522,-71.0694,Boston,campus,Emerson College,302.0,1660,9831,369,1410,323,1329
 71,Charles Street north of Boylston Street,2024-10-30,Wednesday,42.353,-71.0676,Boston,campus,Emerson College,176.0,793,16320,81,1996,223,2453
 72,Stuart Street east of Tremont Street,2024-10-30,Wednesday,42.351,-71.0642,Boston,campus,Emerson College,165.0,768,19797,165,2224,177,2114
 73,Tremont Street north of Boylston Street,2024-10-30,Wednesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,1249,12960,130,1280,348,1719
 74,Tremont Street north of School Street,2024-10-30,Wednesday,42.3586,-71.06,Boston,campus,Suffolk University,105.0,1215,14933,225,1640,231,1931
 75,Huntington Avenue west of Evans Way,2024-10-30,Wednesday,42.3365,-71.0986,Boston,campus,Massachusetts College of Art and Design,69.0,1208,20876,183,2645,228,2472
-76,Cummins Highway east of Rugby Road,2024-10-30,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,17,10256,0,1171,3,1419
+76,Cummins Highway east of Rugby Road,2024-10-30,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,17,10256,0,1171,3,1419
 77,Tremont Street west of Union Park,2024-10-30,Wednesday,42.3434,-71.0727,Boston,near,Boston University,792.0,730,11083,121,1400,191,1366
 79,American Legion Highway north of Franklin Hill Avenue,2024-10-30,Wednesday,42.2966,-71.0918,Boston,away,Roxbury Community College,3638.0,78,23263,6,2705,5,3152
-8,Blue Hill Avenue north of Rexford Street,2024-10-30,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,64,27585,5,3750,6,3231
+8,Blue Hill Avenue north of Rexford Street,2024-10-30,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,64,27585,5,3750,6,3231
 81,Berkeley Street north of Chandler Street,2024-10-30,Wednesday,42.3473,-71.0711,Boston,near,Emerson College,703.0,212,9072,53,1458,33,1053
 9,Blue Hill Avenue north of Seaver Street,2024-10-30,Wednesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,106,20831,17,2385,5,2429
 91,Meridian Street south of Nay Street,2024-10-30,Wednesday,42.3829,-71.0393,Boston,away,MGH Institute of Health Professions,1494.0,298,19239,2,1913,5,2188
@@ -2410,7 +2410,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 73,Tremont Street north of Boylston Street,2025-03-11,Tuesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,835,11310,66,1104,272,1675
 74,Tremont Street north of School Street,2025-03-11,Tuesday,42.3586,-71.06,Boston,campus,Suffolk University,105.0,858,12537,173,1425,186,1803
 75,Huntington Avenue west of Evans Way,2025-03-11,Tuesday,42.3365,-71.0986,Boston,campus,Massachusetts College of Art and Design,69.0,817,20697,122,2526,159,2299
-76,Cummins Highway east of Rugby Road,2025-03-11,Tuesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,15,10167,3,1075,2,1448
+76,Cummins Highway east of Rugby Road,2025-03-11,Tuesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,15,10167,3,1075,2,1448
 77,Tremont Street west of Union Park,2025-03-11,Tuesday,42.3434,-71.0727,Boston,near,Boston University,792.0,452,9513,69,1244,115,1225
 91,Meridian Street south of Nay Street,2025-03-11,Tuesday,42.3829,-71.0393,Boston,away,MGH Institute of Health Professions,1494.0,176,19140,4,1914,9,2472
 1,A Street north of Iron Street,2025-03-12,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,501,9676,109,1472,108,1196
@@ -2446,11 +2446,11 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 73,Tremont Street north of Boylston Street,2025-03-12,Wednesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,661,11864,70,1172,161,1550
 74,Tremont Street north of School Street,2025-03-12,Wednesday,42.3586,-71.06,Boston,campus,Suffolk University,105.0,729,12891,140,1474,122,1831
 75,Huntington Avenue west of Evans Way,2025-03-12,Wednesday,42.3365,-71.0986,Boston,campus,Massachusetts College of Art and Design,69.0,730,20918,100,2523,128,2458
-76,Cummins Highway east of Rugby Road,2025-03-12,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,12,10176,3,1029,1,1399
+76,Cummins Highway east of Rugby Road,2025-03-12,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,12,10176,3,1029,1,1399
 77,Tremont Street west of Union Park,2025-03-12,Wednesday,42.3434,-71.0727,Boston,near,Boston University,792.0,426,9724,80,1212,126,1247
 91,Meridian Street south of Nay Street,2025-03-12,Wednesday,42.3829,-71.0393,Boston,away,MGH Institute of Health Professions,1494.0,148,19603,1,2037,6,2471
-78,American Legion Highway north of Mount Hope Street,2025-04-29,Tuesday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,62,27580,7,3351,7,3696
-78,American Legion Highway north of Mount Hope Street,2025-04-30,Wednesday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,83,27783,13,3403,15,3620
+78,American Legion Highway north of Mount Hope Street,2025-04-29,Tuesday,42.2831,-71.114,Boston,away,Curry College,5007.0,62,27580,7,3351,7,3696
+78,American Legion Highway north of Mount Hope Street,2025-04-30,Wednesday,42.2831,-71.114,Boston,away,Curry College,5007.0,83,27783,13,3403,15,3620
 1,A Street north of Iron Street,2025-06-11,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,798,9781,145,1508,151,1087
 11,Brookline Avenue south of Francis Street,2025-06-11,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,566,24565,120,2465,90,3295
 12,BU Bridge north of Commonwealth Avenue,2025-06-11,Wednesday,42.3523,-71.1107,Boston,campus,Boston University,148.0,2476,30779,441,3789,624,3320
@@ -2485,15 +2485,15 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 62,Washington Street south of Hayward Place,2025-06-11,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,962,3537,221,366,128,510
 65,Western Avenue east of Hague Street,2025-06-11,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,780,7208,144,883,200,906
 66,Western Avenue west of Waverly Street,2025-06-11,Wednesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,630,10366,104,1333,135,1443
-67,Neponset Greenway east of Blue Hill Avenue,2025-06-11,Wednesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,275,,33,,81,
+67,Neponset Greenway east of Blue Hill Avenue,2025-06-11,Wednesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,275,,33,,81,
 69,Beacon Street west of Charles Street,2025-06-11,Wednesday,42.356,-71.0703,Boston,near,Emerson College,564.0,1545,18744,143,1827,477,3201
 77,Tremont Street west of Union Park,2025-06-11,Wednesday,42.3434,-71.0727,Boston,near,Boston University,792.0,730,10592,92,1228,153,1376
-78,American Legion Highway north of Mount Hope Street,2025-06-11,Wednesday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,80,27200,10,3150,9,3841
+78,American Legion Highway north of Mount Hope Street,2025-06-11,Wednesday,42.2831,-71.114,Boston,away,Curry College,5007.0,80,27200,10,3150,9,3841
 79,American Legion Highway north of Franklin Hill Avenue,2025-06-11,Wednesday,42.2966,-71.0918,Boston,away,Roxbury Community College,3638.0,51,25443,4,2942,8,3582
-80,Centre Street east of Willow Street,2025-06-11,Wednesday,42.2874,-71.1513,Boston,away,Boston College,5376.0,178,13564,26,1682,39,1935
+80,Centre Street east of Willow Street,2025-06-11,Wednesday,42.2874,-71.1513,Boston,away,Mount Ida College,3520.0,178,13564,26,1682,39,1935
 82,North Beacon Street west of Glencoe Street,2025-06-11,Wednesday,42.3559,-71.1482,Boston,away,Harvard University,2539.0,213,10499,29,1261,43,1637
 84,Melnea Cass Boulevard east of Tremont Street,2025-06-11,Wednesday,42.3351,-71.0855,Boston,near,Northeastern University,607.0,311,28197,44,3053,61,3624
-85,Hyde Park Avenue north of Cleary Square,2025-06-11,Wednesday,42.2564,-71.124,Boston,away,Roxbury Community College,8425.0,44,15999,2,1886,5,1869
+85,Hyde Park Avenue north of Cleary Square,2025-06-11,Wednesday,42.2564,-71.124,Boston,away,Curry College,2128.0,44,15999,2,1886,5,1869
 86,Saratoga Street east of Annavoy Street,2025-06-11,Wednesday,42.3831,-70.9968,Boston,away,MGH Institute of Health Professions,4795.0,125,22899,11,2309,26,2880
 88,Traveler Street west of Dorchester Avenue,2025-06-11,Wednesday,42.3434,-71.0581,Boston,near,Tufts University,764.0,287,19379,22,2606,80,2518
 89,Boylston Street west of Tremont Street,2025-06-11,Wednesday,42.3525,-71.065,Boston,campus,Emerson College,46.0,2125,7691,399,1026,491,778
@@ -2533,14 +2533,14 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 62,Washington Street south of Hayward Place,2025-06-12,Thursday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,883,3788,194,363,155,442
 65,Western Avenue east of Hague Street,2025-06-12,Thursday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,756,7342,124,859,180,874
 66,Western Avenue west of Waverly Street,2025-06-12,Thursday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,661,11106,102,1400,142,1552
-67,Neponset Greenway east of Blue Hill Avenue,2025-06-12,Thursday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,197,,29,,38,
+67,Neponset Greenway east of Blue Hill Avenue,2025-06-12,Thursday,42.2672,-71.0934,Boston,away,Curry College,3758.0,197,,29,,38,
 69,Beacon Street west of Charles Street,2025-06-12,Thursday,42.356,-71.0703,Boston,near,Emerson College,564.0,1330,18100,145,1831,397,2648
-78,American Legion Highway north of Mount Hope Street,2025-06-12,Thursday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,94,28452,6,3191,12,3769
+78,American Legion Highway north of Mount Hope Street,2025-06-12,Thursday,42.2831,-71.114,Boston,away,Curry College,5007.0,94,28452,6,3191,12,3769
 79,American Legion Highway north of Franklin Hill Avenue,2025-06-12,Thursday,42.2966,-71.0918,Boston,away,Roxbury Community College,3638.0,67,25333,2,2854,11,3285
-80,Centre Street east of Willow Street,2025-06-12,Thursday,42.2874,-71.1513,Boston,away,Boston College,5376.0,140,13726,19,1666,33,1693
+80,Centre Street east of Willow Street,2025-06-12,Thursday,42.2874,-71.1513,Boston,away,Mount Ida College,3520.0,140,13726,19,1666,33,1693
 82,North Beacon Street west of Glencoe Street,2025-06-12,Thursday,42.3559,-71.1482,Boston,away,Harvard University,2539.0,173,10570,24,1187,39,1538
 84,Melnea Cass Boulevard east of Tremont Street,2025-06-12,Thursday,42.3351,-71.0855,Boston,near,Northeastern University,607.0,329,27621,55,3043,55,3395
-85,Hyde Park Avenue north of Cleary Square,2025-06-12,Thursday,42.2564,-71.124,Boston,away,Roxbury Community College,8425.0,45,15878,3,1909,10,1863
+85,Hyde Park Avenue north of Cleary Square,2025-06-12,Thursday,42.2564,-71.124,Boston,away,Curry College,2128.0,45,15878,3,1909,10,1863
 86,Saratoga Street east of Annavoy Street,2025-06-12,Thursday,42.3831,-70.9968,Boston,away,MGH Institute of Health Professions,4795.0,105,22821,16,2247,17,2902
 88,Traveler Street west of Dorchester Avenue,2025-06-12,Thursday,42.3434,-71.0581,Boston,near,Tufts University,764.0,271,20364,28,2583,86,2557
 89,Boylston Street west of Tremont Street,2025-06-12,Thursday,42.3525,-71.065,Boston,campus,Emerson College,46.0,1956,7642,393,975,408,1077
@@ -2548,14 +2548,14 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 91,Meridian Street south of Nay Street,2025-06-12,Thursday,42.3829,-71.0393,Boston,away,MGH Institute of Health Professions,1494.0,242,20187,11,2043,12,2611
 33,Dorchester Avenue south of Greenwich Street,2025-06-17,Tuesday,42.3025,-71.0596,Boston,away,University of Massachusetts-Boston,2099.0,242,13054,27,1387,41,1513
 55,Southwest Corridor Bicycle Path south of Heath Street,2025-06-17,Tuesday,42.3238,-71.0996,Boston,near,Roxbury Community College,692.0,1488,,341,,275,
-7,Belgrade Avenue east of Anawan Avenue,2025-06-17,Tuesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,85,10615,18,1342,12,1529
-8,Blue Hill Avenue north of Rexford Street,2025-06-17,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,54,26563,3,3385,6,3031
+7,Belgrade Avenue east of Anawan Avenue,2025-06-17,Tuesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,85,10615,18,1342,12,1529
+8,Blue Hill Avenue north of Rexford Street,2025-06-17,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,54,26563,3,3385,6,3031
 83,Ruggles Street south of Tremont Street,2025-06-17,Tuesday,42.3347,-71.0884,Boston,near,Wentworth Institute of Technology,580.0,100,2194,21,228,17,375
 87,West Fourth Street west of Foundry Street,2025-06-17,Tuesday,42.3421,-71.0592,Boston,near,Tufts University,876.0,467,15542,99,2086,77,2242
 33,Dorchester Avenue south of Greenwich Street,2025-06-18,Wednesday,42.3025,-71.0596,Boston,away,University of Massachusetts-Boston,2099.0,205,12846,31,1359,34,1461
 55,Southwest Corridor Bicycle Path south of Heath Street,2025-06-18,Wednesday,42.3238,-71.0996,Boston,near,Roxbury Community College,692.0,1404,,258,,285,
-7,Belgrade Avenue east of Anawan Avenue,2025-06-18,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,107,11195,14,1379,23,1622
-8,Blue Hill Avenue north of Rexford Street,2025-06-18,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,64,28381,8,3519,4,3238
+7,Belgrade Avenue east of Anawan Avenue,2025-06-18,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,107,11195,14,1379,23,1622
+8,Blue Hill Avenue north of Rexford Street,2025-06-18,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,64,28381,8,3519,4,3238
 83,Ruggles Street south of Tremont Street,2025-06-18,Wednesday,42.3347,-71.0884,Boston,near,Wentworth Institute of Technology,580.0,103,2296,10,222,21,419
 87,West Fourth Street west of Foundry Street,2025-06-18,Wednesday,42.3421,-71.0592,Boston,near,Tufts University,876.0,500,15767,92,2055,106,1881
 5,Beacon Street west of Dartmouth Street,2025-06-25,Wednesday,42.3536,-71.0793,Boston,away,Berklee College of Music,1109.0,488,6194,55,732,122,630
@@ -2601,22 +2601,22 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2025-09-16,Tuesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,90,13696,5,1679,14,1739
 62,Washington Street south of Hayward Place,2025-09-16,Tuesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,1003,3456,238,372,149,417
 63,Washington Street south of Herald Street,2025-09-16,Tuesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,578,8326,106,1241,99,1072
-64,Weld Street west of Centre Street,2025-09-16,Tuesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,61,3164,11,449,15,515
+64,Weld Street west of Centre Street,2025-09-16,Tuesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,61,3164,11,449,15,515
 65,Western Avenue east of Hague Street,2025-09-16,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,926,7339,152,836,223,938
 66,Western Avenue west of Waverly Street,2025-09-16,Tuesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,624,9403,113,1201,145,1484
-67,Neponset Greenway east of Blue Hill Avenue,2025-09-16,Tuesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,143,,10,,29,
+67,Neponset Greenway east of Blue Hill Avenue,2025-09-16,Tuesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,143,,10,,29,
 68,Arlington Street south of Marlborough Street,2025-09-16,Tuesday,42.3545,-71.072,Boston,near,Emerson College,575.0,969,18464,221,2415,224,2419
 69,Beacon Street west of Charles Street,2025-09-16,Tuesday,42.356,-71.0703,Boston,near,Emerson College,564.0,1238,16769,163,1785,382,2692
-7,Belgrade Avenue east of Anawan Avenue,2025-09-16,Tuesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,121,10723,23,1361,20,1505
+7,Belgrade Avenue east of Anawan Avenue,2025-09-16,Tuesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,121,10723,23,1361,20,1505
 71,Charles Street north of Boylston Street,2025-09-16,Tuesday,42.353,-71.0676,Boston,campus,Emerson College,176.0,763,13895,83,1859,256,2148
 72,Stuart Street east of Tremont Street,2025-09-16,Tuesday,42.351,-71.0642,Boston,campus,Emerson College,165.0,867,18501,169,2026,196,2448
 73,Tremont Street north of Boylston Street,2025-09-16,Tuesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,1098,11595,120,1115,350,1535
-76,Cummins Highway east of Rugby Road,2025-09-16,Tuesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,13,9714,1,1018,3,1362
+76,Cummins Highway east of Rugby Road,2025-09-16,Tuesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,13,9714,1,1018,3,1362
 77,Tremont Street west of Union Park,2025-09-16,Tuesday,42.3434,-71.0727,Boston,near,Boston University,792.0,715,10587,100,1304,158,1253
-78,American Legion Highway north of Mount Hope Street,2025-09-16,Tuesday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,74,24553,14,2851,10,3563
+78,American Legion Highway north of Mount Hope Street,2025-09-16,Tuesday,42.2831,-71.114,Boston,away,Curry College,5007.0,74,24553,14,2851,10,3563
 79,American Legion Highway north of Franklin Hill Avenue,2025-09-16,Tuesday,42.2966,-71.0918,Boston,away,Roxbury Community College,3638.0,43,22788,4,2768,7,3235
-8,Blue Hill Avenue north of Rexford Street,2025-09-16,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,74,26237,10,3580,14,3250
-80,Centre Street east of Willow Street,2025-09-16,Tuesday,42.2874,-71.1513,Boston,away,Boston College,5376.0,136,13600,21,1821,25,1788
+8,Blue Hill Avenue north of Rexford Street,2025-09-16,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,74,26237,10,3580,14,3250
+80,Centre Street east of Willow Street,2025-09-16,Tuesday,42.2874,-71.1513,Boston,away,Mount Ida College,3520.0,136,13600,21,1821,25,1788
 81,Berkeley Street north of Chandler Street,2025-09-16,Tuesday,42.3473,-71.0711,Boston,near,Emerson College,703.0,250,9115,45,1459,37,1121
 82,North Beacon Street west of Glencoe Street,2025-09-16,Tuesday,42.3559,-71.1482,Boston,away,Harvard University,2539.0,219,10400,28,1250,50,1550
 83,Ruggles Street south of Tremont Street,2025-09-16,Tuesday,42.3347,-71.0884,Boston,near,Wentworth Institute of Technology,580.0,182,2213,28,222,27,353
@@ -2667,22 +2667,22 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 61,Washington Street north of Kenwood Street,2025-09-17,Wednesday,42.2918,-71.0717,Boston,away,University of Massachusetts-Boston,3627.0,97,14012,9,1685,17,1687
 62,Washington Street south of Hayward Place,2025-09-17,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,976,3447,206,369,165,411
 63,Washington Street south of Herald Street,2025-09-17,Wednesday,42.3462,-71.0647,Boston,near,Tufts University,479.0,573,8479,100,1232,104,1043
-64,Weld Street west of Centre Street,2025-09-17,Wednesday,42.2943,-71.1365,Boston,away,Roxbury Community College,5146.0,63,3142,16,462,20,495
+64,Weld Street west of Centre Street,2025-09-17,Wednesday,42.2943,-71.1365,Boston,away,Mount Ida College,4675.0,63,3142,16,462,20,495
 65,Western Avenue east of Hague Street,2025-09-17,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,980,7420,147,823,217,983
 66,Western Avenue west of Waverly Street,2025-09-17,Wednesday,42.3622,-71.1419,Boston,away,Harvard University,1831.0,692,9503,109,1175,146,1437
-67,Neponset Greenway east of Blue Hill Avenue,2025-09-17,Wednesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,128,2,19,0,29,1
+67,Neponset Greenway east of Blue Hill Avenue,2025-09-17,Wednesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,128,2,19,0,29,1
 68,Arlington Street south of Marlborough Street,2025-09-17,Wednesday,42.3545,-71.072,Boston,near,Emerson College,575.0,897,18801,184,2370,208,2573
 69,Beacon Street west of Charles Street,2025-09-17,Wednesday,42.356,-71.0703,Boston,near,Emerson College,564.0,1189,17459,156,1807,334,2797
-7,Belgrade Avenue east of Anawan Avenue,2025-09-17,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,97,10835,19,1359,21,1563
+7,Belgrade Avenue east of Anawan Avenue,2025-09-17,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,97,10835,19,1359,21,1563
 71,Charles Street north of Boylston Street,2025-09-17,Wednesday,42.353,-71.0676,Boston,campus,Emerson College,176.0,746,14508,97,1872,218,2048
 72,Stuart Street east of Tremont Street,2025-09-17,Wednesday,42.351,-71.0642,Boston,campus,Emerson College,165.0,849,19165,150,2223,162,2423
 73,Tremont Street north of Boylston Street,2025-09-17,Wednesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,1075,12189,108,1147,296,1635
-76,Cummins Highway east of Rugby Road,2025-09-17,Wednesday,42.2709,-71.1027,Boston,away,Roxbury Community College,6507.0,30,9730,3,1013,8,1383
+76,Cummins Highway east of Rugby Road,2025-09-17,Wednesday,42.2709,-71.1027,Boston,away,Curry College,3822.0,30,9730,3,1013,8,1383
 77,Tremont Street west of Union Park,2025-09-17,Wednesday,42.3434,-71.0727,Boston,near,Boston University,792.0,732,11325,116,1374,179,1354
-78,American Legion Highway north of Mount Hope Street,2025-09-17,Wednesday,42.2831,-71.114,Boston,away,Roxbury Community College,5347.0,96,25052,15,2830,15,3545
+78,American Legion Highway north of Mount Hope Street,2025-09-17,Wednesday,42.2831,-71.114,Boston,away,Curry College,5007.0,96,25052,15,2830,15,3545
 79,American Legion Highway north of Franklin Hill Avenue,2025-09-17,Wednesday,42.2966,-71.0918,Boston,away,Roxbury Community College,3638.0,45,22927,6,2808,9,3020
-8,Blue Hill Avenue north of Rexford Street,2025-09-17,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,73,26439,7,3400,9,3225
-80,Centre Street east of Willow Street,2025-09-17,Wednesday,42.2874,-71.1513,Boston,away,Boston College,5376.0,140,13605,14,1691,26,1822
+8,Blue Hill Avenue north of Rexford Street,2025-09-17,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,73,26439,7,3400,9,3225
+80,Centre Street east of Willow Street,2025-09-17,Wednesday,42.2874,-71.1513,Boston,away,Mount Ida College,3520.0,140,13605,14,1691,26,1822
 81,Berkeley Street north of Chandler Street,2025-09-17,Wednesday,42.3473,-71.0711,Boston,near,Emerson College,703.0,250,9399,46,1501,30,1022
 82,North Beacon Street west of Glencoe Street,2025-09-17,Wednesday,42.3559,-71.1482,Boston,away,Harvard University,2539.0,255,10711,40,1263,43,1537
 83,Ruggles Street south of Tremont Street,2025-09-17,Wednesday,42.3347,-71.0884,Boston,near,Wentworth Institute of Technology,580.0,155,2090,23,196,27,319
@@ -2702,7 +2702,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 55,Southwest Corridor Bicycle Path south of Heath Street,2025-09-23,Tuesday,42.3238,-71.0996,Boston,near,Roxbury Community College,692.0,1863,,416,,400,
 6,Beacon Street east of Raleigh Street,2025-09-23,Tuesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,720,13904,132,1633,152,1854
 70,Boylston Street east of Arlington Street,2025-09-23,Tuesday,42.3522,-71.0694,Boston,campus,Emerson College,302.0,1533,8850,346,1219,275,1244
-85,Hyde Park Avenue north of Cleary Square,2025-09-23,Tuesday,42.2564,-71.124,Boston,away,Roxbury Community College,8425.0,34,14003,2,1644,9,1725
+85,Hyde Park Avenue north of Cleary Square,2025-09-23,Tuesday,42.2564,-71.124,Boston,away,Curry College,2128.0,34,14003,2,1644,9,1725
 88,Traveler Street west of Dorchester Avenue,2025-09-23,Tuesday,42.3434,-71.0581,Boston,near,Tufts University,764.0,256,18303,41,2359,57,2384
 10,Brighton Avenue east of St. Lukes Road,2025-09-24,Wednesday,42.3523,-71.126,Boston,away,Boston University,1343.0,879,14116,161,1327,132,2182
 11,Brookline Avenue south of Francis Street,2025-09-24,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,453,23000,114,2366,63,3252
@@ -2713,7 +2713,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 55,Southwest Corridor Bicycle Path south of Heath Street,2025-09-24,Wednesday,42.3238,-71.0996,Boston,near,Roxbury Community College,692.0,1019,,248,,189,
 6,Beacon Street east of Raleigh Street,2025-09-24,Wednesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,488,14770,103,1663,85,2044
 70,Boylston Street east of Arlington Street,2025-09-24,Wednesday,42.3522,-71.0694,Boston,campus,Emerson College,302.0,912,9725,254,1301,111,1577
-85,Hyde Park Avenue north of Cleary Square,2025-09-24,Wednesday,42.2564,-71.124,Boston,away,Roxbury Community College,8425.0,15,14222,0,1699,6,1676
+85,Hyde Park Avenue north of Cleary Square,2025-09-24,Wednesday,42.2564,-71.124,Boston,away,Curry College,2128.0,15,14222,0,1699,6,1676
 88,Traveler Street west of Dorchester Avenue,2025-09-24,Wednesday,42.3434,-71.0581,Boston,near,Tufts University,764.0,140,18966,22,2512,25,2438
 13,Cambridge Street east of Lincoln Street,2025-09-30,Tuesday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,476,38646,83,4777,99,4877
 16,Centre Street north of Harris Avenue,2025-09-30,Tuesday,42.3113,-71.1145,Boston,away,Roxbury Community College,2534.0,383,11343,59,1329,72,1463
@@ -2828,7 +2828,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 70,Boylston Street east of Arlington Street,2026-03-10,Tuesday,42.3522,-71.0694,Boston,campus,Emerson College,302.0,1234,8393,301,1182,250,1314
 73,Tremont Street north of Boylston Street,2026-03-10,Tuesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,809,10951,63,1112,238,1480
 77,Tremont Street west of Union Park,2026-03-10,Tuesday,42.3434,-71.0727,Boston,near,Boston University,792.0,516,10344,76,1308,133,1168
-8,Blue Hill Avenue north of Rexford Street,2026-03-10,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,61,26355,9,3595,14,3186
+8,Blue Hill Avenue north of Rexford Street,2026-03-10,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,61,26355,9,3595,14,3186
 82,North Beacon Street west of Glencoe Street,2026-03-10,Tuesday,42.3559,-71.1482,Boston,away,Harvard University,2539.0,150,10369,17,1250,30,1659
 89,Boylston Street west of Tremont Street,2026-03-10,Tuesday,42.3525,-71.065,Boston,campus,Emerson College,46.0,1319,6669,299,853,304,973
 9,Blue Hill Avenue north of Seaver Street,2026-03-10,Tuesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,71,21865,8,2467,6,2655
@@ -2845,7 +2845,7 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 70,Boylston Street east of Arlington Street,2026-03-11,Wednesday,42.3522,-71.0694,Boston,campus,Emerson College,302.0,753,8824,204,1292,114,1450
 73,Tremont Street north of Boylston Street,2026-03-11,Wednesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,519,10972,46,1146,134,1377
 77,Tremont Street west of Union Park,2026-03-11,Wednesday,42.3434,-71.0727,Boston,near,Boston University,792.0,372,9951,76,1253,93,1265
-8,Blue Hill Avenue north of Rexford Street,2026-03-11,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,40,25455,6,3489,4,2766
+8,Blue Hill Avenue north of Rexford Street,2026-03-11,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,40,25455,6,3489,4,2766
 82,North Beacon Street west of Glencoe Street,2026-03-11,Wednesday,42.3559,-71.1482,Boston,away,Harvard University,2539.0,94,10612,17,1298,18,1738
 89,Boylston Street west of Tremont Street,2026-03-11,Wednesday,42.3525,-71.065,Boston,campus,Emerson College,46.0,814,7331,219,956,153,1076
 9,Blue Hill Avenue north of Seaver Street,2026-03-11,Wednesday,42.3057,-71.0846,Boston,away,Roxbury Community College,2764.0,42,21219,7,2397,6,2358
@@ -2879,9 +2879,9 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2026-06-09,Tuesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,776,16200,120,1709,187,2183
 60,Washington Street north of Bexley Road,2026-06-09,Tuesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,593,15612,111,1737,134,1998
 62,Washington Street south of Hayward Place,2026-06-09,Tuesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,864,3199,204,307,134,454
-67,Neponset Greenway east of Blue Hill Avenue,2026-06-09,Tuesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,249,,21,,65,
+67,Neponset Greenway east of Blue Hill Avenue,2026-06-09,Tuesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,249,,21,,65,
 73,Tremont Street north of Boylston Street,2026-06-09,Tuesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,971,11093,99,1176,315,1691
-8,Blue Hill Avenue north of Rexford Street,2026-06-09,Tuesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,77,27724,11,3550,19,3373
+8,Blue Hill Avenue north of Rexford Street,2026-06-09,Tuesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,77,27724,11,3550,19,3373
 89,Boylston Street west of Tremont Street,2026-06-09,Tuesday,42.3525,-71.065,Boston,campus,Emerson College,46.0,1794,7894,349,1046,396,1143
 1,A Street north of Iron Street,2026-06-10,Wednesday,42.3459,-71.052,Boston,near,Tufts University,894.0,829,11032,157,1508,205,1225
 11,Brookline Avenue south of Francis Street,2026-06-10,Wednesday,42.3367,-71.1096,Boston,near,Harvard University,532.0,545,22297,111,2322,95,3055
@@ -2913,16 +2913,16 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 6,Beacon Street east of Raleigh Street,2026-06-10,Wednesday,42.3496,-71.0939,Boston,campus,Boston University,347.0,688,15979,105,1708,183,1870
 60,Washington Street north of Bexley Road,2026-06-10,Wednesday,42.2883,-71.1261,Boston,away,Roxbury Community College,5200.0,555,16040,106,1922,128,2069
 62,Washington Street south of Hayward Place,2026-06-10,Wednesday,42.3528,-71.0626,Boston,campus,Emerson College,239.0,899,3267,204,316,150,532
-67,Neponset Greenway east of Blue Hill Avenue,2026-06-10,Wednesday,42.2672,-71.0934,Boston,away,University of Massachusetts-Boston,6840.0,243,,37,,41,
+67,Neponset Greenway east of Blue Hill Avenue,2026-06-10,Wednesday,42.2672,-71.0934,Boston,away,Curry College,3758.0,243,,37,,41,
 73,Tremont Street north of Boylston Street,2026-06-10,Wednesday,42.3541,-71.0639,Boston,campus,Emerson College,244.0,1021,11152,98,1215,296,1503
-8,Blue Hill Avenue north of Rexford Street,2026-06-10,Wednesday,42.2714,-71.0937,Boston,away,Roxbury Community College,6426.0,81,28746,10,3582,16,3406
+8,Blue Hill Avenue north of Rexford Street,2026-06-10,Wednesday,42.2714,-71.0937,Boston,away,Curry College,4155.0,81,28746,10,3582,16,3406
 89,Boylston Street west of Tremont Street,2026-06-10,Wednesday,42.3525,-71.065,Boston,campus,Emerson College,46.0,1768,8158,377,1080,383,1006
 13,Cambridge Street east of Lincoln Street,2026-06-16,Tuesday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,482,37054,80,4554,107,4357
 2,Adams Street south of Washington Street,2026-06-16,Tuesday,42.272,-71.068,Boston,away,University of Massachusetts-Boston,5216.0,25,18741,2,2498,2,2432
 26,Commonwealth Avenue west of Silber Way,2026-06-16,Tuesday,42.3496,-71.102,Boston,campus,Boston University,26.0,1372,10994,187,1252,281,1604
 42,Massachusetts Avenue south of Newmarket Square,2026-06-16,Tuesday,42.3261,-71.0662,Boston,away,Boston University,1117.0,710,19360,77,2137,131,2496
 65,Western Avenue east of Hague Street,2026-06-16,Tuesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,729,7018,119,795,194,986
-7,Belgrade Avenue east of Anawan Avenue,2026-06-16,Tuesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,56,10667,3,1346,13,1460
+7,Belgrade Avenue east of Anawan Avenue,2026-06-16,Tuesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,56,10667,3,1346,13,1460
 77,Tremont Street west of Union Park,2026-06-16,Tuesday,42.3434,-71.0727,Boston,near,Boston University,792.0,700,9431,95,1223,170,1149
 90,Boylston Street west of Fairfield Street,2026-06-16,Tuesday,42.3487,-71.0824,Boston,near,Berklee College of Music,589.0,1050,9690,143,994,218,1467
 13,Cambridge Street east of Lincoln Street,2026-06-17,Wednesday,42.3577,-71.1272,Boston,away,Harvard University,1022.0,498,38016,76,4331,95,4417
@@ -2930,6 +2930,6 @@ count_id,location_name,date,weekday,lat,lng,municipality,campus_zone,campus_inst
 26,Commonwealth Avenue west of Silber Way,2026-06-17,Wednesday,42.3496,-71.102,Boston,campus,Boston University,26.0,1297,11561,174,1353,296,1669
 42,Massachusetts Avenue south of Newmarket Square,2026-06-17,Wednesday,42.3261,-71.0662,Boston,away,Boston University,1117.0,682,20062,83,2218,120,2535
 65,Western Avenue east of Hague Street,2026-06-17,Wednesday,42.3639,-71.1217,Boston,campus,Harvard University,200.0,808,7319,123,909,177,1012
-7,Belgrade Avenue east of Anawan Avenue,2026-06-17,Wednesday,42.2861,-71.1471,Boston,away,Boston College,5620.0,64,10556,11,1300,11,1497
+7,Belgrade Avenue east of Anawan Avenue,2026-06-17,Wednesday,42.2861,-71.1471,Boston,away,Mount Ida College,3888.0,64,10556,11,1300,11,1497
 77,Tremont Street west of Union Park,2026-06-17,Wednesday,42.3434,-71.0727,Boston,near,Boston University,792.0,720,10082,97,1231,158,1199
 90,Boylston Street west of Fairfield Street,2026-06-17,Wednesday,42.3487,-71.0824,Boston,near,Berklee College of Music,589.0,961,10106,150,1005,141,1413

@@ -1,4 +1,28 @@
 municipality,year,population,source
+Arlington,2014,45068,intercensal 2010-2020
+Arlington,2015,45468,intercensal 2010-2020
+Arlington,2016,45895,intercensal 2010-2020
+Arlington,2017,46161,intercensal 2010-2020
+Arlington,2018,46349,intercensal 2010-2020
+Arlington,2019,46489,intercensal 2010-2020
+Arlington,2020,46164,vintage 2025
+Arlington,2021,45732,vintage 2025
+Arlington,2022,45959,vintage 2025
+Arlington,2023,46463,vintage 2025
+Arlington,2024,46700,vintage 2025
+Arlington,2025,46563,vintage 2025
+Belmont,2014,26128,intercensal 2010-2020
+Belmont,2015,26321,intercensal 2010-2020
+Belmont,2016,27151,intercensal 2010-2020
+Belmont,2017,27302,intercensal 2010-2020
+Belmont,2018,27341,intercensal 2010-2020
+Belmont,2019,27362,intercensal 2010-2020
+Belmont,2020,27210,vintage 2025
+Belmont,2021,26909,vintage 2025
+Belmont,2022,26984,vintage 2025
+Belmont,2023,27115,vintage 2025
+Belmont,2024,27223,vintage 2025
+Belmont,2025,27118,vintage 2025
 Boston,2014,655963,intercensal 2010-2020
 Boston,2015,661968,intercensal 2010-2020
 Boston,2016,669483,intercensal 2010-2020
@@ -35,6 +59,162 @@ Cambridge,2022,119861,vintage 2025
 Cambridge,2023,121186,vintage 2025
 Cambridge,2024,121837,vintage 2025
 Cambridge,2025,122588,vintage 2025
+Chelsea,2014,39314,intercensal 2010-2020
+Chelsea,2015,40515,intercensal 2010-2020
+Chelsea,2016,41175,intercensal 2010-2020
+Chelsea,2017,41324,intercensal 2010-2020
+Chelsea,2018,41102,intercensal 2010-2020
+Chelsea,2019,40984,intercensal 2010-2020
+Chelsea,2020,40543,vintage 2025
+Chelsea,2021,39594,vintage 2025
+Chelsea,2022,39536,vintage 2025
+Chelsea,2023,39568,vintage 2025
+Chelsea,2024,40174,vintage 2025
+Chelsea,2025,40130,vintage 2025
+Dedham,2014,25474,intercensal 2010-2020
+Dedham,2015,25400,intercensal 2010-2020
+Dedham,2016,25422,intercensal 2010-2020
+Dedham,2017,25286,intercensal 2010-2020
+Dedham,2018,25262,intercensal 2010-2020
+Dedham,2019,25313,intercensal 2010-2020
+Dedham,2020,25214,vintage 2025
+Dedham,2021,25144,vintage 2025
+Dedham,2022,25083,vintage 2025
+Dedham,2023,25163,vintage 2025
+Dedham,2024,25705,vintage 2025
+Dedham,2025,25731,vintage 2025
+Everett,2014,45604,intercensal 2010-2020
+Everett,2015,47056,intercensal 2010-2020
+Everett,2016,47728,intercensal 2010-2020
+Everett,2017,48209,intercensal 2010-2020
+Everett,2018,49014,intercensal 2010-2020
+Everett,2019,49105,intercensal 2010-2020
+Everett,2020,48908,vintage 2025
+Everett,2021,48335,vintage 2025
+Everett,2022,48594,vintage 2025
+Everett,2023,49021,vintage 2025
+Everett,2024,51210,vintage 2025
+Everett,2025,53572,vintage 2025
+Lynn,2014,95405,intercensal 2010-2020
+Lynn,2015,96723,intercensal 2010-2020
+Lynn,2016,97528,intercensal 2010-2020
+Lynn,2017,98940,intercensal 2010-2020
+Lynn,2018,100011,intercensal 2010-2020
+Lynn,2019,100677,intercensal 2010-2020
+Lynn,2020,101071,vintage 2025
+Lynn,2021,100919,vintage 2025
+Lynn,2022,101218,vintage 2025
+Lynn,2023,102020,vintage 2025
+Lynn,2024,103762,vintage 2025
+Lynn,2025,104236,vintage 2025
+Malden,2014,63852,intercensal 2010-2020
+Malden,2015,64642,intercensal 2010-2020
+Malden,2016,65160,intercensal 2010-2020
+Malden,2017,65581,intercensal 2010-2020
+Malden,2018,65834,intercensal 2010-2020
+Malden,2019,66169,intercensal 2010-2020
+Malden,2020,66047,vintage 2025
+Malden,2021,65288,vintage 2025
+Malden,2022,65410,vintage 2025
+Malden,2023,65723,vintage 2025
+Malden,2024,66378,vintage 2025
+Malden,2025,66370,vintage 2025
+Medford,2014,57419,intercensal 2010-2020
+Medford,2015,57626,intercensal 2010-2020
+Medford,2016,57630,intercensal 2010-2020
+Medford,2017,57545,intercensal 2010-2020
+Medford,2018,57273,intercensal 2010-2020
+Medford,2019,57029,intercensal 2010-2020
+Medford,2020,59566,vintage 2025
+Medford,2021,58959,vintage 2025
+Medford,2022,59192,vintage 2025
+Medford,2023,59611,vintage 2025
+Medford,2024,59878,vintage 2025
+Medford,2025,59834,vintage 2025
+Melrose,2014,28882,intercensal 2010-2020
+Melrose,2015,29092,intercensal 2010-2020
+Melrose,2016,29354,intercensal 2010-2020
+Melrose,2017,29671,intercensal 2010-2020
+Melrose,2018,29724,intercensal 2010-2020
+Melrose,2019,29840,intercensal 2010-2020
+Melrose,2020,29710,vintage 2025
+Melrose,2021,29350,vintage 2025
+Melrose,2022,29425,vintage 2025
+Melrose,2023,29568,vintage 2025
+Melrose,2024,29667,vintage 2025
+Melrose,2025,29597,vintage 2025
+Milton,2014,27992,intercensal 2010-2020
+Milton,2015,28104,intercensal 2010-2020
+Milton,2016,28253,intercensal 2010-2020
+Milton,2017,28369,intercensal 2010-2020
+Milton,2018,28480,intercensal 2010-2020
+Milton,2019,28581,intercensal 2010-2020
+Milton,2020,28578,vintage 2025
+Milton,2021,28466,vintage 2025
+Milton,2022,28441,vintage 2025
+Milton,2023,28468,vintage 2025
+Milton,2024,28583,vintage 2025
+Milton,2025,28537,vintage 2025
+Needham,2014,30504,intercensal 2010-2020
+Needham,2015,30792,intercensal 2010-2020
+Needham,2016,31049,intercensal 2010-2020
+Needham,2017,31452,intercensal 2010-2020
+Needham,2018,31699,intercensal 2010-2020
+Needham,2019,31927,intercensal 2010-2020
+Needham,2020,32243,vintage 2025
+Needham,2021,32213,vintage 2025
+Needham,2022,32362,vintage 2025
+Needham,2023,32426,vintage 2025
+Needham,2024,32713,vintage 2025
+Needham,2025,32897,vintage 2025
+Newton,2014,88719,intercensal 2010-2020
+Newton,2015,89143,intercensal 2010-2020
+Newton,2016,89241,intercensal 2010-2020
+Newton,2017,89533,intercensal 2010-2020
+Newton,2018,89279,intercensal 2010-2020
+Newton,2019,88933,intercensal 2010-2020
+Newton,2020,88806,vintage 2025
+Newton,2021,87965,vintage 2025
+Newton,2022,88170,vintage 2025
+Newton,2023,89007,vintage 2025
+Newton,2024,89999,vintage 2025
+Newton,2025,90741,vintage 2025
+Quincy,2014,96727,intercensal 2010-2020
+Quincy,2015,97529,intercensal 2010-2020
+Quincy,2016,98619,intercensal 2010-2020
+Quincy,2017,99533,intercensal 2010-2020
+Quincy,2018,100313,intercensal 2010-2020
+Quincy,2019,101079,intercensal 2010-2020
+Quincy,2020,101487,vintage 2025
+Quincy,2021,101147,vintage 2025
+Quincy,2022,102098,vintage 2025
+Quincy,2023,102001,vintage 2025
+Quincy,2024,102647,vintage 2025
+Quincy,2025,103173,vintage 2025
+Revere,2014,57934,intercensal 2010-2020
+Revere,2015,59061,intercensal 2010-2020
+Revere,2016,59998,intercensal 2010-2020
+Revere,2017,61057,intercensal 2010-2020
+Revere,2018,61416,intercensal 2010-2020
+Revere,2019,61953,intercensal 2010-2020
+Revere,2020,61909,vintage 2025
+Revere,2021,59497,vintage 2025
+Revere,2022,58922,vintage 2025
+Revere,2023,59013,vintage 2025
+Revere,2024,60375,vintage 2025
+Revere,2025,60141,vintage 2025
+Saugus,2014,28021,intercensal 2010-2020
+Saugus,2015,28138,intercensal 2010-2020
+Saugus,2016,28194,intercensal 2010-2020
+Saugus,2017,28313,intercensal 2010-2020
+Saugus,2018,28338,intercensal 2010-2020
+Saugus,2019,28478,intercensal 2010-2020
+Saugus,2020,28606,vintage 2025
+Saugus,2021,28719,vintage 2025
+Saugus,2022,28708,vintage 2025
+Saugus,2023,28910,vintage 2025
+Saugus,2024,29227,vintage 2025
+Saugus,2025,29179,vintage 2025
 Somerville,2014,78983,intercensal 2010-2020
 Somerville,2015,79707,intercensal 2010-2020
 Somerville,2016,80936,intercensal 2010-2020
@@ -47,3 +227,39 @@ Somerville,2022,82641,vintage 2025
 Somerville,2023,83258,vintage 2025
 Somerville,2024,84088,vintage 2025
 Somerville,2025,84211,vintage 2025
+Waltham,2014,64441,intercensal 2010-2020
+Waltham,2015,64636,intercensal 2010-2020
+Waltham,2016,64880,intercensal 2010-2020
+Waltham,2017,65042,intercensal 2010-2020
+Waltham,2018,65066,intercensal 2010-2020
+Waltham,2019,65245,intercensal 2010-2020
+Waltham,2020,64190,vintage 2025
+Waltham,2021,64522,vintage 2025
+Waltham,2022,64628,vintage 2025
+Waltham,2023,65002,vintage 2025
+Waltham,2024,65178,vintage 2025
+Waltham,2025,65037,vintage 2025
+Watertown Town,2014,33972,intercensal 2010-2020
+Watertown Town,2015,33977,intercensal 2010-2020
+Watertown Town,2016,34660,intercensal 2010-2020
+Watertown Town,2017,35184,intercensal 2010-2020
+Watertown Town,2018,35200,intercensal 2010-2020
+Watertown Town,2019,35214,intercensal 2010-2020
+Watertown Town,2020,35326,vintage 2025
+Watertown Town,2021,35225,vintage 2025
+Watertown Town,2022,35342,vintage 2025
+Watertown Town,2023,35508,vintage 2025
+Watertown Town,2024,35772,vintage 2025
+Watertown Town,2025,35710,vintage 2025
+Winthrop Town,2014,18657,intercensal 2010-2020
+Winthrop Town,2015,18859,intercensal 2010-2020
+Winthrop Town,2016,19060,intercensal 2010-2020
+Winthrop Town,2017,19268,intercensal 2010-2020
+Winthrop Town,2018,19264,intercensal 2010-2020
+Winthrop Town,2019,19312,intercensal 2010-2020
+Winthrop Town,2020,19255,vintage 2025
+Winthrop Town,2021,18625,vintage 2025
+Winthrop Town,2022,18618,vintage 2025
+Winthrop Town,2023,18603,vintage 2025
+Winthrop Town,2024,18675,vintage 2025
+Winthrop Town,2025,18647,vintage 2025

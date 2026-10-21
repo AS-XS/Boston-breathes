@@ -69,7 +69,8 @@ def test_nearest_campus_zones():
     big, small = lat_lng(236000, 900000), lat_lng(236000, 900600)
     campuses = pl.DataFrame({
         "unitid": ["1", "2"], "institution": ["Big U", "Small College"],
-        "lat": [big[0], small[0]], "lng": [big[1], small[1]], "major": [True, False],
+        "lat": [big[0], small[0]], "lng": [big[1], small[1]], "typical_in_person": [30000.0, 500.0],
+        "major": [True, False],
     })
     stations = [lat_lng(236100, 900000), lat_lng(236000, 900700), lat_lng(238000, 900000), (0.0, 0.0)]
     points = pl.DataFrame({"lat": [s[0] for s in stations], "lng": [s[1] for s in stations]})
@@ -78,6 +79,19 @@ def test_nearest_campus_zones():
     # The small college is closer to the second station but is not a major campus.
     assert out["campus_institution"].to_list() == ["Big U", "Big U", "Big U", None]
     assert out["campus_distance_m"].to_list()[:3] == [100.0, 700.0, 2000.0]
+
+
+def test_nearest_campus_ties_go_to_the_larger_institution():
+    shared = lat_lng(236000, 900000)
+    campuses = pl.DataFrame({
+        "unitid": ["1", "2"], "institution": ["Professional Programs", "Big U"],
+        "lat": [shared[0]] * 2, "lng": [shared[1]] * 2, "typical_in_person": [6000.0, 22000.0],
+        "major": [True, True],
+    })
+    stations = [lat_lng(236100, 900000), lat_lng(235500, 900000)]
+    points = pl.DataFrame({"lat": [s[0] for s in stations], "lng": [s[1] for s in stations]})
+    out = campus.nearest_campus(points, campuses)
+    assert out["campus_institution"].to_list() == ["Big U", "Big U"]
 
 
 def test_zone_thresholds():

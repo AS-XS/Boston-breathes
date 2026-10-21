@@ -24,7 +24,7 @@ Section C, "Does city activity follow the students?":
   C12 street counts, September against June
 
 Section D, "Where campuses and stations are":
-  D13 campus zones and the Bluebikes and MBTA stations of the study area
+  D13, D14 campus zones and the Bluebikes and MBTA stations of the study area
 
 Colors follow the project's chart palette (validated for color-vision
 deficiency); identity is never carried by color alone.
@@ -931,22 +931,34 @@ def dip_note() -> str:
 
 # ------------------------------------------------------------------ D map
 
-MAP_SIZE = 380
+MAP_WIDTH = WIDTH
+FRAME_PAD_M = 500
 ZONE_OPACITY = 0.45
 # Bluebikes renumbered its stations in 2023, so one dock can have an old and a new ID; records this close
 # together are one station on the map.
 SAME_STATION_M = 10
-# Town names sit inside their town, clear of the campus labels, where they cover the fewest stations
-# (Cambridge and Somerville have no empty spot large enough); they are drawn under the stations.
-# (latitude, longitude)
-TOWN_LABEL_AT = {"Boston": (42.302, -71.1), "Brookline": (42.323, -71.142), "Cambridge": (42.388, -71.15),
-                 "Somerville": (42.398, -71.096)}
-# Short labels for the largest institutions' main campuses: (label, align, dx, dy).
+# Town names sit inside their town, clear of the campus labels, the campus zones and each other, where they
+# cover the fewest stations (Cambridge, Somerville and Everett have no empty spot large enough); they are
+# drawn under the stations. (latitude, longitude)
+TOWN_LABEL_AT = {
+    "Arlington": (42.4193, -71.1771), "Belmont": (42.3964, -71.1787), "Boston": (42.314, -71.0795),
+    "Brookline": (42.3231, -71.1461), "Cambridge": (42.3861, -71.1523), "Chelsea": (42.3861, -71.0361),
+    "Dedham": (42.2486, -71.1818), "Everett": (42.4159, -71.0377), "Lynn": (42.4811, -70.9649),
+    "Malden": (42.4308, -71.064), "Medford": (42.4319, -71.126), "Melrose": (42.4571, -71.0594),
+    "Milton": (42.2475, -71.0966), "Needham": (42.2853, -71.236), "Newton": (42.3266, -71.2096),
+    "Quincy": (42.2647, -71.0036), "Revere": (42.4205, -71.0098), "Saugus": (42.4685, -71.0206),
+    "Somerville": (42.3964, -71.0873), "Waltham": (42.3976, -71.2375), "Watertown Town": (42.3735, -71.1771),
+    "Winthrop Town": (42.3747, -70.9897),
+}
+# Short labels for some of the largest institutions' main campuses (the others are in the tooltips and
+# the table): (label, align, dx, dy).
 CAMPUS_LABELS = {
     "164988": ("BU", "right", -6, 0), "167358": ("Northeastern", "left", 6, 4),
     "166027": ("Harvard", "right", -6, -2), "166683": ("MIT", "left", 6, 0),
     "166638": ("UMass Boston", "left", 6, 0), "164924": ("Boston College", "left", 6, 8),
-    "168148": ("Tufts", "left", 6, 0),
+    "168148": ("Tufts", "left", 6, 0), "165015": ("Brandeis", "left", 6, 0), "164739": ("Bentley", "left", 6, 0),
+    "166391": ("Lasell", "left", 6, 0), "166948": ("Mount Ida", "left", 6, 0), "165529": ("Curry", "left", 6, 0),
+    "167525": ("Quincy College", "left", 6, 0),
 }
 
 
@@ -978,7 +990,8 @@ def rounded(geometry, digits: int = 5):
 
 @functools.lru_cache(maxsize=1)
 def map_layers() -> dict:
-    """Town outlines, campus-zone areas and the map extent, as GeoJSON features (computed once)."""
+    """Town outlines, campus-zone areas, town labels and the map extent (the whole study area), as GeoJSON
+    features, with the extent's height-to-width ratio as drawn (computed once)."""
     import geopandas as gpd
     from shapely.geometry import box
 
@@ -987,12 +1000,11 @@ def map_layers() -> dict:
     campuses = read("campus_points.csv", schema_overrides={"unitid": pl.Utf8})
     major = campuses.filter(pl.col("major"))
     points = gpd.GeoSeries(gpd.points_from_xy(major["lng"].to_list(), major["lat"].to_list()), crs=4326).to_crs(MA_CRS)
-    stations = pl.concat([station_data(source).select("lng", "lat") for source in SOURCES])
-    shown = gpd.GeoSeries(gpd.points_from_xy(
-        stations["lng"].to_list() + major["lng"].to_list(), stations["lat"].to_list() + major["lat"].to_list()),
-        crs=4326).to_crs(MA_CRS)
-    minx, miny, maxx, maxy = shown.total_bounds
-    frame = box(minx - 700, miny - 700, maxx + 700, maxy + 700)
+    # A latitude-longitude box, which the Mercator projection draws as a rectangle.
+    padded = gpd.GeoSeries([box(*study.total_bounds).buffer(FRAME_PAD_M, join_style="mitre")], crs=MA_CRS)
+    frame_4326 = box(*padded.to_crs(4326).total_bounds)
+    x0, y0, x1, y1 = gpd.GeoSeries([frame_4326], crs=4326).to_crs(3857).total_bounds
+    frame = gpd.GeoSeries([frame_4326], crs=4326).to_crs(MA_CRS).iloc[0]
     study_shape = study.union_all()
     campus = points.buffer(CAMPUS_M).union_all().intersection(study_shape)
     near = points.buffer(NEAR_M).union_all().intersection(study_shape).difference(campus)  # a ring, no overlap
@@ -1006,12 +1018,13 @@ def map_layers() -> dict:
         clipped = geom.intersection(frame)
         if not clipped.is_empty:
             town_features.append(feature(clipped, name=name, study=name in STUDY_AREA))
-    frame_4326 = gpd.GeoSeries([frame], crs=MA_CRS).to_crs(4326).iloc[0]
     return {
         "towns": town_features,
         "zones": [feature(near, zone=ZONE_LABELS["near"]), feature(campus, zone=ZONE_LABELS["campus"])],
-        "town_labels": [{"name": n, "lat": lat, "lng": lng} for n, (lat, lng) in sorted(TOWN_LABEL_AT.items())],
+        "town_labels": [{"label": n.removesuffix(" Town"), "lat": lat, "lng": lng}
+                        for n, (lat, lng) in sorted(TOWN_LABEL_AT.items())],
         "frame": {"type": "Feature", "properties": {}, "geometry": rounded(frame_4326)},
+        "aspect": (y1 - y0) / (x1 - x0),
     }
 
 
@@ -1080,7 +1093,7 @@ def map_panel(t: dict, source: str, unit: str, shape: str, size_range: list[int]
                       legend=alt.Legend(symbolOpacity=ZONE_OPACITY)),
         fillOpacity=alt.value(ZONE_OPACITY),
     ).project(**projection)
-    town_rows = pl.DataFrame(layers["town_labels"]).rename({"name": "label"})
+    town_rows = pl.DataFrame(layers["town_labels"])
     df = station_data(source)
     stations = alt.Chart(df).mark_point(shape=shape, filled=True, opacity=0.85, stroke=t["surface"],
                                         strokeWidth=1).encode(
@@ -1111,57 +1124,37 @@ def map_panel(t: dict, source: str, unit: str, shape: str, size_range: list[int]
         label_layers += halo_text(row, t, projection, t["ink"], align=align, dx=dx, dy=dy, fontSize=11,
                                   fontWeight=600)
     return alt.layer(towns, zone_areas, *town_labels, stations, marks, *label_layers).properties(
-        width=MAP_SIZE, height=MAP_SIZE, title=alt.Title(f"{source} stations", fontSize=12, fontWeight=600,
-                                                          color=t["ink"]))
+        width=MAP_WIDTH, height=round(MAP_WIDTH * layers["aspect"]))
 
 
-def map_chart(t: dict) -> alt.TopLevelMixin:
-    return alt.hconcat(
-        map_panel(t, "Bluebikes", "trips started", "circle", [3, 90]),
-        map_panel(t, "MBTA", "gate entries", "square", [8, 150]),
-        spacing=24,
-    ).resolve_scale(size="independent", fill="shared")
+MAP_STYLE = {"Bluebikes": ("trips started", "circle", [3, 90]), "MBTA": ("gate entries", "square", [8, 150])}
 
 
-def map_table() -> pl.DataFrame:
-    frames = []
-    for source in SOURCES:
-        frames.append(station_data(source).with_columns(pl.lit(source).alias("Source")))
-    return pl.concat(frames).select(
-        "Source", pl.col("station_name").alias("Station"), pl.col("municipality").alias("Town"),
-        pl.col("zone").alias("Zone"), pl.col("nearest_campus").alias("Nearest large campus"),
-        pl.col("campus_distance_m").cast(pl.Int64).alias("Distance (m)"),
-        pl.col("per_day").alias("Average per day"),
-    ).sort("Source", "Zone", "Station")
+def map_chart_for(source: str):
+    unit, shape, size_range = MAP_STYLE[source]
+    return lambda t: map_panel(t, source, unit, shape, size_range)
 
 
-def outside_note() -> str:
-    """Large institutions whose main campus lies outside the study area: only their zones inside it count."""
-    import geopandas as gpd
+def map_table_for(source: str):
+    unit = MAP_STYLE[source][0]
 
-    towns = load_towns()
-    named = read("campus_points.csv", schema_overrides={"unitid": pl.Utf8}).filter(
-        pl.col("major") & (pl.col("source") == "ipeds") & (pl.col("campus_name") == pl.col("institution")))
-    points = gpd.GeoDataFrame({"institution": named["institution"].to_list()}, crs=4326,
-                              geometry=gpd.points_from_xy(named["lng"].to_list(), named["lat"].to_list()))
-    located = points.to_crs(towns.crs).sjoin(towns[["municipality", "geometry"]], how="left", predicate="within")
-    outside = located[~located["municipality"].isin(STUDY_AREA)].sort_values("institution")
-    places = [f"{i} ({m})" for i, m in zip(outside["institution"], outside["municipality"])]
-    if len(places) == 1:
-        return f"The main-campus point of {places[0]} lies outside the study area; only its zones inside it are used."
-    listed = ", ".join(places[:-1]) + " and " + places[-1]
-    return f"The main-campus points of {listed} lie outside the study area; only their zones inside it are used."
+    def table() -> pl.DataFrame:
+        return station_data(source).select(
+            pl.col("station_name").alias("Station"), pl.col("municipality").alias("Town"),
+            pl.col("zone").alias("Zone"), pl.col("nearest_campus").alias("Nearest large campus"),
+            pl.col("campus_distance_m").cast(pl.Int64).alias("Distance (m)"),
+            pl.col("per_day").alias(f"Average {unit} per day"),
+        ).sort("Zone", "Station")
+    return table
 
 
-def zone_note() -> str:
-    counts = {s: station_data(s).group_by("zone").len() for s in SOURCES}
-    parts = []
-    for source, c in counts.items():
+def zone_note_for(source: str):
+    def note() -> str:
+        c = station_data(source).group_by("zone").len()
         n = dict(zip(c["zone"], c["len"]))
-        parts.append(f"{source}: {n.get(ZONE_LABELS['campus'], 0)} campus, {n.get(ZONE_LABELS['near'], 0)} near "
-                     f"and {n.get(ZONE_LABELS['away'], 0)} away stations")
-    return ("; ".join(parts) + f". Bluebikes renumbered its stations in 2023; records within {SAME_STATION_M} m "
-            "of each other (one station under its old and new IDs) are drawn and counted as one station.")
+        return (f"{n.get(ZONE_LABELS['campus'], 0)} campus, {n.get(ZONE_LABELS['near'], 0)} near and "
+                f"{n.get(ZONE_LABELS['away'], 0)} away stations.")
+    return note
 
 
 # ------------------------------------------------------------------ sections
@@ -1312,8 +1305,8 @@ SECTION_C = {
             "question": "Do campuses empty out when their university is on break?",
             "notes": [dip_note,
                       "Faint dots are single breaks; diamonds are medians. Normal years only. Boston College has no "
-                      "Bluebikes stations on its campus inside the study area, and Tufts' are at its health-sciences "
-                      "campus, which follows other calendars, so both are left out."],
+                      "Bluebikes station within 400 m of its campus, and Tufts' are at its health-sciences campus, "
+                      "which follows other calendars, so both are left out."],
             "chart": dip_chart, "table": dip_table,
         },
         {
@@ -1332,21 +1325,35 @@ SECTION_D = {
     "slug": "d_map",
     "title": "Where campuses and stations are",
     "intro": "Section D of the Boston Breathes figures: the campus zones used throughout the analysis, and the "
-             "Bluebikes and MBTA stations inside the four study-area municipalities.",
+             "Bluebikes and MBTA stations in the study area, the 22 cities and towns of the Metropolitan Area "
+             "Planning Council's Inner Core.",
     "charts": [
         {
-            "name": "d13_map",
-            "title": "Campus zones and stations in Boston, Cambridge, Somerville and Brookline",
-            "question": "Which stations count as campus, near or away?",
+            "name": "d13_bluebikes_map",
+            "title": "Bluebikes stations and campus zones",
+            "question": "Which Bluebikes stations count as campus, near or away?",
             "notes": [f"Shaded areas are within {CAMPUS_M} m (campus) and {NEAR_M / 1000:g} km (near) of a campus "
                       f"of a large institution (median fall in-person enrollment of {MAJOR_MIN_STUDENTS:,} or more), "
-                      "clipped to the study area; orange crosses are those campus points. Stations elsewhere in "
-                      "the study area are away.",
-                      zone_note,
-                      "Stations are sized by average trips started (Bluebikes) or gate entries (MBTA) per day "
-                      "between their first and last recorded day; the two maps have their own scales.",
-                      outside_note],
-            "chart": map_chart, "table": map_table,
+                      "clipped to the study area, whose towns are outlined; orange crosses are those campus points. "
+                      "Stations elsewhere in the study area are away.",
+                      zone_note_for("Bluebikes"),
+                      f"Bluebikes renumbered its stations in 2023; records within {SAME_STATION_M} m of each other "
+                      "(one station under its old and new IDs) are drawn and counted as one station. Stations are "
+                      "sized by average trips started per day between their first and last recorded day. Outside "
+                      "Boston, Cambridge, Somerville and Brookline, Bluebikes opened in 2019–2022, apart from one "
+                      "employer station in Quincy."],
+            "chart": map_chart_for("Bluebikes"), "table": map_table_for("Bluebikes"),
+        },
+        {
+            "name": "d14_mbta_map",
+            "title": "MBTA gated stations and campus zones",
+            "question": "Which MBTA stations count as campus, near or away?",
+            "notes": ["The same campus zones as the Bluebikes map.",
+                      zone_note_for("MBTA"),
+                      "Stations are sized by average gate entries per day between their first and last recorded "
+                      "day. Street-level stops without fare gates, such as most of the Green Line, are not included; "
+                      "the Mattapan trolley is reported as one line and drawn at Mattapan station."],
+            "chart": map_chart_for("MBTA"), "table": map_table_for("MBTA"),
         },
     ],
 }

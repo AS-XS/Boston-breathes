@@ -8,8 +8,9 @@ Sources (NCES IPEDS complete data files, one per fall):
 Institutions are selected by their campus coordinates (assigned to a town
 with the Census boundaries used for Bluebikes stations), not by the city
 named in their address, since IPEDS addresses use neighbourhood names such as
-"Chestnut Hill" or "Jamaica Plain". A few large universities just outside the
-study area whose students largely live or travel in it are added explicitly.
+"Chestnut Hill" or "Jamaica Plain". Each fall uses that fall's coordinates, so
+an institution that moved into or out of the study area counts only for the
+falls it was located there.
 
 Students enrolled exclusively in distance education are reported separately,
 because they are not physically present.
@@ -21,7 +22,7 @@ missing level is counted as zero.
 
 Outputs in data/processed/:
   * universities.csv       one row per selected institution
-  * enrollment_annual.csv  one row per institution and fall
+  * enrollment_annual.csv  one row per institution and fall in the study area
 """
 
 import io
@@ -38,13 +39,6 @@ BASE_URL = "https://nces.ed.gov/ipeds/datacenter/data/"
 RAW_DIR = RAW / "ipeds"
 
 FIRST_FALL = STUDY_START.year
-
-# Universities outside the four study-area towns, included because their
-# students are a visible part of study-area activity. Keyed by IPEDS UNITID.
-NEARBY_INSTITUTIONS = {
-    "164924": "Boston College",  # Chestnut Hill (Newton), next to Brighton
-    "168148": "Tufts University",  # Medford/Somerville line
-}
 
 # Degree-granting public, private nonprofit and private for-profit
 # institutions (2- and 4-year). Excludes administrative units (0) and
@@ -138,21 +132,19 @@ def latest_directory(directories: pl.DataFrame) -> pl.DataFrame:
     return latest.drop("fall_year").join(span, on="unitid")
 
 
-def select_institutions(latest: pl.DataFrame, towns) -> pl.DataFrame:
-    """Degree-granting institutions located in the study area, plus nearby ones."""
-    located = assign(latest, towns)
-    nearby = pl.col("unitid").is_in(list(NEARBY_INSTITUTIONS))
-    eligible = (pl.col("degree_granting") == 1) & pl.col("sector").is_in(list(KEPT_SECTORS))
-    selected = located.filter(eligible & (pl.col("municipality").is_in(STUDY_AREA) | nearby))
+def select_institutions(directories: pl.DataFrame, towns) -> tuple[pl.DataFrame, pl.DataFrame]:
+    """Degree-granting institutions located in the study area, by each fall's coordinates.
 
-    missing = set(NEARBY_INSTITUTIONS) - set(selected["unitid"])
-    if missing:
-        raise ValueError(f"Nearby institutions not found in IPEDS: {[NEARBY_INSTITUTIONS[m] for m in missing]}")
-    return (
-        selected.with_columns(pl.col("municipality").is_in(STUDY_AREA).alias("in_study_area"))
-        .select("unitid", "name", "city", "municipality", "in_study_area", "sector", "lat", "lng", "first_fall", "last_fall")
-        .sort("unitid")
-    )
+    Returns the institutions (their latest entry in the study area, with the span of
+    falls they were there) and the falls in which each was located there.
+    """
+    located = assign(directories, towns)
+    eligible = (pl.col("degree_granting") == 1) & pl.col("sector").is_in(list(KEPT_SECTORS))
+    in_area = located.filter(eligible & pl.col("municipality").is_in(STUDY_AREA))
+    institutions = latest_directory(in_area).select(
+        "unitid", "name", "city", "municipality", "sector", "lat", "lng", "first_fall", "last_fall"
+    ).sort("unitid")
+    return institutions, in_area.select("unitid", "fall_year")
 
 
 def enrollment(ef: pl.DataFrame, year: int) -> pl.DataFrame:
@@ -223,12 +215,12 @@ def main() -> None:
             ef = ef.with_columns(pl.lit(None, dtype=pl.Int64).alias(c) for c in DIST_LEVELS.values())
         enrollments.append(ef)
 
-    institutions = select_institutions(latest_directory(pl.concat(directories)), load_towns())
-    names = institutions.select("unitid", "name", "municipality", "in_study_area")
+    institutions, falls_in_area = select_institutions(pl.concat(directories), load_towns())
     annual = (
         with_in_person(pl.concat(enrollments))
-        .join(names, on="unitid", how="inner")
-        .select("unitid", "name", "municipality", "in_study_area", "fall_year", *LEVELS.values(),
+        .join(falls_in_area, on=["unitid", "fall_year"], how="inner")
+        .join(institutions.select("unitid", "name", "municipality"), on="unitid")
+        .select("unitid", "name", "municipality", "fall_year", *LEVELS.values(),
                 *DIST_LEVELS.values(), "in_person", "in_person_undergrad", "in_person_graduate")
         .sort("unitid", "fall_year")
     )
@@ -238,14 +230,13 @@ def main() -> None:
     annual.write_csv(PROCESSED / "enrollment_annual.csv")
 
     totals = (
-        annual.group_by("fall_year", "in_study_area")
+        annual.group_by("fall_year")
         .agg(pl.col("total").sum(), pl.col("in_person").sum(), pl.len().alias("institutions"))
-        .sort("fall_year", "in_study_area")
+        .sort("fall_year")
     )
-    print(f"{len(institutions)} institutions ({institutions['in_study_area'].sum()} in the study area)")
+    print(f"{len(institutions)} institutions in the study area")
     for row in totals.iter_rows(named=True):
-        where = "study area" if row["in_study_area"] else "nearby    "
-        print(f"  fall {row['fall_year']} {where}: {row['total']:>7,} enrolled, "
+        print(f"  fall {row['fall_year']}: {row['total']:>7,} enrolled, "
               f"{row['in_person']:>7,} not online-only, {row['institutions']} institutions")
 
 

@@ -10,8 +10,8 @@ Population Estimates Program series:
 Both are based on the 2020 Census, so they join without a break.
 
 Municipalities are Census county subdivisions (summary level 061): in
-Massachusetts these are the cities and towns, which matters for Brookline,
-a town rather than an incorporated place.
+Massachusetts these are the cities and towns, which matters for towns such as
+Brookline that are not incorporated places.
 
 The Census counts college students where they live during the school year,
 so these totals already include students living in the area.
@@ -29,7 +29,7 @@ from datetime import date
 import polars as pl
 
 from boston_breathes import http
-from boston_breathes.paths import PROCESSED, RAW, STUDY_AREA, STUDY_START
+from boston_breathes.paths import CENSUS_GEOIDS, PROCESSED, RAW, STUDY_AREA, STUDY_START
 from boston_breathes.weeks import build_weeks
 
 BASE_URL = "https://www2.census.gov/programs-surveys/popest/datasets/"
@@ -38,7 +38,7 @@ RAW_DIR = RAW / "census"
 
 STATE_FIPS = "25"  # Massachusetts
 COUNTY_SUBDIVISION = "061"
-COUSUB_CODES = {"07000": "Boston", "11000": "Cambridge", "62535": "Somerville", "09175": "Brookline"}
+COUSUB_CODES = {geoid[-5:]: name for geoid, name in CENSUS_GEOIDS.items()}
 FIRST_YEAR = STUDY_START.year - 1  # one year earlier, so weekly interpolation covers the first weeks
 
 
@@ -75,11 +75,11 @@ def municipal_estimates(csv_text: str, source: str) -> pl.DataFrame:
         & (pl.col("STATE") == STATE_FIPS)
         & pl.col("COUSUB").is_in(list(COUSUB_CODES))
     )
-    found = set(rows["COUSUB"])
-    if found != set(COUSUB_CODES):
-        missing = [COUSUB_CODES[c] for c in set(COUSUB_CODES) - found]
-        raise ValueError(f"{source}: municipalities not found: {missing}")
-    if rows["COUSUB"].is_duplicated().any():
+    names = rows["COUSUB"].replace_strict(COUSUB_CODES)
+    missing = set(COUSUB_CODES.values()) - set(names)
+    if missing:
+        raise ValueError(f"{source}: municipalities not found: {sorted(missing)}")
+    if names.is_duplicated().any():
         raise ValueError(f"{source}: more than one row per municipality")
     # July 1 estimates only (e.g. POPESTIMATE2019), not variants such as the
     # April 1, 2020 estimate (POPESTIMATE042020) in some vintages.

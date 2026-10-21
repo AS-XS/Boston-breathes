@@ -7,6 +7,7 @@ from shapely.geometry import box
 
 from boston_breathes import bluebikes as bb
 from boston_breathes import municipalities as mun
+from boston_breathes.paths import STUDY_AREA_GEOIDS
 
 # Two adjacent 1 km squares in Massachusetts State Plane meters:
 # "Alpha" to the west, "Beta" to the east, sharing the line x = 236000.
@@ -75,3 +76,10 @@ def test_tag_station_day_uses_monthly_town_then_fallback():
     overall = pl.DataFrame({"station_id": ["9"], "municipality": ["Boston"]})
     tagged = mun.tag_station_day(sd, monthly, overall)
     assert tagged["municipality"].to_list() == ["Brookline", "Boston", "Boston", mun.UNKNOWN]
+
+
+def test_study_area_codes_match_town_boundaries():
+    mun.download_boundaries()
+    towns = gpd.read_file(mun.BOUNDARY_PATH)
+    names = dict(zip(towns["GEOID"], towns["NAME"]))
+    assert {geoid: names[geoid] for geoid in STUDY_AREA_GEOIDS} == STUDY_AREA_GEOIDS

@@ -141,12 +141,12 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 239,Community Path at Cedar Street,42.39407223665884,-71.11133694648743,Somerville,true,away,Lesley University,166452,1626.0,30519
 24,Seaport Square - Seaport Blvd at Northern Ave,42.35148193460858,-71.04436084628105,Boston,true,away,Tufts University,168148,1424.0,85224
 240,Harvard St at Greene-Rose Heritage Park,42.36599406030789,-71.09516322612761,Cambridge,true,near,Massachusetts Institute of Technology,166683,767.0,2326
-241,Mattapan T Stop,42.267902,-71.093641,Boston,true,away,University of Massachusetts-Boston,166638,6794.0,88
+241,Mattapan T Stop,42.267902,-71.093641,Boston,true,away,Curry College,165529,3815.0,88
 242,Roslindale Village - South St,42.287072,-71.127754,Boston,true,away,Roxbury Community College,167631,5386.0,156
 243,Commonwealth Ave at Kelton St,42.348368023549895,-71.13997621466297,Boston,true,away,Harvard University,166027,2490.0,672
 244,Archdale Rd at Washington St,42.292706,-71.121145,Boston,true,away,Roxbury Community College,167631,4576.0,271
-245,Blue Hill Ave at Almont St,42.27454525528758,-71.09372016051566,Boston,true,away,Roxbury Community College,167631,6076.0,33
-246,Roslindale Village - Washington St,42.2861532,-71.1283744,Boston,true,away,Roxbury Community College,167631,5500.0,65
+245,Blue Hill Ave at Almont St,42.27454525528758,-71.09372016051566,Boston,true,away,Curry College,165529,4469.0,33
+246,Roslindale Village - Washington St,42.2861532,-71.1283744,Boston,true,away,Mount Ida College,166948,5407.0,65
 247,Boylston St at Jersey St,42.344695708662215,-71.09723791480063,Boston,true,near,Boston University,164988,532.0,1269
 248,Morton St T,42.280753829614476,-71.08621831150231,Boston,true,away,University of Massachusetts-Boston,166638,5340.0,46
 249,Commonwealth Ave at Chiswick Rd,42.3402177416592,-71.1517309399278,Boston,true,away,Boston College,164924,1510.0,223
@@ -163,7 +163,7 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 26,Washington St at Waltham St,42.341574718737476,-71.06890439987183,Boston,true,near,Boston University,164988,601.0,78145
 260,Fields Corner T Stop,42.299633488420625,-71.06068975823291,Boston,true,away,University of Massachusetts-Boston,166638,2370.0,4380
 262,Faneuil St at Arlington St (former),42.3528611,-71.1600278,Boston,true,away,Boston College,164924,1999.0,266
-263,Mattapan Library,42.2773889,-71.09325,Boston,true,away,Roxbury Community College,167631,5762.0,64
+263,Mattapan Library,42.2773889,-71.09325,Boston,true,away,Curry College,165529,4772.0,64
 264,Washington St at Egremont Rd,42.3429444,-71.1413333,Boston,true,away,Boston College,164924,2418.0,616
 27,Roxbury Crossing T Stop - Columbus Ave at Tremont St,42.331184,-71.095171,Boston,true,campus,Roxbury Community College,167631,217.0,78231
 271,Ashmont T Stop,42.2856944,-71.0641389,Boston,true,away,University of Massachusetts-Boston,166638,3739.0,4368
@@ -191,10 +191,10 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 302,Harrison Ave at Bennet St (former),42.3493102175903,-71.06210500001907,Boston,true,campus,Tufts University,168148,74.0,246
 306,Blue Hill Ave at Southwood St (former),42.31784,-71.07796,Boston,true,away,Roxbury Community College,167631,1921.0,15
 307,Broadway T Stop (former),42.3428,-71.05751,Boston,true,near,Tufts University,168148,844.0,347
-308,BCBS Hingham,42.16722555541654,-70.90555783370291,Hingham,false,away,University of Massachusetts-Boston,166638,19473.0,462
+308,BCBS Hingham,42.16722555541654,-70.90555783370291,Hingham,false,away,Quincy College,167525,12446.0,462
 31,Seaport Hotel,42.348833,-71.041747,Boston,true,away,Tufts University,168148,1630.0,51142
 311,Vassal Lane at Tobin/VLUS (former),42.383928224564585,-71.13962350417751,Cambridge,true,away,Lesley University,166452,1886.0,40
-317,BCBS Quincy,42.27600498756665,-71.03924982267927,Quincy,false,away,University of Massachusetts-Boston,166638,4101.0,293
+317,BCBS Quincy,42.27600498756665,-71.03924982267927,Quincy,true,away,Quincy College,167525,3947.0,293
 318,Ames St at Broadway,42.3636929,-71.0875672,Cambridge,true,near,Massachusetts Institute of Technology,166683,679.0,60240
 319,84 Cambridgepark Dr,42.3936,-71.143941,Cambridge,true,away,Lesley University,166452,2656.0,8431
 32,Landmark Center - Brookline Ave at Park Dr,42.343690557197476,-71.10235286881107,Boston,true,campus,Emmanuel College,165671,259.0,109044
@@ -208,12 +208,12 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 333,699 Mt Auburn St,42.37500235137831,-71.14871613699506,Cambridge,true,away,Harvard University,166027,2505.0,17612
 334,Mass Ave at Hadley/Walden,42.39120971915856,-71.12260755160605,Cambridge,true,away,Lesley University,166452,1307.0,19101
 335,Harvard St at Greene-Rose Heritage Park,42.36599432867437,-71.09522221614498,Cambridge,true,near,Massachusetts Institute of Technology,166683,768.0,53705
-336,Mattapan T Stop,42.267902,-71.093641,Boston,true,away,University of Massachusetts-Boston,166638,6794.0,2074
+336,Mattapan T Stop,42.267902,-71.093641,Boston,true,away,Curry College,165529,3815.0,2074
 337,Roslindale Village - South St,42.287072,-71.127754,Boston,true,away,Roxbury Community College,167631,5386.0,3590
 338,Commonwealth Ave at Kelton St,42.348358628170445,-71.13997217276847,Boston,true,away,Harvard University,166027,2491.0,29392
 339,Archdale Rd at Washington St,42.29266592872725,-71.12119538714069,Boston,true,away,Roxbury Community College,167631,4581.0,3045
-340,Blue Hill Ave at Almont St,42.274620671812244,-71.09372552493369,Boston,true,away,Roxbury Community College,167631,6068.0,664
-341,Roslindale Village - Washington St,42.28630716010807,-71.12820532182013,Boston,true,away,Roxbury Community College,167631,5478.0,2350
+340,Blue Hill Ave at Almont St,42.274620671812244,-71.09372552493369,Boston,true,away,Curry College,165529,4476.0,664
+341,Roslindale Village - Washington St,42.28630716010807,-71.12820532182013,Boston,true,away,Mount Ida College,166948,5418.0,2350
 342,Boylston St at Jersey St,42.344650628878306,-71.09732501226972,Boston,true,near,Boston University,164988,536.0,102867
 343,Morton St T,42.280725142920296,-71.08617242434775,Boston,true,away,University of Massachusetts-Boston,166638,5339.0,575
 344,Commonwealth Ave at Chiswick Rd,42.34024644768889,-71.15168806174552,Boston,true,away,Boston College,164924,1514.0,11007
@@ -226,7 +226,7 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 350,Codman Square Library,42.2873611,-71.071111,Boston,true,away,University of Massachusetts-Boston,166638,3944.0,2284
 351,Faneuil St at Arlington St,42.35276620545606,-71.15988485533308,Boston,true,away,Boston College,164924,1994.0,7970
 352,Ring Rd,42.348278385426255,-71.08044855314802,Boston,true,near,Berklee College of Music,164748,727.0,36755
-353,Mattapan Library,42.2773889,-71.09325,Boston,true,away,Roxbury Community College,167631,5762.0,719
+353,Mattapan Library,42.2773889,-71.09325,Boston,true,away,Curry College,165529,4772.0,719
 354,Washington St at Egremont Rd,42.34286835071959,-71.14127840855872,Boston,true,away,Boston College,164924,2420.0,15631
 355,Bennington St at Constitution Beach,42.385223935870535,-71.01063068965232,Boston,true,away,MGH Institute of Health Professions,166869,3747.0,5596
 356,Charlestown Navy Yard,42.374124549426526,-71.05481199938367,Boston,true,campus,MGH Institute of Health Professions,166869,112.0,51383
@@ -248,7 +248,7 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 370,Dartmouth St at Newbury St,42.35096144421219,-71.07782810926437,Boston,true,away,Emerson College,165662,1006.0,62097
 371,700 Huron Ave,42.380788172914286,-71.15412890911102,Cambridge,true,away,Harvard University,166027,3032.0,7057
 372,Boylston St at Exeter St,42.349589423682445,-71.0794677917329,Boston,true,near,Berklee College of Music,164748,850.0,61148
-373,Belgrade Ave at Walworth St,42.28634589486312,-71.13672129828046,Boston,true,away,Roxbury Community College,167631,5852.0,2088
+373,Belgrade Ave at Walworth St,42.28634589486312,-71.13672129828046,Boston,true,away,Mount Ida College,166948,4724.0,2088
 374,Tremont St at Hamilton Pl,42.35668334969929,-71.06166645884514,Boston,true,campus,Suffolk University,168005,153.0,60717
 376,Honan Library,42.36027370454934,-71.12852452327388,Boston,true,near,Harvard University,166027,888.0,26532
 377,Perry Park,42.37927324600841,-71.10341902831351,Somerville,true,away,Lesley University,166452,1147.0,30685
@@ -260,18 +260,18 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 384,Clarendon St at Newbury St,42.35159662465317,-71.0756166279316,Boston,true,near,Emerson College,165662,817.0,35644
 385,Albany St at E. Brookline St,42.33664795427071,-71.0689445958451,Boston,true,campus,Boston University,164988,169.0,21045
 386,Sennott Park Broadway at Norfolk Street,42.36860524248197,-71.09930185605663,Cambridge,true,away,Massachusetts Institute of Technology,166683,1154.0,60845
-387,Norman St at Kelvin St,42.41143222973408,-71.06823265090497,Everett,false,away,Cambridge College,165167,3390.0,6054
-388,Main Street at Carter Street,42.406151572663504,-71.0604074504954,Everett,false,away,Cambridge College,165167,2960.0,666
-389,Everett Square (Broadway at Chelsea St),42.406956789102416,-71.05650289605819,Everett,false,away,Cambridge College,165167,3166.0,3457
+387,Norman St at Kelvin St,42.41143222973408,-71.06823265090497,Everett,true,away,Cambridge College,165167,3390.0,6054
+388,Main Street at Carter Street,42.406151572663504,-71.0604074504954,Everett,true,away,Cambridge College,165167,2960.0,666
+389,Everett Square (Broadway at Chelsea St),42.406956789102416,-71.05650289605819,Everett,true,away,Cambridge College,165167,3166.0,3457
 39,Washington St at Rutland St,42.338514601785995,-71.07404083013535,Boston,true,campus,Boston University,164988,346.0,121733
-390,Broadway at Lynde St,42.39648358247693,-71.06546759905541,Everett,false,away,Cambridge College,165167,1809.0,5315
-391,Encore,42.39329263225162,-71.0724475979805,Everett,false,away,Cambridge College,165167,1355.0,4595
-392,Glendale Square (Ferry St at Broadway),42.41427294293992,-71.04479655659816,Everett,false,away,Cambridge College,165167,4341.0,2774
-393,Swan St. Park,42.412504507772105,-71.05842225271772,Everett,false,away,Cambridge College,165167,3681.0,1439
-394,Broadway at Maple St,42.410346909767846,-71.05260457852637,Everett,false,away,Cambridge College,165167,3645.0,2116
-395,Chelsea St at Vine St,42.40328056972533,-71.04762639859473,Everett,false,away,MGH Institute of Health Professions,166869,3183.0,3233
-396,Wasgott Playground,42.4093300667225,-71.06381878293178,Everett,false,away,Cambridge College,165167,3220.0,1689
-397,Broadway at Beacham St,42.39836059620832,-71.06373842814719,Everett,false,away,Cambridge College,165167,2054.0,5108
+390,Broadway at Lynde St,42.39648358247693,-71.06546759905541,Everett,true,away,Cambridge College,165167,1809.0,5315
+391,Encore,42.39329263225162,-71.0724475979805,Everett,true,away,Cambridge College,165167,1355.0,4595
+392,Glendale Square (Ferry St at Broadway),42.41427294293992,-71.04479655659816,Everett,true,away,Cambridge College,165167,4341.0,2774
+393,Swan St. Park,42.412504507772105,-71.05842225271772,Everett,true,away,Cambridge College,165167,3681.0,1439
+394,Broadway at Maple St,42.410346909767846,-71.05260457852637,Everett,true,away,Cambridge College,165167,3645.0,2116
+395,Chelsea St at Vine St,42.40328056972533,-71.04762639859473,Everett,true,away,MGH Institute of Health Professions,166869,3183.0,3233
+396,Wasgott Playground,42.4093300667225,-71.06381878293178,Everett,true,away,Cambridge College,165167,3220.0,1689
+397,Broadway at Beacham St,42.39836059620832,-71.06373842814719,Everett,true,away,Cambridge College,165167,2054.0,5108
 398,75 Binney St,42.36550728505653,-71.0801375997653,Cambridge,true,near,Hult International Business School,164368,926.0,32455
 399,Shawmut Ave at Oak St W,42.34854543411198,-71.06559185315746,Boston,true,campus,Tufts University,168148,366.0,19019
 4,Tremont St at E Berkeley St,42.345392,-71.069616,Boston,true,near,Emerson College,165662,823.0,87287
@@ -299,20 +299,20 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 42,Boylston St at Arlington St,42.35200960743121,-71.07060294892108,Boston,true,near,Emerson College,165662,402.0,112527
 420,Charles St at Pinckney St,42.35872530462163,-71.07079532006537,Boston,true,near,Suffolk University,168005,729.0,2915
 421,Northbourne Rd at Hyde Park Ave,42.29118034790426,-71.117736660035,Boston,true,away,Roxbury Community College,167631,4608.0,1111
-422,American Legion Hwy at Cummins Hwy,42.278811581565975,-71.11687703062671,Boston,true,away,Roxbury Community College,167631,5872.0,792
-423,Mt. Hope St at Hyde Park Ave,42.28484472443536,-71.11874517062459,Boston,true,away,Roxbury Community College,167631,5290.0,1209
+422,American Legion Hwy at Cummins Hwy,42.278811581565975,-71.11687703062671,Boston,true,away,Curry College,165529,4526.0,792
+423,Mt. Hope St at Hyde Park Ave,42.28484472443536,-71.11874517062459,Boston,true,away,Curry College,165529,5200.0,1209
 424,Jamaica St at South St,42.3060456272408,-71.11570891001975,Boston,true,away,Roxbury Community College,167631,3068.0,5271
 425,The Dimock Center,42.3193094317828,-71.09639923859504,Boston,true,away,Roxbury Community College,167631,1105.0,2960
 426,Surface Rd at Summer St,42.35294569782581,-71.05656400803126,Boston,true,near,Tufts University,168148,536.0,33537
-427,Washington St at Denton Terr,42.280728147169015,-71.13423757273267,Boston,true,away,Roxbury Community College,167631,6264.0,1189
+427,Washington St at Denton Terr,42.280728147169015,-71.13423757273267,Boston,true,away,Curry College,165529,4959.0,1189
 428,Western Ave at Richardson St,42.361787410661876,-71.14393111327445,Boston,true,away,Harvard University,166027,2003.0,12034
 43,Rowes Wharf - Atlantic Ave,42.357143,-71.050699,Boston,true,near,Suffolk University,168005,846.0,84606
 430,Washington St at Walsh Playground,42.277194696397906,-71.06955613950048,Boston,true,away,University of Massachusetts-Boston,166638,4776.0,778
 431,Washington St at Fuller St,42.281986277339136,-71.07147924620222,Boston,true,away,University of Massachusetts-Boston,166638,4425.0,546
-432,Centre St at W. Roxbury Post Office,42.286331991127746,-71.15344755369732,Boston,true,away,Boston College,164924,5444.0,1116
-433,Centre St at Parkway YMCA,42.28277901074054,-71.15728851416861,Boston,true,away,Boston College,164924,5763.0,897
-434,Spring St at Powell St,42.277484442008216,-71.16341467955863,Boston,true,away,Boston College,164924,6280.0,1001
-435,Central Ave at River St,42.27094707029229,-71.07337901405117,Boston,true,away,University of Massachusetts-Boston,166638,5533.0,1280
+432,Centre St at W. Roxbury Post Office,42.286331991127746,-71.15344755369732,Boston,true,away,Mount Ida College,166948,3372.0,1116
+433,Centre St at Parkway YMCA,42.28277901074054,-71.15728851416861,Boston,true,away,Mount Ida College,166948,3191.0,897
+434,Spring St at Powell St,42.277484442008216,-71.16341467955863,Boston,true,away,Mount Ida College,166948,3033.0,1001
+435,Central Ave at River St,42.27094707029229,-71.07337901405117,Boston,true,away,Curry College,165529,5102.0,1280
 436,Maverick St at Massport Path,42.36774122306014,-71.0333597474255,Boston,true,away,MGH Institute of Health Professions,166869,1876.0,5016
 437,Berkshire Street at Cambridge Street,42.37207657915397,-71.08995433905875,Cambridge,true,away,Massachusetts Institute of Technology,166683,1451.0,57873
 438,Mobile Temporary Station,42.34397624831833,-71.08598473086202,Boston,true,campus,Berklee College of Music,164748,391.0,40
@@ -324,48 +324,48 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 445,Geiger Gibson Community Health Center,42.31886468217537,-71.04536797860419,Boston,true,near,University of Massachusetts-Boston,166638,757.0,10907
 446,700 Commonwealth Ave.,42.34960945333059,-71.10391523698127,Boston,true,campus,Boston University,164988,156.0,49359
 447,The Overlook at St. Gabriel's,42.34679008347347,-71.14549813806661,Boston,true,away,Boston College,164924,2282.0,5631
-448,Hale Park,42.4206487,-71.0437126,Everett,false,away,Cambridge College,165167,4998.0,867
+448,Hale Park,42.4206487,-71.0437126,Everett,true,away,Cambridge College,165167,4998.0,867
 45,Jersey St. at Boylston St.,42.3446808403874,-71.09785348176956,Boston,true,near,Boston University,164988,529.0,45861
 450,Beacon St at Englewood Ave,42.337369153709254,-71.14485977232107,Brookline,true,away,Boston College,164924,2013.0,802
 451,Washington Sq,42.33940659197945,-71.13489642273635,Brookline,true,away,Boston University,164988,2361.0,1569
 452,1200 Beacon St,42.34414898749529,-71.11467361450195,Brookline,true,near,Boston University,164988,731.0,19183
 453,Beacon St at Hawes St,42.34496783328529,-71.11040176903771,Brookline,true,near,Boston University,164988,486.0,2028
 454,Boylston St at Dartmouth St,42.35019319808638,-71.07744187116623,Boston,true,near,Emerson College,165662,990.0,17046
-455,Coolidge Sq.,42.372076114722866,-71.15683130688922,Watertown Town,false,away,Harvard University,166027,3123.0,3926
+455,Coolidge Sq.,42.372076114722866,-71.15683130688922,Watertown Town,true,away,Harvard University,166027,3123.0,3926
 456,Graham and Parks School – Linnaean St at Walker St,42.38294430172271,-71.12449831038248,Cambridge,true,near,Lesley University,166452,670.0,15927
-457,N. Beacon St at N. Beacon Ct,42.36444157139109,-71.18091373646166,Watertown Town,false,away,Boston College,164924,3280.0,297
-458,Watertown Sq,42.365260317694485,-71.18573324459247,Watertown Town,false,away,Boston College,164924,3501.0,5121
+457,N. Beacon St at N. Beacon Ct,42.36444157139109,-71.18091373646166,Watertown Town,true,away,Boston College,164924,3280.0,297
+458,Watertown Sq,42.365260317694485,-71.18573324459247,Watertown Town,true,away,Boston College,164924,3501.0,5121
 459,Canal St at Causeway St,42.36530094929082,-71.06092190993877,Boston,true,near,Suffolk University,168005,715.0,42326
 46,Christian Science Plaza - Massachusetts Ave at Westland Ave,42.3436658245146,-71.08582377433777,Boston,true,near,Berklee College of Music,164748,426.0,186880
 460,Broad St at Central St,42.35849449039304,-71.05426469875965,Boston,true,near,Suffolk University,168005,551.0,11564
-461,Railroad Lot and Minuteman Bikeway,42.41606457115141,-71.15336636682059,Arlington,false,away,Tufts University,168148,3005.0,6336
-462,Linwood St at Minuteman Bikeway,42.40935395518158,-71.14906518727366,Arlington,false,away,Tufts University,168148,2535.0,7145
+461,Railroad Lot and Minuteman Bikeway,42.41606457115141,-71.15336636682059,Arlington,true,away,Tufts University,168148,3005.0,6336
+462,Linwood St at Minuteman Bikeway,42.40935395518158,-71.14906518727366,Arlington,true,away,Tufts University,168148,2535.0,7145
 463,Smith Pl at Wilson Rd,42.39239749145834,-71.15058331757609,Cambridge,true,away,Lesley University,166452,3061.0,4825
-464,Mass Ave at Grafton St,42.40726052447951,-71.14382132425817,Arlington,false,away,Tufts University,168148,2106.0,2478
-465,Broadway at Grafton St,42.40994213011757,-71.14009319811885,Arlington,false,away,Tufts University,168148,1801.0,1565
-466,Centre St at Washington St,42.35574334805774,-71.18641942508475,Newton,false,away,Boston College,164924,2590.0,774
-467,Washington St at Crafts St,42.35389024396587,-71.19943707257335,Newton,false,away,Boston College,164924,3170.0,987
-468,Nonantum Library,42.36068455768156,-71.20146199598821,Newton,false,away,Boston College,164924,3800.0,1131
-469,Bacon St at Washington St,42.35711920909866,-71.1860453666327,Newton,false,away,Boston College,164924,2704.0,1567
+464,Mass Ave at Grafton St,42.40726052447951,-71.14382132425817,Arlington,true,away,Tufts University,168148,2106.0,2478
+465,Broadway at Grafton St,42.40994213011757,-71.14009319811885,Arlington,true,away,Tufts University,168148,1801.0,1565
+466,Centre St at Washington St,42.35574334805774,-71.18641942508475,Newton,true,away,Boston College,164924,2590.0,774
+467,Washington St at Crafts St,42.35389024396587,-71.19943707257335,Newton,true,away,Boston College,164924,3170.0,987
+468,Nonantum Library,42.36068455768156,-71.20146199598821,Newton,true,away,Bentley University,164739,3317.0,1131
+469,Bacon St at Washington St,42.35711920909866,-71.1860453666327,Newton,true,away,Boston College,164924,2704.0,1567
 47,Cross St at Hanover St,42.362811,-71.056067,Boston,true,near,Suffolk University,168005,650.0,149958
-470,Union St at Herrick Rd – Newton Centre Green Line,42.32956868185623,-71.19367271661758,Newton,false,away,Boston College,164924,2030.0,561
+470,Union St at Herrick Rd – Newton Centre Green Line,42.32956868185623,-71.19367271661758,Newton,true,away,Boston College,164924,2030.0,561
 471,MIT Carleton St at Amherst St,42.36054174140606,-71.08669817447662,Cambridge,true,near,Massachusetts Institute of Technology,166683,557.0,53393
 472,MIT Hayward St at Amherst St,42.36085937353302,-71.08551858007559,Cambridge,true,near,Massachusetts Institute of Technology,166683,660.0,42486
-473,West Newton,42.349600498642076,-71.2262749671936,Newton,false,away,Boston College,164924,4929.0,850
-474,Watertown St at Albemarle Rd,42.354104081396585,-71.21382214128971,Newton,false,away,Boston College,164924,4176.0,392
-475,Arsenal Yards,42.36277388549605,-71.15764854490408,Watertown Town,false,away,Boston College,164924,3101.0,9376
+473,West Newton,42.349600498642076,-71.2262749671936,Newton,true,away,Lasell University,166391,1641.0,850
+474,Watertown St at Albemarle Rd,42.354104081396585,-71.21382214128971,Newton,true,away,Lasell University,166391,2780.0,392
+475,Arsenal Yards,42.36277388549605,-71.15764854490408,Watertown Town,true,away,Boston College,164924,3101.0,9376
 476,Boylston St at Charles St,42.3525760946701,-71.06764405041758,Boston,true,campus,Emerson College,165662,162.0,4598
 477,Marion St at White St,42.38066930871317,-71.03907315999093,Boston,true,away,MGH Institute of Health Professions,166869,1380.0,1464
 478,Gove St at Orleans St,42.37057753242139,-71.03558540113227,Boston,true,away,MGH Institute of Health Professions,166869,1589.0,3913
 479,Galileo Galilei Way at Main Street,42.363003781560096,-71.08974037706501,Cambridge,true,near,Massachusetts Institute of Technology,166683,507.0,31858
 48,Post Office Square,42.356755,-71.055407,Boston,true,near,Suffolk University,168005,473.0,53848
-480,Thorndike Field at Minuteman Bikeway,42.40016804853787,-71.14456963094199,Arlington,false,away,Tufts University,168148,2355.0,5628
+480,Thorndike Field at Minuteman Bikeway,42.40016804853787,-71.14456963094199,Arlington,true,away,Tufts University,168148,2355.0,5628
 481,645 Summer St,42.341780891371904,-71.03987016504107,Boston,true,away,Tufts University,168148,1992.0,5760
-482,Kearins Playground,42.406161241322444,-71.06041654944418,Everett,false,away,Cambridge College,165167,2961.0,950
+482,Kearins Playground,42.406161241322444,-71.06041654944418,Everett,true,away,Cambridge College,165167,2961.0,950
 483,Porzio Park,42.364119035231525,-71.02876782417297,Boston,true,away,MGH Institute of Health Professions,166869,2398.0,3701
-484,Revere Public Library,42.408088,-71.008942,Revere,false,away,MGH Institute of Health Professions,166869,5221.0,536
-485,Revere City Hall,42.40741,-71.0139,Revere,false,away,MGH Institute of Health Professions,166869,4884.0,788
-486,Langley Lot,42.330528,-71.192861,Newton,false,away,Boston College,164924,1942.0,957
+484,Revere Public Library,42.408088,-71.008942,Revere,true,away,MGH Institute of Health Professions,166869,5221.0,536
+485,Revere City Hall,42.40741,-71.0139,Revere,true,away,MGH Institute of Health Professions,166869,4884.0,788
+486,Langley Lot,42.330528,-71.192861,Newton,true,away,Boston College,164924,1942.0,957
 487,Community Path at Lowell St,42.392525,-71.105587,Somerville,true,away,Lesley University,166452,1682.0,13526
 488,Martha Eliot Health Center,42.324173,-71.10196,Boston,true,near,Roxbury Community College,167631,775.0,4648
 489,Day Sq,42.379295,-71.027733,Boston,true,away,MGH Institute of Health Professions,166869,2215.0,2145
@@ -374,7 +374,7 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 491,Harrison Ave at E. Dedham St,42.339194,-71.06975,Boston,true,campus,Boston University,164988,328.0,16634
 492,Harvard Stadium: N. Harvard St at Soldiers Field Rd,42.368019,-71.1242,Boston,true,near,Harvard University,166027,461.0,26401
 493,2 Hummingbird Lane at Olmsted Green,42.28887,-71.095003,Boston,true,away,Roxbury Community College,167631,4484.0,166
-494,Watertown Town Hall,42.367621,-71.187936,Watertown Town,false,away,Boston College,164924,3814.0,1494
+494,Watertown Town Hall,42.367621,-71.187936,Watertown Town,true,away,Bentley University,164739,3525.0,1494
 495,Union Square East,42.380078,-71.090098,Somerville,true,away,Cambridge College,165167,1442.0,10638
 496,Trum Field @ Cedar St (Temp Winter Station),42.398444,-71.107833,Somerville,true,away,Tufts University,168148,1415.0,603
 497,Washington St @ New Washington St (Temp Winter Station),42.38103731531107,-71.08709779349738,Somerville,true,away,Cambridge College,165167,1190.0,1362
@@ -382,18 +382,18 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 499,Conway Park @ Bleachery Ct (Temp Winter Station),42.3836409294306,-71.10868692398071,Somerville,true,near,Lesley University,166452,810.0,1941
 5,Northeastern University - North Parking Lot,42.341814,-71.090179,Boston,true,campus,Northeastern University,167358,223.0,80553
 50,Boylston St at Berkeley St,42.3511419825475,-71.07329249382019,Boston,true,near,Emerson College,165662,634.0,64770
-502,160 Arsenal,42.36466403441681,-71.17569386959076,Watertown Town,false,away,Boston College,164924,3205.0,3168
-503,Cary Square,42.398135645582464,-71.030709722545,Chelsea,false,away,MGH Institute of Health Professions,166869,3205.0,561
-504,Bellingham Square,42.3931961102951,-71.03344559669495,Chelsea,false,away,MGH Institute of Health Professions,166869,2635.0,630
-505,Chelsea Square,42.390226711033826,-71.03857017704286,Chelsea,false,away,MGH Institute of Health Professions,166869,2114.0,1241
-506,Broadway at Gerrish Ave,42.39453079292221,-71.03085594484583,Chelsea,false,away,MGH Institute of Health Professions,166869,2886.0,637
-507,Chelsea Station,42.39636527849676,-71.03987179230899,Chelsea,false,away,MGH Institute of Health Professions,166869,2641.0,1824
-508,855 Broadway,42.398417726101584,-71.02390923402707,Chelsea,false,away,MGH Institute of Health Professions,166869,3591.0,924
-509,Nichols Ave. at Watertown Greenway,42.36762048745005,-71.1565663665533,Watertown Town,false,away,Harvard University,166027,3019.0,3472
+502,160 Arsenal,42.36466403441681,-71.17569386959076,Watertown Town,true,away,Boston College,164924,3205.0,3168
+503,Cary Square,42.398135645582464,-71.030709722545,Chelsea,true,away,MGH Institute of Health Professions,166869,3205.0,561
+504,Bellingham Square,42.3931961102951,-71.03344559669495,Chelsea,true,away,MGH Institute of Health Professions,166869,2635.0,630
+505,Chelsea Square,42.390226711033826,-71.03857017704286,Chelsea,true,away,MGH Institute of Health Professions,166869,2114.0,1241
+506,Broadway at Gerrish Ave,42.39453079292221,-71.03085594484583,Chelsea,true,away,MGH Institute of Health Professions,166869,2886.0,637
+507,Chelsea Station,42.39636527849676,-71.03987179230899,Chelsea,true,away,MGH Institute of Health Professions,166869,2641.0,1824
+508,855 Broadway,42.398417726101584,-71.02390923402707,Chelsea,true,away,MGH Institute of Health Professions,166869,3591.0,924
+509,Nichols Ave. at Watertown Greenway,42.36762048745005,-71.1565663665533,Watertown Town,true,away,Harvard University,166027,3019.0,3472
 51,Washington St at Lenox St,42.3350989929096,-71.07903778553009,Boston,true,near,Boston University,164988,611.0,36894
-510,Mass Ave at Broadway,42.414202132001854,-71.15051883389242,Arlington,false,away,Tufts University,168148,2726.0,2429
-511,Bellevue T Stop,42.28611420958351,-71.14636927843094,Boston,true,away,Boston College,164924,5639.0,346
-512,Knoll St at Centre St,42.29376656473529,-71.1365658044815,Boston,true,away,Roxbury Community College,167631,5195.0,706
+510,Mass Ave at Broadway,42.414202132001854,-71.15051883389242,Arlington,true,away,Tufts University,168148,2726.0,2429
+511,Bellevue T Stop,42.28611420958351,-71.14636927843094,Boston,true,away,Mount Ida College,166948,3947.0,346
+512,Knoll St at Centre St,42.29376656473529,-71.1365658044815,Boston,true,away,Mount Ida College,166948,4668.0,706
 513,Roseland St At Dorchester Ave,42.2911685327193,-71.06300890445709,Boston,true,away,University of Massachusetts-Boston,166638,3190.0,478
 514,Gilman Square T at Medford St,42.3867355,-71.0946444,Somerville,true,away,Cambridge College,165167,1917.0,2285
 515,955 Mass Ave,42.36895180540729,-71.10998779535294,Cambridge,true,near,Harvard University,166027,920.0,37470
@@ -405,12 +405,12 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 520,Salem MBTA - Washington at Federal St,42.52345239346618,-70.89611113071442,Salem,false,away,MGH Institute of Health Professions,166869,20989.0,2447
 521,Lafayette at Leach St,42.51142784358897,-70.89183300733566,Salem,false,away,MGH Institute of Health Professions,166869,20189.0,991
 522,Salem State University - Bike Path at Loring Ave,42.50182398896298,-70.89478075504303,Salem,false,away,MGH Institute of Health Professions,166869,19236.0,2367
-523,Boston College T,42.33987891612856,-71.16708934307098,Newton,false,near,Boston College,164924,444.0,4709
-524,Newton Highlands T,42.322065656952944,-71.2063729763031,Newton,false,away,Boston College,164924,3292.0,913
-525,California at Chapel,42.365148708129546,-71.20236039161682,Newton,false,away,Boston College,164924,4216.0,1627
-526,Beacon at Walnut,42.330062324402995,-71.20668411254883,Newton,false,away,Boston College,164924,3075.0,554
-527,Newton Library,42.336203368830134,-71.207794547081,Newton,false,away,Boston College,164924,3149.0,352
-528,Washington St at Walnut St,42.351458116963016,-71.20764970779419,Newton,false,away,Boston College,164924,3589.0,783
+523,Boston College T,42.33987891612856,-71.16708934307098,Newton,true,near,Boston College,164924,444.0,4709
+524,Newton Highlands T,42.322065656952944,-71.2063729763031,Newton,true,away,Boston College,164924,3292.0,913
+525,California at Chapel,42.365148708129546,-71.20236039161682,Newton,true,away,Bentley University,164739,2865.0,1627
+526,Beacon at Walnut,42.330062324402995,-71.20668411254883,Newton,true,away,Boston College,164924,3075.0,554
+527,Newton Library,42.336203368830134,-71.207794547081,Newton,true,away,Lasell University,166391,3013.0,352
+528,Washington St at Walnut St,42.351458116963016,-71.20764970779419,Newton,true,away,Lasell University,166391,3127.0,783
 529,One Beacon St,42.358477644348106,-71.06135129928589,Boston,true,campus,Suffolk University,168005,68.0,9623
 53,Beacon St at Massachusetts Ave,42.35082680669095,-71.0898108780384,Boston,true,near,Berklee College of Music,164748,464.0,181225
 530,Foley St at Grand Union Blvd,42.39301840035393,-71.08071684837341,Somerville,true,away,Cambridge College,165167,1482.0,7378
@@ -418,38 +418,38 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 532,Concord Ave at Spinelli Place,42.390719,-71.1538877,Cambridge,true,away,Lesley University,166452,3234.0,2137
 533,Danehy Park at New Street,42.389456,-71.139019,Cambridge,true,away,Lesley University,166452,2067.0,5352
 534,Adams Branch Library,42.286011,-71.054689,Boston,true,away,University of Massachusetts-Boston,166638,3327.0,178
-535,Auburndale,42.34805541493346,-71.2477594614029,Newton,false,away,Boston College,164924,6602.0,501
+535,Auburndale,42.34805541493346,-71.2477594614029,Newton,true,near,Lasell University,166391,745.0,501
 536,Clinton St at North St,42.3607028354884,-71.05524927377701,Boston,true,near,Suffolk University,168005,558.0,10479
-537,Charles River Greenway - California St. at Fifth Ave,42.36455361053197,-71.19100391864777,Watertown Town,false,away,Boston College,164924,3623.0,759
+537,Charles River Greenway - California St. at Fifth Ave,42.36455361053197,-71.19100391864777,Watertown Town,true,away,Bentley University,164739,3542.0,759
 538,Circuit Drive at American Legion Hwy,42.29704126420948,-71.09171926975249,Boston,true,away,Roxbury Community College,167631,3589.0,873
 539,Walnut Ave at School St,42.31242399029812,-71.09616905450821,Boston,true,away,Roxbury Community College,167631,1868.0,1739
 54,Tremont St at West St,42.354979,-71.063348,Boston,true,campus,Emerson College,165662,351.0,103982
-540,Sumner St at Shirley Ave,42.408337058129746,-70.99804848432541,Revere,false,away,MGH Institute of Health Professions,166869,5910.0,1102
-541,Orr Sq (Shirley Ave),42.40715655698643,-70.99272429943085,Revere,false,away,MGH Institute of Health Professions,166869,6181.0,2405
-542,Hyde Park Ave at Arlington St,42.26286746177123,-71.12163126468657,Boston,true,away,Roxbury Community College,167631,7680.0,150
-543,American Legion Hwy at Hyde Park Ave,42.27265394101898,-71.119903922081,Boston,true,away,Roxbury Community College,167631,6599.0,108
+540,Sumner St at Shirley Ave,42.408337058129746,-70.99804848432541,Revere,true,away,MGH Institute of Health Professions,166869,5910.0,1102
+541,Orr Sq (Shirley Ave),42.40715655698643,-70.99272429943085,Revere,true,away,MGH Institute of Health Professions,166869,6181.0,2405
+542,Hyde Park Ave at Arlington St,42.26286746177123,-71.12163126468657,Boston,true,away,Curry College,165529,2787.0,150
+543,American Legion Hwy at Hyde Park Ave,42.27265394101898,-71.119903922081,Boston,true,away,Curry College,165529,3852.0,108
 544,Old Morse Park at Putnam Ave,42.35766247889882,-71.1084133386612,Cambridge,true,near,Boston University,164988,728.0,19602
 545,Morton St at Gallivan Blvd,42.278747,-71.080286,Boston,true,away,University of Massachusetts-Boston,166638,5162.0,222
-546,Cleary Sq,42.2556,-71.12444,Boston,true,away,Roxbury Community College,167631,8520.0,229
+546,Cleary Sq,42.2556,-71.12444,Boston,true,away,Curry College,165529,2054.0,229
 547,606 American Legion Hwy at Canterbury St,42.28578,-71.109725,Boston,true,away,Roxbury Community College,167631,4967.0,406
-548,555 Metropolitan Ave,42.2681,-71.11924,Boston,true,away,Roxbury Community College,167631,7067.0,90
+548,555 Metropolitan Ave,42.2681,-71.11924,Boston,true,away,Curry College,165529,3344.0,90
 549,Valenti Way at Haverhill St,42.36473898691789,-71.05934903025626,Boston,true,near,Suffolk University,168005,682.0,24758
 55,Boylston St at Massachusetts Ave,42.34740620525209,-71.08678414955648,Boston,true,campus,Berklee College of Music,164748,200.0,144635
 550,Somerville High School & Central Library,42.3864,-71.09601,Somerville,true,away,Lesley University,166452,1887.0,3913
 553,Cambridge Crossing at North First Street,42.371141,-71.076198,Cambridge,true,near,Hult International Business School,164368,476.0,26484
 554,Forsyth St at Huntington Ave,42.339202,-71.090511,Boston,true,campus,Northeastern University,167358,163.0,41961
-555,Hyde Park Library,42.2568376,-71.122509,Boston,true,away,Roxbury Community College,167631,8344.0,171
-556,Ross Playground,42.2645666,-71.1145523,Boston,true,away,Roxbury Community College,167631,7353.0,201
+555,Hyde Park Library,42.2568376,-71.122509,Boston,true,away,Curry College,165529,2143.0,171
+556,Ross Playground,42.2645666,-71.1145523,Boston,true,away,Curry College,165529,2949.0,201
 557,Galileo Galilei Way at Fulkerson St/Binney St,42.3664204,-71.0885418,Cambridge,true,near,Massachusetts Institute of Technology,166683,886.0,8121
 558,St. Alphonsus St at Tremont St,42.33329254719182,-71.10124647617339,Boston,true,campus,Harvard University,166027,272.0,15065
-559,Centre St at Commonwealth Ave,42.3362358,-71.1934421,Newton,false,away,Boston College,164924,1973.0,244
+559,Centre St at Commonwealth Ave,42.3362358,-71.1934421,Newton,true,away,Boston College,164924,1973.0,244
 56,Dudley Square - Bolling Building,42.329842993518085,-71.08386572459494,Boston,true,near,Roxbury Community College,167631,960.0,18798
 560,Flat 9 at Whittier,42.33420351352245,-71.08767616843123,Boston,true,near,Northeastern University,167358,649.0,1543
 561,Pier 4 Blvd at Autumn Ln,42.3502102,-71.0446705,Boston,true,away,Tufts University,168148,1387.0,7293
 562,Hawthorne Boulevard,42.5223714,-70.8903331,Salem,false,away,MGH Institute of Health Professions,166869,21194.0,1454
 563,Addison St at Saratoga St,42.38518146513944,-71.0151367,Boston,true,away,MGH Institute of Health Professions,166869,3394.0,934
 564,Raymond Park at Walden St,42.38736953747185,-71.12761001482795,Cambridge,true,away,Lesley University,166452,1170.0,3046
-565,Wellington MBTA,42.4023682,-71.07573182424781,Medford,false,away,Cambridge College,165167,2377.0,1361
+565,Wellington MBTA,42.4023682,-71.07573182424781,Medford,true,away,Cambridge College,165167,2377.0,1361
 566,Main Street/Albany Street/Technology Square,42.3629016,-71.0915669,Cambridge,true,near,Massachusetts Institute of Technology,166683,429.0,11001
 567,Brighton Ave at Linden St,42.3528376,-71.1296752,Boston,true,away,Harvard University,166027,1588.0,5726
 568,Shawmut Ave at Lenox St,42.33584612997077,-71.08038157224655,Boston,true,near,Boston University,164988,724.0,1662
@@ -461,16 +461,16 @@ station_id,station_name,lat,lng,municipality,in_study_area,campus_zone,campus_in
 573,Salem MBTA - Lower Level,42.523994,-70.89684,Salem,false,away,MGH Institute of Health Professions,166869,21000.0,140
 574,Community Life Center,42.520136,-70.906271,Salem,false,away,MGH Institute of Health Professions,166869,20188.0,30
 575,Goodhue St at Grove St,42.520897,-70.910528,Salem,false,away,MGH Institute of Health Professions,166869,20047.0,72
-576,Main St at Brooks Park,42.411709,-71.110444,Medford,false,near,Tufts University,168148,735.0,312
-577,Medford Sq - Riverside Ave at River St,42.417724,-71.108102,Medford,false,away,Tufts University,168148,1320.0,422
-578,Tufts Sq - Main St at Medford St,42.401697,-71.106128,Medford,false,away,Tufts University,168148,1258.0,717
+576,Main St at Brooks Park,42.411709,-71.110444,Medford,true,near,Tufts University,168148,735.0,312
+577,Medford Sq - Riverside Ave at River St,42.417724,-71.108102,Medford,true,away,Tufts University,168148,1320.0,422
+578,Tufts Sq - Main St at Medford St,42.401697,-71.106128,Medford,true,away,Tufts University,168148,1258.0,717
 58,Mugar Way at Beacon St,42.355536284897084,-71.07286870479584,Boston,true,near,Emerson College,165662,694.0,139996
 582,Gore Street at Lambert Street,42.373079797934935,-71.08634233665725,Cambridge,true,away,Hult International Business School,164368,1338.0,6800
 583,Broad Canal Way at Third Street,42.36304549626695,-71.08287078916874,Cambridge,true,near,Massachusetts Institute of Technology,166683,952.0,2912
-584,Malden Center T Station,42.426541,-71.073179,Malden,false,away,Tufts University,168148,4217.0,453
-585,Northern Strand at Main St,42.42386,-71.067793,Malden,false,away,Tufts University,168148,4491.0,372
-586,Gramsdorf Playground,42.408156,-71.0429,Everett,false,away,MGH Institute of Health Professions,166869,3793.0,305
-587,Malden High School,42.426537658440544,-71.06393694877625,Malden,false,away,Tufts University,168148,4900.0,209
+584,Malden Center T Station,42.426541,-71.073179,Malden,true,away,Tufts University,168148,4217.0,453
+585,Northern Strand at Main St,42.42386,-71.067793,Malden,true,away,Tufts University,168148,4491.0,372
+586,Gramsdorf Playground,42.408156,-71.0429,Everett,true,away,MGH Institute of Health Professions,166869,3793.0,305
+587,Malden High School,42.426537658440544,-71.06393694877625,Malden,true,away,Tufts University,168148,4900.0,209
 589,North St at Liberty Hill Ave,42.52989964975891,-70.90614259243011,Salem,false,away,MGH Institute of Health Professions,166869,21069.0,23
 59,Chinatown Gate Plaza,42.351356,-71.059367,Boston,true,campus,Tufts University,168148,246.0,78663
 590,John Ahern Field at Kennedy-Longfellow School,42.36903566594827,-71.08630959910442,Cambridge,true,away,Massachusetts Institute of Technology,166683,1228.0,1241
@@ -650,8 +650,8 @@ B32070,Smith St at Parker St,42.33290175,-71.09683344,Boston,true,near,Roxbury C
 B32071,St. Alphonsus St at Horadan Way,42.33506481,-71.0998929,Boston,true,campus,Massachusetts College of Art and Design,166674,151.0,5792
 B32072,Prentiss St at Mindoro St,42.333708232457695,-71.09362667378566,Boston,true,campus,Wentworth Institute of Technology,168227,341.0,457
 B32092,Congress St at Boston Wharf Rd,42.34951487,-71.046713,Boston,true,away,Tufts University,168148,1218.0,6522
-BCBS01,BCBS Hingham,42.16722555541654,-70.90555783370291,Hingham,false,away,University of Massachusetts-Boston,166638,19473.0,139
-BCBS02,BCBS Quincy,42.276005,-71.03925,Quincy,false,away,University of Massachusetts-Boston,166638,4101.0,11
+BCBS01,BCBS Hingham,42.16722555541654,-70.90555783370291,Hingham,false,away,Quincy College,167525,12446.0,139
+BCBS02,BCBS Quincy,42.276005,-71.03925,Quincy,true,away,Quincy College,167525,3947.0,11
 C23015,Pope John Paul II Park - Neponset Trail at Hallet St,42.279774,-71.046085,Boston,true,away,University of Massachusetts-Boston,166638,3755.0,3195
 C23045,Morton St T,42.280725142920296,-71.08617242434775,Boston,true,away,University of Massachusetts-Boston,166638,5339.0,809
 C23109,Cedar Grove T Stop,42.27960759693163,-71.06022119527552,Boston,true,away,University of Massachusetts-Boston,166638,4168.0,412
@@ -702,13 +702,13 @@ C32040,Gallivan Blvd at Adams St,42.28297567840305,-71.05466698296368,Boston,tru
 C32041,Fields Corner T Stop,42.299633488420625,-71.06068975823291,Boston,true,away,University of Massachusetts-Boston,166638,2370.0,7899
 C32042,Washington St at Bowdoin St,42.299164979365884,-71.07345871645519,Boston,true,away,University of Massachusetts-Boston,166638,3259.0,2219
 C32043,Talbot Ave At Blue Hill Ave,42.2945833,-71.087111,Boston,true,away,Roxbury Community College,167631,3911.0,2284
-C32044,Blue Hill Ave at Almont St,42.274620671812244,-71.09372552493369,Boston,true,away,Roxbury Community College,167631,6068.0,760
-C32045,Mattapan T Stop,42.267902,-71.093641,Boston,true,away,University of Massachusetts-Boston,166638,6794.0,2341
-C32046,Roslindale Village - Washington St,42.28630716010807,-71.12820532182013,Boston,true,away,Roxbury Community College,167631,5478.0,3921
+C32044,Blue Hill Ave at Almont St,42.274620671812244,-71.09372552493369,Boston,true,away,Curry College,165529,4476.0,760
+C32045,Mattapan T Stop,42.267902,-71.093641,Boston,true,away,Curry College,165529,3815.0,2341
+C32046,Roslindale Village - Washington St,42.28630716010807,-71.12820532182013,Boston,true,away,Mount Ida College,166948,5418.0,3921
 C32047,Roslindale Village - South St,42.287072,-71.127754,Boston,true,away,Roxbury Community College,167631,5386.0,4848
 C32048,Archdale Rd at Washington St,42.29266592872725,-71.12119538714069,Boston,true,away,Roxbury Community College,167631,4581.0,3092
 C32049,Thetford Ave at Norfolk St,42.286212948246096,-71.07942931372236,Boston,true,away,University of Massachusetts-Boston,166638,4516.0,1512
-C32050,Mattapan Library,42.2773889,-71.09325,Boston,true,away,Roxbury Community College,167631,5762.0,1214
+C32050,Mattapan Library,42.2773889,-71.09325,Boston,true,away,Curry College,165529,4772.0,1214
 C32051,Farragut Rd at E. 6th St,42.3334,-71.02495,Boston,true,away,University of Massachusetts-Boston,166638,2473.0,21471
 C32052,Columbia Rd at Tierney Community Center,42.33023070528729,-71.05060093123029,Boston,true,away,Boston University,164988,1813.0,18022
 C32053,Broadway T Stop,42.343048583900966,-71.05803430091328,Boston,true,near,Tufts University,168148,802.0,27695
@@ -716,7 +716,7 @@ C32054,Shawmut Ave at Herald St,42.346647,-71.066049,Boston,true,near,Tufts Univ
 C32055,Codman Square Library,42.2873611,-71.071111,Boston,true,away,University of Massachusetts-Boston,166638,3944.0,3427
 C32056,Tremont St at Northampton St,42.338431795290944,-71.08169049924982,Boston,true,near,Northeastern University,167358,610.0,32556
 C32057,Harrison Ave at Mullins Way,42.34521562115022,-71.0638403149278,Boston,true,near,Tufts University,168148,545.0,52494
-C32059,Belgrade Ave at Walworth St,42.28634589486312,-71.13672129828046,Boston,true,away,Roxbury Community College,167631,5852.0,2450
+C32059,Belgrade Ave at Walworth St,42.28634589486312,-71.13672129828046,Boston,true,away,Mount Ida College,166948,4724.0,2450
 C32060,Tremont St at W. Dedham St,42.34254913737952,-71.07421449387857,Boston,true,near,Boston University,164988,735.0,34262
 C32061,Albany St at E. Brookline St,42.33664795427071,-71.0689445958451,Boston,true,campus,Boston University,164988,169.0,27962
 C32062,Ashmont T Stop,42.2856944,-71.0641389,Boston,true,away,University of Massachusetts-Boston,166638,3739.0,5549
@@ -736,33 +736,33 @@ C32075,Huntington Ave at Exeter St,42.34785628,-71.078951,Boston,true,near,Berkl
 C32076,Warren Ave at Dartmouth St,42.3443104650768,-71.0740339266782,Boston,true,near,Boston University,164988,916.0,7881
 C32077,Columbus Ave at W. Canton St,42.34474224772802,-71.07648162175792,Boston,true,away,Boston University,164988,1033.0,47561
 C32078,Northbourne Rd at Hyde Park Ave,42.29118034790426,-71.117736660035,Boston,true,away,Roxbury Community College,167631,4608.0,2596
-C32079,American Legion Hwy at Cummins Hwy,42.278811581565975,-71.11687703062671,Boston,true,away,Roxbury Community College,167631,5872.0,1967
-C32080,Mt. Hope St at Hyde Park Ave,42.28484472443536,-71.11874517062459,Boston,true,away,Roxbury Community College,167631,5290.0,1541
-C32081,Washington St at Denton Terr,42.280728147169015,-71.13423757273267,Boston,true,away,Roxbury Community College,167631,6264.0,3038
+C32079,American Legion Hwy at Cummins Hwy,42.278811581565975,-71.11687703062671,Boston,true,away,Curry College,165529,4526.0,1967
+C32080,Mt. Hope St at Hyde Park Ave,42.28484472443536,-71.11874517062459,Boston,true,away,Curry College,165529,5200.0,1541
+C32081,Washington St at Denton Terr,42.280728147169015,-71.13423757273267,Boston,true,away,Curry College,165529,4959.0,3038
 C32082,Bike Town at Moakley Park,42.32586,-71.049142,Boston,true,away,University of Massachusetts-Boston,166638,1569.0,5488
 C32083,Washington St at Walsh Playground,42.277194696397906,-71.06955613950048,Boston,true,away,University of Massachusetts-Boston,166638,4776.0,1104
 C32084,Washington St at Fuller St,42.281986277339136,-71.07147924620222,Boston,true,away,University of Massachusetts-Boston,166638,4425.0,1205
-C32085,Centre St at W. Roxbury Post Office,42.286331991127746,-71.15344755369732,Boston,true,away,Boston College,164924,5444.0,2779
-C32086,Centre St at Parkway YMCA,42.28277901074054,-71.15728851416861,Boston,true,away,Boston College,164924,5763.0,1937
-C32087,Spring St at Powell St,42.277484442008216,-71.16341467955863,Boston,true,away,Boston College,164924,6280.0,2072
-C32088,Central Ave at River St,42.27094707029229,-71.07337901405117,Boston,true,away,University of Massachusetts-Boston,166638,5533.0,2676
+C32085,Centre St at W. Roxbury Post Office,42.286331991127746,-71.15344755369732,Boston,true,away,Mount Ida College,166948,3372.0,2779
+C32086,Centre St at Parkway YMCA,42.28277901074054,-71.15728851416861,Boston,true,away,Mount Ida College,166948,3191.0,1937
+C32087,Spring St at Powell St,42.277484442008216,-71.16341467955863,Boston,true,away,Mount Ida College,166948,3033.0,2072
+C32088,Central Ave at River St,42.27094707029229,-71.07337901405117,Boston,true,away,Curry College,165529,5102.0,2676
 C32089,Hyde Park Ave at Walk Hill St,42.29606704649873,-71.11601199963843,Boston,true,away,Roxbury Community College,167631,4054.0,4647
 C32090,Geiger Gibson Community Health Center,42.31886468217537,-71.04536797860419,Boston,true,near,University of Massachusetts-Boston,166638,757.0,11607
 C32091,645 Summer St,42.341780891371904,-71.03987016504107,Boston,true,away,Tufts University,168148,1992.0,12706
 C32092,Blue Hill Ave at Havelock St,42.286012,-71.090986,Boston,true,away,Roxbury Community College,167631,4815.0,1738
 C32093,Harrison Ave at E. Dedham St,42.339194,-71.06975,Boston,true,campus,Boston University,164988,328.0,42580
 C32094,2 Hummingbird Lane at Olmsted Green,42.28887,-71.095003,Boston,true,away,Roxbury Community College,167631,4484.0,739
-C32095,Bellevue T Stop,42.28611420958351,-71.14636927843094,Boston,true,away,Boston College,164924,5639.0,1367
-C32096,Knoll St at Centre St,42.29376656473529,-71.1365658044815,Boston,true,away,Roxbury Community College,167631,5195.0,1927
+C32095,Bellevue T Stop,42.28611420958351,-71.14636927843094,Boston,true,away,Mount Ida College,166948,3947.0,1367
+C32096,Knoll St at Centre St,42.29376656473529,-71.1365658044815,Boston,true,away,Mount Ida College,166948,4668.0,1927
 C32097,Roseland St At Dorchester Ave,42.291169,-71.063009,Boston,true,away,University of Massachusetts-Boston,166638,3190.0,122
 C32099,Circuit Drive at American Legion Hwy,42.29704126420948,-71.09171926975249,Boston,true,away,Roxbury Community College,167631,3589.0,3630
-C32100,Hyde Park Ave at Arlington St,42.26286746177123,-71.12163126468657,Boston,true,away,Roxbury Community College,167631,7680.0,346
-C32101,American Legion Hwy at Hyde Park Ave,42.27265394101898,-71.119903922081,Boston,true,away,Roxbury Community College,167631,6599.0,393
+C32100,Hyde Park Ave at Arlington St,42.26286746177123,-71.12163126468657,Boston,true,away,Curry College,165529,2787.0,346
+C32101,American Legion Hwy at Hyde Park Ave,42.27265394101898,-71.119903922081,Boston,true,away,Curry College,165529,3852.0,393
 C32102,Walnut Ave at School St,42.31242399029812,-71.09616905450821,Boston,true,away,Roxbury Community College,167631,1868.0,8654
 C32103,Morton St at Gallivan Blvd,42.278747,-71.080286,Boston,true,away,University of Massachusetts-Boston,166638,5162.0,1402
-C32104,Cleary Sq,42.2556,-71.12444,Boston,true,away,Roxbury Community College,167631,8520.0,2076
+C32104,Cleary Sq,42.2556,-71.12444,Boston,true,away,Curry College,165529,2054.0,2076
 C32105,606 American Legion Hwy at Canterbury St,42.28578,-71.109725,Boston,true,away,Roxbury Community College,167631,4967.0,3164
-C32106,555 Metropolitan Ave,42.2681,-71.11924,Boston,true,away,Roxbury Community College,167631,7067.0,1137
+C32106,555 Metropolitan Ave,42.2681,-71.11924,Boston,true,away,Curry College,165529,3344.0,1137
 C32107,Pier 4 Blvd at Autumn Ln,42.3502102,-71.0446705,Boston,true,away,Tufts University,168148,1387.0,40651
 C32108,Beach St at Freeport St,42.303674088927075,-71.05425953865051,Boston,true,away,University of Massachusetts-Boston,166638,1676.0,1670
 C32109,Centre St at Allandale St,42.300806,-71.127436,Boston,true,away,Roxbury Community College,167631,4112.0,3084
@@ -778,8 +778,8 @@ C32118,Melnea Cass Blvd at Hampden St,42.330976,-71.075478,Boston,true,near,Bost
 C32119,C St at Baxter St,42.33695202,-71.055482,Boston,true,away,Boston University,164988,1278.0,4115
 C32120,Mary Ellen McCormack - Sterling Square,42.32642265,-71.054011,Boston,true,away,Boston University,164988,1756.0,808
 C3298,Moraine St at Centre St,42.31958808,-71.11196872,Boston,true,away,Roxbury Community College,167631,1730.0,1883
-C33086,Alabama St at Messinger St,42.275499,-71.10280577,Boston,true,away,Roxbury Community College,167631,5999.0,64
-C45102,Myrtle St at Fellsway (Rt. 28),42.416235,-71.085073,Medford,false,away,Tufts University,168148,2865.0,22
+C33086,Alabama St at Messinger St,42.275499,-71.10280577,Boston,true,away,Curry College,165529,4310.0,64
+C45102,Myrtle St at Fellsway (Rt. 28),42.416235,-71.085073,Medford,true,away,Tufts University,168148,2865.0,22
 C82345,99 Harvard St,42.336389,-71.120917,Brookline,true,away,Boston University,164988,1334.0,425
 D32000,Cambridge St at Joy St,42.36125721646537,-71.06528744101524,Boston,true,campus,Suffolk University,168005,379.0,93476
 D32001,New Balance - 20 Guest St,42.35732921867706,-71.14673539996147,Boston,true,away,Harvard University,166027,2366.0,17972
@@ -876,43 +876,43 @@ E32009,Shawmut T Stop,42.292917,-71.06575,Boston,true,away,University of Massach
 E32010,Forest Hills,42.300923,-71.114249,Boston,true,away,Roxbury Community College,167631,3504.0,30759
 E32011,The Dimock Center,42.3193094317828,-71.09639923859504,Boston,true,away,Roxbury Community College,167631,1105.0,6285
 E32012,Martha Eliot Health Center,42.324173,-71.10196,Boston,true,near,Roxbury Community College,167631,775.0,10502
-E32013,Hyde Park Library,42.2568376,-71.122509,Boston,true,away,Roxbury Community College,167631,8344.0,640
-E32014,Ross Playground,42.264606595,-71.114605308,Boston,true,away,Roxbury Community College,167631,7350.0,894
+E32013,Hyde Park Library,42.2568376,-71.122509,Boston,true,away,Curry College,165529,2143.0,640
+E32014,Ross Playground,42.264606595,-71.114605308,Boston,true,away,Curry College,165529,2953.0,894
 E32015,Lincoln St at Empire St,42.357651,-71.128513,Boston,true,away,Harvard University,166027,1092.0,16954
 E32016,Commonwealth Ave at Naples Rd,42.351911,-71.123798,Boston,true,away,Boston University,164988,1159.0,21704
 E32017,Butler T Stop,42.272548,-71.062882,Boston,true,away,University of Massachusetts-Boston,166638,4967.0,2378
-E32018,Truman Parkway at Fairmount Ave,42.252287,-71.118358,Boston,true,away,Roxbury Community College,167631,8753.0,360
+E32018,Truman Parkway at Fairmount Ave,42.252287,-71.118358,Boston,true,away,Curry College,165529,1587.0,360
 E32044,Heath St at Columbus Ave,42.32505648,-71.09947309,Boston,true,near,Roxbury Community College,167631,568.0,439
-F32001,Main St at Brooks Park,42.411709,-71.110444,Medford,false,near,Tufts University,168148,735.0,5861
-F32002,Medford Sq - Riverside Ave at River St,42.417724,-71.108102,Medford,false,away,Tufts University,168148,1320.0,6048
-F32003,Tufts Sq - Main St at Medford St,42.401697,-71.106128,Medford,false,away,Tufts University,168148,1258.0,7655
-F32004,Harris Park,42.41081837243052,-71.08152866385353,Medford,false,away,Tufts University,168148,3037.0,2837
-F32005,Haines Square,42.423331368452885,-71.09124541293568,Medford,false,away,Tufts University,168148,2766.0,3181
-F32006,Hormel Stadium,42.40721644126376,-71.09651505947113,Medford,false,away,Tufts University,168148,1799.0,9094
-F32007,West Medford Square (Bower St at Harvard Ave),42.420647,-71.133483,Medford,false,away,Tufts University,168148,1835.0,5025
-F32008,Logan Park,42.41800742890374,-71.0965722102992,Medford,false,away,Tufts University,168148,2074.0,2216
-F32009,Hickey Park,42.424981,-71.098973,Medford,false,away,Tufts University,168148,2421.0,2102
-F32011,Carr Park,42.434365,-71.094755,Medford,false,away,Tufts University,168148,3461.0,837
-F32012,Steve Miller Dr at Winthrop St (Medford High),42.428086,-71.12636,Medford,false,away,Tufts University,168148,2269.0,1272
-F32013,Governors Ave at Lawrence Rd,42.425178,-71.110386,Medford,false,away,Tufts University,168148,1958.0,1051
-F32014,Winthrop Circle,42.421361,-71.117556,Medford,false,away,Tufts University,168148,1424.0,848
-F32015,Mystic Valley Parkway at River Station,42.415091,-71.139177,Arlington,false,away,Tufts University,168148,1866.0,1126
-F32016,Mystic Ave at Crescent St,42.41081,-71.106276,Medford,false,away,Tufts University,168148,1021.0,741
-G32001,Malden Center T Station,42.426541,-71.073179,Malden,false,away,Tufts University,168148,4217.0,11257
-G32002,Northern Strand at Main St,42.42386,-71.067793,Malden,false,away,Tufts University,168148,4491.0,7492
-G32003,Malden High School,42.426537658440544,-71.06393694877625,Malden,false,away,Tufts University,168148,4900.0,6385
-G32004,Northern Strand at Bike Kitchen,42.42083422873447,-71.07216525162619,Malden,false,away,Tufts University,168148,4034.0,1650
-G32005,Kierstead Park,42.4293383849641,-71.05191290060668,Malden,false,away,Cambridge College,165167,5624.0,1969
-G32006,Maplewood Square,42.43359,-71.046279,Malden,false,away,Cambridge College,165167,6222.0,1290
-H32001,Cary Square,42.398135645582464,-71.030709722545,Chelsea,false,away,MGH Institute of Health Professions,166869,3205.0,1447
-H320010,615 Broadway,42.394541,-71.030828,Chelsea,false,away,MGH Institute of Health Professions,166869,2889.0,1265
-H32002,Bellingham Square,42.3931961102951,-71.03344559669495,Chelsea,false,away,MGH Institute of Health Professions,166869,2635.0,2406
-H32003,Chelsea Square,42.390156149999996,-71.03863221399999,Chelsea,false,away,MGH Institute of Health Professions,166869,2105.0,3958
-H32004,Broadway at Gerrish Ave,42.394531,-71.030856,Chelsea,false,away,MGH Institute of Health Professions,166869,2886.0,306
-H32005,Chelsea Station,42.39636527849676,-71.03987179230899,Chelsea,false,away,MGH Institute of Health Professions,166869,2641.0,5776
-H32006,855 Broadway,42.398417726101584,-71.02390923402707,Chelsea,false,away,MGH Institute of Health Professions,166869,3591.0,2079
-H32007,Broadway and Cabot,42.4021215,-71.0195408,Chelsea,false,away,MGH Institute of Health Professions,166869,4137.0,525
-K13452,Upper Falls Greenway Pettee Square,42.30920039,-71.22031015,Newton,false,away,Boston College,164924,4988.0,12
+F32001,Main St at Brooks Park,42.411709,-71.110444,Medford,true,near,Tufts University,168148,735.0,5861
+F32002,Medford Sq - Riverside Ave at River St,42.417724,-71.108102,Medford,true,away,Tufts University,168148,1320.0,6048
+F32003,Tufts Sq - Main St at Medford St,42.401697,-71.106128,Medford,true,away,Tufts University,168148,1258.0,7655
+F32004,Harris Park,42.41081837243052,-71.08152866385353,Medford,true,away,Tufts University,168148,3037.0,2837
+F32005,Haines Square,42.423331368452885,-71.09124541293568,Medford,true,away,Tufts University,168148,2766.0,3181
+F32006,Hormel Stadium,42.40721644126376,-71.09651505947113,Medford,true,away,Tufts University,168148,1799.0,9094
+F32007,West Medford Square (Bower St at Harvard Ave),42.420647,-71.133483,Medford,true,away,Tufts University,168148,1835.0,5025
+F32008,Logan Park,42.41800742890374,-71.0965722102992,Medford,true,away,Tufts University,168148,2074.0,2216
+F32009,Hickey Park,42.424981,-71.098973,Medford,true,away,Tufts University,168148,2421.0,2102
+F32011,Carr Park,42.434365,-71.094755,Medford,true,away,Tufts University,168148,3461.0,837
+F32012,Steve Miller Dr at Winthrop St (Medford High),42.428086,-71.12636,Medford,true,away,Tufts University,168148,2269.0,1272
+F32013,Governors Ave at Lawrence Rd,42.425178,-71.110386,Medford,true,away,Tufts University,168148,1958.0,1051
+F32014,Winthrop Circle,42.421361,-71.117556,Medford,true,away,Tufts University,168148,1424.0,848
+F32015,Mystic Valley Parkway at River Station,42.415091,-71.139177,Arlington,true,away,Tufts University,168148,1866.0,1126
+F32016,Mystic Ave at Crescent St,42.41081,-71.106276,Medford,true,away,Tufts University,168148,1021.0,741
+G32001,Malden Center T Station,42.426541,-71.073179,Malden,true,away,Tufts University,168148,4217.0,11257
+G32002,Northern Strand at Main St,42.42386,-71.067793,Malden,true,away,Tufts University,168148,4491.0,7492
+G32003,Malden High School,42.426537658440544,-71.06393694877625,Malden,true,away,Tufts University,168148,4900.0,6385
+G32004,Northern Strand at Bike Kitchen,42.42083422873447,-71.07216525162619,Malden,true,away,Tufts University,168148,4034.0,1650
+G32005,Kierstead Park,42.4293383849641,-71.05191290060668,Malden,true,away,Cambridge College,165167,5624.0,1969
+G32006,Maplewood Square,42.43359,-71.046279,Malden,true,away,Cambridge College,165167,6222.0,1290
+H32001,Cary Square,42.398135645582464,-71.030709722545,Chelsea,true,away,MGH Institute of Health Professions,166869,3205.0,1447
+H320010,615 Broadway,42.394541,-71.030828,Chelsea,true,away,MGH Institute of Health Professions,166869,2889.0,1265
+H32002,Bellingham Square,42.3931961102951,-71.03344559669495,Chelsea,true,away,MGH Institute of Health Professions,166869,2635.0,2406
+H32003,Chelsea Square,42.390156149999996,-71.03863221399999,Chelsea,true,away,MGH Institute of Health Professions,166869,2105.0,3958
+H32004,Broadway at Gerrish Ave,42.394531,-71.030856,Chelsea,true,away,MGH Institute of Health Professions,166869,2886.0,306
+H32005,Chelsea Station,42.39636527849676,-71.03987179230899,Chelsea,true,away,MGH Institute of Health Professions,166869,2641.0,5776
+H32006,855 Broadway,42.398417726101584,-71.02390923402707,Chelsea,true,away,MGH Institute of Health Professions,166869,3591.0,2079
+H32007,Broadway and Cabot,42.4021215,-71.0195408,Chelsea,true,away,MGH Institute of Health Professions,166869,4137.0,525
+K13452,Upper Falls Greenway Pettee Square,42.30920039,-71.22031015,Newton,true,away,Mount Ida College,166948,2835.0,12
 K22004,Babcock St at Dwight St,42.345889,-71.121639,Brookline,true,away,Boston University,164988,1140.0,264
 K32001,Coolidge Corner - Beacon St at Centre St,42.341598,-71.123338,Brookline,true,away,Boston University,164988,1394.0,53476
 K32002,Beacon St at Tappan St,42.33826680058037,-71.13894682028331,Brookline,true,away,Boston College,164924,2507.0,21176
@@ -932,17 +932,17 @@ K32506,Marion St at Park St,42.340152,-71.123866,Brookline,true,away,Boston Univ
 K32507,Parkway Rd at Brookline Ave,42.335423,-71.111443,Brookline,true,near,Harvard University,166027,653.0,365
 K32511,Washington St at Pond Ave,42.331805,-71.113557,Brookline,true,near,Harvard University,166027,902.0,476
 K36346,Pleasant St at Beacon St,42.342722,-71.12025,Brookline,true,away,Boston University,164988,1145.0,740
-L32001,Railroad Lot and Minuteman Bikeway,42.41606457115141,-71.15336636682059,Arlington,false,away,Tufts University,168148,3005.0,10362
-L320013,Mass Ave at Alewife Greenway,42.401364806487635,-71.13655772883486,Arlington,false,away,Tufts University,168148,1702.0,4866
-L32002,Linwood St at Minuteman Bikeway,42.40935395518158,-71.14906518727366,Arlington,false,away,Tufts University,168148,2535.0,11801
-L32003,Mass Ave at Grafton St,42.40726052447951,-71.14382132425817,Arlington,false,away,Tufts University,168148,2106.0,5960
-L32004,Broadway at Grafton St,42.40994213011757,-71.14009319811885,Arlington,false,away,Tufts University,168148,1801.0,3534
-L32005,Thorndike Field at Minuteman Bikeway,42.40016804853787,-71.14456963094199,Arlington,false,away,Tufts University,168148,2355.0,10195
-L32006,Mass Ave at Broadway,42.414202,-71.150519,Arlington,false,away,Tufts University,168148,2726.0,1376
-L32007,Swan Place at Minuteman Bikeway,42.414705,-71.152377,Arlington,false,away,Tufts University,168148,2888.0,7529
-L32008,Lake St. at Minuteman Bikeway,42.4041703390082,-71.14690375265656,Arlington,false,away,Tufts University,168148,2405.0,5006
-L32009,Mill St. at Minuteman Bikeway,42.4186027386165,-71.15753579744356,Arlington,false,away,Tufts University,168148,3418.0,4757
-L32010,Medford St at Warren St,42.41649057463282,-71.14813429053619,Arlington,false,away,Tufts University,168148,2610.0,1386
+L32001,Railroad Lot and Minuteman Bikeway,42.41606457115141,-71.15336636682059,Arlington,true,away,Tufts University,168148,3005.0,10362
+L320013,Mass Ave at Alewife Greenway,42.401364806487635,-71.13655772883486,Arlington,true,away,Tufts University,168148,1702.0,4866
+L32002,Linwood St at Minuteman Bikeway,42.40935395518158,-71.14906518727366,Arlington,true,away,Tufts University,168148,2535.0,11801
+L32003,Mass Ave at Grafton St,42.40726052447951,-71.14382132425817,Arlington,true,away,Tufts University,168148,2106.0,5960
+L32004,Broadway at Grafton St,42.40994213011757,-71.14009319811885,Arlington,true,away,Tufts University,168148,1801.0,3534
+L32005,Thorndike Field at Minuteman Bikeway,42.40016804853787,-71.14456963094199,Arlington,true,away,Tufts University,168148,2355.0,10195
+L32006,Mass Ave at Broadway,42.414202,-71.150519,Arlington,true,away,Tufts University,168148,2726.0,1376
+L32007,Swan Place at Minuteman Bikeway,42.414705,-71.152377,Arlington,true,away,Tufts University,168148,2888.0,7529
+L32008,Lake St. at Minuteman Bikeway,42.4041703390082,-71.14690375265656,Arlington,true,away,Tufts University,168148,2405.0,5006
+L32009,Mill St. at Minuteman Bikeway,42.4186027386165,-71.15753579744356,Arlington,true,away,Tufts University,168148,3418.0,4757
+L32010,Medford St at Warren St,42.41649057463282,-71.14813429053619,Arlington,true,away,Tufts University,168148,2610.0,1386
 M32002,One Kendall Square at Hampshire St / Portland St,42.366277,-71.09169,Cambridge,true,near,Massachusetts Institute of Technology,166683,791.0,87434
 M32003,One Broadway / Kendall Sq at Main St / 3rd St,42.36224178650923,-71.0831107199192,Cambridge,true,near,Massachusetts Institute of Technology,166683,897.0,65594
 M32004,Kendall T,42.362427842912396,-71.08495473861694,Cambridge,true,near,Massachusetts Institute of Technology,166683,768.0,97096
@@ -1039,30 +1039,30 @@ M32096,Craigie St at Brattle St/Sparks St,42.377923377417865,-71.1300602747914,C
 M32097,125 Cambridgepark Dr,42.395856980560616,-71.14510800606898,Cambridge,true,away,Tufts University,168148,2619.0,528
 M32098,Broad Canal Way North,42.363219,-71.082811,Cambridge,true,near,Massachusetts Institute of Technology,166683,965.0,1683
 M32099,Center Plaza,42.364275,-71.08773,Cambridge,true,near,Massachusetts Institute of Technology,166683,719.0,673
-N32000,Centre St at Washington St,42.35574334805774,-71.18641942508475,Newton,false,away,Boston College,164924,2590.0,1921
-N32001,Washington St at Crafts St,42.35389,-71.199437,Newton,false,away,Boston College,164924,3169.0,1948
-N32002,Nonantum Library,42.360685,-71.201462,Newton,false,away,Boston College,164924,3800.0,2889
-N32003,Bacon St at Washington St,42.35711920909866,-71.1860453666327,Newton,false,away,Boston College,164924,2704.0,3459
-N32005,West Newton,42.349600498642076,-71.2262749671936,Newton,false,away,Boston College,164924,4929.0,1375
-N32006,Watertown St at Albemarle Rd,42.354104081396585,-71.21382214128971,Newton,false,away,Boston College,164924,4176.0,1649
-N32008,Union St at Herrick Rd,42.329607,-71.193701,Newton,false,away,Boston College,164924,2031.0,2803
-N32009,Boston College T,42.33987891612856,-71.16708934307098,Newton,false,near,Boston College,164924,444.0,13931
-N32010,Newton Highlands T,42.322065656952944,-71.2063729763031,Newton,false,away,Boston College,164924,3292.0,2483
-N32011,California at Chapel,42.365148708129546,-71.20236039161682,Newton,false,away,Boston College,164924,4216.0,4210
-N32012,Beacon at Walnut,42.330062324402995,-71.20668411254883,Newton,false,away,Boston College,164924,3075.0,1668
-N32013,Newton Library,42.336203368830134,-71.207794547081,Newton,false,away,Boston College,164924,3149.0,982
-N32014,Washington St at Walnut St,42.351458116963016,-71.20764970779419,Newton,false,away,Boston College,164924,3589.0,2957
-N32015,Auburndale,42.34805541493346,-71.2477594614029,Newton,false,away,Boston College,164924,6602.0,1698
-N32018,Centre St at Commonwealth Ave,42.3362358,-71.1934421,Newton,false,away,Boston College,164924,1973.0,1389
-R32001,Sumner St at Shirley Ave,42.408341467499994,-70.99804848432541,Revere,false,away,MGH Institute of Health Professions,166869,5910.0,1672
-R32002,Orr Sq (Shirley Ave),42.40715655698643,-70.99272429943085,Revere,false,away,MGH Institute of Health Professions,166869,6181.0,5767
-R32003,Beachmont Square at Suffolk Downs,42.3976083,-70.99307222,Revere,false,away,MGH Institute of Health Professions,166869,5610.0,1500
-R32004,Northern Strand at Salem Street,42.441956,-71.01468,Revere,false,away,MGH Institute of Health Professions,166869,8109.0,1833
-R32006,Revere City Hall,42.40741,-71.0139,Revere,false,away,MGH Institute of Health Professions,166869,4884.0,2508
-R32007,Revere Public Library,42.408088,-71.008942,Revere,false,away,MGH Institute of Health Professions,166869,5221.0,1098
-R32008,Eliot Circle Revere Beach,42.402889,-70.989972,Revere,false,away,MGH Institute of Health Professions,166869,6114.0,3212
-R32009,Revere Beach - Markey Footbridge,42.414019,-70.989609,Revere,false,away,MGH Institute of Health Professions,166869,6847.0,3687
-R32010,Griswald Fields,42.42821,-71.02316,Revere,false,away,MGH Institute of Health Professions,166869,6431.0,50
+N32000,Centre St at Washington St,42.35574334805774,-71.18641942508475,Newton,true,away,Boston College,164924,2590.0,1921
+N32001,Washington St at Crafts St,42.35389,-71.199437,Newton,true,away,Boston College,164924,3169.0,1948
+N32002,Nonantum Library,42.360685,-71.201462,Newton,true,away,Bentley University,164739,3317.0,2889
+N32003,Bacon St at Washington St,42.35711920909866,-71.1860453666327,Newton,true,away,Boston College,164924,2704.0,3459
+N32005,West Newton,42.349600498642076,-71.2262749671936,Newton,true,away,Lasell University,166391,1641.0,1375
+N32006,Watertown St at Albemarle Rd,42.354104081396585,-71.21382214128971,Newton,true,away,Lasell University,166391,2780.0,1649
+N32008,Union St at Herrick Rd,42.329607,-71.193701,Newton,true,away,Boston College,164924,2031.0,2803
+N32009,Boston College T,42.33987891612856,-71.16708934307098,Newton,true,near,Boston College,164924,444.0,13931
+N32010,Newton Highlands T,42.322065656952944,-71.2063729763031,Newton,true,away,Boston College,164924,3292.0,2483
+N32011,California at Chapel,42.365148708129546,-71.20236039161682,Newton,true,away,Bentley University,164739,2865.0,4210
+N32012,Beacon at Walnut,42.330062324402995,-71.20668411254883,Newton,true,away,Boston College,164924,3075.0,1668
+N32013,Newton Library,42.336203368830134,-71.207794547081,Newton,true,away,Lasell University,166391,3013.0,982
+N32014,Washington St at Walnut St,42.351458116963016,-71.20764970779419,Newton,true,away,Lasell University,166391,3127.0,2957
+N32015,Auburndale,42.34805541493346,-71.2477594614029,Newton,true,near,Lasell University,166391,745.0,1698
+N32018,Centre St at Commonwealth Ave,42.3362358,-71.1934421,Newton,true,away,Boston College,164924,1973.0,1389
+R32001,Sumner St at Shirley Ave,42.408341467499994,-70.99804848432541,Revere,true,away,MGH Institute of Health Professions,166869,5910.0,1672
+R32002,Orr Sq (Shirley Ave),42.40715655698643,-70.99272429943085,Revere,true,away,MGH Institute of Health Professions,166869,6181.0,5767
+R32003,Beachmont Square at Suffolk Downs,42.3976083,-70.99307222,Revere,true,away,MGH Institute of Health Professions,166869,5610.0,1500
+R32004,Northern Strand at Salem Street,42.441956,-71.01468,Revere,true,away,MGH Institute of Health Professions,166869,8109.0,1833
+R32006,Revere City Hall,42.40741,-71.0139,Revere,true,away,MGH Institute of Health Professions,166869,4884.0,2508
+R32007,Revere Public Library,42.408088,-71.008942,Revere,true,away,MGH Institute of Health Professions,166869,5221.0,1098
+R32008,Eliot Circle Revere Beach,42.402889,-70.989972,Revere,true,away,MGH Institute of Health Professions,166869,6114.0,3212
+R32009,Revere Beach - Markey Footbridge,42.414019,-70.989609,Revere,true,away,MGH Institute of Health Professions,166869,6847.0,3687
+R32010,Griswald Fields,42.42821,-71.02316,Revere,true,away,MGH Institute of Health Professions,166869,6431.0,50
 S32001,Somerville City Hall,42.386844,-71.09812,Somerville,true,away,Lesley University,166452,1747.0,22075
 S32002,Union Square - Somerville,42.37964789967527,-71.09540475672475,Somerville,true,away,Lesley University,166452,1804.0,60609
 S32003,Beacon St at Washington / Kirkland,42.37875351212593,-71.10707223415375,Somerville,true,near,Lesley University,166452,856.0,44315
@@ -1128,35 +1128,35 @@ T32016,Bridge Street Neck,42.52810051875824,-70.88971138000488,Salem,false,away,
 T32017,Vinnin Square,42.48628784971989,-70.90166732668875,Salem,false,away,MGH Institute of Health Professions,166869,17604.0,564
 T32018,Derby Street,42.520096183311445,-70.8913904428482,Salem,false,away,MGH Institute of Health Professions,166869,20944.0,3978
 T32019,Flint St. at Bridge St.,42.521393,-70.905806,Salem,false,away,MGH Institute of Health Professions,166869,20322.0,258
-V32001,7 Acre Park,42.41143222973408,-71.06823265090497,Everett,false,away,Cambridge College,165167,3390.0,9073
-V32003,Everett Square (Broadway at Norwood St),42.407381,-71.055356,Everett,false,away,Cambridge College,165167,3249.0,4657
-V32004,Broadway at Lynde St,42.39648358247693,-71.06546759905541,Everett,false,away,Cambridge College,165167,1809.0,8400
-V32005,Encore,42.39329263225162,-71.0724475979805,Everett,false,away,Cambridge College,165167,1355.0,9705
-V32006,Glendale Square (Ferry St at Broadway),42.41427294293992,-71.04479655659816,Everett,false,away,Cambridge College,165167,4341.0,3183
-V32007,Swan St. Park,42.412504507772105,-71.05842225271772,Everett,false,away,Cambridge College,165167,3681.0,3352
-V32008,Broadway at Maple St,42.410346909767846,-71.05260457852637,Everett,false,away,Cambridge College,165167,3645.0,5050
-V32009,Pope John High School,42.420348701645025,-71.04419767862055,Everett,false,away,Cambridge College,165167,4950.0,2237
-V32010,Wasgott Playground,42.40933,-71.063819,Everett,false,away,Cambridge College,165167,3220.0,301
-V32011,Broadway at Beacham St,42.39836059620832,-71.06373842814719,Everett,false,away,Cambridge College,165167,2054.0,6415
-V32012,Hale Park,42.415327096032044,-71.05281829839441,Everett,false,away,Cambridge College,165167,4138.0,2010
-V32013,Kearins Playground,42.406161241322444,-71.06041654944418,Everett,false,away,Cambridge College,165167,2961.0,2312
-V32014,Wellington MBTA,42.4023682,-71.07573182424781,Medford,false,away,Cambridge College,165167,2377.0,7966
-V32015,Gramsdorf Playground,42.408156,-71.0429,Everett,false,away,MGH Institute of Health Professions,166869,3793.0,3742
-V32016,Chelsea St at Vine St,42.403369462300134,-71.04731440549585,Everett,false,away,MGH Institute of Health Professions,166869,3197.0,4276
-V32017,Northern Strand - West St & Wellington Ave,42.403444,-71.063278,Everett,false,away,Cambridge College,165167,2600.0,3143
-V32018,Santilli Hwy,42.40592508816271,-71.06697536768286,Everett,false,away,Cambridge College,165167,2798.0,518
-W32001,Coolidge Sq.,42.37251369069782,-71.15708406221674,Watertown Town,false,away,Harvard University,166027,3155.0,7007
-W32002,Watertown Sq,42.365260317694485,-71.18573324459247,Watertown Town,false,away,Boston College,164924,3501.0,7145
-W32004,Arsenal Yards,42.36277388549605,-71.15764854490408,Watertown Town,false,away,Boston College,164924,3101.0,22546
-W32005,Watertown Town Hall,42.367593,-71.187514,Watertown Town,false,away,Boston College,164924,3797.0,3757
-W32006,160 Arsenal St,42.36466403441681,-71.17569386959076,Watertown Town,false,away,Boston College,164924,3205.0,6228
-W32007,Nichols Ave. at Watertown Greenway,42.36762,-71.156566,Watertown Town,false,away,Harvard University,166027,3019.0,9127
-W32009,Arsenal on the Charles,42.36349850640871,-71.16421658177295,Watertown Town,false,away,Boston College,164924,3059.0,3991
-W32010,Watertown St at 5th Ave,42.36289,-71.19127,Watertown Town,false,away,Boston College,164924,3475.0,1636
-W32011,99 Coolidge Ave,42.363675,-71.151786,Watertown Town,false,away,Harvard University,166027,2619.0,2784
-W32012,Galen St at Watertown St,42.36428,-71.18573,Watertown Town,false,away,Boston College,164924,3401.0,2038
+V32001,7 Acre Park,42.41143222973408,-71.06823265090497,Everett,true,away,Cambridge College,165167,3390.0,9073
+V32003,Everett Square (Broadway at Norwood St),42.407381,-71.055356,Everett,true,away,Cambridge College,165167,3249.0,4657
+V32004,Broadway at Lynde St,42.39648358247693,-71.06546759905541,Everett,true,away,Cambridge College,165167,1809.0,8400
+V32005,Encore,42.39329263225162,-71.0724475979805,Everett,true,away,Cambridge College,165167,1355.0,9705
+V32006,Glendale Square (Ferry St at Broadway),42.41427294293992,-71.04479655659816,Everett,true,away,Cambridge College,165167,4341.0,3183
+V32007,Swan St. Park,42.412504507772105,-71.05842225271772,Everett,true,away,Cambridge College,165167,3681.0,3352
+V32008,Broadway at Maple St,42.410346909767846,-71.05260457852637,Everett,true,away,Cambridge College,165167,3645.0,5050
+V32009,Pope John High School,42.420348701645025,-71.04419767862055,Everett,true,away,Cambridge College,165167,4950.0,2237
+V32010,Wasgott Playground,42.40933,-71.063819,Everett,true,away,Cambridge College,165167,3220.0,301
+V32011,Broadway at Beacham St,42.39836059620832,-71.06373842814719,Everett,true,away,Cambridge College,165167,2054.0,6415
+V32012,Hale Park,42.415327096032044,-71.05281829839441,Everett,true,away,Cambridge College,165167,4138.0,2010
+V32013,Kearins Playground,42.406161241322444,-71.06041654944418,Everett,true,away,Cambridge College,165167,2961.0,2312
+V32014,Wellington MBTA,42.4023682,-71.07573182424781,Medford,true,away,Cambridge College,165167,2377.0,7966
+V32015,Gramsdorf Playground,42.408156,-71.0429,Everett,true,away,MGH Institute of Health Professions,166869,3793.0,3742
+V32016,Chelsea St at Vine St,42.403369462300134,-71.04731440549585,Everett,true,away,MGH Institute of Health Professions,166869,3197.0,4276
+V32017,Northern Strand - West St & Wellington Ave,42.403444,-71.063278,Everett,true,away,Cambridge College,165167,2600.0,3143
+V32018,Santilli Hwy,42.40592508816271,-71.06697536768286,Everett,true,away,Cambridge College,165167,2798.0,518
+W32001,Coolidge Sq.,42.37251369069782,-71.15708406221674,Watertown Town,true,away,Harvard University,166027,3155.0,7007
+W32002,Watertown Sq,42.365260317694485,-71.18573324459247,Watertown Town,true,away,Boston College,164924,3501.0,7145
+W32004,Arsenal Yards,42.36277388549605,-71.15764854490408,Watertown Town,true,away,Boston College,164924,3101.0,22546
+W32005,Watertown Town Hall,42.367593,-71.187514,Watertown Town,true,away,Bentley University,164739,3556.0,3757
+W32006,160 Arsenal St,42.36466403441681,-71.17569386959076,Watertown Town,true,away,Boston College,164924,3205.0,6228
+W32007,Nichols Ave. at Watertown Greenway,42.36762,-71.156566,Watertown Town,true,away,Harvard University,166027,3019.0,9127
+W32009,Arsenal on the Charles,42.36349850640871,-71.16421658177295,Watertown Town,true,away,Boston College,164924,3059.0,3991
+W32010,Watertown St at 5th Ave,42.36289,-71.19127,Watertown Town,true,away,Boston College,164924,3475.0,1636
+W32011,99 Coolidge Ave,42.363675,-71.151786,Watertown Town,true,away,Harvard University,166027,2619.0,2784
+W32012,Galen St at Watertown St,42.36428,-71.18573,Watertown Town,true,away,Boston College,164924,3401.0,2038
 Z32997,Parker St at Huntington Ave,42.3384884941905,-71.09261138044758,Boston,true,campus,Wentworth Institute of Technology,168227,283.0,31259
 Z32998,Broadway at Kittie Knox Bike Path,42.36412658996667,-71.0873863200095,Cambridge,true,near,Massachusetts Institute of Technology,166683,725.0,25161
-Z32999,Cummins Highway at Blue Hill Ave T Stop,42.269988465946064,-71.09746182817616,Boston,true,away,Roxbury Community College,167631,6583.0,361
-ZZ32996,Auburn St. at Mystic River,42.41759089672136,-71.12608127863496,Medford,false,away,Tufts University,168148,1191.0,3593
+Z32999,Cummins Highway at Blue Hill Ave T Stop,42.269988465946064,-71.09746182817616,Boston,true,away,Curry College,165529,3880.0,361
+ZZ32996,Auburn St. at Mystic River,42.41759089672136,-71.12608127863496,Medford,true,away,Tufts University,168148,1191.0,3593
 c32014,Damrell St at Old Colony Ave,42.3324824,-71.0542411,Boston,true,away,Boston University,164988,1445.0,885

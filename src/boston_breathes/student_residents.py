@@ -24,7 +24,7 @@ from datetime import date
 import polars as pl
 
 from boston_breathes import http
-from boston_breathes.paths import PROCESSED, RAW, STUDY_START
+from boston_breathes.paths import CENSUS_GEOIDS, PROCESSED, RAW, STUDY_START
 
 BASE_URL = "https://www2.census.gov/programs-surveys/acs/summary_file/"
 RAW_DIR = RAW / "acs"
@@ -33,12 +33,7 @@ FIRST_TABLE_BASED_YEAR = 2021
 FIRST_YEAR = STUDY_START.year
 
 # Census GEOIDs of the study-area municipalities (county subdivisions).
-GEOIDS = {
-    "2502507000": "Boston",
-    "2501711000": "Cambridge",
-    "2501762535": "Somerville",
-    "2502109175": "Brookline",
-}
+GEOIDS = CENSUS_GEOIDS
 # Table lines (1-based) used.
 LINES = {"population_3plus": 1, "undergrad": 17, "graduate": 18}
 

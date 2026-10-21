@@ -157,7 +157,8 @@ def nearest_campus(points: pl.DataFrame, campuses: pl.DataFrame) -> pl.DataFrame
     get zone "unknown".
     """
     major = campuses.filter(pl.col("major")).select(
-        pl.col("unitid").alias("campus_unitid"), pl.col("institution").alias("campus_institution"), "lat", "lng"
+        pl.col("unitid").alias("campus_unitid"), pl.col("institution").alias("campus_institution"),
+        "typical_in_person", "lat", "lng",
     )
     indexed = points.with_row_index("_row")
     valid = indexed.filter(
@@ -169,10 +170,15 @@ def nearest_campus(points: pl.DataFrame, campuses: pl.DataFrame) -> pl.DataFrame
         how="left",
         distance_col="campus_distance_m",
     )
-    # Ties (equidistant campus points) keep the first match.
-    nearest = pl.from_pandas(
-        joined[["_row", "campus_unitid", "campus_institution", "campus_distance_m"]].drop_duplicates("_row")
-    ).with_columns(pl.col("_row").cast(pl.UInt32), pl.col("campus_distance_m").round(0))
+    # Equidistant campus points (Northeastern and its Professional Programs share one
+    # IPEDS location) go to the larger institution.
+    nearest = (
+        pl.from_pandas(joined[["_row", "campus_unitid", "campus_institution", "typical_in_person", "campus_distance_m"]])
+        .sort("_row", "typical_in_person", "campus_unitid", descending=[False, True, False])
+        .unique("_row", keep="first", maintain_order=True)
+        .drop("typical_in_person")
+        .with_columns(pl.col("_row").cast(pl.UInt32), pl.col("campus_distance_m").round(0))
+    )
     return (
         indexed.join(nearest, on="_row", how="left")
         .with_columns(zone_of(pl.col("campus_distance_m")).alias("campus_zone"))

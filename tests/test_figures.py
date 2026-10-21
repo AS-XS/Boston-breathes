@@ -117,7 +117,12 @@ def test_map_stations_are_distinct_and_used():
 def test_map_shapes_are_clockwise_and_frame_every_station():
     from shapely.geometry import Point, shape
 
+    from boston_breathes.municipalities import load_towns
+
     layers = fig.map_layers()
+    towns = load_towns().to_crs(4326)
+    study = towns[towns["municipality"].isin(fig.STUDY_AREA)].union_all()
+    assert shape(layers["frame"]["geometry"]).contains(study)
     for feature in layers["towns"] + layers["zones"]:
         geometry = shape(feature["geometry"])
         for polygon in getattr(geometry, "geoms", [geometry]):

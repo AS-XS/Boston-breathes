@@ -2,10 +2,12 @@ unitid,institution,campus_name,source,lat,lng,typical_in_person,major
 164368,Hult International Business School,Hult International Business School,ipeds,42.369968,-71.070645,2072.0,true
 164438,New England College of Business and Finance,New England College of Business and Finance,boston_open_data,42.353530000000035,-71.05672999999996,0.0,false
 164438,New England College of Business and Finance,New England College of Business and Finance,ipeds,42.353619,-71.056671,0.0,false
+164474,Andover Newton Theological School,Andover Newton Theological School,ipeds,42.324852,-71.188943,161.0,false
 164614,Boston Baptist College,Boston Baptist College,boston_open_data,42.254000000000076,-71.11025999999998,63.0,false
 164614,Boston Baptist College,Boston Baptist College,ipeds,42.254037,-71.1103,63.0,false
 164641,Bay State College,Bay State College,boston_open_data,42.351770000000045,-71.07693999999998,544.0,false
 164641,Bay State College,Bay State College,ipeds,42.350966,-71.071615,544.0,false
+164739,Bentley University,Bentley University,ipeds,42.385995,-71.222839,5226.0,true
 164748,Berklee College of Music,Berklee College of Music,boston_open_data,42.34668904200004,-71.08901120899998,5664.0,true
 164748,Berklee College of Music,Berklee College of Music,ipeds,42.346646,-71.089405,5664.0,true
 164872,Boston Architectural College,Boston Architectural College,boston_open_data,42.348460000000046,-71.08579999999995,541.0,false
@@ -25,9 +27,14 @@ unitid,institution,campus_name,source,lat,lng,typical_in_person,major
 164988,Boston University,Wheelock College,boston_open_data,42.34174000000007,-71.10641999999996,31411.0,true
 164988,Boston University,Boston University,ipeds,42.351118,-71.107942,31411.0,true
 164988,Boston University,Wheelock College,ipeds,42.349707,-71.100868,31411.0,true
+165015,Brandeis University,Brandeis University,ipeds,42.365727,-71.260155,5316.0,true
 165112,Bunker Hill Community College,Bunker Hill Community College,boston_open_data,42.37511655000003,-71.06957165799997,10986.0,true
 165112,Bunker Hill Community College,Bunker Hill Community College,ipeds,42.374806,-71.069263,10986.0,true
 165167,Cambridge College,Cambridge College,ipeds,42.381091,-71.072646,1982.0,true
+165264,Laboure College of Healthcare,Laboure College,boston_open_data,42.277393318000065,-71.06514910499999,759.0,false
+165264,Laboure College of Healthcare,Laboure College of Healthcare,ipeds,42.260866,-71.058279,759.0,false
+165529,Curry College,Curry College,ipeds,42.238061,-71.116539,2380.0,true
+165644,Eastern Nazarene College,Eastern Nazarene College,ipeds,42.271228,-71.011079,772.0,false
 165662,Emerson College,Emerson College,boston_open_data,42.35221938300003,-71.06573578099994,4488.0,true
 165662,Emerson College,Emerson College,ipeds,42.352202,-71.065384,4488.0,true
 165671,Emmanuel College,Emmanuel College,boston_open_data,42.34151633400006,-71.10347795399997,2067.0,true
@@ -41,7 +48,10 @@ unitid,institution,campus_name,source,lat,lng,typical_in_person,major
 166027,Harvard University,Harvard Medical School,boston_open_data,42.336500888000046,-71.10247008999994,27210.0,true
 166027,Harvard University,Harvard University of Public Health,boston_open_data,42.33506645500006,-71.10352994999994,27210.0,true
 166027,Harvard University,Harvard University,ipeds,42.374471,-71.118313,27210.0,true
+166045,Hebrew College,Hebrew College,ipeds,42.335716,-71.241226,130.0,false
 166054,Hellenic College-Holy Cross Greek Orthodox School of Theology,Hellenic College-Holy Cross Greek Orthodox School of Theology,ipeds,42.317018,-71.129418,130.0,false
+166391,Lasell University,Lasell University,ipeds,42.342148,-71.24347,1733.0,true
+166407,Lawrence Memorial Hospital School of Nursing,Lawrence Memorial Hospital School of Nursing,ipeds,42.42581,-71.110958,281.0,false
 166452,Lesley University,Lesley University,ipeds,42.38012,-71.117303,4040.0,true
 166489,Longy School of Music of Bard College,Longy School of Music of Bard College,ipeds,42.378657,-71.123479,244.0,false
 166638,University of Massachusetts-Boston,University of Massachusetts-Boston,boston_open_data,42.313809357000025,-71.03920215999995,14545.0,true
@@ -51,14 +61,18 @@ unitid,institution,campus_name,source,lat,lng,typical_in_person,major
 166674,Massachusetts College of Art and Design,Massachusetts College of Art and Design,boston_open_data,42.33638374000003,-71.10034042299998,1982.0,true
 166674,Massachusetts College of Art and Design,Massachusetts College of Art and Design,ipeds,42.336862,-71.099275,1982.0,true
 166683,Massachusetts Institute of Technology,Massachusetts Institute of Technology,ipeds,42.359243,-71.093226,11474.0,true
+166717,William James College,Massachusetts School of Professional Psychology,boston_open_data,42.27889226800005,-71.18035129799995,770.0,false
+166717,William James College,William James College,ipeds,42.294995,-71.203256,770.0,false
 166869,MGH Institute of Health Professions,MGH Institute of Health Professions,boston_open_data,42.37491705800005,-71.05397174099994,1175.0,true
 166869,MGH Institute of Health Professions,MGH Institute of Health Professions,ipeds,42.375018,-71.054002,1175.0,true
+166948,Mount Ida College,Mount Ida College,ipeds,42.293525,-71.193175,1378.0,true
 166984,School of the Museum of Fine Arts at Tufts University,School of the Museum of Fine Arts-Boston,boston_open_data,42.33853793900005,-71.09669362899996,492.0,false
 166984,School of the Museum of Fine Arts at Tufts University,School of the Museum of Fine Arts at Tufts University,ipeds,42.338505,-71.096556,492.0,false
 167057,The New England Conservatory of Music,The New England Conservatory of Music,boston_open_data,42.34109300000006,-71.08644600099996,819.0,false
 167057,The New England Conservatory of Music,The New England Conservatory of Music,ipeds,42.340946,-71.08629,819.0,false
 167093,New England College of Optometry,New England College of Optometry,boston_open_data,42.35185000000007,-71.08680999899997,528.0,false
 167093,New England College of Optometry,New England College of Optometry,ipeds,42.351853,-71.086829,528.0,false
+167181,New England School of Acupuncture,New England School of Acupuncture,ipeds,42.363713,-71.19491,167.0,false
 167215,New England Law-Boston,New England School of Law,boston_open_data,42.350770287000046,-71.06642450999993,688.0,false
 167215,New England Law-Boston,New England Law-Boston,ipeds,42.350833,-71.0665,688.0,false
 167251,Newbury College,Newbury College,ipeds,42.331032,-71.142082,658.0,false
@@ -67,6 +81,7 @@ unitid,institution,campus_name,source,lat,lng,typical_in_person,major
 167358,Northeastern University,Northeastern University,ipeds,42.339992,-71.088782,21998.0,true
 167455,Pine Manor College,Pine Manor College,boston_open_data,42.328790000000026,-71.11021999999997,404.0,false
 167455,Pine Manor College,Pine Manor College,ipeds,42.320827,-71.156464,404.0,false
+167525,Quincy College,Quincy College,ipeds,42.252416,-71.003476,2939.0,true
 167631,Roxbury Community College,Roxbury Community College,boston_open_data,42.32923535000003,-71.09549441999997,1660.0,true
 167631,Roxbury Community College,Roxbury Community College,ipeds,42.329249,-71.09549,1660.0,true
 167677,Saint John's Seminary,Saint John's Seminary,boston_open_data,42.344322960000056,-71.16304875399999,120.0,false
@@ -82,6 +97,7 @@ unitid,institution,campus_name,source,lat,lng,typical_in_person,major
 168227,Wentworth Institute of Technology,Wentworth Institute of Technology,ipeds,42.336632,-71.094983,4129.0,true
 429128,Urban College of Boston,Urban College of Boston,boston_open_data,42.35289000000006,-71.06407999899994,768.0,false
 429128,Urban College of Boston,Urban College of Boston,ipeds,42.352922,-71.0642,768.0,false
+441982,Franklin W Olin College of Engineering,Franklin W Olin College of Engineering,ipeds,42.293527,-71.263378,382.0,false
 452054,Le Cordon Bleu College of Culinary Arts-Cambridge,Le Cordon Bleu College of Culinary Arts-Cambridge,ipeds,42.364249,-71.078675,239.0,false
 482705,Northeastern University Professional Programs,Northeastern University Professional Programs,ipeds,42.339992,-71.088782,6250.0,true
 494542,Sattler College,Sattler College,ipeds,42.36064,-71.062111,58.0,false

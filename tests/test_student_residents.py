@@ -5,7 +5,14 @@ import pytest
 
 from boston_breathes import student_residents as sr
 
-GEOS = list(sr.GEOIDS)
+FOUR_TOWNS = {"2502507000": "Boston", "2501711000": "Cambridge", "2501762535": "Somerville", "2502109175": "Brookline"}
+GEOS = list(FOUR_TOWNS)
+
+
+@pytest.fixture(autouse=True)
+def four_towns(monkeypatch):
+    """A small study area, so the fixtures stay short."""
+    monkeypatch.setattr(sr, "GEOIDS", FOUR_TOWNS)
 
 
 def table_based_text(geoids: list[str]) -> str:
@@ -29,6 +36,12 @@ def test_parse_table_based():
     assert boston["population_3plus"] == 1001
     assert boston["period"] == "2019-2023"
     assert len(df) == 4
+
+
+def test_renamed_census_code_counts_as_the_same_town(monkeypatch):
+    monkeypatch.setattr(sr, "GEOIDS", {**FOUR_TOWNS, "2501773440": "Watertown", "2501773405": "Watertown"})
+    df = sr.parse_table_based(table_based_text([*GEOS, "2501773405"]), 2024)
+    assert sorted(df["municipality"]) == ["Boston", "Brookline", "Cambridge", "Somerville", "Watertown"]
 
 
 def test_missing_municipality_is_an_error():

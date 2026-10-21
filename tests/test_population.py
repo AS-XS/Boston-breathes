@@ -18,6 +18,16 @@ ROWS = [
 ]
 
 
+FOUR_TOWNS = {"07000": "Boston", "11000": "Cambridge", "62535": "Somerville", "09175": "Brookline"}
+
+
+@pytest.fixture(autouse=True)
+def four_towns(monkeypatch):
+    """A small study area, so the fixtures stay short."""
+    monkeypatch.setattr(pop, "COUSUB_CODES", FOUR_TOWNS)
+    monkeypatch.setattr(pop, "STUDY_AREA", tuple(FOUR_TOWNS.values()))
+
+
 def csv(rows: list[str]) -> str:
     return "\n".join([HEADER, *rows]) + "\n"
 
@@ -39,6 +49,16 @@ def test_municipal_estimates_requires_every_municipality():
 def test_municipal_estimates_rejects_duplicates():
     with pytest.raises(ValueError, match="more than one row"):
         pop.municipal_estimates(csv([*ROWS, ROWS[0]]), "test")
+
+
+def test_renamed_census_code_counts_as_the_same_town(monkeypatch):
+    monkeypatch.setattr(pop, "COUSUB_CODES", {**FOUR_TOWNS, "73440": "Watertown", "73405": "Watertown"})
+    new_code = "061,25,017,00000,73405,Watertown city,35,36,35,35"
+    df = pop.municipal_estimates(csv([*ROWS, new_code]), "test")
+    assert df.filter(pl.col("municipality") == "Watertown")["population"].to_list() == [35, 36]
+    # Both codes in one file would count the town twice.
+    with pytest.raises(ValueError, match="more than one row"):
+        pop.municipal_estimates(csv([*ROWS, new_code, new_code.replace("73405", "73440")]), "test")
 
 
 def test_combine_series_switches_at_2020():
