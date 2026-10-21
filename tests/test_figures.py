@@ -88,3 +88,52 @@ def test_street_pairs_are_finite_ratios_for_both_modes():
     df = fig.street_data()
     assert (df["ratio"] > 0).all() and df["ratio"].is_finite().all()
     assert set(df["mode"]) == set(fig.MODES.values())
+
+
+def test_same_station_joins_records_within_the_distance_chains_included():
+    # Northward offsets of about 0 m, 8 m, 16 m and 500 m (1e-5 degrees of latitude is about 1.1 m).
+    df = pl.DataFrame({"lat": [42.35, 42.350072, 42.350144, 42.3545], "lng": [-71.06] * 4})
+    group = fig.same_station(df).to_list()
+    assert group[0] == group[1] == group[2] and group[3] != group[0]
+
+
+def test_map_stations_are_distinct_and_used():
+    import geopandas as gpd
+    import numpy as np
+
+    from boston_breathes.municipalities import MA_CRS
+
+    for source in fig.SOURCES:
+        df = fig.station_data(source)
+        assert df["station_id"].n_unique() == df.height and (df["per_day"] > 0).all()
+        assert set(df["zone"]) <= {fig.ZONE_LABELS[z] for z in ("campus", "near", "away")}
+        points = gpd.GeoSeries(gpd.points_from_xy(df["lng"].to_list(), df["lat"].to_list()), crs=4326).to_crs(MA_CRS)
+        xy = np.c_[points.x, points.y]
+        gaps = np.hypot(xy[:, None, 0] - xy[None, :, 0], xy[:, None, 1] - xy[None, :, 1])
+        np.fill_diagonal(gaps, np.inf)
+        assert gaps.min() > fig.SAME_STATION_M
+
+
+def test_map_shapes_are_clockwise_and_frame_every_station():
+    from shapely.geometry import Point, shape
+
+    layers = fig.map_layers()
+    for feature in layers["towns"] + layers["zones"]:
+        geometry = shape(feature["geometry"])
+        for polygon in getattr(geometry, "geoms", [geometry]):
+            assert not polygon.exterior.is_ccw
+    frame = shape(layers["frame"]["geometry"])
+    for source in fig.SOURCES:
+        df = fig.station_data(source)
+        assert all(frame.contains(Point(x, y)) for x, y in zip(df["lng"], df["lat"]))
+
+
+def test_town_labels_sit_inside_their_town():
+    from shapely.geometry import Point
+
+    from boston_breathes.municipalities import load_towns
+
+    towns = load_towns().to_crs(4326)
+    for name, (lat, lng) in fig.TOWN_LABEL_AT.items():
+        town = towns[towns["municipality"] == name].geometry.iloc[0]
+        assert town.contains(Point(lng, lat)), name

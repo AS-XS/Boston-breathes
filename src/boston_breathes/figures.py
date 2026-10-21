@@ -12,6 +12,20 @@ Section A, "What data we have":
   A3 academic calendars of the six universities with collected calendars
   A4 fall enrollment of the largest institutions, in person and online only
 
+Section B, "The Student Presence Index":
+  B5 the index by week, with summer and the COVID-19 years marked
+  B6 the academic year, one line per year
+  B7 resident population and the most it could fall when students leave
+
+Section C, "Does city activity follow the students?":
+  C8, C9 campus activity per away activity against the index (Bluebikes, MBTA)
+  C10 correlation between the two, year by year
+  C11 campus activity in break weeks
+  C12 street counts, September against June
+
+Section D, "Where campuses and stations are":
+  D13 campus zones and the Bluebikes and MBTA stations of the study area
+
 Colors follow the project's chart palette (validated for color-vision
 deficiency); identity is never carried by color alone.
 
@@ -21,6 +35,7 @@ data/raw/vendor/, and embedded, so a page works offline.
 """
 
 import base64
+import functools
 import hashlib
 import html
 import io
@@ -35,7 +50,9 @@ import vl_convert as vlc
 
 from boston_breathes import evaluate_presence as ev
 from boston_breathes import http
-from boston_breathes.paths import PROCESSED, RAW, ROOT
+from boston_breathes.campus import CAMPUS_M, MAJOR_MIN_STUDENTS, NEAR_M
+from boston_breathes.municipalities import MA_CRS, load_towns
+from boston_breathes.paths import PROCESSED, RAW, ROOT, STUDY_AREA
 from boston_breathes.presence import COVID_END, COVID_START, COVID_YEAR_END, fall_year
 
 FIGURES = ROOT / "figures"
@@ -840,7 +857,8 @@ def dip_table() -> pl.DataFrame:
 
 
 ZONE_ORDER = ["campus", "near", "away"]
-ZONE_LABELS = {"campus": "Campus (within 400 m)", "near": "Near (400 m to 1 km)", "away": "Away (over 1 km)"}
+ZONE_LABELS = {"campus": f"Campus (within {CAMPUS_M} m)", "near": f"Near ({CAMPUS_M} m to {NEAR_M / 1000:g} km)",
+               "away": f"Away (over {NEAR_M / 1000:g} km)"}
 MODES = {"log_bikes": "Bicycles", "log_vehicles": "Motor vehicles"}
 
 
@@ -909,6 +927,241 @@ def dip_note() -> str:
     row = evaluation().filter(pl.col("metric") == "share_of_breaks_with_a_drop")
     return (f"In {row['value'][0]:.0%} of {row['n'][0]} break weeks the university's campus share of study-area "
             "trips fell, compared with full in-session weeks within three weeks of the break.")
+
+
+# ------------------------------------------------------------------ D map
+
+MAP_SIZE = 380
+ZONE_OPACITY = 0.45
+# Bluebikes renumbered its stations in 2023, so one dock can have an old and a new ID; records this close
+# together are one station on the map.
+SAME_STATION_M = 10
+# Town names sit inside their town, clear of the campus labels, where they cover the fewest stations
+# (Cambridge and Somerville have no empty spot large enough); they are drawn under the stations.
+# (latitude, longitude)
+TOWN_LABEL_AT = {"Boston": (42.302, -71.1), "Brookline": (42.323, -71.142), "Cambridge": (42.388, -71.15),
+                 "Somerville": (42.398, -71.096)}
+# Short labels for the largest institutions' main campuses: (label, align, dx, dy).
+CAMPUS_LABELS = {
+    "164988": ("BU", "right", -6, 0), "167358": ("Northeastern", "left", 6, 4),
+    "166027": ("Harvard", "right", -6, -2), "166683": ("MIT", "left", 6, 0),
+    "166638": ("UMass Boston", "left", 6, 0), "164924": ("Boston College", "left", 6, 8),
+    "168148": ("Tufts", "left", 6, 0),
+}
+
+
+def d3_orient(geometry):
+    """Clockwise outer rings, as d3-geo (used by Vega) expects; GeoJSON's counter-clockwise rings would be
+    drawn as the whole globe minus the shape."""
+    from shapely.geometry import GeometryCollection, MultiPolygon, Polygon
+    from shapely.geometry.polygon import orient
+
+    if isinstance(geometry, Polygon):
+        return orient(geometry, sign=-1.0)
+    if isinstance(geometry, MultiPolygon):
+        return MultiPolygon([orient(g, sign=-1.0) for g in geometry.geoms])
+    if isinstance(geometry, GeometryCollection):
+        polygons = [g for g in geometry.geoms if isinstance(g, (Polygon, MultiPolygon))]
+        return d3_orient(MultiPolygon([q for g in polygons for q in getattr(g, "geoms", [g])]))
+    return geometry
+
+
+def rounded(geometry, digits: int = 5):
+    """GeoJSON geometry with coordinates rounded (about 1 m), to keep the page small."""
+    geometry = d3_orient(geometry)
+    def walk(c):
+        return [walk(x) for x in c] if isinstance(c, (list, tuple)) and c and isinstance(c[0], (list, tuple)) \
+            else [round(c[0], digits), round(c[1], digits)]
+    g = geometry.__geo_interface__
+    return {"type": g["type"], "coordinates": walk(g["coordinates"])}
+
+
+@functools.lru_cache(maxsize=1)
+def map_layers() -> dict:
+    """Town outlines, campus-zone areas and the map extent, as GeoJSON features (computed once)."""
+    import geopandas as gpd
+    from shapely.geometry import box
+
+    towns = load_towns().to_crs(MA_CRS)
+    study = towns[towns["municipality"].isin(STUDY_AREA)]
+    campuses = read("campus_points.csv", schema_overrides={"unitid": pl.Utf8})
+    major = campuses.filter(pl.col("major"))
+    points = gpd.GeoSeries(gpd.points_from_xy(major["lng"].to_list(), major["lat"].to_list()), crs=4326).to_crs(MA_CRS)
+    stations = pl.concat([station_data(source).select("lng", "lat") for source in SOURCES])
+    shown = gpd.GeoSeries(gpd.points_from_xy(
+        stations["lng"].to_list() + major["lng"].to_list(), stations["lat"].to_list() + major["lat"].to_list()),
+        crs=4326).to_crs(MA_CRS)
+    minx, miny, maxx, maxy = shown.total_bounds
+    frame = box(minx - 700, miny - 700, maxx + 700, maxy + 700)
+    study_shape = study.union_all()
+    campus = points.buffer(CAMPUS_M).union_all().intersection(study_shape)
+    near = points.buffer(NEAR_M).union_all().intersection(study_shape).difference(campus)  # a ring, no overlap
+
+    def feature(geom, **props):
+        geom = gpd.GeoSeries([geom], crs=MA_CRS).simplify(15).to_crs(4326).iloc[0]
+        return {"type": "Feature", "properties": props, "geometry": rounded(geom)}
+
+    town_features = []
+    for name, geom in sorted(zip(towns["municipality"], towns.geometry)):
+        clipped = geom.intersection(frame)
+        if not clipped.is_empty:
+            town_features.append(feature(clipped, name=name, study=name in STUDY_AREA))
+    frame_4326 = gpd.GeoSeries([frame], crs=MA_CRS).to_crs(4326).iloc[0]
+    return {
+        "towns": town_features,
+        "zones": [feature(near, zone=ZONE_LABELS["near"]), feature(campus, zone=ZONE_LABELS["campus"])],
+        "town_labels": [{"name": n, "lat": lat, "lng": lng} for n, (lat, lng) in sorted(TOWN_LABEL_AT.items())],
+        "frame": {"type": "Feature", "properties": {}, "geometry": rounded(frame_4326)},
+    }
+
+
+def same_station(st: pl.DataFrame) -> pl.Series:
+    """A group number shared by station records within SAME_STATION_M of each other (chains included)."""
+    import geopandas as gpd
+
+    points = gpd.GeoSeries(gpd.points_from_xy(st["lng"].to_list(), st["lat"].to_list()), crs=4326).to_crs(MA_CRS)
+    merged = points.buffer(SAME_STATION_M / 2).union_all()
+    groups = gpd.GeoSeries(list(getattr(merged, "geoms", [merged])), crs=MA_CRS)
+    _, group = groups.sindex.query(points, predicate="intersects")
+    return pl.Series("group", group)
+
+
+def station_data(source: str) -> pl.DataFrame:
+    """Study-area stations with their zone, nearest major campus and average daily use between their first
+    and last recorded day. Records of one station under several IDs are combined, and named and placed by
+    the busiest."""
+    if source == "Bluebikes":
+        st = read("bluebikes_station_campus.csv", schema_overrides={"station_id": pl.Utf8}).join(
+            read("bluebikes_stations.csv", schema_overrides={"station_id": pl.Utf8}).select(
+                "station_id", "first_date", "last_date"), on="station_id")
+        total = "total_trips"
+    else:
+        st = read("mbta_stations.csv").rename({"stop_id": "station_id"})
+        total = "total_entries"
+    st = st.filter(pl.col("in_study_area") & pl.col("lat").is_not_null())
+    return (
+        st.with_columns(same_station(st))
+        .sort(total, "station_id", descending=[True, False])
+        .group_by("group", maintain_order=True)
+        .agg(pl.all().exclude(total, "first_date", "last_date").first(), pl.col(total).sum(),
+             pl.col("first_date").min(), pl.col("last_date").max())
+        .with_columns(
+            (pl.col(total) / ((pl.col("last_date") - pl.col("first_date")).dt.total_days() + 1)).round(1)
+            .alias("per_day"),
+            pl.col("campus_zone").replace_strict(ZONE_LABELS, default="Unknown").alias("zone"),
+            pl.col("campus_institution").replace(SHORT_NAMES).alias("nearest_campus"),
+        )
+        .select("station_id", "station_name", "lat", "lng", "municipality", "zone", "nearest_campus",
+                "campus_distance_m", "per_day")
+        .sort("per_day", "station_id", descending=[True, False])  # small stations drawn last, on top
+    )
+
+
+def halo_text(data, t: dict, projection: dict, color: str, **mark) -> list:
+    """A label drawn twice: a thick surface-colored outline under it keeps it legible over the map."""
+    enc = {"longitude": "lng:Q", "latitude": "lat:Q", "text": "label:N"}
+    under = alt.Chart(data).mark_text(stroke=t["surface"], strokeWidth=3, strokeJoin="round", color=t["surface"],
+                                      **mark).encode(**enc).project(**projection)
+    over = alt.Chart(data).mark_text(color=color, **mark).encode(**enc).project(**projection)
+    return [under, over]
+
+
+def map_panel(t: dict, source: str, unit: str, shape: str, size_range: list[int]) -> alt.LayerChart:
+    layers = map_layers()
+    projection = {"type": "mercator", "fit": layers["frame"]}
+    zones = [ZONE_LABELS["campus"], ZONE_LABELS["near"]]
+    towns = alt.Chart(alt.Data(values=layers["towns"])).mark_geoshape(strokeWidth=1).encode(
+        fill=alt.condition("datum.properties.study", alt.value(t["surface"]), alt.value(t["page"])),
+        stroke=alt.condition("datum.properties.study", alt.value(t["muted"]), alt.value(t["grid"])),
+    ).project(**projection)
+    zone_areas = alt.Chart(alt.Data(values=layers["zones"])).mark_geoshape(stroke=None).encode(
+        fill=alt.Fill("properties.zone:N", title=None, sort=zones,
+                      scale=alt.Scale(domain=zones, range=[t["ordinal"][1], t["ordinal"][0]]),
+                      legend=alt.Legend(symbolOpacity=ZONE_OPACITY)),
+        fillOpacity=alt.value(ZONE_OPACITY),
+    ).project(**projection)
+    town_rows = pl.DataFrame(layers["town_labels"]).rename({"name": "label"})
+    df = station_data(source)
+    stations = alt.Chart(df).mark_point(shape=shape, filled=True, opacity=0.85, stroke=t["surface"],
+                                        strokeWidth=1).encode(
+        longitude="lng:Q", latitude="lat:Q",
+        size=alt.Size("per_day:Q", title=f"Average {unit} per day", scale=alt.Scale(type="sqrt", range=size_range),
+                      legend=alt.Legend(orient="bottom", direction="horizontal", symbolFillColor=t["ink2"],
+                                        symbolStrokeColor=t["surface"], tickCount=4)),
+        color=alt.value(t["ink2"]),
+        tooltip=[alt.Tooltip("station_name:N", title="Station"), alt.Tooltip("municipality:N", title="Town"),
+                 alt.Tooltip("zone:N", title="Zone"), alt.Tooltip("nearest_campus:N", title="Nearest large campus"),
+                 alt.Tooltip("campus_distance_m:Q", title="Distance (m)", format=",.0f"),
+                 alt.Tooltip("per_day:Q", title=f"Average {unit} per day", format=",.1~f")],
+    ).project(**projection)
+    raw_campuses = read("campus_points.csv", schema_overrides={"unitid": pl.Utf8}).filter(pl.col("major"))
+    # Each institution's own IPEDS point carries its name (a merged college's campus keeps its own name).
+    named = raw_campuses.filter((pl.col("source") == "ipeds") & (pl.col("campus_name") == pl.col("institution")))
+    campuses = raw_campuses.with_columns(pl.col("institution").replace(SHORT_NAMES))
+    marks = alt.Chart(campuses).mark_point(shape="cross", size=60, filled=True, color=t["series2"], opacity=1).encode(
+        longitude="lng:Q", latitude="lat:Q",
+        tooltip=[alt.Tooltip("institution:N", title="Campus of"), alt.Tooltip("campus_name:N", title="Site"),
+                 alt.Tooltip("typical_in_person:Q", title="Median fall in-person enrollment", format=",.0f")],
+    ).project(**projection)
+    town_labels = halo_text(town_rows, t, projection, t["muted"], fontSize=11, fontWeight=600)
+    label_layers = []
+    for unitid, (text, align, dx, dy) in sorted(CAMPUS_LABELS.items()):
+        row = named.filter(pl.col("unitid") == unitid).select("lng", "lat").with_columns(
+            pl.lit(text).alias("label"))
+        label_layers += halo_text(row, t, projection, t["ink"], align=align, dx=dx, dy=dy, fontSize=11,
+                                  fontWeight=600)
+    return alt.layer(towns, zone_areas, *town_labels, stations, marks, *label_layers).properties(
+        width=MAP_SIZE, height=MAP_SIZE, title=alt.Title(f"{source} stations", fontSize=12, fontWeight=600,
+                                                          color=t["ink"]))
+
+
+def map_chart(t: dict) -> alt.TopLevelMixin:
+    return alt.hconcat(
+        map_panel(t, "Bluebikes", "trips started", "circle", [3, 90]),
+        map_panel(t, "MBTA", "gate entries", "square", [8, 150]),
+        spacing=24,
+    ).resolve_scale(size="independent", fill="shared")
+
+
+def map_table() -> pl.DataFrame:
+    frames = []
+    for source in SOURCES:
+        frames.append(station_data(source).with_columns(pl.lit(source).alias("Source")))
+    return pl.concat(frames).select(
+        "Source", pl.col("station_name").alias("Station"), pl.col("municipality").alias("Town"),
+        pl.col("zone").alias("Zone"), pl.col("nearest_campus").alias("Nearest large campus"),
+        pl.col("campus_distance_m").cast(pl.Int64).alias("Distance (m)"),
+        pl.col("per_day").alias("Average per day"),
+    ).sort("Source", "Zone", "Station")
+
+
+def outside_note() -> str:
+    """Large institutions whose main campus lies outside the study area: only their zones inside it count."""
+    import geopandas as gpd
+
+    towns = load_towns()
+    named = read("campus_points.csv", schema_overrides={"unitid": pl.Utf8}).filter(
+        pl.col("major") & (pl.col("source") == "ipeds") & (pl.col("campus_name") == pl.col("institution")))
+    points = gpd.GeoDataFrame({"institution": named["institution"].to_list()}, crs=4326,
+                              geometry=gpd.points_from_xy(named["lng"].to_list(), named["lat"].to_list()))
+    located = points.to_crs(towns.crs).sjoin(towns[["municipality", "geometry"]], how="left", predicate="within")
+    outside = located[~located["municipality"].isin(STUDY_AREA)].sort_values("institution")
+    places = [f"{i} ({m})" for i, m in zip(outside["institution"], outside["municipality"])]
+    if len(places) == 1:
+        return f"The main-campus point of {places[0]} lies outside the study area; only its zones inside it are used."
+    listed = ", ".join(places[:-1]) + " and " + places[-1]
+    return f"The main-campus points of {listed} lie outside the study area; only their zones inside it are used."
+
+
+def zone_note() -> str:
+    counts = {s: station_data(s).group_by("zone").len() for s in SOURCES}
+    parts = []
+    for source, c in counts.items():
+        n = dict(zip(c["zone"], c["len"]))
+        parts.append(f"{source}: {n.get(ZONE_LABELS['campus'], 0)} campus, {n.get(ZONE_LABELS['near'], 0)} near "
+                     f"and {n.get(ZONE_LABELS['away'], 0)} away stations")
+    return ("; ".join(parts) + f". Bluebikes renumbered its stations in 2023; records within {SAME_STATION_M} m "
+            "of each other (one station under its old and new IDs) are drawn and counted as one station.")
 
 
 # ------------------------------------------------------------------ sections
@@ -1075,7 +1328,30 @@ SECTION_C = {
     ],
 }
 
-SECTIONS = [SECTION_A, SECTION_B, SECTION_C]
+SECTION_D = {
+    "slug": "d_map",
+    "title": "Where campuses and stations are",
+    "intro": "Section D of the Boston Breathes figures: the campus zones used throughout the analysis, and the "
+             "Bluebikes and MBTA stations inside the four study-area municipalities.",
+    "charts": [
+        {
+            "name": "d13_map",
+            "title": "Campus zones and stations in Boston, Cambridge, Somerville and Brookline",
+            "question": "Which stations count as campus, near or away?",
+            "notes": [f"Shaded areas are within {CAMPUS_M} m (campus) and {NEAR_M / 1000:g} km (near) of a campus "
+                      f"of a large institution (median fall in-person enrollment of {MAJOR_MIN_STUDENTS:,} or more), "
+                      "clipped to the study area; orange crosses are those campus points. Stations elsewhere in "
+                      "the study area are away.",
+                      zone_note,
+                      "Stations are sized by average trips started (Bluebikes) or gate entries (MBTA) per day "
+                      "between their first and last recorded day; the two maps have their own scales.",
+                      outside_note],
+            "chart": map_chart, "table": map_table,
+        },
+    ],
+}
+
+SECTIONS = [SECTION_A, SECTION_B, SECTION_C, SECTION_D]
 
 
 def resolve(notes: list) -> list[str]:
