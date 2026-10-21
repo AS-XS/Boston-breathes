@@ -81,7 +81,7 @@ def vega_config(t: dict, font: str) -> dict:
         },
         "legend": {
             "labelColor": t["ink2"], "titleColor": t["ink2"], "labelFontSize": 11, "titleFontSize": 11,
-            "titleFontWeight": "normal", "orient": "top", "direction": "horizontal",
+            "titleFontWeight": "normal", "orient": "top", "direction": "horizontal", "labelLimit": 420,
         },
         "header": {
             "labelColor": t["ink"], "labelFontSize": 12, "labelFontWeight": 600,
@@ -112,6 +112,31 @@ def runs(df: pl.DataFrame, flag: str, start: str = "week_start", days: int = 7) 
     ).group_by("_run", maintain_order=True):
         out.append((group[start].min(), group[start].max() + timedelta(days=days - 1), bool(group[flag][0])))
     return out
+
+
+def academic_year_columns() -> list[pl.Expr]:
+    """Academic year of each week (by its Thursday, August to July) and its place on a reference year.
+
+    The reference year runs from August 2003 to July 2004 (a leap year), so weeks of different academic
+    years line up on one month axis.
+    """
+    thursday = pl.col("week_start") + pl.duration(days=3)
+    ref_thursday = pl.date(pl.when(thursday.dt.month() >= 8).then(2003).otherwise(2004),
+                           thursday.dt.month(), thursday.dt.day())
+    fy = fall_year(pl.col("week_start"))
+    return [
+        fy.alias("fy"),
+        pl.format("{}-{}", fy, (fy + 1).mod(100).cast(pl.Utf8).str.zfill(2)).alias("academic_year"),
+        (ref_thursday - pl.duration(days=3)).alias("ref_start"),
+        (ref_thursday + pl.duration(days=4)).alias("ref_end"),
+    ]
+
+
+def month_axis(**kwargs) -> alt.Axis:
+    return alt.Axis(format="%b", tickCount="month", grid=False, domain=False, labelAlign="left", **kwargs)
+
+
+REFERENCE_YEAR = ["2003-08-01", "2004-08-01"]
 
 
 # ------------------------------------------------------------------ A1 coverage
@@ -229,23 +254,35 @@ def coverage_table() -> pl.DataFrame:
 COMPACT = "datum.value == 0 ? '0' : replace(format(datum.value, '~s'), 'k', 'K')"
 
 
+YEAR_AXIS = alt.Axis(format="%Y", tickCount="year")
+STUDY_X = alt.Scale(domain=["2014-12-29", "2026-12-31"])  # the weekly timeline, without a stray 2027 tick
+WEEK_TOOLTIP = alt.Tooltip("week_start:T", title="Week of", format="%b %d, %Y")
+
+
+def crosshair(df: pl.DataFrame, name: str, tooltip: list, t: dict, height: int, scale: alt.Scale | None = None):
+    """Hovering anywhere in a week's column selects the week: an invisible column per week carries the
+    tooltip, and a hairline marks the week. Returns (columns, rule, selection)."""
+    hover = alt.selection_point(name=name, on="pointerover", nearest=False, fields=["week_start"],
+                                empty=False, clear="pointerout")
+    columns = alt.Chart(df).mark_bar(opacity=0, clip=True).encode(
+        x=alt.X("week_start:T", title=None, axis=YEAR_AXIS, scale=scale or alt.Undefined), x2="week_end:T",
+        y=alt.value(0), y2=alt.value(height), tooltip=tooltip,
+    ).add_params(hover)
+    rule = alt.Chart(df).mark_rule(color=t["muted"], strokeWidth=1).encode(
+        x="week_start:T", opacity=alt.condition(hover, alt.value(1), alt.value(0))
+    )
+    return columns, rule, hover
+
+
 def week_hover(df: pl.DataFrame, value: str, label: str, fmt: str, t: dict, color: str, height: int):
     """Line with a crosshair: hovering anywhere in a week's column shows its value."""
-    base = alt.Chart(df).encode(x=alt.X("week_start:T", title=None, axis=alt.Axis(format="%Y", tickCount="year")))
-    hover = alt.selection_point(name=f"hover_{value}", on="pointerover", nearest=False, fields=["week_start"],
-                                empty=False, clear="pointerout")
+    base = alt.Chart(df).encode(x=alt.X("week_start:T", title=None, axis=YEAR_AXIS))
     line = base.mark_line(strokeWidth=2, strokeJoin="round", strokeCap="round", color=color).encode(
         y=alt.Y(f"{value}:Q", title=label, axis=alt.Axis(labelExpr=fmt, tickCount=4, domain=False, ticks=False,
                                                         minExtent=40))
     )
-    columns = base.mark_bar(opacity=0).encode(
-        x2="week_end:T", y=alt.value(0), y2=alt.value(height),
-        tooltip=[alt.Tooltip("week_start:T", title="Week of", format="%b %d, %Y"),
-                 alt.Tooltip(f"{value}:Q", title=label, format=",.0f")],
-    ).add_params(hover)
-    rule = base.mark_rule(color=t["muted"], strokeWidth=1).encode(
-        opacity=alt.condition(hover, alt.value(1), alt.value(0))
-    )
+    columns, rule, hover = crosshair(
+        df, f"hover_{value}", [WEEK_TOOLTIP, alt.Tooltip(f"{value}:Q", title=label, format=",.0f")], t, height)
     dot = base.mark_circle(size=70, color=color, stroke=t["surface"], strokeWidth=2, opacity=1).encode(
         y=f"{value}:Q"
     ).transform_filter(hover)
@@ -315,22 +352,14 @@ def calendar_data() -> pl.DataFrame:
         .group_by("unitid", "academic_year")
         .agg(pl.col("event").str.replace_all("_", " ").sort().str.join(", ").alias("estimated_events"))
     )
-    thursday = pl.col("week_start") + pl.duration(days=3)
-    # Place every week on one reference academic year (fall 2003 - summer 2004, a leap year) for the x axis.
-    ref_thursday = pl.date(pl.when(thursday.dt.month() >= 8).then(2003).otherwise(2004),
-                           thursday.dt.month(), thursday.dt.day())
     return (
-        weekly.with_columns(fall_year(pl.col("week_start")).alias("fy"))
-        .with_columns(pl.format("{}-{}", pl.col("fy"), (pl.col("fy") + 1).mod(100).cast(pl.Utf8).str.zfill(2))
-                      .alias("academic_year"))
+        weekly.with_columns(academic_year_columns())
         .join(estimated, on=["unitid", "academic_year"], how="left")
         .with_columns(
             pl.when(pl.col("days_in_session") == 7).then(pl.lit(IN_SESSION))
             .when(pl.col("days_in_session") > 0).then(pl.lit(PARTIAL))
             .when(pl.col("summer_break_days") > 0).then(pl.lit(SUMMER))
             .otherwise(pl.lit(BREAK)).alias("state"),
-            (ref_thursday - pl.duration(days=3)).alias("ref_start"),
-            (ref_thursday + pl.duration(days=4)).alias("ref_end"),
             (pl.col("week_start") + pl.duration(days=6)).alias("week_end"),
             (pl.col("academic_year").str.replace("-", "–")
              + pl.when(pl.col("estimated_events").is_not_null()).then(pl.lit(" *")).otherwise(pl.lit("")))
@@ -354,8 +383,7 @@ def calendar_chart(t: dict) -> alt.TopLevelMixin:
                 lookup="year_label", from_=alt.LookupData(years, "year_label", ["estimated_events"])
             ).transform_calculate(institution=json.dumps(name))
             .mark_rect(stroke=t["surface"], strokeWidth=1).encode(
-                x=alt.X("ref_start:T", title=None, scale=alt.Scale(domain=["2003-08-01", "2004-08-01"]),
-                        axis=alt.Axis(format="%b", tickCount="month", grid=False, domain=False, labelAlign="left")),
+                x=alt.X("ref_start:T", title=None, scale=alt.Scale(domain=REFERENCE_YEAR), axis=month_axis()),
                 x2="ref_end:T",
                 y=alt.Y("year_label:N", sort=labels, title=None,
                         axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelFontSize=10)),
@@ -455,6 +483,195 @@ def enrollment_table() -> pl.DataFrame:
     )
 
 
+# ------------------------------------------------------------------ B presence
+
+INDEX, SUMMER_SHARE = "Student Presence Index", "Summer break (share of students)"
+CENSUS, FLOOR = "Census resident population", "Lowest possible: every resident student away"
+COVID_LABELS = {"normal": "Normal", "lockdown": "COVID-19 lockdown: students away",
+                "remote_year": "COVID-19, 2020–21: remote or hybrid teaching"}
+
+
+def presence_data() -> pl.DataFrame:
+    return read("student_presence_weekly.csv").with_columns(
+        (pl.col("week_start") + pl.duration(days=7)).alias("week_end"),
+        pl.col("covid_period").replace_strict(COVID_LABELS).alias("covid_label"),
+    )
+
+
+def covid_bands(t: dict, height: int):
+    """The lockdown and the 2020-21 academic year as labelled gray bands."""
+    bands = pl.DataFrame({
+        "start": [COVID_START.isoformat(), (COVID_END + timedelta(days=1)).isoformat()],
+        "end": [COVID_END.isoformat(), COVID_YEAR_END.isoformat()],
+        "label": ["COVID-19: lockdown, then the 2020–21 academic year", ""],
+        "opacity": [0.9, 0.45],
+    })
+    rect = alt.Chart(bands).mark_rect(color=t["neutral"]).encode(
+        x="start:T", x2="end:T", y=alt.value(0), y2=alt.value(height),
+        opacity=alt.Opacity("opacity:Q", scale=None, legend=None),
+    )
+    text = alt.Chart(bands).mark_text(align="left", baseline="top", dx=3, dy=-14, fontSize=10, color=t["muted"]).encode(
+        x="start:T", y=alt.value(0), text="label:N"
+    )
+    return rect + text
+
+
+def presence_chart(t: dict) -> alt.TopLevelMixin:
+    df = iso(presence_data(), "week_start", "week_end")
+    height = 240
+    identity = alt.Scale(domain=[INDEX, SUMMER_SHARE], range=[t["series1"], t["series2"]])
+    summer = alt.Chart(df).transform_calculate(kind=json.dumps(SUMMER_SHARE)).mark_rect(clip=True).encode(
+        x="week_start:T", x2="week_end:T", y=alt.value(0), y2=alt.value(height),
+        color=alt.Color("kind:N", title=None, scale=identity),
+        opacity=alt.Opacity("summer_break_share:Q", scale=alt.Scale(domain=[0, 1], range=[0, 0.22]), legend=None),
+    )
+    line = alt.Chart(df).transform_calculate(kind=json.dumps(INDEX)).mark_line(
+        strokeWidth=2, strokeJoin="round", strokeCap="round", clip=True).encode(
+        x=alt.X("week_start:T", title=None, axis=YEAR_AXIS, scale=STUDY_X),
+        y=alt.Y("presence_index:Q", title="Share of students in session", scale=alt.Scale(domain=[0, 1]),
+                axis=alt.Axis(format=".0%", tickCount=5, domain=False, ticks=False)),
+        color=alt.Color("kind:N", title=None, scale=identity),
+    )
+    columns, rule, hover = crosshair(df, "hover_presence", [
+        WEEK_TOOLTIP,
+        alt.Tooltip("presence_index:Q", title=INDEX, format=".2f"),
+        alt.Tooltip("summer_break_share:Q", title="Share on summer break", format=".0%"),
+        alt.Tooltip("students_in_session:Q", title="Students in session", format=",.0f"),
+        alt.Tooltip("covid_label:N", title="Period"),
+    ], t, height, STUDY_X)
+    dot = alt.Chart(df).mark_circle(size=70, color=t["series1"], stroke=t["surface"], strokeWidth=2, opacity=1).encode(
+        x="week_start:T", y="presence_index:Q").transform_filter(hover)
+    return alt.layer(summer, covid_bands(t, height), columns, line, rule, dot).properties(
+        width=WIDTH - 110, height=height)
+
+
+def presence_table() -> pl.DataFrame:
+    return presence_data().select(
+        pl.col("week_start").alias("Week of"), pl.col("presence_index").alias(INDEX),
+        pl.col("summer_break_share").alias("Share on summer break"),
+        pl.col("students_in_session").cast(pl.Int64).alias("Students in session"),
+        pl.col("covid_label").alias("Period"),
+    )
+
+
+EXCLUDED_YEARS = {"2014-15": "starts in late December", "2019-20": "COVID-19 lockdown",
+                  "2020-21": "remote or hybrid teaching", "2026-27": "not over yet"}
+
+
+def typical_year_data() -> pl.DataFrame:
+    df = presence_data().with_columns(academic_year_columns())
+    shown = df.filter(~pl.col("academic_year").is_in(list(EXCLUDED_YEARS)))
+    highlight = shown["academic_year"].max()
+    return shown.with_columns(
+        (pl.col("academic_year") == highlight).alias("highlight"),
+        pl.col("academic_year").str.replace("-", "–").alias("year_label"),
+    ).sort("academic_year", "week_start")
+
+
+def typical_year_chart(t: dict) -> alt.TopLevelMixin:
+    df = iso(typical_year_data(), "week_start", "ref_start", "ref_end").select(
+        "year_label", "week_start", "ref_start", "presence_index", "highlight")
+    latest = df.filter(pl.col("highlight"))["year_label"][0]
+    x = alt.X("ref_start:T", title=None, scale=alt.Scale(domain=REFERENCE_YEAR), axis=month_axis())
+    y = alt.Y("presence_index:Q", title="Share of students in session", scale=alt.Scale(domain=[0, 1]),
+              axis=alt.Axis(format=".0%", tickCount=5, domain=False, ticks=False))
+    hover = alt.selection_point(name="hover_year", on="pointerover", nearest=True, fields=["year_label"],
+                                empty=False, clear="pointerout")
+    others = alt.Chart(df).transform_filter(~alt.datum.highlight).mark_line(
+        strokeJoin="round", strokeCap="round").encode(
+        x=x, y=y, detail="year_label:N",
+        color=alt.condition(hover, alt.value(t["ink2"]), alt.value(t["axis"])),
+        strokeWidth=alt.condition(hover, alt.value(2), alt.value(1.25)),
+    )
+    current = alt.Chart(df).transform_filter(alt.datum.highlight).mark_line(
+        strokeWidth=2, strokeJoin="round", strokeCap="round", color=t["series1"]).encode(x=x, y=y)
+    points = alt.Chart(df).mark_point(opacity=0, size=200).encode(
+        x=x, y=y,
+        tooltip=[alt.Tooltip("year_label:N", title="Academic year"), WEEK_TOOLTIP,
+                 alt.Tooltip("presence_index:Q", title=INDEX, format=".2f")],
+    ).add_params(hover)
+    end = df.filter(pl.col("highlight")).tail(1)
+    label = alt.Chart(end).mark_text(align="left", dx=6, fontSize=11, color=t["ink2"]).encode(
+        x="ref_start:T", y="presence_index:Q", text=alt.value(latest))
+    legend_rows = pl.DataFrame({"kind": [latest, "Other years"]})
+    legend = alt.Chart(legend_rows).mark_line().encode(
+        color=alt.Color("kind:N", title=None, scale=alt.Scale(domain=legend_rows["kind"].to_list(),
+                                                              range=[t["series1"], t["axis"]])))
+    return alt.layer(others, current, points, label, legend).properties(width=WIDTH - 140, height=240)
+
+
+def typical_year_table() -> pl.DataFrame:
+    df = presence_data().with_columns(academic_year_columns())
+    return (
+        df.group_by("academic_year")
+        .agg(pl.col("presence_index").mean().round(3).alias("Average index"),
+             (pl.col("presence_index") >= 0.9).sum().alias("Weeks at 90% or more"),
+             (pl.col("presence_index") <= 0.1).sum().alias("Weeks at 10% or less"),
+             pl.len().alias("Weeks"))
+        .with_columns(pl.col("academic_year").replace_strict(EXCLUDED_YEARS, default="shown").alias("In the chart"))
+        .sort("academic_year")
+        .rename({"academic_year": "Academic year"})
+    )
+
+
+def population_chart(t: dict) -> alt.TopLevelMixin:
+    df = iso(presence_data(), "week_start", "week_end").select(
+        "week_start", "week_end", "census_population", "min_effective_population", "max_students_away",
+        "presence_index", "population_extrapolated")
+    height = 260
+    identity = alt.Scale(domain=[CENSUS, FLOOR], range=[t["series1"], t["series2"]])
+    y_axis = alt.Axis(labelExpr=COMPACT, tickCount=5, domain=False, ticks=False)
+    band = alt.Chart(df).mark_area(color=t["series2"], opacity=0.10, clip=True).encode(
+        x=alt.X("week_start:T", title=None, axis=YEAR_AXIS, scale=STUDY_X),
+        y=alt.Y("min_effective_population:Q", title="People", scale=alt.Scale(zero=False), axis=y_axis),
+        y2="census_population:Q",
+    )
+    long = df.unpivot(index=["week_start"], on=["census_population", "min_effective_population"],
+                      variable_name="series", value_name="population").with_columns(
+        pl.col("series").replace_strict({"census_population": CENSUS, "min_effective_population": FLOOR}))
+    lines = alt.Chart(long).mark_line(strokeWidth=2, strokeJoin="round", strokeCap="round", clip=True).encode(
+        x="week_start:T", y="population:Q", color=alt.Color("series:N", title=None, scale=identity),
+        detail="series:N")
+    held = df.filter(pl.col("population_extrapolated"))
+    latest_estimate = read("population_annual.csv")["year"].max()
+    held_band = alt.Chart(pl.DataFrame({"start": [held["week_start"].min()], "end": [held["week_end"].max()],
+                                        "label": ["Census held at the latest estimate"]})).mark_rect(
+        color=t["neutral"], opacity=0.45, clip=True).encode(
+        x="start:T", x2="end:T", y=alt.value(0), y2=alt.value(height))
+    held_text = alt.Chart(pl.DataFrame({"end": ["2026-12-31"],
+                                        "label": [f"Census held at the July {latest_estimate} estimate"]})).mark_text(
+        align="right", baseline="top", dy=-14, fontSize=10, color=t["muted"]).encode(
+        x="end:T", y=alt.value(0), text="label:N")
+    columns, rule, hover = crosshair(df, "hover_population", [
+        WEEK_TOOLTIP,
+        alt.Tooltip("census_population:Q", title=CENSUS, format=",.0f"),
+        alt.Tooltip("min_effective_population:Q", title="Lowest possible population", format=",.0f"),
+        alt.Tooltip("max_students_away:Q", title="Most resident students away", format=",.0f"),
+        alt.Tooltip("presence_index:Q", title=INDEX, format=".2f"),
+    ], t, height, STUDY_X)
+    return alt.layer(held_band, held_text, band, columns, lines, rule).properties(width=WIDTH - 110, height=height)
+
+
+def population_table() -> pl.DataFrame:
+    return (
+        presence_data().group_by(pl.col("week_start").dt.year().alias("Year"))
+        .agg(pl.col("census_population").mean().round(0).cast(pl.Int64).alias("Census population (average)"),
+             pl.col("max_students_away").max().cast(pl.Int64).alias("Most resident students away"),
+             pl.col("min_effective_population").min().cast(pl.Int64).alias("Lowest possible population"))
+        .sort("Year")
+    )
+
+
+def cambridge_bound_note() -> str:
+    ev = read("presence_evaluation.csv")
+    share = ev.filter(pl.col("metric") == "min_share_away")
+    if share.is_empty():
+        return "No dormitory count is available to give a lower bound."
+    return (f"For a sense of scale: in Cambridge, dormitory residents (who almost all leave in summer) were "
+            f"{share['value'][0]:.0%} of resident college students "
+            f"({share['subset'][0].split(', ')[1].replace('-', '–')}).")
+
+
 # ------------------------------------------------------------------ sections
 
 def calendar_note() -> str:
@@ -517,7 +734,52 @@ SECTION_A = {
     ],
 }
 
-SECTIONS = [SECTION_A]
+SECTION_B = {
+    "slug": "b_student_presence",
+    "title": "The Student Presence Index",
+    "intro": "Section B of the Boston Breathes figures: the weekly share of students in session, how regular "
+             "the academic year is, and how much the population could change when students leave. All values "
+             "come from data/processed/student_presence_weekly.csv.",
+    "charts": [
+        {
+            "name": "b5_presence_index",
+            "title": "Student Presence Index, by week",
+            "question": "What share of the area's students is in session each week, 2015–2026?",
+            "notes": ["The index is in-person enrollment times the share of each week its university is in "
+                      "session, divided by normal enrollment: 100% when every university is in session, 0% when "
+                      "all are on break. Universities without a collected calendar follow the average of those with one.",
+                      "Orange shading is the share of students on summer break, kept apart from other breaks. "
+                      "During the lockdown students count as away; in 2020–21 the index uses in-person enrollment, "
+                      "so it stays near 58%.",
+                      "Weeks still to come follow the universities' published calendars."],
+            "chart": presence_chart, "table": presence_table,
+        },
+        {
+            "name": "b6_typical_year",
+            "title": "The academic year, one line per year",
+            "question": "How regular is the academic rhythm from year to year?",
+            "notes": ["Each line is an academic year from August to July; the most recent complete year is "
+                      "highlighted.",
+                      "Left out: 2014–15 (starts in late December), 2019–20 and 2020–21 (COVID-19), and 2026–27 "
+                      "(not over yet); the table lists every year."],
+            "chart": typical_year_chart, "table": typical_year_table,
+        },
+        {
+            "name": "b7_population_bounds",
+            "title": "Resident population and the most it could fall when students leave",
+            "question": "How large could the seasonal swing be, at most?",
+            "notes": ["A range, not an estimate: the blue line is the Census resident population, which already "
+                      "includes students living here during the school year. The orange line is the lowest the "
+                      "population could be if every resident college student (ACS) were away when not in session. "
+                      "How many actually leave will be measured from city activity.",
+                      cambridge_bound_note,
+                      "The axis does not start at zero."],
+            "chart": population_chart, "table": population_table,
+        },
+    ],
+}
+
+SECTIONS = [SECTION_A, SECTION_B]
 
 
 def resolve(notes: list) -> list[str]:

@@ -46,3 +46,24 @@ def test_enrollment_keeps_every_student():
 def test_table_html_escapes_text():
     out = fig.table_html(pl.DataFrame({"Name": ["<b>A & B</b>"], "Value": [1234]}))
     assert "&lt;b&gt;A &amp; B&lt;/b&gt;" in out and "1,234" in out and "<b>" not in out
+
+
+def test_academic_year_columns_place_weeks_on_the_reference_year():
+    df = pl.DataFrame({"week_start": [date(2019, 7, 29), date(2019, 12, 30), date(2020, 2, 24)]})
+    out = df.with_columns(fig.academic_year_columns())
+    # Thursday Aug 1 2019 starts 2019-20; Thursday Jan 2 2020 and Feb 27 2020 stay in it.
+    assert out["academic_year"].to_list() == ["2019-20"] * 3
+    assert out["ref_start"].to_list() == [date(2003, 7, 29), date(2003, 12, 30), date(2004, 2, 24)]
+
+
+def test_typical_year_leaves_out_partial_and_covid_years_and_highlights_one():
+    df = fig.typical_year_data()
+    assert not set(df["academic_year"]) & set(fig.EXCLUDED_YEARS)
+    highlighted = df.filter(pl.col("highlight"))["academic_year"].unique()
+    assert highlighted.to_list() == [df["academic_year"].max()]
+
+
+def test_population_bounds_stay_below_the_census_line():
+    df = fig.presence_data()
+    assert (df["min_effective_population"] <= df["census_population"]).all()
+    assert set(df["covid_label"]) == set(fig.COVID_LABELS.values())
