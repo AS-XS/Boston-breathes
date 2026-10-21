@@ -10,7 +10,9 @@ whether the index moves with activity where students should matter most.
    within each year, because network growth shifts the ratio between years.
 2. Break dips: for each university with its own calendar, the share of
    study-area Bluebikes trips at stations on its campus should drop in break
-   weeks compared with nearby full in-session weeks.
+   weeks compared with nearby full in-session weeks. Tufts is left out: its
+   campus stations inside the study area are at its Boston health-sciences
+   campus, which does not follow the main-campus calendar collected.
 3. Street counts: at locations counted in both June and September of the
    same year, bicycle counts near campuses should rise more than elsewhere.
 4. Summer: whether the summer-break share adds to the index in explaining
@@ -32,6 +34,8 @@ from boston_breathes.paths import PROCESSED
 CAMPUS, AWAY = "campus", "away"
 BREAK_MAX_DAYS = 2  # a break week has at most this many days in session
 REFERENCE_WEEKS = 3  # in-session weeks this close to a break are its reference
+# Universities whose study-area campus stations are not at the campus their calendar describes.
+BREAK_TEST_EXCLUDED = {"168148": "Tufts University (Boston health-sciences campus, other calendars)"}
 
 
 def row(check: str, subset: str, metric: str, value: float | None, n: int) -> dict:
@@ -86,7 +90,11 @@ def break_dips(by_institution: pl.DataFrame, by_zone: pl.DataFrame, academic: pl
         .join(normal, on="week_start")
         .select("week_start", pl.col("campus_unitid").alias("unitid"), (pl.col("trips") / pl.col("total")).alias("share"))
     )
-    cal = academic.join(share, on=["week_start", "unitid"]).sort("unitid", "week_start")
+    cal = (
+        academic.filter(~pl.col("unitid").is_in(list(BREAK_TEST_EXCLUDED)))
+        .join(share, on=["week_start", "unitid"])
+        .sort("unitid", "week_start")
+    )
     rows = []
     for (unitid, institution), g in cal.group_by("unitid", "institution"):
         g = g.sort("week_start")

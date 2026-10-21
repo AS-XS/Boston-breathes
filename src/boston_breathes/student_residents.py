@@ -156,7 +156,7 @@ def sequence_based(year: int) -> pl.DataFrame | None:
         if data is None:
             return None
         RAW_DIR.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(data)
+        path.write_bytes(http.require_zip(data, path.name))
     df = parse_sequence_based(path.read_bytes(), lookup.decode("latin-1"), year)
     path.unlink()  # about 125 MB per year; the processed table is all that is kept
     return df

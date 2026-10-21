@@ -76,6 +76,7 @@ def download(name: str) -> bytes | None:
     if resp.status_code == 404:
         return None
     resp.raise_for_status()
+    http.require_zip(resp.content, resp.url)
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     path.write_bytes(resp.content)
     return resp.content

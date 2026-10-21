@@ -51,6 +51,7 @@ def fetch(url: str, name: str) -> str | None:
     if resp.status_code == 404:
         return None
     resp.raise_for_status()
+    http.require(resp.content, url, b"SUMLEV,", "Census estimates CSV")
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     path.write_bytes(resp.content)
     return resp.content.decode("latin-1")

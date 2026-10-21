@@ -31,18 +31,28 @@ from boston_breathes.municipalities import UNKNOWN, assign, load_towns
 from boston_breathes.paths import INTERIM, PROCESSED, RAW, STUDY_AREA
 from boston_breathes.weeks import build_weeks
 
-HISTORICAL_URL = "https://www.arcgis.com/sharing/rest/content/items/7859894afb5641ce91a2bb03599fdf5b/data"
+ITEM_URL = "https://www.arcgis.com/sharing/rest/content/items/7859894afb5641ce91a2bb03599fdf5b"
+HISTORICAL_URL = ITEM_URL + "/data"
 STOPS_URL = "https://api-v3.mbta.com/stops"
 RAW_PATH = RAW / "mbta" / "gated_station_entries_historical.zip"
 INTERIM_DIR = INTERIM / "mbta"
 
 
+def is_stale(cached_mtime: float | None, published_ms: int) -> bool:
+    """True if there is no cached copy or the published file is newer than it."""
+    return cached_mtime is None or cached_mtime < published_ms / 1000
+
+
 def download() -> bytes:
-    if not RAW_PATH.exists():
+    """The historical zip (about 75 MB), downloaded again only when MBTA has published a newer one."""
+    resp = http.get(ITEM_URL, params={"f": "json"}, timeout=60)
+    resp.raise_for_status()
+    published_ms = resp.json()["modified"]
+    if is_stale(RAW_PATH.stat().st_mtime if RAW_PATH.exists() else None, published_ms):
         resp = http.get(HISTORICAL_URL, timeout=900)
         resp.raise_for_status()
         RAW_PATH.parent.mkdir(parents=True, exist_ok=True)
-        RAW_PATH.write_bytes(resp.content)
+        RAW_PATH.write_bytes(http.require_zip(resp.content, HISTORICAL_URL))
     return RAW_PATH.read_bytes()
 
 

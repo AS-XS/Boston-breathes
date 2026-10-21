@@ -58,3 +58,15 @@ def test_bounds_on_students_away():
     assert rows[("study area, 2019", "max_students_away_pct_of_census")] == 10
     assert rows[("Cambridge, 2019-20", "min_students_away_dorm_residents")] == 40
     assert rows[("Cambridge, 2019-20", "min_share_away")] == 0.4
+
+
+def test_break_test_leaves_out_universities_with_mismatched_campuses(monkeypatch):
+    monkeypatch.setattr(ev, "BREAK_TEST_EXCLUDED", {"1": "test"})
+    by_zone = pl.DataFrame({"week_start": WEEKS, "campus_zone": ["away"] * 6,
+                            "trips": [1000] * 6, "complete_week": [True] * 6})
+    by_inst = pl.DataFrame({"week_start": WEEKS, "campus_unitid": ["1"] * 6,
+                            "trips": [100, 100, 60, 100, 100, 100], "complete_week": [True] * 6})
+    academic = pl.DataFrame({"week_start": WEEKS, "unitid": ["1"] * 6, "institution": ["U"] * 6,
+                             "days_in_session": [7, 7, 0, 7, 7, 7], "summer_break_days": [0] * 6})
+    presence = pl.DataFrame({"week_start": WEEKS, "covid_period": ["normal"] * 6})
+    assert ev.break_dips(by_inst, by_zone, academic, presence).is_empty()

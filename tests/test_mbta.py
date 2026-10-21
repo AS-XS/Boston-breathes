@@ -80,3 +80,10 @@ def test_placeholder_ids_matched_by_exact_name():
     out = mbta.match_placeholder_ids(daily, stations)
     by_id = dict(zip(out["stop_id"], out["entries"]))
     assert by_id == {"place-longw": 13, "name-mattapan-line": 5}
+
+
+def test_cached_download_is_refreshed_only_when_a_newer_file_is_published():
+    published_ms = 1_792_521_314_000  # 2026-10-20 18:35 UTC
+    assert mbta.is_stale(None, published_ms)
+    assert mbta.is_stale(published_ms / 1000 - 86400, published_ms)  # cached a day earlier
+    assert not mbta.is_stale(published_ms / 1000 + 60, published_ms)

@@ -40,7 +40,7 @@ def download_boundaries() -> None:
     BOUNDARY_PATH.parent.mkdir(parents=True, exist_ok=True)
     resp = http.get(BOUNDARY_URL, timeout=120)
     resp.raise_for_status()
-    BOUNDARY_PATH.write_bytes(resp.content)
+    BOUNDARY_PATH.write_bytes(http.require_zip(resp.content, BOUNDARY_URL))
 
 
 def load_towns() -> gpd.GeoDataFrame:

@@ -13,7 +13,7 @@ campus_share,"Bluebikes, 2024",corr_log_ratio_vs_index,0.8658,53
 campus_share,"Bluebikes, 2025",corr_log_ratio_vs_index,0.9007,52
 campus_share,"Bluebikes, 2026",corr_log_ratio_vs_index,0.8868,34
 campus_share,"Bluebikes, normal years",median_within_year_corr,0.8239,11
-campus_share,"MBTA, normal",corr_log_ratio_vs_index,0.1132,535
+campus_share,"MBTA, normal",corr_log_ratio_vs_index,0.1112,539
 campus_share,"MBTA, remote_year",corr_log_ratio_vs_index,-0.212,52
 campus_share,"MBTA, 2015",corr_log_ratio_vs_index,0.3783,52
 campus_share,"MBTA, 2016",corr_log_ratio_vs_index,0.3143,52
@@ -25,7 +25,7 @@ campus_share,"MBTA, 2022",corr_log_ratio_vs_index,0.2463,52
 campus_share,"MBTA, 2023",corr_log_ratio_vs_index,0.2613,52
 campus_share,"MBTA, 2024",corr_log_ratio_vs_index,-0.1209,53
 campus_share,"MBTA, 2025",corr_log_ratio_vs_index,0.2034,52
-campus_share,"MBTA, 2026",corr_log_ratio_vs_index,0.2242,34
+campus_share,"MBTA, 2026",corr_log_ratio_vs_index,0.19,38
 campus_share,"MBTA, normal years",median_within_year_corr,0.2463,11
 break_dips,"Boston University, spring",median_change_in_campus_share_pct,-15.1195,10
 break_dips,"Boston University, thanksgiving",median_change_in_campus_share_pct,-11.0225,10
@@ -39,10 +39,7 @@ break_dips,"Massachusetts Institute of Technology, winter",median_change_in_camp
 break_dips,"Northeastern University, spring",median_change_in_campus_share_pct,-40.0251,5
 break_dips,"Northeastern University, thanksgiving",median_change_in_campus_share_pct,-28.2988,9
 break_dips,"Northeastern University, winter",median_change_in_campus_share_pct,-53.5152,23
-break_dips,"Tufts University, spring",median_change_in_campus_share_pct,11.6311,9
-break_dips,"Tufts University, thanksgiving",median_change_in_campus_share_pct,5.5441,10
-break_dips,"Tufts University, winter",median_change_in_campus_share_pct,19.3415,28
-break_dips,all universities and breaks,share_of_breaks_with_a_drop,0.7581,277
+break_dips,all universities and breaks,share_of_breaks_with_a_drop,0.8826,230
 street_counts,"campus, bikes",median_sept_vs_june_change_pct,17.5044,66
 street_counts,"campus, vehicles",median_sept_vs_june_change_pct,3.1063,66
 street_counts,"near, bikes",median_sept_vs_june_change_pct,11.1561,66
@@ -53,10 +50,10 @@ summer,Bluebikes,r2_year_and_index,0.719,534
 summer,Bluebikes,r2_year_index_and_summer,0.7604,534
 summer,Bluebikes,summer_coefficient_log_ratio,0.1374,534
 summer,Bluebikes,index_coefficient_log_ratio,0.2132,534
-summer,MBTA,r2_year_and_index,0.4722,535
-summer,MBTA,r2_year_index_and_summer,0.503,535
-summer,MBTA,summer_coefficient_log_ratio,0.0588,535
-summer,MBTA,index_coefficient_log_ratio,0.072,535
+summer,MBTA,r2_year_and_index,0.4712,539
+summer,MBTA,r2_year_index_and_summer,0.5021,539
+summer,MBTA,summer_coefficient_log_ratio,0.0589,539
+summer,MBTA,index_coefficient_log_ratio,0.0718,539
 students_away_bounds,"study area, 2019",max_students_away,153851.0,52
 students_away_bounds,"study area, 2019",max_students_away_pct_of_census,16.375,52
 students_away_bounds,"Cambridge, 2019-20",min_students_away_dorm_residents,14322.0,1

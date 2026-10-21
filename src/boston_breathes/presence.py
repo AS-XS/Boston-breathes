@@ -1,4 +1,4 @@
-"""Student Presence Index and effective population, by week.
+"""Student Presence Index and bounds on students away, by week.
 
 Students in session
     For each institution, in-person enrollment (IPEDS, students not enrolled

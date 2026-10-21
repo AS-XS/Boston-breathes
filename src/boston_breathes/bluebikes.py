@@ -131,6 +131,11 @@ def download(key: str, dest: Path, retries: int = 4) -> Path:
                 with open(tmp, "wb") as f:
                     for chunk in resp.iter_content(chunk_size=1 << 20):
                         f.write(chunk)
+            with open(tmp, "rb") as f:
+                head = f.read(4)
+            if not head.startswith(b"PK\x03\x04"):
+                tmp.unlink()
+                http.require_zip(head, BUCKET_URL + key)
             tmp.rename(dest)
             return dest
         except requests.RequestException:
