@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown campus population calendars student-residents presence mbta street-counts evaluate test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown campus population calendars student-residents presence mbta street-counts evaluate figures test clean-interim
 
 install:
 	python3 -m venv .venv
@@ -69,6 +69,10 @@ street-counts:
 # Check the Student Presence Index against Bluebikes, MBTA and street counts (after data).
 evaluate:
 	$(RUN) boston_breathes.evaluate_presence
+
+# Figures as PNG images and interactive HTML pages in figures/ (after data).
+figures:
+	$(RUN) boston_breathes.figures
 
 test:
 	$(PYTHON) -m pytest -q

@@ -1,3 +1,4 @@
+altair==5.5.0
 geopandas==1.1.4
 holidays==0.105
 numpy==2.4.6
@@ -5,3 +6,4 @@ polars==1.44.2
 pyarrow==25.0.1
 pytest==9.1.1
 requests==2.34.2
+vl-convert-python==1.9.0.post1
