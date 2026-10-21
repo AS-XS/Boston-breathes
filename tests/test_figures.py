@@ -67,3 +67,24 @@ def test_population_bounds_stay_below_the_census_line():
     df = fig.presence_data()
     assert (df["min_effective_population"] <= df["census_population"]).all()
     assert set(df["covid_label"]) == set(fig.COVID_LABELS.values())
+
+
+def test_correlation_lines_break_at_missing_years():
+    df = fig.correlation_data()
+    assert set(df["source"]) == set(fig.SOURCES)
+    assert df["r"].is_between(-1, 1).all()
+    runs = df.with_columns((pl.col("year").diff().fill_null(1) != 1).cum_sum().over("source").alias("run"))
+    for (_, _), g in runs.group_by("source", "run"):
+        assert (g["year"].diff().drop_nulls() == 1).all()
+
+
+def test_break_dips_leave_out_mismatched_campuses():
+    df = fig.dip_data()
+    assert "Tufts University" not in set(df["institution"])
+    assert set(df["break"]) <= set(fig.BREAK_ORDER)
+
+
+def test_street_pairs_are_finite_ratios_for_both_modes():
+    df = fig.street_data()
+    assert (df["ratio"] > 0).all() and df["ratio"].is_finite().all()
+    assert set(df["mode"]) == set(fig.MODES.values())

@@ -33,6 +33,7 @@ import altair as alt
 import polars as pl
 import vl_convert as vlc
 
+from boston_breathes import evaluate_presence as ev
 from boston_breathes import http
 from boston_breathes.paths import PROCESSED, RAW, ROOT
 from boston_breathes.presence import COVID_END, COVID_START, COVID_YEAR_END, fall_year
@@ -49,7 +50,7 @@ THEMES = {
     "light": {
         "surface": "#fcfcfb", "page": "#f9f9f7", "ink": "#0b0b0b", "ink2": "#52514e", "muted": "#898781",
         "grid": "#e1e0d9", "axis": "#c3c2b7", "border": "rgba(11,11,11,0.10)",
-        "series1": "#2a78d6", "series2": "#eb6834",
+        "series1": "#2a78d6", "series2": "#eb6834", "series3": "#1baf7a",
         # Ordinal blue ramp, least to most; validated light end >= 2:1 on the surface.
         "ordinal": ["#86b6ef", "#3987e5", "#184f95"],
         "neutral": "#e1e0d9",
@@ -57,7 +58,7 @@ THEMES = {
     "dark": {
         "surface": "#1a1a19", "page": "#0d0d0d", "ink": "#f0efec", "ink2": "#c3c2b7", "muted": "#898781",
         "grid": "#2c2c2a", "axis": "#383835", "border": "rgba(255,255,255,0.10)",
-        "series1": "#3987e5", "series2": "#d95926",
+        "series1": "#3987e5", "series2": "#d95926", "series3": "#199e70",
         "ordinal": ["#184f95", "#3987e5", "#86b6ef"],
         "neutral": "#383835",
     },
@@ -672,6 +673,244 @@ def cambridge_bound_note() -> str:
             f"({share['subset'][0].split(', ')[1].replace('-', '–')}).")
 
 
+# ------------------------------------------------------------------ C activity vs the index
+
+RATIO_YEARS = (2019, 2025)  # the last full year before COVID-19 and the latest full year
+SOURCES = {"Bluebikes": ("bluebikes_weekly_by_campus_zone.csv", "trips", ("trip", "trips")),
+           "MBTA": ("mbta_weekly_by_campus_zone.csv", "entries", ("entry", "entries"))}
+
+
+def evaluation() -> pl.DataFrame:
+    return read("presence_evaluation.csv")
+
+
+def correlation(source: str, subset: str) -> float | None:
+    rows = evaluation().filter((pl.col("check") == "campus_share") & (pl.col("subset") == f"{source}, {subset}")
+                               & (pl.col("metric") == "corr_log_ratio_vs_index"))
+    return rows["value"][0] if len(rows) else None
+
+
+def ratio_data(source: str) -> pl.DataFrame:
+    """Weekly campus-to-away ratio (the evaluation's own measure) next to the presence index."""
+    file, value, _ = SOURCES[source]
+    ratio = ev.campus_ratio(read(file), value)
+    return (
+        ratio.with_columns(pl.col("log_ratio").exp().alias("ratio"))
+        .join(presence_data().select("week_start", "week_end", "presence_index", "covid_period"), on="week_start")
+        .filter(pl.col("week_start").dt.year().is_in(RATIO_YEARS))
+        .with_columns(pl.col("week_start").dt.year().alias("year"))
+        .sort("week_start")
+    )
+
+
+def ratio_chart_for(source: str):
+    def chart(t: dict) -> alt.TopLevelMixin:
+        df = iso(ratio_data(source), "week_start", "week_end")
+        _, _, (one, many) = SOURCES[source]
+        ratio_label = f"Campus {many} per away {one}"
+        columns_by_year = []
+        for year in RATIO_YEARS:
+            sub = df.filter(pl.col("year") == year)
+            r = correlation(source, str(year))
+            x = alt.X("week_start:T", title=None, axis=alt.Axis(format="%b", tickCount="month", labelAlign="left"))
+            tooltip = [WEEK_TOOLTIP, alt.Tooltip("ratio:Q", title=ratio_label, format=".3f"),
+                       alt.Tooltip("presence_index:Q", title=INDEX, format=".2f")]
+            panels = []
+            for field, label, color, fmt, height in (
+                ("ratio", f"Campus {many} ÷ away", t["series1"], ".2f", 150),
+                ("presence_index", "In session", t["ink2"], ".0%", 90),
+            ):
+                cols, rule, hover = crosshair(sub, f"hover_{source}_{year}_{field}", tooltip, t, height)
+                scale = alt.Scale(domain=[0, 1]) if field == "presence_index" else alt.Scale(zero=False)
+                line = alt.Chart(sub).mark_line(strokeWidth=2, strokeJoin="round", strokeCap="round", color=color).encode(
+                    x=x, y=alt.Y(f"{field}:Q", title=label, scale=scale,
+                                 axis=alt.Axis(format=fmt, tickCount=3, domain=False, ticks=False, minExtent=36,
+                                               titleLimit=height + 20, labelFlush=True)))
+                panels.append(alt.layer(cols.encode(x=x), line, rule).properties(width=290, height=height))
+            title = f"{year}: correlation {r:.2f}" if r is not None else str(year)
+            columns_by_year.append(alt.vconcat(*panels, spacing=8).properties(
+                title=alt.Title(title, fontSize=12, fontWeight=600, color=t["ink"])))
+        return alt.hconcat(*columns_by_year, spacing=28)
+    return chart
+
+
+def ratio_table_for(source: str):
+    def table() -> pl.DataFrame:
+        _, _, (one, many) = SOURCES[source]
+        return ratio_data(source).select(
+            pl.col("week_start").alias("Week of"), pl.col("ratio").round(3).alias(f"Campus {many} per away {one}"),
+            pl.col("presence_index").alias(INDEX))
+    return table
+
+
+def correlation_data() -> pl.DataFrame:
+    rows = evaluation().filter((pl.col("check") == "campus_share") & (pl.col("metric") == "corr_log_ratio_vs_index"))
+    return (
+        rows.with_columns(pl.col("subset").str.split(", ").alias("parts"))
+        .with_columns(pl.col("parts").list.get(0).alias("source"), pl.col("parts").list.get(1).alias("period"))
+        .filter(pl.col("period").str.contains(r"^\d{4}$"))
+        .select("source", pl.col("period").cast(pl.Int64).alias("year"), pl.col("value").alias("r"),
+                pl.col("n").alias("weeks"))
+        .sort("source", "year")
+    )
+
+
+def correlation_chart(t: dict) -> alt.TopLevelMixin:
+    df = correlation_data()
+    years = list(range(df["year"].min(), df["year"].max() + 1))
+    missing = sorted(set(years) - set(df["year"]))
+    # Lines break at years without a value, so separate runs of consecutive years are drawn apart.
+    df = df.with_columns((pl.col("year").diff().fill_null(1) != 1).cum_sum().over("source").alias("run"))
+    identity = alt.Scale(domain=list(SOURCES), range=[t["series1"], t["series2"]])
+    x = alt.X("year:O", title=None, scale=alt.Scale(domain=years),
+              axis=alt.Axis(labelAngle=0, ticks=False, domainColor=t["axis"]))
+    y = alt.Y("r:Q", title="Correlation within the year", scale=alt.Scale(domain=[-0.4, 1]),
+              axis=alt.Axis(format=".1f", tickCount=7, domain=False, ticks=False))
+    tooltip = [alt.Tooltip("source:N", title="Source"), alt.Tooltip("year:O", title="Year"),
+               alt.Tooltip("r:Q", title="Correlation", format=".2f"), alt.Tooltip("weeks:Q", title="Weeks")]
+    zero = alt.Chart(pl.DataFrame({"r": [0.0]})).mark_rule(color=t["axis"], strokeWidth=1).encode(y="r:Q")
+    lines = alt.Chart(df).mark_line(strokeWidth=2, strokeJoin="round", strokeCap="round").encode(
+        x=x, y=y, color=alt.Color("source:N", title=None, scale=identity), detail="run:N")
+    gap_text = alt.Chart(pl.DataFrame({"year": missing, "label": ["too few weeks"] * len(missing)})).mark_text(
+        angle=270, fontSize=10, color=t["muted"]).encode(x=x, y=alt.value(110), text="label:N")
+    dots = alt.Chart(df).mark_circle(size=70, stroke=t["surface"], strokeWidth=2, opacity=1).encode(
+        x=x, y=y, color=alt.Color("source:N", title=None, scale=identity), tooltip=tooltip)
+    hits = alt.Chart(df).mark_circle(size=600, opacity=0).encode(x=x, y=y, tooltip=tooltip)
+    ends = df.group_by("source").agg(pl.all().sort_by("year").last())
+    labels = alt.Chart(ends).mark_text(align="left", dx=8, fontSize=11, color=t["ink2"]).encode(
+        x=x, y=y, text="source:N")
+    return alt.layer(zero, lines, dots, hits, labels, gap_text).properties(width=WIDTH - 160, height=220)
+
+
+def correlation_table() -> pl.DataFrame:
+    return correlation_data().rename({"source": "Source", "year": "Year", "r": "Correlation", "weeks": "Weeks"})
+
+
+BREAK_ORDER = ["winter", "spring", "thanksgiving"]
+BREAK_LABELS = {"winter": "Winter break", "spring": "Spring break", "thanksgiving": "Thanksgiving"}
+DIP_ORDER = ["Northeastern University", "Boston University", "Harvard University",
+             "Massachusetts Institute of Technology"]
+
+
+def dip_data() -> pl.DataFrame:
+    dips = ev.break_dips(
+        read("bluebikes_weekly_by_institution.csv", schema_overrides={"campus_unitid": pl.Utf8}),
+        read("bluebikes_weekly_by_campus_zone.csv"),
+        read("academic_weekly.csv", schema_overrides={"unitid": pl.Utf8}),
+        read("student_presence_weekly.csv"),
+    )
+    return dips.with_columns(
+        pl.col("break").replace_strict(BREAK_LABELS).alias("break_label"),
+        pl.col("institution").replace(SHORT_NAMES).alias("university"),
+    ).sort("institution", "week_start")
+
+
+def dip_chart(t: dict) -> alt.TopLevelMixin:
+    df = iso(dip_data(), "week_start")
+    order = [SHORT_NAMES.get(n, n) for n in DIP_ORDER]
+    labels = [BREAK_LABELS[b] for b in BREAK_ORDER]
+    identity = alt.Scale(domain=labels, range=[t["series1"], t["series2"], t["series3"]])
+    y = alt.Y("university:N", sort=order, title=None,
+              axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelFontWeight=600, labelPadding=8))
+    y_offset = alt.YOffset("break_label:N", sort=labels, scale=alt.Scale(paddingOuter=0.3))
+    x = alt.X("change_pct:Q", title="Change in the university's campus share of Bluebikes trips (%)",
+              scale=alt.Scale(domain=[-100, 30]),
+              axis=alt.Axis(tickCount=7, grid=True, labelExpr="datum.value > 0 ? '+' + datum.value : datum.value"))
+    color = alt.Color("break_label:N", title=None, scale=identity, sort=labels, legend=alt.Legend(symbolOpacity=1))
+    each = alt.Chart(df).mark_circle(size=36, opacity=0.35).encode(
+        x=x, y=y, yOffset=y_offset, color=color,
+        tooltip=[alt.Tooltip("university:N", title="University"), alt.Tooltip("break_label:N", title="Break"),
+                 alt.Tooltip("week_start:T", title="Week of", format="%b %d, %Y"),
+                 alt.Tooltip("change_pct:Q", title="Change in campus share (%)", format="+.0f")])
+    median = alt.Chart(df).transform_aggregate(
+        median="median(change_pct)", n="count()", groupby=["university", "break_label"]
+    ).mark_point(shape="diamond", size=150, filled=True, opacity=1, stroke=t["surface"], strokeWidth=2).encode(
+        x="median:Q", y=y, yOffset=y_offset, color=color,
+        tooltip=[alt.Tooltip("university:N", title="University"), alt.Tooltip("break_label:N", title="Break"),
+                 alt.Tooltip("median:Q", title="Median change (%)", format="+.0f"),
+                 alt.Tooltip("n:Q", title="Breaks")])
+    zero = alt.Chart(pl.DataFrame({"x": [0]})).mark_rule(color=t["muted"], strokeWidth=1).encode(x="x:Q")
+    return alt.layer(zero, each, median).properties(width=WIDTH - 220, height=alt.Step(18))
+
+
+def dip_table() -> pl.DataFrame:
+    return dip_data().select(
+        pl.col("university").alias("University"), pl.col("break_label").alias("Break"),
+        pl.col("week_start").alias("Week of"), pl.col("change_pct").round(1).alias("Change in campus share (%)"))
+
+
+ZONE_ORDER = ["campus", "near", "away"]
+ZONE_LABELS = {"campus": "Campus (within 400 m)", "near": "Near (400 m to 1 km)", "away": "Away (over 1 km)"}
+MODES = {"log_bikes": "Bicycles", "log_vehicles": "Motor vehicles"}
+
+
+def street_data() -> pl.DataFrame:
+    counts = read("boston_street_counts.csv")
+    names = counts.group_by("count_id").agg(pl.col("location_name").first())
+    pairs = ev.street_count_pairs(counts).join(names, on="count_id", how="left")
+    return (
+        pairs.unpivot(index=["count_id", "location_name", "campus_zone", "year"], on=list(MODES),
+                      variable_name="mode", value_name="log_ratio")
+        .filter(pl.col("log_ratio").is_not_null() & pl.col("log_ratio").is_finite())
+        .with_columns(pl.col("mode").replace_strict(MODES), pl.col("log_ratio").exp().alias("ratio"),
+                      pl.col("campus_zone").replace_strict(ZONE_LABELS).alias("zone"))
+        .sort("campus_zone", "count_id", "year", "mode")
+    )
+
+
+RATIO_LABEL = "(datum.value > 1 ? '+' : '') + format((datum.value - 1) * 100, '.0f') + '%'"
+
+
+def street_chart(t: dict) -> alt.TopLevelMixin:
+    df = street_data()
+    zones = [ZONE_LABELS[z] for z in ZONE_ORDER]
+    modes = list(MODES.values())
+    identity = alt.Scale(domain=modes, range=[t["series1"], t["series2"]])
+    y = alt.Y("zone:N", sort=zones, title=None,
+              axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelFontWeight=600, labelPadding=8))
+    y_offset = alt.YOffset("mode:N", sort=modes, scale=alt.Scale(paddingOuter=0.4))
+    x = alt.X("ratio:Q", title="Change from June to September, same location and year",
+              scale=alt.Scale(type="log", domain=[0.2, 8]),
+              axis=alt.Axis(values=[0.25, 0.5, 1, 2, 4, 8], labelExpr=RATIO_LABEL, grid=True))
+    color = alt.Color("mode:N", title=None, scale=identity, sort=modes, legend=alt.Legend(symbolOpacity=1))
+    each = alt.Chart(df).mark_circle(size=36, opacity=0.35).encode(
+        x=x, y=y, yOffset=y_offset, color=color,
+        tooltip=[alt.Tooltip("location_name:N", title="Location"), alt.Tooltip("year:O", title="Year"),
+                 alt.Tooltip("mode:N", title="Count"), alt.Tooltip("ratio:Q", title="September ÷ June", format=".2f")])
+    median = alt.Chart(df).transform_aggregate(
+        median="median(ratio)", n="count()", groupby=["zone", "mode"]
+    ).mark_point(shape="diamond", size=150, filled=True, opacity=1, stroke=t["surface"], strokeWidth=2).encode(
+        x="median:Q", y=y, yOffset=y_offset, color=color,
+        tooltip=[alt.Tooltip("zone:N", title="Zone"), alt.Tooltip("mode:N", title="Count"),
+                 alt.Tooltip("median:Q", title="Median September ÷ June", format=".2f"),
+                 alt.Tooltip("n:Q", title="Location-years")])
+    one = alt.Chart(pl.DataFrame({"x": [1.0]})).mark_rule(color=t["muted"], strokeWidth=1).encode(x="x:Q")
+    return alt.layer(one, each, median).properties(width=WIDTH - 220, height=alt.Step(22))
+
+
+def street_table() -> pl.DataFrame:
+    return street_data().select(
+        pl.col("location_name").alias("Location"), pl.col("zone").alias("Zone"), pl.col("year").alias("Year"),
+        pl.col("mode").alias("Count"), ((pl.col("ratio") - 1) * 100).round(1).alias("Change, June to September (%)"))
+
+
+def correlation_note() -> str:
+    rows = evaluation().filter((pl.col("check") == "campus_share") & (pl.col("metric") == "median_within_year_corr"))
+    values = dict(zip(rows["subset"], rows["value"]))
+    b, m = values.get("Bluebikes, normal years"), values.get("MBTA, normal years")
+    years = correlation_data()["year"]
+    missing = sorted(set(range(years.min(), years.max() + 1)) - set(years))
+    gap = f" ({', '.join(map(str, missing))})" if missing else ""
+    return (f"Median correlation within a year: Bluebikes {b:.2f}, MBTA {m:.2f}. Years with fewer than 20 "
+            f"comparable normal weeks are left out{gap}.")
+
+
+def dip_note() -> str:
+    row = evaluation().filter(pl.col("metric") == "share_of_breaks_with_a_drop")
+    return (f"In {row['value'][0]:.0%} of {row['n'][0]} break weeks the university's campus share of study-area "
+            "trips fell, compared with full in-session weeks within three weeks of the break.")
+
+
 # ------------------------------------------------------------------ sections
 
 def calendar_note() -> str:
@@ -779,7 +1018,64 @@ SECTION_B = {
     ],
 }
 
-SECTIONS = [SECTION_A, SECTION_B]
+SECTION_C = {
+    "slug": "c_activity_vs_presence",
+    "title": "Does city activity follow the students?",
+    "intro": "Section C of the Boston Breathes figures: whether activity near campuses rises and falls with the "
+             "Student Presence Index. These are the checks in data/processed/presence_evaluation.csv; no model "
+             "is fitted.",
+    "charts": [
+        {
+            "name": "c8_bluebikes_ratio",
+            "title": "Bluebikes: campus trips per away trip, and the index",
+            "question": "Does the share of trips near campuses move with the share of students in session?",
+            "notes": ["Top: Bluebikes trips starting at campus-zone stations (within 400 m of a large campus) for "
+                      "each trip starting more than 1 km from any campus. Weather and citywide events affect both, "
+                      "so the ratio mostly removes them. Bottom: the Student Presence Index for the same weeks.",
+                      "Correlations use the logarithm of the ratio, within each year."],
+            "chart": ratio_chart_for("Bluebikes"), "table": ratio_table_for("Bluebikes"),
+        },
+        {
+            "name": "c9_mbta_ratio",
+            "title": "MBTA: campus entries per away entry, and the index",
+            "question": "Does the same hold for subway entries?",
+            "notes": ["Gated MBTA entries at campus-zone stations per entry at away-zone stations. Campus-zone "
+                      "stations also serve commuters and events, and the street-level Green Line stops at Boston "
+                      "University and Northeastern have no fare gates, so the student signal is weaker."],
+            "chart": ratio_chart_for("MBTA"), "table": ratio_table_for("MBTA"),
+        },
+        {
+            "name": "c10_correlation_by_year",
+            "title": "How closely campus activity follows the index, year by year",
+            "question": "Is the link stable over time, and for both sources?",
+            "notes": [correlation_note,
+                      "Bluebikes was weak while the network was small and is strong since stations filled in "
+                      "around campuses."],
+            "chart": correlation_chart, "table": correlation_table,
+        },
+        {
+            "name": "c11_break_dips",
+            "title": "Campus activity in break weeks",
+            "question": "Do campuses empty out when their university is on break?",
+            "notes": [dip_note,
+                      "Faint dots are single breaks; diamonds are medians. Normal years only. Boston College has no "
+                      "Bluebikes stations on its campus inside the study area, and Tufts' are at its health-sciences "
+                      "campus, which follows other calendars, so both are left out."],
+            "chart": dip_chart, "table": dip_table,
+        },
+        {
+            "name": "c12_street_counts",
+            "title": "Street counts: September against June at the same location",
+            "question": "Do bicycles near campuses rise when students return, while cars do not?",
+            "notes": ["Boston's 24-hour counts on weekdays, at locations counted in both June and September of the "
+                      "same year. Faint dots are location-years; diamonds are medians. The axis is a ratio scale, "
+                      "so doubling and halving are the same distance from no change."],
+            "chart": street_chart, "table": street_table,
+        },
+    ],
+}
+
+SECTIONS = [SECTION_A, SECTION_B, SECTION_C]
 
 
 def resolve(notes: list) -> list[str]:
