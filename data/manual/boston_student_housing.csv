@@ -1,0 +1,15 @@
+fall_year,degree,on_campus,off_campus_at_home,off_campus_not_at_home,not_categorized,source_url,source_table,note
+2018,undergraduate,36865,4089,19726,,https://www.boston.gov/sites/default/files/embed/b/boston_student_housing_trends_ay_18-19_190509.pdf,Table 4,"Uncategorized students excluded by the report; its stated total (60,681) is one more than the categories"
+2018,graduate,3227,5362,17193,,https://www.boston.gov/sites/default/files/embed/b/boston_student_housing_trends_ay_18-19_190509.pdf,Table 4,Uncategorized students excluded by the report
+2019,undergraduate,37797,3559,19072,,https://www.boston.gov/sites/default/files/file/2020/12/Student%20Housing%20Report%2C%202018%20to%202019.pdf,Table 4,
+2019,graduate,3136,5638,17216,,https://www.boston.gov/sites/default/files/file/2020/12/Student%20Housing%20Report%2C%202018%20to%202019.pdf,Table 4,
+2020,undergraduate,22388,4426,16353,,https://www.boston.gov/sites/default/files/file/2021/06/Student%20Housing%20Report%2C%202020.pdf,Table 7,
+2020,graduate,1669,6188,13396,,https://www.boston.gov/sites/default/files/file/2021/06/Student%20Housing%20Report%2C%202020.pdf,Table 7,
+2021,undergraduate,36660,4135,17788,,https://www.boston.gov/sites/default/files/file/2022/08/Student%20Housing%20Report%2C%202021.pdf,Table 8,At-home category labelled 'Off-Campus (Living-at-Home) or Study Abroad/Co-op'
+2021,graduate,2486,6298,16024,,https://www.boston.gov/sites/default/files/file/2022/08/Student%20Housing%20Report%2C%202021.pdf,Table 8,At-home category labelled 'Off-Campus (Living-at-Home) or Study Abroad/Co-op'
+2022,undergraduate,38176,4493,18575,,https://www.boston.gov/sites/default/files/file/2023/06/Student%20Housing%20Report%2C%202022.pdf,Table 8,At-home category labelled 'Off-Campus (Living-at-Home) or Study Abroad/Co-op'
+2022,graduate,3028,6797,19432,,https://www.boston.gov/sites/default/files/file/2023/06/Student%20Housing%20Report%2C%202022.pdf,Table 8,At-home category labelled 'Off-Campus (Living-at-Home) or Study Abroad/Co-op'
+2023,undergraduate,38051,3957,20149,,https://www.boston.gov/sites/default/files/file/2024/06/Boston%20Student%20Housing%20Report_Final.pdf,Table 8,
+2023,graduate,3439,7530,20974,,https://www.boston.gov/sites/default/files/file/2024/06/Boston%20Student%20Housing%20Report_Final.pdf,Table 8,
+2024,undergraduate,39469,3842,19847,85,https://www.boston.gov/sites/default/files/file/2025/06/Boston%20Housing%20Report%202025%20-%20Final%20Draft.pdf,Table 8,
+2024,graduate,2912,6771,19165,55,https://www.boston.gov/sites/default/files/file/2025/06/Boston%20Housing%20Report%202025%20-%20Final%20Draft.pdf,Table 8,

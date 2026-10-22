@@ -48,6 +48,11 @@ def test_table_html_escapes_text():
     assert "&lt;b&gt;A &amp; B&lt;/b&gt;" in out and "1,234" in out and "<b>" not in out
 
 
+def test_table_html_shows_years_without_a_thousands_separator():
+    out = fig.table_html(pl.DataFrame({"Year": [2019], "Trips": [2019]}))
+    assert "<td class='num'>2019</td><td class='num'>2,019</td>" in out
+
+
 def test_academic_year_columns_place_weeks_on_the_reference_year():
     df = pl.DataFrame({"week_start": [date(2019, 7, 29), date(2019, 12, 30), date(2020, 2, 24)]})
     out = df.with_columns(fig.academic_year_columns())

@@ -23,9 +23,12 @@ whether the index moves with activity where students should matter most.
 5. Bounds on students away: how many students leave is to be measured from
    activity, not assumed. The data bound it: at most every resident college
    student (ACS) is away when out of session, and in Cambridge at least the
-   students living in dormitories leave in summer (Town Gown reports). For
-   the whole study area, the beds in university housing (IPEDS capacity) are
-   compared with the resident college students.
+   students living in dormitories leave in summer (Town Gown reports). In
+   Boston, students in university housing are a lower bound in the same way,
+   and students living with their parents (City of Boston student housing
+   reports) are taken out of the upper bound. For the whole study area, the
+   beds in university housing (IPEDS capacity) are compared with the
+   resident college students.
 6. College-age riders: the weekly share of Bluebikes trips by riders aged
    18-24 (among trips with a known rider age, 2015 to April 2020), within
    each year and in full in-session weeks against summer, for the whole study
@@ -247,7 +250,7 @@ def summer_rows(ratio: pl.DataFrame, presence: pl.DataFrame, source: str) -> lis
 
 
 def bound_rows(presence: pl.DataFrame, residents: pl.DataFrame, town_gown: pl.DataFrame,
-               enrollment: pl.DataFrame, year: int = 2019) -> list[dict]:
+               boston_housing: pl.DataFrame, enrollment: pl.DataFrame, year: int = 2019) -> list[dict]:
     """Upper and lower bounds on resident students away, from data only."""
     y = presence.filter(pl.col("week_start").dt.year() == year)
     most = y["max_students_away"].max()
@@ -266,6 +269,18 @@ def bound_rows(presence: pl.DataFrame, residents: pl.DataFrame, town_gown: pl.Da
             row("students_away_bounds", f"Cambridge, {year}-{(year + 1) % 100:02d}", "max_students_away_resident_students", resident, 1),
             row("students_away_bounds", f"Cambridge, {year}-{(year + 1) % 100:02d}", "min_share_away", in_dorms / resident, 1),
         ]
+    # Boston: students in university housing leave in summer; students living with their parents stay.
+    boston = residents.filter((pl.col("municipality") == "Boston") & (pl.col("acs_year") == year))
+    resident = boston["undergrad"][0] + boston["graduate"][0]
+    housing = boston_housing.filter(pl.col("fall_year") == year).row(0, named=True)
+    label = f"Boston, {year}-{(year + 1) % 100:02d}"
+    rows += [
+        row("students_away_bounds", label, "min_students_away_dorm_residents", housing["on_campus"], 1),
+        row("students_away_bounds", label, "students_living_at_home", housing["off_campus_at_home"], 1),
+        row("students_away_bounds", label, "max_students_away_resident_students", resident, 1),
+        row("students_away_bounds", label, "min_share_away", housing["on_campus"] / resident, 1),
+        row("students_away_bounds", label, "max_share_away", 1 - housing["off_campus_at_home"] / resident, 1),
+    ]
     # Beds in university housing (capacity, not occupancy) against resident college students, study area.
     beds = enrollment.filter(pl.col("fall_year") == year)["dorm_capacity"]
     resident_students = residents.filter(pl.col("acs_year") == year).select(
@@ -292,6 +307,7 @@ def main() -> None:
     counts = read("boston_street_counts.csv")
     residents = read("student_residents_annual.csv")
     town_gown = read("cambridge_town_gown.csv")
+    boston_housing = read("boston_student_housing.csv")
     enrollment = read("enrollment_annual.csv", schema_overrides={"unitid": pl.Utf8})
 
     bike_ratio = campus_ratio(bike_zone, "trips")
@@ -304,7 +320,7 @@ def main() -> None:
         + street_rows(street_count_pairs(counts))
         + summer_rows(bike_ratio, presence, "Bluebikes")
         + summer_rows(mbta_ratio, presence, "MBTA")
-        + bound_rows(presence, residents, town_gown, enrollment)
+        + bound_rows(presence, residents, town_gown, boston_housing, enrollment)
         + college_age_rows(bike_zone, presence)
     )
     out = pl.DataFrame(rows, schema={"check": pl.Utf8, "subset": pl.Utf8, "metric": pl.Utf8,

@@ -68,6 +68,11 @@ students_away_bounds,"study area, 2019",max_students_away_pct_of_census,12.4037,
 students_away_bounds,"Cambridge, 2019-20",min_students_away_dorm_residents,14322.0,1
 students_away_bounds,"Cambridge, 2019-20",max_students_away_resident_students,29279.0,1
 students_away_bounds,"Cambridge, 2019-20",min_share_away,0.4892,1
+students_away_bounds,"Boston, 2019-20",min_students_away_dorm_residents,40933.0,1
+students_away_bounds,"Boston, 2019-20",students_living_at_home,9197.0,1
+students_away_bounds,"Boston, 2019-20",max_students_away_resident_students,105609.0,1
+students_away_bounds,"Boston, 2019-20",min_share_away,0.3876,1
+students_away_bounds,"Boston, 2019-20",max_share_away,0.9129,1
 university_housing,"study area, 2019-20",housing_beds,79191.0,47
 university_housing,"study area, 2019-20",housing_beds_share_of_resident_students,0.3472,1
 college_age,"study area, 2015",corr_share_vs_index,0.3159,52

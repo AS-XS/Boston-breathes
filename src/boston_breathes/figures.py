@@ -698,14 +698,16 @@ def population_table() -> pl.DataFrame:
     )
 
 
-def cambridge_bound_note() -> str:
+def dorm_bound_note() -> str:
     ev = read("presence_evaluation.csv")
-    share = ev.filter(pl.col("metric") == "min_share_away")
-    if share.is_empty():
-        return "No dormitory count is available to give a lower bound."
-    return (f"For a sense of scale: in Cambridge, dormitory residents (who almost all leave in summer) were "
-            f"{share['value'][0]:.0%} of resident college students "
-            f"({share['subset'][0].split(', ')[1].replace('-', '–')}).")
+    get = lambda town, metric: ev.filter(  # noqa: E731
+        pl.col("subset").str.starts_with(town) & (pl.col("metric") == metric)).row(0, named=True)
+    cambridge, boston_min, boston_max = (get("Cambridge", "min_share_away"), get("Boston", "min_share_away"),
+                                         get("Boston", "max_share_away"))
+    return (f"For a sense of scale ({cambridge['subset'].split(', ')[1].replace('-', '–')}): in Cambridge, "
+            f"dormitory residents (who almost all leave in summer) were {cambridge['value']:.0%} of resident college "
+            f"students. In Boston, students in university housing were {boston_min['value']:.0%}, and leaving out "
+            f"students who live with their parents, at most {boston_max['value']:.0%} could leave.")
 
 
 def housing_note() -> str:
@@ -1290,7 +1292,7 @@ SECTION_B = {
                       "includes students living here during the school year. The orange line is the lowest the "
                       "population could be if every resident college student (ACS) were away when not in session. "
                       "How many actually leave will be measured from city activity.",
-                      cambridge_bound_note,
+                      dorm_bound_note,
                       housing_note,
                       "The axis does not start at zero."],
             "chart": population_chart, "table": population_table,
@@ -1411,13 +1413,16 @@ def spec(chart_fn, mode: str, font: str, title: str | None = None, notes: list[s
     return out
 
 
+YEAR_COLUMNS = {"Year", "Fall"}  # integers shown without a thousands separator
+
+
 def table_html(df: pl.DataFrame) -> str:
     head = "".join(f"<th scope='col'>{html.escape(c)}</th>" for c in df.columns)
     body = []
     for row in df.iter_rows():
         cells = []
-        for v in row:
-            text = "" if v is None else (f"{v:,}" if isinstance(v, int) else str(v))
+        for column, v in zip(df.columns, row):
+            text = "" if v is None else (f"{v:,}" if isinstance(v, int) and column not in YEAR_COLUMNS else str(v))
             cls = " class='num'" if isinstance(v, (int, float)) and not isinstance(v, bool) else ""
             cells.append(f"<td{cls}>{html.escape(text)}</td>")
         body.append("<tr>" + "".join(cells) + "</tr>")
