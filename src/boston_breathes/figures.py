@@ -861,7 +861,7 @@ def dip_chart(t: dict) -> alt.TopLevelMixin:
     identity = alt.Scale(domain=labels, range=[t["series1"], t["series2"], t["series3"]])
     y = alt.Y("university:N", sort=order, title=None,
               axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelFontWeight=600, labelPadding=8,
-                            labelLimit=210))
+                            labelLimit=240))
     y_offset = alt.YOffset("break_label:N", sort=labels, scale=alt.Scale(paddingOuter=0.3))
     x = alt.X("change_pct:Q", title="Change in the university's campus share of Bluebikes trips (%)",
               scale=alt.Scale(domain=[low, high]),

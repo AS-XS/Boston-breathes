@@ -1,4 +1,80 @@
 unitid,institution,academic_year,event,date,weekday,source_url,note
+164739,Bentley University,2014-15,commencement,2015-05-16,Saturday,https://cdn.bentley.edu/sites/default/files/inline-files/2014-15-calendar-at-a-glance.pdf,Undergraduate ceremony
+164739,Bentley University,2014-15,fall_classes_start,2014-09-02,Tuesday,https://cdn.bentley.edu/sites/default/files/inline-files/2014-15-calendar-at-a-glance.pdf,Fall classes begin
+164739,Bentley University,2014-15,fall_exams_end,2014-12-18,Thursday,https://cdn.bentley.edu/sites/default/files/inline-files/2014-15-calendar-at-a-glance.pdf,Day undergraduate final exams Dec 10-18 (snow make-up Dec 19)
+164739,Bentley University,2014-15,spring_break_end,2015-03-15,Sunday,https://cdn.bentley.edu/sites/default/files/inline-files/2014-15-calendar-at-a-glance.pdf,
+164739,Bentley University,2014-15,spring_break_start,2015-03-07,Saturday,https://cdn.bentley.edu/sites/default/files/inline-files/2014-15-calendar-at-a-glance.pdf,
+164739,Bentley University,2014-15,spring_classes_start,2015-01-20,,https://cdn.bentley.edu/sites/default/files/inline-files/2014-15-calendar-at-a-glance.pdf,Spring classes begin
+164739,Bentley University,2014-15,spring_exams_end,2015-05-07,Thursday,https://cdn.bentley.edu/sites/default/files/inline-files/2014-15-calendar-at-a-glance.pdf,Day undergraduate final exams Apr 30 - May 7
+164739,Bentley University,2015-16,commencement,2016-05-21,Saturday,https://cdn.bentley.edu/sites/default/files/inline-files/2015-16-calendar-at-a-glance.pdf,Undergraduate ceremony
+164739,Bentley University,2015-16,fall_classes_start,2015-09-08,Tuesday,https://cdn.bentley.edu/sites/default/files/inline-files/2015-16-calendar-at-a-glance.pdf,Day and evening undergraduate classes begin (graduate classes Sep 2)
+164739,Bentley University,2015-16,fall_exams_end,2015-12-22,Tuesday,https://cdn.bentley.edu/sites/default/files/inline-files/2015-16-calendar-at-a-glance.pdf,Day undergraduate final exams Dec 16-22
+164739,Bentley University,2015-16,spring_break_end,2016-03-20,Sunday,https://cdn.bentley.edu/sites/default/files/inline-files/2015-16-calendar-at-a-glance.pdf,
+164739,Bentley University,2015-16,spring_break_start,2016-03-12,Saturday,https://cdn.bentley.edu/sites/default/files/inline-files/2015-16-calendar-at-a-glance.pdf,
+164739,Bentley University,2015-16,spring_classes_start,2016-01-19,Tuesday,https://cdn.bentley.edu/sites/default/files/inline-files/2015-16-calendar-at-a-glance.pdf,All spring classes begin
+164739,Bentley University,2015-16,spring_exams_end,2016-05-12,Thursday,https://cdn.bentley.edu/sites/default/files/inline-files/2015-16-calendar-at-a-glance.pdf,Day undergraduate final exams May 6-12
+164739,Bentley University,2016-17,commencement,2017-05-20,Saturday,https://cdn.bentley.edu/sites/default/files/inline-files/2016-17-calendar-at-a-glance-semester.pdf,
+164739,Bentley University,2016-17,fall_classes_start,2016-08-29,Monday,https://cdn.bentley.edu/sites/default/files/inline-files/2016-17-calendar-at-a-glance-semester.pdf,Classes begin: all schools
+164739,Bentley University,2016-17,fall_exams_end,2016-12-21,Wednesday,https://cdn.bentley.edu/sites/default/files/inline-files/2016-17-calendar-at-a-glance-semester.pdf,Undergraduate day exams Dec 14-16 and 19-21 (snow make-up Dec 22)
+164739,Bentley University,2016-17,spring_break_end,2017-03-12,,https://cdn.bentley.edu/sites/default/files/inline-files/2016-17-calendar-at-a-glance-semester.pdf,Spring break March 4-12
+164739,Bentley University,2016-17,spring_break_start,2017-03-04,,https://cdn.bentley.edu/sites/default/files/inline-files/2016-17-calendar-at-a-glance-semester.pdf,Spring break March 4-12
+164739,Bentley University,2016-17,spring_classes_start,2017-01-17,Tuesday,https://cdn.bentley.edu/sites/default/files/inline-files/2016-17-calendar-at-a-glance-semester.pdf,Spring classes begin
+164739,Bentley University,2016-17,spring_exams_end,2017-05-11,Thursday,https://cdn.bentley.edu/sites/default/files/inline-files/2016-17-calendar-at-a-glance-semester.pdf,Undergraduate day exams May 4-5 and 8-11
+164739,Bentley University,2017-18,commencement,2018-05-19,Saturday,https://cdn.bentley.edu/sites/default/files/inline-files/2017-18-calendar-at-a-glance.pdf,
+164739,Bentley University,2017-18,fall_classes_start,2017-08-28,Monday,https://cdn.bentley.edu/sites/default/files/inline-files/2017-18-calendar-at-a-glance.pdf,Classes begin: all schools
+164739,Bentley University,2017-18,fall_exams_end,2017-12-20,Wednesday,https://cdn.bentley.edu/sites/default/files/inline-files/2017-18-calendar-at-a-glance.pdf,Day undergraduate exams Dec 13-15 and 18-20 (snow make-up Dec 21)
+164739,Bentley University,2017-18,spring_break_end,2018-03-11,Sunday,https://cdn.bentley.edu/sites/default/files/inline-files/2017-18-calendar-at-a-glance.pdf,
+164739,Bentley University,2017-18,spring_break_start,2018-03-03,Saturday,https://cdn.bentley.edu/sites/default/files/inline-files/2017-18-calendar-at-a-glance.pdf,
+164739,Bentley University,2017-18,spring_classes_start,2018-01-16,Tuesday,https://cdn.bentley.edu/sites/default/files/inline-files/2017-18-calendar-at-a-glance.pdf,Spring classes begin
+164739,Bentley University,2017-18,spring_exams_end,2018-05-10,Thursday,https://cdn.bentley.edu/sites/default/files/inline-files/2017-18-calendar-at-a-glance.pdf,Undergraduate exams May 3-10
+164739,Bentley University,2018-19,commencement,2019-05-18,Saturday,https://cdn.bentley.edu/sites/default/files/inline-files/2018-19-calendar-at-a-glance_1.pdf,
+164739,Bentley University,2018-19,fall_classes_start,2018-08-27,Monday,https://cdn.bentley.edu/sites/default/files/inline-files/2018-19-calendar-at-a-glance_1.pdf,Classes begin: all schools
+164739,Bentley University,2018-19,fall_exams_end,2018-12-19,Wednesday,https://cdn.bentley.edu/sites/default/files/inline-files/2018-19-calendar-at-a-glance_1.pdf,Undergraduate exams Dec 12-19 (snow make-up Dec 20)
+164739,Bentley University,2018-19,spring_break_end,2019-03-17,Sunday,https://cdn.bentley.edu/sites/default/files/inline-files/2018-19-calendar-at-a-glance_1.pdf,
+164739,Bentley University,2018-19,spring_break_start,2019-03-09,Saturday,https://cdn.bentley.edu/sites/default/files/inline-files/2018-19-calendar-at-a-glance_1.pdf,
+164739,Bentley University,2018-19,spring_classes_start,2019-01-14,Monday,https://cdn.bentley.edu/sites/default/files/inline-files/2018-19-calendar-at-a-glance_1.pdf,Spring classes begin
+164739,Bentley University,2018-19,spring_exams_end,2019-05-09,Thursday,https://cdn.bentley.edu/sites/default/files/inline-files/2018-19-calendar-at-a-glance_1.pdf,Undergraduate exams May 2-9
+164739,Bentley University,2019-20,commencement,2020-05-16,Saturday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/2019-20-academic-calendar_6_0.pdf,Undergraduate commencement as scheduled
+164739,Bentley University,2019-20,fall_classes_start,2019-08-26,Monday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/2019-20-academic-calendar_6_0.pdf,"All fall classes begin (monthly calendar, as of 6/15/2020)"
+164739,Bentley University,2019-20,fall_exams_end,2019-12-18,Wednesday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/2019-20-academic-calendar_6_0.pdf,Exams Dec 11-14 and 16-18 (snow make-up Dec 19)
+164739,Bentley University,2019-20,spring_break_end,2020-03-15,Sunday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/2019-20-academic-calendar_6_0.pdf,
+164739,Bentley University,2019-20,spring_break_start,2020-03-07,Saturday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/2019-20-academic-calendar_6_0.pdf,
+164739,Bentley University,2019-20,spring_classes_start,2020-01-13,Monday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/2019-20-academic-calendar_6_0.pdf,Spring classes begin (the calendar cell is cut off after 'Gra')
+164739,Bentley University,2019-20,spring_exams_end,2020-05-06,Wednesday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/2019-20-academic-calendar_6_0.pdf,Undergraduate day exams Apr 30 - May 6 as scheduled
+164739,Bentley University,2020-21,commencement,2021-04-26,Monday,https://cdn.bentley.edu/sites/default/files/inline-files/Academic%20Calendar%20Spring%202021-v1-08272020_0.pdf,Undergraduate commencement as scheduled in the August 2020 version
+164739,Bentley University,2020-21,fall_classes_start,2020-08-31,Monday,https://cdn.bentley.edu/sites/default/files/inline-files/Academic%20Calendar%20Fall%202020%20At%20a%20Glance_3_1.pdf,Classes begin (fall trimester)
+164739,Bentley University,2020-21,fall_exams_end,2020-12-17,Thursday,https://cdn.bentley.edu/sites/default/files/inline-files/Academic%20Calendar%20Fall%202020%20At%20a%20Glance_3_1.pdf,Undergraduate last day of trimester
+164739,Bentley University,2020-21,spring_break_end,2021-03-05,Friday,https://cdn.bentley.edu/sites/default/files/inline-files/Academic%20Calendar%20Spring%202021-v1-08272020_0.pdf,Calendar version of 27 August 2020
+164739,Bentley University,2020-21,spring_break_start,2021-03-01,Monday,https://cdn.bentley.edu/sites/default/files/inline-files/Academic%20Calendar%20Spring%202021-v1-08272020_0.pdf,Calendar version of 27 August 2020
+164739,Bentley University,2020-21,spring_classes_start,2021-01-11,Monday,https://cdn.bentley.edu/sites/default/files/inline-files/Academic%20Calendar%20Spring%202021-v1-08272020_0.pdf,"Classes begin (spring trimester, calendar version of 27 August 2020)"
+164739,Bentley University,2020-21,spring_exams_end,2021-04-23,Friday,https://cdn.bentley.edu/sites/default/files/inline-files/Academic%20Calendar%20Spring%202021-v1-08272020_0.pdf,Classes end; no separate exam period listed
+164739,Bentley University,2022-23,commencement,2023-05-20,Saturday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.698.21%2BAcademic%2BCalendar%2B2022-23_032123.pdf,
+164739,Bentley University,2022-23,fall_classes_start,2022-09-06,Tuesday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.698.21%2BAcademic%2BCalendar%2B2022-23_032123.pdf,Fall classes begin
+164739,Bentley University,2022-23,fall_exams_end,2022-12-21,Wednesday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.698.21%2BAcademic%2BCalendar%2B2022-23_032123.pdf,Undergraduate final exams end (make-up day Dec 22)
+164739,Bentley University,2022-23,spring_break_end,2023-03-17,Friday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.698.21%2BAcademic%2BCalendar%2B2022-23_032123.pdf,
+164739,Bentley University,2022-23,spring_break_start,2023-03-13,Monday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.698.21%2BAcademic%2BCalendar%2B2022-23_032123.pdf,
+164739,Bentley University,2022-23,spring_classes_start,2023-01-23,Monday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.698.21%2BAcademic%2BCalendar%2B2022-23_032123.pdf,Spring semester classes begin
+164739,Bentley University,2022-23,spring_exams_end,2023-05-11,Thursday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.698.21%2BAcademic%2BCalendar%2B2022-23_032123.pdf,Undergraduate final exams end (make-up day May 12)
+164739,Bentley University,2023-24,commencement,2024-05-18,Saturday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.453.23%20Academic%20Calendar%202023-24_041923.pdf,
+164739,Bentley University,2023-24,fall_classes_start,2023-09-05,Tuesday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.453.23%20Academic%20Calendar%202023-24_041923.pdf,Fall semester classes begin
+164739,Bentley University,2023-24,fall_exams_end,2023-12-19,Tuesday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.453.23%20Academic%20Calendar%202023-24_041923.pdf,Undergraduate final exams Dec 13-19 (make-up day Dec 20)
+164739,Bentley University,2023-24,spring_break_end,2024-03-15,Friday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.453.23%20Academic%20Calendar%202023-24_041923.pdf,
+164739,Bentley University,2023-24,spring_break_start,2024-03-11,Monday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.453.23%20Academic%20Calendar%202023-24_041923.pdf,
+164739,Bentley University,2023-24,spring_classes_start,2024-01-22,Monday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.453.23%20Academic%20Calendar%202023-24_041923.pdf,Spring semester classes begin
+164739,Bentley University,2023-24,spring_exams_end,2024-05-08,Wednesday,https://d2f5upgbvkx8pz.cloudfront.net/sites/default/files/inline-files/AA.453.23%20Academic%20Calendar%202023-24_041923.pdf,Undergraduate final exams May 2-8 (make-up day May 9)
+164739,Bentley University,2024-25,commencement,2025-05-17,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202024-25.1.pdf,Undergraduate commencement (graduate May 16)
+164739,Bentley University,2024-25,fall_classes_start,2024-09-03,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202024-25.1.pdf,Fall semester classes begin
+164739,Bentley University,2024-25,fall_exams_end,2024-12-17,Tuesday,https://downloads.bentley.edu/registrar/2024-2025%20Academic%20Calendar%202024.08.14.pdf,Undergraduate final exams Dec 11-17 (make-up day Dec 18)
+164739,Bentley University,2024-25,spring_break_end,2025-03-16,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202024-25.1.pdf,Spring break March 10-16
+164739,Bentley University,2024-25,spring_break_start,2025-03-10,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202024-25.1.pdf,Spring break March 10-16
+164739,Bentley University,2024-25,spring_classes_start,2025-01-21,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202024-25.1.pdf,Spring semester classes begin
+164739,Bentley University,2024-25,spring_exams_end,2025-05-08,Thursday,https://downloads.bentley.edu/registrar/2024-2025%20Academic%20Calendar%202024.08.14.pdf,Undergraduate final exams end (make-up day May 9)
+164739,Bentley University,2025-26,fall_classes_start,2025-09-02,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202025-26.pdf,First day of classes (full semester)
+164739,Bentley University,2025-26,fall_exams_end,2025-12-16,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202025-26.pdf,Undergraduate final classes and exams Dec 10-16 (make-up day Dec 17)
+164739,Bentley University,2025-26,spring_break_end,2026-03-15,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202025-26.pdf,Spring break March 7-15
+164739,Bentley University,2025-26,spring_break_start,2026-03-07,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202025-26.pdf,Spring break March 7-15
+164739,Bentley University,2025-26,spring_classes_start,2026-01-20,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202025-26.pdf,First day of classes (full semester)
+164739,Bentley University,2025-26,spring_exams_end,2026-05-07,,https://downloads.bentley.edu/registrar/Academic%20Calendar%202025-26.pdf,Undergraduate final week May 1-7 (make-up day May 8)
 164739,Bentley University,2026-27,commencement,2027-05-14,,https://www.bentley.edu/offices/registrar/semesterdates,"Commencement May 14-15, 2027; first day recorded"
 164739,Bentley University,2026-27,fall_classes_start,2026-08-31,,https://www.bentley.edu/offices/registrar/semesterdates,"First day of classes (full semester); page for the current academic year, read 2026-10-22"
 164739,Bentley University,2026-27,fall_exams_end,2026-12-15,,https://www.bentley.edu/offices/registrar/semesterdates,Last day of undergraduate final classes and exams (make-up day 2026-12-16)
@@ -359,6 +435,34 @@ unitid,institution,academic_year,event,date,weekday,source_url,note
 165112,Bunker Hill Community College,2026-27,spring_break_start,2027-03-15,,https://www.bhcc.edu/academic-calendar/academiccalendar-spring2027/,
 165112,Bunker Hill Community College,2026-27,spring_classes_start,2027-01-25,,https://www.bhcc.edu/academic-calendar/academiccalendar-spring2027/,Semester begins (first day of full-semester classes)
 165112,Bunker Hill Community College,2026-27,spring_exams_end,2027-05-19,,https://www.bhcc.edu/academic-calendar/academiccalendar-spring2027/,Last of the assessment days; semester ends
+165529,Curry College,2025-26,commencement,2026-05-17,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2025-2026.pdf,
+165529,Curry College,2025-26,fall_classes_start,2025-08-25,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2025-2026.pdf,Classes begin
+165529,Curry College,2025-26,fall_exams_end,2025-12-13,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2025-2026.pdf,Final examinations Dec 10-13 (snow day Dec 15 if needed)
+165529,Curry College,2025-26,spring_break_end,2026-03-15,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2025-2026.pdf,Spring recess
+165529,Curry College,2025-26,spring_break_start,2026-03-07,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2025-2026.pdf,Spring recess
+165529,Curry College,2025-26,spring_classes_start,2026-01-20,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2025-2026.pdf,Classes begin
+165529,Curry College,2025-26,spring_exams_end,2026-05-11,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2025-2026.pdf,Final examinations May 7-11
+165529,Curry College,2026-27,commencement,2027-05-23,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2026-2027.pdf,
+165529,Curry College,2026-27,fall_classes_start,2026-08-31,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2026-2027.pdf,Classes begin
+165529,Curry College,2026-27,fall_exams_end,2026-12-19,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2026-2027.pdf,Final examinations Dec 16-19 (snow day Dec 21 if needed)
+165529,Curry College,2026-27,spring_break_end,2027-03-21,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2026-2027.pdf,Spring recess
+165529,Curry College,2026-27,spring_break_start,2027-03-13,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2026-2027.pdf,Spring recess
+165529,Curry College,2026-27,spring_classes_start,2027-01-25,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2026-2027.pdf,Classes begin
+165529,Curry College,2026-27,spring_exams_end,2027-05-15,,https://www.curry.edu/assets/Documents/Academics/Academic-Calendar-2026-2027.pdf,Final examinations May 12-15
+165662,Emerson College,2026-27,commencement,2027-05-07,Friday,https://emerson.edu/academics/academic-calendar/,Commencement weekend May 7-8; first day recorded
+165662,Emerson College,2026-27,fall_classes_start,2026-09-02,Wednesday,https://emerson.edu/academics/academic-calendar/,"Boston fall classes begin (page for the current academic year, read 2026-10-22)"
+165662,Emerson College,2026-27,fall_exams_end,2026-12-18,Friday,https://emerson.edu/academics/academic-calendar/,Residence halls close at noon; the calendar lists no last day of classes or exams (final grades due Dec 21)
+165662,Emerson College,2026-27,spring_break_end,2027-03-12,Friday,https://emerson.edu/academics/academic-calendar/,
+165662,Emerson College,2026-27,spring_break_start,2027-03-08,Monday,https://emerson.edu/academics/academic-calendar/,
+165662,Emerson College,2026-27,spring_classes_start,2027-01-12,Tuesday,https://emerson.edu/academics/academic-calendar/,Boston spring classes begin
+165662,Emerson College,2026-27,spring_exams_end,2027-05-01,Saturday,https://emerson.edu/academics/academic-calendar/,Residence halls close at noon for students not in a graduation ceremony; the calendar lists no last day of classes or exams (final grades due May 4)
+165671,Emmanuel College,2026-27,commencement,2027-05-08,Saturday,https://www.emmanuel.edu/academiccalendar,
+165671,Emmanuel College,2026-27,fall_classes_start,2026-09-02,Wednesday,https://www.emmanuel.edu/academiccalendar,Fall 2026 classes begin (Arts + Sciences; page read 2026-10-22)
+165671,Emmanuel College,2026-27,fall_exams_end,2026-12-14,Monday,https://www.emmanuel.edu/academiccalendar,Final exam period Dec 10-12 and 14
+165671,Emmanuel College,2026-27,spring_break_end,2027-03-05,Friday,https://www.emmanuel.edu/academiccalendar,Arts + Sciences spring break
+165671,Emmanuel College,2026-27,spring_break_start,2027-03-01,Monday,https://www.emmanuel.edu/academiccalendar,Arts + Sciences spring break
+165671,Emmanuel College,2026-27,spring_classes_start,2027-01-13,Wednesday,https://www.emmanuel.edu/academiccalendar,Spring 2027 classes begin
+165671,Emmanuel College,2026-27,spring_exams_end,2027-05-03,Monday,https://www.emmanuel.edu/academiccalendar,Final exam period Apr 29 - May 1 and May 3
 166027,Harvard University,2014-15,commencement,2015-05-28,Thursday,https://provost.harvard.edu/sites/g/files/omnuum12476/files/provost/files/calendar.pdf,
 166027,Harvard University,2014-15,spring_break_end,2015-03-22,Sunday,https://provost.harvard.edu/sites/g/files/omnuum12476/files/provost/files/calendar.pdf,
 166027,Harvard University,2014-15,spring_break_start,2015-03-14,Saturday,https://provost.harvard.edu/sites/g/files/omnuum12476/files/provost/files/calendar.pdf,
@@ -528,6 +632,13 @@ unitid,institution,academic_year,event,date,weekday,source_url,note
 166656,MCPHS University,2026-27,spring_break_start,2027-03-01,Monday,https://www.mcphs.edu/-/media/files/docs/departments/registrar/2026-2027-academic-calendaroct.pdf,
 166656,MCPHS University,2026-27,spring_classes_start,2027-01-11,Monday,https://www.mcphs.edu/-/media/files/docs/departments/registrar/2026-2027-academic-calendaroct.pdf,Spring semester begins
 166656,MCPHS University,2026-27,spring_exams_end,2027-04-30,Friday,https://www.mcphs.edu/-/media/files/docs/departments/registrar/2026-2027-academic-calendaroct.pdf,Spring final exam week ends (make-up day the next day)
+166674,Massachusetts College of Art and Design,2026-27,commencement,2027-05-20,Thursday,https://massart.edu/academics/academic-calendar,
+166674,Massachusetts College of Art and Design,2026-27,fall_classes_start,2026-09-02,Wednesday,https://massart.edu/academics/academic-calendar,"Fall classes begin (page for the current academic year, read 2026-10-22)"
+166674,Massachusetts College of Art and Design,2026-27,fall_exams_end,2026-12-18,Friday,https://massart.edu/academics/academic-calendar,Final exams/review board week Dec 15-18
+166674,Massachusetts College of Art and Design,2026-27,spring_break_end,2027-03-05,Friday,https://massart.edu/academics/academic-calendar,
+166674,Massachusetts College of Art and Design,2026-27,spring_break_start,2027-03-01,Monday,https://massart.edu/academics/academic-calendar,
+166674,Massachusetts College of Art and Design,2026-27,spring_classes_start,2027-01-20,Wednesday,https://massart.edu/academics/academic-calendar,Spring 2027 classes begin
+166674,Massachusetts College of Art and Design,2026-27,spring_exams_end,2027-05-11,Tuesday,https://massart.edu/academics/academic-calendar,Final exam day
 166683,Massachusetts Institute of Technology,2015-16,commencement,2016-06-03,,https://catalog.mit.edu/archive/2015-2016/academic-calendar/,Last day recorded
 166683,Massachusetts Institute of Technology,2015-16,fall_classes_start,2015-09-09,Wednesday,https://catalog.mit.edu/archive/2015-2016/academic-calendar/,
 166683,Massachusetts Institute of Technology,2015-16,fall_exams_end,2015-12-18,,https://catalog.mit.edu/archive/2015-2016/academic-calendar/,Last day of final exam period
@@ -703,6 +814,48 @@ unitid,institution,academic_year,event,date,weekday,source_url,note
 167783,Simmons University,2026-27,spring_break_start,2027-03-01,,https://www.simmons.edu/academics/academic-calendar,
 167783,Simmons University,2026-27,spring_classes_start,2027-01-19,,https://www.simmons.edu/academics/academic-calendar,Spring classes begin for traditional undergraduate and graduate students
 167783,Simmons University,2026-27,spring_exams_end,2027-05-14,,https://www.simmons.edu/academics/academic-calendar,Last day of the undergraduate final exam period
+168005,Suffolk University,2019-20,spring_break_end,2020-03-13,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,
+168005,Suffolk University,2019-20,spring_break_start,2020-03-09,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,
+168005,Suffolk University,2019-20,spring_classes_start,2020-01-13,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,20/SP spring classes convene (25Live archive of the CAS/SBS academic calendar)
+168005,Suffolk University,2019-20,spring_exams_end,2020-05-05,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Final exams and art/design portfolio week Apr 29 - May 5 as scheduled
+168005,Suffolk University,2020-21,fall_classes_start,2020-09-03,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,CAS/SBS day classes convene (evening classes Sep 2)
+168005,Suffolk University,2020-21,fall_exams_end,2020-12-18,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Final exams Dec 14-18 (inclement weather day Dec 19)
+168005,Suffolk University,2020-21,spring_break_end,none,,https://thesuffolkjournal.com/31704/news/spring-break-canceled-winter-break-extended-at-suffolk-due-to-covid-19/,No spring break in spring 2021 (COVID-19); the 25Live calendar lists make-up days but no break
+168005,Suffolk University,2020-21,spring_break_start,none,,https://thesuffolkjournal.com/31704/news/spring-break-canceled-winter-break-extended-at-suffolk-due-to-covid-19/,No spring break in spring 2021 (COVID-19); the 25Live calendar lists make-up days but no break
+168005,Suffolk University,2020-21,spring_classes_start,2021-01-25,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,21/SP spring classes convene
+168005,Suffolk University,2020-21,spring_exams_end,2021-05-11,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Final exams May 5-11
+168005,Suffolk University,2021-22,fall_classes_start,2021-09-08,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,CAS/SBS day classes convene (evening classes Sep 7)
+168005,Suffolk University,2021-22,fall_exams_end,2021-12-17,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Final exams Dec 13-17 (make-up day Dec 18)
+168005,Suffolk University,2021-22,spring_break_end,2022-03-18,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,
+168005,Suffolk University,2021-22,spring_break_start,2022-03-14,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,
+168005,Suffolk University,2021-22,spring_classes_start,2022-01-18,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,22/SP spring classes convene
+168005,Suffolk University,2021-22,spring_exams_end,2022-05-10,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Final exams May 4-10
+168005,Suffolk University,2022-23,fall_classes_start,2022-09-07,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,CAS/SBS day classes convene (evening classes Sep 6)
+168005,Suffolk University,2022-23,fall_exams_end,2022-12-16,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Final exams Dec 12-16 (make-up day Dec 17)
+168005,Suffolk University,2022-23,spring_break_end,2023-03-17,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,
+168005,Suffolk University,2022-23,spring_break_start,2023-03-13,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,
+168005,Suffolk University,2022-23,spring_classes_start,2023-01-17,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,23/SP spring classes convene
+168005,Suffolk University,2022-23,spring_exams_end,2023-05-09,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Final exams May 3-9
+168005,Suffolk University,2023-24,commencement,2024-05-19,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Class of 2024 commencement ceremonies
+168005,Suffolk University,2023-24,fall_classes_start,2023-09-06,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Day classes convene (evening classes Sep 5)
+168005,Suffolk University,2023-24,fall_exams_end,2023-12-15,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Final exams Dec 11-15 (make-up day Dec 16)
+168005,Suffolk University,2023-24,spring_break_end,2024-03-15,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,
+168005,Suffolk University,2023-24,spring_break_start,2024-03-11,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,
+168005,Suffolk University,2023-24,spring_classes_start,2024-01-16,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Spring 2024 classes convene
+168005,Suffolk University,2023-24,spring_exams_end,2024-05-07,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Final exams May 1-7
+168005,Suffolk University,2024-25,commencement,2025-05-18,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Spring 2025 graduation weekend
+168005,Suffolk University,2024-25,fall_classes_start,2024-09-04,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Fall 2024 day classes begin (evening classes Sep 3)
+168005,Suffolk University,2024-25,fall_exams_end,2024-12-17,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Exams and portfolio week Dec 11-17 (make-up day Dec 18)
+168005,Suffolk University,2024-25,spring_break_end,2025-03-15,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Spring break listed Mon-Sat Mar 10-15
+168005,Suffolk University,2024-25,spring_break_start,2025-03-10,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Spring break listed Mon-Sat Mar 10-15
+168005,Suffolk University,2024-25,spring_classes_start,2025-01-13,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Spring 2025 classes begin
+168005,Suffolk University,2024-25,spring_exams_end,2025-05-06,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Exams and portfolio week Apr 30 - May 6
+168005,Suffolk University,2025-26,commencement,2026-05-17,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Commencement weekend
+168005,Suffolk University,2025-26,fall_classes_start,2025-09-03,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Fall 2025 day classes begin (evening classes Sep 2)
+168005,Suffolk University,2025-26,fall_exams_end,2025-12-12,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Exams and portfolio week Dec 8-12 (make-up day Dec 13)
+168005,Suffolk University,2025-26,spring_break_end,2026-03-14,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Spring break listed Mon-Sat Mar 9-14
+168005,Suffolk University,2025-26,spring_break_start,2026-03-09,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Spring break listed Mon-Sat Mar 9-14
+168005,Suffolk University,2025-26,spring_exams_end,2026-05-05,,https://25livepub.collegenet.com/calendars/suffolk-university-calendar-cassbs-academic-calendar.ics,Exams and portfolio week Apr 29 - May 5
 168005,Suffolk University,2026-27,commencement,2027-05-22,,https://www.suffolk.edu/-/media/suffolk/documents/academics/academic-calendar/2627-academic-calendar.pdf,Commencement weekend 2027-05-22 to 2027-05-23
 168005,Suffolk University,2026-27,fall_classes_start,2026-09-09,,https://www.suffolk.edu/-/media/suffolk/documents/academics/academic-calendar/2627-academic-calendar.pdf,College of Arts and Sciences and Sawyer Business School calendar
 168005,Suffolk University,2026-27,fall_exams_end,2026-12-18,,https://www.suffolk.edu/-/media/suffolk/documents/academics/academic-calendar/2627-academic-calendar.pdf,Last day of exams and portfolio week
@@ -797,6 +950,55 @@ unitid,institution,academic_year,event,date,weekday,source_url,note
 168148,Tufts University,2026-27,spring_break_start,2027-03-20,,https://m.tufts.edu/students/device/text/student_athletic_calendar/index?feed=calendar_student_life_academic,Spring Recess begins
 168148,Tufts University,2026-27,spring_classes_start,2027-01-20,,https://m.tufts.edu/students/device/text/student_athletic_calendar/index?feed=calendar_student_life_academic,Classes begin for full-term courses
 168148,Tufts University,2026-27,spring_exams_end,2027-05-14,,https://www.trumba.com/calendars/student-life-registrar-academic-calendar.ics?startdate=20270101&months=6,"Tufts registrar academic calendar (A&S, SoE, SMFA) feed: Final Examinations End"
+168227,Wentworth Institute of Technology,2019-20,commencement,2020-04-25,Saturday,https://catalog.wit.edu/previous-catalogs/2019-2020/academic-calendar/,"Spring commencement as scheduled; also a commencement in August, after the summer semester"
+168227,Wentworth Institute of Technology,2019-20,fall_classes_start,2019-09-05,Thursday,https://catalog.wit.edu/previous-catalogs/2019-2020/academic-calendar/,Classes begin (undergraduate/graduate)
+168227,Wentworth Institute of Technology,2019-20,fall_exams_end,2019-12-12,Thursday,https://catalog.wit.edu/previous-catalogs/2019-2020/academic-calendar/,Final exam period Dec 9-12
+168227,Wentworth Institute of Technology,2019-20,spring_break_end,2020-03-13,Friday,https://catalog.wit.edu/previous-catalogs/2019-2020/academic-calendar/,
+168227,Wentworth Institute of Technology,2019-20,spring_break_start,2020-03-07,Saturday,https://catalog.wit.edu/previous-catalogs/2019-2020/academic-calendar/,
+168227,Wentworth Institute of Technology,2019-20,spring_classes_start,2020-01-08,Wednesday,https://catalog.wit.edu/previous-catalogs/2019-2020/academic-calendar/,Classes begin
+168227,Wentworth Institute of Technology,2019-20,spring_exams_end,2020-04-21,Tuesday,https://catalog.wit.edu/previous-catalogs/2019-2020/academic-calendar/,"Final exam period Apr 15-17 and 21, as scheduled"
+168227,Wentworth Institute of Technology,2020-21,commencement,2021-05-01,Saturday,https://catalog.wit.edu/previous-catalogs/2020-2021/academic-calendar/,"Spring commencement; also a commencement in August, after the summer semester"
+168227,Wentworth Institute of Technology,2020-21,fall_classes_start,2020-09-08,Tuesday,https://catalog.wit.edu/previous-catalogs/2020-2021/academic-calendar/,Classes begin (undergraduate/graduate full time)
+168227,Wentworth Institute of Technology,2020-21,fall_exams_end,2020-12-15,Tuesday,https://catalog.wit.edu/previous-catalogs/2020-2021/academic-calendar/,Final exam period Dec 10-11 and 14-15
+168227,Wentworth Institute of Technology,2020-21,spring_break_end,none,,https://catalog.wit.edu/previous-catalogs/2020-2021/academic-calendar/,No spring break in spring 2021 (COVID-19); the spring 2021 calendar lists none
+168227,Wentworth Institute of Technology,2020-21,spring_break_start,none,,https://catalog.wit.edu/previous-catalogs/2020-2021/academic-calendar/,No spring break in spring 2021 (COVID-19); the spring 2021 calendar lists none
+168227,Wentworth Institute of Technology,2020-21,spring_classes_start,2021-01-19,Tuesday,https://catalog.wit.edu/previous-catalogs/2020-2021/academic-calendar/,Classes begin
+168227,Wentworth Institute of Technology,2020-21,spring_exams_end,2021-04-27,Tuesday,https://catalog.wit.edu/previous-catalogs/2020-2021/academic-calendar/,Final exam period Apr 22-23 and 26-27
+168227,Wentworth Institute of Technology,2021-22,commencement,2022-04-30,Saturday,https://catalog.wit.edu/previous-catalogs/2021-2022/academic-calendar/,"Spring commencement; also a commencement in August, after the summer semester"
+168227,Wentworth Institute of Technology,2021-22,fall_classes_start,2021-09-07,Tuesday,https://catalog.wit.edu/previous-catalogs/2021-2022/academic-calendar/,Classes begin for 15-week and first 7-week classes
+168227,Wentworth Institute of Technology,2021-22,fall_exams_end,2021-12-14,Tuesday,https://catalog.wit.edu/previous-catalogs/2021-2022/academic-calendar/,Final exam period Dec 9-10 and 13-14
+168227,Wentworth Institute of Technology,2021-22,spring_break_end,2022-03-11,Friday,https://catalog.wit.edu/previous-catalogs/2021-2022/academic-calendar/,
+168227,Wentworth Institute of Technology,2021-22,spring_break_start,2022-03-05,Saturday,https://catalog.wit.edu/previous-catalogs/2021-2022/academic-calendar/,
+168227,Wentworth Institute of Technology,2021-22,spring_classes_start,2022-01-10,Monday,https://catalog.wit.edu/previous-catalogs/2021-2022/academic-calendar/,Classes begin for 15-week and first 7-week classes
+168227,Wentworth Institute of Technology,2021-22,spring_exams_end,2022-04-26,Tuesday,https://catalog.wit.edu/previous-catalogs/2021-2022/academic-calendar/,Final exam period Apr 21-22 and 25-26
+168227,Wentworth Institute of Technology,2022-23,commencement,2023-04-22,Saturday,https://catalog.wit.edu/previous-catalogs/2022-2023/academic-calendar/,"Spring commencement; also a commencement in August, after the summer semester"
+168227,Wentworth Institute of Technology,2022-23,fall_classes_start,2022-09-06,Tuesday,https://catalog.wit.edu/previous-catalogs/2022-2023/academic-calendar/,Classes begin for 15-week and first 7-week classes
+168227,Wentworth Institute of Technology,2022-23,fall_exams_end,2022-12-13,Tuesday,https://catalog.wit.edu/previous-catalogs/2022-2023/academic-calendar/,Final exam period Dec 8-9 and 12-13
+168227,Wentworth Institute of Technology,2022-23,spring_break_end,2023-03-10,Friday,https://catalog.wit.edu/previous-catalogs/2022-2023/academic-calendar/,
+168227,Wentworth Institute of Technology,2022-23,spring_break_start,2023-03-04,Saturday,https://catalog.wit.edu/previous-catalogs/2022-2023/academic-calendar/,
+168227,Wentworth Institute of Technology,2022-23,spring_classes_start,2023-01-10,Tuesday,https://catalog.wit.edu/previous-catalogs/2022-2023/academic-calendar/,Classes begin for 15-week and first 7-week classes
+168227,Wentworth Institute of Technology,2022-23,spring_exams_end,2023-04-19,Wednesday,https://catalog.wit.edu/previous-catalogs/2022-2023/academic-calendar/,Final exam period Apr 13-14 and 18-19
+168227,Wentworth Institute of Technology,2023-24,commencement,2024-04-20,Saturday,https://catalog.wit.edu/previous-catalogs/2023-2024/academic-calendar/,"Spring commencement; also a commencement in August, after the summer semester"
+168227,Wentworth Institute of Technology,2023-24,fall_classes_start,2023-09-07,Thursday,https://catalog.wit.edu/previous-catalogs/2023-2024/academic-calendar/,Classes begin for 15-week and first 7-week classes
+168227,Wentworth Institute of Technology,2023-24,fall_exams_end,2023-12-14,Thursday,https://catalog.wit.edu/previous-catalogs/2023-2024/academic-calendar/,Final exam period Dec 11-14
+168227,Wentworth Institute of Technology,2023-24,spring_break_end,2024-03-08,Friday,https://catalog.wit.edu/previous-catalogs/2023-2024/academic-calendar/,
+168227,Wentworth Institute of Technology,2023-24,spring_break_start,2024-03-02,Saturday,https://catalog.wit.edu/previous-catalogs/2023-2024/academic-calendar/,
+168227,Wentworth Institute of Technology,2023-24,spring_classes_start,2024-01-09,Tuesday,https://catalog.wit.edu/previous-catalogs/2023-2024/academic-calendar/,Classes begin for 15-week and first 7-week classes
+168227,Wentworth Institute of Technology,2023-24,spring_exams_end,2024-04-17,Wednesday,https://catalog.wit.edu/previous-catalogs/2023-2024/academic-calendar/,Final exam period Apr 11-12 and 16-17
+168227,Wentworth Institute of Technology,2024-25,commencement,2025-04-17,Thursday,https://catalog.wit.edu/previous-catalogs/2024-2025/academic-calendar/,"Spring commencement; also a commencement in August, after the summer semester"
+168227,Wentworth Institute of Technology,2024-25,fall_classes_start,2024-09-03,Tuesday,https://catalog.wit.edu/previous-catalogs/2024-2025/academic-calendar/,Classes begin for 15-week and first 7-week classes
+168227,Wentworth Institute of Technology,2024-25,fall_exams_end,2024-12-10,Tuesday,https://catalog.wit.edu/previous-catalogs/2024-2025/academic-calendar/,Final exam period Dec 5-6 and 9-10 (the page misprints Dec 6 as 2023)
+168227,Wentworth Institute of Technology,2024-25,spring_break_end,2025-03-08,Saturday,https://catalog.wit.edu/previous-catalogs/2024-2025/academic-calendar/,
+168227,Wentworth Institute of Technology,2024-25,spring_break_start,2025-03-03,Monday,https://catalog.wit.edu/previous-catalogs/2024-2025/academic-calendar/,
+168227,Wentworth Institute of Technology,2024-25,spring_classes_start,2025-01-07,Tuesday,https://catalog.wit.edu/previous-catalogs/2024-2025/academic-calendar/,Classes begin for 15-week and first 7-week classes
+168227,Wentworth Institute of Technology,2024-25,spring_exams_end,2025-04-15,Tuesday,https://catalog.wit.edu/previous-catalogs/2024-2025/academic-calendar/,Final exam period Apr 10-11 and 14-15
+168227,Wentworth Institute of Technology,2025-26,commencement,2026-04-16,Thursday,https://catalog.wit.edu/previous-catalogs/2025-2026_Academic_Catalog.pdf,"Spring commencement; also a commencement in August, after the summer semester"
+168227,Wentworth Institute of Technology,2025-26,fall_classes_start,2025-09-02,Tuesday,https://catalog.wit.edu/previous-catalogs/2025-2026_Academic_Catalog.pdf,Classes begin for 15-week and first 7-week classes
+168227,Wentworth Institute of Technology,2025-26,fall_exams_end,2025-12-11,Thursday,https://catalog.wit.edu/previous-catalogs/2025-2026_Academic_Catalog.pdf,Final exams Dec 8-11
+168227,Wentworth Institute of Technology,2025-26,spring_break_end,2026-03-07,Saturday,https://catalog.wit.edu/previous-catalogs/2025-2026_Academic_Catalog.pdf,
+168227,Wentworth Institute of Technology,2025-26,spring_break_start,2026-03-02,Monday,https://catalog.wit.edu/previous-catalogs/2025-2026_Academic_Catalog.pdf,
+168227,Wentworth Institute of Technology,2025-26,spring_classes_start,2026-01-06,Tuesday,https://catalog.wit.edu/previous-catalogs/2025-2026_Academic_Catalog.pdf,Classes begin for 15-week and first 7-week classes
+168227,Wentworth Institute of Technology,2025-26,spring_exams_end,2026-04-14,Tuesday,https://catalog.wit.edu/previous-catalogs/2025-2026_Academic_Catalog.pdf,Final exam period Apr 9-10 and 13-14
 168227,Wentworth Institute of Technology,2026-27,commencement,2027-08-13,Friday,https://wit.edu/sites/default/files/2026-09/WIT%202026-2027%20Academic%20Calendar%209.28.2026.pdf,"Commencement is held in August, after the summer term"
 168227,Wentworth Institute of Technology,2026-27,fall_classes_start,2026-09-08,Tuesday,https://wit.edu/sites/default/files/2026-09/WIT%202026-2027%20Academic%20Calendar%209.28.2026.pdf,Classes begin for 15-week and first 7-week classes
 168227,Wentworth Institute of Technology,2026-27,fall_exams_end,2026-12-15,Tuesday,https://wit.edu/sites/default/files/2026-09/WIT%202026-2027%20Academic%20Calendar%209.28.2026.pdf,"Last final exam day (exams 2026-12-10, 11, 14 and 15)"

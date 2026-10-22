@@ -1,34 +1,34 @@
 check,subset,metric,value,n
-campus_share,"Bluebikes, normal",corr_log_ratio_vs_index,0.2615,534
-campus_share,"Bluebikes, remote_year",corr_log_ratio_vs_index,0.8374,52
-campus_share,"Bluebikes, 2015",corr_log_ratio_vs_index,-0.1688,52
-campus_share,"Bluebikes, 2016",corr_log_ratio_vs_index,-0.1258,52
-campus_share,"Bluebikes, 2017",corr_log_ratio_vs_index,0.3653,52
-campus_share,"Bluebikes, 2018",corr_log_ratio_vs_index,0.2515,53
-campus_share,"Bluebikes, 2019",corr_log_ratio_vs_index,0.4544,52
-campus_share,"Bluebikes, 2021",corr_log_ratio_vs_index,0.9101,20
-campus_share,"Bluebikes, 2022",corr_log_ratio_vs_index,0.8488,52
-campus_share,"Bluebikes, 2023",corr_log_ratio_vs_index,0.8502,52
-campus_share,"Bluebikes, 2024",corr_log_ratio_vs_index,0.8656,53
-campus_share,"Bluebikes, 2025",corr_log_ratio_vs_index,0.9019,52
-campus_share,"Bluebikes, 2026",corr_log_ratio_vs_index,0.8807,34
-campus_share,"Bluebikes, normal years",median_within_year_corr,0.8488,11
-campus_share,"Bluebikes, normal years, housing index",median_within_year_corr,0.8454,11
-campus_share,"MBTA, normal",corr_log_ratio_vs_index,0.1523,539
-campus_share,"MBTA, remote_year",corr_log_ratio_vs_index,-0.1131,52
-campus_share,"MBTA, 2015",corr_log_ratio_vs_index,0.556,52
-campus_share,"MBTA, 2016",corr_log_ratio_vs_index,0.407,52
-campus_share,"MBTA, 2017",corr_log_ratio_vs_index,0.5902,52
-campus_share,"MBTA, 2018",corr_log_ratio_vs_index,0.2837,53
-campus_share,"MBTA, 2019",corr_log_ratio_vs_index,0.6633,52
-campus_share,"MBTA, 2021",corr_log_ratio_vs_index,0.4751,20
-campus_share,"MBTA, 2022",corr_log_ratio_vs_index,0.1365,52
-campus_share,"MBTA, 2023",corr_log_ratio_vs_index,0.3058,52
-campus_share,"MBTA, 2024",corr_log_ratio_vs_index,-0.1215,53
-campus_share,"MBTA, 2025",corr_log_ratio_vs_index,0.1567,52
-campus_share,"MBTA, 2026",corr_log_ratio_vs_index,0.2079,38
-campus_share,"MBTA, normal years",median_within_year_corr,0.3058,11
-campus_share,"MBTA, normal years, housing index",median_within_year_corr,0.3066,11
+campus_share,"Bluebikes, normal",corr_log_ratio_vs_index,0.2616,534
+campus_share,"Bluebikes, remote_year",corr_log_ratio_vs_index,0.8377,52
+campus_share,"Bluebikes, 2015",corr_log_ratio_vs_index,-0.1734,52
+campus_share,"Bluebikes, 2016",corr_log_ratio_vs_index,-0.128,52
+campus_share,"Bluebikes, 2017",corr_log_ratio_vs_index,0.3596,52
+campus_share,"Bluebikes, 2018",corr_log_ratio_vs_index,0.2493,53
+campus_share,"Bluebikes, 2019",corr_log_ratio_vs_index,0.4523,52
+campus_share,"Bluebikes, 2021",corr_log_ratio_vs_index,0.9113,20
+campus_share,"Bluebikes, 2022",corr_log_ratio_vs_index,0.8508,52
+campus_share,"Bluebikes, 2023",corr_log_ratio_vs_index,0.8519,52
+campus_share,"Bluebikes, 2024",corr_log_ratio_vs_index,0.8664,53
+campus_share,"Bluebikes, 2025",corr_log_ratio_vs_index,0.9052,52
+campus_share,"Bluebikes, 2026",corr_log_ratio_vs_index,0.8866,34
+campus_share,"Bluebikes, normal years",median_within_year_corr,0.8508,11
+campus_share,"Bluebikes, normal years, housing index",median_within_year_corr,0.8477,11
+campus_share,"MBTA, normal",corr_log_ratio_vs_index,0.153,539
+campus_share,"MBTA, remote_year",corr_log_ratio_vs_index,-0.1191,52
+campus_share,"MBTA, 2015",corr_log_ratio_vs_index,0.5585,52
+campus_share,"MBTA, 2016",corr_log_ratio_vs_index,0.4058,52
+campus_share,"MBTA, 2017",corr_log_ratio_vs_index,0.589,52
+campus_share,"MBTA, 2018",corr_log_ratio_vs_index,0.2856,53
+campus_share,"MBTA, 2019",corr_log_ratio_vs_index,0.664,52
+campus_share,"MBTA, 2021",corr_log_ratio_vs_index,0.4785,20
+campus_share,"MBTA, 2022",corr_log_ratio_vs_index,0.1349,52
+campus_share,"MBTA, 2023",corr_log_ratio_vs_index,0.3046,52
+campus_share,"MBTA, 2024",corr_log_ratio_vs_index,-0.1202,53
+campus_share,"MBTA, 2025",corr_log_ratio_vs_index,0.1572,52
+campus_share,"MBTA, 2026",corr_log_ratio_vs_index,0.2068,38
+campus_share,"MBTA, normal years",median_within_year_corr,0.3046,11
+campus_share,"MBTA, normal years, housing index",median_within_year_corr,0.3051,11
 break_dips,"Berklee College of Music, spring",median_change_in_campus_share_pct,-9.585,1
 break_dips,"Berklee College of Music, thanksgiving",median_change_in_campus_share_pct,-9.8706,1
 break_dips,"Berklee College of Music, winter",median_change_in_campus_share_pct,-8.3351,4
@@ -47,24 +47,30 @@ break_dips,"Massachusetts Institute of Technology, winter",median_change_in_camp
 break_dips,"Northeastern University, spring",median_change_in_campus_share_pct,-39.9195,5
 break_dips,"Northeastern University, thanksgiving",median_change_in_campus_share_pct,-28.7576,9
 break_dips,"Northeastern University, winter",median_change_in_campus_share_pct,-53.8406,23
+break_dips,"Suffolk University, spring",median_change_in_campus_share_pct,4.9471,4
+break_dips,"Suffolk University, thanksgiving",median_change_in_campus_share_pct,-1.0368,4
+break_dips,"Suffolk University, winter",median_change_in_campus_share_pct,14.8803,16
 break_dips,"University of Massachusetts-Boston, spring",median_change_in_campus_share_pct,-18.5691,4
 break_dips,"University of Massachusetts-Boston, thanksgiving",median_change_in_campus_share_pct,-12.4523,4
 break_dips,"University of Massachusetts-Boston, winter",median_change_in_campus_share_pct,-22.0166,17
-break_dips,all universities and breaks,share_of_breaks_with_a_drop,0.8136,236
+break_dips,"Wentworth Institute of Technology, spring",median_change_in_campus_share_pct,-34.4297,6
+break_dips,"Wentworth Institute of Technology, thanksgiving",median_change_in_campus_share_pct,-6.9407,6
+break_dips,"Wentworth Institute of Technology, winter",median_change_in_campus_share_pct,-47.1185,21
+break_dips,all universities and breaks,share_of_breaks_with_a_drop,0.7645,293
 street_counts,"campus, bikes",median_sept_vs_june_change_pct,17.5044,66
 street_counts,"campus, vehicles",median_sept_vs_june_change_pct,3.1063,66
 street_counts,"near, bikes",median_sept_vs_june_change_pct,11.1561,66
 street_counts,"near, vehicles",median_sept_vs_june_change_pct,0.9139,61
 street_counts,"away, bikes",median_sept_vs_june_change_pct,1.3363,127
 street_counts,"away, vehicles",median_sept_vs_june_change_pct,-1.2215,120
-summer,Bluebikes,r2_year_and_index,0.7775,534
-summer,Bluebikes,r2_year_index_and_summer,0.8067,534
-summer,Bluebikes,summer_coefficient_log_ratio,0.1332,534
-summer,Bluebikes,index_coefficient_log_ratio,0.2205,534
-summer,MBTA,r2_year_and_index,0.3794,539
-summer,MBTA,r2_year_index_and_summer,0.4286,539
-summer,MBTA,summer_coefficient_log_ratio,0.065,539
-summer,MBTA,index_coefficient_log_ratio,0.0805,539
+summer,Bluebikes,r2_year_and_index,0.7772,534
+summer,Bluebikes,r2_year_index_and_summer,0.8064,534
+summer,Bluebikes,summer_coefficient_log_ratio,0.1335,534
+summer,Bluebikes,index_coefficient_log_ratio,0.2207,534
+summer,MBTA,r2_year_and_index,0.3796,539
+summer,MBTA,r2_year_index_and_summer,0.4295,539
+summer,MBTA,summer_coefficient_log_ratio,0.0656,539
+summer,MBTA,index_coefficient_log_ratio,0.0812,539
 students_away_bounds,"study area, 2019",max_students_away,228609.0,52
 students_away_bounds,"study area, 2019",max_students_away_pct_of_census,12.4037,52
 students_away_bounds,"Cambridge, 2019-20",min_students_away_dorm_residents,14322.0,1
@@ -77,28 +83,28 @@ students_away_bounds,"Boston, 2019-20",min_share_away,0.3876,1
 students_away_bounds,"Boston, 2019-20",max_share_away,0.9129,1
 university_housing,"study area, 2019-20",housing_beds,79191.0,47
 university_housing,"study area, 2019-20",housing_beds_share_of_resident_students,0.3472,1
-college_age,"study area, 2015",corr_share_vs_index,0.3159,52
-college_age,"study area, 2016",corr_share_vs_index,0.0932,52
-college_age,"study area, 2017",corr_share_vs_index,0.0979,52
-college_age,"study area, 2018",corr_share_vs_index,0.0866,53
-college_age,"study area, 2019",corr_share_vs_index,0.0134,52
-college_age,study area,median_within_year_corr,0.0932,5
+college_age,"study area, 2015",corr_share_vs_index,0.3187,52
+college_age,"study area, 2016",corr_share_vs_index,0.0958,52
+college_age,"study area, 2017",corr_share_vs_index,0.1002,52
+college_age,"study area, 2018",corr_share_vs_index,0.0873,53
+college_age,"study area, 2019",corr_share_vs_index,0.013,52
+college_age,study area,median_within_year_corr,0.0958,5
 college_age,study area,share_in_session_weeks,0.1853,96
 college_age,study area,share_in_summer_weeks,0.1808,67
-college_age,"campus zone, 2015",corr_share_vs_index,0.4893,52
-college_age,"campus zone, 2016",corr_share_vs_index,0.2763,52
-college_age,"campus zone, 2017",corr_share_vs_index,0.2322,52
-college_age,"campus zone, 2018",corr_share_vs_index,0.2358,53
-college_age,"campus zone, 2019",corr_share_vs_index,0.2283,52
-college_age,campus zone,median_within_year_corr,0.2358,5
+college_age,"campus zone, 2015",corr_share_vs_index,0.4923,52
+college_age,"campus zone, 2016",corr_share_vs_index,0.2786,52
+college_age,"campus zone, 2017",corr_share_vs_index,0.2343,52
+college_age,"campus zone, 2018",corr_share_vs_index,0.2359,53
+college_age,"campus zone, 2019",corr_share_vs_index,0.2275,52
+college_age,campus zone,median_within_year_corr,0.2359,5
 college_age,campus zone,share_in_session_weeks,0.2409,96
 college_age,campus zone,share_in_summer_weeks,0.2166,67
-college_age,"away zone, 2015",corr_share_vs_index,0.1702,52
-college_age,"away zone, 2016",corr_share_vs_index,-0.095,52
-college_age,"away zone, 2017",corr_share_vs_index,-0.3036,52
-college_age,"away zone, 2018",corr_share_vs_index,-0.0096,53
-college_age,"away zone, 2019",corr_share_vs_index,-0.2192,52
-college_age,away zone,median_within_year_corr,-0.095,5
+college_age,"away zone, 2015",corr_share_vs_index,0.1738,52
+college_age,"away zone, 2016",corr_share_vs_index,-0.0924,52
+college_age,"away zone, 2017",corr_share_vs_index,-0.3018,52
+college_age,"away zone, 2018",corr_share_vs_index,-0.008,53
+college_age,"away zone, 2019",corr_share_vs_index,-0.2185,52
+college_age,away zone,median_within_year_corr,-0.0924,5
 college_age,away zone,share_in_session_weeks,0.1511,96
 college_age,away zone,share_in_summer_weeks,0.161,67
 mbta_survey,study-area stations,median_summer_change_pct,-4.4768,67
