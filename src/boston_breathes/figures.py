@@ -26,6 +26,11 @@ Section C, "Does city activity follow the students?":
 Section D, "Where campuses and stations are":
   D13, D14 campus zones and the Bluebikes and MBTA stations of the study area
 
+Section E, "A year in Greater Boston":
+  E15 an academic year week by week: a year select, week slider and play
+      button above tiles for the selected week, the population range over
+      the year and the largest universities' calendars
+
 Colors follow the project's chart palette (validated for color-vision
 deficiency); identity is never carried by color alone.
 
@@ -1213,6 +1218,228 @@ def zone_note_for(source: str):
     return note
 
 
+# ------------------------------------------------------------------ E year explorer
+
+EXPLORER_AXIS = 180  # width of the y-axis labels, the same in every panel so the weeks line up
+EXPLORER_PLOT = WIDTH - EXPLORER_AXIS
+EXPLORER_UNIVERSITIES = 10
+EXPLORER_PERIOD = {"lockdown": "COVID-19 lockdown", "remote_year": "COVID-19: remote or hybrid"}
+SELECTED_WEEK = "datum.fy == year && datum.week_index == week"
+
+
+def week_of_year() -> pl.Expr:
+    """Week of the academic year, from 1: week 1 is the week whose Thursday falls on 1-7 August."""
+    thursday = pl.col("week_start") + pl.duration(days=3)
+    return ((thursday - pl.date(fall_year(pl.col("week_start")), 8, 1)).dt.total_days() // 7 + 1).alias("week_index")
+
+
+def text(col: str, fn) -> pl.Expr:
+    return pl.col(col).map_elements(fn, return_dtype=pl.Utf8)
+
+
+def span(low: pl.Expr, high: pl.Expr) -> pl.Expr:
+    """'low–high', or one value when both ends are the same."""
+    return pl.when(low == high).then(low).otherwise(low + "–" + high)
+
+
+def explorer_data() -> pl.DataFrame:
+    """The weekly range of students away and of the population, for every full academic year (August to July),
+    with the text the tiles show."""
+    latest_estimate = read("population_annual.csv")["year"].max()
+    millions = lambda v: f"{v / 1e6:.3f}M"  # noqa: E731
+    df = away_data().with_columns(academic_year_columns()).with_columns(week_of_year())
+    full = df.group_by("fy").agg(pl.len().alias("weeks")).filter(pl.col("weeks") >= 52)
+    return df.join(full, on="fy").with_columns(
+        (pl.col("ref_start") + pl.duration(days=3)).alias("ref_thursday"),
+        pl.col("week_start").dt.strftime("%b %-d, %Y").alias("week_label"),
+        pl.col("covid_period").replace_strict(EXPLORER_PERIOD, default=None)
+        .fill_null(pl.col("academic_year").str.replace("-", "–") + " academic year").alias("period_label"),
+        ((pl.col("presence_index") * 100).round(0).cast(pl.Int64).cast(pl.Utf8) + "%").alias("index_label"),
+        span(text("min_students_away", "{:,}".format), text("max_students_away", "{:,}".format)).alias("away_label"),
+        ("of " + text("resident_students", "{:,}".format) + " living in the area").alias("residents_label"),
+        span(text("min_effective_population", millions), text("max_effective_population", millions))
+        .alias("population_label"),
+        pl.when(pl.col("population_extrapolated"))
+        .then("Census " + text("census_population", millions) + f", held at July {latest_estimate}")
+        .otherwise("Census resident population " + text("census_population", millions)).alias("census_label"),
+    ).sort("week_start")
+
+
+def explorer_calendars() -> pl.DataFrame:
+    """Weekly calendar state of the largest universities with collected calendars, for the explorer's years."""
+    names = calendar_order()[:EXPLORER_UNIVERSITIES]
+    years = explorer_data()["fy"].unique().to_list()
+    return (
+        calendar_data().filter(pl.col("institution").is_in(names) & pl.col("fy").is_in(years))
+        .with_columns(week_of_year(), pl.col("institution").replace(SHORT_NAMES).alias("university"),
+                      pl.col("week_start").dt.strftime("%b %-d, %Y").alias("week_label"))
+        .select("university", "fy", "week_index", "week_label", "ref_start", "ref_end", "state", "days_in_session")
+    )
+
+
+TILES = [  # label, value column, note column, width in pixels
+    ("Week of", "week_label", "period_label", 170),
+    ("Students in session", "index_label", None, 160),
+    ("Resident college students away", "away_label", "residents_label", 200),
+    ("Population this week", "population_label", "census_label", 230),
+]
+
+
+def explorer_tiles(df: pl.DataFrame, t: dict) -> alt.LayerChart:
+    """The selected week in numbers: one tile per measure, each a label, a value and a note. The panels'
+    plot areas line up, so the tiles start under the axis labels of the panels below."""
+    week = alt.Chart(df).transform_filter(SELECTED_WEEK)
+    layers, x = [], -EXPLORER_AXIS
+    for label, value, note, width in TILES:
+        style = {"align": "left", "baseline": "top", "limit": width - 8}
+        layers += [
+            week.mark_text(fontSize=11, color=t["muted"], **style).encode(x=alt.value(x), y=alt.value(0),
+                                                                          text=alt.value(label)),
+            week.mark_text(fontSize=18, fontWeight=600, color=t["ink"], **style).encode(
+                x=alt.value(x), y=alt.value(17), text=f"{value}:N"),
+            week.mark_text(fontSize=11, color=t["ink2"], **style).encode(
+                x=alt.value(x), y=alt.value(43), text=f"{note}:N" if note else alt.value("Student Presence Index")),
+        ]
+        x += width
+    return alt.layer(*layers).properties(width=EXPLORER_PLOT, height=56)
+
+
+def explorer_population(df: pl.DataFrame, t: dict) -> alt.LayerChart:
+    height = 220
+    x = alt.X("ref_thursday:T", title=None, scale=alt.Scale(domain=REFERENCE_YEAR), axis=month_axis())
+    step = 50_000
+    domain = [math.floor(df["min_effective_population"].min() / step) * step,
+              math.ceil(df["census_population"].max() / step) * step]
+    scale = alt.Scale(domain=domain)
+    axis = alt.Axis(labelExpr=COMPACT, tickCount=5, domain=False, ticks=False,
+                    minExtent=EXPLORER_AXIS, maxExtent=EXPLORER_AXIS)
+    y = alt.Y("population:Q", title=None, scale=scale, axis=axis)
+    year = alt.Chart(df).transform_filter("datum.fy == year")
+    band = year.mark_area(color=t["series2"], opacity=0.10).encode(
+        x=x, y=alt.Y("min_effective_population:Q", title=None, scale=scale, axis=axis),
+        y2="max_effective_population:Q")
+    series = {"census_population": CENSUS, "max_effective_population": CEILING, "min_effective_population": FLOOR}
+    identity = alt.Scale(domain=list(series.values()), range=[t["series1"], t["series3"], t["series2"]])
+    folded = year.transform_fold(list(series), as_=["key", "population"]).transform_calculate(
+        series=f"{json.dumps(series)}[datum.key]")
+    lines = folded.mark_line(strokeWidth=2, strokeJoin="round", strokeCap="round").encode(
+        x=x, y=y, color=alt.Color("series:N", title=None, scale=identity, legend=alt.Legend(columns=1)),
+        detail="series:N")
+    hover = alt.selection_point(name="hover_explorer", on="pointerover", fields=["week_index"], empty=False,
+                                clear="pointerout")
+    columns = year.mark_bar(opacity=0, cursor="pointer").encode(
+        x="ref_start:T", x2="ref_end:T", y=alt.value(0), y2=alt.value(height),
+        tooltip=[alt.Tooltip("week_label:N", title="Week of"),
+                 alt.Tooltip("presence_index:Q", title=INDEX, format=".2f"),
+                 alt.Tooltip("census_population:Q", title=CENSUS, format=",.0f"),
+                 alt.Tooltip("max_effective_population:Q", title="Highest possible population", format=",.0f"),
+                 alt.Tooltip("min_effective_population:Q", title="Lowest possible population", format=",.0f"),
+                 alt.Tooltip("min_students_away:Q", title="Fewest resident students away", format=",.0f"),
+                 alt.Tooltip("max_students_away:Q", title="Most resident students away", format=",.0f")],
+    ).add_params(hover)
+    hover_rule = year.mark_rule(color=t["muted"], strokeWidth=1).encode(
+        x="ref_thursday:T", opacity=alt.condition(hover, alt.value(1), alt.value(0)))
+    week = alt.Chart(df).transform_filter(SELECTED_WEEK)
+    rule = week.mark_rule(color=t["ink2"], strokeWidth=1.5).encode(x="ref_thursday:T")
+    dots = folded.transform_filter(SELECTED_WEEK).mark_circle(
+        size=70, stroke=t["surface"], strokeWidth=2, opacity=1).encode(
+        x=x, y=y, color=alt.Color("series:N", scale=identity, legend=None))
+    return alt.layer(band, columns, hover_rule, rule, lines, dots).properties(
+        width=EXPLORER_PLOT, height=height,
+        title=alt.Title("Resident population, and how far it could fall when students leave", fontSize=12,
+                        fontWeight=600, color=t["ink"]))
+
+
+def explorer_strip(t: dict) -> alt.LayerChart:
+    df = iso(explorer_calendars(), "ref_start", "ref_end")
+    order = [SHORT_NAMES.get(n, n) for n in calendar_order()[:EXPLORER_UNIVERSITIES]]
+    year = alt.Chart(df).transform_filter("datum.fy == year")
+    cells = year.mark_rect(stroke=t["surface"], strokeWidth=1, cursor="pointer").encode(
+        x=alt.X("ref_start:T", title=None, scale=alt.Scale(domain=REFERENCE_YEAR), axis=month_axis()),
+        x2="ref_end:T",
+        y=alt.Y("university:N", sort=order, title=None,
+                axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelFontSize=10,
+                              labelLimit=EXPLORER_AXIS - 8, minExtent=EXPLORER_AXIS, maxExtent=EXPLORER_AXIS)),
+        color=alt.Color("state:N", title=None,
+                        scale=alt.Scale(domain=[IN_SESSION, PARTIAL, BREAK, SUMMER],
+                                        range=[t["ordinal"][2], t["ordinal"][1], t["ordinal"][0], t["neutral"]])),
+        tooltip=[alt.Tooltip("university:N", title="University"), alt.Tooltip("week_label:N", title="Week of"),
+                 alt.Tooltip("state:N", title="Status"), alt.Tooltip("days_in_session:Q", title="Days in session")],
+    )
+    outline = alt.Chart(df).transform_filter(SELECTED_WEEK).transform_aggregate(
+        ref_start="min(ref_start)", ref_end="max(ref_end)").mark_rect(
+        fill=None, stroke=t["ink"], strokeWidth=1.5).encode(
+        x="ref_start:T", x2="ref_end:T", y=alt.value(0), y2=alt.value(EXPLORER_UNIVERSITIES * 14))
+    return alt.layer(cells, outline).properties(
+        width=EXPLORER_PLOT, height=EXPLORER_UNIVERSITIES * 14,
+        title=alt.Title(f"Academic calendars of the {EXPLORER_UNIVERSITIES} largest universities with collected "
+                        "calendars", fontSize=12, fontWeight=600, color=t["ink"]))
+
+
+def explorer_chart(t: dict) -> alt.TopLevelMixin:
+    df = iso(explorer_data(), "week_start", "ref_start", "ref_end", "ref_thursday")
+    df = df.select("fy", "week_index", "ref_start", "ref_end", "ref_thursday", "presence_index",
+                   "census_population", "min_effective_population", "max_effective_population",
+                   "min_students_away", "max_students_away",
+                   "week_label", "period_label", "index_label", "away_label", "residents_label",
+                   "population_label", "census_label")
+    year = alt.param(name="year", value=df["fy"].max())
+    week = alt.param(name="week", value=1)
+    return alt.vconcat(explorer_tiles(df, t), explorer_population(df, t), explorer_strip(t), spacing=22) \
+        .resolve_scale(color="independent").add_params(year, week)
+
+
+def explorer_controls() -> str:
+    """The year select (each option carries its weeks' dates), the week slider and the play button."""
+    years = (explorer_data().sort("week_index").group_by("fy", "academic_year", maintain_order=False)
+             .agg(pl.col("week_label")).sort("fy"))
+    latest = years["fy"].max()
+    options = "".join(
+        f"<option value='{fy}' data-weeks='{html.escape(json.dumps(labels))}'"
+        f"{' selected' if fy == latest else ''}>{html.escape(name.replace('-', '–'))}</option>"
+        for fy, name, labels in years.iter_rows())
+    weeks = len(years.filter(pl.col("fy") == latest)["week_label"][0])
+    return (f"<label>Academic year <select data-signal='year'>{options}</select></label>"
+            f"<label class='week'>Week <input type='range' min='1' max='{weeks}' step='1' value='1' "
+            "data-signal='week'></label><output></output><button type='button'>Play</button>")
+
+
+def explorer_table() -> pl.DataFrame:
+    return explorer_data().select(
+        pl.col("week_start").alias("Week of"), pl.col("academic_year").alias("Academic year"),
+        pl.col("presence_index").round(2).alias(INDEX),
+        pl.col("min_students_away").alias("Fewest resident students away"),
+        pl.col("max_students_away").alias("Most resident students away"),
+        pl.col("min_effective_population").alias("Lowest possible population"),
+        pl.col("max_effective_population").alias("Highest possible population"),
+        pl.col("census_population").alias("Census population"),
+    )
+
+
+def explorer_note() -> str:
+    df = explorer_data()
+    first, last = df["academic_year"].min(), df["academic_year"].max()
+    held = df.filter(pl.col("population_extrapolated"))["week_start"].min()
+    latest_estimate = read("population_annual.csv")["year"].max()
+    return (f"Full academic years only, {first.replace('-', '–')} to {last.replace('-', '–')}. From the week of "
+            f"{held:%B} {held.day}, {held.year}, the Census population is held at its July {latest_estimate} "
+            "estimate. The population axis is the same for every year and does not start at zero.")
+
+
+def explorer_calendar_note() -> str:
+    e = read("enrollment_annual.csv", schema_overrides={"unitid": pl.Utf8})
+    year = e["fall_year"].max()
+    latest = e.filter(pl.col("fall_year") == year)
+    calendar = read("academic_calendar.csv", schema_overrides={"unitid": pl.Utf8})
+    names = calendar_order()[:EXPLORER_UNIVERSITIES]
+    shown = calendar.filter(pl.col("institution").is_in(names))["unitid"].unique().to_list()
+    share = latest.filter(pl.col("unitid").is_in(shown))["in_person"].sum() / latest["in_person"].sum()
+    return (f"The calendar rows are the {EXPLORER_UNIVERSITIES} largest universities with collected calendars "
+            f"({share:.0%} of fall {year} in-person students), largest first; the Student Presence Index uses "
+            "every institution. Calendars record scheduled dates, so spring 2020 still shows as in session, while "
+            "the population range counts students as away during the lockdown.")
+
+
 # ------------------------------------------------------------------ sections
 
 def calendar_note() -> str:
@@ -1418,7 +1645,31 @@ SECTION_D = {
     ],
 }
 
-SECTIONS = [SECTION_A, SECTION_B, SECTION_C, SECTION_D]
+SECTION_E = {
+    "slug": "e_year_explorer",
+    "title": "A year in Greater Boston",
+    "intro": "Section E of the Boston Breathes figures: move through an academic year and watch how far the "
+             "population of the study area could rise and fall with the universities' calendars. Values come from "
+             "data/processed/students_away_weekly.csv and academic_weekly.csv; no model is fitted.",
+    "charts": [
+        {
+            "name": "e15_year_explorer",
+            "title": "Explore a year, week by week",
+            "question": "How does the possible population change as the academic year goes by?",
+            "notes": ["Choose an academic year and move the week slider, or press Play; clicking a week in either "
+                      "chart also selects it. The tiles describe the selected week.",
+                      "A range, not an estimate: the upper line takes away only students in university housing "
+                      "whose residence halls are closed; the lower line takes away every resident college student "
+                      "not living with their parents whose school is out of session. How many actually leave will "
+                      "be measured from city activity.",
+                      explorer_calendar_note,
+                      explorer_note],
+            "controls": explorer_controls, "chart": explorer_chart, "table": explorer_table,
+        },
+    ],
+}
+
+SECTIONS = [SECTION_A, SECTION_B, SECTION_C, SECTION_D, SECTION_E]
 
 
 def resolve(notes: list) -> list[str]:
@@ -1472,6 +1723,14 @@ h1 { font-size: 24px; margin: 0 0 6px; }
 .card h2 { font-size: 17px; margin: 0 0 2px; }
 .question { color: var(--ink2); margin: 0 0 12px; }
 .chart { overflow-x: auto; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 0 0 12px; font-size: 14px; color: var(--ink2); }
+.controls label { display: flex; align-items: center; gap: 8px; }
+.controls label.week { flex: 1 1 220px; }
+.controls input[type=range] { flex: 1; min-width: 120px; accent-color: var(--series1); }
+.controls select, .controls button { font: inherit; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--axis); border-radius: 6px; padding: 4px 10px; }
+.controls button { cursor: pointer; min-width: 5em; }
+.controls output { color: var(--ink); font-variant-numeric: tabular-nums; min-width: 9.5em; }
 .notes { color: var(--ink2); font-size: 13px; margin: 8px 0; padding-left: 18px; }
 details { margin: 8px 0 4px; font-size: 13px; }
 summary { cursor: pointer; color: var(--ink2); }
@@ -1482,7 +1741,7 @@ th { color: var(--ink2); font-weight: 600; position: sticky; top: 0; background:
 td.num { text-align: right; }
 #vg-tooltip-element { background: var(--surface); color: var(--ink); border: 1px solid var(--border);
   border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font: 12px/1.4 __FONT__; padding: 6px 8px; }
-#vg-tooltip-element table tr td.key { color: var(--ink2); }
+#vg-tooltip-element table tr td.key { color: var(--ink2); max-width: none; }
 #vg-tooltip-element table tr td.value { color: var(--ink); font-weight: 600; }
 </style>
 </head>
@@ -1500,11 +1759,58 @@ function mode() {
   if (forced === "light" || forced === "dark") return forced;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
+// Charts with controls: a year select, whose options list their weeks' dates, a week slider and a play button.
+const embedded = {};
+function controlsOf(name) { return document.querySelector(".controls[data-chart='" + name + "']"); }
+function update(name) {
+  const box = controlsOf(name);
+  if (!box) return;
+  const select = box.querySelector("select"), week = box.querySelector("input[type=range]");
+  const dates = JSON.parse(select.selectedOptions[0].dataset.weeks);
+  week.max = dates.length;
+  const label = "Week of " + dates[week.value - 1];
+  box.querySelector("output").textContent = label;
+  week.setAttribute("aria-valuetext", label);
+  if (!embedded[name]) return;
+  const view = embedded[name].view;
+  for (const input of box.querySelectorAll("[data-signal]")) view.signal(input.dataset.signal, Number(input.value));
+  view.runAsync();
+}
+function jump(name, item) {
+  const box = controlsOf(name), week = item && item.datum && item.datum.week_index;
+  if (!box || !week) return;
+  box.querySelector("input[type=range]").value = week;
+  update(name);
+}
+for (const box of document.querySelectorAll(".controls")) {
+  const name = box.dataset.chart, week = box.querySelector("input[type=range]"), play = box.querySelector("button");
+  let timer = null;
+  const stop = () => { clearInterval(timer); timer = null; play.textContent = "Play"; };
+  const step = () => {
+    if (Number(week.value) >= Number(week.max)) return stop();
+    week.value = Number(week.value) + 1;
+    update(name);
+  };
+  box.querySelector("select").addEventListener("change", () => update(name));
+  week.addEventListener("input", () => update(name));
+  play.addEventListener("click", () => {
+    if (timer) return stop();
+    if (Number(week.value) >= Number(week.max)) { week.value = 1; update(name); }
+    play.textContent = "Pause";
+    timer = setInterval(step, 400);
+  });
+  update(name);
+}
 function render() {
   const m = mode();
   for (const [name, byMode] of Object.entries(specs)) {
+    if (embedded[name]) embedded[name].finalize();
     const spec = Object.assign({}, byMode[m], {datasets: byMode.datasets});
-    vegaEmbed("#" + name, spec, {actions: false, renderer: "svg", tooltip: {theme: "custom"}});
+    vegaEmbed("#" + name, spec, {actions: false, renderer: "svg", tooltip: {theme: "custom"}}).then(result => {
+      embedded[name] = result;
+      if (controlsOf(name)) result.view.addEventListener("click", (event, item) => jump(name, item));
+      update(name);
+    });
   }
 }
 render();
@@ -1539,7 +1845,7 @@ def vendor_js(package: str, version: str, member: str) -> str:
 
 
 def css_vars(t: dict) -> str:
-    keys = ["surface", "page", "ink", "ink2", "muted", "grid", "border"]
+    keys = ["surface", "page", "ink", "ink2", "muted", "grid", "axis", "border", "series1"]
     return " ".join(f"--{k}: {t[k]};" for k in keys)
 
 
@@ -1558,9 +1864,10 @@ def build_section(section: dict) -> list[str]:
             raise ValueError(f"{c['name']}: light and dark charts use different data")
         specs[c["name"]] = {"datasets": datasets, **by_mode}
         notes = "".join(f"<li>{html.escape(n)}</li>" for n in notes_text)
+        controls = f"<div class='controls' data-chart='{c['name']}'>{c['controls']()}</div>" if "controls" in c else ""
         cards.append(
             f"<section class='card'><h2>{html.escape(c['title'])}</h2>"
-            f"<p class='question'>{html.escape(c['question'])}</p>"
+            f"<p class='question'>{html.escape(c['question'])}</p>{controls}"
             f"<div class='chart'><div id='{c['name']}' role='img' aria-label='{html.escape(c['title'])}'></div></div>"
             f"<ul class='notes'>{notes}</ul>"
             f"<details><summary>Show the values as a table</summary>"

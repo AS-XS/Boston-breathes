@@ -148,3 +148,28 @@ def test_town_labels_sit_inside_their_town():
     for name, (lat, lng) in fig.TOWN_LABEL_AT.items():
         town = towns[towns["municipality"] == name].geometry.iloc[0]
         assert town.contains(Point(lng, lat)), name
+
+
+def test_week_of_year_counts_from_the_week_of_the_first_august_thursday():
+    df = pl.DataFrame({"week_start": [date(2019, 7, 29), date(2019, 8, 5), date(2020, 7, 27), date(2020, 8, 3)]})
+    # Thursdays: Aug 1 2019 (week 1), Aug 8 2019, Jul 30 2020 (the 53rd week of 2019-20), Aug 6 2020.
+    assert df.select(fig.week_of_year())["week_index"].to_list() == [1, 2, 53, 1]
+
+
+def test_explorer_keeps_full_academic_years_with_numbered_weeks():
+    df = fig.explorer_data()
+    for (_,), g in df.group_by("fy"):
+        assert g.sort("week_start")["week_index"].to_list() == list(range(1, len(g) + 1))
+        assert len(g) in (52, 53)
+    assert (df["min_effective_population"] <= df["max_effective_population"]).all()
+    # One value when the range is a single number.
+    same = df.filter(pl.col("min_students_away") == pl.col("max_students_away"))
+    assert len(same) and (same["away_label"] == same["min_students_away"].map_elements("{:,}".format)).all()
+
+
+def test_explorer_tiles_span_the_panels_and_controls_list_every_year():
+    assert sum(width for *_, width in fig.TILES) == fig.EXPLORER_AXIS + fig.EXPLORER_PLOT
+    controls = fig.explorer_controls()
+    weeks = fig.explorer_data().group_by("fy").len().sort("fy")
+    assert controls.count("<option") == len(weeks)
+    assert f"<option value='{weeks['fy'][-1]}'" in controls and controls.count(" selected") == 1

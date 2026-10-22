@@ -25,9 +25,9 @@
 
 </script>
 <style>
-:root { color-scheme: light; --surface: #fcfcfb; --page: #f9f9f7; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781; --grid: #e1e0d9; --border: rgba(11,11,11,0.10); }
-@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) { color-scheme: dark; --surface: #1a1a19; --page: #0d0d0d; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781; --grid: #2c2c2a; --border: rgba(255,255,255,0.10); } }
-:root[data-theme="dark"] { color-scheme: dark; --surface: #1a1a19; --page: #0d0d0d; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781; --grid: #2c2c2a; --border: rgba(255,255,255,0.10); }
+:root { color-scheme: light; --surface: #fcfcfb; --page: #f9f9f7; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10); --series1: #2a78d6; }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) { color-scheme: dark; --surface: #1a1a19; --page: #0d0d0d; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781; --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --series1: #3987e5; } }
+:root[data-theme="dark"] { color-scheme: dark; --surface: #1a1a19; --page: #0d0d0d; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781; --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --series1: #3987e5; }
 body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
 main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
 h1 { font-size: 24px; margin: 0 0 6px; }
@@ -36,6 +36,14 @@ h1 { font-size: 24px; margin: 0 0 6px; }
 .card h2 { font-size: 17px; margin: 0 0 2px; }
 .question { color: var(--ink2); margin: 0 0 12px; }
 .chart { overflow-x: auto; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 0 0 12px; font-size: 14px; color: var(--ink2); }
+.controls label { display: flex; align-items: center; gap: 8px; }
+.controls label.week { flex: 1 1 220px; }
+.controls input[type=range] { flex: 1; min-width: 120px; accent-color: var(--series1); }
+.controls select, .controls button { font: inherit; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--axis); border-radius: 6px; padding: 4px 10px; }
+.controls button { cursor: pointer; min-width: 5em; }
+.controls output { color: var(--ink); font-variant-numeric: tabular-nums; min-width: 9.5em; }
 .notes { color: var(--ink2); font-size: 13px; margin: 8px 0; padding-left: 18px; }
 details { margin: 8px 0 4px; font-size: 13px; }
 summary { cursor: pointer; color: var(--ink2); }
@@ -46,7 +54,7 @@ th { color: var(--ink2); font-weight: 600; position: sticky; top: 0; background:
 td.num { text-align: right; }
 #vg-tooltip-element { background: var(--surface); color: var(--ink); border: 1px solid var(--border);
   border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); font: 12px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; padding: 6px 8px; }
-#vg-tooltip-element table tr td.key { color: var(--ink2); }
+#vg-tooltip-element table tr td.key { color: var(--ink2); max-width: none; }
 #vg-tooltip-element table tr td.value { color: var(--ink); font-weight: 600; }
 </style>
 </head>
@@ -67,11 +75,58 @@ function mode() {
   if (forced === "light" || forced === "dark") return forced;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
+// Charts with controls: a year select, whose options list their weeks' dates, a week slider and a play button.
+const embedded = {};
+function controlsOf(name) { return document.querySelector(".controls[data-chart='" + name + "']"); }
+function update(name) {
+  const box = controlsOf(name);
+  if (!box) return;
+  const select = box.querySelector("select"), week = box.querySelector("input[type=range]");
+  const dates = JSON.parse(select.selectedOptions[0].dataset.weeks);
+  week.max = dates.length;
+  const label = "Week of " + dates[week.value - 1];
+  box.querySelector("output").textContent = label;
+  week.setAttribute("aria-valuetext", label);
+  if (!embedded[name]) return;
+  const view = embedded[name].view;
+  for (const input of box.querySelectorAll("[data-signal]")) view.signal(input.dataset.signal, Number(input.value));
+  view.runAsync();
+}
+function jump(name, item) {
+  const box = controlsOf(name), week = item && item.datum && item.datum.week_index;
+  if (!box || !week) return;
+  box.querySelector("input[type=range]").value = week;
+  update(name);
+}
+for (const box of document.querySelectorAll(".controls")) {
+  const name = box.dataset.chart, week = box.querySelector("input[type=range]"), play = box.querySelector("button");
+  let timer = null;
+  const stop = () => { clearInterval(timer); timer = null; play.textContent = "Play"; };
+  const step = () => {
+    if (Number(week.value) >= Number(week.max)) return stop();
+    week.value = Number(week.value) + 1;
+    update(name);
+  };
+  box.querySelector("select").addEventListener("change", () => update(name));
+  week.addEventListener("input", () => update(name));
+  play.addEventListener("click", () => {
+    if (timer) return stop();
+    if (Number(week.value) >= Number(week.max)) { week.value = 1; update(name); }
+    play.textContent = "Pause";
+    timer = setInterval(step, 400);
+  });
+  update(name);
+}
 function render() {
   const m = mode();
   for (const [name, byMode] of Object.entries(specs)) {
+    if (embedded[name]) embedded[name].finalize();
     const spec = Object.assign({}, byMode[m], {datasets: byMode.datasets});
-    vegaEmbed("#" + name, spec, {actions: false, renderer: "svg", tooltip: {theme: "custom"}});
+    vegaEmbed("#" + name, spec, {actions: false, renderer: "svg", tooltip: {theme: "custom"}}).then(result => {
+      embedded[name] = result;
+      if (controlsOf(name)) result.view.addEventListener("click", (event, item) => jump(name, item));
+      update(name);
+    });
   }
 }
 render();
