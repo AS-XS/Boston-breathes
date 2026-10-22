@@ -68,6 +68,8 @@ students_away_bounds,"study area, 2019",max_students_away_pct_of_census,12.4037,
 students_away_bounds,"Cambridge, 2019-20",min_students_away_dorm_residents,14322.0,1
 students_away_bounds,"Cambridge, 2019-20",max_students_away_resident_students,29279.0,1
 students_away_bounds,"Cambridge, 2019-20",min_share_away,0.4892,1
+university_housing,"study area, 2019-20",housing_beds,79191.0,47
+university_housing,"study area, 2019-20",housing_beds_share_of_resident_students,0.3472,1
 college_age,"study area, 2015",corr_share_vs_index,0.3172,52
 college_age,"study area, 2016",corr_share_vs_index,0.0929,52
 college_age,"study area, 2017",corr_share_vs_index,0.0981,52

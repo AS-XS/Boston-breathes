@@ -114,3 +114,11 @@ def test_select_institutions_by_each_falls_location(towns, monkeypatch):
     # The college that moved out counts only for the fall it was in the study area.
     assert institutions["last_fall"].to_list() == [2016, 2015]
     assert sorted(falls.rows()) == [("1", 2015), ("1", 2016), ("3", 2015)]
+
+
+def test_dorm_capacity_is_zero_without_housing_and_null_when_not_reported():
+    ic = pl.DataFrame({"UNITID": ["1", "2", "3", "4"], "ROOM": ["1", "2", "1", "-1"],
+                       "ROOMCAP": ["500", "-2", ".", "-1"]})
+    out = uni.dorm_capacity(ic, 2019)
+    assert out["dorm_capacity"].to_list() == [500, 0, None, None]
+    assert out["fall_year"].to_list() == [2019] * 4

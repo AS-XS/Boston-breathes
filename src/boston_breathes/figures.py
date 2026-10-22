@@ -708,6 +708,15 @@ def cambridge_bound_note() -> str:
             f"({share['subset'][0].split(', ')[1].replace('-', '–')}).")
 
 
+def housing_note() -> str:
+    ev = read("presence_evaluation.csv")
+    beds = ev.filter(pl.col("metric") == "housing_beds")
+    share = ev.filter(pl.col("metric") == "housing_beds_share_of_resident_students")
+    return (f"Across the study area, universities report {beds['value'][0]:,.0f} beds in university housing "
+            f"({beds['subset'][0].split(', ')[1].replace('-', '–')}), {share['value'][0]:.0%} of resident college "
+            "students; beds are capacity, not occupancy.")
+
+
 # ------------------------------------------------------------------ C activity vs the index
 
 RATIO_YEARS = (2019, 2025)  # the last full year before COVID-19 and the latest full year
@@ -1282,6 +1291,7 @@ SECTION_B = {
                       "population could be if every resident college student (ACS) were away when not in session. "
                       "How many actually leave will be measured from city activity.",
                       cambridge_bound_note,
+                      housing_note,
                       "The axis does not start at zero."],
             "chart": population_chart, "table": population_table,
         },

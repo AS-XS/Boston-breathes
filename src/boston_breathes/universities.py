@@ -4,6 +4,7 @@ Sources (NCES IPEDS complete data files, one per fall):
   * HDyyyy        institution directory: name, sector, campus coordinates
   * EFyyyyA       fall enrollment by level and attendance status
   * EFyyyyA_DIST  fall enrollment in distance education
+  * ICyyyy        institutional characteristics: beds in university housing
 
 Institutions are selected by their campus coordinates (assigned to a town
 with the Census boundaries used for Bluebikes stations), not by the city
@@ -182,6 +183,17 @@ def distance_only(dist: pl.DataFrame) -> pl.DataFrame:
     return wide.select("unitid", *DIST_LEVELS.values())
 
 
+def dorm_capacity(ic: pl.DataFrame, year: int) -> pl.DataFrame:
+    """Beds in university housing (ROOMCAP): 0 without housing, null when not reported."""
+    room = pl.col("ROOM").cast(pl.Int64, strict=False)
+    beds = pl.col("ROOMCAP").cast(pl.Int64, strict=False)
+    return ic.select(
+        pl.col("UNITID").alias("unitid"),
+        pl.when(room == 2).then(0).when((room == 1) & (beds >= 0)).then(beds).alias("dorm_capacity"),
+        pl.lit(year).alias("fall_year"),
+    )
+
+
 def with_in_person(df: pl.DataFrame) -> pl.DataFrame:
     """Students not enrolled exclusively online, i.e. expected to be present."""
     return df.with_columns(
@@ -198,12 +210,16 @@ def main() -> None:
     falls = available_falls()
     print(f"IPEDS falls available: {falls[0]}-{falls[-1]}")
 
-    directories, enrollments = [], []
+    directories, enrollments, housing = [], [], []
     for year in falls:
         hd = download(f"HD{year}")
         if hd is None:
             raise FileNotFoundError(f"HD{year} is missing although EF{year}A exists")
         directories.append(directory(read_ipeds_csv(hd), year))
+        ic = download(f"IC{year}")
+        if ic is None:
+            raise FileNotFoundError(f"IC{year} is missing although EF{year}A exists")
+        housing.append(dorm_capacity(read_ipeds_csv(ic), year))
 
         ef = enrollment(read_ipeds_csv(download(f"EF{year}A")), year)
         dist_zip = download(f"EF{year}A_DIST")
@@ -220,8 +236,9 @@ def main() -> None:
         with_in_person(pl.concat(enrollments))
         .join(falls_in_area, on=["unitid", "fall_year"], how="inner")
         .join(institutions.select("unitid", "name", "municipality"), on="unitid")
+        .join(pl.concat(housing), on=["unitid", "fall_year"], how="left")
         .select("unitid", "name", "municipality", "fall_year", *LEVELS.values(),
-                *DIST_LEVELS.values(), "in_person", "in_person_undergrad", "in_person_graduate")
+                *DIST_LEVELS.values(), "in_person", "in_person_undergrad", "in_person_graduate", "dorm_capacity")
         .sort("unitid", "fall_year")
     )
 
