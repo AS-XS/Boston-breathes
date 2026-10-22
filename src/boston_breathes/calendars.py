@@ -15,7 +15,8 @@ whose calendars differ (e.g. Northeastern's spring term ends in April, MIT's
 starts in February).
 
 A day is "in session" from the first day of classes to the end of final
-exams, excluding Thanksgiving break (Wednesday to Sunday) and spring break.
+exams, excluding Thanksgiving break (Wednesday to Sunday) and spring break,
+and a February break where a university has one as well (Brandeis).
 Breaks reported as Monday-Friday are widened to the surrounding weekend.
 
 Outputs in data/processed/:
@@ -39,8 +40,11 @@ from boston_breathes.weeks import build_weeks
 MANUAL_PATH = DATA / "manual" / "academic_calendar.csv"
 
 FALL_EVENTS = ["fall_classes_start", "fall_exams_end"]
-SPRING_EVENTS = ["spring_classes_start", "spring_break_start", "spring_break_end", "spring_exams_end", "commencement"]
+SPRING_EVENTS = ["spring_classes_start", "february_break_start", "february_break_end",
+                 "spring_break_start", "spring_break_end", "spring_exams_end", "commencement"]
 EVENTS = FALL_EVENTS + SPRING_EVENTS
+# Events only some universities have: completed only for universities that record them.
+OPTIONAL_EVENTS = ["february_break_start", "february_break_end"]
 NONE = "none"
 
 # Academic years overlapping the study period.
@@ -152,12 +156,14 @@ def estimate(offset_values: list[int], event: str, start_year: int) -> date:
 def complete_calendar(manual: pl.DataFrame) -> pl.DataFrame:
     """Every university, academic year and event, filling gaps with estimates."""
     known = {(r["unitid"], r["start_year"], r["event"]): r for r in manual.iter_rows(named=True)}
+    recorded = set(manual.select("unitid", "event").iter_rows())
     offs = offsets(manual)
     names = dict(manual.select("unitid", "institution").unique().iter_rows())
     rows = []
     for unitid, institution in sorted(names.items()):
+        events = [e for e in EVENTS if e not in OPTIONAL_EVENTS or (unitid, e) in recorded]
         for start_year in range(FIRST_ACADEMIC_YEAR, LAST_ACADEMIC_YEAR + 1):
-            for event in EVENTS:
+            for event in events:
                 r = known.get((unitid, start_year, event))
                 if r is not None:
                     rows.append({k: r[k] for k in ("date", "status", "source_url", "note")}
@@ -205,6 +211,16 @@ def widen_to_weekend(start: date, end: date) -> tuple[date, date]:
     return start, end
 
 
+def break_dates(ev: dict, name: str) -> list[tuple[date, date]] | None:
+    """A break's days off: [] if there is none, None if it exists but its dates are unknown."""
+    start, end = ev.get(f"{name}_start"), ev.get(f"{name}_end")
+    if start is None or start[1] == NONE:
+        return []
+    if start[0] and end[0]:
+        return [widen_to_weekend(start[0], end[0])]
+    return None
+
+
 def is_summer(d: date) -> bool:
     """Mid-June to mid-August: no study-area university is in regular session."""
     return date(d.year, 6, 15) <= d <= date(d.year, 8, 15)
@@ -231,13 +247,8 @@ def session_days(calendar: pl.DataFrame) -> pl.DataFrame:
         terms.append(("fall", date(start_year, 8, 1), date(start_year, 12, 31), fall_start, fall_end,
                       [thanksgiving_break(start_year)]))
         spring_start, spring_end = ev["spring_classes_start"][0], ev["spring_exams_end"][0]
-        brk_start, brk_end = ev["spring_break_start"], ev["spring_break_end"]
-        if brk_start[1] == "none":
-            breaks = []
-        elif brk_start[0] and brk_end[0]:
-            breaks = [widen_to_weekend(brk_start[0], brk_end[0])]
-        else:
-            breaks = None  # break exists but its dates are unknown
+        spring_breaks = [break_dates(ev, "february_break"), break_dates(ev, "spring_break")]
+        breaks = None if None in spring_breaks else [b for bs in spring_breaks for b in bs]
         terms.append(("spring", date(start_year + 1, 1, 1), date(start_year + 1, 7, 31), spring_start, spring_end, breaks))
 
         for term, window_start, window_end, start, end, breaks in terms:

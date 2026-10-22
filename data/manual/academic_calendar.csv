@@ -188,47 +188,61 @@ unitid,institution,academic_year,event,date,weekday,source_url,note
 165015,Brandeis University,2014-15,commencement,2015-05-17,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2015.html,
 165015,Brandeis University,2014-15,fall_classes_start,2014-08-28,Thursday,https://www.brandeis.edu/registrar/calendar/fall-2014.html,First day of instruction
 165015,Brandeis University,2014-15,fall_exams_end,2014-12-18,Thursday,https://www.brandeis.edu/registrar/calendar/fall-2014.html,Last day of the final examination period
-165015,Brandeis University,2014-15,spring_break_end,2015-04-10,Friday,https://www.brandeis.edu/registrar/calendar/spring-2015.html,"Passover and spring recess; Brandeis also has a February break (2015-02-16 to 2015-02-20), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2014-15,spring_break_start,2015-04-03,Friday,https://www.brandeis.edu/registrar/calendar/spring-2015.html,"Passover and spring recess; Brandeis also has a February break (2015-02-16 to 2015-02-20), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2014-15,february_break_end,2015-02-20,Friday,https://www.brandeis.edu/registrar/calendar/spring-2015.html,Midterm recess
+165015,Brandeis University,2014-15,february_break_start,2015-02-16,Monday,https://www.brandeis.edu/registrar/calendar/spring-2015.html,Midterm recess
+165015,Brandeis University,2014-15,spring_break_end,2015-04-10,Friday,https://www.brandeis.edu/registrar/calendar/spring-2015.html,Passover and spring recess
+165015,Brandeis University,2014-15,spring_break_start,2015-04-03,Friday,https://www.brandeis.edu/registrar/calendar/spring-2015.html,Passover and spring recess
 165015,Brandeis University,2014-15,spring_classes_start,2015-01-12,Monday,https://www.brandeis.edu/registrar/calendar/spring-2015.html,First day of instruction
 165015,Brandeis University,2014-15,spring_exams_end,2015-05-07,Thursday,https://www.brandeis.edu/registrar/calendar/spring-2015.html,Last day of the final examination period
 165015,Brandeis University,2015-16,commencement,2016-05-22,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2016.html,
 165015,Brandeis University,2015-16,fall_classes_start,2015-08-27,Thursday,https://www.brandeis.edu/registrar/calendar/fall-2015.html,First day of instruction
 165015,Brandeis University,2015-16,fall_exams_end,2015-12-18,Friday,https://www.brandeis.edu/registrar/calendar/fall-2015.html,Last day of the final examination period
-165015,Brandeis University,2015-16,spring_break_end,2016-04-29,Friday,https://www.brandeis.edu/registrar/calendar/spring-2016.html,"Passover and spring recess; Brandeis also has a February break (2016-02-15 to 2016-02-19), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2015-16,spring_break_start,2016-04-22,Friday,https://www.brandeis.edu/registrar/calendar/spring-2016.html,"Passover and spring recess; Brandeis also has a February break (2016-02-15 to 2016-02-19), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2015-16,february_break_end,2016-02-19,Friday,https://www.brandeis.edu/registrar/calendar/spring-2016.html,Midterm recess
+165015,Brandeis University,2015-16,february_break_start,2016-02-15,Monday,https://www.brandeis.edu/registrar/calendar/spring-2016.html,Midterm recess
+165015,Brandeis University,2015-16,spring_break_end,2016-04-29,Friday,https://www.brandeis.edu/registrar/calendar/spring-2016.html,Passover and spring recess
+165015,Brandeis University,2015-16,spring_break_start,2016-04-22,Friday,https://www.brandeis.edu/registrar/calendar/spring-2016.html,Passover and spring recess
 165015,Brandeis University,2015-16,spring_classes_start,2016-01-13,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2016.html,First day of instruction
 165015,Brandeis University,2015-16,spring_exams_end,2016-05-12,Thursday,https://www.brandeis.edu/registrar/calendar/spring-2016.html,Last day of the final examination period
 165015,Brandeis University,2016-17,commencement,2017-05-21,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2017.html,
 165015,Brandeis University,2016-17,fall_classes_start,2016-08-25,Thursday,https://www.brandeis.edu/registrar/calendar/fall-2016.html,First day of instruction
 165015,Brandeis University,2016-17,fall_exams_end,2016-12-19,Monday,https://www.brandeis.edu/registrar/calendar/fall-2016.html,Last day of the final examination period
-165015,Brandeis University,2016-17,spring_break_end,2017-04-18,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2017.html,"Passover and spring recess; Brandeis also has a February break (2017-02-20 to 2017-02-24), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2016-17,spring_break_start,2017-04-10,Monday,https://www.brandeis.edu/registrar/calendar/spring-2017.html,"Passover and spring recess; Brandeis also has a February break (2017-02-20 to 2017-02-24), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2016-17,february_break_end,2017-02-24,Friday,https://www.brandeis.edu/registrar/calendar/spring-2017.html,Midterm recess
+165015,Brandeis University,2016-17,february_break_start,2017-02-20,Monday,https://www.brandeis.edu/registrar/calendar/spring-2017.html,Midterm recess
+165015,Brandeis University,2016-17,spring_break_end,2017-04-18,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2017.html,Passover and spring recess
+165015,Brandeis University,2016-17,spring_break_start,2017-04-10,Monday,https://www.brandeis.edu/registrar/calendar/spring-2017.html,Passover and spring recess
 165015,Brandeis University,2016-17,spring_classes_start,2017-01-17,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2017.html,First day of instruction
 165015,Brandeis University,2016-17,spring_exams_end,2017-05-12,Friday,https://www.brandeis.edu/registrar/calendar/spring-2017.html,Last day of the final examination period
 165015,Brandeis University,2017-18,commencement,2018-05-13,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2018.html,
 165015,Brandeis University,2017-18,fall_classes_start,2017-08-30,Wednesday,https://www.brandeis.edu/registrar/calendar/fall-2017.html,First day of instruction
 165015,Brandeis University,2017-18,fall_exams_end,2017-12-19,Tuesday,https://www.brandeis.edu/registrar/calendar/fall-2017.html,Last day of the final examination period
-165015,Brandeis University,2017-18,spring_break_end,2018-04-06,Friday,https://www.brandeis.edu/registrar/calendar/spring-2018.html,"Passover and spring recess; Brandeis also has a February break (2018-02-19 to 2018-02-23), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2017-18,spring_break_start,2018-03-30,Friday,https://www.brandeis.edu/registrar/calendar/spring-2018.html,"Passover and spring recess; Brandeis also has a February break (2018-02-19 to 2018-02-23), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2017-18,february_break_end,2018-02-23,Friday,https://www.brandeis.edu/registrar/calendar/spring-2018.html,Midterm recess
+165015,Brandeis University,2017-18,february_break_start,2018-02-19,Monday,https://www.brandeis.edu/registrar/calendar/spring-2018.html,Midterm recess
+165015,Brandeis University,2017-18,spring_break_end,2018-04-06,Friday,https://www.brandeis.edu/registrar/calendar/spring-2018.html,Passover and spring recess
+165015,Brandeis University,2017-18,spring_break_start,2018-03-30,Friday,https://www.brandeis.edu/registrar/calendar/spring-2018.html,Passover and spring recess
 165015,Brandeis University,2017-18,spring_classes_start,2018-01-10,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2018.html,First day of instruction
 165015,Brandeis University,2017-18,spring_exams_end,2018-05-08,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2018.html,Last day of the final examination period
 165015,Brandeis University,2018-19,commencement,2019-05-19,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2019.html,
 165015,Brandeis University,2018-19,fall_classes_start,2018-08-29,Wednesday,https://www.brandeis.edu/registrar/calendar/fall-2018.html,First day of instruction
 165015,Brandeis University,2018-19,fall_exams_end,2018-12-20,Thursday,https://www.brandeis.edu/registrar/calendar/fall-2018.html,Last day of the final examination period
-165015,Brandeis University,2018-19,spring_break_end,2019-04-26,Friday,https://www.brandeis.edu/registrar/calendar/spring-2019.html,"Passover and spring recess; Brandeis also has a February break (2019-02-18 to 2019-02-22), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2018-19,spring_break_start,2019-04-19,Friday,https://www.brandeis.edu/registrar/calendar/spring-2019.html,"Passover and spring recess; Brandeis also has a February break (2019-02-18 to 2019-02-22), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2018-19,february_break_end,2019-02-22,Friday,https://www.brandeis.edu/registrar/calendar/spring-2019.html,Midterm recess
+165015,Brandeis University,2018-19,february_break_start,2019-02-18,Monday,https://www.brandeis.edu/registrar/calendar/spring-2019.html,Midterm recess
+165015,Brandeis University,2018-19,spring_break_end,2019-04-26,Friday,https://www.brandeis.edu/registrar/calendar/spring-2019.html,Passover and spring recess
+165015,Brandeis University,2018-19,spring_break_start,2019-04-19,Friday,https://www.brandeis.edu/registrar/calendar/spring-2019.html,Passover and spring recess
 165015,Brandeis University,2018-19,spring_classes_start,2019-01-15,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2019.html,First day of instruction
 165015,Brandeis University,2018-19,spring_exams_end,2019-05-14,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2019.html,Last day of the final examination period
 165015,Brandeis University,2019-20,fall_classes_start,2019-08-28,Wednesday,https://www.brandeis.edu/registrar/calendar/fall-2019.html,First day of instruction
 165015,Brandeis University,2019-20,fall_exams_end,2019-12-19,Thursday,https://www.brandeis.edu/registrar/calendar/fall-2019.html,Last day of the final examination period
-165015,Brandeis University,2019-20,spring_break_end,2020-03-25,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2020.html,"Spring recess in the spring 2020 calendar as revised (COVID-19); Brandeis also has a February break (2020-02-17 to 2020-02-21), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2019-20,spring_break_start,2020-03-23,Monday,https://www.brandeis.edu/registrar/calendar/spring-2020.html,"Spring recess in the spring 2020 calendar as revised (COVID-19); Brandeis also has a February break (2020-02-17 to 2020-02-21), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2019-20,february_break_end,2020-02-21,Friday,https://www.brandeis.edu/registrar/calendar/spring-2020.html,Midterm recess
+165015,Brandeis University,2019-20,february_break_start,2020-02-17,Monday,https://www.brandeis.edu/registrar/calendar/spring-2020.html,Midterm recess
+165015,Brandeis University,2019-20,spring_break_end,2020-03-25,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2020.html,Spring recess in the spring 2020 calendar as revised (COVID-19)
+165015,Brandeis University,2019-20,spring_break_start,2020-03-23,Monday,https://www.brandeis.edu/registrar/calendar/spring-2020.html,Spring recess in the spring 2020 calendar as revised (COVID-19)
 165015,Brandeis University,2019-20,spring_classes_start,2020-01-13,Monday,https://www.brandeis.edu/registrar/calendar/spring-2020.html,First day of instruction
 165015,Brandeis University,2019-20,spring_exams_end,2020-05-14,Thursday,https://www.brandeis.edu/registrar/calendar/spring-2020.html,Last day of the final examination period
 165015,Brandeis University,2020-21,commencement,2021-05-23,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2021.html,
 165015,Brandeis University,2020-21,fall_classes_start,2020-08-26,Wednesday,https://www.brandeis.edu/registrar/calendar/fall-2020.html,First day of instruction
 165015,Brandeis University,2020-21,fall_exams_end,2020-12-15,Tuesday,https://www.brandeis.edu/registrar/calendar/fall-2020.html,Last day of the final examination period
+165015,Brandeis University,2020-21,february_break_end,none,,https://www.brandeis.edu/registrar/calendar/spring-2021.html,No February break in spring 2021 (COVID-19); classes started 1 February
+165015,Brandeis University,2020-21,february_break_start,none,,https://www.brandeis.edu/registrar/calendar/spring-2021.html,No February break in spring 2021 (COVID-19); classes started 1 February
 165015,Brandeis University,2020-21,spring_break_end,none,,https://www.brandeis.edu/registrar/calendar/spring-2021.html,No spring recess in spring 2021 (COVID-19); single days without classes
 165015,Brandeis University,2020-21,spring_break_start,none,,https://www.brandeis.edu/registrar/calendar/spring-2021.html,No spring recess in spring 2021 (COVID-19); single days without classes
 165015,Brandeis University,2020-21,spring_classes_start,2021-02-01,Monday,https://www.brandeis.edu/registrar/calendar/spring-2021.html,First day of instruction
@@ -236,43 +250,55 @@ unitid,institution,academic_year,event,date,weekday,source_url,note
 165015,Brandeis University,2021-22,commencement,2022-05-22,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2022.html,
 165015,Brandeis University,2021-22,fall_classes_start,2021-08-26,Thursday,https://www.brandeis.edu/registrar/calendar/fall-2021.html,First day of instruction
 165015,Brandeis University,2021-22,fall_exams_end,2021-12-17,Friday,https://www.brandeis.edu/registrar/calendar/fall-2021.html,Last day of the final examination period
-165015,Brandeis University,2021-22,spring_break_end,2022-04-22,Friday,https://www.brandeis.edu/registrar/calendar/spring-2022.html,"Passover; Brandeis also has a February break (2022-02-21 to 2022-02-25), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2021-22,spring_break_start,2022-04-18,Monday,https://www.brandeis.edu/registrar/calendar/spring-2022.html,"Passover; Brandeis also has a February break (2022-02-21 to 2022-02-25), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2021-22,february_break_end,2022-02-25,Friday,https://www.brandeis.edu/registrar/calendar/spring-2022.html,February break
+165015,Brandeis University,2021-22,february_break_start,2022-02-21,Monday,https://www.brandeis.edu/registrar/calendar/spring-2022.html,February break
+165015,Brandeis University,2021-22,spring_break_end,2022-04-22,Friday,https://www.brandeis.edu/registrar/calendar/spring-2022.html,Passover
+165015,Brandeis University,2021-22,spring_break_start,2022-04-18,Monday,https://www.brandeis.edu/registrar/calendar/spring-2022.html,Passover
 165015,Brandeis University,2021-22,spring_classes_start,2022-01-18,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2022.html,First day of instruction
 165015,Brandeis University,2021-22,spring_exams_end,2022-05-17,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2022.html,Last day of the final examination period
 165015,Brandeis University,2022-23,commencement,2023-05-21,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2023.html,
 165015,Brandeis University,2022-23,fall_classes_start,2022-08-25,Thursday,https://www.brandeis.edu/registrar/calendar/fall-2022.html,First day of instruction
 165015,Brandeis University,2022-23,fall_exams_end,2022-12-19,Monday,https://www.brandeis.edu/registrar/calendar/fall-2022.html,Last day of the final examination period
-165015,Brandeis University,2022-23,spring_break_end,2023-04-13,Thursday,https://www.brandeis.edu/registrar/calendar/spring-2023.html,"Passover; Brandeis also has a February break (2023-02-20 to 2023-02-24), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2022-23,spring_break_start,2023-04-05,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2023.html,"Passover; Brandeis also has a February break (2023-02-20 to 2023-02-24), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2022-23,february_break_end,2023-02-24,Friday,https://www.brandeis.edu/registrar/calendar/spring-2023.html,February break
+165015,Brandeis University,2022-23,february_break_start,2023-02-20,Monday,https://www.brandeis.edu/registrar/calendar/spring-2023.html,February break
+165015,Brandeis University,2022-23,spring_break_end,2023-04-13,Thursday,https://www.brandeis.edu/registrar/calendar/spring-2023.html,Passover
+165015,Brandeis University,2022-23,spring_break_start,2023-04-05,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2023.html,Passover
 165015,Brandeis University,2022-23,spring_classes_start,2023-01-17,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2023.html,First day of instruction
 165015,Brandeis University,2022-23,spring_exams_end,2023-05-16,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2023.html,Last day of the final examination period
 165015,Brandeis University,2023-24,commencement,2024-05-19,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2024.html,
 165015,Brandeis University,2023-24,fall_classes_start,2023-08-31,Thursday,https://www.brandeis.edu/registrar/calendar/fall-2023.html,First day of instruction
 165015,Brandeis University,2023-24,fall_exams_end,2023-12-20,Wednesday,https://www.brandeis.edu/registrar/calendar/fall-2023.html,Last day of the final examination period
-165015,Brandeis University,2023-24,spring_break_end,2024-04-30,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2024.html,"Passover; Brandeis also has a February break (2024-02-19 to 2024-02-23), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2023-24,spring_break_start,2024-04-22,Monday,https://www.brandeis.edu/registrar/calendar/spring-2024.html,"Passover; Brandeis also has a February break (2024-02-19 to 2024-02-23), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2023-24,february_break_end,2024-02-23,Friday,https://www.brandeis.edu/registrar/calendar/spring-2024.html,February break
+165015,Brandeis University,2023-24,february_break_start,2024-02-19,Monday,https://www.brandeis.edu/registrar/calendar/spring-2024.html,February break
+165015,Brandeis University,2023-24,spring_break_end,2024-04-30,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2024.html,Passover
+165015,Brandeis University,2023-24,spring_break_start,2024-04-22,Monday,https://www.brandeis.edu/registrar/calendar/spring-2024.html,Passover
 165015,Brandeis University,2023-24,spring_classes_start,2024-01-10,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2024.html,First day of instruction
 165015,Brandeis University,2023-24,spring_exams_end,2024-05-14,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2024.html,Last day of the final examination period
 165015,Brandeis University,2024-25,commencement,2025-05-18,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2025.html,
 165015,Brandeis University,2024-25,fall_classes_start,2024-08-28,Wednesday,https://www.brandeis.edu/registrar/calendar/fall-2024.html,First day of instruction
 165015,Brandeis University,2024-25,fall_exams_end,2024-12-20,Friday,https://www.brandeis.edu/registrar/calendar/fall-2024.html,Last day of the final examination period
-165015,Brandeis University,2024-25,spring_break_end,2025-04-18,Friday,https://www.brandeis.edu/registrar/calendar/spring-2025.html,"Passover; Brandeis also has a February break (2025-02-17 to 2025-02-21), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2024-25,spring_break_start,2025-04-14,Monday,https://www.brandeis.edu/registrar/calendar/spring-2025.html,"Passover; Brandeis also has a February break (2025-02-17 to 2025-02-21), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2024-25,february_break_end,2025-02-21,Friday,https://www.brandeis.edu/registrar/calendar/spring-2025.html,February break
+165015,Brandeis University,2024-25,february_break_start,2025-02-17,Monday,https://www.brandeis.edu/registrar/calendar/spring-2025.html,February break
+165015,Brandeis University,2024-25,spring_break_end,2025-04-18,Friday,https://www.brandeis.edu/registrar/calendar/spring-2025.html,Passover
+165015,Brandeis University,2024-25,spring_break_start,2025-04-14,Monday,https://www.brandeis.edu/registrar/calendar/spring-2025.html,Passover
 165015,Brandeis University,2024-25,spring_classes_start,2025-01-14,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2025.html,First day of instruction
 165015,Brandeis University,2024-25,spring_exams_end,2025-05-13,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2025.html,Last day of the final examination period
 165015,Brandeis University,2025-26,commencement,2026-05-17,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2026.html,
 165015,Brandeis University,2025-26,fall_classes_start,2025-08-27,Wednesday,https://www.brandeis.edu/registrar/calendar/fall-2025.html,First day of instruction
 165015,Brandeis University,2025-26,fall_exams_end,2025-12-22,Monday,https://www.brandeis.edu/registrar/calendar/fall-2025.html,Last day of the final examination period
-165015,Brandeis University,2025-26,spring_break_end,2026-04-09,Thursday,https://www.brandeis.edu/registrar/calendar/spring-2026.html,"Passover; Brandeis also has a February break (2026-02-16 to 2026-02-20), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2025-26,spring_break_start,2026-04-01,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2026.html,"Passover; Brandeis also has a February break (2026-02-16 to 2026-02-20), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2025-26,february_break_end,2026-02-20,Friday,https://www.brandeis.edu/registrar/calendar/spring-2026.html,February break
+165015,Brandeis University,2025-26,february_break_start,2026-02-16,Monday,https://www.brandeis.edu/registrar/calendar/spring-2026.html,February break
+165015,Brandeis University,2025-26,spring_break_end,2026-04-09,Thursday,https://www.brandeis.edu/registrar/calendar/spring-2026.html,Passover
+165015,Brandeis University,2025-26,spring_break_start,2026-04-01,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2026.html,Passover
 165015,Brandeis University,2025-26,spring_classes_start,2026-01-12,Monday,https://www.brandeis.edu/registrar/calendar/spring-2026.html,First day of instruction
 165015,Brandeis University,2025-26,spring_exams_end,2026-05-12,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2026.html,Last day of the final examination period
 165015,Brandeis University,2026-27,commencement,2027-05-23,Sunday,https://www.brandeis.edu/registrar/calendar/spring-2027.html,
 165015,Brandeis University,2026-27,fall_classes_start,2026-08-26,Wednesday,https://www.brandeis.edu/registrar/calendar/fall-2026.html,First day of instruction
 165015,Brandeis University,2026-27,fall_exams_end,2026-12-16,Wednesday,https://www.brandeis.edu/registrar/calendar/fall-2026.html,Last day of the final examination period
-165015,Brandeis University,2026-27,spring_break_end,2027-04-29,Thursday,https://www.brandeis.edu/registrar/calendar/spring-2027.html,"Passover; Brandeis also has a February break (2027-02-15 to 2027-02-19), not recorded since the calendar holds one spring break"
-165015,Brandeis University,2026-27,spring_break_start,2027-04-21,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2027.html,"Passover; Brandeis also has a February break (2027-02-15 to 2027-02-19), not recorded since the calendar holds one spring break"
+165015,Brandeis University,2026-27,february_break_end,2027-02-19,Friday,https://www.brandeis.edu/registrar/calendar/spring-2027.html,February break
+165015,Brandeis University,2026-27,february_break_start,2027-02-15,Monday,https://www.brandeis.edu/registrar/calendar/spring-2027.html,February break
+165015,Brandeis University,2026-27,spring_break_end,2027-04-29,Thursday,https://www.brandeis.edu/registrar/calendar/spring-2027.html,Passover
+165015,Brandeis University,2026-27,spring_break_start,2027-04-21,Wednesday,https://www.brandeis.edu/registrar/calendar/spring-2027.html,Passover
 165015,Brandeis University,2026-27,spring_classes_start,2027-01-19,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2027.html,First day of instruction
 165015,Brandeis University,2026-27,spring_exams_end,2027-05-18,Tuesday,https://www.brandeis.edu/registrar/calendar/spring-2027.html,Last day of the final examination period
 165112,Bunker Hill Community College,2014-15,commencement,2015-05-30,,https://www.bhcc.edu/media/01-collegepublications/collegecatalogs/BHCC-College-Catalog-2014-15.pdf,Graduation

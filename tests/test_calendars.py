@@ -152,6 +152,23 @@ def test_cancelled_break_and_unknown_break(tmp_path):
     assert w.filter(pl.col("week_start") == date(2019, 7, 15))["days_in_session"][0] == 0  # summer is known
 
 
+def test_february_break_only_for_universities_that_record_one(tmp_path):
+    rows = full_year("1", "2018-19", YEAR_2018) + full_year("2", "2018-19", YEAR_2018)
+    rows += full_year("2", "2018-19", {"february_break_start": "2019-02-18", "february_break_end": "2019-02-22"})
+    calendar = cal.complete_calendar(cal.load_manual(write(tmp_path, rows)))
+    feb = calendar.filter(pl.col("event").str.starts_with("february_break"))
+    assert set(feb["unitid"]) == {"2"}
+    # Other years are estimated from MLK Day like any other spring event.
+    assert set(feb.filter(pl.col("academic_year") != "2018-19")["status"]) == {"estimated"}
+
+    w = weekly_for(calendar.filter(pl.col("academic_year") == "2018-19"))
+    days = {(r["unitid"], r["week_start"]): r["days_in_session"] for r in w.iter_rows(named=True)}
+    assert days[("1", date(2019, 2, 18))] == 7
+    assert days[("2", date(2019, 2, 18))] == 0
+    assert days[("2", date(2019, 2, 11))] == 5  # the weekend before the break is off too
+    assert days[("2", date(2019, 3, 11))] == 0  # the spring break still counts
+
+
 def test_hand_collected_universities_match_the_university_list():
     manual = pl.read_csv(cal.MANUAL_PATH, schema_overrides={"unitid": pl.Utf8}).select("unitid", "institution").unique()
     names = pl.read_csv(cal.PROCESSED / "universities.csv", schema_overrides={"unitid": pl.Utf8}).select(
