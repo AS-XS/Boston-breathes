@@ -71,8 +71,22 @@ summer,MBTA,r2_year_and_index,0.3796,539
 summer,MBTA,r2_year_index_and_summer,0.4295,539
 summer,MBTA,summer_coefficient_log_ratio,0.0656,539
 summer,MBTA,index_coefficient_log_ratio,0.0812,539
-students_away_bounds,"study area, 2019",max_students_away,228609.0,52
-students_away_bounds,"study area, 2019",max_students_away_pct_of_census,12.4037,52
+students_away_bounds,"study area, 2019",max_students_away,190056.0,52
+students_away_bounds,"study area, 2019",max_students_away_pct_of_census,10.3119,52
+students_away_bounds,"study area, 2019",min_students_away,73420.0,52
+students_away_bounds,"study area, 2019",min_students_away_pct_of_census,3.9836,52
+living_arrangements,"study area, ACS 2019",college_students,228080.0,22
+living_arrangements,"study area, ACS 2019",in_university_housing,72297.0,22
+living_arrangements,"study area, ACS 2019",with_parents,38832.0,22
+living_arrangements,"study area, ACS 2019",elsewhere,116951.0,22
+living_arrangements,"Boston, ACS 2019",college_students,105609.0,1
+living_arrangements,"Boston, ACS 2019",in_university_housing,35657.0,1
+living_arrangements,"Boston, ACS 2019",with_parents,13796.0,1
+living_arrangements,"Boston, ACS 2019",elsewhere,56156.0,1
+living_arrangements,"Cambridge, ACS 2019",college_students,29279.0,1
+living_arrangements,"Cambridge, ACS 2019",in_university_housing,15261.0,1
+living_arrangements,"Cambridge, ACS 2019",with_parents,1326.0,1
+living_arrangements,"Cambridge, ACS 2019",elsewhere,12692.0,1
 students_away_bounds,"Cambridge, 2019-20",min_students_away_dorm_residents,14322.0,1
 students_away_bounds,"Cambridge, 2019-20",max_students_away_resident_students,29279.0,1
 students_away_bounds,"Cambridge, 2019-20",min_share_away,0.4892,1

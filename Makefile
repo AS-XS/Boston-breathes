@@ -1,14 +1,14 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents presence mbta mbta-survey street-counts evaluate figures test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts evaluate figures test clean-interim
 
 install:
 	python3 -m venv .venv
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents presence mbta mbta-survey street-counts
+data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts
 
 weeks:
 	$(RUN) boston_breathes.weeks
@@ -57,10 +57,19 @@ calendars:
 student-residents:
 	$(RUN) boston_breathes.student_residents
 
+# Where resident college students live: university housing, with parents, elsewhere
+# (ACS PUMS and the 2020 Census; needs student-residents and municipalities).
+living-arrangements:
+	$(RUN) boston_breathes.living_arrangements
+
 # Student Presence Index and effective population by week
 # (needs universities, population, calendars, student-residents).
 presence:
 	$(RUN) boston_breathes.presence
+
+# Range of resident students away each week (needs presence, living-arrangements, population).
+students-away:
+	$(RUN) boston_breathes.students_away
 
 # MBTA gated station entries by station and week (needs campus).
 mbta:

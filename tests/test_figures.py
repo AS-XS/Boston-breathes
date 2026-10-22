@@ -69,9 +69,10 @@ def test_typical_year_leaves_out_partial_and_covid_years_and_highlights_one():
 
 
 def test_population_bounds_stay_below_the_census_line():
-    df = fig.presence_data()
-    assert (df["min_effective_population"] <= df["census_population"]).all()
-    assert set(df["covid_label"]) == set(fig.COVID_LABELS.values())
+    df = fig.away_data()
+    assert (df["min_effective_population"] <= df["max_effective_population"]).all()
+    assert (df["max_effective_population"] <= df["census_population"]).all()
+    assert set(fig.presence_data()["covid_label"]) == set(fig.COVID_LABELS.values())
 
 
 def test_correlation_lines_break_at_missing_years():

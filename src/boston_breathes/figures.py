@@ -522,7 +522,9 @@ def enrollment_table() -> pl.DataFrame:
 # ------------------------------------------------------------------ B presence
 
 INDEX, SUMMER_SHARE = "Student Presence Index", "Summer break (share of students)"
-CENSUS, FLOOR = "Census resident population", "Lowest possible: every resident student away"
+CENSUS = "Census resident population"
+FLOOR = "If every student not living with parents leaves"
+CEILING = "If only students in closed residence halls leave"
 COVID_LABELS = {"normal": "Normal", "lockdown": "COVID-19 lockdown: students away",
                 "remote_year": "COVID-19, 2020–21: remote or hybrid teaching"}
 
@@ -650,21 +652,26 @@ def typical_year_table() -> pl.DataFrame:
     )
 
 
+def away_data() -> pl.DataFrame:
+    return read("students_away_weekly.csv").with_columns(
+        (pl.col("week_start") + pl.duration(days=7)).alias("week_end"))
+
+
 def population_chart(t: dict) -> alt.TopLevelMixin:
-    df = iso(presence_data(), "week_start", "week_end").select(
-        "week_start", "week_end", "census_population", "min_effective_population", "max_students_away",
-        "presence_index", "population_extrapolated")
+    df = iso(away_data(), "week_start", "week_end").select(
+        "week_start", "week_end", "census_population", "min_effective_population", "max_effective_population",
+        "min_students_away", "max_students_away", "presence_index", "population_extrapolated")
     height = 260
-    identity = alt.Scale(domain=[CENSUS, FLOOR], range=[t["series1"], t["series2"]])
+    identity = alt.Scale(domain=[CENSUS, CEILING, FLOOR], range=[t["series1"], t["series3"], t["series2"]])
     y_axis = alt.Axis(labelExpr=COMPACT, tickCount=5, domain=False, ticks=False)
     band = alt.Chart(df).mark_area(color=t["series2"], opacity=0.10, clip=True).encode(
         x=alt.X("week_start:T", title=None, axis=YEAR_AXIS, scale=STUDY_X),
         y=alt.Y("min_effective_population:Q", title="People", scale=alt.Scale(zero=False), axis=y_axis),
-        y2="census_population:Q",
+        y2="max_effective_population:Q",
     )
-    long = df.unpivot(index=["week_start"], on=["census_population", "min_effective_population"],
-                      variable_name="series", value_name="population").with_columns(
-        pl.col("series").replace_strict({"census_population": CENSUS, "min_effective_population": FLOOR}))
+    series = {"census_population": CENSUS, "max_effective_population": CEILING, "min_effective_population": FLOOR}
+    long = df.unpivot(index=["week_start"], on=list(series), variable_name="series", value_name="population") \
+        .with_columns(pl.col("series").replace_strict(series))
     lines = alt.Chart(long).mark_line(strokeWidth=2, strokeJoin="round", strokeCap="round", clip=True).encode(
         x="week_start:T", y="population:Q", color=alt.Color("series:N", title=None, scale=identity),
         detail="series:N")
@@ -681,7 +688,9 @@ def population_chart(t: dict) -> alt.TopLevelMixin:
     columns, rule, hover = crosshair(df, "hover_population", [
         WEEK_TOOLTIP,
         alt.Tooltip("census_population:Q", title=CENSUS, format=",.0f"),
+        alt.Tooltip("max_effective_population:Q", title="Highest possible population", format=",.0f"),
         alt.Tooltip("min_effective_population:Q", title="Lowest possible population", format=",.0f"),
+        alt.Tooltip("min_students_away:Q", title="Fewest resident students away", format=",.0f"),
         alt.Tooltip("max_students_away:Q", title="Most resident students away", format=",.0f"),
         alt.Tooltip("presence_index:Q", title=INDEX, format=".2f"),
     ], t, height, STUDY_X)
@@ -690,12 +699,25 @@ def population_chart(t: dict) -> alt.TopLevelMixin:
 
 def population_table() -> pl.DataFrame:
     return (
-        presence_data().group_by(pl.col("week_start").dt.year().alias("Year"))
+        away_data().group_by(pl.col("week_start").dt.year().alias("Year"))
         .agg(pl.col("census_population").mean().round(0).cast(pl.Int64).alias("Census population (average)"),
+             pl.col("min_students_away").max().cast(pl.Int64).alias("Fewest resident students away (emptiest week)"),
              pl.col("max_students_away").max().cast(pl.Int64).alias("Most resident students away"),
              pl.col("min_effective_population").min().cast(pl.Int64).alias("Lowest possible population"))
         .sort("Year")
     )
+
+
+def away_note() -> str:
+    ev = read("presence_evaluation.csv")
+    get = lambda subset, metric: ev.filter((pl.col("subset") == subset) & (pl.col("metric") == metric))["value"][0]  # noqa: E731
+    acs = ev.filter(pl.col("check") == "living_arrangements")["subset"].str.extract(r"ACS (\d+)").drop_nulls()[0]
+    total = get(f"study area, ACS {acs}", "college_students")
+    share = lambda col: get(f"study area, ACS {acs}", col) / total  # noqa: E731
+    return (f"Where resident college students live (ACS 5-year estimate ending {acs}): {share('in_university_housing'):.0%} "
+            f"in university housing, {share('with_parents'):.0%} with their parents, {share('elsewhere'):.0%} elsewhere, "
+            "mostly renting. Residence hall closures are known for the largest universities; halls without a recorded "
+            "policy count as open outside summer.")
 
 
 def dorm_bound_note() -> str:
@@ -1286,12 +1308,14 @@ SECTION_B = {
         },
         {
             "name": "b7_population_bounds",
-            "title": "Resident population and the most it could fall when students leave",
-            "question": "How large could the seasonal swing be, at most?",
+            "title": "Resident population and how far it could fall when students leave",
+            "question": "How large could the seasonal swing be, at least and at most?",
             "notes": ["A range, not an estimate: the blue line is the Census resident population, which already "
-                      "includes students living here during the school year. The orange line is the lowest the "
-                      "population could be if every resident college student (ACS) were away when not in session. "
-                      "How many actually leave will be measured from city activity.",
+                      "includes students living here during the school year. The upper line takes away only "
+                      "students in university housing whose residence halls are closed; the lower line takes away "
+                      "every resident college student not living with their parents whose school is out of "
+                      "session. How many actually leave will be measured from city activity.",
+                      away_note,
                       dorm_bound_note,
                       housing_note,
                       "The axis does not start at zero."],

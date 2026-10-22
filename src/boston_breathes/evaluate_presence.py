@@ -23,9 +23,12 @@ whether the index moves with activity where students should matter most.
 4. Summer: whether the summer-break share adds to the index in explaining
    the campus share (least squares with a constant per year).
 5. Bounds on students away: how many students leave is to be measured from
-   activity, not assumed. The data bound it: at most every resident college
-   student (ACS) is away when out of session, and in Cambridge at least the
-   students living in dormitories leave in summer (Town Gown reports). In
+   activity, not assumed. The data bound it (students_away.py): at most every
+   resident college student not living with their parents is away when out of
+   session, and at least those whose residence halls close. Where they live
+   comes from ACS PUMS and is compared with the cities' own counts. In
+   Cambridge at least the students living in dormitories leave in summer
+   (Town Gown reports). In
    Boston, students in university housing are a lower bound in the same way,
    and students living with their parents (City of Boston student housing
    reports) are taken out of the upper bound. For the whole study area, the
@@ -306,16 +309,24 @@ def summer_rows(ratio: pl.DataFrame, presence: pl.DataFrame, source: str) -> lis
 # ------------------------------------------------------------ effective population
 
 
-def bound_rows(presence: pl.DataFrame, residents: pl.DataFrame, town_gown: pl.DataFrame,
-               boston_housing: pl.DataFrame, enrollment: pl.DataFrame, year: int = 2019) -> list[dict]:
+def bound_rows(away: pl.DataFrame, residents: pl.DataFrame, town_gown: pl.DataFrame,
+               boston_housing: pl.DataFrame, enrollment: pl.DataFrame, arrangements: pl.DataFrame,
+               year: int = 2019) -> list[dict]:
     """Upper and lower bounds on resident students away, from data only."""
-    y = presence.filter(pl.col("week_start").dt.year() == year)
-    most = y["max_students_away"].max()
+    y = away.filter(pl.col("week_start").dt.year() == year)
+    most, least, census = y["max_students_away"].max(), y["min_students_away"].max(), y["census_population"].mean()
     rows = [
         row("students_away_bounds", f"study area, {year}", "max_students_away", most, len(y)),
-        row("students_away_bounds", f"study area, {year}", "max_students_away_pct_of_census",
-            most / y["census_population"].mean() * 100, len(y)),
+        row("students_away_bounds", f"study area, {year}", "max_students_away_pct_of_census", most / census * 100, len(y)),
+        row("students_away_bounds", f"study area, {year}", "min_students_away", least, len(y)),
+        row("students_away_bounds", f"study area, {year}", "min_students_away_pct_of_census", least / census * 100, len(y)),
     ]
+    # Where resident students live (ACS PUMS split), study area and checks against the cities' own counts.
+    split = arrangements.filter(pl.col("acs_year") == year)
+    for subset, towns in (("study area", None), ("Boston", ["Boston"]), ("Cambridge", ["Cambridge"])):
+        part = split if towns is None else split.filter(pl.col("municipality").is_in(towns))
+        for col in ("college_students", "in_university_housing", "with_parents", "elsewhere"):
+            rows.append(row("living_arrangements", f"{subset}, ACS {year}", col, part[col].sum(), len(part)))
     cambridge = residents.filter((pl.col("municipality") == "Cambridge") & (pl.col("acs_year") == year))
     dorms = town_gown.filter(pl.col("fall_year") == year)
     if len(cambridge) and len(dorms):
@@ -367,6 +378,8 @@ def main() -> None:
     residents = read("student_residents_annual.csv")
     town_gown = read("cambridge_town_gown.csv")
     boston_housing = read("boston_student_housing.csv")
+    away = read("students_away_weekly.csv")
+    arrangements = read("student_living_arrangements.csv")
     enrollment = read("enrollment_annual.csv", schema_overrides={"unitid": pl.Utf8})
 
     bike_ratio = campus_ratio(bike_zone, "trips")
@@ -379,7 +392,7 @@ def main() -> None:
         + street_rows(street_count_pairs(counts))
         + summer_rows(bike_ratio, presence, "Bluebikes")
         + summer_rows(mbta_ratio, presence, "MBTA")
-        + bound_rows(presence, residents, town_gown, boston_housing, enrollment)
+        + bound_rows(away, residents, town_gown, boston_housing, enrollment, arrangements)
         + college_age_rows(bike_zone, presence)
         + survey_rows(station_summer_change(mbta_station, presence), survey)
     )

@@ -58,7 +58,7 @@ def test_covid_weeks_are_away():
     assert out["covid_away"].to_list() == [False, True, False]
 
 
-def test_build_bounds_students_away():
+def test_build_indices():
     e = enrollment([("1", "A", 2019, 1000, 0, 1000), ("2", "B", 2019, 1000, 0, 1000)], beds=[600, 200])
     academic = pl.DataFrame({
         "week_start": MON * 2,
@@ -66,16 +66,9 @@ def test_build_bounds_students_away():
         "days_in_session": [7, 7, 0, 7, 0, 0],
         "summer_break_days": [0, 0, 7, 0, 0, 0],
     })
-    residents = pl.DataFrame({
-        "acs_year": [2019, 2019], "undergrad": [300, 100], "graduate": [50, 50],
-    })
-    population = pl.DataFrame({"week_start": MON, "study_area": [10_000] * 3, "extrapolated": [False] * 3})
-    weekly, by_inst = presence.build(weeks(MON), e, academic, residents, population, POLICY)
+    weekly, by_inst = presence.build(weeks(MON), e, academic, POLICY)
     assert weekly["presence_index"].to_list() == [1.0, 0.5, 0.0]
     assert weekly["summer_break_share"].to_list() == [0.0, 0.0, 0.5]
-    # At most all 500 resident students (400 undergraduate, 100 graduate) are away.
-    assert weekly["max_students_away"].to_list() == [0, 250, 500]
-    assert weekly["min_effective_population"].to_list() == [10_000, 9_750, 9_500]
     # Weighted by beds instead: A has 600 of the 800 beds.
     assert weekly["housing_presence_index"].to_list() == [1.0, 0.75, 0.0]
     assert weekly["beds_out_of_session"].to_list() == [0, 200, 800]
@@ -105,9 +98,7 @@ def test_remote_share_in_2020_21():
                     ("3", "C", 2019, 100, 0, 100), ("3", "C", 2020, 100, 0, 100)])
     academic = pl.DataFrame({"week_start": fall * 3, "unitid": ["1", "2", "3"],
                              "days_in_session": [7, 7, 7], "summer_break_days": [0, 0, 0]})
-    residents = pl.DataFrame({"acs_year": [2020], "undergrad": [10], "graduate": [0]})
-    population = pl.DataFrame({"week_start": fall, "study_area": [1000], "extrapolated": [False]})
-    weekly, by_inst = presence.build(weeks(fall), e, academic, residents, population, POLICY)
+    weekly, by_inst = presence.build(weeks(fall), e, academic, POLICY)
     row = weekly.row(0, named=True)
     assert row["covid_period"] == "remote_year"
     # Normal enrollment 300 + 100 + 100; A (300) taught remotely; C has no policy recorded.

@@ -1,4 +1,4 @@
-"""Student Presence Index and bounds on students away, by week.
+"""Student Presence Index, by week.
 
 Students in session
     For each institution, in-person enrollment (IPEDS, students not enrolled
@@ -30,18 +30,8 @@ Summer break share
     and optional, so summer is not counted as in session; this column lets
     summer be told apart from winter and spring breaks.
 
-Bounds on students away
-    How many students actually leave when not in session is what the project
-    measures, from city activity; it is not assumed here. The Census counts
-    college students where they live during the school year, so the resident
-    population already includes the students living in the study area. At
-    most, all of them are away when out of session:
-
-        max_students_away        = (1 - presence index) * resident college students
-        min_effective_population = Census population - max_students_away
-
-    Resident students come from the ACS 5-year estimate ending in the year of
-    the fall term (the latest available estimate for later years).
+How many resident students are away each week, at most and at least, is
+worked out from these indices in students_away.py.
 
 COVID-19
     From COVID_START to COVID_END students are treated as away, although the
@@ -174,24 +164,10 @@ def add_covid_policy(per_inst: pl.DataFrame, policy: pl.DataFrame) -> pl.DataFra
     )
 
 
-def resident_students(weeks: pl.DataFrame, residents: pl.DataFrame) -> pl.DataFrame:
-    """Study-area resident undergraduate and graduate students for each week."""
-    totals = residents.group_by("acs_year").agg(
-        pl.col("undergrad").sum().alias("resident_undergrads"),
-        pl.col("graduate").sum().alias("resident_grads"),
-    )
-    first, latest = totals["acs_year"].min(), totals["acs_year"].max()
-    return weeks.with_columns(
-        fall_year(pl.col("week_start")).clip(first, latest).alias("acs_year")
-    ).join(totals, on="acs_year", how="left").drop("acs_year")
-
-
 def build(
     weeks: pl.DataFrame,
     enrollment: pl.DataFrame,
     academic_weekly: pl.DataFrame,
-    residents: pl.DataFrame,
-    population: pl.DataFrame,
     covid_policy: pl.DataFrame,
 ) -> tuple[pl.DataFrame, pl.DataFrame]:
     per_inst = add_covid_policy(
@@ -227,21 +203,11 @@ def build(
             (pl.col("_beds_in_session") / pl.col("housing_beds")).round(4).alias("housing_presence_index"),
             (pl.col("housing_beds") - pl.col("_beds_in_session")).round(0).cast(pl.Int64).alias("beds_out_of_session"),
         )
-        .join(resident_students(weeks, residents), on="week_start", how="left")
-        .join(population.select("week_start", pl.col("study_area").alias("census_population"),
-                                pl.col("extrapolated").alias("population_extrapolated")), on="week_start", how="left")
-        .with_columns(
-            ((1 - pl.col("presence_index")) * (pl.col("resident_undergrads") + pl.col("resident_grads")))
-            .round(0).cast(pl.Int64).alias("max_students_away")
-        )
-        .with_columns((pl.col("census_population") - pl.col("max_students_away")).alias("min_effective_population"))
         .sort("week_start")
         .select(
             "week_start", "presence_index", "summer_break_share", "students_in_session", "in_person_enrollment",
             "normal_enrollment", "own_calendar_share", "housing_presence_index", "housing_beds", "beds_out_of_session",
-            "resident_undergrads", "resident_grads", "census_population", "max_students_away",
-            "min_effective_population",
-            "enrollment_imputed", "population_extrapolated", "covid_away",
+            "enrollment_imputed", "covid_away",
             "covid_period", "covid_remote_share", "covid_policy_known_share",
         )
     )
@@ -257,15 +223,13 @@ def main() -> None:
     weeks = build_weeks().select("week_start")
     enrollment = pl.read_csv(PROCESSED / "enrollment_annual.csv", schema_overrides={"unitid": pl.Utf8})
     academic = pl.read_csv(PROCESSED / "academic_weekly.csv", schema_overrides={"unitid": pl.Utf8}, try_parse_dates=True)
-    residents = pl.read_csv(PROCESSED / "student_residents_annual.csv")
-    population = pl.read_csv(PROCESSED / "population_weekly.csv", try_parse_dates=True)
-    weekly, by_inst = build(weeks, enrollment, academic, residents, population, load_covid_policy())
+    weekly, by_inst = build(weeks, enrollment, academic, load_covid_policy())
     weekly.write_csv(PROCESSED / "student_presence_weekly.csv")
     by_inst.write_csv(PROCESSED / "student_presence_by_institution.csv")
 
     y = weekly.filter(pl.col("week_start").dt.year() == 2019)
     print(f"Student presence: {len(weekly)} weeks; in 2019 the index ranged {y['presence_index'].min():.2f}-"
-          f"{y['presence_index'].max():.2f}; at most {y['max_students_away'].max():,.0f} resident students away")
+          f"{y['presence_index'].max():.2f}")
     print(f"Share of enrollment with its own calendar: median {weekly['own_calendar_share'].median():.0%}")
 
 
