@@ -21,6 +21,10 @@ whether the index moves with activity where students should matter most.
    activity, not assumed. The data bound it: at most every resident college
    student (ACS) is away when out of session, and in Cambridge at least the
    students living in dormitories leave in summer (Town Gown reports).
+6. College-age riders: the weekly share of Bluebikes trips by riders aged
+   18-24 (among trips with a known rider age, 2015 to April 2020), within
+   each year and in full in-session weeks against summer, for the whole study
+   area and for campus- and away-zone stations.
 
 Output: data/processed/presence_evaluation.csv, one row per check, subset
 and metric.
@@ -31,7 +35,7 @@ import polars as pl
 
 from boston_breathes.paths import PROCESSED
 
-CAMPUS, AWAY = "campus", "away"
+CAMPUS, NEAR, AWAY = "campus", "near", "away"
 BREAK_MAX_DAYS = 2  # a break week has at most this many days in session
 REFERENCE_WEEKS = 3  # in-session weeks this close to a break are its reference
 # Universities whose study-area campus stations are not at the campus their calendar describes.
@@ -73,6 +77,45 @@ def correlations(ratio: pl.DataFrame, presence: pl.DataFrame, source: str) -> li
         rows.append(row("campus_share", f"{source}, {year}", "corr_log_ratio_vs_index", r, n))
     rows.append(row("campus_share", f"{source}, normal years", "median_within_year_corr",
                     by_year["r"].median(), len(by_year)))
+    return rows
+
+
+# ------------------------------------------------------------ college-age riders
+
+FULL_SHARE = 0.95  # in-session weeks have an index, and summer weeks a summer-break share, at least this high
+AGE_ZONES = {"study area": [CAMPUS, NEAR, AWAY], "campus zone": [CAMPUS], "away zone": [AWAY]}
+
+
+def college_age_share(weekly_by_zone: pl.DataFrame, zones: list[str]) -> pl.DataFrame:
+    """Weekly share of trips by college-age riders among trips with a known rider age, complete weeks."""
+    return (
+        weekly_by_zone.filter(pl.col("complete_week") & pl.col("campus_zone").is_in(zones))
+        .group_by("week_start")
+        .agg(pl.col("college_age_trips").sum(), pl.col("age_known_trips").sum())
+        .filter(pl.col("age_known_trips") > 0)
+        .select("week_start", (pl.col("college_age_trips") / pl.col("age_known_trips")).alias("share"))
+    )
+
+
+def college_age_rows(weekly_by_zone: pl.DataFrame, presence: pl.DataFrame) -> list[dict]:
+    rows = []
+    for label, zones in AGE_ZONES.items():
+        df = college_age_share(weekly_by_zone, zones).join(
+            presence.select("week_start", "presence_index", "summer_break_share", "covid_period"), on="week_start"
+        ).filter(pl.col("covid_period") == "normal")
+        by_year = (
+            df.group_by(pl.col("week_start").dt.year().alias("year"))
+            .agg(pl.corr("share", "presence_index").alias("r"), pl.len().alias("n"))
+            .filter(pl.col("n") >= 20)
+            .sort("year")
+        )
+        for year, r, n in by_year.iter_rows():
+            rows.append(row("college_age", f"{label}, {year}", "corr_share_vs_index", r, n))
+        rows.append(row("college_age", label, "median_within_year_corr", by_year["r"].median(), len(by_year)))
+        in_session = df.filter(pl.col("presence_index") >= FULL_SHARE)["share"]
+        summer = df.filter(pl.col("summer_break_share") >= FULL_SHARE)["share"]
+        rows.append(row("college_age", label, "share_in_session_weeks", in_session.mean(), len(in_session)))
+        rows.append(row("college_age", label, "share_in_summer_weeks", summer.mean(), len(summer)))
     return rows
 
 
@@ -143,7 +186,7 @@ def street_count_pairs(counts: pl.DataFrame) -> pl.DataFrame:
 
 def street_rows(pairs: pl.DataFrame) -> list[dict]:
     rows = []
-    for zone in (CAMPUS, "near", AWAY):
+    for zone in (CAMPUS, NEAR, AWAY):
         sub = pairs.filter(pl.col("campus_zone") == zone)
         for mode in ("bikes", "vehicles"):
             vals = sub[f"log_{mode}"].drop_nulls().drop_nans()
@@ -235,6 +278,7 @@ def main() -> None:
         + summer_rows(bike_ratio, presence, "Bluebikes")
         + summer_rows(mbta_ratio, presence, "MBTA")
         + bound_rows(presence, residents, town_gown)
+        + college_age_rows(bike_zone, presence)
     )
     out = pl.DataFrame(rows, schema={"check": pl.Utf8, "subset": pl.Utf8, "metric": pl.Utf8,
                                      "value": pl.Float64, "n": pl.Int64})

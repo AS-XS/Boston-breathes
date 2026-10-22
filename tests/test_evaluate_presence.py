@@ -20,6 +20,20 @@ def test_campus_ratio_uses_complete_weeks_with_both_zones():
     assert out["log_ratio"][0] == pytest.approx(0.6931, abs=1e-4)
 
 
+def test_college_age_share_pools_zones_and_skips_weeks_without_ages():
+    df = pl.DataFrame({
+        "week_start": [WEEKS[0], WEEKS[0], WEEKS[1], WEEKS[2], WEEKS[2]],
+        "campus_zone": ["campus", "away", "campus", "campus", "near"],
+        "college_age_trips": [30, 10, 0, 50, 5],
+        "age_known_trips": [100, 100, 0, 100, 50],
+        "complete_week": [True, True, True, False, True],
+    })
+    out = ev.college_age_share(df, ["campus", "away"])
+    # Week 1 has no known ages; week 2 is incomplete and its near-zone row is not asked for.
+    assert out["week_start"].to_list() == [WEEKS[0]]
+    assert out["share"][0] == pytest.approx(0.2)
+
+
 def test_break_dips_compare_with_nearby_in_session_weeks():
     by_zone = pl.DataFrame({"week_start": WEEKS, "campus_zone": ["away"] * 6,
                             "trips": [1000] * 6, "complete_week": [True] * 6})

@@ -59,3 +59,27 @@ students_away_bounds,"study area, 2019",max_students_away_pct_of_census,12.4037,
 students_away_bounds,"Cambridge, 2019-20",min_students_away_dorm_residents,14322.0,1
 students_away_bounds,"Cambridge, 2019-20",max_students_away_resident_students,29279.0,1
 students_away_bounds,"Cambridge, 2019-20",min_share_away,0.4892,1
+college_age,"study area, 2015",corr_share_vs_index,0.3229,52
+college_age,"study area, 2016",corr_share_vs_index,0.1097,52
+college_age,"study area, 2017",corr_share_vs_index,0.1062,52
+college_age,"study area, 2018",corr_share_vs_index,0.1016,53
+college_age,"study area, 2019",corr_share_vs_index,0.0216,52
+college_age,study area,median_within_year_corr,0.1062,5
+college_age,study area,share_in_session_weeks,0.1833,99
+college_age,study area,share_in_summer_weeks,0.1808,67
+college_age,"campus zone, 2015",corr_share_vs_index,0.4929,52
+college_age,"campus zone, 2016",corr_share_vs_index,0.2875,52
+college_age,"campus zone, 2017",corr_share_vs_index,0.2347,52
+college_age,"campus zone, 2018",corr_share_vs_index,0.2493,53
+college_age,"campus zone, 2019",corr_share_vs_index,0.2355,52
+college_age,campus zone,median_within_year_corr,0.2493,5
+college_age,campus zone,share_in_session_weeks,0.2383,99
+college_age,campus zone,share_in_summer_weeks,0.2166,67
+college_age,"away zone, 2015",corr_share_vs_index,0.1774,52
+college_age,"away zone, 2016",corr_share_vs_index,-0.0777,52
+college_age,"away zone, 2017",corr_share_vs_index,-0.2874,52
+college_age,"away zone, 2018",corr_share_vs_index,0.003,53
+college_age,"away zone, 2019",corr_share_vs_index,-0.2085,52
+college_age,away zone,median_within_year_corr,-0.0777,5
+college_age,away zone,share_in_session_weeks,0.1495,99
+college_age,away zone,share_in_summer_weeks,0.161,67
