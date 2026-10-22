@@ -105,3 +105,12 @@ def test_break_test_leaves_out_universities_with_mismatched_campuses(monkeypatch
                              "days_in_session": [7, 7, 0, 7, 7, 7], "summer_break_days": [0] * 6})
     presence = pl.DataFrame({"week_start": WEEKS, "covid_period": ["normal"] * 6})
     assert ev.break_dips(by_inst, by_zone, academic, presence).is_empty()
+
+
+def test_within_year_corr_uses_normal_years_with_enough_weeks():
+    weeks = [date(2019, 1, 7) + timedelta(weeks=i) for i in range(25)] + [date(2020, 1, 6) + timedelta(weeks=i) for i in range(5)]
+    df = pl.DataFrame({"week_start": weeks, "log_ratio": [float(i % 5) for i in range(30)],
+                       "idx": [float(i % 5) for i in range(30)], "covid_period": ["normal"] * 30})
+    out = ev.within_year_corr(df, "idx")
+    assert out["year"].to_list() == [2019]  # 2020 has only 5 weeks
+    assert out["r"][0] == pytest.approx(1.0)

@@ -12,9 +12,10 @@ def weeks(starts):
     return pl.DataFrame({"week_start": starts})
 
 
-def enrollment(rows):
+def enrollment(rows, beds=None):
     cols = ["unitid", "name", "fall_year", "total", "distance_only", "in_person"]
-    return pl.DataFrame([dict(zip(cols, r)) for r in rows])
+    return pl.DataFrame([dict(zip(cols, r)) for r in rows]).with_columns(
+        pl.Series("dorm_capacity", beds or [0] * len(rows)))
 
 
 def test_fall_year_follows_the_thursday():
@@ -58,7 +59,7 @@ def test_covid_weeks_are_away():
 
 
 def test_build_bounds_students_away():
-    e = enrollment([("1", "A", 2019, 1000, 0, 1000), ("2", "B", 2019, 1000, 0, 1000)])
+    e = enrollment([("1", "A", 2019, 1000, 0, 1000), ("2", "B", 2019, 1000, 0, 1000)], beds=[600, 200])
     academic = pl.DataFrame({
         "week_start": MON * 2,
         "unitid": ["1"] * 3 + ["2"] * 3,
@@ -75,6 +76,9 @@ def test_build_bounds_students_away():
     # At most all 500 resident students (400 undergraduate, 100 graduate) are away.
     assert weekly["max_students_away"].to_list() == [0, 250, 500]
     assert weekly["min_effective_population"].to_list() == [10_000, 9_750, 9_500]
+    # Weighted by beds instead: A has 600 of the 800 beds.
+    assert weekly["housing_presence_index"].to_list() == [1.0, 0.75, 0.0]
+    assert weekly["beds_out_of_session"].to_list() == [0, 200, 800]
     assert len(by_inst) == 6
     assert weekly["covid_period"].to_list() == ["normal"] * 3
     assert weekly["covid_remote_share"].to_list() == [None] * 3

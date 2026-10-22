@@ -13,6 +13,7 @@ campus_share,"Bluebikes, 2024",corr_log_ratio_vs_index,0.8656,53
 campus_share,"Bluebikes, 2025",corr_log_ratio_vs_index,0.9019,52
 campus_share,"Bluebikes, 2026",corr_log_ratio_vs_index,0.8807,34
 campus_share,"Bluebikes, normal years",median_within_year_corr,0.8488,11
+campus_share,"Bluebikes, normal years, housing index",median_within_year_corr,0.8454,11
 campus_share,"MBTA, normal",corr_log_ratio_vs_index,0.1523,539
 campus_share,"MBTA, remote_year",corr_log_ratio_vs_index,-0.1131,52
 campus_share,"MBTA, 2015",corr_log_ratio_vs_index,0.556,52
@@ -27,6 +28,7 @@ campus_share,"MBTA, 2024",corr_log_ratio_vs_index,-0.1215,53
 campus_share,"MBTA, 2025",corr_log_ratio_vs_index,0.1567,52
 campus_share,"MBTA, 2026",corr_log_ratio_vs_index,0.2079,38
 campus_share,"MBTA, normal years",median_within_year_corr,0.3058,11
+campus_share,"MBTA, normal years, housing index",median_within_year_corr,0.3066,11
 break_dips,"Berklee College of Music, spring",median_change_in_campus_share_pct,-9.585,1
 break_dips,"Berklee College of Music, thanksgiving",median_change_in_campus_share_pct,-9.8706,1
 break_dips,"Berklee College of Music, winter",median_change_in_campus_share_pct,-8.3351,4

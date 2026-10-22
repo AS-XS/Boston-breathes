@@ -8,6 +8,8 @@ whether the index moves with activity where students should matter most.
    rise and fall with the index. Weather, season and citywide events affect
    both zones, so the ratio mostly removes them. Correlations are computed
    within each year, because network growth shifts the ratio between years.
+   The same is done with the housing presence index (weighted by beds in
+   university housing instead of enrollment).
 2. Break dips: for each university with its own calendar, the share of
    study-area Bluebikes trips at stations on its campus should drop in break
    weeks compared with nearby full in-session weeks. Only academic years with
@@ -67,24 +69,33 @@ def campus_ratio(weekly_by_zone: pl.DataFrame, value: str) -> pl.DataFrame:
     )
 
 
+def within_year_corr(df: pl.DataFrame, index: str) -> pl.DataFrame:
+    """Correlation of the log ratio with an index within each normal year with at least 20 weeks."""
+    return (
+        df.filter(pl.col("covid_period") == "normal")
+        .group_by(pl.col("week_start").dt.year().alias("year"))
+        .agg(pl.corr("log_ratio", index).alias("r"), pl.len().alias("n"))
+        .filter(pl.col("n") >= 20)
+        .sort("year")
+    )
+
+
 def correlations(ratio: pl.DataFrame, presence: pl.DataFrame, source: str) -> list[dict]:
-    df = ratio.join(presence.select("week_start", "presence_index", "covid_period"), on="week_start")
+    df = ratio.join(presence.select("week_start", "presence_index", "housing_presence_index", "covid_period"),
+                    on="week_start")
     rows = []
     for period in ("normal", "remote_year"):
         sub = df.filter(pl.col("covid_period") == period)
         rows.append(row("campus_share", f"{source}, {period}", "corr_log_ratio_vs_index",
                         sub.select(pl.corr("log_ratio", "presence_index")).item(), len(sub)))
-    by_year = (
-        df.filter(pl.col("covid_period") == "normal")
-        .group_by(pl.col("week_start").dt.year().alias("year"))
-        .agg(pl.corr("log_ratio", "presence_index").alias("r"), pl.len().alias("n"))
-        .filter(pl.col("n") >= 20)
-        .sort("year")
-    )
+    by_year = within_year_corr(df, "presence_index")
     for year, r, n in by_year.iter_rows():
         rows.append(row("campus_share", f"{source}, {year}", "corr_log_ratio_vs_index", r, n))
     rows.append(row("campus_share", f"{source}, normal years", "median_within_year_corr",
                     by_year["r"].median(), len(by_year)))
+    housing = within_year_corr(df, "housing_presence_index")
+    rows.append(row("campus_share", f"{source}, normal years, housing index", "median_within_year_corr",
+                    housing["r"].median(), len(housing)))
     return rows
 
 

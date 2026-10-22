@@ -16,6 +16,14 @@ Student Presence Index
     enrollment uses each institution's fall 2019 count of online-only
     students instead; the extra online-only students count as away.
 
+Housing presence index
+    The same share weighted by each institution's beds in university housing
+    (IPEDS capacity) instead of its in-person enrollment, with the beds whose
+    institution is out of session that week. Students in university housing
+    are the ones most likely to leave on breaks, while commuter institutions
+    (e.g. community colleges) have few or no beds, so this index follows the
+    residential students. Beds are capacity, not occupancy.
+
 Summer break share
     The enrollment-weighted share of students whose institution is on summer
     break (after spring exams, before fall classes). Summer terms are smaller
@@ -92,7 +100,7 @@ def enrollment_by_week(weeks: pl.DataFrame, enrollment: pl.DataFrame) -> pl.Data
             .then((pl.col("total") - pl.col("_usual_online")).clip(pl.col("in_person"), pl.col("total")))
             .otherwise(pl.col("in_person")).alias("normal_in_person")
         )
-        .select("unitid", "name", "fall_year", "in_person", "normal_in_person")
+        .select("unitid", "name", "fall_year", "in_person", "normal_in_person", "dorm_capacity")
     )
     w = weeks.with_columns(fall_year(pl.col("week_start")).alias("fall_year")).with_columns(
         pl.col("fall_year").clip(first, latest).alias("enrollment_year"),
@@ -197,6 +205,8 @@ def build(
             pl.col("students_in_session").sum().round(0),
             ((pl.col("in_person") * pl.col("summer_share")).sum() / pl.col("in_person").sum())
             .round(4).alias("summer_break_share"),
+            pl.col("dorm_capacity").sum().alias("housing_beds"),
+            (pl.col("dorm_capacity") * pl.col("session_share")).sum().alias("_beds_in_session"),
             (pl.col("in_person").filter(pl.col("calendar_source") == "own calendar").sum()
              / pl.col("in_person").sum()).round(3).alias("own_calendar_share"),
             pl.col("enrollment_imputed").any(),
@@ -212,7 +222,11 @@ def build(
             .otherwise(pl.lit("normal")).alias("covid_period"),
             *[pl.when(remote_year).then(pl.col(c)).alias(c) for c in ("covid_remote_share", "covid_policy_known_share")],
         )
-        .with_columns((pl.col("students_in_session") / pl.col("normal_enrollment")).round(4).alias("presence_index"))
+        .with_columns(
+            (pl.col("students_in_session") / pl.col("normal_enrollment")).round(4).alias("presence_index"),
+            (pl.col("_beds_in_session") / pl.col("housing_beds")).round(4).alias("housing_presence_index"),
+            (pl.col("housing_beds") - pl.col("_beds_in_session")).round(0).cast(pl.Int64).alias("beds_out_of_session"),
+        )
         .join(resident_students(weeks, residents), on="week_start", how="left")
         .join(population.select("week_start", pl.col("study_area").alias("census_population"),
                                 pl.col("extrapolated").alias("population_extrapolated")), on="week_start", how="left")
@@ -224,7 +238,7 @@ def build(
         .sort("week_start")
         .select(
             "week_start", "presence_index", "summer_break_share", "students_in_session", "in_person_enrollment",
-            "normal_enrollment", "own_calendar_share",
+            "normal_enrollment", "own_calendar_share", "housing_presence_index", "housing_beds", "beds_out_of_session",
             "resident_undergrads", "resident_grads", "census_population", "max_students_away",
             "min_effective_population",
             "enrollment_imputed", "population_extrapolated", "covid_away",
@@ -232,7 +246,7 @@ def build(
         )
     )
     by_inst = per_inst.select(
-        "week_start", "unitid", "name", "in_person", "session_share", "summer_share", "calendar_source",
+        "week_start", "unitid", "name", "in_person", "dorm_capacity", "session_share", "summer_share", "calendar_source",
         pl.col("students_in_session").round(1), "enrollment_imputed", "covid_away",
         "covid_instruction", "covid_housing",
     ).sort("week_start", "unitid")
