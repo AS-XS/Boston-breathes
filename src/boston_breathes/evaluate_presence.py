@@ -35,6 +35,12 @@ whether the index moves with activity where students should matter most.
    18-24 (among trips with a known rider age, 2015 to April 2020), within
    each year and in full in-session weeks against summer, for the whole study
    area and for campus- and away-zone stations.
+7. MBTA passenger survey: across study-area gated stations, the change in
+   entries from full in-session weeks to full summer weeks (2022-2025, the
+   survey's years) should be larger where more riders are students
+   (semester passes, school trips, riders aged 18-25). Middle- and
+   high-school student fares are shown for contrast, since school
+   children are also away in summer.
 
 Output: data/processed/presence_evaluation.csv, one row per check, subset
 and metric.
@@ -135,6 +141,46 @@ def college_age_rows(weekly_by_zone: pl.DataFrame, presence: pl.DataFrame) -> li
         summer = df.filter(pl.col("summer_break_share") >= FULL_SHARE)["share"]
         rows.append(row("college_age", label, "share_in_session_weeks", in_session.mean(), len(in_session)))
         rows.append(row("college_age", label, "share_in_summer_weeks", summer.mean(), len(summer)))
+    return rows
+
+
+# ------------------------------------------------------------ MBTA passenger survey
+
+SURVEY_YEARS = (2022, 2025)  # the 2025 passenger survey pools responses from these years
+SURVEY_SHARES = ["semester_pass_share", "school_trip_share", "age_18_25_share", "school_student_fare_share"]
+MIN_WEEKS = 4  # weeks of each kind a station needs
+
+
+def station_summer_change(weekly_by_station: pl.DataFrame, presence: pl.DataFrame,
+                          years: tuple[int, int] = SURVEY_YEARS) -> pl.DataFrame:
+    """Log of each station's average weekly entries in full summer weeks over full in-session weeks."""
+    kinds = presence.filter(
+        (pl.col("covid_period") == "normal") & pl.col("week_start").dt.year().is_between(*years)
+    ).select(
+        "week_start",
+        pl.when(pl.col("presence_index") >= FULL_SHARE).then(pl.lit("session"))
+        .when(pl.col("summer_break_share") >= FULL_SHARE).then(pl.lit("summer")).alias("kind"),
+    ).filter(pl.col("kind").is_not_null())
+    return (
+        weekly_by_station.filter(pl.col("complete_week"))
+        .join(kinds, on="week_start", how="inner")
+        .group_by("stop_id", "kind")
+        .agg(pl.col("entries").mean(), pl.len().alias("weeks"))
+        .filter(pl.col("weeks") >= MIN_WEEKS)
+        .pivot(on="kind", index="stop_id", values="entries")
+        .drop_nulls()
+        .select("stop_id", (pl.col("summer") / pl.col("session")).log().alias("log_summer_change"))
+    )
+
+
+def survey_rows(change: pl.DataFrame, survey: pl.DataFrame) -> list[dict]:
+    """Across study-area stations: does the summer drop grow with the share of student riders?"""
+    df = change.join(survey.filter(pl.col("in_study_area")), on="stop_id", how="inner")
+    rows = [row("mbta_survey", "study-area stations", "median_summer_change_pct",
+                (np.exp(df["log_summer_change"].median()) - 1) * 100, len(df))]
+    for share in SURVEY_SHARES:
+        rows.append(row("mbta_survey", "study-area stations", f"corr_summer_change_vs_{share}",
+                        df.select(pl.corr("log_summer_change", share)).item(), len(df)))
     return rows
 
 
@@ -312,6 +358,8 @@ def main() -> None:
     presence = read("student_presence_weekly.csv")
     bike_zone = read("bluebikes_weekly_by_campus_zone.csv")
     mbta_zone = read("mbta_weekly_by_campus_zone.csv")
+    mbta_station = read("mbta_weekly_by_station.csv")
+    survey = read("mbta_survey_by_station.csv")
     bike_inst = read("bluebikes_weekly_by_institution.csv", schema_overrides={"campus_unitid": pl.Utf8})
     academic = read("academic_weekly.csv", schema_overrides={"unitid": pl.Utf8})
     calendar = read("academic_calendar.csv", schema_overrides={"unitid": pl.Utf8})
@@ -333,6 +381,7 @@ def main() -> None:
         + summer_rows(mbta_ratio, presence, "MBTA")
         + bound_rows(presence, residents, town_gown, boston_housing, enrollment)
         + college_age_rows(bike_zone, presence)
+        + survey_rows(station_summer_change(mbta_station, presence), survey)
     )
     out = pl.DataFrame(rows, schema={"check": pl.Utf8, "subset": pl.Utf8, "metric": pl.Utf8,
                                      "value": pl.Float64, "n": pl.Int64})

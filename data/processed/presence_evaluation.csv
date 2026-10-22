@@ -101,3 +101,8 @@ college_age,"away zone, 2019",corr_share_vs_index,-0.2192,52
 college_age,away zone,median_within_year_corr,-0.095,5
 college_age,away zone,share_in_session_weeks,0.1511,96
 college_age,away zone,share_in_summer_weeks,0.161,67
+mbta_survey,study-area stations,median_summer_change_pct,-4.4768,67
+mbta_survey,study-area stations,corr_summer_change_vs_semester_pass_share,-0.5163,67
+mbta_survey,study-area stations,corr_summer_change_vs_school_trip_share,-0.4297,67
+mbta_survey,study-area stations,corr_summer_change_vs_age_18_25_share,-0.3582,67
+mbta_survey,study-area stations,corr_summer_change_vs_school_student_fare_share,-0.3343,67

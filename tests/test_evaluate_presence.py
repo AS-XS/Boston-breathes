@@ -114,3 +114,20 @@ def test_within_year_corr_uses_normal_years_with_enough_weeks():
     out = ev.within_year_corr(df, "idx")
     assert out["year"].to_list() == [2019]  # 2020 has only 5 weeks
     assert out["r"][0] == pytest.approx(1.0)
+
+
+def test_station_summer_change_and_survey_correlation():
+    session = [date(2023, 10, 2) + timedelta(weeks=i) for i in range(4)]
+    summer = [date(2023, 7, 3) + timedelta(weeks=i) for i in range(4)]
+    presence = pl.DataFrame({"week_start": session + summer, "presence_index": [1.0] * 4 + [0.0] * 4,
+                             "summer_break_share": [0.0] * 4 + [1.0] * 4, "covid_period": ["normal"] * 8})
+    entries = {"a": (100, 50), "b": (100, 90), "c": (100, 100)}  # (in session, summer)
+    weekly = pl.DataFrame([{"week_start": w, "stop_id": s, "entries": e[0] if w in session else e[1],
+                            "complete_week": True} for s, e in entries.items() for w in session + summer])
+    change = ev.station_summer_change(weekly, presence)
+    assert dict(change.sort("stop_id").rows()) == pytest.approx({"a": -0.6931, "b": -0.1054, "c": 0.0}, abs=1e-4)
+    survey = pl.DataFrame({"stop_id": ["a", "b", "c"], "in_study_area": [True] * 3,
+                           **{s: [0.3, 0.1, 0.0] for s in ev.SURVEY_SHARES}})
+    rows = {r["metric"]: r["value"] for r in ev.survey_rows(change, survey)}
+    assert rows["corr_summer_change_vs_semester_pass_share"] < -0.9
+    assert rows["median_summer_change_pct"] == pytest.approx(-10.0)

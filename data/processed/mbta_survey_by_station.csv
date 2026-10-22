@@ -1,0 +1,70 @@
+stop_id,station_name,in_study_area,campus_zone,survey_groups,semester_pass_share,school_student_fare_share,school_trip_share,age_18_25_share,semester_pass_respondents,school_student_fare_respondents,school_trip_respondents,age_18_25_respondents
+place-aport,Airport,true,away,Blue Line: Airport,0.0023,0.0311,0.0627,0.1922,999,1048,1048,1048
+place-alfcl,Alewife,true,away,Red Line: Alewife,0.0115,0.0233,0.0815,0.2285,881,959,959,959
+place-andrw,Andrew,true,away,Red Line: Andrew,0.0043,0.0162,0.0578,0.2212,973,1006,1006,1006
+place-aqucl,Aquarium,true,near,Blue Line: Aquarium,0.0025,0.0037,0.0214,0.1923,641,677,677,677
+place-armnl,Arlington,true,near,Green Line: Arlington,0.0035,0.0047,0.1971,0.3397,851,907,907,907
+place-asmnl,Ashmont,true,away,Red Line: Ashmont,0.0089,0.0403,0.086,0.2353,1230,1287,1287,1287
+place-astao,Assembly,true,away,Orange Line: Assembly,0.014,0.0041,0.0388,0.2328,644,667,667,667
+place-bbsta,Back Bay,true,near,Orange Line: Back Bay,0.0123,0.0237,0.0495,0.2172,1266,1325,1325,1325
+place-balsq,Ball Square,true,away,Green Line: Magoun Square and Ball Square,0.0006,0.0115,0.1139,0.2014,531,591,591,591
+place-bomnl,Bowdoin,true,campus,Blue Line: Bowdoin,0.0,0.0,0.0158,0.1327,211,224,224,224
+place-boyls,Boylston,true,campus,Green Line: Boylston,0.0167,0.0047,0.0975,0.3082,761,875,875,875
+place-brntn,Braintree,false,away,Red Line: Braintree,0.0093,0.0085,0.0789,0.2439,538,560,560,560
+place-brdwy,Broadway,true,near,Red Line: Broadway,0.0049,0.0127,0.0722,0.2156,1085,1135,1135,1135
+place-cntsq,Central,true,away,Red Line: Central,0.0184,0.0165,0.0662,0.2351,1172,1248,1248,1248
+place-chmnl,Charles/MGH,true,near,Red Line: Charles/MGH,0.0114,0.0045,0.0196,0.1623,1001,1060,1060,1060
+place-chncl,Chinatown,true,campus,Orange Line: Chinatown,0.0247,0.0164,0.0673,0.2163,727,773,773,773
+place-ccmnl,Community College,true,campus,Orange Line: Community College,0.0655,0.0613,0.377,0.336,745,772,772,772
+place-coecl,Copley,true,near,Green Line: Copley,0.007,0.0043,0.1649,0.3493,1568,1767,1767,1767
+place-davis,Davis,true,away,Red Line: Davis,0.0121,0.0101,0.0587,0.2434,895,945,945,945
+place-dwnxg,Downtown Crossing,true,campus,Orange Line: Downtown Crossing; Red Line: Downtown Crossing,0.0093,0.0155,0.0781,0.2172,4967,5213,5213,5213
+place-esomr,East Somerville,true,away,Green Line: East Somerville and Gilman Square,0.0035,0.0154,0.1349,0.254,436,495,495,495
+place-fldcr,Fields Corner,true,away,Red Line: Fields Corner,0.0066,0.0593,0.0946,0.2144,740,760,760,760
+place-forhl,Forest Hills,true,away,Orange Line: Forest Hills,0.0086,0.0586,0.1176,0.2176,1480,1530,1530,1530
+place-gilmn,Gilman Square,true,away,Green Line: East Somerville and Gilman Square,0.0035,0.0154,0.1349,0.254,436,495,495,495
+place-gover,Government Center,true,campus,Blue Line: Government Center; Green Line: Government Center,0.0072,0.0057,0.0697,0.2206,3609,3815,3815,3815
+place-grnst,Green Street,true,away,Orange Line: Green Street,0.0059,0.0746,0.1006,0.2149,404,415,415,415
+place-harsq,Harvard,true,campus,Red Line: Harvard,0.025,0.0135,0.173,0.3391,1442,1540,1540,1540
+place-haecl,Haymarket,true,near,Green Line: Haymarket; Orange Line: Haymarket,0.0076,0.0078,0.0537,0.1895,1784,1896,1896,1896
+place-hymnl,Hynes Convention Center,true,campus,Green Line: Hynes Convention Center,0.0222,0.0041,0.1256,0.3071,910,1023,1023,1023
+place-jfk,JFK/UMass,true,away,Red Line: JFK/UMass,0.0288,0.0625,0.2482,0.3455,1174,1221,1221,1221
+place-jaksn,Jackson Square,true,near,Orange Line: Jackson Square,0.0107,0.0635,0.1239,0.2276,868,905,905,905
+place-knncl,Kendall/MIT,true,near,Red Line: Kendall/MIT,0.0324,0.0089,0.1321,0.2463,959,1027,1027,1027
+place-kencl,Kenmore,true,campus,Green Line: Kenmore,0.0264,0.0087,0.1896,0.3496,1083,1208,1208,1208
+place-lech,Lechmere,true,near,Green Line: Lechmere and Science Park/West End,0.0069,0.0023,0.0667,0.2154,1062,1181,1181,1181
+place-longw,Longwood,true,campus,Green Line: Fenway and Longwood,0.0106,0.0042,0.051,0.2248,528,616,616,616
+place-mgngl,Magoun Square,true,away,Green Line: Magoun Square and Ball Square,0.0006,0.0115,0.1139,0.2014,531,591,591,591
+place-mlmnl,Malden Center,true,away,Orange Line: Malden Center,0.0068,0.01,0.0872,0.2454,1350,1371,1371,1371
+place-masta,Massachusetts Avenue,true,near,Orange Line: Massachusetts Avenue,0.0086,0.0141,0.0959,0.2457,794,840,840,840
+place-matt,Mattapan Line,true,away,Mattapan Trolley: All Mattapan Trolley,0.0044,0.0331,0.0851,0.189,1106,1142,1142,1142
+place-mvbcl,Maverick,true,away,Blue Line: Maverick,0.0037,0.0215,0.0618,0.1942,1181,1222,1222,1222
+place-mdftf,Medford/Tufts,true,campus,Green Line: Medford/Tufts,0.0136,0.0014,0.2505,0.3972,401,450,450,450
+place-nqncy,North Quincy,true,away,Red Line: North Quincy,0.003,0.0167,0.0718,0.2292,605,643,643,643
+place-north,North Station,true,near,Green Line: North Station; Orange Line: North Station,0.0061,0.0065,0.099,0.2578,3622,3816,3816,3816
+place-ogmnl,Oak Grove,true,away,Orange Line: Oak Grove,0.022,0.0129,0.0922,0.2336,644,666,666,666
+place-orhte,Orient Heights,true,away,Blue Line: Orient Heights,0.0027,0.0514,0.0842,0.199,628,642,642,642
+place-pktrm,Park Street,true,campus,Green Line: Park Street; Red Line: Park Street,0.0084,0.0097,0.1107,0.2545,6215,6680,6680,6680
+place-portr,Porter,true,near,Red Line: Porter,0.018,0.0104,0.0893,0.2502,792,826,826,826
+place-prmnl,Prudential,true,near,Green Line: Prudential,0.0108,0.0151,0.027,0.2545,348,388,388,388
+place-qamnl,Quincy Adams,true,away,Red Line: Quincy Adams,0.0055,0.006,0.0585,0.2122,301,317,317,317
+place-qnctr,Quincy Center,true,campus,Red Line: Quincy Center,0.0127,0.0093,0.1503,0.2969,945,985,985,985
+place-rbmnl,Revere Beach,true,away,Blue Line: Revere Beach,0.002,0.0115,0.0268,0.1758,587,601,601,601
+place-river,Riverside,true,near,Green Line: Riverside,0.0037,0.0093,0.1078,0.2287,164,204,204,204
+place-rcmnl,Roxbury Crossing,true,campus,Orange Line: Roxbury Crossing,0.0367,0.0873,0.2364,0.3125,598,622,622,622
+place-rugg,Ruggles,true,near,Orange Line: Ruggles,0.0317,0.0531,0.2473,0.3233,1291,1354,1354,1354
+place-shmnl,Savin Hill,true,away,Red Line: Savin Hill,0.0031,0.0601,0.1058,0.2072,326,341,341,341
+place-spmnl,Science Park,true,near,Green Line: Lechmere and Science Park/West End,0.0069,0.0023,0.0667,0.2154,1062,1181,1181,1181
+place-smmnl,Shawmut,true,away,Red Line: Shawmut,0.008,0.0481,0.0794,0.2509,190,219,219,219
+place-sstat,South Station,true,near,Red Line: South Station,0.0048,0.0094,0.0475,0.1909,2419,2529,2529,2529
+place-state,State Street,true,campus,Blue Line: State; Orange Line: State,0.0017,0.0171,0.0647,0.1772,3164,3274,3274,3274
+place-sbmnl,Stony Brook,true,away,Orange Line: Stony Brook,0.0089,0.0521,0.0913,0.2034,381,398,398,398
+place-sdmnl,Suffolk Downs,true,away,Blue Line: Suffolk Downs and Orient Heights,0.0026,0.0326,0.0483,0.2102,585,598,598,598
+place-sull,Sullivan Square,true,near,Orange Line: Sullivan Square,0.0042,0.0097,0.0728,0.209,1066,1104,1104,1104
+place-symcl,Symphony,true,near,Green Line: Symphony,0.0124,0.0055,0.1048,0.2914,268,316,316,316
+place-tumnl,Tufts Medical Center,true,campus,Orange Line: Tufts Medical Center,0.0114,0.0195,0.0654,0.2124,853,874,874,874
+place-unsqu,Union Square,true,away,Green Line: Union,0.0022,0.0,0.0552,0.2282,353,396,396,396
+place-welln,Wellington,true,away,Orange Line: Wellington,0.0065,0.0099,0.0856,0.1888,776,802,802,802
+place-wlsta,Wollaston,true,away,Red Line: Wollaston,0.005,0.0044,0.0628,0.2402,271,277,277,277
+place-wondl,Wonderland,true,away,Blue Line: Wonderland,0.0022,0.0128,0.0372,0.1977,735,769,769,769
+place-wimnl,Wood Island,true,away,Blue Line: Wood Island,0.0,0.0432,0.0646,0.2045,244,251,251,251

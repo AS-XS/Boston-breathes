@@ -1,14 +1,14 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents presence mbta street-counts evaluate figures test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents presence mbta mbta-survey street-counts evaluate figures test clean-interim
 
 install:
 	python3 -m venv .venv
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents presence mbta street-counts
+data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents presence mbta mbta-survey street-counts
 
 weeks:
 	$(RUN) boston_breathes.weeks
@@ -65,6 +65,10 @@ presence:
 # MBTA gated station entries by station and week (needs campus).
 mbta:
 	$(RUN) boston_breathes.mbta
+
+# MBTA passenger survey: student riders by station (needs mbta).
+mbta-survey:
+	$(RUN) boston_breathes.mbta_survey
 
 # Boston street counts of bicycles and motor vehicles (needs campus).
 street-counts:
