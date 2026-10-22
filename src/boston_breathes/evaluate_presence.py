@@ -10,9 +10,12 @@ whether the index moves with activity where students should matter most.
    within each year, because network growth shifts the ratio between years.
 2. Break dips: for each university with its own calendar, the share of
    study-area Bluebikes trips at stations on its campus should drop in break
-   weeks compared with nearby full in-session weeks. Tufts is left out: its
-   campus stations inside the study area are at its Boston health-sciences
-   campus, which does not follow the main-campus calendar collected.
+   weeks compared with nearby full in-session weeks. Only academic years with
+   no estimated date that sets the weeks in session are used, since an
+   estimated break week would test the estimate rather than the index. Tufts
+   is left out: its campus stations inside the study area are at its Boston
+   health-sciences campus, which does not follow the main-campus calendar
+   collected.
 3. Street counts: at locations counted in both June and September of the
    same year, bicycle counts near campuses should rise more than elsewhere.
 4. Summer: whether the summer-break share adds to the index in explaining
@@ -120,6 +123,17 @@ def college_age_rows(weekly_by_zone: pl.DataFrame, presence: pl.DataFrame) -> li
 
 
 # ------------------------------------------------------------ break dips
+
+
+def verified_weeks(academic_weekly: pl.DataFrame, calendar: pl.DataFrame) -> pl.DataFrame:
+    """Weekly calendar rows of the academic years with no estimated date that sets the weeks in session
+    (commencement does not)."""
+    estimated = calendar.filter((pl.col("status") == "estimated") & (pl.col("event") != "commencement")).select(
+        "unitid", "academic_year").unique()
+    start = pl.col("week_start").dt.year() - (pl.col("week_start").dt.month() < 8).cast(pl.Int32)
+    label = start.cast(pl.Utf8) + "-" + ((start + 1) % 100).cast(pl.Utf8).str.zfill(2)
+    return (academic_weekly.with_columns(label.alias("academic_year"))
+            .join(estimated, on=["unitid", "academic_year"], how="anti").drop("academic_year"))
 
 
 def break_dips(by_institution: pl.DataFrame, by_zone: pl.DataFrame, academic: pl.DataFrame,
@@ -263,13 +277,14 @@ def main() -> None:
     mbta_zone = read("mbta_weekly_by_campus_zone.csv")
     bike_inst = read("bluebikes_weekly_by_institution.csv", schema_overrides={"campus_unitid": pl.Utf8})
     academic = read("academic_weekly.csv", schema_overrides={"unitid": pl.Utf8})
+    calendar = read("academic_calendar.csv", schema_overrides={"unitid": pl.Utf8})
     counts = read("boston_street_counts.csv")
     residents = read("student_residents_annual.csv")
     town_gown = read("cambridge_town_gown.csv")
 
     bike_ratio = campus_ratio(bike_zone, "trips")
     mbta_ratio = campus_ratio(mbta_zone, "entries")
-    dips = break_dips(bike_inst, bike_zone, academic, presence)
+    dips = break_dips(bike_inst, bike_zone, verified_weeks(academic, calendar), presence)
     rows = (
         correlations(bike_ratio, presence, "Bluebikes")
         + correlations(mbta_ratio, presence, "MBTA")

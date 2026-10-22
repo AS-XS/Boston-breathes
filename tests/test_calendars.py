@@ -150,3 +150,10 @@ def test_cancelled_break_and_unknown_break(tmp_path):
     w = weekly_for(unknown.filter(pl.col("academic_year") == "2018-19"))
     assert w.filter(pl.col("week_start") == date(2019, 3, 11))["days_in_session"][0] is None
     assert w.filter(pl.col("week_start") == date(2019, 7, 15))["days_in_session"][0] == 0  # summer is known
+
+
+def test_hand_collected_universities_match_the_university_list():
+    manual = pl.read_csv(cal.MANUAL_PATH, schema_overrides={"unitid": pl.Utf8}).select("unitid", "institution").unique()
+    names = pl.read_csv(cal.PROCESSED / "universities.csv", schema_overrides={"unitid": pl.Utf8}).select(
+        "unitid", pl.col("name").alias("institution"))
+    assert manual.join(names, on=["unitid", "institution"], how="anti").is_empty()

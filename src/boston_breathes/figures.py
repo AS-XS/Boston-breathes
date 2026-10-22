@@ -9,7 +9,7 @@ Each chart is defined once (Vega-Lite, through Altair) and written twice:
 Section A, "What data we have":
   A1 coverage of every dataset over the study period
   A2 weekly Bluebikes trips and network size
-  A3 academic calendars of the six universities with collected calendars
+  A3 academic calendars of the universities with collected calendars
   A4 fall enrollment of the largest institutions, in person and online only
 
 Section B, "The Student Presence Index":
@@ -40,6 +40,7 @@ import hashlib
 import html
 import io
 import json
+import math
 import tarfile
 import textwrap
 from datetime import date, timedelta
@@ -197,7 +198,8 @@ def coverage_rows() -> pl.DataFrame:
     for (year,), g in calendar.group_by("academic_year", maintain_order=True):
         start_year = int(year[:4])
         estimated = g.filter(pl.col("status") == "estimated")
-        add(GROUPS[1], "Academic calendars (6 universities)", date(start_year, 8, 1), date(start_year + 1, 7, 31),
+        add(GROUPS[1], f"Academic calendars ({calendar['unitid'].n_unique()} universities)",
+            date(start_year, 8, 1), date(start_year + 1, 7, 31),
             OBSERVED, f"{len(estimated)} of {len(g)} dates estimated" if len(estimated) else "all dates verified")
     add(GROUPS[1], "COVID-19 university policies", COVID_END + timedelta(days=1), COVID_YEAR_END, OBSERVED,
         "teaching mode and housing, fall 2020 and spring 2021")
@@ -358,8 +360,24 @@ def bluebikes_table() -> pl.DataFrame:
 # ------------------------------------------------------------------ A3 calendars
 
 IN_SESSION, PARTIAL, BREAK, SUMMER = "In session all week", "In session part of the week", "Break", "Summer break"
-CALENDAR_ORDER = ["Northeastern University", "Boston University", "Harvard University", "Boston College",
-                  "Tufts University", "Massachusetts Institute of Technology"]
+def calendar_order() -> list[str]:
+    """Universities with collected calendars, largest (in-person students in the latest fall) first."""
+    collected = read("academic_calendar.csv", schema_overrides={"unitid": pl.Utf8}).select(
+        "unitid", "institution").unique()
+    e = read("enrollment_annual.csv", schema_overrides={"unitid": pl.Utf8})
+    latest = e.filter(pl.col("fall_year") == e["fall_year"].max()).select("unitid", "in_person")
+    return (collected.join(latest, on="unitid", how="left")
+            .sort("in_person", "institution", descending=[True, False], nulls_last=True)["institution"].to_list())
+
+
+def calendar_coverage_note() -> str:
+    e = read("enrollment_annual.csv", schema_overrides={"unitid": pl.Utf8})
+    year = e["fall_year"].max()
+    latest = e.filter(pl.col("fall_year") == year)
+    collected = set(read("academic_calendar.csv", schema_overrides={"unitid": pl.Utf8})["unitid"])
+    share = latest.filter(pl.col("unitid").is_in(list(collected)))["in_person"].sum() / latest["in_person"].sum()
+    return (f"{len(collected)} universities, with {share:.0%} of fall {year} in-person students, have collected "
+            "calendars; the other institutions follow their enrollment-weighted average. Largest first.")
 
 
 def calendar_data() -> pl.DataFrame:
@@ -390,7 +408,7 @@ def calendar_data() -> pl.DataFrame:
 def calendar_chart(t: dict) -> alt.TopLevelMixin:
     df = iso(calendar_data(), "week_start", "ref_start", "ref_end")
     panels = []
-    for name in CALENDAR_ORDER:
+    for name in calendar_order():
         sub = df.filter(pl.col("institution") == name)
         labels = sub.select("academic_year", "year_label").unique().sort("academic_year")["year_label"].to_list()
         # The estimated dates are listed once per year and looked up, not repeated on every week.
@@ -805,15 +823,14 @@ def correlation_table() -> pl.DataFrame:
 
 BREAK_ORDER = ["winter", "spring", "thanksgiving"]
 BREAK_LABELS = {"winter": "Winter break", "spring": "Spring break", "thanksgiving": "Thanksgiving"}
-DIP_ORDER = ["Northeastern University", "Boston University", "Harvard University",
-             "Massachusetts Institute of Technology"]
 
 
 def dip_data() -> pl.DataFrame:
     dips = ev.break_dips(
         read("bluebikes_weekly_by_institution.csv", schema_overrides={"campus_unitid": pl.Utf8}),
         read("bluebikes_weekly_by_campus_zone.csv"),
-        read("academic_weekly.csv", schema_overrides={"unitid": pl.Utf8}),
+        ev.verified_weeks(read("academic_weekly.csv", schema_overrides={"unitid": pl.Utf8}),
+                          read("academic_calendar.csv", schema_overrides={"unitid": pl.Utf8})),
         read("student_presence_weekly.csv"),
     )
     return dips.with_columns(
@@ -824,14 +841,19 @@ def dip_data() -> pl.DataFrame:
 
 def dip_chart(t: dict) -> alt.TopLevelMixin:
     df = iso(dip_data(), "week_start")
-    order = [SHORT_NAMES.get(n, n) for n in DIP_ORDER]
+    present = set(df["institution"])
+    order = [SHORT_NAMES.get(n, n) for n in calendar_order() if n in present]
+    # Ten-point steps around the data, always showing -100% to +30%.
+    low = min(-100, math.floor(df["change_pct"].min() / 10) * 10)
+    high = max(30, math.ceil(df["change_pct"].max() / 10) * 10)
     labels = [BREAK_LABELS[b] for b in BREAK_ORDER]
     identity = alt.Scale(domain=labels, range=[t["series1"], t["series2"], t["series3"]])
     y = alt.Y("university:N", sort=order, title=None,
-              axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelFontWeight=600, labelPadding=8))
+              axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelFontWeight=600, labelPadding=8,
+                            labelLimit=210))
     y_offset = alt.YOffset("break_label:N", sort=labels, scale=alt.Scale(paddingOuter=0.3))
     x = alt.X("change_pct:Q", title="Change in the university's campus share of Bluebikes trips (%)",
-              scale=alt.Scale(domain=[-100, 30]),
+              scale=alt.Scale(domain=[low, high]),
               axis=alt.Axis(tickCount=7, grid=True, labelExpr="datum.value > 0 ? '+' + datum.value : datum.value"))
     color = alt.Color("break_label:N", title=None, scale=identity, sort=labels, legend=alt.Legend(symbolOpacity=1))
     each = alt.Chart(df).mark_circle(size=36, opacity=0.35).encode(
@@ -926,7 +948,8 @@ def correlation_note() -> str:
 def dip_note() -> str:
     row = evaluation().filter(pl.col("metric") == "share_of_breaks_with_a_drop")
     return (f"In {row['value'][0]:.0%} of {row['n'][0]} break weeks the university's campus share of study-area "
-            "trips fell, compared with full in-session weeks within three weeks of the break.")
+            "trips fell, compared with full in-session weeks within three weeks of the break. Only academic "
+            "years with no estimated term or break date are used.")
 
 
 # ------------------------------------------------------------------ D map
@@ -1197,9 +1220,10 @@ SECTION_A = {
         },
         {
             "name": "a3_calendars",
-            "title": "Academic calendars of the six universities with collected calendars",
+            "title": "Academic calendars of the universities with collected calendars",
             "question": "When is each university in session, and which years rely on estimated dates?",
-            "notes": ["Each row is an academic year from August to July. * marks a year with at least one "
+            "notes": [calendar_coverage_note,
+                      "Each row is an academic year from August to July. * marks a year with at least one "
                       "estimated date (hover a cell to see which).",
                       "Calendars record scheduled dates, so spring 2020 still shows as in session; the move to "
                       "remote learning is handled separately in the Student Presence Index."],

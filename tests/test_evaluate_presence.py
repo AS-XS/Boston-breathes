@@ -34,6 +34,18 @@ def test_college_age_share_pools_zones_and_skips_weeks_without_ages():
     assert out["share"][0] == pytest.approx(0.2)
 
 
+def test_verified_weeks_drop_academic_years_with_an_estimated_date():
+    weeks = [date(2019, 12, 2), date(2020, 3, 2), date(2020, 9, 7)]
+    academic = pl.DataFrame({"week_start": weeks * 2, "unitid": ["1"] * 3 + ["2"] * 3, "days_in_session": [7] * 6})
+    calendar = pl.DataFrame({"unitid": ["1", "1", "2"], "academic_year": ["2019-20", "2020-21", "2019-20"],
+                             "event": ["spring_break_start", "fall_exams_end", "commencement"],
+                             "status": ["estimated", "verified", "estimated"]})
+    out = ev.verified_weeks(academic, calendar)
+    # University 1 loses both weeks of 2019-20; an estimated commencement does not change the weeks in session.
+    assert sorted(out.select("unitid", "week_start").rows()) == [
+        ("1", weeks[2]), ("2", weeks[0]), ("2", weeks[1]), ("2", weeks[2])]
+
+
 def test_break_dips_compare_with_nearby_in_session_weeks():
     by_zone = pl.DataFrame({"week_start": WEEKS, "campus_zone": ["away"] * 6,
                             "trips": [1000] * 6, "complete_week": [True] * 6})
