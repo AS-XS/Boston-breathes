@@ -529,6 +529,20 @@ unitid,institution,academic_year,event,date,weekday,source_url,note
 166027,Harvard University,2026-27,spring_break_start,2027-03-13,Saturday,https://registrar.fas.harvard.edu/news/2026/07/2026-2027-academic-calendar-now-available,
 166027,Harvard University,2026-27,spring_classes_start,2027-01-25,Monday,https://registrar.fas.harvard.edu/news/2026/07/2026-2027-academic-calendar-now-available,
 166027,Harvard University,2026-27,spring_exams_end,2027-05-15,Saturday,https://registrar.fas.harvard.edu/news/2026/07/2026-2027-academic-calendar-now-available,
+166391,Lasell University,2025-26,commencement,2026-05-16,Saturday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,Undergraduate commencement
+166391,Lasell University,2025-26,fall_classes_start,2025-09-02,Tuesday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,"First day of classes, undergraduate main session (2025-26 tab, read 2026-10-22)"
+166391,Lasell University,2025-26,fall_exams_end,2025-12-15,Monday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,Undergraduate final exams Dec 10-15; residence halls close Dec 16
+166391,Lasell University,2025-26,spring_break_end,2026-03-15,Sunday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,"Spring recess, main session"
+166391,Lasell University,2025-26,spring_break_start,2026-03-07,Saturday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,"Spring recess, main session"
+166391,Lasell University,2025-26,spring_classes_start,2026-01-21,Wednesday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,"First day of classes, undergraduate main session"
+166391,Lasell University,2025-26,spring_exams_end,2026-05-11,Monday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,Undergraduate final exams May 6-11
+166391,Lasell University,2026-27,commencement,2027-05-15,Saturday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,Undergraduate commencement
+166391,Lasell University,2026-27,fall_classes_start,2026-09-02,Wednesday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,"First day of classes, main session"
+166391,Lasell University,2026-27,fall_exams_end,2026-12-14,Monday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,Undergraduate final exams Dec 9-14; residence halls close Dec 15
+166391,Lasell University,2026-27,spring_break_end,2027-03-14,Sunday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,"Spring recess, main session"
+166391,Lasell University,2026-27,spring_break_start,2027-03-06,Saturday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,"Spring recess, main session"
+166391,Lasell University,2026-27,spring_classes_start,2027-01-20,Wednesday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,"First day of classes, undergraduate main session"
+166391,Lasell University,2026-27,spring_exams_end,2027-05-11,Tuesday,https://www.lasell.edu/academics/academic-catalog-and-calendar/academic-calendar.html,Undergraduate final exams May 6-11
 166452,Lesley University,2026-27,commencement,2027-05-22,Saturday,https://lesley.edu/internal/academic-calendar,Conferral/commencement (tentative)
 166452,Lesley University,2026-27,fall_classes_start,2026-09-09,Wednesday,https://lesley.edu/internal/academic-calendar,"Fall semester begins; page for the current academic year, read 2026-10-22"
 166452,Lesley University,2026-27,fall_exams_end,2026-12-22,Tuesday,https://lesley.edu/internal/academic-calendar,Last day of the undergraduate final examination period; fall semester ends
