@@ -17,7 +17,7 @@ Section B, "The Student Presence Index":
   B6 the academic year, one line per year
   B7 resident population and the most it could fall when students leave
 
-Section C, "Does city activity follow the students?":
+Section C, "Do travel records follow the students?":
   C8, C9 campus activity per away activity against the index (Bluebikes, MBTA)
   C10 correlation between the two, year by year
   C11 campus activity in break weeks
@@ -166,7 +166,7 @@ REFERENCE_YEAR = ["2003-08-01", "2004-08-01"]
 # ------------------------------------------------------------------ A1 coverage
 
 OBSERVED, FILLED, COUNT_DAY = "Observed", "Filled in (carried forward, held flat or estimated)", "Count day"
-GROUPS = ["City activity", "Students and universities", "Resident population"]
+GROUPS = ["Travel and weather", "Students and universities", "Resident population"]
 
 
 def coverage_rows() -> pl.DataFrame:
@@ -1541,7 +1541,7 @@ SECTION_B = {
                       "includes students living here during the school year. The upper line takes away only "
                       "students in university housing whose residence halls are closed; the lower line takes away "
                       "every resident college student not living with their parents whose school is out of "
-                      "session. How many actually leave will be measured from city activity.",
+                      "session. How many actually leave will be measured from travel records.",
                       away_note,
                       dorm_bound_note,
                       housing_note,
@@ -1553,7 +1553,7 @@ SECTION_B = {
 
 SECTION_C = {
     "slug": "c_activity_vs_presence",
-    "title": "Does city activity follow the students?",
+    "title": "Do travel records follow the students?",
     "intro": "Section C of the Boston Breathes figures: whether activity near campuses rises and falls with the "
              "Student Presence Index. These are the checks in data/processed/presence_evaluation.csv; no model "
              "is fitted.",
@@ -1661,7 +1661,7 @@ SECTION_E = {
                       "A range, not an estimate: the upper line takes away only students in university housing "
                       "whose residence halls are closed; the lower line takes away every resident college student "
                       "not living with their parents whose school is out of session. How many actually leave will "
-                      "be measured from city activity.",
+                      "be measured from travel records.",
                       explorer_calendar_note,
                       explorer_note],
             "controls": explorer_controls, "chart": explorer_chart, "table": explorer_table,

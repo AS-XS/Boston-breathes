@@ -1,7 +1,7 @@
 """Resident college students away from the study area: a range for every week.
 
 How many students actually leave when not in session is what the project
-measures, from city activity; it is not assumed here. The Census counts
+measures, from travel records; it is not assumed here. The Census counts
 college students where they live during the school year, so the resident
 population already includes them. Who could leave depends on where they live
 (student_living_arrangements.csv):

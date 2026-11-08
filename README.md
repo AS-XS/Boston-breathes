@@ -12,6 +12,8 @@ The key question here would be:
 
 > **How does Greater Boston's effective population change throughout the year, and how much of that variation can be explained by university students?**
 
+**Scope.** The quantity studied is the **seasonal resident population**: how many of the study area's residents are actually present in a given week. It starts from the Census resident population and takes away the university students who leave when their school is out of session. Commuters, tourists and other visitors, and people who come only for the summer, are outside this scope. Travel records (Bluebikes, MBTA, street counts) are not studied for their own sake; they serve as evidence of how many people are around.
+
 The project will estimate Greater Boston's population over time by combining a relatively stable **resident population baseline** with a **seasonal student population component**.
 
 Rather than simply adding university enrollment to Census population, which would double-count some students already counted as residents of the study area, the project will estimate how student presence changes relative to its typical annual level.
@@ -43,15 +45,15 @@ This will combine:
 * academic calendars and semester breaks.
 
 
-### 2. Test whether the estimated population reflects real city activity
+### 2. Check the estimated population against signs of presence
 
-City activity will be measured with several independent signals rather than Bluebikes alone:
+How many people are present cannot be counted directly, so the estimate is checked against travel records, which rise and fall with the number of people around. Several independent sources are used rather than Bluebikes alone:
 
 * Bluebikes ridership (main signal);
 * MBTA subway station entries;
 * road traffic counts and rideshare trips, where data is available at a weekly or monthly level.
 
-The project will test whether student presence helps explain changes in these activity measures after accounting for factors such as:
+The project will test whether student presence helps explain changes in these travel records after accounting for factors such as:
 
 * weather;
 * season;
@@ -76,7 +78,7 @@ It will show:
 * Greater Boston's resident population baseline;
 * estimated seasonal student contribution;
 * estimated effective population;
-* city activity measures, such as Bluebikes and MBTA ridership;
+* the travel records used as evidence, such as Bluebikes and MBTA ridership;
 * major academic periods such as semesters, summer break, winter break, and national holidays.
 
 This will allow the user to visually explore how Greater Boston "breathes" throughout the year.
@@ -99,8 +101,8 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 * **The population is a range, not an estimate.** The Census resident population already includes the students who live here during the school year, so students leaving can only lower it.
   * The upper line takes away only students in university housing whose residence halls are closed; it assumes they leave the area.
   * The lower line takes away every resident college student not living with their parents whose school is out of session.
-  * Counting only resident students who leave, and not visitors, commuters or summer arrivals, the population is somewhere between the two. Where exactly is what the city activity data will measure; no single estimate is given yet.
-* **The activity checks are not a model.** Section C shows correlations and comparisons: when the ratio of activity near campuses to activity elsewhere rises and falls with the index, activity near campuses is following the students.
+  * Counting only resident students who leave, and not visitors, commuters or summer arrivals, the population is somewhere between the two. Where exactly is what the travel records will measure; no single estimate is given yet.
+* **The checks against travel records are not a model.** Section C shows correlations and comparisons: when the ratio of activity near campuses to activity elsewhere rises and falls with the index, activity near campuses is following the students.
 * **Caveats.**
   * COVID-19 is flagged: students count as away during the spring 2020 lockdown, and in 2020–21 the index peaks at about 0.59 because fewer students studied in person.
   * Academic years with a date estimated from the university's other years are starred in the calendar chart.
@@ -142,7 +144,7 @@ The project may initially focus on the largest universities in the study area an
 
 ### Bluebikes
 
-Historical Bluebikes trip data will be used to measure observable city activity.
+Historical Bluebikes trip data will be used as an observable sign of how many people are present.
 
 Trips will be aggregated by week, and variables such as total trips, trips per active station, and activity near major university areas may be examined.
 
@@ -320,7 +322,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
   * Enrollment for spring 2015 and for weeks after fall 2023 uses the nearest published fall and is flagged.
   * Summer terms are smaller and optional, so summer is not counted as in session; a separate summer-break share (the share of students whose university is between spring exams and fall classes) tells summer apart from other breaks.
   * A second index weighs each institution by its beds in university housing (IPEDS capacity) instead of its enrollment, because students in university housing are the most likely to leave on breaks while commuter colleges have few or no beds; it comes with the number of beds whose institution is out of session that week (in 2019, up to 79,191 in summer and about 26,000–28,000 in the March spring-break weeks). The two indices move almost together (correlation 0.98); they differ most around spring breaks.
-* **How many students leave is measured, not assumed.** The Census already counts college students where they live during the school year, so the resident population includes the students living in the area; how many of them actually leave when not in session is what the project measures from city activity (goal 2). Step 15 therefore only bounds it each week.
+* **How many students leave is measured, not assumed.** The Census already counts college students where they live during the school year, so the resident population includes the students living in the area; how many of them actually leave when not in session is what the project measures from travel records (goal 2). Step 15 therefore only bounds it each week.
   * At most, every resident college student not living with their parents is away when their school is out of session (`max_students_away`: students in university housing weighted by the housing presence index, the others by the presence index).
   * At least, the students in university housing whose residence halls are closed are away (`min_students_away`): every hall closes in summer, those recorded as closing close for their breaks, all are treated as closed during the spring 2020 lockdown, and halls without a recorded policy count as open outside summer. This assumes students whose halls close leave the area, which some do not (summer housing, friends).
   * The two give the lowest and highest possible population (`min_effective_population`, `max_effective_population`).
@@ -367,7 +369,7 @@ The main modeling question is:
 
 > **Does information about student presence improve our ability to explain or predict changes in Greater Boston activity?**
 
-An initial regression model will predict weekly city activity (Bluebikes trips and MBTA station entries) using weather, seasonal, and time-based variables.
+An initial regression model will predict weekly ridership (Bluebikes trips and MBTA station entries) using weather, seasonal, and time-based variables.
 
 A second model will add the Student Presence Index.
 
@@ -389,7 +391,7 @@ The main visualization will be an interactive timeline.
 
 Users will be able to select a year and move through the year to see how estimated population and activity change.
 
-Done so far, without a model: `figures/e_year_explorer.html` lets users choose an academic year (2015–16 to 2025–26) and move through its weeks, showing the week's Student Presence Index, the range of the population over the year, and the calendars of the ten largest universities with collected calendars. City activity is shown in section C rather than in the explorer.
+Done so far, without a model: `figures/e_year_explorer.html` lets users choose an academic year (2015–16 to 2025–26) and move through its weeks, showing the week's Student Presence Index, the range of the population over the year, and the calendars of the ten largest universities with collected calendars. The travel records are shown in section C rather than in the explorer.
 
 Additional visualizations may include:
 
@@ -423,6 +425,6 @@ The final project will produce:
 
 * a historical estimate of Greater Boston's seasonal population;
 * a Student Presence Index;
-* an analysis of whether student presence corresponds to observable changes in city activity;
+* an analysis of whether student presence corresponds to observable changes in travel records (bike share, subway, and street counts);
 * an interactive visualization showing Greater Boston's annual population "pulse";
 * a reproducible GitHub repository containing the full data-processing and analysis pipeline.

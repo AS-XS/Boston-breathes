@@ -1,4 +1,4 @@
-"""Check the Student Presence Index against observed city activity.
+"""Check the Student Presence Index against travel records (Bluebikes, MBTA, street counts).
 
 No model is fitted to predict activity; these are descriptive checks of
 whether the index moves with activity where students should matter most.
