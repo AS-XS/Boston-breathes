@@ -102,7 +102,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
   * The upper line takes away only students in university housing whose residence halls are closed; it assumes they leave the area.
   * The lower line takes away every resident college student not living with their parents whose school is out of session.
   * Counting only resident students who leave, and not visitors, commuters or summer arrivals, the population is somewhere between the two. Where exactly is what the travel records will measure; no single estimate is given yet.
-* **The checks against travel records are not a model.** Section C shows correlations and comparisons: when the ratio of activity near campuses to activity elsewhere rises and falls with the index, activity near campuses is following the students.
+* **Section C shows checks, not models.** It shows correlations and comparisons: when the ratio of activity near campuses to activity elsewhere rises and falls with the index, activity near campuses is following the students. The model comparison (goal 2) is in `model_comparison.csv` and summarized under [Model comparison](#model-comparison-goal-2).
 * **Caveats.**
   * COVID-19 is flagged: students count as away during the spring 2020 lockdown, and in 2020–21 the index peaks at about 0.59 because fewer students studied in person.
   * Academic years with a date estimated from the university's other years are starred in the calendar chart.
@@ -215,6 +215,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 15. Students away: weekly range | Steps 11 and 14 | Done | `students_away_weekly.csv` |
 | 16. Figures and year explorer | Steps 1–15 | Done | `figures/*.png`, `figures/*.html` (see [How to Read the Results](#how-to-read-the-results)) |
 | 17. Modeling table | Weekly tables of steps 1–15 | Done | `modeling_weekly.csv`: one row per week with travel records, weather, calendar, and student columns |
+| 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of travel models with and without the index, and the index's effect |
 
 ### Processing decisions so far
 
@@ -330,10 +331,29 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 
 #### Modeling table
 
-* **One row per week, nothing fitted.** `modeling_weekly.csv` joins the weekly tables on the week's Monday: the calendar (ISO week, month, academic year, holidays), weather, Bluebikes and MBTA in total and by campus zone, the two student indices with the summer-break share, and the Census population with the range of students away. Every model reads the same 627 weeks (2014-12-29 to 2026-12-28) and 54 columns.
+* **One row per week, nothing fitted.** `modeling_weekly.csv` joins the weekly tables on the week's Monday: the calendar (ISO week, month, academic year, holidays, and the weeks from December 24 to January 1), weather, Bluebikes and MBTA in total and by campus zone, the two student indices with the summer-break share, and the Census population with the range of students away. Every model reads the same 627 weeks (2014-12-29 to 2026-12-28) and 55 columns.
   * Network size is a column for both sources: the average number of Bluebikes stations in use per day, and the number of study-area gated MBTA stations with entries that week (60–71; stations close for repairs, and the Green Line Extension opened in 2022).
   * A week without data from a source keeps nulls, and `*_complete` flags mark weeks with all seven days of that source; 608 weeks have complete weather, Bluebikes and MBTA data. The share of trips by college-age riders is null after April 2020, when birth years stop.
   * Street counts are single days rather than a weekly series, so they stay out of the table.
+
+#### Model comparison (goal 2)
+
+* **Three linear models per target, compared on held-out weeks.** The baseline uses weather (temperature and its square, rain, heavy rain, snow, ice and hot days, wind), holidays, the weeks from December 24 to January 1, a smooth annual cycle (two pairs of sine and cosine terms), network size, and a separate level for each calendar year. The second model adds the Student Presence Index; the third also adds the summer-break share. Targets are logarithms of the campus ratio (campus-zone over away-zone activity) and of the study-area total, for Bluebikes trips and MBTA entries. The weeks are those with complete data outside the COVID-19 period: 534 for Bluebikes, 538 for MBTA.
+  * *Testing.* Travel levels change far more between years than within them (the Bluebikes network grew fivefold; subway entries are still about a third below 2019), so a model fitted on earlier years cannot predict the level of later ones. Each calendar month is therefore held out in turn, with the week on either side, and predicted from a model fitted on the other weeks. The blocks are contiguous months, not random weeks.
+  * *Christmas and New Year.* The whole city slows down in the weeks from December 24 to January 1, which fall in the universities' winter break. Without a flag for those weeks, the index took credit for that slowdown: its effect on total Bluebikes trips came out at +47% instead of +29%, and on total MBTA entries at +23% instead of +16%. Flagging the weeks and dropping them give almost the same result. The campus ratio moves much less (Bluebikes +22% to +18%), since the slowdown hits both zones.
+
+Results, held-out error (RMSE of the logarithm) of the model with the index compared with the baseline, and the index's effect:
+
+| Target | Weeks | Error change, all weeks | Error change, weeks not fully in session | Effect of the index (0 → 1), 95% interval |
+|---|---|---|---|---|
+| Bluebikes campus ratio | 534 | −7.9% | −9.2% | +18% (+14% to +23%) |
+| MBTA campus ratio | 538 | −1.6% | −2.1% | +5% (+3% to +7%) |
+| Bluebikes total | 534 | −7.9% | −9.6% | +29% (+22% to +36%) |
+| MBTA total | 538 | −6.7% | −9.8% | +16% (+11% to +20%) |
+
+* **The index improves every model**, most in the weeks not fully in session (index below 0.9), where the students' absence should show. The summer-break share adds nothing once the index is in: held-out error changes by less than 1%.
+* **Reading the effects.** The effect is the change from every university out of session to every one in session, with standard errors that allow for neighbouring weeks being alike (Newey-West, 4 weeks). It covers everything that comes with term time: students, but also staff and campus events, and in summer partly school children, whose vacation overlaps. For the totals it is therefore an upper bound for students alone. The campus ratio is the cleaner measure, because it compares campus areas with the rest of the study area in the same week.
+* **MBTA campus ratio.** The signal is weak (held-out R² 0.24 without the index, 0.27 with it), as in the earlier checks: campus-zone gated stations also serve commuters and events, and the street-level Green Line stops at Boston University and Northeastern have no gates.
 
 #### Presence evaluation
 
@@ -389,6 +409,8 @@ The two models will be compared using metrics such as:
 A second modeling approach, such as a tree-based model, may also be explored.
 
 Because the data are time-based, training and testing will use chronological rather than random splits.
+
+Done so far: the linear comparison (see [Model comparison](#model-comparison-goal-2)). Instead of training on early years and testing on later ones, each month is held out in turn, because travel levels shift between years (network growth, COVID-19) far more than with the students; the blocks are contiguous months, not random weeks. A tree-based model has not been tried.
 
 ---
 

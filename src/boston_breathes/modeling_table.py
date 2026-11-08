@@ -5,8 +5,9 @@ so every model reads the same rows and columns.
 
 Columns, by source:
   * calendar (weeks.csv): ISO year and week, month (of the week's Thursday),
-    fall_year (the academic year a week belongs to, by its Thursday) and the
-    number of holidays;
+    fall_year (the academic year a week belongs to, by its Thursday), the
+    number of holidays, and whether the week has a day from December 24 to
+    January 1, when the whole city slows down (year_end_week);
   * weather (weather_weekly.csv): temperature, rain, snow, ice and hot days,
     wind;
   * Bluebikes (bluebikes_weekly_by_campus_zone.csv, study-area stations):
@@ -47,9 +48,16 @@ POPULATION = ["census_population", "population_extrapolated", "resident_students
               "with_parents", "elsewhere", "closed_bed_share", "min_students_away", "max_students_away"]
 
 
+def year_end_week() -> pl.Expr:
+    days = [pl.col("week_start") + pl.duration(days=i) for i in range(7)]
+    return pl.any_horizontal(
+        [((d.dt.month() == 12) & (d.dt.day() >= 24)) | ((d.dt.month() == 1) & (d.dt.day() == 1)) for d in days]
+    ).alias("year_end_week")
+
+
 def calendar(weeks: pl.DataFrame) -> pl.DataFrame:
     return weeks.select("week_start", "iso_year", "iso_week", "month",
-                        fall_year(pl.col("week_start")).alias("fall_year"), "n_holidays")
+                        fall_year(pl.col("week_start")).alias("fall_year"), "n_holidays", year_end_week())
 
 
 def weather(weekly: pl.DataFrame) -> pl.DataFrame:

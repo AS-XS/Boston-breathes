@@ -68,3 +68,10 @@ def test_processed_table_has_one_row_per_week_and_zones_add_up():
     for prefix, name in (("bluebikes", "trips"), ("mbta", "entries")):
         zones = sum(df[f"{prefix}_{name}_{z}"] for z in mt.ZONES)
         assert (zones == df[f"{prefix}_{name}"]).all()
+
+
+def test_year_end_week_marks_weeks_with_a_day_from_christmas_eve_to_new_year():
+    weeks = pl.DataFrame({"week_start": [date(2023, 12, 18), date(2023, 12, 25), date(2024, 1, 1),
+                                         date(2024, 1, 8), date(2024, 12, 16)]})
+    # Dec 18-24 has Christmas Eve, Jan 1-7 has New Year's Day; Dec 16-22 has neither.
+    assert weeks.select(mt.year_end_week())["year_end_week"].to_list() == [True, True, True, False, False]

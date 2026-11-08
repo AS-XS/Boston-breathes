@@ -1,0 +1,149 @@
+target,model,subset,metric,value,n
+Bluebikes campus ratio,baseline,all weeks,mae,0.0739,534
+Bluebikes campus ratio,baseline,all weeks,rmse,0.0963,534
+Bluebikes campus ratio,baseline,all weeks,r2,0.7645,534
+Bluebikes campus ratio,baseline,not fully in session,mae,0.0777,303
+Bluebikes campus ratio,baseline,not fully in session,rmse,0.0983,303
+Bluebikes campus ratio,baseline,not fully in session,r2,0.7992,303
+Bluebikes campus ratio,index,all weeks,mae,0.0685,534
+Bluebikes campus ratio,index,all weeks,rmse,0.0887,534
+Bluebikes campus ratio,index,all weeks,r2,0.8001,534
+Bluebikes campus ratio,index,all weeks,rmse_change_pct,-7.8779,534
+Bluebikes campus ratio,index,not fully in session,mae,0.0724,303
+Bluebikes campus ratio,index,not fully in session,rmse,0.0892,303
+Bluebikes campus ratio,index,not fully in session,r2,0.8344,303
+Bluebikes campus ratio,index,not fully in session,rmse_change_pct,-9.1873,303
+Bluebikes campus ratio,index,all weeks,presence_index_coef,0.1665,534
+Bluebikes campus ratio,index,all weeks,presence_index_se,0.0197,534
+Bluebikes campus ratio,index,all weeks,presence_index_effect_pct,18.1106,534
+Bluebikes campus ratio,index,all weeks,presence_index_effect_pct_low,13.6263,534
+Bluebikes campus ratio,index,all weeks,presence_index_effect_pct_high,22.772,534
+Bluebikes campus ratio,index and summer,all weeks,mae,0.0685,534
+Bluebikes campus ratio,index and summer,all weeks,rmse,0.0889,534
+Bluebikes campus ratio,index and summer,all weeks,r2,0.7992,534
+Bluebikes campus ratio,index and summer,all weeks,rmse_change_pct,-7.6775,534
+Bluebikes campus ratio,index and summer,not fully in session,mae,0.0727,303
+Bluebikes campus ratio,index and summer,not fully in session,rmse,0.0895,303
+Bluebikes campus ratio,index and summer,not fully in session,r2,0.8336,303
+Bluebikes campus ratio,index and summer,not fully in session,rmse_change_pct,-8.9571,303
+Bluebikes campus ratio,index and summer,all weeks,presence_index_coef,0.1826,534
+Bluebikes campus ratio,index and summer,all weeks,presence_index_se,0.0256,534
+Bluebikes campus ratio,index and summer,all weeks,presence_index_effect_pct,20.0278,534
+Bluebikes campus ratio,index and summer,all weeks,presence_index_effect_pct_low,14.1446,534
+Bluebikes campus ratio,index and summer,all weeks,presence_index_effect_pct_high,26.2141,534
+Bluebikes campus ratio,index and summer,all weeks,summer_break_share_coef,0.0448,534
+Bluebikes campus ratio,index and summer,all weeks,summer_break_share_se,0.0385,534
+Bluebikes campus ratio,index and summer,all weeks,summer_break_share_effect_pct,4.5865,534
+Bluebikes campus ratio,index and summer,all weeks,summer_break_share_effect_pct_low,-3.0099,534
+Bluebikes campus ratio,index and summer,all weeks,summer_break_share_effect_pct_high,12.7779,534
+MBTA campus ratio,baseline,all weeks,mae,0.0414,538
+MBTA campus ratio,baseline,all weeks,rmse,0.0647,538
+MBTA campus ratio,baseline,all weeks,r2,0.2425,538
+MBTA campus ratio,baseline,not fully in session,mae,0.0421,305
+MBTA campus ratio,baseline,not fully in session,rmse,0.0657,305
+MBTA campus ratio,baseline,not fully in session,r2,0.1353,305
+MBTA campus ratio,index,all weeks,mae,0.0401,538
+MBTA campus ratio,index,all weeks,rmse,0.0636,538
+MBTA campus ratio,index,all weeks,r2,0.2668,538
+MBTA campus ratio,index,all weeks,rmse_change_pct,-1.6197,538
+MBTA campus ratio,index,not fully in session,mae,0.041,305
+MBTA campus ratio,index,not fully in session,rmse,0.0643,305
+MBTA campus ratio,index,not fully in session,r2,0.172,305
+MBTA campus ratio,index,not fully in session,rmse_change_pct,-2.1441,305
+MBTA campus ratio,index,all weeks,presence_index_coef,0.0519,538
+MBTA campus ratio,index,all weeks,presence_index_se,0.0096,538
+MBTA campus ratio,index,all weeks,presence_index_effect_pct,5.3264,538
+MBTA campus ratio,index,all weeks,presence_index_effect_pct_low,3.3579,538
+MBTA campus ratio,index,all weeks,presence_index_effect_pct_high,7.3324,538
+MBTA campus ratio,index and summer,all weeks,mae,0.04,538
+MBTA campus ratio,index and summer,all weeks,rmse,0.0637,538
+MBTA campus ratio,index and summer,all weeks,r2,0.2658,538
+MBTA campus ratio,index and summer,all weeks,rmse_change_pct,-1.55,538
+MBTA campus ratio,index and summer,not fully in session,mae,0.0412,305
+MBTA campus ratio,index and summer,not fully in session,rmse,0.0644,305
+MBTA campus ratio,index and summer,not fully in session,r2,0.1694,305
+MBTA campus ratio,index and summer,not fully in session,rmse_change_pct,-1.9913,305
+MBTA campus ratio,index and summer,all weeks,presence_index_coef,0.0609,538
+MBTA campus ratio,index and summer,all weeks,presence_index_se,0.0105,538
+MBTA campus ratio,index and summer,all weeks,presence_index_effect_pct,6.2788,538
+MBTA campus ratio,index and summer,all weeks,presence_index_effect_pct_low,4.1065,538
+MBTA campus ratio,index and summer,all weeks,presence_index_effect_pct_high,8.4964,538
+MBTA campus ratio,index and summer,all weeks,summer_break_share_coef,0.0247,538
+MBTA campus ratio,index and summer,all weeks,summer_break_share_se,0.0213,538
+MBTA campus ratio,index and summer,all weeks,summer_break_share_effect_pct,2.5054,538
+MBTA campus ratio,index and summer,all weeks,summer_break_share_effect_pct_low,-1.6901,538
+MBTA campus ratio,index and summer,all weeks,summer_break_share_effect_pct_high,6.88,538
+Bluebikes total,baseline,all weeks,mae,0.1021,534
+Bluebikes total,baseline,all weeks,rmse,0.1388,534
+Bluebikes total,baseline,all weeks,r2,0.9805,534
+Bluebikes total,baseline,not fully in session,mae,0.1087,303
+Bluebikes total,baseline,not fully in session,rmse,0.1445,303
+Bluebikes total,baseline,not fully in session,r2,0.9778,303
+Bluebikes total,index,all weeks,mae,0.0953,534
+Bluebikes total,index,all weeks,rmse,0.1278,534
+Bluebikes total,index,all weeks,r2,0.9834,534
+Bluebikes total,index,all weeks,rmse_change_pct,-7.863,534
+Bluebikes total,index,not fully in session,mae,0.1013,303
+Bluebikes total,index,not fully in session,rmse,0.1307,303
+Bluebikes total,index,not fully in session,r2,0.9818,303
+Bluebikes total,index,not fully in session,rmse_change_pct,-9.5523,303
+Bluebikes total,index,all weeks,presence_index_coef,0.2521,534
+Bluebikes total,index,all weeks,presence_index_se,0.0278,534
+Bluebikes total,index,all weeks,presence_index_effect_pct,28.6713,534
+Bluebikes total,index,all weeks,presence_index_effect_pct_low,21.854,534
+Bluebikes total,index,all weeks,presence_index_effect_pct_high,35.87,534
+Bluebikes total,index and summer,all weeks,mae,0.0943,534
+Bluebikes total,index and summer,all weeks,rmse,0.1275,534
+Bluebikes total,index and summer,all weeks,r2,0.9835,534
+Bluebikes total,index and summer,all weeks,rmse_change_pct,-8.1123,534
+Bluebikes total,index and summer,not fully in session,mae,0.1011,303
+Bluebikes total,index and summer,not fully in session,rmse,0.13,303
+Bluebikes total,index and summer,not fully in session,r2,0.9821,303
+Bluebikes total,index and summer,not fully in session,rmse_change_pct,-10.0648,303
+Bluebikes total,index and summer,all weeks,presence_index_coef,0.3114,534
+Bluebikes total,index and summer,all weeks,presence_index_se,0.0364,534
+Bluebikes total,index and summer,all weeks,presence_index_effect_pct,36.5363,534
+Bluebikes total,index and summer,all weeks,presence_index_effect_pct_low,27.1381,534
+Bluebikes total,index and summer,all weeks,presence_index_effect_pct_high,46.6293,534
+Bluebikes total,index and summer,all weeks,summer_break_share_coef,0.1658,534
+Bluebikes total,index and summer,all weeks,summer_break_share_se,0.0559,534
+Bluebikes total,index and summer,all weeks,summer_break_share_effect_pct,18.0315,534
+Bluebikes total,index and summer,all weeks,summer_break_share_effect_pct_low,5.7921,534
+Bluebikes total,index and summer,all weeks,summer_break_share_effect_pct_high,31.6869,534
+MBTA total,baseline,all weeks,mae,0.0607,538
+MBTA total,baseline,all weeks,rmse,0.0841,538
+MBTA total,baseline,all weeks,r2,0.9332,538
+MBTA total,baseline,not fully in session,mae,0.0649,305
+MBTA total,baseline,not fully in session,rmse,0.0913,305
+MBTA total,baseline,not fully in session,r2,0.9259,305
+MBTA total,index,all weeks,mae,0.0569,538
+MBTA total,index,all weeks,rmse,0.0785,538
+MBTA total,index,all weeks,r2,0.9418,538
+MBTA total,index,all weeks,rmse_change_pct,-6.688,538
+MBTA total,index,not fully in session,mae,0.0611,305
+MBTA total,index,not fully in session,rmse,0.0823,305
+MBTA total,index,not fully in session,r2,0.9397,305
+MBTA total,index,not fully in session,rmse_change_pct,-9.8001,305
+MBTA total,index,all weeks,presence_index_coef,0.1454,538
+MBTA total,index,all weeks,presence_index_se,0.019,538
+MBTA total,index,all weeks,presence_index_effect_pct,15.6549,538
+MBTA total,index,all weeks,presence_index_effect_pct_low,11.4306,538
+MBTA total,index,all weeks,presence_index_effect_pct_high,20.0394,538
+MBTA total,index and summer,all weeks,mae,0.0571,538
+MBTA total,index and summer,all weeks,rmse,0.0787,538
+MBTA total,index and summer,all weeks,r2,0.9414,538
+MBTA total,index and summer,all weeks,rmse_change_pct,-6.3473,538
+MBTA total,index and summer,not fully in session,mae,0.0614,305
+MBTA total,index and summer,not fully in session,rmse,0.0828,305
+MBTA total,index and summer,not fully in session,r2,0.939,305
+MBTA total,index and summer,not fully in session,rmse_change_pct,-9.3119,305
+MBTA total,index and summer,all weeks,presence_index_coef,0.1589,538
+MBTA total,index and summer,all weeks,presence_index_se,0.0254,538
+MBTA total,index and summer,all weeks,presence_index_effect_pct,17.2218,538
+MBTA total,index and summer,all weeks,presence_index_effect_pct_low,11.5322,538
+MBTA total,index and summer,all weeks,presence_index_effect_pct_high,23.2016,538
+MBTA total,index and summer,all weeks,summer_break_share_coef,0.037,538
+MBTA total,index and summer,all weeks,summer_break_share_se,0.0373,538
+MBTA total,index and summer,all weeks,summer_break_share_effect_pct,3.7686,538
+MBTA total,index and summer,all weeks,summer_break_share_effect_pct_low,-3.5458,538
+MBTA total,index and summer,all weeks,summer_break_share_effect_pct_high,11.6376,538
