@@ -214,7 +214,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 14. Student Presence Index | Combination of steps 5–11 | Done | `student_presence_weekly.csv`, `student_presence_by_institution.csv`, `presence_evaluation.csv` |
 | 15. Students away: weekly range | Steps 11 and 14 | Done | `students_away_weekly.csv` |
 | 16. Figures and year explorer | Steps 1–15 | Done | `figures/*.png`, `figures/*.html` (see [How to Read the Results](#how-to-read-the-results)) |
-| 17. Modeling table | Combination of all steps | Planned | one row per week with activity, weather, calendar, and student features |
+| 17. Modeling table | Weekly tables of steps 1–15 | Done | `modeling_weekly.csv`: one row per week with travel records, weather, calendar, and student columns |
 
 ### Processing decisions so far
 
@@ -327,6 +327,13 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
   * At least, the students in university housing whose residence halls are closed are away (`min_students_away`): every hall closes in summer, those recorded as closing close for their breaks, all are treated as closed during the spring 2020 lockdown, and halls without a recorded policy count as open outside summer. This assumes students whose halls close leave the area, which some do not (summer housing, friends).
   * The two give the lowest and highest possible population (`min_effective_population`, `max_effective_population`).
   * Resident students come from the ACS 5-year estimate ending in the year of the fall term, which lags recent changes by about two years; resident students changed by about 3,400 a year on average and by up to 12,800 over two years, so the lag can move the bound by up to about 0.7% of the population.
+
+#### Modeling table
+
+* **One row per week, nothing fitted.** `modeling_weekly.csv` joins the weekly tables on the week's Monday: the calendar (ISO week, month, academic year, holidays), weather, Bluebikes and MBTA in total and by campus zone, the two student indices with the summer-break share, and the Census population with the range of students away. Every model reads the same 627 weeks (2014-12-29 to 2026-12-28) and 54 columns.
+  * Network size is a column for both sources: the average number of Bluebikes stations in use per day, and the number of study-area gated MBTA stations with entries that week (60–71; stations close for repairs, and the Green Line Extension opened in 2022).
+  * A week without data from a source keeps nulls, and `*_complete` flags mark weeks with all seven days of that source; 608 weeks have complete weather, Bluebikes and MBTA data. The share of trips by college-age riders is null after April 2020, when birth years stop.
+  * Street counts are single days rather than a weekly series, so they stay out of the table.
 
 #### Presence evaluation
 

@@ -1,14 +1,14 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts evaluate figures test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate figures test clean-interim
 
 install:
 	python3 -m venv .venv
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts
+data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table
 
 weeks:
 	$(RUN) boston_breathes.weeks
@@ -82,6 +82,11 @@ mbta-survey:
 # Boston street counts of bicycles and motor vehicles (needs campus).
 street-counts:
 	$(RUN) boston_breathes.traffic_counts
+
+# One row per week for the models: travel records, weather, calendar and students
+# (needs weather, campus, mbta, presence, students-away).
+modeling-table:
+	$(RUN) boston_breathes.modeling_table
 
 # Check the Student Presence Index against Bluebikes, MBTA and street counts (after data).
 evaluate:
