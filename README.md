@@ -216,6 +216,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 16. Figures and year explorer | Steps 1–15 | Done | `figures/*.png`, `figures/*.html` (see [How to Read the Results](#how-to-read-the-results)) |
 | 17. Modeling table | Weekly tables of steps 1–15 | Done | `modeling_weekly.csv`: one row per week with travel records, weather, calendar, and student columns |
 | 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect |
+| 19. Pooled campus model | Steps 8, 10, 12, and 14 | Done | `campus_panel.csv`: travel at each campus against its own university's calendar, by university, with a placebo |
 
 ### Processing decisions so far
 
@@ -371,6 +372,38 @@ Effect of the index (from no university in session to all in session), with a 95
 * **The trees lean on the index once they have it.** Shuffling the index across weeks raises their held-out error by 66% for the Bluebikes campus ratio, 18% and 32% for the totals, and 4% for the MBTA campus ratio. That is far more than the index adds (1.6–4.5%), because with the index the trees stop learning the calendar from the date: the comparison with and without the index is the measure of what it adds.
 * **The summer-break share adds nothing** once the index is in (smooth-season family: held-out error changes by less than 1%).
 * **Reading the effects.** The effect is the change from every university out of session to every one in session, with standard errors that allow for neighbouring weeks being alike (Newey-West, 4 weeks). It covers everything that comes with term time: students, but also staff and campus events, and in summer partly school children, whose vacation overlaps. For the totals it is therefore an upper bound for students alone. The campus ratio is the cleaner measure, because it compares campus areas with the rest of the study area in the same week.
+
+#### Pooled campus model
+
+* **Campuses compared within the same week.** In the study-area models, students leave at the same time of year every year, so the index cannot be fully told apart from everything else that happens then. Universities do not break at the same time, though: spring breaks fall in different weeks, terms start before or after Labor Day, and some have a February break or a January term. `campus_panel.csv` pools the campuses and compares them week by week: the logarithm of activity at each campus is fitted with a level for every week, shared by all campuses (which removes weather, season, holidays, visitors and school vacations), a level for each campus in each year (size and new stations), and the share of the week its own university is in session.
+  * *Units.* Bluebikes trips at the stations of each campus (8 universities, 2,480 campus-weeks), and entries at each gated station in a campus zone, linked to the nearest campus's university (11 stations of 6 universities, 2,368 station-weeks).
+  * *What is kept.* Universities with their own calendar, in academic years without estimated term or break dates, with at least a year of such weeks (this leaves out the colleges whose only verified calendar is 2026–27); weeks outside the COVID-19 period; Bluebikes campuses with a median of at least 100 trips a week (which leaves out UMass Boston). Tufts' Bluebikes stations and the Tufts Medical Center station are at its health-sciences campus, which follows other calendars, so they are left out; Medford/Tufts, at its main campus, stays.
+  * *Closures.* MBTA station-weeks below a quarter of the station's median entries that year are closures or diversions, not students (the MBTA closes stations for repairs, often in summer and over breaks), and are left out: 48 of 2,416 station-weeks, only 3 of them around Christmas and New Year, when entries near campuses fall but mostly stay above 40% of the median.
+  * *Uncertainty.* Standard errors are clustered by calendar month, so neighbouring weeks and nearby campuses count as alike.
+  * *Placebo.* Each campus is also given another university's calendar, for every rotation of the list of universities. If activity follows each university's own students, the wrong calendars should give smaller effects.
+
+| Source | Effect of the own calendar (0 → 1), 95% interval | With a seasonal cycle for each campus | Other universities' calendars (placebo) |
+|---|---|---|---|
+| Bluebikes, 8 campuses | +21% (+14% to +28%) | +26% (+21% to +33%) | median −4%, at most +6% (7 rotations) |
+| MBTA, 11 stations | +14% (+6% to +22%) | +12% (+5% to +20%) | median −3%, at most +6% (5 rotations) |
+
+By university (own calendar, 95% interval; weeks are campus-weeks for Bluebikes and station-weeks for MBTA):
+
+| University | Bluebikes | Weeks | MBTA | Weeks |
+|---|---|---|---|---|
+| Northeastern | +45% (+34% to +57%) | 457 | | |
+| MIT | +32% (+22% to +43%) | 452 | | |
+| Wentworth | +29% (+17% to +42%) | 295 | | |
+| Boston University | +17% (+10% to +24%) | 505 | +1% (−8% to +11%), Kenmore and Longwood | 541 |
+| Harvard | +10% (+3% to +17%) | 210 | +18% (+7% to +30%), Harvard | 210 |
+| Berklee | −8% (−17% to +2%) | 56 | +35% (+15% to +58%), Hynes Convention Center | 57 |
+| Bunker Hill Community College | −2% (−9% to +6%) | 294 | +57% (+42% to +73%), Community College | 329 |
+| Suffolk | −15% (−20% to −10%) | 211 | +6% (−2% to +14%), five downtown stations | 1,047 |
+| Tufts | | | +9% (−10% to +31%), Medford/Tufts | 184 |
+
+* **Activity follows each university's own calendar.** Every campus gets the same weather, season and holidays in a given week, yet trips at a campus are 21% higher, and entries 14% higher, when its own university is in session. Other universities' calendars give no such effect, so this is the campus's own students, not the time of year. It also finds the subway signal that the study-area campus ratio could not separate from the typical calendar.
+* **The effect is strongest where students live and ride near the stations**: Northeastern, MIT, Wentworth and Boston University for Bluebikes; the Harvard and Community College stations for the subway. It is absent where stations mostly serve others: Boston University's subway stations are dominated by Fenway Park and the Longwood medical area, Suffolk's downtown stations by commuters and visitors (its Bluebikes trips are even higher when it is out of session, as its winter breaks were in the break check), and Bunker Hill's Bluebikes stations by Charlestown residents, while its own subway station loses a third of its entries when the college is out. Berklee's estimates rest on about a year of verified calendar.
+* **Precise, but a small part of the noise.** After the week and campus-year levels, the own calendar explains 4% of the remaining week-to-week variation at a Bluebikes campus and 0.5% at a subway station: single stations vary a lot from week to week (events, partial closures, local weather). The effect is precise because there are thousands of campus-weeks, not because it explains much of that noise.
 
 #### Presence evaluation
 

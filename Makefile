@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models figures test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel figures test clean-interim
 
 install:
 	python3 -m venv .venv
@@ -95,6 +95,10 @@ evaluate:
 # Goal 2: travel models with and without the Student Presence Index (needs modeling-table).
 models:
 	$(RUN) boston_breathes.model_comparison
+
+# Pooled campus model: travel at each campus against its own university's calendar (after data).
+campus-panel:
+	$(RUN) boston_breathes.campus_panel
 
 # Figures as PNG images and interactive HTML pages in figures/ (after data).
 figures:

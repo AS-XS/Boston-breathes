@@ -1,0 +1,107 @@
+source,model,term,metric,value,n
+Bluebikes,data,units,count,8.0,2480
+Bluebikes,data,universities,count,8.0,2480
+Bluebikes,own calendar,session_share,coef,0.1895,2480
+Bluebikes,own calendar,session_share,se,0.0277,2480
+Bluebikes,own calendar,session_share,effect_pct,20.8682,2480
+Bluebikes,own calendar,session_share,effect_pct_low,14.4809,2480
+Bluebikes,own calendar,session_share,effect_pct_high,27.6118,2480
+Bluebikes,own calendar,session_share,within_r2,0.0419,2480
+Bluebikes,"own calendar, unit seasons",session_share,coef,0.235,2480
+Bluebikes,"own calendar, unit seasons",session_share,se,0.0246,2480
+Bluebikes,"own calendar, unit seasons",session_share,effect_pct,26.4897,2480
+Bluebikes,"own calendar, unit seasons",session_share,effect_pct_low,20.5269,2480
+Bluebikes,"own calendar, unit seasons",session_share,effect_pct_high,32.7476,2480
+Bluebikes,"own calendar, unit seasons",session_share,within_r2,0.0734,2480
+Bluebikes,"own calendar, by university",Berklee College of Music,coef,-0.0807,56
+Bluebikes,"own calendar, by university",Berklee College of Music,se,0.0518,56
+Bluebikes,"own calendar, by university",Berklee College of Music,effect_pct,-7.7513,56
+Bluebikes,"own calendar, by university",Berklee College of Music,effect_pct_low,-16.659,56
+Bluebikes,"own calendar, by university",Berklee College of Music,effect_pct_high,2.1084,56
+Bluebikes,"own calendar, by university",Boston University,coef,0.1562,505
+Bluebikes,"own calendar, by university",Boston University,se,0.0317,505
+Bluebikes,"own calendar, by university",Boston University,effect_pct,16.9078,505
+Bluebikes,"own calendar, by university",Boston University,effect_pct_low,9.862,505
+Bluebikes,"own calendar, by university",Boston University,effect_pct_high,24.4055,505
+Bluebikes,"own calendar, by university",Bunker Hill Community College,coef,-0.0173,294
+Bluebikes,"own calendar, by university",Bunker Hill Community College,se,0.0382,294
+Bluebikes,"own calendar, by university",Bunker Hill Community College,effect_pct,-1.7188,294
+Bluebikes,"own calendar, by university",Bunker Hill Community College,effect_pct_low,-8.8012,294
+Bluebikes,"own calendar, by university",Bunker Hill Community College,effect_pct_high,5.9135,294
+Bluebikes,"own calendar, by university",Harvard University,coef,0.0923,210
+Bluebikes,"own calendar, by university",Harvard University,se,0.0324,210
+Bluebikes,"own calendar, by university",Harvard University,effect_pct,9.6649,210
+Bluebikes,"own calendar, by university",Harvard University,effect_pct_low,2.918,210
+Bluebikes,"own calendar, by university",Harvard University,effect_pct_high,16.8541,210
+Bluebikes,"own calendar, by university",Massachusetts Institute of Technology,coef,0.2785,452
+Bluebikes,"own calendar, by university",Massachusetts Institute of Technology,se,0.0415,452
+Bluebikes,"own calendar, by university",Massachusetts Institute of Technology,effect_pct,32.1148,452
+Bluebikes,"own calendar, by university",Massachusetts Institute of Technology,effect_pct_low,21.7875,452
+Bluebikes,"own calendar, by university",Massachusetts Institute of Technology,effect_pct_high,43.3179,452
+Bluebikes,"own calendar, by university",Northeastern University,coef,0.3739,457
+Bluebikes,"own calendar, by university",Northeastern University,se,0.0409,457
+Bluebikes,"own calendar, by university",Northeastern University,effect_pct,45.3334,457
+Bluebikes,"own calendar, by university",Northeastern University,effect_pct_low,34.1488,457
+Bluebikes,"own calendar, by university",Northeastern University,effect_pct_high,57.4504,457
+Bluebikes,"own calendar, by university",Suffolk University,coef,-0.1647,211
+Bluebikes,"own calendar, by university",Suffolk University,se,0.0314,211
+Bluebikes,"own calendar, by university",Suffolk University,effect_pct,-15.1892,211
+Bluebikes,"own calendar, by university",Suffolk University,effect_pct_low,-20.2545,211
+Bluebikes,"own calendar, by university",Suffolk University,effect_pct_high,-9.8023,211
+Bluebikes,"own calendar, by university",Wentworth Institute of Technology,coef,0.2517,295
+Bluebikes,"own calendar, by university",Wentworth Institute of Technology,se,0.0503,295
+Bluebikes,"own calendar, by university",Wentworth Institute of Technology,effect_pct,28.6246,295
+Bluebikes,"own calendar, by university",Wentworth Institute of Technology,effect_pct_low,16.5559,295
+Bluebikes,"own calendar, by university",Wentworth Institute of Technology,effect_pct_high,41.943,295
+Bluebikes,placebo: another university's calendar,session_share,effect_pct_median,-3.6077,2480
+Bluebikes,placebo: another university's calendar,session_share,effect_pct_max,6.1019,2480
+Bluebikes,placebo: another university's calendar,session_share,rotations,7.0,2480
+Bluebikes,placebo: another university's calendar,session_share,rotations_at_least_own,0.0,2480
+MBTA,data,units,count,11.0,2368
+MBTA,data,universities,count,6.0,2368
+MBTA,own calendar,session_share,coef,0.1305,2368
+MBTA,own calendar,session_share,se,0.0364,2368
+MBTA,own calendar,session_share,effect_pct,13.936,2368
+MBTA,own calendar,session_share,effect_pct_low,6.0926,2368
+MBTA,own calendar,session_share,effect_pct_high,22.3593,2368
+MBTA,own calendar,session_share,within_r2,0.0054,2368
+MBTA,"own calendar, unit seasons",session_share,coef,0.1148,2368
+MBTA,"own calendar, unit seasons",session_share,se,0.0327,2368
+MBTA,"own calendar, unit seasons",session_share,effect_pct,12.1602,2368
+MBTA,"own calendar, unit seasons",session_share,effect_pct_low,5.1955,2368
+MBTA,"own calendar, unit seasons",session_share,effect_pct_high,19.5859,2368
+MBTA,"own calendar, unit seasons",session_share,within_r2,0.0051,2368
+MBTA,"own calendar, by university",Berklee College of Music,coef,0.2983,57
+MBTA,"own calendar, by university",Berklee College of Music,se,0.0801,57
+MBTA,"own calendar, by university",Berklee College of Music,effect_pct,34.7572,57
+MBTA,"own calendar, by university",Berklee College of Music,effect_pct_low,15.1781,57
+MBTA,"own calendar, by university",Berklee College of Music,effect_pct_high,57.6647,57
+MBTA,"own calendar, by university",Boston University,coef,0.0106,541
+MBTA,"own calendar, by university",Boston University,se,0.0464,541
+MBTA,"own calendar, by university",Boston University,effect_pct,1.067,541
+MBTA,"own calendar, by university",Boston University,effect_pct_low,-7.7257,541
+MBTA,"own calendar, by university",Boston University,effect_pct_high,10.6974,541
+MBTA,"own calendar, by university",Bunker Hill Community College,coef,0.4506,329
+MBTA,"own calendar, by university",Bunker Hill Community College,se,0.0495,329
+MBTA,"own calendar, by university",Bunker Hill Community College,effect_pct,56.9316,329
+MBTA,"own calendar, by university",Bunker Hill Community College,effect_pct_low,42.4244,329
+MBTA,"own calendar, by university",Bunker Hill Community College,effect_pct_high,72.9165,329
+MBTA,"own calendar, by university",Harvard University,coef,0.1651,210
+MBTA,"own calendar, by university",Harvard University,se,0.0508,210
+MBTA,"own calendar, by university",Harvard University,effect_pct,17.9468,210
+MBTA,"own calendar, by university",Harvard University,effect_pct_low,6.7761,210
+MBTA,"own calendar, by university",Harvard University,effect_pct_high,30.2862,210
+MBTA,"own calendar, by university",Suffolk University,coef,0.0557,1047
+MBTA,"own calendar, by university",Suffolk University,se,0.04,1047
+MBTA,"own calendar, by university",Suffolk University,effect_pct,5.7325,1047
+MBTA,"own calendar, by university",Suffolk University,effect_pct_low,-2.2444,1047
+MBTA,"own calendar, by university",Suffolk University,effect_pct_high,14.3603,1047
+MBTA,"own calendar, by university",Tufts University,coef,0.0831,184
+MBTA,"own calendar, by university",Tufts University,se,0.0935,184
+MBTA,"own calendar, by university",Tufts University,effect_pct,8.667,184
+MBTA,"own calendar, by university",Tufts University,effect_pct_low,-9.5206,184
+MBTA,"own calendar, by university",Tufts University,effect_pct_high,30.5107,184
+MBTA,placebo: another university's calendar,session_share,effect_pct_median,-3.2561,2368
+MBTA,placebo: another university's calendar,session_share,effect_pct_max,5.5449,2368
+MBTA,placebo: another university's calendar,session_share,rotations,5.0,2368
+MBTA,placebo: another university's calendar,session_share,rotations_at_least_own,0.0,2368
