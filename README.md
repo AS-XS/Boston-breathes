@@ -215,7 +215,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 15. Students away: weekly range | Steps 11 and 14 | Done | `students_away_weekly.csv` |
 | 16. Figures and year explorer | Steps 1–15 | Done | `figures/*.png`, `figures/*.html` (see [How to Read the Results](#how-to-read-the-results)) |
 | 17. Modeling table | Weekly tables of steps 1–15 | Done | `modeling_weekly.csv`: one row per week with travel records, weather, calendar, and student columns |
-| 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of travel models with and without the index, and the index's effect |
+| 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect |
 
 ### Processing decisions so far
 
@@ -338,22 +338,39 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 
 #### Model comparison (goal 2)
 
-* **Three linear models per target, compared on held-out weeks.** The baseline uses weather (temperature and its square, rain, heavy rain, snow, ice and hot days, wind), holidays, the weeks from December 24 to January 1, a smooth annual cycle (two pairs of sine and cosine terms), network size, and a separate level for each calendar year. The second model adds the Student Presence Index; the third also adds the summer-break share. Targets are logarithms of the campus ratio (campus-zone over away-zone activity) and of the study-area total, for Bluebikes trips and MBTA entries. The weeks are those with complete data outside the COVID-19 period: 534 for Bluebikes, 538 for MBTA.
+* **Three model families, each with and without the index, on the same held-out weeks.**
+  * *Linear, smooth season* (least squares): weather (temperature and its square, rain, heavy rain, snow, ice and hot days, wind), holidays, the weeks from December 24 to January 1, a smooth annual cycle (two pairs of sine and cosine terms), network size, and a separate level for each calendar year. The smooth cycle cannot copy the sharp changes of the academic calendar, so it leaves them to the index. A third version also adds the summer-break share.
+  * *Linear, week of year*: the same with a separate level for each week of the year instead of the smooth cycle. It learns the typical calendar, students included, so the index can only add what differs from year to year: when Labor Day falls, how spring breaks and commencements move.
+  * *Gradient boosting* (scikit-learn, fixed settings): the same weather, holidays and network size, with the day of the year and the year as plain inputs, so the trees find season, year levels and interactions themselves.
+  * Targets are logarithms of the campus ratio (campus-zone over away-zone activity) and of the study-area total, for Bluebikes trips and MBTA entries. The weeks are those with complete data outside the COVID-19 period: 534 for Bluebikes, 538 for MBTA.
   * *Testing.* Travel levels change far more between years than within them (the Bluebikes network grew fivefold; subway entries are still about a third below 2019), so a model fitted on earlier years cannot predict the level of later ones. Each calendar month is therefore held out in turn, with the week on either side, and predicted from a model fitted on the other weeks. The blocks are contiguous months, not random weeks.
   * *Christmas and New Year.* The whole city slows down in the weeks from December 24 to January 1, which fall in the universities' winter break. Without a flag for those weeks, the index took credit for that slowdown: its effect on total Bluebikes trips came out at +47% instead of +29%, and on total MBTA entries at +23% instead of +16%. Flagging the weeks and dropping them give almost the same result. The campus ratio moves much less (Bluebikes +22% to +18%), since the slowdown hits both zones.
 
-Results, held-out error (RMSE of the logarithm) of the model with the index compared with the baseline, and the index's effect:
+Change in held-out error (RMSE of the logarithm) when the index is added, within each family; in bold, the family with the lowest error for that target:
 
-| Target | Weeks | Error change, all weeks | Error change, weeks not fully in session | Effect of the index (0 → 1), 95% interval |
-|---|---|---|---|---|
-| Bluebikes campus ratio | 534 | −7.9% | −9.2% | +18% (+14% to +23%) |
-| MBTA campus ratio | 538 | −1.6% | −2.1% | +5% (+3% to +7%) |
-| Bluebikes total | 534 | −7.9% | −9.6% | +29% (+22% to +36%) |
-| MBTA total | 538 | −6.7% | −9.8% | +16% (+11% to +20%) |
+| Target | Linear, smooth season | Linear, week of year | Gradient boosting |
+|---|---|---|---|
+| Bluebikes campus ratio | −7.9% | −0.7% | **−3.9%** |
+| MBTA campus ratio | −1.6% | +0.3% | **−1.6%** |
+| Bluebikes total | −7.9% | **−1.8%** | −3.6% |
+| MBTA total | −6.7% | **−1.9%** | −4.5% |
 
-* **The index improves every model**, most in the weeks not fully in session (index below 0.9), where the students' absence should show. The summer-break share adds nothing once the index is in: held-out error changes by less than 1%.
+Effect of the index (from no university in session to all in session), with a 95% interval, in the two linear families:
+
+| Target | Linear, smooth season | Linear, week of year |
+|---|---|---|
+| Bluebikes campus ratio | +18% (+14% to +23%) | +15% (+4% to +27%) |
+| MBTA campus ratio | +5% (+3% to +7%) | −3% (−10% to +5%) |
+| Bluebikes total | +29% (+22% to +36%) | +32% (+18% to +47%) |
+| MBTA total | +16% (+11% to +20%) | +18% (+9% to +27%) |
+
+* **For every target, the best model includes the index.** Without it, the best family's held-out error is 1.6% (MBTA campus ratio) to 4.1% (Bluebikes campus ratio) higher.
+* **Most of the index's gain is the regular academic calendar.** Against the smooth cycle the index lowers error by 6.7–7.9% for the Bluebikes targets and the MBTA total, mostly from the calendar's sharp edges, which repeat every year. Against a baseline that already knows the typical week of the year, what remains is the year-to-year shifts: 0.7–1.9%.
+* **The effect sizes hold, except for the MBTA campus ratio.** For Bluebikes and the MBTA total, the two linear families agree on the effect (Bluebikes campus ratio +18% and +15%); the week-of-year intervals are wider because fewer weeks inform them. The MBTA campus ratio's +5% does not survive the week-of-year baseline (−3%, interval −10% to +5%). Its signal is weak in every family (held-out R² of about 0.25–0.3), as in the earlier checks: campus-zone gated stations also serve commuters and events, and the street-level Green Line stops at Boston University and Northeastern have no gates.
+* **Trees fit the campus ratios best and the totals worst.** Gradient boosting has the lowest error for both campus ratios (Bluebikes 0.061, against 0.089 for the best linear model), finding interactions such as weather by season. It is the worst family for the totals, probably because trees cannot carry the growth of the networks into a held-out month the way a linear term in network size can.
+* **The trees lean on the index once they have it.** Shuffling the index across weeks raises their held-out error by 66% for the Bluebikes campus ratio, 18% and 32% for the totals, and 4% for the MBTA campus ratio. That is far more than the index adds (1.6–4.5%), because with the index the trees stop learning the calendar from the date: the comparison with and without the index is the measure of what it adds.
+* **The summer-break share adds nothing** once the index is in (smooth-season family: held-out error changes by less than 1%).
 * **Reading the effects.** The effect is the change from every university out of session to every one in session, with standard errors that allow for neighbouring weeks being alike (Newey-West, 4 weeks). It covers everything that comes with term time: students, but also staff and campus events, and in summer partly school children, whose vacation overlaps. For the totals it is therefore an upper bound for students alone. The campus ratio is the cleaner measure, because it compares campus areas with the rest of the study area in the same week.
-* **MBTA campus ratio.** The signal is weak (held-out R² 0.24 without the index, 0.27 with it), as in the earlier checks: campus-zone gated stations also serve commuters and events, and the street-level Green Line stops at Boston University and Northeastern have no gates.
 
 #### Presence evaluation
 
@@ -410,7 +427,7 @@ A second modeling approach, such as a tree-based model, may also be explored.
 
 Because the data are time-based, training and testing will use chronological rather than random splits.
 
-Done so far: the linear comparison (see [Model comparison](#model-comparison-goal-2)). Instead of training on early years and testing on later ones, each month is held out in turn, because travel levels shift between years (network growth, COVID-19) far more than with the students; the blocks are contiguous months, not random weeks. A tree-based model has not been tried.
+Done so far: three model families, two linear and one tree-based (gradient boosting), each with and without the index (see [Model comparison](#model-comparison-goal-2)). Instead of training on early years and testing on later ones, each month is held out in turn, because travel levels shift between years (network growth, COVID-19) far more than with the students; the blocks are contiguous months, not random weeks.
 
 ---
 

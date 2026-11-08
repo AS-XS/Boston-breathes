@@ -12,7 +12,7 @@ def synthetic(effect: float = 0.2, years: int = 3, seed: int = 0) -> pl.DataFram
     when the index goes from 0 to 1, plus weather and noise."""
     rng = np.random.default_rng(seed)
     n = 52 * years
-    weeks = [date(2016, 1, 4) + timedelta(weeks=i) for i in range(n)]
+    weeks = [date(2015, 1, 5) + timedelta(weeks=i) for i in range(n)]
     index = np.where(rng.random(n) < 0.6, 1.0, rng.random(n) * 0.5)
     temp = rng.normal(10, 8, n)
     log_ratio = effect * index + 0.01 * temp + rng.normal(0, 0.02, n)
@@ -27,10 +27,14 @@ def synthetic(effect: float = 0.2, years: int = 3, seed: int = 0) -> pl.DataFram
     })
 
 
+def results(families: dict) -> callable:
+    rows = pl.DataFrame(mc.compare(synthetic(), "Bluebikes campus ratio", families))
+    return lambda m, s, k: rows.filter((pl.col("model") == m) & (pl.col("subset") == s)
+                                       & (pl.col("metric") == k))["value"][0]
+
+
 def test_index_model_recovers_a_known_effect_and_beats_the_baseline():
-    rows = pl.DataFrame(mc.compare(synthetic(), "Bluebikes campus ratio"))
-    get = lambda m, s, k: rows.filter((pl.col("model") == m) & (pl.col("subset") == s)  # noqa: E731
-                                      & (pl.col("metric") == k))["value"][0]
+    get = results({mc.SMOOTH: mc.MODELS[mc.SMOOTH]})
     assert get("index", "all weeks", "presence_index_coef") == pytest.approx(0.2, abs=0.01)
     assert get("index", "all weeks", "presence_index_effect_pct") == pytest.approx((np.exp(0.2) - 1) * 100, abs=1)
     assert get("index", "all weeks", "rmse") < get("baseline", "all weeks", "rmse") / 2
@@ -43,8 +47,8 @@ def test_held_out_months_never_see_their_own_or_neighbouring_weeks():
     # A huge value in one week: if that week or its neighbours were fitted, its month would be predicted near it.
     spike = 60
     y[spike - 1:spike + 2] += 100
-    x = mc.design(df, [])
-    pred = mc.held_out_predictions(df.with_columns(pl.Series("y", y)), x)
+    x = mc.design(df, mc.SMOOTH, [])
+    pred, _ = mc.held_out_predictions(df.with_columns(pl.Series("y", y)), x)
     month = df["block"][spike]
     assert np.abs(pred[(df["block"] == month).to_numpy()]).max() < 20
 
@@ -64,3 +68,18 @@ def test_covid_weeks_and_incomplete_weeks_are_left_out():
         .alias("covid_period"),
         (pl.int_range(pl.len()) != 20).alias("weather_complete"))
     assert len(mc.prepare(table, "Bluebikes campus ratio")) == len(table) - 11
+
+
+def test_week_of_year_design_has_a_level_per_year_and_per_week():
+    df = mc.prepare(synthetic(), "Bluebikes campus ratio")
+    x = mc.design(df, mc.WEEKS, ["presence_index"])
+    assert x.shape[1] == len(mc.FEATURES[mc.WEEKS]) + 1 + df["year"].n_unique() + df["week_of_year"].n_unique()
+    # Thursday December 31, 2015 (day 365) joins the 52nd week, numbered 51 from 0.
+    assert df.filter(pl.col("week_start") == date(2015, 12, 28))["week_of_year"].to_list() == [51]
+    assert df["week_of_year"].max() == 51
+
+
+def test_trees_use_a_strong_index_and_suffer_when_it_is_shuffled():
+    get = results({mc.TREES: mc.MODELS[mc.TREES]})
+    assert get("index", "all weeks", "rmse") < get("baseline", "all weeks", "rmse")
+    assert get("index", "all weeks", "presence_index_permutation_rmse_increase_pct") > 50
