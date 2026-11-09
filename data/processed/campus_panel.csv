@@ -1,107 +1,632 @@
 source,model,term,metric,value,n
-Bluebikes,data,units,count,8.0,2480
-Bluebikes,data,universities,count,8.0,2480
-Bluebikes,own calendar,session_share,coef,0.1895,2480
-Bluebikes,own calendar,session_share,se,0.0277,2480
-Bluebikes,own calendar,session_share,effect_pct,20.8682,2480
-Bluebikes,own calendar,session_share,effect_pct_low,14.4809,2480
-Bluebikes,own calendar,session_share,effect_pct_high,27.6118,2480
-Bluebikes,own calendar,session_share,within_r2,0.0419,2480
-Bluebikes,"own calendar, unit seasons",session_share,coef,0.235,2480
-Bluebikes,"own calendar, unit seasons",session_share,se,0.0246,2480
-Bluebikes,"own calendar, unit seasons",session_share,effect_pct,26.4897,2480
-Bluebikes,"own calendar, unit seasons",session_share,effect_pct_low,20.5269,2480
-Bluebikes,"own calendar, unit seasons",session_share,effect_pct_high,32.7476,2480
-Bluebikes,"own calendar, unit seasons",session_share,within_r2,0.0734,2480
-Bluebikes,"own calendar, by university",Berklee College of Music,coef,-0.0807,56
-Bluebikes,"own calendar, by university",Berklee College of Music,se,0.0518,56
-Bluebikes,"own calendar, by university",Berklee College of Music,effect_pct,-7.7513,56
-Bluebikes,"own calendar, by university",Berklee College of Music,effect_pct_low,-16.659,56
-Bluebikes,"own calendar, by university",Berklee College of Music,effect_pct_high,2.1084,56
-Bluebikes,"own calendar, by university",Boston University,coef,0.1562,505
-Bluebikes,"own calendar, by university",Boston University,se,0.0317,505
-Bluebikes,"own calendar, by university",Boston University,effect_pct,16.9078,505
-Bluebikes,"own calendar, by university",Boston University,effect_pct_low,9.862,505
-Bluebikes,"own calendar, by university",Boston University,effect_pct_high,24.4055,505
-Bluebikes,"own calendar, by university",Bunker Hill Community College,coef,-0.0173,294
-Bluebikes,"own calendar, by university",Bunker Hill Community College,se,0.0382,294
-Bluebikes,"own calendar, by university",Bunker Hill Community College,effect_pct,-1.7188,294
-Bluebikes,"own calendar, by university",Bunker Hill Community College,effect_pct_low,-8.8012,294
-Bluebikes,"own calendar, by university",Bunker Hill Community College,effect_pct_high,5.9135,294
-Bluebikes,"own calendar, by university",Harvard University,coef,0.0923,210
-Bluebikes,"own calendar, by university",Harvard University,se,0.0324,210
-Bluebikes,"own calendar, by university",Harvard University,effect_pct,9.6649,210
-Bluebikes,"own calendar, by university",Harvard University,effect_pct_low,2.918,210
-Bluebikes,"own calendar, by university",Harvard University,effect_pct_high,16.8541,210
-Bluebikes,"own calendar, by university",Massachusetts Institute of Technology,coef,0.2785,452
-Bluebikes,"own calendar, by university",Massachusetts Institute of Technology,se,0.0415,452
-Bluebikes,"own calendar, by university",Massachusetts Institute of Technology,effect_pct,32.1148,452
-Bluebikes,"own calendar, by university",Massachusetts Institute of Technology,effect_pct_low,21.7875,452
-Bluebikes,"own calendar, by university",Massachusetts Institute of Technology,effect_pct_high,43.3179,452
-Bluebikes,"own calendar, by university",Northeastern University,coef,0.3739,457
-Bluebikes,"own calendar, by university",Northeastern University,se,0.0409,457
-Bluebikes,"own calendar, by university",Northeastern University,effect_pct,45.3334,457
-Bluebikes,"own calendar, by university",Northeastern University,effect_pct_low,34.1488,457
-Bluebikes,"own calendar, by university",Northeastern University,effect_pct_high,57.4504,457
-Bluebikes,"own calendar, by university",Suffolk University,coef,-0.1647,211
-Bluebikes,"own calendar, by university",Suffolk University,se,0.0314,211
-Bluebikes,"own calendar, by university",Suffolk University,effect_pct,-15.1892,211
-Bluebikes,"own calendar, by university",Suffolk University,effect_pct_low,-20.2545,211
-Bluebikes,"own calendar, by university",Suffolk University,effect_pct_high,-9.8023,211
-Bluebikes,"own calendar, by university",Wentworth Institute of Technology,coef,0.2517,295
-Bluebikes,"own calendar, by university",Wentworth Institute of Technology,se,0.0503,295
-Bluebikes,"own calendar, by university",Wentworth Institute of Technology,effect_pct,28.6246,295
-Bluebikes,"own calendar, by university",Wentworth Institute of Technology,effect_pct_low,16.5559,295
-Bluebikes,"own calendar, by university",Wentworth Institute of Technology,effect_pct_high,41.943,295
-Bluebikes,placebo: another university's calendar,session_share,effect_pct_median,-3.6077,2480
-Bluebikes,placebo: another university's calendar,session_share,effect_pct_max,6.1019,2480
-Bluebikes,placebo: another university's calendar,session_share,rotations,7.0,2480
-Bluebikes,placebo: another university's calendar,session_share,rotations_at_least_own,0.0,2480
-MBTA,data,units,count,11.0,2368
-MBTA,data,universities,count,6.0,2368
-MBTA,own calendar,session_share,coef,0.1305,2368
-MBTA,own calendar,session_share,se,0.0364,2368
-MBTA,own calendar,session_share,effect_pct,13.936,2368
-MBTA,own calendar,session_share,effect_pct_low,6.0926,2368
-MBTA,own calendar,session_share,effect_pct_high,22.3593,2368
-MBTA,own calendar,session_share,within_r2,0.0054,2368
-MBTA,"own calendar, unit seasons",session_share,coef,0.1148,2368
-MBTA,"own calendar, unit seasons",session_share,se,0.0327,2368
-MBTA,"own calendar, unit seasons",session_share,effect_pct,12.1602,2368
-MBTA,"own calendar, unit seasons",session_share,effect_pct_low,5.1955,2368
-MBTA,"own calendar, unit seasons",session_share,effect_pct_high,19.5859,2368
-MBTA,"own calendar, unit seasons",session_share,within_r2,0.0051,2368
-MBTA,"own calendar, by university",Berklee College of Music,coef,0.2983,57
-MBTA,"own calendar, by university",Berklee College of Music,se,0.0801,57
-MBTA,"own calendar, by university",Berklee College of Music,effect_pct,34.7572,57
-MBTA,"own calendar, by university",Berklee College of Music,effect_pct_low,15.1781,57
-MBTA,"own calendar, by university",Berklee College of Music,effect_pct_high,57.6647,57
-MBTA,"own calendar, by university",Boston University,coef,0.0106,541
-MBTA,"own calendar, by university",Boston University,se,0.0464,541
-MBTA,"own calendar, by university",Boston University,effect_pct,1.067,541
-MBTA,"own calendar, by university",Boston University,effect_pct_low,-7.7257,541
-MBTA,"own calendar, by university",Boston University,effect_pct_high,10.6974,541
-MBTA,"own calendar, by university",Bunker Hill Community College,coef,0.4506,329
-MBTA,"own calendar, by university",Bunker Hill Community College,se,0.0495,329
-MBTA,"own calendar, by university",Bunker Hill Community College,effect_pct,56.9316,329
-MBTA,"own calendar, by university",Bunker Hill Community College,effect_pct_low,42.4244,329
-MBTA,"own calendar, by university",Bunker Hill Community College,effect_pct_high,72.9165,329
-MBTA,"own calendar, by university",Harvard University,coef,0.1651,210
-MBTA,"own calendar, by university",Harvard University,se,0.0508,210
-MBTA,"own calendar, by university",Harvard University,effect_pct,17.9468,210
-MBTA,"own calendar, by university",Harvard University,effect_pct_low,6.7761,210
-MBTA,"own calendar, by university",Harvard University,effect_pct_high,30.2862,210
-MBTA,"own calendar, by university",Suffolk University,coef,0.0557,1047
-MBTA,"own calendar, by university",Suffolk University,se,0.04,1047
-MBTA,"own calendar, by university",Suffolk University,effect_pct,5.7325,1047
-MBTA,"own calendar, by university",Suffolk University,effect_pct_low,-2.2444,1047
-MBTA,"own calendar, by university",Suffolk University,effect_pct_high,14.3603,1047
-MBTA,"own calendar, by university",Tufts University,coef,0.0831,184
-MBTA,"own calendar, by university",Tufts University,se,0.0935,184
-MBTA,"own calendar, by university",Tufts University,effect_pct,8.667,184
-MBTA,"own calendar, by university",Tufts University,effect_pct_low,-9.5206,184
-MBTA,"own calendar, by university",Tufts University,effect_pct_high,30.5107,184
-MBTA,placebo: another university's calendar,session_share,effect_pct_median,-3.2561,2368
-MBTA,placebo: another university's calendar,session_share,effect_pct_max,5.5449,2368
-MBTA,placebo: another university's calendar,session_share,rotations,5.0,2368
-MBTA,placebo: another university's calendar,session_share,rotations_at_least_own,0.0,2368
+Bluebikes,"all universities, assumed calendars",units,count,19.0,8988
+Bluebikes,"all universities, assumed calendars",universities,count,19.0,8988
+Bluebikes,"all universities, assumed calendars",session_share,coef,0.1321,8988
+Bluebikes,"all universities, assumed calendars",session_share,se,0.0169,8988
+Bluebikes,"all universities, assumed calendars",session_share,effect_pct,14.1193,8988
+Bluebikes,"all universities, assumed calendars",session_share,effect_pct_low,10.4066,8988
+Bluebikes,"all universities, assumed calendars",session_share,effect_pct_high,17.9569,8988
+Bluebikes,"all universities, assumed calendars",session_share,within_r2,0.0103,8988
+Bluebikes,"all universities, assumed calendars, unit seasons",session_share,coef,0.1519,8988
+Bluebikes,"all universities, assumed calendars, unit seasons",session_share,se,0.0172,8988
+Bluebikes,"all universities, assumed calendars, unit seasons",session_share,effect_pct,16.4027,8988
+Bluebikes,"all universities, assumed calendars, unit seasons",session_share,effect_pct_low,12.551,8988
+Bluebikes,"all universities, assumed calendars, unit seasons",session_share,effect_pct_high,20.3862,8988
+Bluebikes,"all universities, assumed calendars, unit seasons",session_share,within_r2,0.0158,8988
+Bluebikes,"all universities, assumed calendars, by university",Berklee College of Music,coef,0.0036,431
+Bluebikes,"all universities, assumed calendars, by university",Berklee College of Music,se,0.0255,431
+Bluebikes,"all universities, assumed calendars, by university",Berklee College of Music,effect_pct,0.3622,431
+Bluebikes,"all universities, assumed calendars, by university",Berklee College of Music,effect_pct_low,-4.5268,431
+Bluebikes,"all universities, assumed calendars, by university",Berklee College of Music,effect_pct_high,5.5015,431
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Berklee College of Music,coef,-0.0285,431
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Berklee College of Music,se,0.0386,431
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Berklee College of Music,effect_pct,-2.8096,431
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Berklee College of Music,effect_pct_low,-9.8887,431
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Berklee College of Music,effect_pct_high,4.8255,431
+Bluebikes,"all universities, assumed calendars, by university",Berklee College of Music,verified_week_share,0.1299,431
+Bluebikes,"all universities, assumed calendars, by university",Berklee College of Music,estimated_week_share,0.8701,431
+Bluebikes,"all universities, assumed calendars, by university",Berklee College of Music,typical_week_share,0.0,431
+Bluebikes,"all universities, assumed calendars, by university",Boston University,coef,0.1766,505
+Bluebikes,"all universities, assumed calendars, by university",Boston University,se,0.0207,505
+Bluebikes,"all universities, assumed calendars, by university",Boston University,effect_pct,19.3119,505
+Bluebikes,"all universities, assumed calendars, by university",Boston University,effect_pct_low,14.5608,505
+Bluebikes,"all universities, assumed calendars, by university",Boston University,effect_pct_high,24.26,505
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Boston University,coef,0.2292,505
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Boston University,se,0.025,505
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Boston University,effect_pct,25.7582,505
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Boston University,effect_pct_low,19.7509,505
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Boston University,effect_pct_high,32.067,505
+Bluebikes,"all universities, assumed calendars, by university",Boston University,verified_week_share,1.0,505
+Bluebikes,"all universities, assumed calendars, by university",Boston University,estimated_week_share,0.0,505
+Bluebikes,"all universities, assumed calendars, by university",Boston University,typical_week_share,0.0,505
+Bluebikes,"all universities, assumed calendars, by university",Bunker Hill Community College,coef,-0.0083,503
+Bluebikes,"all universities, assumed calendars, by university",Bunker Hill Community College,se,0.0247,503
+Bluebikes,"all universities, assumed calendars, by university",Bunker Hill Community College,effect_pct,-0.8221,503
+Bluebikes,"all universities, assumed calendars, by university",Bunker Hill Community College,effect_pct_low,-5.5128,503
+Bluebikes,"all universities, assumed calendars, by university",Bunker Hill Community College,effect_pct_high,4.1014,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Bunker Hill Community College,coef,-0.0646,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Bunker Hill Community College,se,0.0269,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Bunker Hill Community College,effect_pct,-6.2552,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Bunker Hill Community College,effect_pct_low,-11.0772,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Bunker Hill Community College,effect_pct_high,-1.1716,503
+Bluebikes,"all universities, assumed calendars, by university",Bunker Hill Community College,verified_week_share,0.5845,503
+Bluebikes,"all universities, assumed calendars, by university",Bunker Hill Community College,estimated_week_share,0.4155,503
+Bluebikes,"all universities, assumed calendars, by university",Bunker Hill Community College,typical_week_share,0.0,503
+Bluebikes,"all universities, assumed calendars, by university",Cambridge College,coef,-0.1348,341
+Bluebikes,"all universities, assumed calendars, by university",Cambridge College,se,0.0327,341
+Bluebikes,"all universities, assumed calendars, by university",Cambridge College,effect_pct,-12.6079,341
+Bluebikes,"all universities, assumed calendars, by university",Cambridge College,effect_pct_low,-18.0356,341
+Bluebikes,"all universities, assumed calendars, by university",Cambridge College,effect_pct_high,-6.8207,341
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Cambridge College,coef,-0.1556,341
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Cambridge College,se,0.052,341
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Cambridge College,effect_pct,-14.4093,341
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Cambridge College,effect_pct_low,-22.7015,341
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Cambridge College,effect_pct_high,-5.2274,341
+Bluebikes,"all universities, assumed calendars, by university",Cambridge College,verified_week_share,0.0,341
+Bluebikes,"all universities, assumed calendars, by university",Cambridge College,estimated_week_share,0.0,341
+Bluebikes,"all universities, assumed calendars, by university",Cambridge College,typical_week_share,1.0,341
+Bluebikes,"all universities, assumed calendars, by university",Emerson College,coef,-0.115,503
+Bluebikes,"all universities, assumed calendars, by university",Emerson College,se,0.0229,503
+Bluebikes,"all universities, assumed calendars, by university",Emerson College,effect_pct,-10.862,503
+Bluebikes,"all universities, assumed calendars, by university",Emerson College,effect_pct_low,-14.7804,503
+Bluebikes,"all universities, assumed calendars, by university",Emerson College,effect_pct_high,-6.7635,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Emerson College,coef,-0.0749,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Emerson College,se,0.0346,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Emerson College,effect_pct,-7.2182,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Emerson College,effect_pct_low,-13.3045,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Emerson College,effect_pct_high,-0.7047,503
+Bluebikes,"all universities, assumed calendars, by university",Emerson College,verified_week_share,0.008,503
+Bluebikes,"all universities, assumed calendars, by university",Emerson College,estimated_week_share,0.992,503
+Bluebikes,"all universities, assumed calendars, by university",Emerson College,typical_week_share,0.0,503
+Bluebikes,"all universities, assumed calendars, by university",Emmanuel College,coef,0.0376,348
+Bluebikes,"all universities, assumed calendars, by university",Emmanuel College,se,0.0307,348
+Bluebikes,"all universities, assumed calendars, by university",Emmanuel College,effect_pct,3.8278,348
+Bluebikes,"all universities, assumed calendars, by university",Emmanuel College,effect_pct_low,-2.2328,348
+Bluebikes,"all universities, assumed calendars, by university",Emmanuel College,effect_pct_high,10.264,348
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Emmanuel College,coef,0.0978,348
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Emmanuel College,se,0.0434,348
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Emmanuel College,effect_pct,10.2725,348
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Emmanuel College,effect_pct_low,1.2817,348
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Emmanuel College,effect_pct_high,20.0614,348
+Bluebikes,"all universities, assumed calendars, by university",Emmanuel College,verified_week_share,0.0115,348
+Bluebikes,"all universities, assumed calendars, by university",Emmanuel College,estimated_week_share,0.9885,348
+Bluebikes,"all universities, assumed calendars, by university",Emmanuel College,typical_week_share,0.0,348
+Bluebikes,"all universities, assumed calendars, by university",Harvard University,coef,0.1234,534
+Bluebikes,"all universities, assumed calendars, by university",Harvard University,se,0.0215,534
+Bluebikes,"all universities, assumed calendars, by university",Harvard University,effect_pct,13.1307,534
+Bluebikes,"all universities, assumed calendars, by university",Harvard University,effect_pct_low,8.4691,534
+Bluebikes,"all universities, assumed calendars, by university",Harvard University,effect_pct_high,17.9926,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Harvard University,coef,0.1212,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Harvard University,se,0.0238,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Harvard University,effect_pct,12.8902,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Harvard University,effect_pct_low,7.7456,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Harvard University,effect_pct_high,18.2804,534
+Bluebikes,"all universities, assumed calendars, by university",Harvard University,verified_week_share,0.3933,534
+Bluebikes,"all universities, assumed calendars, by university",Harvard University,estimated_week_share,0.6067,534
+Bluebikes,"all universities, assumed calendars, by university",Harvard University,typical_week_share,0.0,534
+Bluebikes,"all universities, assumed calendars, by university",Hult International Business School,coef,-0.0622,534
+Bluebikes,"all universities, assumed calendars, by university",Hult International Business School,se,0.0252,534
+Bluebikes,"all universities, assumed calendars, by university",Hult International Business School,effect_pct,-6.0345,534
+Bluebikes,"all universities, assumed calendars, by university",Hult International Business School,effect_pct_low,-10.5706,534
+Bluebikes,"all universities, assumed calendars, by university",Hult International Business School,effect_pct_high,-1.2683,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Hult International Business School,coef,-0.0044,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Hult International Business School,se,0.0375,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Hult International Business School,effect_pct,-0.4424,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Hult International Business School,effect_pct_low,-7.4965,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Hult International Business School,effect_pct_high,7.1496,534
+Bluebikes,"all universities, assumed calendars, by university",Hult International Business School,verified_week_share,0.0,534
+Bluebikes,"all universities, assumed calendars, by university",Hult International Business School,estimated_week_share,0.0,534
+Bluebikes,"all universities, assumed calendars, by university",Hult International Business School,typical_week_share,1.0,534
+Bluebikes,"all universities, assumed calendars, by university",Lesley University,coef,0.3499,534
+Bluebikes,"all universities, assumed calendars, by university",Lesley University,se,0.0282,534
+Bluebikes,"all universities, assumed calendars, by university",Lesley University,effect_pct,41.8859,534
+Bluebikes,"all universities, assumed calendars, by university",Lesley University,effect_pct_low,34.269,534
+Bluebikes,"all universities, assumed calendars, by university",Lesley University,effect_pct_high,49.9349,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Lesley University,coef,0.238,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Lesley University,se,0.0332,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Lesley University,effect_pct,26.8716,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Lesley University,effect_pct_low,18.878,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Lesley University,effect_pct_high,35.4027,534
+Bluebikes,"all universities, assumed calendars, by university",Lesley University,verified_week_share,0.0075,534
+Bluebikes,"all universities, assumed calendars, by university",Lesley University,estimated_week_share,0.9925,534
+Bluebikes,"all universities, assumed calendars, by university",Lesley University,typical_week_share,0.0,534
+Bluebikes,"all universities, assumed calendars, by university",MGH Institute of Health Professions,coef,-0.1452,465
+Bluebikes,"all universities, assumed calendars, by university",MGH Institute of Health Professions,se,0.0393,465
+Bluebikes,"all universities, assumed calendars, by university",MGH Institute of Health Professions,effect_pct,-13.5177,465
+Bluebikes,"all universities, assumed calendars, by university",MGH Institute of Health Professions,effect_pct_low,-19.9298,465
+Bluebikes,"all universities, assumed calendars, by university",MGH Institute of Health Professions,effect_pct_high,-6.5922,465
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",MGH Institute of Health Professions,coef,-0.1803,465
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",MGH Institute of Health Professions,se,0.0685,465
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",MGH Institute of Health Professions,effect_pct,-16.4967,465
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",MGH Institute of Health Professions,effect_pct_low,-26.9846,465
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",MGH Institute of Health Professions,effect_pct_high,-4.5025,465
+Bluebikes,"all universities, assumed calendars, by university",MGH Institute of Health Professions,verified_week_share,0.0,465
+Bluebikes,"all universities, assumed calendars, by university",MGH Institute of Health Professions,estimated_week_share,0.0,465
+Bluebikes,"all universities, assumed calendars, by university",MGH Institute of Health Professions,typical_week_share,1.0,465
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts College of Art and Design,coef,0.1868,343
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts College of Art and Design,se,0.0274,343
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts College of Art and Design,effect_pct,20.5392,343
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts College of Art and Design,effect_pct_low,14.2313,343
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts College of Art and Design,effect_pct_high,27.1954,343
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Massachusetts College of Art and Design,coef,0.217,343
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Massachusetts College of Art and Design,se,0.0416,343
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Massachusetts College of Art and Design,effect_pct,24.2301,343
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Massachusetts College of Art and Design,effect_pct_low,14.5078,343
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Massachusetts College of Art and Design,effect_pct_high,34.7778,343
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts College of Art and Design,verified_week_share,0.0117,343
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts College of Art and Design,estimated_week_share,0.9883,343
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts College of Art and Design,typical_week_share,0.0,343
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts Institute of Technology,coef,0.2904,534
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts Institute of Technology,se,0.0352,534
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts Institute of Technology,effect_pct,33.696,534
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts Institute of Technology,effect_pct_low,24.782,534
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts Institute of Technology,effect_pct_high,43.2469,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Massachusetts Institute of Technology,coef,0.2094,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Massachusetts Institute of Technology,se,0.0283,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Massachusetts Institute of Technology,effect_pct,23.2995,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Massachusetts Institute of Technology,effect_pct_low,16.6465,534
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Massachusetts Institute of Technology,effect_pct_high,30.332,534
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts Institute of Technology,verified_week_share,0.8464,534
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts Institute of Technology,estimated_week_share,0.1536,534
+Bluebikes,"all universities, assumed calendars, by university",Massachusetts Institute of Technology,typical_week_share,0.0,534
+Bluebikes,"all universities, assumed calendars, by university",Northeastern University,coef,0.3786,457
+Bluebikes,"all universities, assumed calendars, by university",Northeastern University,se,0.0309,457
+Bluebikes,"all universities, assumed calendars, by university",Northeastern University,effect_pct,46.0304,457
+Bluebikes,"all universities, assumed calendars, by university",Northeastern University,effect_pct_low,37.4558,457
+Bluebikes,"all universities, assumed calendars, by university",Northeastern University,effect_pct_high,55.1398,457
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Northeastern University,coef,0.4474,457
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Northeastern University,se,0.0586,457
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Northeastern University,effect_pct,56.417,457
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Northeastern University,effect_pct_low,39.4501,457
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Northeastern University,effect_pct_high,75.4484,457
+Bluebikes,"all universities, assumed calendars, by university",Northeastern University,verified_week_share,1.0,457
+Bluebikes,"all universities, assumed calendars, by university",Northeastern University,estimated_week_share,0.0,457
+Bluebikes,"all universities, assumed calendars, by university",Northeastern University,typical_week_share,0.0,457
+Bluebikes,"all universities, assumed calendars, by university",Roxbury Community College,coef,0.1445,502
+Bluebikes,"all universities, assumed calendars, by university",Roxbury Community College,se,0.0307,502
+Bluebikes,"all universities, assumed calendars, by university",Roxbury Community College,effect_pct,15.5455,502
+Bluebikes,"all universities, assumed calendars, by university",Roxbury Community College,effect_pct_low,8.7912,502
+Bluebikes,"all universities, assumed calendars, by university",Roxbury Community College,effect_pct_high,22.7191,502
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Roxbury Community College,coef,0.1758,502
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Roxbury Community College,se,0.0622,502
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Roxbury Community College,effect_pct,19.2234,502
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Roxbury Community College,effect_pct_low,5.5409,502
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Roxbury Community College,effect_pct_high,34.6797,502
+Bluebikes,"all universities, assumed calendars, by university",Roxbury Community College,verified_week_share,0.0,502
+Bluebikes,"all universities, assumed calendars, by university",Roxbury Community College,estimated_week_share,0.0,502
+Bluebikes,"all universities, assumed calendars, by university",Roxbury Community College,typical_week_share,1.0,502
+Bluebikes,"all universities, assumed calendars, by university",Simmons University,coef,-0.0262,503
+Bluebikes,"all universities, assumed calendars, by university",Simmons University,se,0.023,503
+Bluebikes,"all universities, assumed calendars, by university",Simmons University,effect_pct,-2.5895,503
+Bluebikes,"all universities, assumed calendars, by university",Simmons University,effect_pct_low,-6.8768,503
+Bluebikes,"all universities, assumed calendars, by university",Simmons University,effect_pct_high,1.8951,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Simmons University,coef,-0.0574,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Simmons University,se,0.0328,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Simmons University,effect_pct,-5.5747,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Simmons University,effect_pct_low,-11.4469,503
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Simmons University,effect_pct_high,0.687,503
+Bluebikes,"all universities, assumed calendars, by university",Simmons University,verified_week_share,0.008,503
+Bluebikes,"all universities, assumed calendars, by university",Simmons University,estimated_week_share,0.992,503
+Bluebikes,"all universities, assumed calendars, by university",Simmons University,typical_week_share,0.0,503
+Bluebikes,"all universities, assumed calendars, by university",Suffolk University,coef,-0.0869,501
+Bluebikes,"all universities, assumed calendars, by university",Suffolk University,se,0.0207,501
+Bluebikes,"all universities, assumed calendars, by university",Suffolk University,effect_pct,-8.3267,501
+Bluebikes,"all universities, assumed calendars, by university",Suffolk University,effect_pct_low,-11.9725,501
+Bluebikes,"all universities, assumed calendars, by university",Suffolk University,effect_pct_high,-4.53,501
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Suffolk University,coef,-0.1079,501
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Suffolk University,se,0.0258,501
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Suffolk University,effect_pct,-10.2292,501
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Suffolk University,effect_pct_low,-14.6561,501
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Suffolk University,effect_pct_high,-5.5728,501
+Bluebikes,"all universities, assumed calendars, by university",Suffolk University,verified_week_share,0.4212,501
+Bluebikes,"all universities, assumed calendars, by university",Suffolk University,estimated_week_share,0.5788,501
+Bluebikes,"all universities, assumed calendars, by university",Suffolk University,typical_week_share,0.0,501
+Bluebikes,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",coef,-0.0525,504
+Bluebikes,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",se,0.026,504
+Bluebikes,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",effect_pct,-5.1173,504
+Bluebikes,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",effect_pct_low,-9.8259,504
+Bluebikes,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",effect_pct_high,-0.1627,504
+Bluebikes,"all universities, assumed calendars, by university, unit seasons","Tufts University, health-sciences campus",coef,-0.1733,504
+Bluebikes,"all universities, assumed calendars, by university, unit seasons","Tufts University, health-sciences campus",se,0.0318,504
+Bluebikes,"all universities, assumed calendars, by university, unit seasons","Tufts University, health-sciences campus",effect_pct,-15.9099,504
+Bluebikes,"all universities, assumed calendars, by university, unit seasons","Tufts University, health-sciences campus",effect_pct_low,-20.9981,504
+Bluebikes,"all universities, assumed calendars, by university, unit seasons","Tufts University, health-sciences campus",effect_pct_high,-10.4941,504
+Bluebikes,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",verified_week_share,0.0,504
+Bluebikes,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",estimated_week_share,0.0,504
+Bluebikes,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",typical_week_share,1.0,504
+Bluebikes,"all universities, assumed calendars, by university",University of Massachusetts-Boston,coef,0.1081,471
+Bluebikes,"all universities, assumed calendars, by university",University of Massachusetts-Boston,se,0.0596,471
+Bluebikes,"all universities, assumed calendars, by university",University of Massachusetts-Boston,effect_pct,11.4197,471
+Bluebikes,"all universities, assumed calendars, by university",University of Massachusetts-Boston,effect_pct_low,-0.8615,471
+Bluebikes,"all universities, assumed calendars, by university",University of Massachusetts-Boston,effect_pct_high,25.2224,471
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",University of Massachusetts-Boston,coef,0.3149,471
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",University of Massachusetts-Boston,se,0.0852,471
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",University of Massachusetts-Boston,effect_pct,37.0055,471
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",University of Massachusetts-Boston,effect_pct_low,15.9427,471
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",University of Massachusetts-Boston,effect_pct_high,61.8946,471
+Bluebikes,"all universities, assumed calendars, by university",University of Massachusetts-Boston,verified_week_share,0.4416,471
+Bluebikes,"all universities, assumed calendars, by university",University of Massachusetts-Boston,estimated_week_share,0.5584,471
+Bluebikes,"all universities, assumed calendars, by university",University of Massachusetts-Boston,typical_week_share,0.0,471
+Bluebikes,"all universities, assumed calendars, by university",Wentworth Institute of Technology,coef,0.2061,475
+Bluebikes,"all universities, assumed calendars, by university",Wentworth Institute of Technology,se,0.0363,475
+Bluebikes,"all universities, assumed calendars, by university",Wentworth Institute of Technology,effect_pct,22.8888,475
+Bluebikes,"all universities, assumed calendars, by university",Wentworth Institute of Technology,effect_pct_low,14.4433,475
+Bluebikes,"all universities, assumed calendars, by university",Wentworth Institute of Technology,effect_pct_high,31.9575,475
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Wentworth Institute of Technology,coef,0.3872,475
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Wentworth Institute of Technology,se,0.0496,475
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Wentworth Institute of Technology,effect_pct,47.2867,475
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Wentworth Institute of Technology,effect_pct_low,33.636,475
+Bluebikes,"all universities, assumed calendars, by university, unit seasons",Wentworth Institute of Technology,effect_pct_high,62.3319,475
+Bluebikes,"all universities, assumed calendars, by university",Wentworth Institute of Technology,verified_week_share,0.6211,475
+Bluebikes,"all universities, assumed calendars, by university",Wentworth Institute of Technology,estimated_week_share,0.3789,475
+Bluebikes,"all universities, assumed calendars, by university",Wentworth Institute of Technology,typical_week_share,0.0,475
+Bluebikes,"all universities, assumed calendars, placebo",session_share,effect_pct_median,-0.4084,8988
+Bluebikes,"all universities, assumed calendars, placebo",session_share,effect_pct_max,1.8869,8988
+Bluebikes,"all universities, assumed calendars, placebo",session_share,rotations,14.0,8988
+Bluebikes,"all universities, assumed calendars, placebo",session_share,rotations_at_least_own,0.0,8988
+Bluebikes,verified calendars only,units,count,8.0,2480
+Bluebikes,verified calendars only,universities,count,8.0,2480
+Bluebikes,verified calendars only,session_share,coef,0.1895,2480
+Bluebikes,verified calendars only,session_share,se,0.0277,2480
+Bluebikes,verified calendars only,session_share,effect_pct,20.8682,2480
+Bluebikes,verified calendars only,session_share,effect_pct_low,14.4809,2480
+Bluebikes,verified calendars only,session_share,effect_pct_high,27.6118,2480
+Bluebikes,verified calendars only,session_share,within_r2,0.0419,2480
+Bluebikes,"verified calendars only, unit seasons",session_share,coef,0.235,2480
+Bluebikes,"verified calendars only, unit seasons",session_share,se,0.0246,2480
+Bluebikes,"verified calendars only, unit seasons",session_share,effect_pct,26.4897,2480
+Bluebikes,"verified calendars only, unit seasons",session_share,effect_pct_low,20.5269,2480
+Bluebikes,"verified calendars only, unit seasons",session_share,effect_pct_high,32.7476,2480
+Bluebikes,"verified calendars only, unit seasons",session_share,within_r2,0.0734,2480
+Bluebikes,"verified calendars only, by university",Berklee College of Music,coef,-0.0807,56
+Bluebikes,"verified calendars only, by university",Berklee College of Music,se,0.0518,56
+Bluebikes,"verified calendars only, by university",Berklee College of Music,effect_pct,-7.7513,56
+Bluebikes,"verified calendars only, by university",Berklee College of Music,effect_pct_low,-16.659,56
+Bluebikes,"verified calendars only, by university",Berklee College of Music,effect_pct_high,2.1084,56
+Bluebikes,"verified calendars only, by university, unit seasons",Berklee College of Music,coef,0.0455,56
+Bluebikes,"verified calendars only, by university, unit seasons",Berklee College of Music,se,0.0386,56
+Bluebikes,"verified calendars only, by university, unit seasons",Berklee College of Music,effect_pct,4.6562,56
+Bluebikes,"verified calendars only, by university, unit seasons",Berklee College of Music,effect_pct_low,-2.9748,56
+Bluebikes,"verified calendars only, by university, unit seasons",Berklee College of Music,effect_pct_high,12.8874,56
+Bluebikes,"verified calendars only, by university",Berklee College of Music,verified_week_share,1.0,56
+Bluebikes,"verified calendars only, by university",Berklee College of Music,estimated_week_share,0.0,56
+Bluebikes,"verified calendars only, by university",Berklee College of Music,typical_week_share,0.0,56
+Bluebikes,"verified calendars only, by university",Boston University,coef,0.1562,505
+Bluebikes,"verified calendars only, by university",Boston University,se,0.0317,505
+Bluebikes,"verified calendars only, by university",Boston University,effect_pct,16.9078,505
+Bluebikes,"verified calendars only, by university",Boston University,effect_pct_low,9.862,505
+Bluebikes,"verified calendars only, by university",Boston University,effect_pct_high,24.4055,505
+Bluebikes,"verified calendars only, by university, unit seasons",Boston University,coef,0.225,505
+Bluebikes,"verified calendars only, by university, unit seasons",Boston University,se,0.0338,505
+Bluebikes,"verified calendars only, by university, unit seasons",Boston University,effect_pct,25.2306,505
+Bluebikes,"verified calendars only, by university, unit seasons",Boston University,effect_pct_low,17.2048,505
+Bluebikes,"verified calendars only, by university, unit seasons",Boston University,effect_pct_high,33.8059,505
+Bluebikes,"verified calendars only, by university",Boston University,verified_week_share,1.0,505
+Bluebikes,"verified calendars only, by university",Boston University,estimated_week_share,0.0,505
+Bluebikes,"verified calendars only, by university",Boston University,typical_week_share,0.0,505
+Bluebikes,"verified calendars only, by university",Bunker Hill Community College,coef,-0.0173,294
+Bluebikes,"verified calendars only, by university",Bunker Hill Community College,se,0.0382,294
+Bluebikes,"verified calendars only, by university",Bunker Hill Community College,effect_pct,-1.7188,294
+Bluebikes,"verified calendars only, by university",Bunker Hill Community College,effect_pct_low,-8.8012,294
+Bluebikes,"verified calendars only, by university",Bunker Hill Community College,effect_pct_high,5.9135,294
+Bluebikes,"verified calendars only, by university, unit seasons",Bunker Hill Community College,coef,-0.0322,294
+Bluebikes,"verified calendars only, by university, unit seasons",Bunker Hill Community College,se,0.0474,294
+Bluebikes,"verified calendars only, by university, unit seasons",Bunker Hill Community College,effect_pct,-3.1732,294
+Bluebikes,"verified calendars only, by university, unit seasons",Bunker Hill Community College,effect_pct_low,-11.7701,294
+Bluebikes,"verified calendars only, by university, unit seasons",Bunker Hill Community College,effect_pct_high,6.2613,294
+Bluebikes,"verified calendars only, by university",Bunker Hill Community College,verified_week_share,1.0,294
+Bluebikes,"verified calendars only, by university",Bunker Hill Community College,estimated_week_share,0.0,294
+Bluebikes,"verified calendars only, by university",Bunker Hill Community College,typical_week_share,0.0,294
+Bluebikes,"verified calendars only, by university",Harvard University,coef,0.0923,210
+Bluebikes,"verified calendars only, by university",Harvard University,se,0.0324,210
+Bluebikes,"verified calendars only, by university",Harvard University,effect_pct,9.6649,210
+Bluebikes,"verified calendars only, by university",Harvard University,effect_pct_low,2.918,210
+Bluebikes,"verified calendars only, by university",Harvard University,effect_pct_high,16.8541,210
+Bluebikes,"verified calendars only, by university, unit seasons",Harvard University,coef,0.1744,210
+Bluebikes,"verified calendars only, by university, unit seasons",Harvard University,se,0.0335,210
+Bluebikes,"verified calendars only, by university, unit seasons",Harvard University,effect_pct,19.052,210
+Bluebikes,"verified calendars only, by university, unit seasons",Harvard University,effect_pct_low,11.4791,210
+Bluebikes,"verified calendars only, by university, unit seasons",Harvard University,effect_pct_high,27.1393,210
+Bluebikes,"verified calendars only, by university",Harvard University,verified_week_share,1.0,210
+Bluebikes,"verified calendars only, by university",Harvard University,estimated_week_share,0.0,210
+Bluebikes,"verified calendars only, by university",Harvard University,typical_week_share,0.0,210
+Bluebikes,"verified calendars only, by university",Massachusetts Institute of Technology,coef,0.2785,452
+Bluebikes,"verified calendars only, by university",Massachusetts Institute of Technology,se,0.0415,452
+Bluebikes,"verified calendars only, by university",Massachusetts Institute of Technology,effect_pct,32.1148,452
+Bluebikes,"verified calendars only, by university",Massachusetts Institute of Technology,effect_pct_low,21.7875,452
+Bluebikes,"verified calendars only, by university",Massachusetts Institute of Technology,effect_pct_high,43.3179,452
+Bluebikes,"verified calendars only, by university, unit seasons",Massachusetts Institute of Technology,coef,0.1913,452
+Bluebikes,"verified calendars only, by university, unit seasons",Massachusetts Institute of Technology,se,0.0393,452
+Bluebikes,"verified calendars only, by university, unit seasons",Massachusetts Institute of Technology,effect_pct,21.0806,452
+Bluebikes,"verified calendars only, by university, unit seasons",Massachusetts Institute of Technology,effect_pct_low,12.0938,452
+Bluebikes,"verified calendars only, by university, unit seasons",Massachusetts Institute of Technology,effect_pct_high,30.7879,452
+Bluebikes,"verified calendars only, by university",Massachusetts Institute of Technology,verified_week_share,1.0,452
+Bluebikes,"verified calendars only, by university",Massachusetts Institute of Technology,estimated_week_share,0.0,452
+Bluebikes,"verified calendars only, by university",Massachusetts Institute of Technology,typical_week_share,0.0,452
+Bluebikes,"verified calendars only, by university",Northeastern University,coef,0.3739,457
+Bluebikes,"verified calendars only, by university",Northeastern University,se,0.0409,457
+Bluebikes,"verified calendars only, by university",Northeastern University,effect_pct,45.3334,457
+Bluebikes,"verified calendars only, by university",Northeastern University,effect_pct_low,34.1488,457
+Bluebikes,"verified calendars only, by university",Northeastern University,effect_pct_high,57.4504,457
+Bluebikes,"verified calendars only, by university, unit seasons",Northeastern University,coef,0.4526,457
+Bluebikes,"verified calendars only, by university, unit seasons",Northeastern University,se,0.057,457
+Bluebikes,"verified calendars only, by university, unit seasons",Northeastern University,effect_pct,57.2342,457
+Bluebikes,"verified calendars only, by university, unit seasons",Northeastern University,effect_pct_low,40.6044,457
+Bluebikes,"verified calendars only, by university, unit seasons",Northeastern University,effect_pct_high,75.831,457
+Bluebikes,"verified calendars only, by university",Northeastern University,verified_week_share,1.0,457
+Bluebikes,"verified calendars only, by university",Northeastern University,estimated_week_share,0.0,457
+Bluebikes,"verified calendars only, by university",Northeastern University,typical_week_share,0.0,457
+Bluebikes,"verified calendars only, by university",Suffolk University,coef,-0.1647,211
+Bluebikes,"verified calendars only, by university",Suffolk University,se,0.0314,211
+Bluebikes,"verified calendars only, by university",Suffolk University,effect_pct,-15.1892,211
+Bluebikes,"verified calendars only, by university",Suffolk University,effect_pct_low,-20.2545,211
+Bluebikes,"verified calendars only, by university",Suffolk University,effect_pct_high,-9.8023,211
+Bluebikes,"verified calendars only, by university, unit seasons",Suffolk University,coef,-0.1533,211
+Bluebikes,"verified calendars only, by university, unit seasons",Suffolk University,se,0.0382,211
+Bluebikes,"verified calendars only, by university, unit seasons",Suffolk University,effect_pct,-14.2135,211
+Bluebikes,"verified calendars only, by university, unit seasons",Suffolk University,effect_pct_low,-20.3999,211
+Bluebikes,"verified calendars only, by university, unit seasons",Suffolk University,effect_pct_high,-7.5463,211
+Bluebikes,"verified calendars only, by university",Suffolk University,verified_week_share,1.0,211
+Bluebikes,"verified calendars only, by university",Suffolk University,estimated_week_share,0.0,211
+Bluebikes,"verified calendars only, by university",Suffolk University,typical_week_share,0.0,211
+Bluebikes,"verified calendars only, by university",Wentworth Institute of Technology,coef,0.2517,295
+Bluebikes,"verified calendars only, by university",Wentworth Institute of Technology,se,0.0503,295
+Bluebikes,"verified calendars only, by university",Wentworth Institute of Technology,effect_pct,28.6246,295
+Bluebikes,"verified calendars only, by university",Wentworth Institute of Technology,effect_pct_low,16.5559,295
+Bluebikes,"verified calendars only, by university",Wentworth Institute of Technology,effect_pct_high,41.943,295
+Bluebikes,"verified calendars only, by university, unit seasons",Wentworth Institute of Technology,coef,0.4399,295
+Bluebikes,"verified calendars only, by university, unit seasons",Wentworth Institute of Technology,se,0.0554,295
+Bluebikes,"verified calendars only, by university, unit seasons",Wentworth Institute of Technology,effect_pct,55.2586,295
+Bluebikes,"verified calendars only, by university, unit seasons",Wentworth Institute of Technology,effect_pct_low,39.2729,295
+Bluebikes,"verified calendars only, by university, unit seasons",Wentworth Institute of Technology,effect_pct_high,73.079,295
+Bluebikes,"verified calendars only, by university",Wentworth Institute of Technology,verified_week_share,1.0,295
+Bluebikes,"verified calendars only, by university",Wentworth Institute of Technology,estimated_week_share,0.0,295
+Bluebikes,"verified calendars only, by university",Wentworth Institute of Technology,typical_week_share,0.0,295
+Bluebikes,"verified calendars only, placebo",session_share,effect_pct_median,-3.6077,2480
+Bluebikes,"verified calendars only, placebo",session_share,effect_pct_max,6.1019,2480
+Bluebikes,"verified calendars only, placebo",session_share,rotations,7.0,2480
+Bluebikes,"verified calendars only, placebo",session_share,rotations_at_least_own,0.0,2480
+MBTA,"all universities, assumed calendars",units,count,16.0,7579
+MBTA,"all universities, assumed calendars",universities,count,10.0,7579
+MBTA,"all universities, assumed calendars",session_share,coef,0.0869,7579
+MBTA,"all universities, assumed calendars",session_share,se,0.0116,7579
+MBTA,"all universities, assumed calendars",session_share,effect_pct,9.0789,7579
+MBTA,"all universities, assumed calendars",session_share,effect_pct_low,6.6348,7579
+MBTA,"all universities, assumed calendars",session_share,effect_pct_high,11.5789,7579
+MBTA,"all universities, assumed calendars",session_share,within_r2,0.0056,7579
+MBTA,"all universities, assumed calendars, unit seasons",session_share,coef,0.0782,7579
+MBTA,"all universities, assumed calendars, unit seasons",session_share,se,0.0122,7579
+MBTA,"all universities, assumed calendars, unit seasons",session_share,effect_pct,8.1295,7579
+MBTA,"all universities, assumed calendars, unit seasons",session_share,effect_pct_low,5.5756,7579
+MBTA,"all universities, assumed calendars, unit seasons",session_share,effect_pct_high,10.7452,7579
+MBTA,"all universities, assumed calendars, unit seasons",session_share,within_r2,0.0051,7579
+MBTA,"all universities, assumed calendars, by university",Berklee College of Music,coef,0.1529,528
+MBTA,"all universities, assumed calendars, by university",Berklee College of Music,se,0.016,528
+MBTA,"all universities, assumed calendars, by university",Berklee College of Music,effect_pct,16.5234,528
+MBTA,"all universities, assumed calendars, by university",Berklee College of Music,effect_pct_low,12.9342,528
+MBTA,"all universities, assumed calendars, by university",Berklee College of Music,effect_pct_high,20.2266,528
+MBTA,"all universities, assumed calendars, by university, unit seasons",Berklee College of Music,coef,0.1314,528
+MBTA,"all universities, assumed calendars, by university, unit seasons",Berklee College of Music,se,0.0188,528
+MBTA,"all universities, assumed calendars, by university, unit seasons",Berklee College of Music,effect_pct,14.0393,528
+MBTA,"all universities, assumed calendars, by university, unit seasons",Berklee College of Music,effect_pct_low,9.9233,528
+MBTA,"all universities, assumed calendars, by university, unit seasons",Berklee College of Music,effect_pct_high,18.3095,528
+MBTA,"all universities, assumed calendars, by university",Berklee College of Music,verified_week_share,0.108,528
+MBTA,"all universities, assumed calendars, by university",Berklee College of Music,estimated_week_share,0.892,528
+MBTA,"all universities, assumed calendars, by university",Berklee College of Music,typical_week_share,0.0,528
+MBTA,"all universities, assumed calendars, by university",Boston University,coef,-0.0188,541
+MBTA,"all universities, assumed calendars, by university",Boston University,se,0.0262,541
+MBTA,"all universities, assumed calendars, by university",Boston University,effect_pct,-1.8609,541
+MBTA,"all universities, assumed calendars, by university",Boston University,effect_pct_low,-6.7806,541
+MBTA,"all universities, assumed calendars, by university",Boston University,effect_pct_high,3.3183,541
+MBTA,"all universities, assumed calendars, by university, unit seasons",Boston University,coef,0.1678,541
+MBTA,"all universities, assumed calendars, by university, unit seasons",Boston University,se,0.02,541
+MBTA,"all universities, assumed calendars, by university, unit seasons",Boston University,effect_pct,18.2706,541
+MBTA,"all universities, assumed calendars, by university, unit seasons",Boston University,effect_pct_low,13.7194,541
+MBTA,"all universities, assumed calendars, by university, unit seasons",Boston University,effect_pct_high,23.0039,541
+MBTA,"all universities, assumed calendars, by university",Boston University,verified_week_share,1.0,541
+MBTA,"all universities, assumed calendars, by university",Boston University,estimated_week_share,0.0,541
+MBTA,"all universities, assumed calendars, by university",Boston University,typical_week_share,0.0,541
+MBTA,"all universities, assumed calendars, by university",Bunker Hill Community College,coef,0.4019,529
+MBTA,"all universities, assumed calendars, by university",Bunker Hill Community College,se,0.0179,529
+MBTA,"all universities, assumed calendars, by university",Bunker Hill Community College,effect_pct,49.4664,529
+MBTA,"all universities, assumed calendars, by university",Bunker Hill Community College,effect_pct_low,44.3194,529
+MBTA,"all universities, assumed calendars, by university",Bunker Hill Community College,effect_pct_high,54.797,529
+MBTA,"all universities, assumed calendars, by university, unit seasons",Bunker Hill Community College,coef,0.4191,529
+MBTA,"all universities, assumed calendars, by university, unit seasons",Bunker Hill Community College,se,0.0263,529
+MBTA,"all universities, assumed calendars, by university, unit seasons",Bunker Hill Community College,effect_pct,52.0596,529
+MBTA,"all universities, assumed calendars, by university, unit seasons",Bunker Hill Community College,effect_pct_low,44.4327,529
+MBTA,"all universities, assumed calendars, by university, unit seasons",Bunker Hill Community College,effect_pct_high,60.0894,529
+MBTA,"all universities, assumed calendars, by university",Bunker Hill Community College,verified_week_share,0.6219,529
+MBTA,"all universities, assumed calendars, by university",Bunker Hill Community College,estimated_week_share,0.3781,529
+MBTA,"all universities, assumed calendars, by university",Bunker Hill Community College,typical_week_share,0.0,529
+MBTA,"all universities, assumed calendars, by university",Emerson College,coef,0.1178,1062
+MBTA,"all universities, assumed calendars, by university",Emerson College,se,0.0155,1062
+MBTA,"all universities, assumed calendars, by university",Emerson College,effect_pct,12.5057,1062
+MBTA,"all universities, assumed calendars, by university",Emerson College,effect_pct_low,9.1372,1062
+MBTA,"all universities, assumed calendars, by university",Emerson College,effect_pct_high,15.9783,1062
+MBTA,"all universities, assumed calendars, by university, unit seasons",Emerson College,coef,0.0459,1062
+MBTA,"all universities, assumed calendars, by university, unit seasons",Emerson College,se,0.0192,1062
+MBTA,"all universities, assumed calendars, by university, unit seasons",Emerson College,effect_pct,4.6944,1062
+MBTA,"all universities, assumed calendars, by university, unit seasons",Emerson College,effect_pct_low,0.828,1062
+MBTA,"all universities, assumed calendars, by university, unit seasons",Emerson College,effect_pct_high,8.7091,1062
+MBTA,"all universities, assumed calendars, by university",Emerson College,verified_week_share,0.0132,1062
+MBTA,"all universities, assumed calendars, by university",Emerson College,estimated_week_share,0.9868,1062
+MBTA,"all universities, assumed calendars, by university",Emerson College,typical_week_share,0.0,1062
+MBTA,"all universities, assumed calendars, by university",Harvard University,coef,0.0557,535
+MBTA,"all universities, assumed calendars, by university",Harvard University,se,0.0172,535
+MBTA,"all universities, assumed calendars, by university",Harvard University,effect_pct,5.7313,535
+MBTA,"all universities, assumed calendars, by university",Harvard University,effect_pct_low,2.2259,535
+MBTA,"all universities, assumed calendars, by university",Harvard University,effect_pct_high,9.3568,535
+MBTA,"all universities, assumed calendars, by university, unit seasons",Harvard University,coef,0.0265,535
+MBTA,"all universities, assumed calendars, by university, unit seasons",Harvard University,se,0.0186,535
+MBTA,"all universities, assumed calendars, by university, unit seasons",Harvard University,effect_pct,2.6807,535
+MBTA,"all universities, assumed calendars, by university, unit seasons",Harvard University,effect_pct_low,-0.9991,535
+MBTA,"all universities, assumed calendars, by university, unit seasons",Harvard University,effect_pct_high,6.4971,535
+MBTA,"all universities, assumed calendars, by university",Harvard University,verified_week_share,0.3925,535
+MBTA,"all universities, assumed calendars, by university",Harvard University,estimated_week_share,0.6075,535
+MBTA,"all universities, assumed calendars, by university",Harvard University,typical_week_share,0.0,535
+MBTA,"all universities, assumed calendars, by university",Quincy College,coef,0.0228,533
+MBTA,"all universities, assumed calendars, by university",Quincy College,se,0.0242,533
+MBTA,"all universities, assumed calendars, by university",Quincy College,effect_pct,2.3094,533
+MBTA,"all universities, assumed calendars, by university",Quincy College,effect_pct_low,-2.4376,533
+MBTA,"all universities, assumed calendars, by university",Quincy College,effect_pct_high,7.2874,533
+MBTA,"all universities, assumed calendars, by university, unit seasons",Quincy College,coef,-0.0311,533
+MBTA,"all universities, assumed calendars, by university, unit seasons",Quincy College,se,0.0346,533
+MBTA,"all universities, assumed calendars, by university, unit seasons",Quincy College,effect_pct,-3.0642,533
+MBTA,"all universities, assumed calendars, by university, unit seasons",Quincy College,effect_pct_low,-9.4252,533
+MBTA,"all universities, assumed calendars, by university, unit seasons",Quincy College,effect_pct_high,3.7436,533
+MBTA,"all universities, assumed calendars, by university",Quincy College,verified_week_share,0.0,533
+MBTA,"all universities, assumed calendars, by university",Quincy College,estimated_week_share,0.0,533
+MBTA,"all universities, assumed calendars, by university",Quincy College,typical_week_share,1.0,533
+MBTA,"all universities, assumed calendars, by university",Roxbury Community College,coef,0.1544,531
+MBTA,"all universities, assumed calendars, by university",Roxbury Community College,se,0.02,531
+MBTA,"all universities, assumed calendars, by university",Roxbury Community College,effect_pct,16.6972,531
+MBTA,"all universities, assumed calendars, by university",Roxbury Community College,effect_pct_low,12.2149,531
+MBTA,"all universities, assumed calendars, by university",Roxbury Community College,effect_pct_high,21.3586,531
+MBTA,"all universities, assumed calendars, by university, unit seasons",Roxbury Community College,coef,0.166,531
+MBTA,"all universities, assumed calendars, by university, unit seasons",Roxbury Community College,se,0.0255,531
+MBTA,"all universities, assumed calendars, by university, unit seasons",Roxbury Community College,effect_pct,18.061,531
+MBTA,"all universities, assumed calendars, by university, unit seasons",Roxbury Community College,effect_pct_low,12.3069,531
+MBTA,"all universities, assumed calendars, by university, unit seasons",Roxbury Community College,effect_pct_high,24.1099,531
+MBTA,"all universities, assumed calendars, by university",Roxbury Community College,verified_week_share,0.0,531
+MBTA,"all universities, assumed calendars, by university",Roxbury Community College,estimated_week_share,0.0,531
+MBTA,"all universities, assumed calendars, by university",Roxbury Community College,typical_week_share,1.0,531
+MBTA,"all universities, assumed calendars, by university",Suffolk University,coef,0.003,2603
+MBTA,"all universities, assumed calendars, by university",Suffolk University,se,0.0139,2603
+MBTA,"all universities, assumed calendars, by university",Suffolk University,effect_pct,0.2962,2603
+MBTA,"all universities, assumed calendars, by university",Suffolk University,effect_pct_low,-2.4015,2603
+MBTA,"all universities, assumed calendars, by university",Suffolk University,effect_pct_high,3.0685,2603
+MBTA,"all universities, assumed calendars, by university, unit seasons",Suffolk University,coef,0.0007,2603
+MBTA,"all universities, assumed calendars, by university, unit seasons",Suffolk University,se,0.0142,2603
+MBTA,"all universities, assumed calendars, by university, unit seasons",Suffolk University,effect_pct,0.0653,2603
+MBTA,"all universities, assumed calendars, by university, unit seasons",Suffolk University,effect_pct_low,-2.6742,2603
+MBTA,"all universities, assumed calendars, by university, unit seasons",Suffolk University,effect_pct_high,2.8819,2603
+MBTA,"all universities, assumed calendars, by university",Suffolk University,verified_week_share,0.4022,2603
+MBTA,"all universities, assumed calendars, by university",Suffolk University,estimated_week_share,0.5978,2603
+MBTA,"all universities, assumed calendars, by university",Suffolk University,typical_week_share,0.0,2603
+MBTA,"all universities, assumed calendars, by university",Tufts University,coef,-0.0137,184
+MBTA,"all universities, assumed calendars, by university",Tufts University,se,0.1009,184
+MBTA,"all universities, assumed calendars, by university",Tufts University,effect_pct,-1.3629,184
+MBTA,"all universities, assumed calendars, by university",Tufts University,effect_pct_low,-19.062,184
+MBTA,"all universities, assumed calendars, by university",Tufts University,effect_pct_high,20.2067,184
+MBTA,"all universities, assumed calendars, by university, unit seasons",Tufts University,coef,-0.0821,184
+MBTA,"all universities, assumed calendars, by university, unit seasons",Tufts University,se,0.0963,184
+MBTA,"all universities, assumed calendars, by university, unit seasons",Tufts University,effect_pct,-7.8799,184
+MBTA,"all universities, assumed calendars, by university, unit seasons",Tufts University,effect_pct_low,-23.7311,184
+MBTA,"all universities, assumed calendars, by university, unit seasons",Tufts University,effect_pct_high,11.2658,184
+MBTA,"all universities, assumed calendars, by university",Tufts University,verified_week_share,1.0,184
+MBTA,"all universities, assumed calendars, by university",Tufts University,estimated_week_share,0.0,184
+MBTA,"all universities, assumed calendars, by university",Tufts University,typical_week_share,0.0,184
+MBTA,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",coef,0.0841,533
+MBTA,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",se,0.0197,533
+MBTA,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",effect_pct,8.7783,533
+MBTA,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",effect_pct_low,4.6527,533
+MBTA,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",effect_pct_high,13.0664,533
+MBTA,"all universities, assumed calendars, by university, unit seasons","Tufts University, health-sciences campus",coef,0.0166,533
+MBTA,"all universities, assumed calendars, by university, unit seasons","Tufts University, health-sciences campus",se,0.0221,533
+MBTA,"all universities, assumed calendars, by university, unit seasons","Tufts University, health-sciences campus",effect_pct,1.6786,533
+MBTA,"all universities, assumed calendars, by university, unit seasons","Tufts University, health-sciences campus",effect_pct_low,-2.6399,533
+MBTA,"all universities, assumed calendars, by university, unit seasons","Tufts University, health-sciences campus",effect_pct_high,6.1887,533
+MBTA,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",verified_week_share,0.0,533
+MBTA,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",estimated_week_share,0.0,533
+MBTA,"all universities, assumed calendars, by university","Tufts University, health-sciences campus",typical_week_share,1.0,533
+MBTA,"all universities, assumed calendars, placebo",session_share,effect_pct_median,0.6369,7579
+MBTA,"all universities, assumed calendars, placebo",session_share,effect_pct_max,2.0076,7579
+MBTA,"all universities, assumed calendars, placebo",session_share,rotations,7.0,7579
+MBTA,"all universities, assumed calendars, placebo",session_share,rotations_at_least_own,0.0,7579
+MBTA,verified calendars only,units,count,11.0,2368
+MBTA,verified calendars only,universities,count,6.0,2368
+MBTA,verified calendars only,session_share,coef,0.1305,2368
+MBTA,verified calendars only,session_share,se,0.0364,2368
+MBTA,verified calendars only,session_share,effect_pct,13.936,2368
+MBTA,verified calendars only,session_share,effect_pct_low,6.0926,2368
+MBTA,verified calendars only,session_share,effect_pct_high,22.3593,2368
+MBTA,verified calendars only,session_share,within_r2,0.0054,2368
+MBTA,"verified calendars only, unit seasons",session_share,coef,0.1148,2368
+MBTA,"verified calendars only, unit seasons",session_share,se,0.0327,2368
+MBTA,"verified calendars only, unit seasons",session_share,effect_pct,12.1602,2368
+MBTA,"verified calendars only, unit seasons",session_share,effect_pct_low,5.1955,2368
+MBTA,"verified calendars only, unit seasons",session_share,effect_pct_high,19.5859,2368
+MBTA,"verified calendars only, unit seasons",session_share,within_r2,0.0051,2368
+MBTA,"verified calendars only, by university",Berklee College of Music,coef,0.2983,57
+MBTA,"verified calendars only, by university",Berklee College of Music,se,0.0801,57
+MBTA,"verified calendars only, by university",Berklee College of Music,effect_pct,34.7572,57
+MBTA,"verified calendars only, by university",Berklee College of Music,effect_pct_low,15.1781,57
+MBTA,"verified calendars only, by university",Berklee College of Music,effect_pct_high,57.6647,57
+MBTA,"verified calendars only, by university, unit seasons",Berklee College of Music,coef,0.1246,57
+MBTA,"verified calendars only, by university, unit seasons",Berklee College of Music,se,0.0612,57
+MBTA,"verified calendars only, by university, unit seasons",Berklee College of Music,effect_pct,13.2701,57
+MBTA,"verified calendars only, by university, unit seasons",Berklee College of Music,effect_pct_low,0.4733,57
+MBTA,"verified calendars only, by university, unit seasons",Berklee College of Music,effect_pct_high,27.6968,57
+MBTA,"verified calendars only, by university",Berklee College of Music,verified_week_share,1.0,57
+MBTA,"verified calendars only, by university",Berklee College of Music,estimated_week_share,0.0,57
+MBTA,"verified calendars only, by university",Berklee College of Music,typical_week_share,0.0,57
+MBTA,"verified calendars only, by university",Boston University,coef,0.0106,541
+MBTA,"verified calendars only, by university",Boston University,se,0.0464,541
+MBTA,"verified calendars only, by university",Boston University,effect_pct,1.067,541
+MBTA,"verified calendars only, by university",Boston University,effect_pct_low,-7.7257,541
+MBTA,"verified calendars only, by university",Boston University,effect_pct_high,10.6974,541
+MBTA,"verified calendars only, by university, unit seasons",Boston University,coef,0.1537,541
+MBTA,"verified calendars only, by university, unit seasons",Boston University,se,0.0393,541
+MBTA,"verified calendars only, by university, unit seasons",Boston University,effect_pct,16.6175,541
+MBTA,"verified calendars only, by university, unit seasons",Boston University,effect_pct_low,7.9705,541
+MBTA,"verified calendars only, by university, unit seasons",Boston University,effect_pct_high,25.9571,541
+MBTA,"verified calendars only, by university",Boston University,verified_week_share,1.0,541
+MBTA,"verified calendars only, by university",Boston University,estimated_week_share,0.0,541
+MBTA,"verified calendars only, by university",Boston University,typical_week_share,0.0,541
+MBTA,"verified calendars only, by university",Bunker Hill Community College,coef,0.4506,329
+MBTA,"verified calendars only, by university",Bunker Hill Community College,se,0.0495,329
+MBTA,"verified calendars only, by university",Bunker Hill Community College,effect_pct,56.9316,329
+MBTA,"verified calendars only, by university",Bunker Hill Community College,effect_pct_low,42.4244,329
+MBTA,"verified calendars only, by university",Bunker Hill Community College,effect_pct_high,72.9165,329
+MBTA,"verified calendars only, by university, unit seasons",Bunker Hill Community College,coef,0.4105,329
+MBTA,"verified calendars only, by university, unit seasons",Bunker Hill Community College,se,0.0534,329
+MBTA,"verified calendars only, by university, unit seasons",Bunker Hill Community College,effect_pct,50.7614,329
+MBTA,"verified calendars only, by university, unit seasons",Bunker Hill Community College,effect_pct_low,35.7717,329
+MBTA,"verified calendars only, by university, unit seasons",Bunker Hill Community College,effect_pct_high,67.406,329
+MBTA,"verified calendars only, by university",Bunker Hill Community College,verified_week_share,1.0,329
+MBTA,"verified calendars only, by university",Bunker Hill Community College,estimated_week_share,0.0,329
+MBTA,"verified calendars only, by university",Bunker Hill Community College,typical_week_share,0.0,329
+MBTA,"verified calendars only, by university",Harvard University,coef,0.1651,210
+MBTA,"verified calendars only, by university",Harvard University,se,0.0508,210
+MBTA,"verified calendars only, by university",Harvard University,effect_pct,17.9468,210
+MBTA,"verified calendars only, by university",Harvard University,effect_pct_low,6.7761,210
+MBTA,"verified calendars only, by university",Harvard University,effect_pct_high,30.2862,210
+MBTA,"verified calendars only, by university, unit seasons",Harvard University,coef,0.0499,210
+MBTA,"verified calendars only, by university, unit seasons",Harvard University,se,0.048,210
+MBTA,"verified calendars only, by university, unit seasons",Harvard University,effect_pct,5.1195,210
+MBTA,"verified calendars only, by university, unit seasons",Harvard University,effect_pct_low,-4.3209,210
+MBTA,"verified calendars only, by university, unit seasons",Harvard University,effect_pct_high,15.4914,210
+MBTA,"verified calendars only, by university",Harvard University,verified_week_share,1.0,210
+MBTA,"verified calendars only, by university",Harvard University,estimated_week_share,0.0,210
+MBTA,"verified calendars only, by university",Harvard University,typical_week_share,0.0,210
+MBTA,"verified calendars only, by university",Suffolk University,coef,0.0557,1047
+MBTA,"verified calendars only, by university",Suffolk University,se,0.04,1047
+MBTA,"verified calendars only, by university",Suffolk University,effect_pct,5.7325,1047
+MBTA,"verified calendars only, by university",Suffolk University,effect_pct_low,-2.2444,1047
+MBTA,"verified calendars only, by university",Suffolk University,effect_pct_high,14.3603,1047
+MBTA,"verified calendars only, by university, unit seasons",Suffolk University,coef,0.0232,1047
+MBTA,"verified calendars only, by university, unit seasons",Suffolk University,se,0.0321,1047
+MBTA,"verified calendars only, by university, unit seasons",Suffolk University,effect_pct,2.3477,1047
+MBTA,"verified calendars only, by university, unit seasons",Suffolk University,effect_pct_low,-3.8884,1047
+MBTA,"verified calendars only, by university, unit seasons",Suffolk University,effect_pct_high,8.9885,1047
+MBTA,"verified calendars only, by university",Suffolk University,verified_week_share,1.0,1047
+MBTA,"verified calendars only, by university",Suffolk University,estimated_week_share,0.0,1047
+MBTA,"verified calendars only, by university",Suffolk University,typical_week_share,0.0,1047
+MBTA,"verified calendars only, by university",Tufts University,coef,0.0831,184
+MBTA,"verified calendars only, by university",Tufts University,se,0.0935,184
+MBTA,"verified calendars only, by university",Tufts University,effect_pct,8.667,184
+MBTA,"verified calendars only, by university",Tufts University,effect_pct_low,-9.5206,184
+MBTA,"verified calendars only, by university",Tufts University,effect_pct_high,30.5107,184
+MBTA,"verified calendars only, by university, unit seasons",Tufts University,coef,-0.0428,184
+MBTA,"verified calendars only, by university, unit seasons",Tufts University,se,0.0781,184
+MBTA,"verified calendars only, by university, unit seasons",Tufts University,effect_pct,-4.1867,184
+MBTA,"verified calendars only, by university, unit seasons",Tufts University,effect_pct_low,-17.7908,184
+MBTA,"verified calendars only, by university, unit seasons",Tufts University,effect_pct_high,11.6687,184
+MBTA,"verified calendars only, by university",Tufts University,verified_week_share,1.0,184
+MBTA,"verified calendars only, by university",Tufts University,estimated_week_share,0.0,184
+MBTA,"verified calendars only, by university",Tufts University,typical_week_share,0.0,184
+MBTA,"verified calendars only, placebo",session_share,effect_pct_median,-3.2561,2368
+MBTA,"verified calendars only, placebo",session_share,effect_pct_max,5.5449,2368
+MBTA,"verified calendars only, placebo",session_share,rotations,5.0,2368
+MBTA,"verified calendars only, placebo",session_share,rotations_at_least_own,0.0,2368
