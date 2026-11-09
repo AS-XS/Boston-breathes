@@ -85,6 +85,32 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 
 ---
 
+## Results
+
+**Question.** How does Greater Boston's effective population change throughout the year, and how much of that variation can be explained by university students? The study area is MAPC's Inner Core: 22 cities and towns with about 1.85 million residents, of whom about 220,000–230,000 are college students, followed week by week from 2015 to 2026.
+
+**In short.** Every summer, between about 90,000 and 190,000 resident college students are away (in 2019, 5–10% of the Census population), and fewer during breaks: in 2019, about 13,000–48,000 in a spring-break week and 25,000–92,000 at Thanksgiving. Travel records follow each university's own calendar: Bluebikes trips at a campus are 14–21% higher when its university is in session than when it is not, compared with other campuses in the same week.
+
+### What the data show
+
+1. **When students are here.** The Student Presence Index, built from the calendars of 22 universities (93% of in-person students) and their enrollment, gives the share of the area's students in session each week (figures B5 and B6).
+2. **How many could leave.** At least the students whose residence halls close and at most every resident college student not living with their parents: in summer 2019, between 73,000 and 190,000 students (4.0–10.3% of residents) (figure B7, light band).
+3. **Travel follows the students (goal 2).**
+   * The share of Bluebikes trips near campuses rises and falls with the index (median correlation within a year 0.85). It dropped in 76% of 293 university breaks, and on weekdays in September bicycle counts near campuses are 17.5% above June, against 1% elsewhere, while motor-vehicle counts barely change.
+   * Models of weekly travel, tested on months they were not fitted on: the best model of the near-campus share of Bluebikes trips explains 91% of its variation (typical error 6%, against 22% for guessing the average). For Bluebikes and MBTA, near campuses and in total, the best model includes the index. For Bluebikes and total MBTA entries it lowers the error by 0.7–1.9% once a model knows the typical week of the year, and by 6.7–7.9% against a smooth seasonal curve, because students leave at almost the same time every year; for the MBTA near-campus share it adds little or nothing ([Model comparison](#model-comparison-goal-2)).
+   * Comparing campuses in the same week, which removes weather, season, holidays and visitors: Bluebikes trips at a campus are 21% higher when its own university is in session (14% with every campus on assumed calendars), and subway entries at its stations 14% (9%). Other universities' calendars give at most 2–6%. The effect is largest at residential campuses (Northeastern +46%, MIT +34%) and absent downtown and at graduate and health-professions schools ([Pooled campus model](#pooled-campus-model)).
+4. **How many actually leave (step 3).** When universities are out, weekday travel near campuses falls more than weekend travel: students who stay stop going to classes but keep their weekend trips. The weekend loss over the weekday loss puts the share of students out of session who are away at 41–100% in summer and 16–56% on breaks. That gives the estimate in the first paragraph; averaged over 2019, between 33,000 and 74,000 resident college students were away in a given week (1.8–4.0% of residents) (figure B7, dark band; [Students away: estimate](#students-away-estimate-step-3)).
+
+### Limits
+
+* The estimate is a band, not a single number: two methods for each period disagree, and each rests on assumptions (students who stay keep their weekend travel; subway riders stand for all resident students).
+* Only resident college students leaving are counted; visitors, commuters, and people who arrive for the summer are outside the scope.
+* Thanksgiving and Christmas fall at the same time for every university, so the share away on breaks comes from spring breaks and the edges of terms.
+* Several smaller colleges have only one or two years of collected calendar, and their other years are estimated from them; the COVID-19 period (spring 2020 to summer 2021) is not estimated.
+* These are associations after accounting for weather, season and network growth, not a controlled experiment, although the test with other universities' calendars points to each campus's own students.
+
+---
+
 ## How to Read the Results
 
 `make figures` writes every chart to `figures/` twice: as a PNG, and on one of five self-contained pages that open in any browser, work offline, and offer hover values, light and dark themes, and each chart's values as a table.
@@ -92,7 +118,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 | Page | What it shows |
 |---|---|
 | `a_data_overview.html` | which datasets cover which years; Bluebikes trips; the academic calendars; enrollment |
-| `b_student_presence.html` | the Student Presence Index, week by week and year by year; the weekly range of the population |
+| `b_student_presence.html` | the Student Presence Index, week by week and year by year; the weekly range of the population and the estimate from travel records |
 | `c_activity_vs_presence.html` | whether Bluebikes, MBTA and street activity near campuses follows the students |
 | `d_map.html` | the campus zones and the Bluebikes and MBTA stations |
 | `e_year_explorer.html` | one academic year, week by week: choose a year, move the week slider or press Play |
@@ -517,7 +543,7 @@ The main visualization will be an interactive timeline.
 
 Users will be able to select a year and move through the year to see how estimated population and activity change.
 
-Done so far, without a model: `figures/e_year_explorer.html` lets users choose an academic year (2015–16 to 2025–26) and move through its weeks, showing the week's Student Presence Index, the range of the population over the year, and the calendars of the ten largest universities with collected calendars. The travel records are shown in section C rather than in the explorer.
+Done so far, without a model: `figures/e_year_explorer.html` lets users choose an academic year (2015–16 to 2025–26) and move through its weeks, showing the week's Student Presence Index, the range of the population over the year with the estimate from travel records, and the calendars of the ten largest universities with collected calendars. The travel records are shown in section C rather than in the explorer.
 
 Additional visualizations may include:
 
