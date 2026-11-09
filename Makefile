@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel figures test clean-interim
+.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel students-away-estimate figures test clean-interim
 
 install:
 	python3 -m venv .venv
@@ -99,6 +99,10 @@ models:
 # Pooled campus model: travel at each campus against its own university's calendar (after data).
 campus-panel:
 	$(RUN) boston_breathes.campus_panel
+
+# Step 3: students away each week, from weekday and weekend travel (after data).
+students-away-estimate:
+	$(RUN) boston_breathes.students_away_estimate
 
 # Figures as PNG images and interactive HTML pages in figures/ (after data).
 figures:

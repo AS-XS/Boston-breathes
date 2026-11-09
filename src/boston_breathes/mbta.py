@@ -14,8 +14,9 @@ municipality and a campus zone with the same rules as Bluebikes stations.
 
 Outputs in data/processed/:
   * mbta_stations.csv                  each gated station, its location, town and campus zone
-  * mbta_weekly_by_station.csv         weekly entries per station
-  * mbta_weekly_by_campus_zone.csv     weekly entries by campus zone, study-area stations
+  * mbta_weekly_by_station.csv         weekly entries per station, in all and on weekdays
+                                       (Monday to Friday) and weekends
+  * mbta_weekly_by_campus_zone.csv     the same by campus zone, study-area stations
 Daily station totals are kept in data/interim/mbta/ (not committed).
 """
 
@@ -164,15 +165,19 @@ def weekly(daily: pl.DataFrame, by: tuple[str, ...]) -> pl.DataFrame:
     first, last = daily["date"].min(), daily["date"].max()
     weeks = build_weeks().select("week_start", "iso_year", "iso_week")
     week_start = (pl.col("date") - pl.duration(days=pl.col("date").dt.weekday() - 1)).alias("week_start")
+    weekend = pl.col("date").dt.weekday() >= 6
     return (
         daily.with_columns(week_start)
         .group_by("week_start", *by)
-        .agg(pl.col("entries").sum(), pl.col("date").n_unique().alias("days_with_data"))
+        .agg(pl.col("entries").sum(), pl.col("entries").filter(~weekend).sum().alias("weekday_entries"),
+             pl.col("entries").filter(weekend).sum().alias("weekend_entries"),
+             pl.col("date").n_unique().alias("days_with_data"))
         .join(weeks, on="week_start", how="inner")
         .with_columns(
             ((pl.col("week_start") >= first) & (pl.col("week_start") + timedelta(days=6) <= last)).alias("complete_week")
         )
-        .select("week_start", "iso_year", "iso_week", *by, "entries", "days_with_data", "complete_week")
+        .select("week_start", "iso_year", "iso_week", *by, "entries", "weekday_entries", "weekend_entries",
+                "days_with_data", "complete_week")
         .sort("week_start", *by)
     )
 

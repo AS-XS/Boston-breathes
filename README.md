@@ -101,7 +101,8 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 * **The population is a range, not an estimate.** The Census resident population already includes the students who live here during the school year, so students leaving can only lower it.
   * The upper line takes away only students in university housing whose residence halls are closed; it assumes they leave the area.
   * The lower line takes away every resident college student not living with their parents whose school is out of session.
-  * Counting only resident students who leave, and not visitors, commuters or summer arrivals, the population is somewhere between the two. Where exactly is what the travel records will measure; no single estimate is given yet.
+  * Counting only resident students who leave, and not visitors, commuters or summer arrivals, the population is somewhere between the two.
+  * Step 3 narrows the range with travel records (`students_away_estimate.csv`): a low and a high estimate of students away, from how much weekend travel falls compared with weekday travel when universities are out. It is still a band, not a single number; see [Students away: estimate](#students-away-estimate-step-3).
 * **Section C shows checks, not models.** It shows correlations and comparisons: when the ratio of activity near campuses to activity elsewhere rises and falls with the index, activity near campuses is following the students. The model comparison (goal 2) is in `model_comparison.csv` and summarized under [Model comparison](#model-comparison-goal-2).
 * **Caveats.**
   * COVID-19 is flagged: students count as away during the spring 2020 lockdown, and in 2020–21 the index peaks at about 0.59 because fewer students studied in person.
@@ -217,6 +218,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 17. Modeling table | Weekly tables of steps 1–15 | Done | `modeling_weekly.csv`: one row per week with travel records, weather, calendar, and student columns |
 | 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect |
 | 19. Pooled campus model | Steps 8, 10, 12, and 14 | Done | `campus_panel.csv`: travel at each campus against its own university's calendar (all universities with assumed calendars, and verified calendars only), by university, with a placebo |
+| 20. Students away: estimate (step 3) | Steps 12, 15, and 19 | Done | `students_away_shares.csv`, `students_away_estimate.csv`: the share of students out of session who are away, and a weekly low and high estimate inside the range of step 15 |
 
 ### Processing decisions so far
 
@@ -237,6 +239,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
   * Street-level Green Line stops, including those at Boston University and Northeastern, have no fare gates and are not included.
   * Missing station IDs (newer Green Line Extension stations, and Charles/MGH in 2014–2019) are filled from the same station name.
   * Some campus-zone stations are also major downtown or event stations (e.g. Kenmore near Fenway Park), so station-level series are kept alongside the zone totals.
+  * The weekly tables also split entries into weekdays (Monday to Friday) and weekends, by service date; step 3 compares the two.
 * **MBTA passenger survey.** The MBTA's 2025 System-Wide Passenger Survey (the Rider Census) pools 2022–2025 responses and reports, for each station or small group of stops, the weighted share of riders in each answer with its number of respondents.
   * Four answers describe students: riders using a Semester Pass (sold through colleges and universities, so it marks college students but misses those who pay per ride or use passes their university provides), riders with middle- and high-school student fares, trips between home and school (college and school students alike), and riders aged 18–25. An answer nobody at a station chose has no row and counts as 0.
   * Gated stations are matched to the survey's groups by name; two stations sharing a group get its values, and stations on two lines (e.g. Park Street) combine their lines' groups weighted by respondents. 69 of the 72 gated stations match: the Silver Line stations are reported by route, not station, and Beachmont has no group.
@@ -421,6 +424,33 @@ By university, all universities with assumed calendars (95% intervals; "verified
 * **Where it is absent or negative.** At downtown campuses whose stations mostly serve commuters and visitors (Suffolk, Emerson for Bluebikes, Suffolk's five subway stations, Boston University's Kenmore and Longwood) and at graduate, health-professions and adult-learning institutions on the assumed typical calendar (MGH Institute of Health Professions, Cambridge College, Hult, Tufts' health-sciences campus), whose programmes often run through the summer, so the typical calendar probably does not fit them. Summer seasonality does not explain the negative effects: with a seasonal cycle for each campus, most stay negative.
 * **The pooled effects are steadier than the per-university ones.** With each campus's own seasonal cycle, some universities move a lot (Wentworth +23% to +47%, MIT +34% to +23%, UMass Boston +11% to +37%), while the pooled effects move by 1–6 points.
 * **Precise, but a small part of the noise.** After the week and campus-year levels, the own calendar explains 1–7% of the remaining week-to-week variation at a Bluebikes campus and about 0.5% at a subway station: single stations vary a lot from week to week (events, partial closures, local weather). The effect is precise because there are thousands of campus-weeks, not because it explains much of that noise.
+
+#### Students away: estimate (step 3)
+
+* **Leaving, or just not going to class.** When a university is out of session, travel near its campus falls for two reasons: students who leave the area, and students who stay but no longer travel to classes. Weekday travel loses both; weekend travel, when there are no classes, loses mostly the first. So the weekend loss divided by the weekday loss estimates the share of students out of session who are away (`students_away_shares.csv`):
+  * *Summer.* Across the 67 study-area gated stations, the change in entries from full in-session weeks to full summer weeks (2022–2025) is regressed on the station's share of student riders in the passenger survey, once for weekday and once for weekend entries. Two survey measures stand for student riders: riders aged 18–25, and trips between home and school.
+  * *Breaks.* The pooled campus model is fitted on weekday and on weekend entries at campus stations. Its effect comes from weeks when one university is out of session and others are not: mostly spring breaks and the edges of terms.
+
+| Period | Method | Weekday | Weekend | Share away |
+|---|---|---|---|---|
+| Summer | Across stations, riders aged 18–25 (slope, 95% interval) | −0.81 (±0.74) | −0.87 (±0.71) | 100% (the ratio is above 1 and kept at 1) |
+| Summer | Across stations, trips between home and school (slope, 95% interval) | −0.92 (±0.51) | −0.38 (±0.50) | 41% |
+| Breaks | Campus stations, all universities, assumed calendars (effect of the own calendar) | +9.3% | +5.1% | 56% |
+| Breaks | Campus stations, verified calendars only (effect of the own calendar) | +15.1% | +2.2% | 16% |
+
+* **Students away each week** (`students_away_estimate.csv`) = resident college students × (the summer share away × the share of them on summer break + the break share away × the share otherwise out of session), once with the lower and once with the higher share of each period, kept inside the range of step 15. Only weeks outside the COVID-19 period are estimated: students were sent home in the spring 2020 lockdown, and 2020–21 was taught remotely.
+
+| Week of 2019 | Range (step 15) | Estimate |
+|---|---|---|
+| Mid-summer (July 8) | 73,420–190,056 | 94,130–190,056 |
+| Spring breaks (March 11) | 1,826–72,254 | 13,246–48,059 |
+| Thanksgiving (November 25) | 1,815–135,180 | 25,253–91,624 |
+| After Christmas (December 30) | 36,168–189,248 | 36,168–128,271 |
+
+* **During breaks, most students out of session stay.** Weekend entries at campus stations fall only about a sixth to a half as much as weekday entries, so most of the break-time drop is students not travelling to classes.
+* **In summer, between two fifths and all of them are away.** The two survey measures disagree: stations with more riders aged 18–25 lose as much on weekends as on weekdays, while home-to-school riders lose far less on weekends. The second measure includes school children, who stop school trips in summer without leaving, which pulls it down.
+* **Narrower, not precise.** Over weeks outside the COVID-19 period, the estimate is on average 40,249 students wide, against 55,863 for the range. The weekday and weekend parts have wide intervals, and the low and high ends show the spread between methods, not a statistical interval.
+* **Assumptions.** Students who stay keep their weekend travel, and students who leave stop all of it. Students are the same proportion of a measure's riders on weekends as on weekdays; they are probably a larger proportion of weekend riders, since commuters ride less on weekends, which makes the ratio overstate the share away. Subway riders stand for all resident college students. Thanksgiving and Christmas fall at the same time for every university, so they do not inform the break share, which comes from spring breaks and the edges of terms; more students may go home for those holidays, and at Christmas the closed residence halls keep the estimate at least at the range's minimum.
 
 #### Presence evaluation
 
