@@ -242,7 +242,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 15. Students away: weekly range | Steps 11 and 14 | Done | `students_away_weekly.csv` |
 | 16. Figures and year explorer | Steps 1–15 | Done | `figures/*.png`, `figures/*.html` (see [How to Read the Results](#how-to-read-the-results)) |
 | 17. Modeling table | Weekly tables of steps 1–15 | Done | `modeling_weekly.csv`: one row per week with travel records, weather, calendar, and student columns |
-| 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect |
+| 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect; `model_coefficients.csv`, `model_feature_importance.csv`: what each input does (see [The models in detail](#the-models-in-detail)) |
 | 19. Pooled campus model | Steps 8, 10, 12, and 14 | Done | `campus_panel.csv`: travel at each campus against its own university's calendar (all universities with assumed calendars, and verified calendars only), by university, with a placebo |
 | 20. Students away: estimate (step 3) | Steps 12, 15, and 19 | Done | `students_away_shares.csv`, `students_away_estimate.csv`: the share of students out of session who are away, and a weekly low and high estimate inside the range of step 15 |
 
@@ -534,6 +534,88 @@ A second modeling approach, such as a tree-based model, may also be explored.
 Because the data are time-based, training and testing will use chronological rather than random splits.
 
 Done so far: three model families, two linear and one tree-based (gradient boosting), each with and without the index (see [Model comparison](#model-comparison-goal-2)). Instead of training on early years and testing on later ones, each month is held out in turn, because travel levels shift between years (network growth, COVID-19) far more than with the students; the blocks are contiguous months, not random weeks.
+
+### The models in detail
+
+All models work on the logarithm of weekly activity, so effects are percentages. The four targets are the campus ratio (campus-zone over away-zone activity) and the study-area total, for Bluebikes trips and for MBTA gated entries; each target has its own fit. The model comparison is in `src/boston_breathes/model_comparison.py`, the pooled campus model in `campus_panel.py`.
+
+| | Linear, smooth season | Linear, week of year | Gradient boosting | Pooled campus model |
+|---|---|---|---|---|
+| Method | Least squares | Least squares | Gradient-boosted regression trees (scikit-learn `HistGradientBoostingRegressor`) | Least squares with a level for every week (shared by all campuses) and for every campus in each year |
+| Predicts | One of the four targets | One of the four targets | One of the four targets | Activity at one campus (Bluebikes) or campus station (MBTA) |
+| Named inputs | 16: 8 weather, 2 holiday, network size, 4 season terms, the index | 12: 8 weather, 2 holiday, network size, the index | 13: 7 weather, 2 holiday, network size, day of the year, year, the index | 1 (the share of the week the campus's own university is in session), plus stations in use for Bluebikes |
+| Also estimated | A level for each of the 12 years: 28 coefficients | 12 year levels and 52 week-of-year levels: 76 columns, 75 of them independent | 300 trees of at most 15 leaves, each leaf at least 10 weeks; learning rate 0.05, L2 penalty 1.0; fixed settings, not tuned | A level for each week and each campus-year |
+| Data | 534 weeks (Bluebikes), 538 (MBTA), outside the COVID-19 period | Same | Same | 8,988 campus-weeks (Bluebikes), 7,579 station-weeks (MBTA); 2,480 and 2,368 with verified calendars only |
+| Tested | Each month held out in turn, with the week on either side | Same | Same | Standard errors clustered by month; other universities' calendars as a placebo |
+
+A third smooth-season model also adds the summer-break share (17 named inputs); it does not improve on the model with the index.
+
+**The inputs.**
+* *Weather (8)*: weekly mean temperature and its square (so the effect of warmth can level off), days with rain (1 mm or more), days with heavy rain (10 mm or more), days with snow (1 cm or more), days below freezing all day, hot days (a maximum of 30 °C or more), and mean wind speed. The trees use temperature without its square.
+* *Holidays (2)*: the number of federal and Massachusetts holidays in the week, and whether the week has a day from December 24 to January 1.
+* *Network size (1)*: the logarithm of Bluebikes stations in use per day (for the campus ratio, campus-zone over away-zone stations), or of MBTA gated stations with entries that week.
+* *Season*: two pairs of sine and cosine terms of the day of the year (a smooth annual cycle), or a level for each week of the year; the trees get the day of the year as a number.
+* *Year*: a level for each calendar year in the linear models (network growth, COVID-19 recovery); a number for the trees.
+* *Students (1)*: the Student Presence Index.
+
+**How accurate they are.** R² and typical error (the RMSE of the logarithm as a percentage) on held-out months, all models with the index:
+
+| Target | Linear, smooth season | Linear, week of year | Gradient boosting |
+|---|---|---|---|
+| Bluebikes campus ratio | 0.80, 9.3% | 0.79, 9.6% | 0.91, 6.3% |
+| MBTA campus ratio | 0.27, 6.6% | 0.26, 6.6% | 0.32, 6.3% |
+| Bluebikes total | 0.98, 13.6% | 0.98, 13.1% | 0.97, 18.3% |
+| MBTA total | 0.94, 8.2% | 0.95, 7.6% | 0.94, 8.4% |
+
+By kind of week (typical error; 231 fully in-session weeks, 164 summer weeks and 139 break weeks for Bluebikes):
+
+| Target | Model | Fully in session | Summer | Breaks |
+|---|---|---|---|---|
+| Bluebikes campus ratio | linear, smooth season | 9.2% | 8.4% | 10.4% |
+| Bluebikes campus ratio | linear, week of year | 9.5% | 8.6% | 10.7% |
+| Bluebikes campus ratio | gradient boosting | 5.7% | 4.3% | 8.7% |
+| MBTA campus ratio | linear, smooth season | 6.5% | 6.3% | 7.0% |
+| MBTA campus ratio | linear, week of year | 6.5% | 6.3% | 7.1% |
+| MBTA campus ratio | gradient boosting | 6.5% | 6.1% | 6.4% |
+| Bluebikes total | linear, smooth season | 13.2% | 11.6% | 16.4% |
+| Bluebikes total | linear, week of year | 13.3% | 11.4% | 14.5% |
+| Bluebikes total | gradient boosting | 21.3% | 8.5% | 21.9% |
+| MBTA total | linear, smooth season | 7.6% | 7.7% | 9.5% |
+| MBTA total | linear, week of year | 7.3% | 7.4% | 8.3% |
+| MBTA total | gradient boosting | 7.8% | 8.1% | 9.5% |
+
+**What the inputs do** (linear, smooth season, with the index; the change in the target for each input, in bold where the 95% interval excludes zero; network size as an elasticity, the percentage change in activity for a 1% change in stations):
+
+| Input | Bluebikes campus ratio | MBTA campus ratio | Bluebikes total | MBTA total |
+|---|---|---|---|---|
+| Mean temperature 0 → 20 °C | **+11.5%** | −2.0% | **+88.6%** | **+5.0%** |
+| Each rain day | −0.3% | −0.0% | **−3.5%** | −0.3% |
+| Each heavy-rain day (on top) | +0.2% | −0.7% | **−2.2%** | −0.6% |
+| Each snow day | −1.3% | +0.8% | −4.0% | −1.5% |
+| Each holiday | +0.2% | **+1.5%** | **−5.4%** | **−8.0%** |
+| Christmas–New Year week | **−10.1%** | −0.9% | **−34.3%** | **−18.5%** |
+| Student Presence Index 0 → 1 | **+18.1%** | **+5.3%** | **+28.7%** | **+15.7%** |
+| Network size (elasticity) | **0.61** | −0.23 | **1.08** | **1.62** |
+
+* *Bluebikes total* behaves as a bike-share system should: going from 0 °C to 20 °C almost doubles trips (+89%), with no further gain above about 24 °C; each rain day costs 3.5%, each holiday 5%, and the Christmas–New Year weeks 34%. Trips grow slightly faster than the network (elasticity 1.08).
+* *MBTA total* barely reacts to weather: holidays (−8% each) and the Christmas–New Year weeks (−18.5%) matter most, and closed stations cost more than their share of the network (elasticity 1.6), probably because closures come with line shutdowns.
+* *The campus ratios* cancel most of the weather, as intended. The Bluebikes campus share rises a little in warm weather (+12% from 0 °C to 20 °C) and falls in the Christmas–New Year weeks (−10%); after the year levels, the index is its strongest input. Little explains the MBTA campus share apart from the index and holidays, hence its low R².
+
+**What the trees rely on** (permutation importance on held-out months: the increase in error when one input is shuffled across weeks):
+
+| Target | Inputs whose shuffling raises held-out error most |
+|---|---|
+| Bluebikes campus ratio | year (+262%), presence_index (+66%), tmean_c (+41%), network (+36%), day_of_year (+25%) |
+| MBTA campus ratio | year (+38%), network (+11%), day_of_year (+7%), tmean_c (+5%), presence_index (+4%) |
+| Bluebikes total | network (+556%), tmean_c (+222%), presence_index (+18%), day_of_year (+15%), rain_days (+4%) |
+| MBTA total | year (+465%), presence_index (+32%), network (+30%), n_holidays (+28%), tmean_c (+18%) |
+
+The year and network size come first because they set the level of activity, which changes far more between years than within them. After them, temperature and the index matter most for the Bluebikes targets, and the index and holidays for the MBTA total. Once the trees have the index they lean on it instead of learning the calendar from the date, so shuffling it costs more than the index adds (1.6–4.5% lower error than the trees without it).
+
+**Where they go wrong.**
+* Breaks are the hardest weeks for every target: for the Bluebikes campus share, the typical error is 10.4% in breaks against 8.4% in summer with the smooth-season model, and 8.7% against 4.3% with the trees. Breaks are short, often start or end in the middle of a week, and differ between universities, which the study-area index averages.
+* The trees fit the campus ratios best, especially in summer, but the Bluebikes total worst (21% typical error in session weeks): trees cannot carry the network's growth into a held-out month the way a linear term in network size can.
+* No model explains more than about a third of the MBTA campus share.
 
 ---
 

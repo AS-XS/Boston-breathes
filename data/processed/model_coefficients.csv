@@ -1,0 +1,113 @@
+target,family,model,feature,coef,se,n
+Bluebikes campus ratio,"linear, smooth season",index,tmean_c,0.013096,0.004735,534
+Bluebikes campus ratio,"linear, smooth season",index,tmean_sq,-0.000382,0.000178,534
+Bluebikes campus ratio,"linear, smooth season",index,rain_days,-0.00333,0.003299,534
+Bluebikes campus ratio,"linear, smooth season",index,heavy_rain_days,0.002214,0.004693,534
+Bluebikes campus ratio,"linear, smooth season",index,snow_days,-0.01285,0.009569,534
+Bluebikes campus ratio,"linear, smooth season",index,ice_days,0.002264,0.008879,534
+Bluebikes campus ratio,"linear, smooth season",index,hot_days,0.006981,0.004909,534
+Bluebikes campus ratio,"linear, smooth season",index,wind_mean_ms,-0.000237,0.004028,534
+Bluebikes campus ratio,"linear, smooth season",index,n_holidays,0.001556,0.007189,534
+Bluebikes campus ratio,"linear, smooth season",index,year_end_week,-0.106552,0.028568,534
+Bluebikes campus ratio,"linear, smooth season",index,network,0.614373,0.106213,534
+Bluebikes campus ratio,"linear, smooth season",index,sin1,-0.056612,0.01277,534
+Bluebikes campus ratio,"linear, smooth season",index,cos1,-0.053224,0.020369,534
+Bluebikes campus ratio,"linear, smooth season",index,sin2,0.002451,0.010473,534
+Bluebikes campus ratio,"linear, smooth season",index,cos2,0.011464,0.013982,534
+Bluebikes campus ratio,"linear, smooth season",index,presence_index,0.166452,0.019749,534
+Bluebikes campus ratio,"linear, week of year",index,tmean_c,0.012025,0.005086,534
+Bluebikes campus ratio,"linear, week of year",index,tmean_sq,-0.000337,0.000191,534
+Bluebikes campus ratio,"linear, week of year",index,rain_days,-0.003141,0.0035,534
+Bluebikes campus ratio,"linear, week of year",index,heavy_rain_days,0.004069,0.00522,534
+Bluebikes campus ratio,"linear, week of year",index,snow_days,-0.017525,0.00973,534
+Bluebikes campus ratio,"linear, week of year",index,ice_days,0.000029,0.009026,534
+Bluebikes campus ratio,"linear, week of year",index,hot_days,0.00429,0.005064,534
+Bluebikes campus ratio,"linear, week of year",index,wind_mean_ms,0.000149,0.004031,534
+Bluebikes campus ratio,"linear, week of year",index,n_holidays,-0.009963,0.010914,534
+Bluebikes campus ratio,"linear, week of year",index,year_end_week,-0.051398,0.029608,534
+Bluebikes campus ratio,"linear, week of year",index,network,0.618681,0.107332,534
+Bluebikes campus ratio,"linear, week of year",index,presence_index,0.140523,0.050693,534
+MBTA campus ratio,"linear, smooth season",index,tmean_c,0.000579,0.002355,538
+MBTA campus ratio,"linear, smooth season",index,tmean_sq,-0.000079,0.0001,538
+MBTA campus ratio,"linear, smooth season",index,rain_days,-0.000079,0.002367,538
+MBTA campus ratio,"linear, smooth season",index,heavy_rain_days,-0.007186,0.005117,538
+MBTA campus ratio,"linear, smooth season",index,snow_days,0.007938,0.005348,538
+MBTA campus ratio,"linear, smooth season",index,ice_days,0.003286,0.005393,538
+MBTA campus ratio,"linear, smooth season",index,hot_days,0.004712,0.004024,538
+MBTA campus ratio,"linear, smooth season",index,wind_mean_ms,-0.001006,0.003004,538
+MBTA campus ratio,"linear, smooth season",index,n_holidays,0.014403,0.005465,538
+MBTA campus ratio,"linear, smooth season",index,year_end_week,-0.008784,0.015387,538
+MBTA campus ratio,"linear, smooth season",index,network,-0.226614,0.525856,538
+MBTA campus ratio,"linear, smooth season",index,sin1,-0.002469,0.007796,538
+MBTA campus ratio,"linear, smooth season",index,cos1,-0.04555,0.01415,538
+MBTA campus ratio,"linear, smooth season",index,sin2,-0.000381,0.005758,538
+MBTA campus ratio,"linear, smooth season",index,cos2,-0.002594,0.006989,538
+MBTA campus ratio,"linear, smooth season",index,presence_index,0.051894,0.009626,538
+MBTA campus ratio,"linear, week of year",index,tmean_c,0.002885,0.002701,538
+MBTA campus ratio,"linear, week of year",index,tmean_sq,-0.000137,0.000107,538
+MBTA campus ratio,"linear, week of year",index,rain_days,0.000018,0.002504,538
+MBTA campus ratio,"linear, week of year",index,heavy_rain_days,-0.008724,0.004687,538
+MBTA campus ratio,"linear, week of year",index,snow_days,0.007488,0.006022,538
+MBTA campus ratio,"linear, week of year",index,ice_days,0.010149,0.005796,538
+MBTA campus ratio,"linear, week of year",index,hot_days,0.000814,0.003422,538
+MBTA campus ratio,"linear, week of year",index,wind_mean_ms,-0.000432,0.003002,538
+MBTA campus ratio,"linear, week of year",index,n_holidays,0.016427,0.006277,538
+MBTA campus ratio,"linear, week of year",index,year_end_week,-0.029528,0.028151,538
+MBTA campus ratio,"linear, week of year",index,network,-0.338015,0.479009,538
+MBTA campus ratio,"linear, week of year",index,presence_index,-0.026577,0.037757,538
+Bluebikes total,"linear, smooth season",index,tmean_c,0.054679,0.00618,534
+Bluebikes total,"linear, smooth season",index,tmean_sq,-0.001148,0.000227,534
+Bluebikes total,"linear, smooth season",index,rain_days,-0.035567,0.004125,534
+Bluebikes total,"linear, smooth season",index,heavy_rain_days,-0.022287,0.006864,534
+Bluebikes total,"linear, smooth season",index,snow_days,-0.040548,0.021154,534
+Bluebikes total,"linear, smooth season",index,ice_days,-0.005612,0.015133,534
+Bluebikes total,"linear, smooth season",index,hot_days,-0.006158,0.006098,534
+Bluebikes total,"linear, smooth season",index,wind_mean_ms,-0.002079,0.00748,534
+Bluebikes total,"linear, smooth season",index,n_holidays,-0.055451,0.010608,534
+Bluebikes total,"linear, smooth season",index,year_end_week,-0.41966,0.048875,534
+Bluebikes total,"linear, smooth season",index,network,1.083774,0.036275,534
+Bluebikes total,"linear, smooth season",index,sin1,-0.083505,0.016056,534
+Bluebikes total,"linear, smooth season",index,cos1,-0.203428,0.029904,534
+Bluebikes total,"linear, smooth season",index,sin2,0.026359,0.01423,534
+Bluebikes total,"linear, smooth season",index,cos2,0.064719,0.016214,534
+Bluebikes total,"linear, smooth season",index,presence_index,0.252091,0.027774,534
+Bluebikes total,"linear, week of year",index,tmean_c,0.050444,0.006259,534
+Bluebikes total,"linear, week of year",index,tmean_sq,-0.001005,0.000234,534
+Bluebikes total,"linear, week of year",index,rain_days,-0.033997,0.003992,534
+Bluebikes total,"linear, week of year",index,heavy_rain_days,-0.019999,0.007053,534
+Bluebikes total,"linear, week of year",index,snow_days,-0.044349,0.019144,534
+Bluebikes total,"linear, week of year",index,ice_days,-0.018302,0.016383,534
+Bluebikes total,"linear, week of year",index,hot_days,-0.005603,0.005889,534
+Bluebikes total,"linear, week of year",index,wind_mean_ms,-0.011179,0.00621,534
+Bluebikes total,"linear, week of year",index,n_holidays,-0.056462,0.013352,534
+Bluebikes total,"linear, week of year",index,year_end_week,-0.144122,0.058488,534
+Bluebikes total,"linear, week of year",index,network,1.102776,0.035333,534
+Bluebikes total,"linear, week of year",index,presence_index,0.274732,0.054618,534
+MBTA total,"linear, smooth season",index,tmean_c,0.008067,0.003563,538
+MBTA total,"linear, smooth season",index,tmean_sq,-0.000282,0.000135,538
+MBTA total,"linear, smooth season",index,rain_days,-0.002874,0.002472,538
+MBTA total,"linear, smooth season",index,heavy_rain_days,-0.005577,0.00512,538
+MBTA total,"linear, smooth season",index,snow_days,-0.014673,0.01102,538
+MBTA total,"linear, smooth season",index,ice_days,-0.009117,0.008842,538
+MBTA total,"linear, smooth season",index,hot_days,0.002997,0.004729,538
+MBTA total,"linear, smooth season",index,wind_mean_ms,0.00371,0.003828,538
+MBTA total,"linear, smooth season",index,n_holidays,-0.083762,0.007169,538
+MBTA total,"linear, smooth season",index,year_end_week,-0.204739,0.025709,538
+MBTA total,"linear, smooth season",index,network,1.620647,0.387803,538
+MBTA total,"linear, smooth season",index,sin1,-0.012528,0.008534,538
+MBTA total,"linear, smooth season",index,cos1,-0.057875,0.017055,538
+MBTA total,"linear, smooth season",index,sin2,-0.005908,0.007018,538
+MBTA total,"linear, smooth season",index,cos2,0.037566,0.009479,538
+MBTA total,"linear, smooth season",index,presence_index,0.145441,0.018984,538
+MBTA total,"linear, week of year",index,tmean_c,0.005259,0.003917,538
+MBTA total,"linear, week of year",index,tmean_sq,-0.000184,0.000136,538
+MBTA total,"linear, week of year",index,rain_days,-0.002371,0.002371,538
+MBTA total,"linear, week of year",index,heavy_rain_days,-0.002232,0.004254,538
+MBTA total,"linear, week of year",index,snow_days,-0.015366,0.010434,538
+MBTA total,"linear, week of year",index,ice_days,-0.01536,0.009032,538
+MBTA total,"linear, week of year",index,hot_days,0.001333,0.003848,538
+MBTA total,"linear, week of year",index,wind_mean_ms,-0.005885,0.003432,538
+MBTA total,"linear, week of year",index,n_holidays,-0.055767,0.010596,538
+MBTA total,"linear, week of year",index,year_end_week,-0.145009,0.033641,538
+MBTA total,"linear, week of year",index,network,1.792906,0.349321,538
+MBTA total,"linear, week of year",index,presence_index,0.161118,0.038453,538

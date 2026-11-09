@@ -49,8 +49,17 @@ fitted on all weeks, with Newey-West standard errors (autocorrelation up to 4
 weeks), given as the percentage change of the target from all students away
 (index 0) to all in session (index 1), with a 95% interval.
 
-Output: data/processed/model_comparison.csv, one row per target, family,
-model, subset and metric.
+Held-out scores are also given for fully in-session weeks, summer weeks
+(at least half the students on summer break) and other weeks not fully in
+session (breaks and the edges of terms).
+
+Outputs in data/processed/:
+  * model_comparison.csv          held-out scores and the index's effect, one row per target, family,
+                                  model, subset and metric
+  * model_coefficients.csv        every coefficient (except the year and week levels) of the linear models
+                                  with the index, with its Newey-West standard error
+  * model_feature_importance.csv  for the trees with the index, the increase in held-out error when each
+                                  input is shuffled across weeks
 """
 
 import math
@@ -144,27 +153,28 @@ def fit_predict(family: str, x_train: np.ndarray, y_train: np.ndarray, x_tests: 
 
 
 def held_out_predictions(df: pl.DataFrame, x: np.ndarray, family: str = SMOOTH,
-                         shuffled: int | None = None) -> tuple[np.ndarray, np.ndarray | None]:
+                         shuffled: list[int] = ()) -> tuple[np.ndarray, dict[int, np.ndarray]]:
     """Predict each month from a fit on the other weeks, without the week on either side of the month.
-    With `shuffled`, also predict with that column permuted across all weeks (permutation importance)."""
+    For each column in `shuffled`, also predict with that column permuted across all weeks (permutation
+    importance): the same fit, with that one input scrambled."""
     y = df["y"].to_numpy()
     weeks = df["week_start"].to_numpy()
     blocks = df["block"].to_numpy()
     buffer = np.timedelta64(7 * BUFFER_WEEKS, "D")
-    x_shuffled = None
-    if shuffled is not None:
-        x_shuffled = x.copy()
-        x_shuffled[:, shuffled] = np.random.default_rng(0).permutation(x[:, shuffled])
+    order = np.random.default_rng(0).permutation(len(y))
+    scrambled = {}
+    for col in shuffled:
+        scrambled[col] = x.copy()
+        scrambled[col][:, col] = x[order, col]
     pred = np.empty(len(y))
-    pred_shuffled = np.empty(len(y)) if shuffled is not None else None
+    pred_shuffled = {col: np.empty(len(y)) for col in shuffled}
     for block in np.unique(blocks):
         test = blocks == block
         near = (weeks >= weeks[test].min() - buffer) & (weeks <= weeks[test].max() + buffer)
-        tests = [x[test]] if shuffled is None else [x[test], x_shuffled[test]]
-        out = fit_predict(family, x[~near], y[~near], tests)
+        out = fit_predict(family, x[~near], y[~near], [x[test], *[scrambled[col][test] for col in shuffled]])
         pred[test] = out[0]
-        if shuffled is not None:
-            pred_shuffled[test] = out[1]
+        for col, p in zip(shuffled, out[1:]):
+            pred_shuffled[col][test] = p
     return pred, pred_shuffled
 
 
@@ -205,19 +215,26 @@ def effect_rows(target: str, family: str, model: str, df: pl.DataFrame, x: np.nd
     return rows
 
 
-def compare(table: pl.DataFrame, target: str, families: dict[str, list[str]] = MODELS) -> list[dict]:
+def compare(table: pl.DataFrame, target: str,
+            families: dict[str, list[str]] = MODELS) -> tuple[list[dict], list[dict], list[dict]]:
+    """Held-out scores of every model, the coefficients of the linear models with the index, and the
+    permutation importance of every input of the trees with the index."""
     df = prepare(table, target)
     y = df["y"].to_numpy()
-    subsets = {"all weeks": np.ones(len(df), dtype=bool),
-               "not fully in session": (df["presence_index"] < IN_SESSION).to_numpy()}
-    rows = []
+    in_session = (df["presence_index"] >= IN_SESSION).to_numpy()
+    summer = (df["summer_break_share"] >= 0.5).to_numpy()
+    subsets = {"all weeks": np.ones(len(df), dtype=bool), "not fully in session": ~in_session,
+               "fully in session": in_session, "summer": summer, "breaks": ~in_session & ~summer}
+    rows, coefficients, importance = [], [], []
     for family, models in families.items():
         baseline_rmse = {}
         for model in models:
             extra = EXTRA[model]
             x = design(df, family, extra)
-            index_col = len(FEATURES[family]) if family == TREES and extra else None
-            pred, pred_shuffled = held_out_predictions(df, x, family, index_col)
+            names = [*FEATURES[family], *extra]
+            shuffled = list(range(len(names))) if family == TREES and extra else []
+            pred, pred_shuffled = held_out_predictions(df, x, family, shuffled)
+            index_col = len(FEATURES[family]) if shuffled else None
             for subset, mask in subsets.items():
                 n = int(mask.sum())
                 s = scores(y[mask], pred[mask])
@@ -227,24 +244,38 @@ def compare(table: pl.DataFrame, target: str, families: dict[str, list[str]] = M
                 else:
                     rows.append(row(target, family, model, subset, "rmse_change_pct",
                                     (s["rmse"] / baseline_rmse[subset] - 1) * 100, n))
-                if pred_shuffled is not None:
-                    shuffled = scores(y[mask], pred_shuffled[mask])["rmse"]
+                if index_col is not None:
+                    scrambled = scores(y[mask], pred_shuffled[index_col][mask])["rmse"]
                     rows.append(row(target, family, model, subset, "presence_index_permutation_rmse_increase_pct",
-                                    (shuffled / s["rmse"] - 1) * 100, n))
+                                    (scrambled / s["rmse"] - 1) * 100, n))
+            if shuffled:
+                rmse = scores(y, pred)["rmse"]
+                importance += [{"target": target, "family": family, "model": model, "feature": names[col],
+                                "rmse_increase_pct": round((scores(y, pred_shuffled[col])["rmse"] / rmse - 1) * 100, 4),
+                                "n": len(df)} for col in shuffled]
             if family != TREES and extra:
                 rows += effect_rows(target, family, model, df, x, extra)
-    return rows
+            if family != TREES and model == "index":
+                beta = np.linalg.lstsq(x, y, rcond=None)[0]
+                se = newey_west(x, y - x @ beta)
+                coefficients += [{"target": target, "family": family, "model": model, "feature": name,
+                                  "coef": round(float(beta[i]), 6), "se": round(float(se[i]), 6), "n": len(df)}
+                                 for i, name in enumerate(names)]
+    return rows, coefficients, importance
 
 
-def build(table: pl.DataFrame) -> pl.DataFrame:
-    return pl.DataFrame([r for target in TARGETS for r in compare(table, target)])
+def build(table: pl.DataFrame) -> tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame]:
+    results = [compare(table, target) for target in TARGETS]
+    return tuple(pl.DataFrame([r for result in results for r in result[i]]) for i in range(3))
 
 
 def main() -> None:
     table = pl.read_csv(PROCESSED / "modeling_weekly.csv", try_parse_dates=True, infer_schema_length=None)
     with threadpool_limits(limits=1):  # the data are small: one thread is faster and gives the same result
-        out = build(table)
+        out, coefficients, importance = build(table)
     out.write_csv(PROCESSED / "model_comparison.csv")
+    coefficients.write_csv(PROCESSED / "model_coefficients.csv")
+    importance.write_csv(PROCESSED / "model_feature_importance.csv")
 
     def get(target, family, model, metric, subset="all weeks"):
         return out.filter((pl.col("target") == target) & (pl.col("family") == family) & (pl.col("model") == model)

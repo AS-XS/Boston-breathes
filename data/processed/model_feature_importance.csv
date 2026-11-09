@@ -1,0 +1,53 @@
+target,family,model,feature,rmse_increase_pct,n
+Bluebikes campus ratio,gradient boosting,index,tmean_c,41.2637,534
+Bluebikes campus ratio,gradient boosting,index,rain_days,-0.5882,534
+Bluebikes campus ratio,gradient boosting,index,heavy_rain_days,-0.4406,534
+Bluebikes campus ratio,gradient boosting,index,snow_days,-0.3252,534
+Bluebikes campus ratio,gradient boosting,index,ice_days,0.1369,534
+Bluebikes campus ratio,gradient boosting,index,hot_days,-0.1013,534
+Bluebikes campus ratio,gradient boosting,index,wind_mean_ms,-0.9048,534
+Bluebikes campus ratio,gradient boosting,index,n_holidays,-0.1414,534
+Bluebikes campus ratio,gradient boosting,index,year_end_week,1.6332,534
+Bluebikes campus ratio,gradient boosting,index,network,36.0194,534
+Bluebikes campus ratio,gradient boosting,index,day_of_year,24.8867,534
+Bluebikes campus ratio,gradient boosting,index,year,262.2644,534
+Bluebikes campus ratio,gradient boosting,index,presence_index,65.7832,534
+MBTA campus ratio,gradient boosting,index,tmean_c,4.5762,538
+MBTA campus ratio,gradient boosting,index,rain_days,-0.8408,538
+MBTA campus ratio,gradient boosting,index,heavy_rain_days,0.5254,538
+MBTA campus ratio,gradient boosting,index,snow_days,-0.209,538
+MBTA campus ratio,gradient boosting,index,ice_days,0.1558,538
+MBTA campus ratio,gradient boosting,index,hot_days,-0.3718,538
+MBTA campus ratio,gradient boosting,index,wind_mean_ms,-1.4797,538
+MBTA campus ratio,gradient boosting,index,n_holidays,0.2304,538
+MBTA campus ratio,gradient boosting,index,year_end_week,0.6515,538
+MBTA campus ratio,gradient boosting,index,network,11.4862,538
+MBTA campus ratio,gradient boosting,index,day_of_year,7.2407,538
+MBTA campus ratio,gradient boosting,index,year,37.6257,538
+MBTA campus ratio,gradient boosting,index,presence_index,4.1138,538
+Bluebikes total,gradient boosting,index,tmean_c,221.6374,534
+Bluebikes total,gradient boosting,index,rain_days,4.4559,534
+Bluebikes total,gradient boosting,index,heavy_rain_days,0.8319,534
+Bluebikes total,gradient boosting,index,snow_days,2.5082,534
+Bluebikes total,gradient boosting,index,ice_days,2.2899,534
+Bluebikes total,gradient boosting,index,hot_days,-0.0209,534
+Bluebikes total,gradient boosting,index,wind_mean_ms,0.8895,534
+Bluebikes total,gradient boosting,index,n_holidays,1.212,534
+Bluebikes total,gradient boosting,index,year_end_week,2.0628,534
+Bluebikes total,gradient boosting,index,network,555.5951,534
+Bluebikes total,gradient boosting,index,day_of_year,14.8291,534
+Bluebikes total,gradient boosting,index,year,3.7884,534
+Bluebikes total,gradient boosting,index,presence_index,18.2938,534
+MBTA total,gradient boosting,index,tmean_c,17.8219,538
+MBTA total,gradient boosting,index,rain_days,-0.1272,538
+MBTA total,gradient boosting,index,heavy_rain_days,-0.6783,538
+MBTA total,gradient boosting,index,snow_days,0.1045,538
+MBTA total,gradient boosting,index,ice_days,1.7086,538
+MBTA total,gradient boosting,index,hot_days,0.14,538
+MBTA total,gradient boosting,index,wind_mean_ms,-1.152,538
+MBTA total,gradient boosting,index,n_holidays,27.7339,538
+MBTA total,gradient boosting,index,year_end_week,15.2451,538
+MBTA total,gradient boosting,index,network,29.8498,538
+MBTA total,gradient boosting,index,day_of_year,14.4685,538
+MBTA total,gradient boosting,index,year,464.5279,538
+MBTA total,gradient boosting,index,presence_index,31.8245,538

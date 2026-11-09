@@ -28,7 +28,7 @@ def synthetic(effect: float = 0.2, years: int = 3, seed: int = 0) -> pl.DataFram
 
 
 def results(families: dict) -> callable:
-    rows = pl.DataFrame(mc.compare(synthetic(), "Bluebikes campus ratio", families))
+    rows = pl.DataFrame(mc.compare(synthetic(), "Bluebikes campus ratio", families)[0])
     return lambda m, s, k: rows.filter((pl.col("model") == m) & (pl.col("subset") == s)
                                        & (pl.col("metric") == k))["value"][0]
 
@@ -83,3 +83,15 @@ def test_trees_use_a_strong_index_and_suffer_when_it_is_shuffled():
     get = results({mc.TREES: mc.MODELS[mc.TREES]})
     assert get("index", "all weeks", "rmse") < get("baseline", "all weeks", "rmse")
     assert get("index", "all weeks", "presence_index_permutation_rmse_increase_pct") > 50
+
+
+def test_linear_coefficients_and_tree_importance_cover_every_named_input():
+    _, coefficients, importance = mc.compare(synthetic(), "Bluebikes campus ratio",
+                                             {mc.SMOOTH: ["baseline", "index"], mc.TREES: ["baseline", "index"]})
+    coefs = {r["feature"]: r for r in coefficients}
+    assert list(coefs) == [*mc.FEATURES[mc.SMOOTH], "presence_index"]
+    # The synthetic log ratio rises by 0.2 with the index and by 0.01 per degree.
+    assert coefs["presence_index"]["coef"] == pytest.approx(0.2, abs=0.01)
+    assert coefs["tmean_c"]["coef"] == pytest.approx(0.01, abs=0.003)
+    assert {r["feature"] for r in importance} == {*mc.FEATURES[mc.TREES], "presence_index"}
+    assert max(importance, key=lambda r: r["rmse_increase_pct"])["feature"] == "presence_index"
