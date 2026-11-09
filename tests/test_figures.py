@@ -173,3 +173,13 @@ def test_explorer_tiles_span_the_panels_and_controls_list_every_year():
     weeks = fig.explorer_data().group_by("fy").len().sort("fy")
     assert controls.count("<option") == len(weeks)
     assert f"<option value='{weeks['fy'][-1]}'" in controls and controls.count(" selected") == 1
+
+
+def test_population_data_carries_the_estimate_and_says_when_there_is_none():
+    df = fig.away_data()
+    normal = df.filter(pl.col("covid_period") == "normal")
+    assert (normal["est_population_low"] >= normal["min_effective_population"]).all()
+    assert (normal["est_population_high"] <= normal["max_effective_population"]).all()
+    covid = df.filter(pl.col("covid_period") != "normal")
+    assert set(covid["est_population_text"]) == {fig.NO_ESTIMATE}
+    assert normal["est_away_text"].str.contains("–").all()

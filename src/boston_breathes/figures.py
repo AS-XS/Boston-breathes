@@ -15,7 +15,8 @@ Section A, "What data we have":
 Section B, "The Student Presence Index":
   B5 the index by week, with summer and the COVID-19 years marked
   B6 the academic year, one line per year
-  B7 resident population and the most it could fall when students leave
+  B7 resident population when students leave: the possible range and the
+      estimate from travel records
 
 Section C, "Do travel records follow the students?":
   C8, C9 campus activity per away activity against the index (Bluebikes, MBTA)
@@ -530,6 +531,8 @@ INDEX, SUMMER_SHARE = "Student Presence Index", "Summer break (share of students
 CENSUS = "Census resident population"
 FLOOR = "If every student not living with parents leaves"
 CEILING = "If only students in closed residence halls leave"
+ESTIMATE = "Estimate from travel records"
+NO_ESTIMATE = "none (COVID-19)"
 COVID_LABELS = {"normal": "Normal", "lockdown": "COVID-19 lockdown: students away",
                 "remote_year": "COVID-19, 2020–21: remote or hybrid teaching"}
 
@@ -658,28 +661,52 @@ def typical_year_table() -> pl.DataFrame:
 
 
 def away_data() -> pl.DataFrame:
-    return read("students_away_weekly.csv").with_columns(
-        (pl.col("week_start") + pl.duration(days=7)).alias("week_end"))
+    """The weekly range of students away and of the population, with the step 3 estimate inside it."""
+    estimate = read("students_away_estimate.csv").select(
+        "week_start", "est_students_away_low", "est_students_away_high", "est_population_low", "est_population_high")
+    def between(low: str, high: str) -> pl.Expr:
+        number = lambda c: pl.col(c).map_elements("{:,}".format, return_dtype=pl.Utf8)  # noqa: E731
+        return pl.concat_str(number(low), pl.lit("–"), number(high)).fill_null(NO_ESTIMATE)
+    return read("students_away_weekly.csv").join(estimate, on="week_start", how="left").with_columns(
+        (pl.col("week_start") + pl.duration(days=7)).alias("week_end"),
+        between("est_population_low", "est_population_high").alias("est_population_text"),
+        between("est_students_away_low", "est_students_away_high").alias("est_away_text"))
+
+
+def estimate_band(chart: alt.Chart, t: dict, x, scale: alt.Scale, axis: alt.Axis) -> alt.Chart:
+    """The step 3 estimate of the population: a darker band inside the possible range, with its own legend.
+    Weeks without an estimate (the COVID-19 period) leave a gap."""
+    return chart.transform_calculate(kind=json.dumps(ESTIMATE)).mark_area(opacity=0.45, clip=True).encode(
+        x=x, y=alt.Y("est_population_low:Q", title=None, scale=scale, axis=axis), y2="est_population_high:Q",
+        fill=alt.Fill("kind:N", title=None, scale=alt.Scale(domain=[ESTIMATE], range=[t["series2"]]),
+                      legend=alt.Legend(symbolOpacity=0.45, symbolType="square")))
+
+
+ESTIMATE_TOOLTIP = [alt.Tooltip("est_population_text:N", title="Estimated population"),
+                    alt.Tooltip("est_away_text:N", title="Estimated students away")]
 
 
 def population_chart(t: dict) -> alt.TopLevelMixin:
     df = iso(away_data(), "week_start", "week_end").select(
         "week_start", "week_end", "census_population", "min_effective_population", "max_effective_population",
-        "min_students_away", "max_students_away", "presence_index", "population_extrapolated")
+        "min_students_away", "max_students_away", "presence_index", "population_extrapolated",
+        "est_population_low", "est_population_high", "est_population_text", "est_away_text")
     height = 260
     identity = alt.Scale(domain=[CENSUS, CEILING, FLOOR], range=[t["series1"], t["series3"], t["series2"]])
-    y_axis = alt.Axis(labelExpr=COMPACT, tickCount=5, domain=False, ticks=False)
+    y_axis = alt.Axis(labelExpr=COMPACT, tickCount=5, domain=False, ticks=False, title="People")
+    y_scale = alt.Scale(zero=False)
+    x = alt.X("week_start:T", title=None, axis=YEAR_AXIS, scale=STUDY_X)
     band = alt.Chart(df).mark_area(color=t["series2"], opacity=0.10, clip=True).encode(
-        x=alt.X("week_start:T", title=None, axis=YEAR_AXIS, scale=STUDY_X),
-        y=alt.Y("min_effective_population:Q", title="People", scale=alt.Scale(zero=False), axis=y_axis),
+        x=x, y=alt.Y("min_effective_population:Q", title=None, scale=y_scale, axis=y_axis),
         y2="max_effective_population:Q",
     )
+    estimate = estimate_band(alt.Chart(df), t, x, y_scale, y_axis)
     series = {"census_population": CENSUS, "max_effective_population": CEILING, "min_effective_population": FLOOR}
     long = df.unpivot(index=["week_start"], on=list(series), variable_name="series", value_name="population") \
         .with_columns(pl.col("series").replace_strict(series))
     lines = alt.Chart(long).mark_line(strokeWidth=2, strokeJoin="round", strokeCap="round", clip=True).encode(
-        x="week_start:T", y="population:Q", color=alt.Color("series:N", title=None, scale=identity),
-        detail="series:N")
+        x="week_start:T", y="population:Q",
+        color=alt.Color("series:N", title=None, scale=identity, legend=alt.Legend(columns=1)), detail="series:N")
     held = df.filter(pl.col("population_extrapolated"))
     latest_estimate = read("population_annual.csv")["year"].max()
     held_band = alt.Chart(pl.DataFrame({"start": [held["week_start"].min()], "end": [held["week_end"].max()],
@@ -697,20 +724,37 @@ def population_chart(t: dict) -> alt.TopLevelMixin:
         alt.Tooltip("min_effective_population:Q", title="Lowest possible population", format=",.0f"),
         alt.Tooltip("min_students_away:Q", title="Fewest resident students away", format=",.0f"),
         alt.Tooltip("max_students_away:Q", title="Most resident students away", format=",.0f"),
+        *ESTIMATE_TOOLTIP,
         alt.Tooltip("presence_index:Q", title=INDEX, format=".2f"),
     ], t, height, STUDY_X)
-    return alt.layer(held_band, held_text, band, columns, lines, rule).properties(width=WIDTH - 110, height=height)
+    return alt.layer(held_band, held_text, band, estimate, columns, lines, rule).properties(
+        width=WIDTH - 110, height=height)
 
 
 def population_table() -> pl.DataFrame:
     return (
         away_data().group_by(pl.col("week_start").dt.year().alias("Year"))
         .agg(pl.col("census_population").mean().round(0).cast(pl.Int64).alias("Census population (average)"),
-             pl.col("min_students_away").max().cast(pl.Int64).alias("Fewest resident students away (emptiest week)"),
-             pl.col("max_students_away").max().cast(pl.Int64).alias("Most resident students away"),
+             pl.col("min_students_away").max().cast(pl.Int64)
+             .alias("Students away in the emptiest week: fewest possible"),
+             pl.col("est_students_away_low").max().cast(pl.Int64).alias("Low estimate"),
+             pl.col("est_students_away_high").max().cast(pl.Int64).alias("High estimate"),
+             pl.col("max_students_away").max().cast(pl.Int64).alias("Most possible"),
+             pl.col("est_population_low").min().cast(pl.Int64).alias("Lowest estimated population"),
              pl.col("min_effective_population").min().cast(pl.Int64).alias("Lowest possible population"))
         .sort("Year")
     )
+
+
+def estimate_note() -> str:
+    shares = read("students_away_shares.csv")
+    level = lambda period: shares.filter(pl.col("period") == period)["share_away"]  # noqa: E731
+    return ("The darker band is the estimate from travel records: when universities are out, weekday subway travel "
+            "falls more than weekend travel, because students who stay stop going to classes but keep their weekend "
+            "trips. The weekend loss over the weekday loss puts the share of students out of session who are away at "
+            f"{level('summer').min():.0%}–{level('summer').max():.0%} in summer and "
+            f"{level('breaks').min():.0%}–{level('breaks').max():.0%} on breaks. It is a band, not a single number, "
+            "and is not estimated in the COVID-19 period.")
 
 
 def away_note() -> str:
@@ -1255,10 +1299,12 @@ def explorer_data() -> pl.DataFrame:
         pl.col("covid_period").replace_strict(EXPLORER_PERIOD, default=None)
         .fill_null(pl.col("academic_year").str.replace("-", "–") + " academic year").alias("period_label"),
         ((pl.col("presence_index") * 100).round(0).cast(pl.Int64).cast(pl.Utf8) + "%").alias("index_label"),
-        span(text("min_students_away", "{:,}".format), text("max_students_away", "{:,}".format)).alias("away_label"),
-        ("of " + text("resident_students", "{:,}".format) + " living in the area").alias("residents_label"),
-        span(text("min_effective_population", millions), text("max_effective_population", millions))
-        .alias("population_label"),
+        span(text("est_students_away_low", "{:,}".format), text("est_students_away_high", "{:,}".format))
+        .fill_null(pl.lit(NO_ESTIMATE)).alias("away_label"),
+        ("possible " + span(text("min_students_away", "{:,}".format), text("max_students_away", "{:,}".format)))
+        .alias("residents_label"),
+        span(text("est_population_low", millions), text("est_population_high", millions))
+        .fill_null(pl.lit(NO_ESTIMATE)).alias("population_label"),
         pl.when(pl.col("population_extrapolated"))
         .then("Census " + text("census_population", millions) + f", held at July {latest_estimate}")
         .otherwise("Census resident population " + text("census_population", millions)).alias("census_label"),
@@ -1280,8 +1326,8 @@ def explorer_calendars() -> pl.DataFrame:
 TILES = [  # label, value column, note column, width in pixels
     ("Week of", "week_label", "period_label", 170),
     ("Students in session", "index_label", None, 160),
-    ("Resident college students away", "away_label", "residents_label", 200),
-    ("Population this week", "population_label", "census_label", 230),
+    ("College students away, estimate", "away_label", "residents_label", 200),
+    ("Population this week, estimate", "population_label", "census_label", 230),
 ]
 
 
@@ -1318,6 +1364,7 @@ def explorer_population(df: pl.DataFrame, t: dict) -> alt.LayerChart:
     band = year.mark_area(color=t["series2"], opacity=0.10).encode(
         x=x, y=alt.Y("min_effective_population:Q", title=None, scale=scale, axis=axis),
         y2="max_effective_population:Q")
+    estimate = estimate_band(year, t, x, scale, axis)
     series = {"census_population": CENSUS, "max_effective_population": CEILING, "min_effective_population": FLOOR}
     identity = alt.Scale(domain=list(series.values()), range=[t["series1"], t["series3"], t["series2"]])
     folded = year.transform_fold(list(series), as_=["key", "population"]).transform_calculate(
@@ -1335,7 +1382,8 @@ def explorer_population(df: pl.DataFrame, t: dict) -> alt.LayerChart:
                  alt.Tooltip("max_effective_population:Q", title="Highest possible population", format=",.0f"),
                  alt.Tooltip("min_effective_population:Q", title="Lowest possible population", format=",.0f"),
                  alt.Tooltip("min_students_away:Q", title="Fewest resident students away", format=",.0f"),
-                 alt.Tooltip("max_students_away:Q", title="Most resident students away", format=",.0f")],
+                 alt.Tooltip("max_students_away:Q", title="Most resident students away", format=",.0f"),
+                 *ESTIMATE_TOOLTIP],
     ).add_params(hover)
     hover_rule = year.mark_rule(color=t["muted"], strokeWidth=1).encode(
         x="ref_thursday:T", opacity=alt.condition(hover, alt.value(1), alt.value(0)))
@@ -1344,9 +1392,9 @@ def explorer_population(df: pl.DataFrame, t: dict) -> alt.LayerChart:
     dots = folded.transform_filter(SELECTED_WEEK).mark_circle(
         size=70, stroke=t["surface"], strokeWidth=2, opacity=1).encode(
         x=x, y=y, color=alt.Color("series:N", scale=identity, legend=None))
-    return alt.layer(band, columns, hover_rule, rule, lines, dots).properties(
+    return alt.layer(band, estimate, columns, hover_rule, rule, lines, dots).properties(
         width=EXPLORER_PLOT, height=height,
-        title=alt.Title("Resident population, and how far it could fall when students leave", fontSize=12,
+        title=alt.Title("Resident population when students leave: possible range and estimate", fontSize=12,
                         fontWeight=600, color=t["ink"]))
 
 
@@ -1380,13 +1428,14 @@ def explorer_chart(t: dict) -> alt.TopLevelMixin:
     df = iso(explorer_data(), "week_start", "ref_start", "ref_end", "ref_thursday")
     df = df.select("fy", "week_index", "ref_start", "ref_end", "ref_thursday", "presence_index",
                    "census_population", "min_effective_population", "max_effective_population",
-                   "min_students_away", "max_students_away",
+                   "min_students_away", "max_students_away", "est_population_low", "est_population_high",
+                   "est_population_text", "est_away_text",
                    "week_label", "period_label", "index_label", "away_label", "residents_label",
                    "population_label", "census_label")
     year = alt.param(name="year", value=df["fy"].max())
     week = alt.param(name="week", value=1)
     return alt.vconcat(explorer_tiles(df, t), explorer_population(df, t), explorer_strip(t), spacing=22) \
-        .resolve_scale(color="independent").add_params(year, week)
+        .resolve_scale(color="independent", fill="independent").add_params(year, week)
 
 
 def explorer_controls() -> str:
@@ -1409,7 +1458,11 @@ def explorer_table() -> pl.DataFrame:
         pl.col("week_start").alias("Week of"), pl.col("academic_year").alias("Academic year"),
         pl.col("presence_index").round(2).alias(INDEX),
         pl.col("min_students_away").alias("Fewest resident students away"),
+        pl.col("est_students_away_low").alias("Students away, low estimate"),
+        pl.col("est_students_away_high").alias("Students away, high estimate"),
         pl.col("max_students_away").alias("Most resident students away"),
+        pl.col("est_population_low").alias("Estimated population, low"),
+        pl.col("est_population_high").alias("Estimated population, high"),
         pl.col("min_effective_population").alias("Lowest possible population"),
         pl.col("max_effective_population").alias("Highest possible population"),
         pl.col("census_population").alias("Census population"),
@@ -1535,13 +1588,14 @@ SECTION_B = {
         },
         {
             "name": "b7_population_bounds",
-            "title": "Resident population and how far it could fall when students leave",
-            "question": "How large could the seasonal swing be, at least and at most?",
-            "notes": ["A range, not an estimate: the blue line is the Census resident population, which already "
-                      "includes students living here during the school year. The upper line takes away only "
-                      "students in university housing whose residence halls are closed; the lower line takes away "
-                      "every resident college student not living with their parents whose school is out of "
-                      "session. How many actually leave will be measured from travel records.",
+            "title": "Resident population when students leave: possible range and estimate",
+            "question": "How large is the seasonal swing?",
+            "notes": ["The blue line is the Census resident population, which already includes students living "
+                      "here during the school year. The light band is the possible range: the upper line takes away "
+                      "only students in university housing whose residence halls are closed; the lower line takes "
+                      "away every resident college student not living with their parents whose school is out of "
+                      "session.",
+                      estimate_note,
                       away_note,
                       dorm_bound_note,
                       housing_note,
@@ -1655,13 +1709,13 @@ SECTION_E = {
         {
             "name": "e15_year_explorer",
             "title": "Explore a year, week by week",
-            "question": "How does the possible population change as the academic year goes by?",
+            "question": "How does the population change as the academic year goes by?",
             "notes": ["Choose an academic year and move the week slider, or press Play; clicking a week in either "
                       "chart also selects it. The tiles describe the selected week.",
-                      "A range, not an estimate: the upper line takes away only students in university housing "
-                      "whose residence halls are closed; the lower line takes away every resident college student "
-                      "not living with their parents whose school is out of session. How many actually leave will "
-                      "be measured from travel records.",
+                      "The light band is the possible range: the upper line takes away only students in university "
+                      "housing whose residence halls are closed; the lower line takes away every resident college "
+                      "student not living with their parents whose school is out of session.",
+                      estimate_note,
                       explorer_calendar_note,
                       explorer_note],
             "controls": explorer_controls, "chart": explorer_chart, "table": explorer_table,
