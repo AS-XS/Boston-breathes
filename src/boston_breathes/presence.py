@@ -164,15 +164,26 @@ def add_covid_policy(per_inst: pl.DataFrame, policy: pl.DataFrame) -> pl.DataFra
     )
 
 
+def per_institution(weeks: pl.DataFrame, enrollment: pl.DataFrame, academic_weekly: pl.DataFrame,
+                    covid_policy: pl.DataFrame) -> pl.DataFrame:
+    """Each institution's enrollment and share of the week in session and on summer break."""
+    return add_covid_policy(
+        apply_covid(session_share(enrollment_by_week(weeks, enrollment), academic_weekly)), covid_policy)
+
+
 def build(
     weeks: pl.DataFrame,
     enrollment: pl.DataFrame,
     academic_weekly: pl.DataFrame,
     covid_policy: pl.DataFrame,
 ) -> tuple[pl.DataFrame, pl.DataFrame]:
-    per_inst = add_covid_policy(
-        apply_covid(session_share(enrollment_by_week(weeks, enrollment), academic_weekly)), covid_policy
-    ).with_columns((pl.col("in_person") * pl.col("session_share")).alias("students_in_session"))
+    return aggregate(per_institution(weeks, enrollment, academic_weekly, covid_policy))
+
+
+def aggregate(per_inst: pl.DataFrame) -> tuple[pl.DataFrame, pl.DataFrame]:
+    """The weekly index from the institutions' shares in session (also used by population_scenarios.py, which
+    changes them)."""
+    per_inst = per_inst.with_columns((pl.col("in_person") * pl.col("session_share")).alias("students_in_session"))
     remote_year = covid_term(pl.col("week_start")).is_not_null()
     weekly = (
         per_inst.group_by("week_start").agg(

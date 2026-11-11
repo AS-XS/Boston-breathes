@@ -1,0 +1,6 @@
+scenario,average_population,lowest_population,lowest_population_week,most_students_away,most_away_february_april,average_away_september_december,average_change_from_baseline,largest_fall_from_baseline,largest_rise_from_baseline,weeks_changed
+baseline,1779571,1674320,2025-08-04,186079,69161,27624,0,0,0,0
+10% fewer students,1769047,1674321,2025-08-04,167470,62245,24861,-10525,-18608,1,52
+10% more students,1790096,1674318,2025-08-04,204689,76078,30386,10524,-2,18608,52
+spring breaks aligned,1779572,1674320,2025-08-04,186079,176400,27624,0,-107239,59405,9
+remote fall term,1762502,1674320,2025-08-04,186079,69161,79640,-17069,-60409,0,17

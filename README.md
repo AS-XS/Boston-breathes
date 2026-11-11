@@ -100,6 +100,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
    * Models of weekly travel, tested on months they were not fitted on: the best model of the near-campus share of Bluebikes trips explains 91% of its variation (typical error 6%, against 22% for guessing the average). For Bluebikes and MBTA, near campuses and in total, the best model includes the index. For Bluebikes and total MBTA entries it lowers the error by 0.7–1.9% once a model knows the typical week of the year, and by 6.7–7.9% against a smooth seasonal curve, because students leave at almost the same time every year; for the MBTA near-campus share it adds little or nothing ([Model comparison](#model-comparison-goal-2)).
    * Comparing campuses in the same week, which removes weather, season, holidays and visitors: Bluebikes trips at a campus are 21% higher when its own university is in session (14% with every campus on assumed calendars), and subway entries at its stations 11% (7%). Other universities' calendars give at most 2–6%. The effect is largest at residential campuses (Northeastern +46%, MIT +34%) and absent downtown and at graduate and health-professions schools ([Pooled campus model](#pooled-campus-model)).
 4. **How many actually leave (population model).** On weekdays, subway stations with more student riders lose more entries whenever students are out of session; on weekends, when there are no classes, only when students have left. Each version of who leaves was fitted on earlier years and scored on later ones. The version in which every student out of session not living with their parents leaves predicted each validation year best (18–24% better than nobody leaving, against 8–13% when only residents of closed halls leave) and the untouched test year, January–September 2026, 20% better; fitted shares (summer 0.90, 95% interval 0.71–1.11; breaks 0.74, 0.42–1.13) are consistent with it and give the band. Averaged over 2019, about 82,000 resident college students were away in a given week (4.5% of residents) (figure B7, dark band; [Population model](#population-model)).
+5. **What if (scenarios).** Recomputing 2025–26 with one input changed: 10% fewer students lowers the term-time population by about 19,000 but leaves the summer low unchanged; if every spring break fell in the same week, about 176,000 students would be away that week, nearly a summer dip, instead of 60,000–69,000 in each of three weeks; a remote fall term like 2020's would keep about 60,000 students away in every fall week ([Scenarios](#scenarios)).
 
 ### Limits
 
@@ -151,7 +152,7 @@ make test       # run the tests
 | Command | What it does | Needs | Time |
 |---|---|---|---|
 | `make data` | Downloads every source and writes the processed tables to `data/processed/` | Internet; about 2 GB on the first run (1.3 GB of Bluebikes trip files, about 0.5 GB of Census microdata) | Long on the first run; later runs reuse the downloads and skip Bluebikes months already processed |
-| `make analysis` | The evaluation, the travel models (model comparison and pooled campus model) and the population model | `data/processed/` only | About 4 minutes, mostly the gradient-boosted trees |
+| `make analysis` | The evaluation, the travel models (model comparison and pooled campus model), the population model and its scenarios | `data/processed/` only | About 4 minutes, mostly the gradient-boosted trees |
 | `make figures` | The PNG images and HTML pages in `figures/` | `data/processed/`; downloads the chart libraries and town boundaries once | About a minute |
 | `make test` | The tests in `tests/` | `data/processed/`; town boundaries (downloaded once) | Under a minute |
 
@@ -272,6 +273,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect; `model_coefficients.csv` (with the combined effect of warming from 0 to 20 °C), `model_feature_importance.csv`: what each input does (see [The models in detail](#the-models-in-detail)) |
 | 19. Pooled campus model | Steps 8, 10, 12, and 14 | Done | `campus_panel.csv`: travel at each campus against its own university's calendar (all universities with assumed calendars, and verified calendars only), by university, with a placebo |
 | 20. Population model | Steps 12, 14, and 15 | Done | `population_model_forward.csv`, `population_model_comparison.csv`, `population_model_shares.csv`, `population_estimate.csv`: versions of who leaves scored on later years (validation 2023–2025, test 2026) and on months within a period, the fitted shares of students out of session who leave, and the weekly population with a 95% interval |
+| 21. Scenarios | Step 20 | Done | `population_scenarios.csv`, `population_scenarios_summary.csv`: the 2025–26 population with 10% fewer or more students, aligned spring breaks, or a remote fall term |
 
 ### Processing decisions so far
 
@@ -537,6 +539,27 @@ By university, all universities with assumed calendars (95% intervals; "verified
   * Students who stay keep their weekend travel, and those who leave stop it; subway riders stand for all resident college students; the shares are the same every year.
   * Only resident college students are counted; visitors, commuters and people who arrive for the summer, such as interns subletting student apartments, are not.
 
+#### Scenarios
+
+* **What a scenario is.** A forecast is the best guess for a year with the inputs we expect; a scenario is a "what if". One input of the population model is changed, the fitted model is kept, and the weekly population is recomputed through the same steps as the estimate: the Student Presence Index, the range of students away, and the population model's estimate and band (`population_scenarios.py`). It shows how much the population would change if that input changed, not that it will, and it assumes students behave as in the years the model was fitted on. All scenarios use the academic year 2025–26 (the weeks of August 4, 2025 to July 27, 2026); the baseline reproduces `population_estimate.csv` for those weeks exactly.
+* **The scenarios.**
+  * *10% fewer or 10% more students*: resident college students not living with their parents (for example, international students) scaled by 0.9 or 1.1. The Census population moves with them, since it counts students where they live during the school year.
+  * *Spring breaks aligned*: each institution's spring break (its run of weeks out of session from February to April, around its fullest week) moved to the week in which the most students have theirs, the week of March 2, 2026. Other days off stay where they are.
+  * *Remote fall term*: the eight institutions that taught fall 2020 remotely (Berklee, Bunker Hill Community College, Emmanuel, Harvard, Lesley, MIT, Simmons and UMass Boston; 68,243 in-person students, 32%) teach fall 2025 remotely, so their students are out of session from the start of term to December.
+
+| Scenario (2025–26) | Average population | Most students away in a week | Most away, February–April | Average away, September–December | Average change from baseline | Largest weekly change |
+|---|---|---|---|---|---|---|
+| Baseline | 1,779,571 | 186,079 | 69,161 | 27,624 | | |
+| 10% fewer students | 1,769,047 | 167,470 | 62,245 | 24,861 | −10,525 | −18,608 |
+| 10% more students | 1,790,096 | 204,689 | 76,078 | 30,386 | +10,524 | +18,608 |
+| Spring breaks aligned | 1,779,572 | 186,079 | 176,400 | 27,624 | 0 | −107,239 and +59,405 |
+| Remote fall term | 1,762,502 | 186,079 | 69,161 | 79,640 | −17,069 | −60,409 |
+
+* **Enrollment moves the term, not the summer low.** With 10% fewer students the population is 18,608 lower in every week in session and 10,525 lower on average, but the lowest week (summer, 1,674,320) does not change: in summer every student not living with their parents is away in the estimate anyway, so the summer low is the population without them.
+* **Aligned spring breaks make one deep dip instead of three shallow ones.** In the week of March 2, 176,400 students would be away (95% interval 86,645–176,400), almost as many as at the height of summer (186,079), and the population would be 107,239 lower than it is that week; in the weeks the breaks move from, it is up to 59,405 higher. The time away over the spring does not change.
+* **A remote fall term empties part of every fall week.** 60,409 students (95% interval 29,517–60,409), the remote institutions' students not living with their parents, would be away in each regular fall week, lowering the year's average population by 17,069.
+* **Limits.** Each scenario changes one input and keeps everything else, including how students behave: if every university broke the same week or a term went remote, more or fewer students might stay than in the years the model learned from. In a single long break or a remote term the band's lower end matters more, since it uses the share that leaves on breaks (as few as 42%). Only resident college students are modeled.
+
 #### Presence evaluation
 
 `make evaluate` checks the index against observed activity without fitting a model (`presence_evaluation.csv`):
@@ -592,7 +615,7 @@ A second modeling approach, such as a tree-based model, may also be explored.
 
 Because the data are time-based, training and testing will use chronological rather than random splits.
 
-Done so far: three model families, two linear and one tree-based (gradient boosting), each with and without the index (see [Model comparison](#model-comparison-goal-2)). The final goal, though, is the population, not travel: the population model ([Population model](#population-model)) predicts the weekly resident population and uses travel only as evidence of it, while the travel models show that travel follows the students. Instead of training on early years and testing on later ones, each month is held out in turn, because travel levels shift between years (network growth, COVID-19) far more than with the students; the blocks are contiguous months, not random weeks.
+Done so far: three model families, two linear and one tree-based (gradient boosting), each with and without the index (see [Model comparison](#model-comparison-goal-2)). The final goal, though, is the population, not travel: the population model ([Population model](#population-model)) predicts the weekly resident population and uses travel only as evidence of it, while the travel models show that travel follows the students. Scenarios recompute 2025–26 with one input changed ([Scenarios](#scenarios)). Instead of training on early years and testing on later ones, each month is held out in turn, because travel levels shift between years (network growth, COVID-19) far more than with the students; the blocks are contiguous months, not random weeks.
 
 ### The models in detail
 

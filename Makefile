@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model figures test clean-interim
+.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model scenarios figures test clean-interim
 
 # Everything, from the downloads to the figures.
 all: data analysis figures
@@ -11,8 +11,8 @@ install:
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-# Analysis of the processed tables (no downloads): evaluation, travel models and the population model.
-analysis: evaluate models campus-panel population-model
+# Analysis of the processed tables (no downloads): evaluation, travel models, the population model and scenarios.
+analysis: evaluate models campus-panel population-model scenarios
 
 data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table
 
@@ -108,6 +108,10 @@ campus-panel:
 # Population model: the weekly population, with weekday and weekend subway travel as evidence (after data).
 population-model:
 	$(RUN) boston_breathes.population_model
+
+# Scenarios: the 2025-26 population if one input were different (needs population-model's inputs).
+scenarios:
+	$(RUN) boston_breathes.population_scenarios
 
 # Figures as PNG images and interactive HTML pages in figures/ (after data).
 figures:
