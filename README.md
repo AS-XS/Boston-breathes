@@ -155,6 +155,7 @@ make test       # run the tests
 | `make test` | The tests in `tests/` | `data/processed/`; town boundaries (downloaded once) | Under a minute |
 
 * The processed tables and figures are committed, so `make analysis`, `make figures` and `make test` work on a fresh clone without running `make data`.
+* GitHub Actions runs `make install` and `make test` on Python 3.11 on every push and pull request (`.github/workflows/tests.yml`).
 * Every step can also be run on its own (`make bluebikes`, `make presence`, `make models`, ...); the Makefile lists them in order, with what each one needs.
 * Downloads are kept in `data/raw/` and intermediate files in `data/interim/`; neither is committed. `make clean-interim` removes the intermediate files.
 * `make data` picks up whatever the sources have published since, such as new Bluebikes months or a newer MBTA file, so a full rebuild can change the numbers slightly. The numbers in this README are those of the committed tables.
