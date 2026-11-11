@@ -1,0 +1,51 @@
+signals,weather_model,parameter,estimate,low,high,signal_weeks
+subway,none,share_summer,0.8957,0.7124,1.1124,418
+subway,none,share_breaks,0.7351,0.4032,1.1403,418
+subway,none,k_subway,-6.7467,-7.9107,-5.5544,418
+bikes,none,share_summer,0.7863,0.6736,0.8952,416
+bikes,none,share_breaks,1.0217,0.6553,1.3767,416
+bikes,none,k_bikes,-0.2114,-0.247,-0.1805,416
+requests,none,share_summer,8.4637,-86.4406,10929.3523,418
+requests,none,share_breaks,-34.9043,-7949.916,27060.763,418
+requests,none,k_requests,0.0044,-0.046,0.0509,418
+subway and bikes,none,share_summer,0.8306,0.7223,0.9439,834
+subway and bikes,none,share_breaks,0.9056,0.6127,1.2015,834
+subway and bikes,none,k_subway,-6.7924,-7.8524,-5.7667,834
+subway and bikes,none,k_bikes,-0.2105,-0.2463,-0.179,834
+all three,none,share_summer,0.8308,0.7254,0.9549,1252
+all three,none,share_breaks,0.9048,0.6298,1.1699,1252
+all three,none,k_subway,-6.7928,-7.8562,-5.7587,1252
+all three,none,k_bikes,-0.2105,-0.2469,-0.179,1252
+all three,none,k_requests,0.0035,-0.0501,0.055,1252
+subway and bikes,linear regression,share_summer,0.8457,0.6887,1.042,834
+subway and bikes,linear regression,share_breaks,0.9418,0.6894,1.2933,834
+subway and bikes,linear regression,k_subway,-6.6998,-8.2849,-4.8612,834
+subway and bikes,linear regression,k_bikes,-0.1639,-0.1906,-0.135,834
+subway and bikes,ridge,share_summer,0.8322,0.6702,1.0109,834
+subway and bikes,ridge,share_breaks,0.9272,0.6483,1.2857,834
+subway and bikes,ridge,k_subway,-6.7402,-8.3661,-5.0505,834
+subway and bikes,ridge,k_bikes,-0.1656,-0.1928,-0.1373,834
+subway and bikes,lasso,share_summer,0.8444,0.6819,1.0245,834
+subway and bikes,lasso,share_breaks,0.9517,0.7059,1.3244,834
+subway and bikes,lasso,k_subway,-6.6606,-8.1871,-4.8767,834
+subway and bikes,lasso,k_bikes,-0.1652,-0.1935,-0.1375,834
+subway and bikes,support vector machine,share_summer,0.7337,0.5727,0.949,834
+subway and bikes,support vector machine,share_breaks,0.8858,0.6032,1.2528,834
+subway and bikes,support vector machine,k_subway,-6.5344,-8.1595,-4.7118,834
+subway and bikes,support vector machine,k_bikes,-0.1853,-0.2189,-0.1529,834
+subway and bikes,k nearest neighbours,share_summer,0.8021,0.6249,0.982,834
+subway and bikes,k nearest neighbours,share_breaks,1.007,0.7012,1.37,834
+subway and bikes,k nearest neighbours,k_subway,-6.9912,-8.4706,-5.627,834
+subway and bikes,k nearest neighbours,k_bikes,-0.1745,-0.202,-0.1478,834
+subway and bikes,random forest,share_summer,0.7635,0.5568,0.9326,834
+subway and bikes,random forest,share_breaks,1.0361,0.7777,1.331,834
+subway and bikes,random forest,k_subway,-7.4476,-8.7899,-6.0024,834
+subway and bikes,random forest,k_bikes,-0.2128,-0.2628,-0.1767,834
+subway and bikes,gradient boosting,share_summer,0.6989,0.5009,0.899,834
+subway and bikes,gradient boosting,share_breaks,0.9249,0.7568,1.1228,834
+subway and bikes,gradient boosting,k_subway,-7.9631,-9.2945,-6.6633,834
+subway and bikes,gradient boosting,k_bikes,-0.2171,-0.2616,-0.1769,834
+subway and bikes,neural network,share_summer,0.8338,0.6727,1.0404,834
+subway and bikes,neural network,share_breaks,0.9445,0.6827,1.2698,834
+subway and bikes,neural network,k_subway,-6.9541,-8.534,-5.1721,834
+subway and bikes,neural network,k_bikes,-0.1713,-0.1975,-0.143,834

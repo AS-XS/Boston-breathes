@@ -102,11 +102,14 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 4. **How many actually leave (population model).** On weekdays, subway stations with more student riders lose more entries whenever students are out of session; on weekends, when there are no classes, only when students have left. Each version of who leaves was fitted on earlier years and scored on later ones. The version in which every student out of session not living with their parents leaves predicted each validation year best (18–24% better than nobody leaving, against 8–13% when only residents of closed halls leave) and the untouched test year, January–September 2026, 20% better; fitted shares (summer 0.90, 95% interval 0.71–1.11; breaks 0.74, 0.42–1.13) are consistent with it and give the band. Averaged over 2019, about 82,000 resident college students were away in a given week (4.5% of residents) (figure B7, dark band; [Population model](#population-model)).
 5. **What if (scenarios).** Recomputing 2025–26 with one input changed: 10% fewer students lowers the term-time population by about 19,000 but leaves the summer low unchanged; if every spring break fell in the same week, about 176,000 students would be away that week, nearly a summer dip, instead of 60,000–69,000 in each of three weeks; a remote fall term like 2020's would keep about 60,000 students away in every fall week ([Scenarios](#scenarios)).
 6. **Forecast for 2026–27.** With the published calendars, 2026–27 looks like 2025–26 except that spring breaks bunch more: about 99,000 students away in the busiest week of March 2027, against 69,000 in 2026. The forecast holds enrollment and the Census at their latest values, which adds roughly ±1.5% to the population level ([Forecast](#forecast)).
+7. **Other models and signals.** Eight families of models (from linear regression to random forest and a neural network) and six feature sets were tried on each signal for years they had not seen: simple linear models did as well as any, the student inputs explained 36–47% of the weekly variation, weather helped for bikes but not the subway, and 311 requests carried no student signal. Fitted together, the subway and Bluebikes put the summer share away at 0.83 (95% interval 0.72–0.94), the population model's version. On signals made up from a known truth, a single summer or break week is typically off by 12,000–18,000 students, and the intervals are too narrow ([Exploring models and signals](#exploring-models-and-signals)).
 
 ### Limits
 
 * The estimate rests on an assumption these data cannot check: students are the same proportion of a station's riders on weekends as on weekdays. If they are a larger one, or if students who stay also stop weekend trips to campus, the shares away are overstated and the summer figure is an upper bound. With riders aged 18–25 in 2016–2019 the share comes out above 1, which shows the assumption can fail; with trips between home and school, which include school children, the summer share is about half.
 * The size is consistent with travel but not pinned down: in years outside the fit, weekend travel moves 88–95% as much as the estimate implies (intervals of about ±30–50%), and Bluebikes puts the summer share at 0.79, a little below the estimate's 0.83, so about 95% rather than all of the students not living with their parents may leave.
+* The bands are narrower than they should be: in a test with a known truth, the 95% intervals contained the truth 70–88% of the time (82% on average), so they are closer to 80% intervals.
+* There is no weekly public data for driving or ride-hailing, and Boston's 311 requests carry no student signal, so the evidence is the subway and Bluebikes.
 * Travel pins down the shares over many weeks, not the population of a single week: read week by week, it misses the model by about ±112,000 students.
 * The test year is one part-year, and the result rests on one survey measure (Semester Pass): with the other two, 2026 shows little or no gain.
 * Only resident college students leaving are counted; visitors, commuters, and people who arrive for the summer (such as interns subletting student apartments) are outside the scope.
@@ -154,7 +157,7 @@ make test       # run the tests
 | Command | What it does | Needs | Time |
 |---|---|---|---|
 | `make data` | Downloads every source and writes the processed tables to `data/processed/` | Internet; about 2 GB on the first run (1.3 GB of Bluebikes trip files, about 0.5 GB of Census microdata) | Long on the first run; later runs reuse the downloads and skip Bluebikes months already processed |
-| `make analysis` | The evaluation, the travel models (model comparison and pooled campus model), the population model, its scenarios and the 2026–27 forecast | `data/processed/` only | About 4 minutes, mostly the gradient-boosted trees |
+| `make analysis` | The evaluation, the travel models (model comparison and pooled campus model), the population model, its scenarios and the 2026–27 forecast, the exploration of model families and signals, the joint model and the accuracy test | `data/processed/` only | About 20 minutes, mostly the exploration of model families (12 minutes) and the gradient-boosted trees |
 | `make checks` | The population model's checks: COVID-19, size, and Bluebikes | `data/processed/`, and the Bluebikes station-day files that `make bluebikes` keeps in `data/interim/` | Under a minute |
 | `make figures` | The PNG images and HTML pages in `figures/` | `data/processed/`; downloads the chart libraries and town boundaries once | About a minute |
 | `make test` | The tests in `tests/` | `data/processed/`; town boundaries (downloaded once) | Under a minute |
@@ -218,6 +221,12 @@ Gated station entries from the **MBTA / MassDOT open data portal** will be used 
 
 Road traffic counts from **MassDOT** and rideshare trip data published by the **Commonwealth of Massachusetts** will be explored as additional signals. They will be used only if they are available at a weekly or monthly level for the study area.
 
+Neither is: rideshare trips are published as yearly totals per town, and MassDOT traffic counts mostly as yearly averages, so there is no weekly signal of driving or ride-hailing for the study area. Boston's street counts cover a few days a year (see [MBTA, street counts, and campus zones](#mbta-street-counts-and-campus-zones)).
+
+### Boston 311 Service Requests
+
+The City of Boston publishes every 311 service request (data.boston.gov, one table per year) with its date, location and source. Requests that residents make (by phone, app, self-service or Twitter, not those logged by City staff) show that people are there whatever way they travel, so they were tried as a signal of presence that does not depend on travel ([Exploring models and signals](#exploring-models-and-signals)). In 2026 the City moved to a new 311 system, published separately with other fields and not used.
+
 ### Weather
 
 Historical weather data for the Boston area will be used to control for variables such as temperature, rain, and snow, which strongly affect bicycle use and travel in general.
@@ -279,6 +288,11 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 21. Scenarios | Step 20 | Done | `population_scenarios.csv`, `population_scenarios_summary.csv`: the 2025–26 population with 10% fewer or more students, aligned spring breaks, or a remote fall term |
 | 22. Checks | Steps 2, 20 | Done | `population_checks.csv`, `population_checks_size.csv`, `population_checks_bluebikes.csv`: the COVID-19 natural experiment, the size of the absence in years outside the fit, and the model fitted on Bluebikes |
 | 23. Forecast | Steps 10, 14, 15, and 20 | Done | `population_forecast.csv`, `population_forecast_inputs.csv`: the weekly population of the academic year 2026–27 from the published calendars, with its 95% band, and how much the held inputs used to change each year |
+| 24. Boston 311 requests | City of Boston 311 service requests (2015 onward) | Done | `boston_311_daily.csv`: resident requests per day and campus zone |
+| 25. Presence signals | Steps 2, 4, 12, 14, 15, and 24 | Done | `presence_signals_weekly.csv`: the weekly subway, Bluebikes and 311 signals on weekdays and weekends, with student, weather and calendar features |
+| 26. Model families | Step 25 | Done | `travel_model_accuracy.csv`: eight families of models and six feature sets predicting each signal for later years |
+| 27. Joint population model | Step 25 | Done | `joint_population_shares.csv`: the shares away fitted on several signals at once, with weather removed by each family |
+| 28. Accuracy test | Step 25 | Done | `population_accuracy.csv`: the method's error in students away, and its intervals' coverage, on signals made from a known truth |
 
 ### Processing decisions so far
 
@@ -596,6 +610,56 @@ By university, all universities with assumed calendars (95% intervals; "verified
   * Bluebikes also prefers the versions in which most students leave to only closed residence halls in every column (by 4 points on the 2026 test, 11–19 points elsewhere), but it does not single out one of them: the finer fitted versions win 2023 and 2024, and every student not living with parents wins 2025.
   * Its fitted shares, summer 0.79 (0.67–0.90) and breaks 1.02 (0.59–1.39), overlap the subway's (0.90 and 0.74). The summer share is a little below the 0.83 of every student not living with their parents, as in the size check: about 95% of them leave rather than all.
   * On 2016–2019 data Bluebikes gives a break share above 2, which is impossible: the network was too thin around campuses then ([Presence evaluation](#presence-evaluation)), so those years only serve as the long-horizon training data above.
+
+#### Exploring models and signals
+
+* **Why.** The population model reads the population from subway travel with one simple form: a straight line in the share of students away. This step tests that choice against other kinds of models, other features (weather, holidays) and other signals, alone and together (`presence_signals.py`, `travel_models.py`, `joint_population.py`, `population_accuracy.py`).
+* **Signals** (`presence_signals_weekly.csv`), each week, for weekdays and weekends apart: the subway (the Semester Pass slope of the population model), Bluebikes (member trips at campus-zone against away-zone stations), and Boston 311 service requests from residents near campuses against those away from them (`boston_311.py`), which show people at home however they travel. **Features**: the student inputs; weather on weekdays and on weekend days apart (mean temperature, and the shares of days with rain, heavy rain, snow and heat); holidays and the Christmas–New Year weeks; all as deviations from their mean over the same year, like the signals. No weekly public data exist for driving or ride-hailing in the study area (see [Traffic and Rideshare](#traffic-and-rideshare)).
+* **Eight model families and six feature sets** predict each signal for years they were not fitted on: 2023 from 2022, 2024 from 2022–2023 and 2025 from 2022–2024 (validation), and January–September 2026 from 2022–2025 (test) (`travel_model_accuracy.csv`). The support vector machine, nearest neighbours and the neural network (a multi-layer perceptron with hidden layers of 32 and 16 units) have their settings chosen by cross-validation on the training years. Share of the week-to-week variance explained (R²), averaged over the four travel signals:
+
+| Family | Weather and calendar only | Students: only closed halls leave | Students: everyone not living with parents | Students and weather | Students and weather, 2026 test |
+|---|---|---|---|---|---|
+| Linear regression | 0.21 | 0.43 | **0.47** | 0.46 | 0.46 |
+| Ridge | 0.21 | 0.43 | **0.47** | 0.45 | 0.47 |
+| Lasso | 0.21 | 0.42 | 0.46 | **0.47** | 0.47 |
+| Neural network | 0.22 | 0.43 | 0.46 | 0.43 | **0.50** |
+| Support vector machine | 0.19 | 0.43 | 0.44 | 0.37 | 0.43 |
+| k nearest neighbours | 0.17 | 0.39 | 0.41 | 0.37 | 0.46 |
+| Random forest | 0.15 | 0.40 | 0.41 | 0.45 | 0.48 |
+| Gradient boosting | −0.13 | 0.37 | 0.36 | 0.35 | 0.37 |
+
+  * **Simple models do as well as any.** On the validation years, linear regression, ridge and lasso match or beat the neural network and the support vector machine, and random forest, gradient boosting and nearest neighbours do worse: with 50 to 150 weeks to learn from and a nearly straight-line relationship, flexibility mostly adds noise. On the 2026 test the flexible models with weather do slightly better (neural network 0.50, random forest 0.48, against 0.46–0.47), within the spread between years.
+  * **The students carry the signal.** Weather and calendar alone explain about a fifth of the variance (partly because summer is warm), the student inputs 0.36–0.47, and every student not living with their parents leaving beats only closed residence halls in every family but gradient boosting (0.36 against 0.37).
+  * **Weather matters for bikes, not for the subway.** With the best family for each, the subway's weekday signal is explained 0.48 by the students alone and 0.43 with weather added, its weekend signal 0.34 and 0.27; Bluebikes' weekday signal 0.62 and 0.70, its weekend signal 0.43 and 0.47. Comparing stations within the same week already removes the weather all stations share; what is left matters for bikes, whose riders near campuses respond to the weather differently from others.
+  * **311 requests carry no student signal**: R² about 0 with every family and feature set (mean −0.02). Requests near campuses follow other things, such as moves, snow and street cleaning.
+  * The 95% intervals (each prediction plus or minus the 95th percentile of cross-validated errors on the training years) contained 90% of the validation weeks and 97% of the test weeks.
+* **One population, several signals** (`joint_population_shares.csv`): the shares away fitted jointly on several signals, each with its own scale, after each family of models has removed what weather and calendar predict (fitted on the other months of the data, so that it cannot absorb the students' part):
+
+| Signals | Weather removed by | Summer share away (95% interval) | Break share away (95% interval) |
+|---|---|---|---|
+| Subway alone | nothing | 0.90 (0.71–1.11) | 0.74 (0.40–1.14) |
+| Bluebikes alone | nothing | 0.79 (0.67–0.90) | 1.02 (0.66–1.38) |
+| **Subway and Bluebikes** | nothing | **0.83 (0.72–0.94)** | **0.91 (0.61–1.20)** |
+| Subway, Bluebikes and 311 | nothing | 0.83 (0.73–0.95) | 0.90 (0.63–1.17) |
+| Subway and Bluebikes | linear regression, ridge, lasso, neural network | 0.83–0.85 | 0.93–0.95 |
+| Subway and Bluebikes | nearest neighbours, random forest | 0.80, 0.76 | 1.01, 1.04 |
+| Subway and Bluebikes | support vector machine, gradient boosting | 0.73, 0.70 | 0.89, 0.92 |
+
+  * Together, the subway and Bluebikes narrow the shares (summer 0.72–0.94, breaks 0.61–1.20, against 0.71–1.11 and 0.40–1.14 for the subway alone). The joint summer share, 0.83, is that of every student not living with their parents leaving, the version the population model chose on its own.
+  * Every way of removing the weather gives a summer share inside the others' intervals. The tree models and the support vector machine give lower ones (0.70–0.76), probably because they let temperature take part of the summer's timing.
+* **Accuracy in people: a test with a known truth** (`population_accuracy.csv`). Nobody counts the population each week, so the method is tested on signals made up from shares chosen in advance, with the fitted scales and the noise the real fits leave (shifted in time, which keeps its week-to-week pattern). The joint model is fitted on them as on the real ones, 200 times for each truth, and its shares are turned into students away in the weeks of 2019:
+
+| True shares away (summer, breaks) | Estimated on average | Typical error, mid-summer week (students) | 95% of errors within | Typical error, Thanksgiving week | 95% interval contains the true share (summer, breaks) |
+|---|---|---|---|---|---|
+| 0.50, 0.50 | 0.50, 0.52 | 13,109 | −25,392 to +30,727 | 17,743 | 80%, 85% |
+| 0.70, 0.60 | 0.71, 0.60 | 12,470 | −26,384 to +28,946 | 16,718 | 88%, 85% |
+| 0.90, 0.74 | 0.90, 0.75 | 1,254 | −12,603 to 0 | 13,819 | 85%, 82% |
+| 1.00, 1.00 | 1.01, 1.00 | 0 | 0 | 1,205 | 82%, 70% |
+| 0.70, 0.60, with students 20% more of weekend riders than the model assumes | 0.85, 0.74 | 25,049 | +6,014 to +30,030 | 21,469 | 38%, 68% |
+
+  * **When its assumptions hold, the method is unbiased**: on average it finds the true shares. A single summer or break week is typically off by 12,000–18,000 students (out of about 1.84 million residents); near the upper end of the range the error is smaller, because no estimate can exceed every student not living with their parents. Averaged over all the weeks of 2019, most of which have nobody out of session, the typical error is at most about 7,000 students.
+  * **The 95% intervals are too narrow**: they contain the true share 70–88% of the time (82% on average), not 95%, so the bands of the estimate are closer to 80% intervals.
+  * **If the key assumption fails, the estimate is too high.** If students make up a 20% larger share of weekend riders than of weekday riders, the method finds 0.85 and 0.74 instead of 0.70 and 0.60: about 25,000 more students away in mid-summer than the truth.
 
 #### Scenarios
 

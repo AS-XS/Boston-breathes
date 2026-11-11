@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model scenarios forecast checks figures test clean-interim
+.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model scenarios forecast checks boston-311 presence-signals travel-models joint-population population-accuracy figures test clean-interim
 
 # Everything, from the downloads to the figures.
 all: data analysis figures
@@ -12,9 +12,9 @@ install:
 	$(PYTHON) -m pip install -r requirements.txt
 
 # Analysis of the processed tables (no downloads): evaluation, travel models, the population model, scenarios and forecast.
-analysis: evaluate models campus-panel population-model scenarios forecast
+analysis: evaluate models campus-panel population-model scenarios forecast travel-models joint-population population-accuracy
 
-data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table
+data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table boston-311 presence-signals
 
 weeks:
 	$(RUN) boston_breathes.weeks
@@ -112,6 +112,26 @@ population-model:
 # Scenarios: the 2025-26 population if one input were different (needs population-model's inputs).
 scenarios:
 	$(RUN) boston_breathes.population_scenarios
+
+# Boston 311 requests from residents, by day and campus zone (downloads).
+boston-311:
+	$(RUN) boston_breathes.boston_311
+
+# Weekly presence signals (subway, Bluebikes, 311) and features (needs bluebikes' station-day files in data/interim).
+presence-signals:
+	$(RUN) boston_breathes.presence_signals
+
+# Eight model families and six feature sets on each signal, for later years (about 12 minutes).
+travel-models:
+	$(RUN) boston_breathes.travel_models
+
+# Shares away fitted on several signals at once, weather removed by each family.
+joint-population:
+	$(RUN) boston_breathes.joint_population
+
+# Accuracy test with a known truth.
+population-accuracy:
+	$(RUN) boston_breathes.population_accuracy
 
 # Forecast: the population model on the academic year 2026-27, with the published calendars.
 forecast:
