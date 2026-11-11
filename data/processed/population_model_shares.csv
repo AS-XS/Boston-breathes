@@ -1,0 +1,61 @@
+measure,period,weeks,version,parameter,estimate,low,high
+semester_pass_share,2022-2025,209,one share away,k,-6.7488,-7.9691,-5.6284
+semester_pass_share,2022-2025,209,one share away,out,0.868,0.7065,1.0657
+semester_pass_share,2022-2025,209,summer and breaks,k,-6.7488,-7.8448,-5.5497
+semester_pass_share,2022-2025,209,summer and breaks,summer,0.8954,0.7097,1.1064
+semester_pass_share,2022-2025,209,summer and breaks,breaks,0.736,0.4208,1.1257
+semester_pass_share,2022-2025,209,each kind of break,k,-6.7488,-7.8715,-5.6326
+semester_pass_share,2022-2025,209,each kind of break,summer,0.9099,0.7203,1.1245
+semester_pass_share,2022-2025,209,each kind of break,thanksgiving,1.079,0.2047,1.9872
+semester_pass_share,2022-2025,209,each kind of break,winter,0.6571,0.2765,1.0968
+semester_pass_share,2022-2025,209,each kind of break,spring,1.1829,0.6618,1.9211
+age_18_25_share,2022-2025,209,one share away,k,-1.0962,-1.2902,-0.9019
+age_18_25_share,2022-2025,209,one share away,out,0.9349,0.7705,1.0955
+age_18_25_share,2022-2025,209,summer and breaks,k,-1.0962,-1.2911,-0.9232
+age_18_25_share,2022-2025,209,summer and breaks,summer,0.8574,0.6437,1.0481
+age_18_25_share,2022-2025,209,summer and breaks,breaks,1.3075,0.9449,1.7794
+age_18_25_share,2022-2025,209,each kind of break,k,-1.0962,-1.3061,-0.9188
+age_18_25_share,2022-2025,209,each kind of break,summer,0.8626,0.6427,1.0645
+age_18_25_share,2022-2025,209,each kind of break,thanksgiving,1.9829,0.992,2.8797
+age_18_25_share,2022-2025,209,each kind of break,winter,1.207,0.7251,1.6846
+age_18_25_share,2022-2025,209,each kind of break,spring,1.4106,0.4739,2.3097
+school_trip_share,2022-2025,209,one share away,k,-1.1134,-1.2853,-0.9606
+school_trip_share,2022-2025,209,one share away,out,0.5584,0.4447,0.6737
+school_trip_share,2022-2025,209,summer and breaks,k,-1.1134,-1.2949,-0.9378
+school_trip_share,2022-2025,209,summer and breaks,summer,0.4933,0.3484,0.635
+school_trip_share,2022-2025,209,summer and breaks,breaks,0.8713,0.5712,1.2313
+school_trip_share,2022-2025,209,each kind of break,k,-1.1134,-1.2851,-0.9397
+school_trip_share,2022-2025,209,each kind of break,summer,0.4957,0.3441,0.6421
+school_trip_share,2022-2025,209,each kind of break,thanksgiving,1.8015,0.7846,3.0197
+school_trip_share,2022-2025,209,each kind of break,winter,0.7441,0.3846,1.0363
+school_trip_share,2022-2025,209,each kind of break,spring,0.8542,-1.0535,2.1385
+semester_pass_share,2016-2019,209,one share away,k,-6.8612,-7.5344,-6.2628
+semester_pass_share,2016-2019,209,one share away,out,0.726,0.3951,0.9653
+semester_pass_share,2016-2019,209,summer and breaks,k,-6.8612,-7.5224,-6.2338
+semester_pass_share,2016-2019,209,summer and breaks,summer,0.7341,0.4604,0.9705
+semester_pass_share,2016-2019,209,summer and breaks,breaks,0.6892,0.2118,1.0959
+semester_pass_share,2016-2019,209,each kind of break,k,-6.8612,-7.5817,-6.2063
+semester_pass_share,2016-2019,209,each kind of break,summer,0.7218,0.4339,0.9636
+semester_pass_share,2016-2019,209,each kind of break,thanksgiving,1.1742,0.5448,1.6828
+semester_pass_share,2016-2019,209,each kind of break,winter,0.6572,0.1392,1.1425
+semester_pass_share,2016-2019,209,each kind of break,spring,0.2294,-0.8812,0.8841
+age_18_25_share,2016-2019,209,one share away,k,-1.2718,-1.4044,-1.1612
+age_18_25_share,2016-2019,209,one share away,out,1.2244,1.0456,1.4222
+age_18_25_share,2016-2019,209,summer and breaks,k,-1.2718,-1.3884,-1.1539
+age_18_25_share,2016-2019,209,summer and breaks,summer,1.225,1.0536,1.4203
+age_18_25_share,2016-2019,209,summer and breaks,breaks,1.2215,0.8977,1.5552
+age_18_25_share,2016-2019,209,each kind of break,k,-1.2718,-1.407,-1.1509
+age_18_25_share,2016-2019,209,each kind of break,summer,1.2217,1.0281,1.4291
+age_18_25_share,2016-2019,209,each kind of break,thanksgiving,1.4984,1.1021,1.8649
+age_18_25_share,2016-2019,209,each kind of break,winter,1.1944,0.7916,1.5591
+age_18_25_share,2016-2019,209,each kind of break,spring,1.0837,0.6372,1.6436
+school_trip_share,2016-2019,209,one share away,k,-1.2859,-1.4193,-1.1636
+school_trip_share,2016-2019,209,one share away,out,0.6993,0.519,0.8686
+school_trip_share,2016-2019,209,summer and breaks,k,-1.2859,-1.4085,-1.1621
+school_trip_share,2016-2019,209,summer and breaks,summer,0.6721,0.4723,0.8447
+school_trip_share,2016-2019,209,summer and breaks,breaks,0.8227,0.5128,1.1472
+school_trip_share,2016-2019,209,each kind of break,k,-1.2859,-1.4183,-1.1527
+school_trip_share,2016-2019,209,each kind of break,summer,0.6655,0.477,0.8601
+school_trip_share,2016-2019,209,each kind of break,thanksgiving,1.2584,0.78,1.6983
+school_trip_share,2016-2019,209,each kind of break,winter,0.7833,0.4693,1.0793
+school_trip_share,2016-2019,209,each kind of break,spring,0.5598,-0.1793,1.2218

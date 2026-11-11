@@ -1,5 +1,0 @@
-period,method,weekday,weekend,share_away,weekday_se,weekend_se
-summer,"across stations, riders aged 18-25",-1.0677,-1.0035,0.9399,0.3899,0.381
-summer,"across stations, trips between home and school",-1.1254,-0.5485,0.4874,0.2387,0.2866
-breaks,"campus stations, all universities, assumed calendars",0.0719,0.0444,0.6176,0.0121,0.016
-breaks,"campus stations, verified calendars only",0.1162,0.0174,0.1495,0.0344,0.046

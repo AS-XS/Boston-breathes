@@ -56,6 +56,7 @@ import polars as pl
 import vl_convert as vlc
 
 from boston_breathes import evaluate_presence as ev
+from boston_breathes import population_model as pm
 from boston_breathes import http
 from boston_breathes.campus import CAMPUS_M, MAJOR_MIN_STUDENTS, NEAR_M
 from boston_breathes.municipalities import MA_CRS, load_towns
@@ -531,7 +532,7 @@ INDEX, SUMMER_SHARE = "Student Presence Index", "Summer break (share of students
 CENSUS = "Census resident population"
 FLOOR = "If every student not living with parents leaves"
 CEILING = "If only students in closed residence halls leave"
-ESTIMATE = "Estimate from travel records"
+ESTIMATE = "Estimate from travel records (95% interval)"
 NO_ESTIMATE = "none (COVID-19)"
 COVID_LABELS = {"normal": "Normal", "lockdown": "COVID-19 lockdown: students away",
                 "remote_year": "COVID-19, 2020–21: remote or hybrid teaching"}
@@ -661,20 +662,23 @@ def typical_year_table() -> pl.DataFrame:
 
 
 def away_data() -> pl.DataFrame:
-    """The weekly range of students away and of the population, with the step 3 estimate inside it."""
-    estimate = read("students_away_estimate.csv").select(
-        "week_start", "est_students_away_low", "est_students_away_high", "est_population_low", "est_population_high")
-    def between(low: str, high: str) -> pl.Expr:
-        number = lambda c: pl.col(c).map_elements("{:,}".format, return_dtype=pl.Utf8)  # noqa: E731
-        return pl.concat_str(number(low), pl.lit("–"), number(high)).fill_null(NO_ESTIMATE)
+    """The weekly range of students away and of the population, with the population model's estimate and its
+    95% interval inside it."""
+    estimate = read("population_estimate.csv", infer_schema_length=None).select(
+        "week_start", *[pl.col(f"{c}{end}").alias(f"est_{c}{end}") for c in ("students_away", "population")
+                        for end in ("", "_low", "_high")])
+    def central_and_interval(c: str) -> pl.Expr:
+        number = lambda col: pl.col(col).map_elements("{:,}".format, return_dtype=pl.Utf8)  # noqa: E731
+        return pl.concat_str(number(c), pl.lit(" ("), number(f"{c}_low"), pl.lit("–"), number(f"{c}_high"),
+                             pl.lit(")")).fill_null(NO_ESTIMATE)
     return read("students_away_weekly.csv").join(estimate, on="week_start", how="left").with_columns(
         (pl.col("week_start") + pl.duration(days=7)).alias("week_end"),
-        between("est_population_low", "est_population_high").alias("est_population_text"),
-        between("est_students_away_low", "est_students_away_high").alias("est_away_text"))
+        central_and_interval("est_population").alias("est_population_text"),
+        central_and_interval("est_students_away").alias("est_away_text"))
 
 
 def estimate_band(chart: alt.Chart, t: dict, x, scale: alt.Scale, axis: alt.Axis) -> alt.Chart:
-    """The step 3 estimate of the population: a darker band inside the possible range, with its own legend.
+    """The population model's 95% interval: a darker band inside the possible range, with its own legend.
     Weeks without an estimate (the COVID-19 period) leave a gap."""
     return chart.transform_calculate(kind=json.dumps(ESTIMATE)).mark_area(opacity=0.45, clip=True).encode(
         x=x, y=alt.Y("est_population_low:Q", title=None, scale=scale, axis=axis), y2="est_population_high:Q",
@@ -682,8 +686,8 @@ def estimate_band(chart: alt.Chart, t: dict, x, scale: alt.Scale, axis: alt.Axis
                       legend=alt.Legend(symbolOpacity=0.45, symbolType="square")))
 
 
-ESTIMATE_TOOLTIP = [alt.Tooltip("est_population_text:N", title="Estimated population"),
-                    alt.Tooltip("est_away_text:N", title="Estimated students away")]
+ESTIMATE_TOOLTIP = [alt.Tooltip("est_population_text:N", title="Estimated population (95% interval)"),
+                    alt.Tooltip("est_away_text:N", title="Estimated students away (95% interval)")]
 
 
 def population_chart(t: dict) -> alt.TopLevelMixin:
@@ -737,24 +741,28 @@ def population_table() -> pl.DataFrame:
         .agg(pl.col("census_population").mean().round(0).cast(pl.Int64).alias("Census population (average)"),
              pl.col("min_students_away").max().cast(pl.Int64)
              .alias("Students away in the emptiest week: fewest possible"),
-             pl.col("est_students_away_low").max().cast(pl.Int64).alias("Low estimate"),
-             pl.col("est_students_away_high").max().cast(pl.Int64).alias("High estimate"),
+             pl.col("est_students_away").max().cast(pl.Int64).alias("Estimate"),
+             pl.col("est_students_away_low").max().cast(pl.Int64).alias("Estimate, 95% low"),
+             pl.col("est_students_away_high").max().cast(pl.Int64).alias("Estimate, 95% high"),
              pl.col("max_students_away").max().cast(pl.Int64).alias("Most possible"),
-             pl.col("est_population_low").min().cast(pl.Int64).alias("Lowest estimated population"),
+             pl.col("est_population").min().cast(pl.Int64).alias("Lowest estimated population"),
              pl.col("min_effective_population").min().cast(pl.Int64).alias("Lowest possible population"))
         .sort("Year")
     )
 
 
 def estimate_note() -> str:
-    shares = read("students_away_shares.csv")
-    level = lambda period: shares.filter(pl.col("period") == period)["share_away"]  # noqa: E731
-    return ("The darker band is the estimate from travel records: when universities are out, weekday subway travel "
-            "falls more than weekend travel, because students who stay stop going to classes but keep their weekend "
-            "trips. The weekend loss over the weekday loss puts the share of students out of session who are away at "
-            f"{level('summer').min():.0%}–{level('summer').max():.0%} in summer and "
-            f"{level('breaks').min():.0%}–{level('breaks').max():.0%} on breaks. It is a band, not a single number, "
-            "and is not estimated in the COVID-19 period.")
+    shares = read("population_model_shares.csv").filter(
+        (pl.col("measure") == pm.MAIN_MEASURE) & (pl.col("period") == pm.MAIN_PERIOD)
+        & (pl.col("version") == pm.MAIN_VERSION))
+    share = lambda part: shares.filter(pl.col("parameter") == part).row(0, named=True)  # noqa: E731
+    text = lambda r: f"{r['estimate']:.0%} ({r['low']:.0%}–{r['high']:.0%})"  # noqa: E731
+    return ("The darker band is the population model's estimate with its 95% interval. On weekdays, subway "
+            "stations with more student riders lose more entries when students are out of session; on weekends, "
+            "when there are no classes, only when students have left. Compared over 2022–2025, that puts the share "
+            f"of students out of session who leave at {text(share('summer'))} in summer and "
+            f"{text(share('breaks'))} on breaks, kept inside the possible range. Not estimated in the COVID-19 "
+            "period.")
 
 
 def away_note() -> str:
@@ -1458,11 +1466,13 @@ def explorer_table() -> pl.DataFrame:
         pl.col("week_start").alias("Week of"), pl.col("academic_year").alias("Academic year"),
         pl.col("presence_index").round(2).alias(INDEX),
         pl.col("min_students_away").alias("Fewest resident students away"),
-        pl.col("est_students_away_low").alias("Students away, low estimate"),
-        pl.col("est_students_away_high").alias("Students away, high estimate"),
+        pl.col("est_students_away").alias("Students away, estimate"),
+        pl.col("est_students_away_low").alias("Students away, 95% low"),
+        pl.col("est_students_away_high").alias("Students away, 95% high"),
         pl.col("max_students_away").alias("Most resident students away"),
-        pl.col("est_population_low").alias("Estimated population, low"),
-        pl.col("est_population_high").alias("Estimated population, high"),
+        pl.col("est_population").alias("Estimated population"),
+        pl.col("est_population_low").alias("Estimated population, 95% low"),
+        pl.col("est_population_high").alias("Estimated population, 95% high"),
         pl.col("min_effective_population").alias("Lowest possible population"),
         pl.col("max_effective_population").alias("Highest possible population"),
         pl.col("census_population").alias("Census population"),
