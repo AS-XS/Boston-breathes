@@ -89,7 +89,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 
 **Question.** How does Greater Boston's effective population change throughout the year, and how much of that variation can be explained by university students? The study area is MAPC's Inner Core: 22 cities and towns with about 1.85 million residents, of whom about 220,000–230,000 are college students, followed week by week from 2015 to 2026.
 
-**In short.** The study area's resident population falls by about 10% in summer, when college students leave: in mid-July 2019, about 190,000 of 1.84 million residents were away (95% interval 162,000–190,000); in a spring-break week about 72,000 (36,000–72,000), and at Thanksgiving about 135,000 (68,000–135,000). The estimate comes from a population model with subway travel as evidence: stations with more student riders lose more entries on weekdays whenever students are out of session, and on weekends only when they have left. The version of who leaves was chosen by how well it predicts travel in years it was not fitted on (every student out of session not living with their parents leaves), and it held up on an untouched test year, 2026. Travel records also follow each university's own calendar: Bluebikes trips at a campus are 14–21% higher when its university is in session than when it is not, compared with other campuses in the same week.
+**In short.** The study area's resident population falls by about 10% in summer, when college students leave: in mid-July 2019, about 190,000 of 1.84 million residents were away (95% interval 162,000–190,000); in a spring-break week about 72,000 (36,000–72,000), and at Thanksgiving about 135,000 (68,000–135,000). The estimate comes from a population model with subway travel as evidence: stations with more student riders lose more entries on weekdays whenever students are out of session, and on weekends only when they have left. The version of who leaves was chosen by how well it predicts travel in years it was not fitted on (every student out of session not living with their parents leaves), and it held up on an untouched test year, 2026. Two checks the model was not built from support it: the absences of COVID-19 show in 2020–2021 travel, and Bluebikes, fitted on its own, also finds most students leaving. Travel records also follow each university's own calendar: Bluebikes trips at a campus are 14–21% higher when its university is in session than when it is not, compared with other campuses in the same week.
 
 ### What the data show
 
@@ -105,6 +105,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 ### Limits
 
 * The estimate rests on an assumption these data cannot check: students are the same proportion of a station's riders on weekends as on weekdays. If they are a larger one, or if students who stay also stop weekend trips to campus, the shares away are overstated and the summer figure is an upper bound. With riders aged 18–25 in 2016–2019 the share comes out above 1, which shows the assumption can fail; with trips between home and school, which include school children, the summer share is about half.
+* The size is consistent with travel but not pinned down: in years outside the fit, weekend travel moves 88–95% as much as the estimate implies (intervals of about ±30–50%), and Bluebikes puts the summer share at 0.79, a little below the estimate's 0.83, so about 95% rather than all of the students not living with their parents may leave.
 * Travel pins down the shares over many weeks, not the population of a single week: read week by week, it misses the model by about ±112,000 students.
 * The test year is one part-year, and the result rests on one survey measure (Semester Pass): with the other two, 2026 shows little or no gain.
 * Only resident college students leaving are counted; visitors, commuters, and people who arrive for the summer (such as interns subletting student apartments) are outside the scope.
@@ -153,6 +154,7 @@ make test       # run the tests
 |---|---|---|---|
 | `make data` | Downloads every source and writes the processed tables to `data/processed/` | Internet; about 2 GB on the first run (1.3 GB of Bluebikes trip files, about 0.5 GB of Census microdata) | Long on the first run; later runs reuse the downloads and skip Bluebikes months already processed |
 | `make analysis` | The evaluation, the travel models (model comparison and pooled campus model), the population model and its scenarios | `data/processed/` only | About 4 minutes, mostly the gradient-boosted trees |
+| `make checks` | The population model's checks: COVID-19, size, and Bluebikes | `data/processed/`, and the Bluebikes station-day files that `make bluebikes` keeps in `data/interim/` | Under a minute |
 | `make figures` | The PNG images and HTML pages in `figures/` | `data/processed/`; downloads the chart libraries and town boundaries once | About a minute |
 | `make test` | The tests in `tests/` | `data/processed/`; town boundaries (downloaded once) | Under a minute |
 
@@ -274,6 +276,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 19. Pooled campus model | Steps 8, 10, 12, and 14 | Done | `campus_panel.csv`: travel at each campus against its own university's calendar (all universities with assumed calendars, and verified calendars only), by university, with a placebo |
 | 20. Population model | Steps 12, 14, and 15 | Done | `population_model_forward.csv`, `population_model_comparison.csv`, `population_model_shares.csv`, `population_estimate.csv`: versions of who leaves scored on later years (validation 2023–2025, test 2026) and on months within a period, the fitted shares of students out of session who leave, and the weekly population with a 95% interval |
 | 21. Scenarios | Step 20 | Done | `population_scenarios.csv`, `population_scenarios_summary.csv`: the 2025–26 population with 10% fewer or more students, aligned spring breaks, or a remote fall term |
+| 22. Checks | Steps 2, 20 | Done | `population_checks.csv`, `population_checks_size.csv`, `population_checks_bluebikes.csv`: the COVID-19 natural experiment, the size of the absence in years outside the fit, and the model fitted on Bluebikes |
 
 ### Processing decisions so far
 
@@ -538,6 +541,45 @@ By university, all universities with assumed calendars (95% intervals; "verified
   * Students are the same proportion of a station's riders on weekends as on weekdays. If they are a larger one (commuters ride less on weekends), or if students who stay also stop weekend trips to campus (libraries, events), the shares away are overstated, and the estimate, at the lower line, is an upper bound on students leaving.
   * Students who stay keep their weekend travel, and those who leave stop it; subway riders stand for all resident college students; the shares are the same every year.
   * Only resident college students are counted; visitors, commuters and people who arrive for the summer, such as interns subletting student apartments, are not.
+
+#### Checks against other evidence
+
+`make checks` (`population_checks.py`) tests the population model against evidence it was not built from.
+
+* **COVID-19 as a natural experiment.** Students were sent home in March 2020, 41% of normal in-person enrollment studied remotely in 2020–21, and students came back in fall 2021. The model's inputs record this, but the model never saw those weeks. Its measurement part, fitted on 2022–2025, predicts the weekly station slopes of 2020 and 2021 with three sets of inputs (error; lower is better):
+
+| Year | Day | COVID-19 inputs | Normal-year calendar | Nobody away |
+|---|---|---|---|---|
+| 2020 | Weekdays | **5.51** | 6.45 | 7.02 |
+| 2020 | Weekends | **5.97** | 6.19 | 6.72 |
+| 2021 | Weekdays | **2.54** | 3.57 | 3.84 |
+| 2021 | Weekends | **2.75** | 3.17 | 3.51 |
+
+  * The inputs with the absences predict travel best in both years and on both kinds of day: travel saw the students leave and come back. Office commuters also vanished in 2020 and returned gradually, which affects stations differently, so the check is indicative; the 2020 errors are about twice those of 2021.
+* **Size.** Better is not the same as the right size. For years outside the fit, the observed slopes are regressed on the part the model predicts from its inputs; 1 means the model's size of the absence matches travel (95% intervals from resampling calendar months):
+
+| Years | Weekdays | Weekends |
+|---|---|---|
+| 2016–2019 | 1.00 (0.91–1.10) | 0.88 (0.52–1.18) |
+| 2021 | 1.10 (0.69–1.38) | 0.95 (0.47–1.39) |
+| 2026 (test) | 1.01 (0.61–1.40) | 0.93 (0.62–1.21) |
+| 2020 | 2.23 (1.00–3.02) | 1.54 (0.74–2.20) |
+
+  * Outside 2020, weekday travel moves as much as the model says, and weekend travel 88–95% as much: consistent with the model, with a hint that it overstates leaving a little. Every interval includes 1, but one year cannot pin the size closer than about ±30–50%.
+  * In 2020, travel at student-heavy stations fell about twice as much as the students' absence explains: the lockdown emptied commuter traffic too.
+* **Bluebikes, a second measurement.** The same measurement model, fitted on Bluebikes instead of the subway: member trips (residents; casual riders are often visitors) started at study-area stations in campus zones against away zones, on weekdays and on weekends, at stations with a median of at least 20 member trips a week. Its weekly slopes follow the share of students out of session at least as closely as the subway's (correlation −0.78 on weekdays, −0.65 on weekends, 2022–2025). Change in error against nobody leaving:
+
+| Who leaves (Bluebikes) | 2023 from 2022 | 2024 from 2022–23 | 2025 from 2022–24 | 2022–25 from 2016–19 | Test: 2026 (January–August) from 2022–25 |
+|---|---|---|---|---|---|
+| Only students in closed residence halls | −8.9% | −9.1% | −18.0% | −6.8% | −16.9% |
+| Every student not living with parents | −19.1% | −19.5% | **−36.8%** | −17.3% | −20.7% |
+| One fitted share | −18.9% | −19.6% | −35.9% | **−17.4%** | **−21.1%** |
+| Fitted shares for summer and breaks | −21.2% | −21.4% | −32.5% | −14.1% | −20.5% |
+| Fitted shares for summer, Thanksgiving, winter and spring | **−23.6%** | **−22.3%** | −33.2% | −14.5% | −17.3% |
+
+  * Bluebikes also prefers the versions in which most students leave to only closed residence halls in every column (by 4 points on the 2026 test, 11–19 points elsewhere), but it does not single out one of them: the finer fitted versions win 2023 and 2024, and every student not living with parents wins 2025.
+  * Its fitted shares, summer 0.79 (0.67–0.90) and breaks 1.02 (0.59–1.39), overlap the subway's (0.90 and 0.74). The summer share is a little below the 0.83 of every student not living with their parents, as in the size check: about 95% of them leave rather than all.
+  * On 2016–2019 data Bluebikes gives a break share above 2, which is impossible: the network was too thin around campuses then ([Presence evaluation](#presence-evaluation)), so those years only serve as the long-horizon training data above.
 
 #### Scenarios
 

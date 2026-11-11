@@ -121,9 +121,10 @@ def weekly_inputs(away: pl.DataFrame, presence: pl.DataFrame) -> pl.DataFrame:
 
 
 def station_weeks(by_station: pl.DataFrame, survey: pl.DataFrame, inputs: pl.DataFrame,
-                  years: tuple[int, int]) -> pl.DataFrame:
-    """Study-area station-weeks with no closed day and entries on both kinds of day, outside COVID-19."""
-    normal = inputs.filter(pl.col("covid_period") == "normal").select("week_start")
+                  years: tuple[int, int], periods: tuple[str, ...] = ("normal",)) -> pl.DataFrame:
+    """Study-area station-weeks with no closed day and entries on both kinds of day, in the given COVID-19
+    periods (by default outside COVID-19)."""
+    normal = inputs.filter(pl.col("covid_period").is_in(periods)).select("week_start")
     return (
         by_station.filter(pl.col("complete_week") & (pl.col("closed_days") == 0)
                           & (pl.col("weekday_entries") > 0) & (pl.col("weekend_entries") > 0)

@@ -1,0 +1,9 @@
+check,years,day,estimate,low,high,weeks
+size,2016-2019,weekday,1.002,0.909,1.104,209
+size,2016-2019,weekend,0.876,0.518,1.178,209
+size,2020,weekday,2.229,1.0,3.017,52
+size,2020,weekend,1.536,0.737,2.197,52
+size,2021,weekday,1.097,0.693,1.384,52
+size,2021,weekend,0.952,0.473,1.387,52
+size,2026,weekday,1.012,0.611,1.402,38
+size,2026,weekend,0.932,0.617,1.212,38

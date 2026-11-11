@@ -1,0 +1,110 @@
+evaluation,train_years,test_years,version,metric,value,weeks
+weekly slopes,"",2022-2025,"",corr_weekday_slope_vs_out_of_session,-0.7801,208
+weekly slopes,"",2022-2025,"",corr_weekend_slope_vs_out_of_session,-0.6546,208
+validation,2022,2023,no change,rmse,0.1131,51
+validation,2022,2023,no change,rmse_change_pct,0.0,51
+validation,2022,2023,dorm closures only,rmse,0.103,51
+validation,2022,2023,dorm closures only,rmse_change_pct,-8.8732,51
+validation,2022,2023,every student out of session not living with parents,rmse,0.0915,51
+validation,2022,2023,every student out of session not living with parents,rmse_change_pct,-19.1182,51
+validation,2022,2023,one share away,rmse,0.0917,51
+validation,2022,2023,one share away,rmse_change_pct,-18.9389,51
+validation,2022,2023,one share away,share_out,0.8235,51
+validation,2022,2023,summer and breaks,rmse,0.0891,51
+validation,2022,2023,summer and breaks,rmse_change_pct,-21.2034,51
+validation,2022,2023,summer and breaks,share_summer,0.7883,51
+validation,2022,2023,summer and breaks,share_breaks,0.9839,51
+validation,2022,2023,each kind of break,rmse,0.0864,51
+validation,2022,2023,each kind of break,rmse_change_pct,-23.6268,51
+validation,2022,2023,each kind of break,share_summer,0.7535,51
+validation,2022,2023,each kind of break,share_thanksgiving,0.2503,51
+validation,2022,2023,each kind of break,share_winter,1.1653,51
+validation,2022,2023,each kind of break,share_spring,-0.0883,51
+validation,2022-2023,2024,no change,rmse,0.1166,53
+validation,2022-2023,2024,no change,rmse_change_pct,0.0,53
+validation,2022-2023,2024,dorm closures only,rmse,0.106,53
+validation,2022-2023,2024,dorm closures only,rmse_change_pct,-9.0567,53
+validation,2022-2023,2024,every student out of session not living with parents,rmse,0.0939,53
+validation,2022-2023,2024,every student out of session not living with parents,rmse_change_pct,-19.4906,53
+validation,2022-2023,2024,one share away,rmse,0.0938,53
+validation,2022-2023,2024,one share away,rmse_change_pct,-19.5589,53
+validation,2022-2023,2024,one share away,share_out,0.8369,53
+validation,2022-2023,2024,summer and breaks,rmse,0.0916,53
+validation,2022-2023,2024,summer and breaks,rmse_change_pct,-21.3956,53
+validation,2022-2023,2024,summer and breaks,share_summer,0.767,53
+validation,2022-2023,2024,summer and breaks,share_breaks,1.1838,53
+validation,2022-2023,2024,each kind of break,rmse,0.0905,53
+validation,2022-2023,2024,each kind of break,rmse_change_pct,-22.348,53
+validation,2022-2023,2024,each kind of break,share_summer,0.7436,53
+validation,2022-2023,2024,each kind of break,share_thanksgiving,0.0795,53
+validation,2022-2023,2024,each kind of break,share_winter,1.3995,53
+validation,2022-2023,2024,each kind of break,share_spring,0.5017,53
+validation,2022-2024,2025,no change,rmse,0.124,52
+validation,2022-2024,2025,no change,rmse_change_pct,0.0,52
+validation,2022-2024,2025,dorm closures only,rmse,0.1016,52
+validation,2022-2024,2025,dorm closures only,rmse_change_pct,-18.0087,52
+validation,2022-2024,2025,every student out of session not living with parents,rmse,0.0783,52
+validation,2022-2024,2025,every student out of session not living with parents,rmse_change_pct,-36.8196,52
+validation,2022-2024,2025,one share away,rmse,0.0795,52
+validation,2022-2024,2025,one share away,rmse_change_pct,-35.8862,52
+validation,2022-2024,2025,one share away,share_out,0.7976,52
+validation,2022-2024,2025,summer and breaks,rmse,0.0837,52
+validation,2022-2024,2025,summer and breaks,rmse_change_pct,-32.5115,52
+validation,2022-2024,2025,summer and breaks,share_summer,0.729,52
+validation,2022-2024,2025,summer and breaks,share_breaks,1.1187,52
+validation,2022-2024,2025,each kind of break,rmse,0.0827,52
+validation,2022-2024,2025,each kind of break,rmse_change_pct,-33.2461,52
+validation,2022-2024,2025,each kind of break,share_summer,0.7065,52
+validation,2022-2024,2025,each kind of break,share_thanksgiving,0.2446,52
+validation,2022-2024,2025,each kind of break,share_winter,1.2889,52
+validation,2022-2024,2025,each kind of break,share_spring,0.4418,52
+long horizon,2016-2019,2022-2025,no change,rmse,0.1166,208
+long horizon,2016-2019,2022-2025,no change,rmse_change_pct,0.0,208
+long horizon,2016-2019,2022-2025,dorm closures only,rmse,0.1087,208
+long horizon,2016-2019,2022-2025,dorm closures only,rmse_change_pct,-6.7681,208
+long horizon,2016-2019,2022-2025,every student out of session not living with parents,rmse,0.0964,208
+long horizon,2016-2019,2022-2025,every student out of session not living with parents,rmse_change_pct,-17.3151,208
+long horizon,2016-2019,2022-2025,one share away,rmse,0.0963,208
+long horizon,2016-2019,2022-2025,one share away,rmse_change_pct,-17.3871,208
+long horizon,2016-2019,2022-2025,one share away,share_out,0.8586,208
+long horizon,2016-2019,2022-2025,summer and breaks,rmse,0.1001,208
+long horizon,2016-2019,2022-2025,summer and breaks,rmse_change_pct,-14.1405,208
+long horizon,2016-2019,2022-2025,summer and breaks,share_summer,0.5776,208
+long horizon,2016-2019,2022-2025,summer and breaks,share_breaks,2.2379,208
+long horizon,2016-2019,2022-2025,each kind of break,rmse,0.0996,208
+long horizon,2016-2019,2022-2025,each kind of break,rmse_change_pct,-14.5209,208
+long horizon,2016-2019,2022-2025,each kind of break,share_summer,0.5727,208
+long horizon,2016-2019,2022-2025,each kind of break,share_thanksgiving,-0.5654,208
+long horizon,2016-2019,2022-2025,each kind of break,share_winter,2.6332,208
+long horizon,2016-2019,2022-2025,each kind of break,share_spring,2.353,208
+test,2022-2025,2026,no change,rmse,0.0989,34
+test,2022-2025,2026,no change,rmse_change_pct,0.0,34
+test,2022-2025,2026,dorm closures only,rmse,0.0822,34
+test,2022-2025,2026,dorm closures only,rmse_change_pct,-16.8682,34
+test,2022-2025,2026,every student out of session not living with parents,rmse,0.0784,34
+test,2022-2025,2026,every student out of session not living with parents,rmse_change_pct,-20.7078,34
+test,2022-2025,2026,one share away,rmse,0.078,34
+test,2022-2025,2026,one share away,rmse_change_pct,-21.0779,34
+test,2022-2025,2026,one share away,share_out,0.8269,34
+test,2022-2025,2026,summer and breaks,rmse,0.0786,34
+test,2022-2025,2026,summer and breaks,rmse_change_pct,-20.4951,34
+test,2022-2025,2026,summer and breaks,share_summer,0.7863,34
+test,2022-2025,2026,summer and breaks,share_breaks,1.0217,34
+test,2022-2025,2026,each kind of break,rmse,0.0818,34
+test,2022-2025,2026,each kind of break,rmse_change_pct,-17.2539,34
+test,2022-2025,2026,each kind of break,share_summer,0.7665,34
+test,2022-2025,2026,each kind of break,share_thanksgiving,0.2913,34
+test,2022-2025,2026,each kind of break,share_winter,1.1644,34
+test,2022-2025,2026,each kind of break,share_spring,0.434,34
+fitted shares,2022-2025,"",summer and breaks,share_summer,0.7863,208
+fitted shares,2022-2025,"",summer and breaks,share_summer_low,0.6691,208
+fitted shares,2022-2025,"",summer and breaks,share_summer_high,0.902,208
+fitted shares,2022-2025,"",summer and breaks,share_breaks,1.0217,208
+fitted shares,2022-2025,"",summer and breaks,share_breaks_low,0.5925,208
+fitted shares,2022-2025,"",summer and breaks,share_breaks_high,1.3871,208
+fitted shares,2016-2019,"",summer and breaks,share_summer,0.5776,208
+fitted shares,2016-2019,"",summer and breaks,share_summer_low,0.175,208
+fitted shares,2016-2019,"",summer and breaks,share_summer_high,1.0723,208
+fitted shares,2016-2019,"",summer and breaks,share_breaks,2.2379,208
+fitted shares,2016-2019,"",summer and breaks,share_breaks_low,1.3853,208
+fitted shares,2016-2019,"",summer and breaks,share_breaks_high,3.3062,208

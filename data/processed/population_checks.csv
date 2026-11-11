@@ -1,0 +1,13 @@
+check,year,inputs,day,metric,value,weeks
+covid-19,2020,COVID-19 inputs,weekday,rmse,5.5068,52
+covid-19,2020,COVID-19 inputs,weekend,rmse,5.9651,52
+covid-19,2020,normal-year calendar,weekday,rmse,6.452,52
+covid-19,2020,normal-year calendar,weekend,rmse,6.1863,52
+covid-19,2020,nobody away,weekday,rmse,7.0177,52
+covid-19,2020,nobody away,weekend,rmse,6.7174,52
+covid-19,2021,COVID-19 inputs,weekday,rmse,2.5356,52
+covid-19,2021,COVID-19 inputs,weekend,rmse,2.7456,52
+covid-19,2021,normal-year calendar,weekday,rmse,3.5701,52
+covid-19,2021,normal-year calendar,weekend,rmse,3.1651,52
+covid-19,2021,nobody away,weekday,rmse,3.8431,52
+covid-19,2021,nobody away,weekend,rmse,3.5061,52

@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model scenarios figures test clean-interim
+.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model scenarios checks figures test clean-interim
 
 # Everything, from the downloads to the figures.
 all: data analysis figures
@@ -112,6 +112,10 @@ population-model:
 # Scenarios: the 2025-26 population if one input were different (needs population-model's inputs).
 scenarios:
 	$(RUN) boston_breathes.population_scenarios
+
+# Checks of the population model: COVID-19, size, and Bluebikes (needs bluebikes' station-day files in data/interim).
+checks:
+	$(RUN) boston_breathes.population_checks
 
 # Figures as PNG images and interactive HTML pages in figures/ (after data).
 figures:
