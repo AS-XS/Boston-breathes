@@ -2,6 +2,7 @@ altair==5.5.0
 geopandas==1.1.4
 holidays==0.105
 numpy==2.4.6
+pandas==3.0.6
 polars==1.44.2
 pyarrow==25.0.1
 pytest==9.1.1
