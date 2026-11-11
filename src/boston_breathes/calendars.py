@@ -278,9 +278,10 @@ def session_days(calendar: pl.DataFrame) -> pl.DataFrame:
                                       "in_session": pl.Boolean, "summer_break": pl.Boolean})
 
 
-def weekly_session(days: pl.DataFrame) -> pl.DataFrame:
-    """Days in session and summer-break days per university and week (null if any day is unknown)."""
-    weeks = build_weeks().select("week_start")
+def weekly_session(days: pl.DataFrame, weeks: pl.DataFrame | None = None) -> pl.DataFrame:
+    """Days in session and summer-break days per university and week (null if any day is unknown), for the
+    study's weeks or the given ones."""
+    weeks = (build_weeks() if weeks is None else weeks).select("week_start")
     week_start = (pl.col("date") - pl.duration(days=pl.col("date").dt.weekday() - 1)).alias("week_start")
     return (
         days.with_columns(week_start)

@@ -101,6 +101,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
    * Comparing campuses in the same week, which removes weather, season, holidays and visitors: Bluebikes trips at a campus are 21% higher when its own university is in session (14% with every campus on assumed calendars), and subway entries at its stations 11% (7%). Other universities' calendars give at most 2–6%. The effect is largest at residential campuses (Northeastern +46%, MIT +34%) and absent downtown and at graduate and health-professions schools ([Pooled campus model](#pooled-campus-model)).
 4. **How many actually leave (population model).** On weekdays, subway stations with more student riders lose more entries whenever students are out of session; on weekends, when there are no classes, only when students have left. Each version of who leaves was fitted on earlier years and scored on later ones. The version in which every student out of session not living with their parents leaves predicted each validation year best (18–24% better than nobody leaving, against 8–13% when only residents of closed halls leave) and the untouched test year, January–September 2026, 20% better; fitted shares (summer 0.90, 95% interval 0.71–1.11; breaks 0.74, 0.42–1.13) are consistent with it and give the band. Averaged over 2019, about 82,000 resident college students were away in a given week (4.5% of residents) (figure B7, dark band; [Population model](#population-model)).
 5. **What if (scenarios).** Recomputing 2025–26 with one input changed: 10% fewer students lowers the term-time population by about 19,000 but leaves the summer low unchanged; if every spring break fell in the same week, about 176,000 students would be away that week, nearly a summer dip, instead of 60,000–69,000 in each of three weeks; a remote fall term like 2020's would keep about 60,000 students away in every fall week ([Scenarios](#scenarios)).
+6. **Forecast for 2026–27.** With the published calendars, 2026–27 looks like 2025–26 except that spring breaks bunch more: about 99,000 students away in the busiest week of March 2027, against 69,000 in 2026. The forecast holds enrollment and the Census at their latest values, which adds roughly ±1.5% to the population level ([Forecast](#forecast)).
 
 ### Limits
 
@@ -153,7 +154,7 @@ make test       # run the tests
 | Command | What it does | Needs | Time |
 |---|---|---|---|
 | `make data` | Downloads every source and writes the processed tables to `data/processed/` | Internet; about 2 GB on the first run (1.3 GB of Bluebikes trip files, about 0.5 GB of Census microdata) | Long on the first run; later runs reuse the downloads and skip Bluebikes months already processed |
-| `make analysis` | The evaluation, the travel models (model comparison and pooled campus model), the population model and its scenarios | `data/processed/` only | About 4 minutes, mostly the gradient-boosted trees |
+| `make analysis` | The evaluation, the travel models (model comparison and pooled campus model), the population model, its scenarios and the 2026–27 forecast | `data/processed/` only | About 4 minutes, mostly the gradient-boosted trees |
 | `make checks` | The population model's checks: COVID-19, size, and Bluebikes | `data/processed/`, and the Bluebikes station-day files that `make bluebikes` keeps in `data/interim/` | Under a minute |
 | `make figures` | The PNG images and HTML pages in `figures/` | `data/processed/`; downloads the chart libraries and town boundaries once | About a minute |
 | `make test` | The tests in `tests/` | `data/processed/`; town boundaries (downloaded once) | Under a minute |
@@ -277,6 +278,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 20. Population model | Steps 12, 14, and 15 | Done | `population_model_forward.csv`, `population_model_comparison.csv`, `population_model_shares.csv`, `population_estimate.csv`: versions of who leaves scored on later years (validation 2023–2025, test 2026) and on months within a period, the fitted shares of students out of session who leave, and the weekly population with a 95% interval |
 | 21. Scenarios | Step 20 | Done | `population_scenarios.csv`, `population_scenarios_summary.csv`: the 2025–26 population with 10% fewer or more students, aligned spring breaks, or a remote fall term |
 | 22. Checks | Steps 2, 20 | Done | `population_checks.csv`, `population_checks_size.csv`, `population_checks_bluebikes.csv`: the COVID-19 natural experiment, the size of the absence in years outside the fit, and the model fitted on Bluebikes |
+| 23. Forecast | Steps 10, 14, 15, and 20 | Done | `population_forecast.csv`, `population_forecast_inputs.csv`: the weekly population of the academic year 2026–27 from the published calendars, with its 95% band, and how much the held inputs used to change each year |
 
 ### Processing decisions so far
 
@@ -541,6 +543,20 @@ By university, all universities with assumed calendars (95% intervals; "verified
   * Students are the same proportion of a station's riders on weekends as on weekdays. If they are a larger one (commuters ride less on weekends), or if students who stay also stop weekend trips to campus (libraries, events), the shares away are overstated, and the estimate, at the lower line, is an upper bound on students leaving.
   * Students who stay keep their weekend travel, and those who leave stop it; subway riders stand for all resident college students; the shares are the same every year.
   * Only resident college students are counted; visitors, commuters and people who arrive for the summer, such as interns subletting student apartments, are not.
+
+#### Forecast
+
+* **What it is.** The population model run on the weeks of the academic year 2026–27 (August 3, 2026 to July 19, 2027), beyond the study's weekly timeline, with the inputs known in advance (`population_forecast.py`, `population_forecast.csv`): the published 2026–27 calendars of all 22 universities with collected calendars, enrollment held at fall 2023 (IPEDS), resident students and where they live at the ACS 5-year estimate ending 2024, the Census population at July 2025, and the population model as fitted, with its 95% band. It runs through the same steps as the estimate, and the 22 weeks it shares with `population_estimate.csv` (August to December 2026) have the same numbers.
+
+| Week (2026–27) | Students away, forecast (95% interval) | Population, forecast |
+|---|---|---|
+| Thanksgiving (November 23, 2026) | 132,916 (65,785–132,916) | 1,727,483 |
+| Christmas to New Year (December 28, 2026) | 186,079 (92,097–186,079) | 1,674,320 |
+| Busiest spring-break week (March 8, 2027) | 98,946 (48,821–98,946) | 1,761,453 |
+| Summer (from May 24, 2027) | 186,079 (155,883–186,079) | 1,674,320 |
+
+* **What it says.** Spring breaks bunch more in 2027 than in 2026: 98,946 students away in the busiest week, against 69,161 in 2026. Otherwise the year looks like 2025–26 (average population 1,780,412 against 1,779,571; 18 weeks with at least 150,000 students away in each).
+* **What the band does not cover.** The band covers the shares away, not the held inputs. Outside the COVID-19 years, the study area's Census population changed by 0.8% a year (median; at most 1.1%), IPEDS in-person enrollment by 0.7% (at most 2.0%), and ACS resident students not living with their parents by 1.1% (at most 3.5%) (`population_forecast_inputs.csv`). Held for two to three years, that adds roughly ±1.5% (about ±28,000 people) to the population level and a few percent to the students away, more than the band in most weeks. The summer level repeats 2025's because the Census is held at July 2025, not because the population stops changing, and published calendar dates can still change.
 
 #### Checks against other evidence
 

@@ -141,15 +141,6 @@ def summary(scenarios: pl.DataFrame) -> pl.DataFrame:
     )
 
 
-def fitted_model(away: pl.DataFrame, presence_weekly: pl.DataFrame, by_station: pl.DataFrame,
-                 survey: pl.DataFrame) -> tuple:
-    """The chosen version's fit and the band version's refits, as population_model.py makes them."""
-    inputs = pm.weekly_inputs(away, presence_weekly)
-    sw = pm.station_weeks(by_station, survey, inputs, pm.PERIODS[pm.MAIN_PERIOD])
-    _, _, slopes, draws = pm.analyse(sw, inputs, pm.MAIN_MEASURE, pm.MAIN_PERIOD, np.random.default_rng(0))
-    return pm.fit(slopes, pm.MAIN_VERSION), draws[pm.BAND_VERSION], slopes
-
-
 def main() -> None:
     read = lambda name, **kw: pl.read_csv(PROCESSED / name, try_parse_dates=True, **kw)  # noqa: E731
     ids = {"unitid": pl.Utf8}
@@ -159,8 +150,9 @@ def main() -> None:
                                         policy)
     arrangements, population, halls = read("student_living_arrangements.csv"), read("population_weekly.csv"), \
         sa.load_halls()
-    model = fitted_model(read("students_away_weekly.csv"), read("student_presence_weekly.csv", infer_schema_length=None),
-                         read("mbta_weekly_by_station.csv"), read("mbta_survey_by_station.csv"))
+    model = pm.chosen_model(pm.weekly_inputs(read("students_away_weekly.csv"),
+                                             read("student_presence_weekly.csv", infer_schema_length=None)),
+                            read("mbta_weekly_by_station.csv"), read("mbta_survey_by_station.csv"))
     runs = {BASELINE: run(per_inst, arrangements, population, halls, model)}
     for name, change in ENROLLMENT.items():
         runs[name] = run(per_inst, arrangements, population, halls, model, change)

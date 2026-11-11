@@ -283,6 +283,14 @@ def estimate(inputs: pl.DataFrame, beta: np.ndarray, draws: np.ndarray, slopes: 
     )
 
 
+def chosen_model(inputs: pl.DataFrame, by_station: pl.DataFrame, survey: pl.DataFrame) -> tuple:
+    """The chosen version's fit, the band version's refits and the weekly slopes, as build() makes them (used by
+    population_scenarios.py and population_forecast.py)."""
+    sw = station_weeks(by_station, survey, inputs, PERIODS[MAIN_PERIOD])
+    _, _, slopes, draws = analyse(sw, inputs, MAIN_MEASURE, MAIN_PERIOD, np.random.default_rng(0))
+    return fit(slopes, MAIN_VERSION), draws[BAND_VERSION], slopes
+
+
 def span(years: list[int]) -> str:
     return f"{min(years)}" if min(years) == max(years) else f"{min(years)}-{max(years)}"
 

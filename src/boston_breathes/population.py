@@ -105,13 +105,13 @@ def combine_series(intercensal: pl.DataFrame, postcensal: pl.DataFrame) -> pl.Da
     )
 
 
-def weekly(annual: pl.DataFrame) -> pl.DataFrame:
-    """Population for each week, interpolated between July 1 estimates.
+def weekly(annual: pl.DataFrame, weeks: pl.DataFrame | None = None) -> pl.DataFrame:
+    """Population for each week (the study's weeks or the given ones), interpolated between July 1 estimates.
 
     Each week is placed at its Thursday. Weeks after the latest July 1
     estimate keep that estimate and are flagged `extrapolated`.
     """
-    weeks = build_weeks().select("week_start").with_columns(
+    weeks = (build_weeks() if weeks is None else weeks).select("week_start").with_columns(
         (pl.col("week_start") + pl.duration(days=3)).alias("mid")
     )
     anchors = annual.with_columns(pl.date(pl.col("year"), 7, 1).alias("mid"))
