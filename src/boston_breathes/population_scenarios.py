@@ -1,10 +1,10 @@
 """Scenarios: the weekly population if one input of the population model were different.
 
 A scenario changes one input for the latest full academic year (2025-26),
-keeps the model fitted in population_model.py, and recomputes the weekly
-population through the same steps as the estimate: the Student Presence
-Index (presence.py), the range of students away (students_away.py), and the
-population model's estimate and band. It says how much the population would
+keeps the model as fitted, and recomputes the weekly population through the
+same steps as the estimate: the Student Presence Index (presence.py), the
+range of students away (students_away.py), and the population estimate and
+its band (population_estimate.py). It says how much the population would
 change if that input changed, not that it will, and it assumes students
 behave as in the years the model was fitted on.
 
@@ -33,6 +33,7 @@ Outputs in data/processed/:
 import numpy as np
 import polars as pl
 
+from boston_breathes import population_estimate as pe
 from boston_breathes import population_model as pm
 from boston_breathes import presence
 from boston_breathes import students_away as sa
@@ -118,7 +119,7 @@ def run(per_inst: pl.DataFrame, arrangements: pl.DataFrame, population: pl.DataF
     # The Census counts students where they live during the school year, so it moves with them.
     away = away.with_columns((pl.col("census_population") + students_change / (1 + students_change)
                               * (pl.col("in_university_housing") + pl.col("elsewhere"))).round(0).cast(pl.Int64))
-    return in_year(pm.estimate(pm.weekly_inputs(away, weekly), *model)).select(COLUMNS)
+    return in_year(pe.estimate(pm.weekly_inputs(away, weekly), *model)).select(COLUMNS)
 
 
 def summary(scenarios: pl.DataFrame) -> pl.DataFrame:
@@ -150,9 +151,10 @@ def main() -> None:
                                         policy)
     arrangements, population, halls = read("student_living_arrangements.csv"), read("population_weekly.csv"), \
         sa.load_halls()
-    model = pm.chosen_model(pm.weekly_inputs(read("students_away_weekly.csv"),
+    model = pe.chosen_model(pm.weekly_inputs(read("students_away_weekly.csv"),
                                              read("student_presence_weekly.csv", infer_schema_length=None)),
-                            read("mbta_weekly_by_station.csv"), read("mbta_survey_by_station.csv"))
+                            read("mbta_weekly_by_station.csv"), read("mbta_survey_by_station.csv"),
+                            read("presence_signals_weekly.csv"))
     runs = {BASELINE: run(per_inst, arrangements, population, halls, model)}
     for name, change in ENROLLMENT.items():
         runs[name] = run(per_inst, arrangements, population, halls, model, change)

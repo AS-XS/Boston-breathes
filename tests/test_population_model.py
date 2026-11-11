@@ -102,31 +102,7 @@ def test_students_away_keeps_shares_between_0_and_1_and_inside_the_range():
     assert out[:, 2].tolist() == [300, 200, 0]  # at least the students in closed residence halls
 
 
-def test_estimate_is_the_chosen_version_with_a_band_from_the_fitted_shares():
-    weeks = [date(2023, 7, 3), date(2023, 3, 13), date(2020, 4, 6)]
-    inputs = pl.DataFrame({
-        "week_start": weeks, "covid_period": ["normal", "normal", "lockdown"], "census_population": [10_000] * 3,
-        "resident_students": [1000] * 3, "presence_index": [0.0, 0.5, 0.0], "summer_break_share": [1.0, 0.0, 0.0],
-        "summer": [1.0, 0.0, 1.0], "breaks": [0.0, 0.5, 0.0], "min_share": [0.3, 0.0, 0.3],
-        "max_share": [0.85, 0.4, 0.85], "min_students_away": [300, 0, 300], "max_students_away": [850, 400, 850],
-        "population_extrapolated": [False] * 3})
-    beta = np.array([0.0, -0.1, -5.0])  # the chosen version's fit: c, c', k
-    draws = np.array([[0, 0, -5.0, -5.0 * s, -5.0 * b] for s, b in [(0.5, 0.3), (0.6, 0.4), (0.7, 0.5)] * 40])
-    slopes = pl.DataFrame({"week_start": weeks[:2], "max_share": [0.85, 0.4], "weekday": [-5.0, -1.0],
-                           "weekend": [-1.0, 1.2]})
-    out = {r["week_start"]: r for r in pm.estimate(inputs, beta, draws, slopes).iter_rows(named=True)}
-    summer, spring, covid = (out[w] for w in weeks)
-    # Every student not living with parents: the lower line of the range.
-    assert summer["students_away"] == 850 and spring["students_away"] == 400
-    assert summer["population"] == 9_150 and summer["population_low"] == 10_000 - summer["students_away_high"]
-    # The band reaches down to what the fitted shares allow: 0.5 to 0.7 of 1,000 in summer.
-    assert 500 <= summer["students_away_low"] < 850 == summer["students_away_high"]
-    assert covid["students_away"] is None and covid["population_high"] is None
-    # Read off travel: (weekend slope - c') / k + the year's mean share, (-1.0 + 0.1) / -5 + 0.625 = 0.805.
-    assert summer["travel_students_away"] == 805
-
-
-def test_processed_outputs_cover_every_version_and_stay_inside_the_range():
+def test_processed_outputs_cover_every_version():
     comparison = pl.read_csv(PROCESSED / "population_model_comparison.csv")
     for (measure, period), part in comparison.group_by("measure", "period"):
         assert set(part.filter(pl.col("metric") == "held_out_rmse")["version"]) == set(pm.VERSIONS)
@@ -142,11 +118,3 @@ def test_processed_outputs_cover_every_version_and_stay_inside_the_range():
                                 & (pl.col("metric") == "rmse"))
     best = validation.sort("value").group_by("test_years").first()
     assert set(best["version"]) == {pm.MAIN_VERSION} and best.height == len(pm.VALIDATION_YEARS)
-    df = pl.read_csv(PROCESSED / "population_estimate.csv", try_parse_dates=True, infer_schema_length=None)
-    normal = df.filter(pl.col("covid_period") == "normal")
-    assert (normal["min_students_away"] <= normal["students_away_low"]).all()
-    assert (normal["students_away_low"] <= normal["students_away"]).all()
-    assert (normal["students_away"] <= normal["students_away_high"]).all()
-    assert (normal["students_away_high"] <= normal["max_students_away"]).all()
-    assert (normal["students_away"] == normal["max_students_away"]).all()  # the chosen version is the lower line
-    assert df.filter(pl.col("covid_period") != "normal")["students_away"].is_null().all()

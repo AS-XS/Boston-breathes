@@ -18,8 +18,18 @@ other calendar months (cross-fitting, so that a flexible model cannot absorb
 the students' part by overfitting), and the shares are fitted on what is left,
 jointly across signals by least squares, each signal weighted by the inverse
 of its noise variance. With no weather model, this is population_model.py's
-summer-and-breaks version fitted on several signals at once. Intervals:
-the last step refitted on calendar months drawn with replacement.
+summer-and-breaks version fitted on several signals at once.
+
+Intervals: the last step refitted on runs of BLOCK_MONTHS consecutive months
+drawn with replacement (a moving-block bootstrap), and the spread of the
+refits around the estimate widened by INFLATION. Both were chosen with the
+known-truth test of population_accuracy.py, so that 95% intervals contain
+the true shares about 95% of the time: unwidened, they did so only 79-86% of
+the time on average, whether the runs were one, three or six months long, so
+runs of one month are widened by 1.4.
+
+The subway and Bluebikes together, with no weather model, give the band of
+the population estimate (population_estimate.py).
 
 Fitted on 2022-2025 for: each signal alone, subway and bikes together, and
 all three signals together; and for the subway and bikes together with every
@@ -46,7 +56,10 @@ PARTS = {"weekday": ["out"], "weekend": ["summer", "breaks"]}
 COMBINATIONS = {"subway": ["subway"], "bikes": ["bikes"], "requests": ["requests"],
                 "subway and bikes": ["subway", "bikes"], "all three": ["subway", "bikes", "requests"]}
 NO_MODEL = "none"
+MAIN_SIGNALS = COMBINATIONS["subway and bikes"]  # the signals of the population estimate's band
 BOOTSTRAP = 1000
+BLOCK_MONTHS = 1  # consecutive months resampled together } chosen by population_accuracy.py
+INFLATION = 1.4  # the refits' spread around the estimate is widened by this factor }
 
 
 def weather_columns(day: str) -> list[str]:
@@ -105,38 +118,60 @@ def fit(pieces: list[dict], signals: list[str]) -> np.ndarray:
     return params
 
 
-def bootstrap(pieces: list[dict], signals: list[str], rng: np.random.Generator) -> np.ndarray:
-    """The last step refitted on calendar months drawn with replacement."""
+def bootstrap(pieces: list[dict], signals: list[str], rng: np.random.Generator, block_months: int = BLOCK_MONTHS,
+              draws: int = BOOTSTRAP) -> np.ndarray:
+    """The last step refitted on runs of block_months consecutive calendar months drawn with replacement, as many
+    runs as it takes to cover the months of the data."""
     months = sorted({w.strftime("%Y-%m") for p in pieces for w in p["weeks"]})
     index = [{m: np.flatnonzero(p["weeks"].dt.strftime("%Y-%m").to_numpy() == m) for m in months} for p in pieces]
-    draws = []
-    for _ in range(BOOTSTRAP):
-        picked = rng.choice(months, len(months))
+    runs = -(-len(months) // block_months)
+    out = []
+    for _ in range(draws):
+        starts = rng.integers(0, len(months) - block_months + 1, runs)
+        picked = [months[s + i] for s in starts for i in range(block_months)]
         resampled = []
         for p, idx in zip(pieces, index):
             rows = np.concatenate([idx[m] for m in picked])
             resampled.append({**p, "y": p["y"][rows], "x": p["x"][rows], "weeks": p["weeks"].gather(rows)})
-        draws.append(fit(resampled, signals))
-    return np.array(draws)
+        out.append(fit(resampled, signals))
+    return np.array(out)
+
+
+def widen(params: np.ndarray, draws: np.ndarray, inflation: float = INFLATION) -> np.ndarray:
+    """Refits moved away from the estimate by the inflation factor."""
+    return params + inflation * (draws - params)
+
+
+def interval(params: np.ndarray, draws: np.ndarray, inflation: float = INFLATION) -> tuple[np.ndarray, np.ndarray]:
+    low, high = np.percentile(widen(params, draws, inflation), [2.5, 97.5], axis=0)
+    return low, high
+
+
+def main_shares(table: pl.DataFrame) -> tuple[np.ndarray, np.ndarray]:
+    """The shares away fitted on the subway and Bluebikes, and their widened refits (for the population band)."""
+    pieces = stacked(table, MAIN_SIGNALS, NO_MODEL)
+    params = fit(pieces, MAIN_SIGNALS)
+    return params[:2], widen(params, bootstrap(pieces, MAIN_SIGNALS, np.random.default_rng(0)))[:, :2]
 
 
 def rows_for(label: str, family: str, signals: list[str], pieces: list[dict], rng: np.random.Generator) -> list[dict]:
     params, draws = fit(pieces, signals), bootstrap(pieces, signals, rng)
     names = ["share_summer", "share_breaks"] + [f"k_{s}" for s in signals]
-    low, high = np.percentile(draws, [2.5, 97.5], axis=0)
+    low, high = interval(params, draws)
     weeks = sum(len(p["y"]) for p in pieces)
     return [{"signals": label, "weather_model": family, "parameter": n, "estimate": float(v), "low": float(lo),
              "high": float(hi), "signal_weeks": weeks} for n, v, lo, hi in zip(names, params, low, high)]
 
 
 def build(table: pl.DataFrame) -> pl.DataFrame:
-    rng = np.random.default_rng(0)
+    """Each fit's refits start from the same seed, so those of the subway and Bluebikes without a weather model
+    are the ones of the population band (main_shares)."""
     rows = []
     for label, signals in COMBINATIONS.items():
-        rows += rows_for(label, NO_MODEL, signals, stacked(table, signals, NO_MODEL), rng)
+        rows += rows_for(label, NO_MODEL, signals, stacked(table, signals, NO_MODEL), np.random.default_rng(0))
     both = COMBINATIONS["subway and bikes"]
     for family in tm.FAMILIES:
-        rows += rows_for("subway and bikes", family, both, stacked(table, both, family), rng)
+        rows += rows_for("subway and bikes", family, both, stacked(table, both, family), np.random.default_rng(0))
     return pl.DataFrame(rows)
 
 

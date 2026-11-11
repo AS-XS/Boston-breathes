@@ -56,7 +56,7 @@ import polars as pl
 import vl_convert as vlc
 
 from boston_breathes import evaluate_presence as ev
-from boston_breathes import population_model as pm
+from boston_breathes import joint_population as jp
 from boston_breathes import http
 from boston_breathes.campus import CAMPUS_M, MAJOR_MIN_STUDENTS, NEAR_M
 from boston_breathes.municipalities import MA_CRS, load_towns
@@ -752,17 +752,16 @@ def population_table() -> pl.DataFrame:
 
 
 def estimate_note() -> str:
-    shares = read("population_model_shares.csv").filter(
-        (pl.col("measure") == pm.MAIN_MEASURE) & (pl.col("period") == pm.MAIN_PERIOD)
-        & (pl.col("version") == pm.BAND_VERSION))
-    share = lambda part: shares.filter(pl.col("parameter") == part).row(0, named=True)  # noqa: E731
+    shares = read("joint_population_shares.csv").filter(
+        (pl.col("signals") == "subway and bikes") & (pl.col("weather_model") == jp.NO_MODEL))
+    share = lambda part: shares.filter(pl.col("parameter") == f"share_{part}").row(0, named=True)  # noqa: E731
     low = lambda part: f"{share(part)['low']:.0%}"  # noqa: E731
     return ("The darker band is the population model's estimate with its 95% interval. On weekdays, subway "
             "stations with more student riders lose more entries when students are out of session; on weekends, "
             "when there are no classes, only when students have left. Of the versions of who leaves, the one in "
             "which every student out of session not living with their parents leaves (the lower line) predicted "
             "later years' travel best, so the estimate is that line; the band reaches up to the population that "
-            f"the fitted shares still allow, with as few as {low('summer')} of students out of session leaving in "
+            f"the shares fitted on subway and Bluebikes travel still allow, with as few as {low('summer')} of students out of session leaving in "
             f"summer and {low('breaks')} on breaks. Not estimated in the COVID-19 period.")
 
 

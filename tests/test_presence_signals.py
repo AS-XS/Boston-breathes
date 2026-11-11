@@ -94,6 +94,19 @@ def test_simulated_signals_without_noise_are_the_truth():
     assert jp.fit(broken, pa.SIGNALS)[:2] == pytest.approx([0.6, 0.48], abs=1e-3)  # 1.2 x the truth
 
 
+def test_widened_refits_move_further_from_the_estimate():
+    params = np.array([0.8, 0.6])
+    draws = np.array([[0.7, 0.6], [0.9, 0.5]])
+    assert jp.widen(params, draws, 2.0) == pytest.approx(np.array([[0.6, 0.6], [1.0, 0.4]]))
+
+
+def test_bootstrap_with_one_run_as_long_as_the_data_refits_the_data_itself():
+    p = pieces(noise=0.01)
+    months = len({w.strftime("%Y-%m") for w in p[0]["weeks"]})
+    draws = jp.bootstrap(p, ["subway", "bikes"], np.random.default_rng(0), block_months=months, draws=3)
+    assert draws == pytest.approx(np.tile(jp.fit(p, ["subway", "bikes"]), (3, 1)))
+
+
 def test_processed_model_exploration_and_joint_shares():
     acc = pl.read_csv(PROCESSED / "travel_model_accuracy.csv")
     assert set(acc["family"]) == set(tm.FAMILIES) and set(acc["signal"]) == set(tm.SIGNALS)
@@ -102,3 +115,7 @@ def test_processed_model_exploration_and_joint_shares():
     assert set(shares["weather_model"]) == {jp.NO_MODEL, *tm.FAMILIES}
     accuracy = pl.read_csv(PROCESSED / "population_accuracy.csv")
     assert accuracy["coverage_summer"].is_between(0, 1).all() and len(accuracy) == len(pa.TRUTHS) + 1
+    # The intervals in use are the ones the known-truth test chose.
+    calibration = pl.read_csv(PROCESSED / "population_accuracy_calibration.csv")
+    assert pa.rule(calibration) == (jp.BLOCK_MONTHS, jp.INFLATION)
+    assert set(accuracy["block_months"]) == {jp.BLOCK_MONTHS} and set(accuracy["inflation"]) == {jp.INFLATION}

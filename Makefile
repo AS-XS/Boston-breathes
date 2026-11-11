@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model scenarios forecast checks boston-311 presence-signals travel-models joint-population population-accuracy figures test clean-interim
+.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model population-estimate scenarios forecast checks boston-311 presence-signals travel-models joint-population population-accuracy figures test clean-interim
 
 # Everything, from the downloads to the figures.
 all: data analysis figures
@@ -12,7 +12,7 @@ install:
 	$(PYTHON) -m pip install -r requirements.txt
 
 # Analysis of the processed tables (no downloads): evaluation, travel models, the population model, scenarios and forecast.
-analysis: evaluate models campus-panel population-model scenarios forecast travel-models joint-population population-accuracy
+analysis: evaluate models campus-panel population-model population-estimate scenarios forecast travel-models joint-population population-accuracy
 
 data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table boston-311 presence-signals
 
@@ -109,7 +109,11 @@ campus-panel:
 population-model:
 	$(RUN) boston_breathes.population_model
 
-# Scenarios: the 2025-26 population if one input were different (needs population-model's inputs).
+# The weekly population estimate and its band from the subway and Bluebikes (needs presence-signals).
+population-estimate:
+	$(RUN) boston_breathes.population_estimate
+
+# Scenarios: the 2025-26 population if one input were different (needs presence-signals).
 scenarios:
 	$(RUN) boston_breathes.population_scenarios
 
@@ -129,7 +133,7 @@ travel-models:
 joint-population:
 	$(RUN) boston_breathes.joint_population
 
-# Accuracy test with a known truth.
+# Accuracy test with a known truth, and the calibration of the intervals (about 14 minutes).
 population-accuracy:
 	$(RUN) boston_breathes.population_accuracy
 

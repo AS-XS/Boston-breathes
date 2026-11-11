@@ -7,9 +7,9 @@ weekly timeline (December 2026), with the inputs known in advance:
   * enrollment held at the latest IPEDS fall, resident students and where
     they live at the latest ACS 5-year estimate, and the Census population
     at its latest July estimate, as in the estimate for weeks after them;
-  * the population model as fitted (population_model.py), with its 95% band.
+  * the population model as fitted, with its 95% band (population_estimate.py).
 The steps are the same as for the estimate (presence.py, students_away.py,
-population_model.py), so the weeks it shares with population_estimate.csv
+population_estimate.py), so the weeks it shares with population_estimate.csv
 (August to December 2026) have the same numbers.
 
 The band covers the shares away, not the held inputs, which add their own
@@ -27,6 +27,7 @@ import polars as pl
 
 from boston_breathes import calendars
 from boston_breathes import population as census
+from boston_breathes import population_estimate as pe
 from boston_breathes import population_model as pm
 from boston_breathes import presence
 from boston_breathes import students_away as sa
@@ -53,7 +54,7 @@ def forecast(weeks: pl.DataFrame, calendar: pl.DataFrame, enrollment: pl.DataFra
                                                                   policy))
     away = sa.build(weekly, by_inst, arrangements, census.weekly(annual, weeks), halls)
     inputs = pm.weekly_inputs(away, weekly)
-    return pm.estimate(inputs, *model).join(inputs.select("week_start", "summer_break_share"), on="week_start",
+    return pe.estimate(inputs, *model).join(inputs.select("week_start", "summer_break_share"), on="week_start",
                                             suffix="_input").select(COLUMNS).sort("week_start")
 
 
@@ -83,9 +84,10 @@ def main() -> None:
     ids = {"unitid": pl.Utf8}
     enrollment, arrangements = read("enrollment_annual.csv", schema_overrides=ids), read("student_living_arrangements.csv")
     annual = read("population_annual.csv")
-    model = pm.chosen_model(pm.weekly_inputs(read("students_away_weekly.csv"),
+    model = pe.chosen_model(pm.weekly_inputs(read("students_away_weekly.csv"),
                                              read("student_presence_weekly.csv", infer_schema_length=None)),
-                            read("mbta_weekly_by_station.csv"), read("mbta_survey_by_station.csv"))
+                            read("mbta_weekly_by_station.csv"), read("mbta_survey_by_station.csv"),
+                            read("presence_signals_weekly.csv"))
     out = forecast(forecast_weeks(), read("academic_calendar.csv", schema_overrides=ids), enrollment,
                    presence.load_covid_policy(), arrangements, annual, sa.load_halls(), model)
     out.write_csv(PROCESSED / "population_forecast.csv")

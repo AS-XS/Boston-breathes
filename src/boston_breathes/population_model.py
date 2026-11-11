@@ -53,12 +53,12 @@ on, against nobody leaving, with three survey measures of student riders
 The validation years chose the Semester Pass measure and the version in which
 every student out of session not living with their parents leaves: it had
 the lowest error in every validation year, while the fitted shares moved with
-the years they were fitted on. The estimate is that version; its 95% band
-comes from the fitted shares for summer and breaks, refitted on calendar
-months drawn with replacement (a block bootstrap), and shows how far below it
-the data allow the students away to be. Each week of 2022-2025 is also read
-directly off travel: its weekend slope, through the fitted c' and k, gives
-that week's share of students away relative to the year's mean.
+the years they were fitted on. The estimate (population_estimate.py) is that
+version; its 95% band comes from the shares for summer and breaks fitted on
+the subway and Bluebikes together (joint_population.py). The intervals of the
+shares here come from refits on calendar months drawn with replacement (a
+block bootstrap); the known-truth test of population_accuracy.py found such
+intervals too narrow.
 
 Assumptions: students are the same proportion of a station's riders on
 weekends as on weekdays (if they are a larger one, since commuters ride less
@@ -73,8 +73,6 @@ Outputs in data/processed/:
   * population_model_comparison.csv  held-out error of each version on months within a period, and how closely
                                      the weekly slopes follow the calendar, by survey measure and period
   * population_model_shares.csv      k and the shares away of each estimated version, with 95% intervals
-  * population_estimate.csv          the weekly population estimate with its 95% band, and the students away
-                                     read off each week's travel
 """
 
 import numpy as np
@@ -87,7 +85,7 @@ MEASURES = {"semester_pass_share": "riders with a Semester Pass", "age_18_25_sha
             "school_trip_share": "trips between home and school"}
 PERIODS = {"2022-2025": (2022, 2025), "2016-2019": (2016, 2019)}
 # Chosen on the validation years (the lowest error in each of them, with the largest gain of the three measures),
-# before the test year was scored. The fitted summer-and-breaks shares give the band.
+# before the test year was scored. The summer-and-breaks shares, fitted on the subway and Bluebikes, give the band.
 MAIN_MEASURE, MAIN_PERIOD = "semester_pass_share", "2022-2025"
 MAIN_VERSION, BAND_VERSION = "every student out of session not living with parents", "summer and breaks"
 FIXED = {"no change": None, "dorm closures only": "min_share",
@@ -102,7 +100,6 @@ VALIDATION_YEARS = [2023, 2024, 2025]  # each predicted from the years before it
 TEST_YEARS = (2026, 2026)  # January to September 2026: scored once, after the version was chosen
 BUFFER_WEEKS = 1
 BOOTSTRAP = 1000
-SMOOTH_WEEKS = 5  # centred moving average of the share away read off travel
 
 
 def weekly_inputs(away: pl.DataFrame, presence: pl.DataFrame) -> pl.DataFrame:
@@ -211,7 +208,7 @@ def bootstrap(df: pl.DataFrame, version: str, rng: np.random.Generator, draws: i
 
 
 def analyse(sw: pl.DataFrame, inputs: pl.DataFrame, measure: str, period: str,
-            rng: np.random.Generator) -> tuple[list[dict], list[dict], pl.DataFrame, dict[str, np.ndarray]]:
+            rng: np.random.Generator) -> tuple[list[dict], list[dict], pl.DataFrame]:
     df = deviations(weekly_slopes(sw, measure).join(inputs, on="week_start"))
     n = len(df)
     base = {"measure": measure, "period": period, "weeks": n}
@@ -223,17 +220,17 @@ def analyse(sw: pl.DataFrame, inputs: pl.DataFrame, measure: str, period: str,
         comparison += [{**base, "version": version, "metric": "held_out_rmse", "value": rmse[version]},
                        {**base, "version": version, "metric": "rmse_change_pct",
                         "value": (rmse[version] / rmse["no change"] - 1) * 100}]
-    share_rows, draws = [], {}
+    share_rows = []
     for version, parts in ESTIMATED.items():
         beta = fit(df, version)
-        draws[version] = bootstrap(df, version, rng)
-        boot_shares = draws[version][:, 3:] / draws[version][:, 2:3]
-        for name, value, boot in [("k", beta[2], draws[version][:, 2]),
+        draws = bootstrap(df, version, rng)
+        boot_shares = draws[:, 3:] / draws[:, 2:3]
+        for name, value, boot in [("k", beta[2], draws[:, 2]),
                                   *zip(parts, shares(beta), boot_shares.T)]:
             low, high = np.percentile(boot, [2.5, 97.5])
             share_rows.append({**base, "version": version, "parameter": name, "estimate": float(value),
                                "low": float(low), "high": float(high)})
-    return comparison, share_rows, df, draws
+    return comparison, share_rows, df
 
 
 def away(inputs: pl.DataFrame, summer: np.ndarray, breaks: np.ndarray) -> np.ndarray:
@@ -249,46 +246,6 @@ def version_share(version: str) -> pl.Expr:
     """A fixed version's share of resident students away each week."""
     column = FIXED[version]
     return pl.lit(0.0) if column is None else pl.col(column)
-
-
-def estimate(inputs: pl.DataFrame, beta: np.ndarray, draws: np.ndarray, slopes: pl.DataFrame) -> pl.DataFrame:
-    """Weekly students away and population: the chosen version, a 95% band from the refitted shares, and the
-    share away read off travel. beta is the chosen version's fit; draws are the band version's refits."""
-    point = (inputs["resident_students"] * inputs.select(version_share(MAIN_VERSION)).to_series()).to_numpy()
-    boot = away(inputs, draws[:, 3] / draws[:, 2], draws[:, 4] / draws[:, 2])
-    low, high = np.percentile(boot, [2.5, 97.5], axis=1)
-    low, high = np.minimum(low, point), np.maximum(high, point)  # the band always contains the estimate
-    normal = pl.col("covid_period") == "normal"
-    rounded = lambda v, name: pl.when(normal).then(pl.Series(name, v).round(0).cast(pl.Int64))  # noqa: E731
-    # The weekend slope gives the share away relative to its mean over the year; the model gives that mean.
-    level = version_share(MAIN_VERSION).mean().over(pl.col("week_start").dt.year())
-    travel = slopes.select("week_start", ((pl.col("weekend") - beta[1]) / beta[2] + level).alias("travel_share_away"))
-    return (
-        inputs.with_columns(rounded(point, "a").alias("students_away"), rounded(low, "l").alias("students_away_low"),
-                            rounded(high, "h").alias("students_away_high"))
-        .with_columns((pl.col("census_population") - pl.col("students_away")).alias("population"),
-                      (pl.col("census_population") - pl.col("students_away_high")).alias("population_low"),
-                      (pl.col("census_population") - pl.col("students_away_low")).alias("population_high"))
-        .join(travel, on="week_start", how="left")
-        .with_columns((pl.col("resident_students") * pl.col("travel_share_away")).round(0).cast(pl.Int64)
-                      .alias("travel_students_away"))
-        .with_columns(pl.col("travel_students_away").cast(pl.Float64)
-                      .rolling_mean(SMOOTH_WEEKS, center=True, min_samples=SMOOTH_WEEKS // 2 + 1)
-                      .round(0).cast(pl.Int64).alias("travel_students_away_smooth"))
-        .select("week_start", "covid_period", "census_population", "resident_students", "presence_index",
-                "summer_break_share", "min_students_away", "students_away", "students_away_low",
-                "students_away_high", "max_students_away", "population", "population_low", "population_high",
-                "population_extrapolated", "travel_students_away", "travel_students_away_smooth")
-        .sort("week_start")
-    )
-
-
-def chosen_model(inputs: pl.DataFrame, by_station: pl.DataFrame, survey: pl.DataFrame) -> tuple:
-    """The chosen version's fit, the band version's refits and the weekly slopes, as build() makes them (used by
-    population_scenarios.py and population_forecast.py)."""
-    sw = station_weeks(by_station, survey, inputs, PERIODS[MAIN_PERIOD])
-    _, _, slopes, draws = analyse(sw, inputs, MAIN_MEASURE, MAIN_PERIOD, np.random.default_rng(0))
-    return fit(slopes, MAIN_VERSION), draws[BAND_VERSION], slopes
 
 
 def span(years: list[int]) -> str:
@@ -322,39 +279,35 @@ def validation_splits(df: pl.DataFrame) -> list[tuple[str, pl.DataFrame, pl.Data
 
 
 def build(by_station: pl.DataFrame, survey: pl.DataFrame, away_weekly: pl.DataFrame,
-          presence: pl.DataFrame) -> tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame, pl.DataFrame]:
+          presence: pl.DataFrame) -> tuple[pl.DataFrame, pl.DataFrame, pl.DataFrame]:
     inputs = weekly_inputs(away_weekly, presence)
     rng = np.random.default_rng(0)
-    comparison, share_rows, forward_out, main, slopes_by = [], [], [], None, {}
+    comparison, share_rows, forward_out, slopes_by = [], [], [], {}
     for period, years in PERIODS.items():
         sw = station_weeks(by_station, survey, inputs, years)
         for measure in MEASURES:
-            c, s, slopes, draws = analyse(sw, inputs, measure, period, rng)
+            c, s, slopes = analyse(sw, inputs, measure, period, rng)
             comparison += c
             share_rows += s
             slopes_by[(measure, period)] = slopes
-            if (measure, period) == (MAIN_MEASURE, MAIN_PERIOD):
-                main = (fit(slopes, MAIN_VERSION), draws[BAND_VERSION], slopes)
     test_sw = station_weeks(by_station, survey, inputs, TEST_YEARS)
     for measure in MEASURES:
         recent, early = slopes_by[(measure, "2022-2025")], slopes_by[(measure, "2016-2019")]
         test = deviations(weekly_slopes(test_sw, measure).join(inputs, on="week_start"))
         forward_out += forward_rows([*validation_splits(recent), ("long horizon", early, recent),
                                      ("test", recent, test)], measure)
-    return (pl.DataFrame(comparison), pl.DataFrame(share_rows), pl.DataFrame(forward_out),
-            estimate(inputs, *main))
+    return pl.DataFrame(comparison), pl.DataFrame(share_rows), pl.DataFrame(forward_out)
 
 
 def main() -> None:
     read = lambda name, **kw: pl.read_csv(PROCESSED / name, try_parse_dates=True, **kw)  # noqa: E731
-    comparison, share_rows, forward_out, weekly = build(
+    comparison, share_rows, forward_out = build(
         read("mbta_weekly_by_station.csv"), read("mbta_survey_by_station.csv"), read("students_away_weekly.csv"),
         read("student_presence_weekly.csv", infer_schema_length=None))
     forward_out.with_columns(pl.col("value").round(4)).write_csv(PROCESSED / "population_model_forward.csv")
     comparison.with_columns(pl.col("value").round(4)).write_csv(PROCESSED / "population_model_comparison.csv")
     share_rows.with_columns(pl.col("estimate", "low", "high").round(4)).write_csv(
         PROCESSED / "population_model_shares.csv")
-    weekly.write_csv(PROCESSED / "population_estimate.csv")
 
     change = forward_out.filter(pl.col("metric") == "rmse_change_pct").with_columns(
         (pl.col("evaluation") + " " + pl.col("test_years")).alias("split"))
@@ -366,13 +319,8 @@ def main() -> None:
             print(f"  {row[0][:40]:40s} " + " | ".join(f"{v:+17.1f}%" for v in row[1:]))
     band = share_rows.filter((pl.col("measure") == MAIN_MEASURE) & (pl.col("period") == MAIN_PERIOD)
                              & (pl.col("version") == BAND_VERSION) & (pl.col("parameter") != "k"))
-    print(f"Estimate: {MAIN_VERSION}; band from the fitted shares: " + ", ".join(
+    print(f"Chosen: {MAIN_VERSION}; {BAND_VERSION} on the subway alone: " + ", ".join(
         f"{p} {e:.2f} ({lo:.2f}-{hi:.2f})" for p, e, lo, hi in band.select("parameter", "estimate", "low", "high").rows()))
-    y = weekly.filter(pl.col("week_start").dt.year() == 2019)
-    for label, day in (("summer", "2019-07-08"), ("spring break", "2019-03-11"), ("Thanksgiving", "2019-11-25")):
-        r = y.filter(pl.col("week_start") == pl.lit(day).str.to_date()).row(0, named=True)
-        print(f"2019 {label}: range {r['min_students_away']:,}-{r['max_students_away']:,}, estimate "
-              f"{r['students_away']:,} ({r['students_away_low']:,}-{r['students_away_high']:,})")
 
 
 if __name__ == "__main__":

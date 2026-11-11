@@ -89,7 +89,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 
 **Question.** How does Greater Boston's effective population change throughout the year, and how much of that variation can be explained by university students? The study area is MAPC's Inner Core: 22 cities and towns with about 1.85 million residents, of whom about 220,000–230,000 are college students, followed week by week from 2015 to 2026.
 
-**In short.** The study area's resident population falls by about 10% in summer, when college students leave: in mid-July 2019, about 190,000 of 1.84 million residents were away (95% interval 162,000–190,000); in a spring-break week about 72,000 (36,000–72,000), and at Thanksgiving about 135,000 (68,000–135,000). The estimate comes from a population model with subway travel as evidence: stations with more student riders lose more entries on weekdays whenever students are out of session, and on weekends only when they have left. The version of who leaves was chosen by how well it predicts travel in years it was not fitted on (every student out of session not living with their parents leaves), and it held up on an untouched test year, 2026. Two checks the model was not built from support it: the absences of COVID-19 show in 2020–2021 travel, and Bluebikes, fitted on its own, also finds most students leaving. Travel records also follow each university's own calendar: Bluebikes trips at a campus are 14–21% higher when its university is in session than when it is not, compared with other campuses in the same week.
+**In short.** The study area's resident population falls by about 10% in summer, when college students leave: in mid-July 2019, about 190,000 of 1.84 million residents were away (95% interval 158,000–190,000); in a spring-break week about 72,000 (45,000–72,000), and at Thanksgiving about 135,000 (85,000–135,000). The estimate comes from a population model with subway travel as evidence: stations with more student riders lose more entries on weekdays whenever students are out of session, and on weekends only when they have left. Its 95% interval comes from the subway and Bluebikes together, widened until, on signals made up from a known truth, it contained that truth 95% of the time. The version of who leaves was chosen by how well it predicts travel in years it was not fitted on (every student out of session not living with their parents leaves), and it held up on an untouched test year, 2026. Two checks the model was not built from support it: the absences of COVID-19 show in 2020–2021 travel, and Bluebikes, fitted on its own, also finds most students leaving. Travel records also follow each university's own calendar: Bluebikes trips at a campus are 14–21% higher when its university is in session than when it is not, compared with other campuses in the same week.
 
 ### What the data show
 
@@ -99,16 +99,16 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
    * The share of Bluebikes trips near campuses rises and falls with the index (median correlation within a year 0.85). It dropped in 76% of 293 university breaks, and on weekdays in September bicycle counts near campuses are 17.5% above June, against 1% elsewhere, while motor-vehicle counts barely change.
    * Models of weekly travel, tested on months they were not fitted on: the best model of the near-campus share of Bluebikes trips explains 91% of its variation (typical error 6%, against 22% for guessing the average). For Bluebikes and MBTA, near campuses and in total, the best model includes the index. For Bluebikes and total MBTA entries it lowers the error by 0.7–1.9% once a model knows the typical week of the year, and by 6.7–7.9% against a smooth seasonal curve, because students leave at almost the same time every year; for the MBTA near-campus share it adds little or nothing ([Model comparison](#model-comparison-goal-2)).
    * Comparing campuses in the same week, which removes weather, season, holidays and visitors: Bluebikes trips at a campus are 21% higher when its own university is in session (14% with every campus on assumed calendars), and subway entries at its stations 11% (7%). Other universities' calendars give at most 2–6%. The effect is largest at residential campuses (Northeastern +46%, MIT +34%) and absent downtown and at graduate and health-professions schools ([Pooled campus model](#pooled-campus-model)).
-4. **How many actually leave (population model).** On weekdays, subway stations with more student riders lose more entries whenever students are out of session; on weekends, when there are no classes, only when students have left. Each version of who leaves was fitted on earlier years and scored on later ones. The version in which every student out of session not living with their parents leaves predicted each validation year best (18–24% better than nobody leaving, against 8–13% when only residents of closed halls leave) and the untouched test year, January–September 2026, 20% better; fitted shares (summer 0.90, 95% interval 0.71–1.11; breaks 0.74, 0.42–1.13) are consistent with it and give the band. Averaged over 2019, about 82,000 resident college students were away in a given week (4.5% of residents) (figure B7, dark band; [Population model](#population-model)).
+4. **How many actually leave (population model).** On weekdays, subway stations with more student riders lose more entries whenever students are out of session; on weekends, when there are no classes, only when students have left. Each version of who leaves was fitted on earlier years and scored on later ones. The version in which every student out of session not living with their parents leaves predicted each validation year best (18–24% better than nobody leaving, against 8–13% when only residents of closed halls leave) and the untouched test year, January–September 2026, 20% better; the shares fitted on the subway and Bluebikes together (summer 0.83, 95% interval 0.69–0.99; breaks 0.91, 0.52–1.28) are consistent with it and give the band. Averaged over 2019, about 82,000 resident college students were away in a given week (4.5% of residents) (figure B7, dark band; [Population model](#population-model)).
 5. **What if (scenarios).** Recomputing 2025–26 with one input changed: 10% fewer students lowers the term-time population by about 19,000 but leaves the summer low unchanged; if every spring break fell in the same week, about 176,000 students would be away that week, nearly a summer dip, instead of 60,000–69,000 in each of three weeks; a remote fall term like 2020's would keep about 60,000 students away in every fall week ([Scenarios](#scenarios)).
 6. **Forecast for 2026–27.** With the published calendars, 2026–27 looks like 2025–26 except that spring breaks bunch more: about 99,000 students away in the busiest week of March 2027, against 69,000 in 2026. The forecast holds enrollment and the Census at their latest values, which adds roughly ±1.5% to the population level ([Forecast](#forecast)).
-7. **Other models and signals.** Eight families of models (from linear regression to random forest and a neural network) and six feature sets were tried on each signal for years they had not seen: simple linear models did as well as any, the student inputs explained 36–47% of the weekly variation, weather helped for bikes but not the subway, and 311 requests carried no student signal. Fitted together, the subway and Bluebikes put the summer share away at 0.83 (95% interval 0.72–0.94), the population model's version. On signals made up from a known truth, a single summer or break week is typically off by 12,000–18,000 students, and the intervals are too narrow ([Exploring models and signals](#exploring-models-and-signals)).
+7. **Other models and signals.** Eight families of models (from linear regression to random forest and a neural network) and six feature sets were tried on each signal for years they had not seen: simple linear models did as well as any, the student inputs explained 36–47% of the weekly variation, weather helped for bikes but not the subway, and 311 requests carried no student signal. Fitted together, the subway and Bluebikes put the summer share away at 0.83 (95% interval 0.69–0.99), the population model's version. On signals made up from a known truth, a single summer or break week is typically off by 12,000–18,000 students; the 95% intervals were too narrow at first (they contained the truth 79–86% of the time) and were widened by 1.4, after which they contained it 94–95% of the time on new made-up data ([Exploring models and signals](#exploring-models-and-signals)).
 
 ### Limits
 
 * The estimate rests on an assumption these data cannot check: students are the same proportion of a station's riders on weekends as on weekdays. If they are a larger one, or if students who stay also stop weekend trips to campus, the shares away are overstated and the summer figure is an upper bound. With riders aged 18–25 in 2016–2019 the share comes out above 1, which shows the assumption can fail; with trips between home and school, which include school children, the summer share is about half.
 * The size is consistent with travel but not pinned down: in years outside the fit, weekend travel moves 88–95% as much as the estimate implies (intervals of about ±30–50%), and Bluebikes puts the summer share at 0.79, a little below the estimate's 0.83, so about 95% rather than all of the students not living with their parents may leave.
-* The bands are narrower than they should be: in a test with a known truth, the 95% intervals contained the truth 70–88% of the time (82% on average), so they are closer to 80% intervals.
+* The 95% intervals are calibrated on made-up data, not guaranteed: refitting alone gave intervals that contained a known truth only 79–86% of the time, so their spread is widened by 1.4, after which they did so 94–95% of the time on new made-up data (each figure uncertain by about ±3 points). The calibration assumes the model is right: if students are a larger share of weekend riders than of weekday riders, the summer interval contains the truth only about half the time.
 * There is no weekly public data for driving or ride-hailing, and Boston's 311 requests carry no student signal, so the evidence is the subway and Bluebikes.
 * Travel pins down the shares over many weeks, not the population of a single week: read week by week, it misses the model by about ±112,000 students.
 * The test year is one part-year, and the result rests on one survey measure (Semester Pass): with the other two, 2026 shows little or no gain.
@@ -135,7 +135,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
   * The upper line takes away only students in university housing whose residence halls are closed; it assumes they leave the area.
   * The lower line takes away every resident college student not living with their parents whose school is out of session.
   * Counting only resident students who leave, and not visitors, commuters or summer arrivals, the population is somewhere between the two.
-  * The population model places the population inside the range with travel records (`population_estimate.csv`): an estimate with a 95% interval, from how weekday and weekend subway entries fall at stations with more student riders; see [Population model](#population-model).
+  * The population model places the population inside the range with travel records (`population_estimate.csv`): an estimate from how weekday and weekend subway entries fall at stations with more student riders, with a 95% interval from the subway and Bluebikes together; see [Population model](#population-model).
 * **Section C shows checks, not models.** It shows correlations and comparisons: when the ratio of activity near campuses to activity elsewhere rises and falls with the index, activity near campuses is following the students. The model comparison (goal 2) is in `model_comparison.csv` and summarized under [Model comparison](#model-comparison-goal-2).
 * **Caveats.**
   * COVID-19 is flagged: students count as away during the spring 2020 lockdown, and in 2020–21 the index peaks at about 0.59 because fewer students studied in person.
@@ -157,7 +157,7 @@ make test       # run the tests
 | Command | What it does | Needs | Time |
 |---|---|---|---|
 | `make data` | Downloads every source and writes the processed tables to `data/processed/` | Internet; about 2 GB on the first run (1.3 GB of Bluebikes trip files, about 0.5 GB of Census microdata) | Long on the first run; later runs reuse the downloads and skip Bluebikes months already processed |
-| `make analysis` | The evaluation, the travel models (model comparison and pooled campus model), the population model, its scenarios and the 2026–27 forecast, the exploration of model families and signals, the joint model and the accuracy test | `data/processed/` only | About 20 minutes, mostly the exploration of model families (12 minutes) and the gradient-boosted trees |
+| `make analysis` | The evaluation, the travel models (model comparison and pooled campus model), the population model and estimate, its scenarios and the 2026–27 forecast, the exploration of model families and signals, the joint model and the accuracy test | `data/processed/` only | About 30 minutes, mostly the accuracy test (14 minutes) and the exploration of model families (12 minutes) |
 | `make checks` | The population model's checks: COVID-19, size, and Bluebikes | `data/processed/`, and the Bluebikes station-day files that `make bluebikes` keeps in `data/interim/` | Under a minute |
 | `make figures` | The PNG images and HTML pages in `figures/` | `data/processed/`; downloads the chart libraries and town boundaries once | About a minute |
 | `make test` | The tests in `tests/` | `data/processed/`; town boundaries (downloaded once) | Under a minute |
@@ -284,15 +284,16 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 17. Modeling table | Weekly tables of steps 1–15 | Done | `modeling_weekly.csv`: one row per week with travel records, weather, calendar, and student columns |
 | 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect; `model_coefficients.csv` (with the combined effect of warming from 0 to 20 °C), `model_feature_importance.csv`: what each input does (see [The models in detail](#the-models-in-detail)) |
 | 19. Pooled campus model | Steps 8, 10, 12, and 14 | Done | `campus_panel.csv`: travel at each campus against its own university's calendar (all universities with assumed calendars, and verified calendars only), by university, with a placebo |
-| 20. Population model | Steps 12, 14, and 15 | Done | `population_model_forward.csv`, `population_model_comparison.csv`, `population_model_shares.csv`, `population_estimate.csv`: versions of who leaves scored on later years (validation 2023–2025, test 2026) and on months within a period, the fitted shares of students out of session who leave, and the weekly population with a 95% interval |
-| 21. Scenarios | Step 20 | Done | `population_scenarios.csv`, `population_scenarios_summary.csv`: the 2025–26 population with 10% fewer or more students, aligned spring breaks, or a remote fall term |
+| 20. Population model | Steps 12, 14, and 15 | Done | `population_model_forward.csv`, `population_model_comparison.csv`, `population_model_shares.csv`: versions of who leaves scored on later years (validation 2023–2025, test 2026) and on months within a period, and the fitted shares of students out of session who leave |
+| 21. Scenarios | Step 29 | Done | `population_scenarios.csv`, `population_scenarios_summary.csv`: the 2025–26 population with 10% fewer or more students, aligned spring breaks, or a remote fall term |
 | 22. Checks | Steps 2, 20 | Done | `population_checks.csv`, `population_checks_size.csv`, `population_checks_bluebikes.csv`: the COVID-19 natural experiment, the size of the absence in years outside the fit, and the model fitted on Bluebikes |
-| 23. Forecast | Steps 10, 14, 15, and 20 | Done | `population_forecast.csv`, `population_forecast_inputs.csv`: the weekly population of the academic year 2026–27 from the published calendars, with its 95% band, and how much the held inputs used to change each year |
+| 23. Forecast | Steps 10, 14, 15, and 29 | Done | `population_forecast.csv`, `population_forecast_inputs.csv`: the weekly population of the academic year 2026–27 from the published calendars, with its 95% band, and how much the held inputs used to change each year |
 | 24. Boston 311 requests | City of Boston 311 service requests (2015 onward) | Done | `boston_311_daily.csv`: resident requests per day and campus zone |
 | 25. Presence signals | Steps 2, 4, 12, 14, 15, and 24 | Done | `presence_signals_weekly.csv`: the weekly subway, Bluebikes and 311 signals on weekdays and weekends, with student, weather and calendar features |
 | 26. Model families | Step 25 | Done | `travel_model_accuracy.csv`: eight families of models and six feature sets predicting each signal for later years |
 | 27. Joint population model | Step 25 | Done | `joint_population_shares.csv`: the shares away fitted on several signals at once, with weather removed by each family |
-| 28. Accuracy test | Step 25 | Done | `population_accuracy.csv`: the method's error in students away, and its intervals' coverage, on signals made from a known truth |
+| 28. Accuracy test | Steps 25 and 27 | Done | `population_accuracy.csv`, `population_accuracy_calibration.csv`: the method's error in students away, and its intervals' coverage, on signals made from a known truth; the run length and widening that make the 95% intervals contain the truth 95% of the time |
+| 29. Population estimate | Steps 20, 27, and 28 | Done | `population_estimate.csv`: the weekly population, the version chosen in step 20 with a 95% band from the subway and Bluebikes shares of step 27, calibrated in step 28 |
 
 ### Processing decisions so far
 
@@ -528,11 +529,11 @@ By university, all universities with assumed calendars (95% intervals; "verified
   * On the test, the chosen version predicts 2026 weekend travel 19.8% better than nobody leaving, against 13.3% for only closed residence halls; one fitted share does about as well (20.0%).
   * With the other two measures 2026 is weaker: with riders aged 18–25 every version gains only 4–6%, and with trips between home and school the chosen version does worse than nobody leaving (+9.0%), as a measure that includes school children would. The result rests on the Semester Pass measure.
   * Within a period, predicting each calendar month from the other weeks gives the same ranking (`population_model_comparison.csv`): every student not living with parents is best with the Semester Pass measure in 2022–2025 (−18.9%) and 2016–2019 (−7.3%), and only closed residence halls is worse than it with every measure in both periods.
-* **The fitted shares** (summer and breaks; 95% intervals from refitting on calendar months drawn with replacement) give the uncertainty:
+* **The fitted shares** (summer and breaks; 95% intervals from refitting on calendar months drawn with replacement). The [known-truth test](#exploring-models-and-signals) found intervals made this way too narrow; widened as calibrated there, the Semester Pass shares of 2022–2025 are 0.64–1.20 and 0.27–1.30 (`joint_population_shares.csv`, subway alone):
 
 | Student measure | Years | Summer | Breaks |
 |---|---|---|---|
-| Semester Pass (used for the band) | 2022–2025 | 0.90 (0.71–1.11) | 0.74 (0.42–1.13) |
+| Semester Pass | 2022–2025 | 0.90 (0.71–1.11) | 0.74 (0.42–1.13) |
 | Riders aged 18–25 | 2022–2025 | 0.86 (0.65–1.05) | 1.31 (0.94–1.79) |
 | Trips between home and school | 2022–2025 | 0.49 (0.35–0.64) | 0.87 (0.57–1.23) |
 | Semester Pass | 2016–2019 | 0.73 (0.47–0.97) | 0.69 (0.21–1.10) |
@@ -541,17 +542,17 @@ By university, all universities with assumed calendars (95% intervals; "verified
 
   * The shares are of all resident students out of session. The 17% who live with their parents stay, so a share of about 0.83 is the chosen version, and the Semester Pass intervals include it for summer and for breaks.
   * Trips between home and school include school children, who stop school trips in summer without leaving, which pulls the summer share down. Riders aged 18–25 include many non-students, and in 2016–2019 give shares above 1, which is impossible: the assumption of equal proportions can fail.
-* **The estimate** (`population_estimate.csv`) is the chosen version, the lower line of the range: every resident college student out of session who does not live with their parents is away. Its 95% band comes from the fitted Semester Pass shares and reaches up to the population with as few students leaving as the data allow (71% of those out of session in summer, 42% on breaks):
+* **The estimate** (`population_estimate.py`, `population_estimate.csv`) is the chosen version, the lower line of the range: every resident college student out of session who does not live with their parents is away. Its 95% band comes from the shares fitted on the subway and Bluebikes together, with the calibrated intervals of [Exploring models and signals](#exploring-models-and-signals), and reaches up to the population with as few students leaving as the data allow (69% of those out of session in summer, 52% on breaks):
 
 | Week of 2019 | Possible range of students away (step 15) | Students away, estimate (95% interval) | Population, estimate |
 |---|---|---|---|
-| Mid-summer (July 8) | 73,420–190,056 | 190,056 (162,198–190,056) | 1,654,678 |
-| Spring breaks (March 11) | 1,826–72,254 | 72,254 (35,820–72,254) | 1,771,365 |
-| Thanksgiving (November 25) | 1,815–135,180 | 135,180 (68,291–135,180) | 1,705,527 |
-| After Christmas (December 30) | 36,168–189,248 | 189,248 (95,606–189,248) | 1,650,452 |
+| Mid-summer (July 8) | 73,420–190,056 | 190,056 (157,803–190,056) | 1,654,678 |
+| Spring breaks (March 11) | 1,826–72,254 | 72,254 (44,525–72,254) | 1,771,365 |
+| Thanksgiving (November 25) | 1,815–135,180 | 135,180 (84,887–135,180) | 1,705,527 |
+| After Christmas (December 30) | 36,168–189,248 | 189,248 (118,839–189,248) | 1,650,452 |
 
-  * In July of each year outside the COVID-19 period, 181,000–196,000 students are away at the most (10–11% of residents), with the band reaching down to 152,000–168,000.
-  * Averaged over the weeks of 2019, 82,000 resident college students were away (4.5% of residents), with the band's lower end averaging 61,000. The band is on average 20,680 students wide, against 55,863 for the possible range.
+  * In July of each year outside the COVID-19 period, 181,000–196,000 students are away at the most (10–11% of residents), with the band reaching down to 148,000–163,000.
+  * Averaged over the weeks of 2019, 82,000 resident college students were away (4.5% of residents), with the band's lower end averaging 63,000. The band is on average 19,100 students wide, against 56,500 for the possible range.
 * **Read off travel week by week.** Each week of 2022–2025 can also be read directly: (weekend slope − c′) / k gives that week's share of students away relative to the year's mean, to which the model's mean for the year is added (`travel_students_away`, and a five-week average). It follows the model (correlation 0.59, 0.63 averaged), but single weeks miss it by about ±112,000 students (±82,000 averaged). Travel pins down the shares over many weeks, not the population of any one week.
 * **Assumptions.**
   * Students are the same proportion of a station's riders on weekends as on weekdays. If they are a larger one (commuters ride less on weekends), or if students who stay also stop weekend trips to campus (libraries, events), the shares away are overstated, and the estimate, at the lower line, is an upper bound on students leaving.
@@ -564,10 +565,10 @@ By university, all universities with assumed calendars (95% intervals; "verified
 
 | Week (2026–27) | Students away, forecast (95% interval) | Population, forecast |
 |---|---|---|
-| Thanksgiving (November 23, 2026) | 132,916 (65,785–132,916) | 1,727,483 |
-| Christmas to New Year (December 28, 2026) | 186,079 (92,097–186,079) | 1,674,320 |
-| Busiest spring-break week (March 8, 2027) | 98,946 (48,821–98,946) | 1,761,453 |
-| Summer (from May 24, 2027) | 186,079 (155,883–186,079) | 1,674,320 |
+| Thanksgiving (November 23, 2026) | 132,916 (81,771–132,916) | 1,727,483 |
+| Christmas to New Year (December 28, 2026) | 186,079 (114,478–186,079) | 1,674,320 |
+| Busiest spring-break week (March 8, 2027) | 98,946 (60,685–98,946) | 1,761,453 |
+| Summer (from May 24, 2027) | 186,079 (151,660–186,079) | 1,674,320 |
 
 * **What it says.** Spring breaks bunch more in 2027 than in 2026: 98,946 students away in the busiest week, against 69,161 in 2026. Otherwise the year looks like 2025–26 (average population 1,780,412 against 1,779,571; 18 weeks with at least 150,000 students away in each).
 * **What the band does not cover.** The band covers the shares away, not the held inputs. Outside the COVID-19 years, the study area's Census population changed by 0.8% a year (median; at most 1.1%), IPEDS in-person enrollment by 0.7% (at most 2.0%), and ACS resident students not living with their parents by 1.1% (at most 3.5%) (`population_forecast_inputs.csv`). Held for two to three years, that adds roughly ±1.5% (about ±28,000 people) to the population level and a few percent to the students away, more than the band in most weeks. The summer level repeats 2025's because the Census is held at July 2025, not because the population stops changing, and published calendar dates can still change.
@@ -608,7 +609,7 @@ By university, all universities with assumed calendars (95% intervals; "verified
 | Fitted shares for summer, Thanksgiving, winter and spring | **−23.6%** | **−22.3%** | −33.2% | −14.5% | −17.3% |
 
   * Bluebikes also prefers the versions in which most students leave to only closed residence halls in every column (by 4 points on the 2026 test, 11–19 points elsewhere), but it does not single out one of them: the finer fitted versions win 2023 and 2024, and every student not living with parents wins 2025.
-  * Its fitted shares, summer 0.79 (0.67–0.90) and breaks 1.02 (0.59–1.39), overlap the subway's (0.90 and 0.74). The summer share is a little below the 0.83 of every student not living with their parents, as in the size check: about 95% of them leave rather than all.
+  * Its fitted shares, summer 0.79 (0.67–0.90) and breaks 1.02 (0.59–1.39) (intervals not widened), overlap the subway's (0.90 and 0.74). The summer share is a little below the 0.83 of every student not living with their parents, as in the size check: about 95% of them leave rather than all.
   * On 2016–2019 data Bluebikes gives a break share above 2, which is impossible: the network was too thin around campuses then ([Presence evaluation](#presence-evaluation)), so those years only serve as the long-horizon training data above.
 
 #### Exploring models and signals
@@ -637,29 +638,40 @@ By university, all universities with assumed calendars (95% intervals; "verified
 
 | Signals | Weather removed by | Summer share away (95% interval) | Break share away (95% interval) |
 |---|---|---|---|
-| Subway alone | nothing | 0.90 (0.71–1.11) | 0.74 (0.40–1.14) |
-| Bluebikes alone | nothing | 0.79 (0.67–0.90) | 1.02 (0.66–1.38) |
-| **Subway and Bluebikes** | nothing | **0.83 (0.72–0.94)** | **0.91 (0.61–1.20)** |
-| Subway, Bluebikes and 311 | nothing | 0.83 (0.73–0.95) | 0.90 (0.63–1.17) |
+| Subway alone | nothing | 0.90 (0.64–1.20) | 0.74 (0.27–1.30) |
+| Bluebikes alone | nothing | 0.79 (0.63–0.95) | 1.02 (0.47–1.52) |
+| **Subway and Bluebikes** | nothing | **0.83 (0.69–0.99)** | **0.91 (0.52–1.28)** |
+| Subway, Bluebikes and 311 | nothing | 0.83 (0.69–0.99) | 0.90 (0.52–1.28) |
 | Subway and Bluebikes | linear regression, ridge, lasso, neural network | 0.83–0.85 | 0.93–0.95 |
 | Subway and Bluebikes | nearest neighbours, random forest | 0.80, 0.76 | 1.01, 1.04 |
 | Subway and Bluebikes | support vector machine, gradient boosting | 0.73, 0.70 | 0.89, 0.92 |
 
-  * Together, the subway and Bluebikes narrow the shares (summer 0.72–0.94, breaks 0.61–1.20, against 0.71–1.11 and 0.40–1.14 for the subway alone). The joint summer share, 0.83, is that of every student not living with their parents leaving, the version the population model chose on its own.
-  * Every way of removing the weather gives a summer share inside the others' intervals. The tree models and the support vector machine give lower ones (0.70–0.76), probably because they let temperature take part of the summer's timing.
-* **Accuracy in people: a test with a known truth** (`population_accuracy.csv`). Nobody counts the population each week, so the method is tested on signals made up from shares chosen in advance, with the fitted scales and the noise the real fits leave (shifted in time, which keeps its week-to-week pattern). The joint model is fitted on them as on the real ones, 200 times for each truth, and its shares are turned into students away in the weeks of 2019:
+  * The intervals are the calibrated ones of the test below: refits on calendar months drawn with replacement, their spread widened by 1.4.
+  * Together, the subway and Bluebikes narrow the shares (summer 0.69–0.99, breaks 0.52–1.28, against 0.64–1.20 and 0.27–1.30 for the subway alone), and give the band of the population estimate. The joint summer share, 0.83, is that of every student not living with their parents leaving, the version the population model chose on its own.
+  * Every way of removing the weather gives a summer share inside the others' intervals, but removing it widens them (summer 0.44–0.97 to 0.62–1.10, against 0.69–0.99 without). The tree models and the support vector machine give lower shares (0.70–0.76), probably because they let temperature take part of the summer's timing.
+* **Accuracy in people: a test with a known truth** (`population_accuracy.py`). Nobody counts the population each week, so the method is tested on signals made up from shares chosen in advance, with the fitted scales and the noise the real fits leave (shifted in time, which keeps its week-to-week pattern). The joint model is fitted on them as on the real ones, and its shares are turned into students away in the weeks of 2019.
+* **Calibrating the intervals** (`population_accuracy_calibration.csv`). For 60 made-up data sets of each truth, the shares are refitted on calendar months drawn with replacement, in runs of one, three or six consecutive months, and the refits' spread around the estimate is widened by 1.0 to 2.0. How often the 95% interval contains the true share (summer, breaks), on average over the four truths below:
 
-| True shares away (summer, breaks) | Estimated on average | Typical error, mid-summer week (students) | 95% of errors within | Typical error, Thanksgiving week | 95% interval contains the true share (summer, breaks) |
-|---|---|---|---|---|---|
-| 0.50, 0.50 | 0.50, 0.52 | 13,109 | −25,392 to +30,727 | 17,743 | 80%, 85% |
-| 0.70, 0.60 | 0.71, 0.60 | 12,470 | −26,384 to +28,946 | 16,718 | 88%, 85% |
-| 0.90, 0.74 | 0.90, 0.75 | 1,254 | −12,603 to 0 | 13,819 | 85%, 82% |
-| 1.00, 1.00 | 1.01, 1.00 | 0 | 0 | 1,205 | 82%, 70% |
-| 0.70, 0.60, with students 20% more of weekend riders than the model assumes | 0.85, 0.74 | 25,049 | +6,014 to +30,030 | 21,469 | 38%, 68% |
+| Months drawn together | Not widened | Widened by 1.2 | Widened by 1.4 | Widened by 1.6 |
+|---|---|---|---|---|
+| **1** | 86%, 81% | 94%, 88% | **97%, 96%** | 98%, 98% |
+| 3 | 84%, 82% | 92%, 89% | 97%, 96% | 98%, 98% |
+| 6 | 83%, 79% | 90%, 86% | 93%, 90% | 96%, 94% |
 
-  * **When its assumptions hold, the method is unbiased**: on average it finds the true shares. A single summer or break week is typically off by 12,000–18,000 students (out of about 1.84 million residents); near the upper end of the range the error is smaller, because no estimate can exceed every student not living with their parents. Averaged over all the weeks of 2019, most of which have nobody out of session, the typical error is at most about 7,000 students.
-  * **The 95% intervals are too narrow**: they contain the true share 70–88% of the time (82% on average), not 95%, so the bands of the estimate are closer to 80% intervals.
-  * **If the key assumption fails, the estimate is too high.** If students make up a 20% larger share of weekend riders than of weekday riders, the method finds 0.85 and 0.74 instead of 0.70 and 0.60: about 25,000 more students away in mid-summer than the truth.
+  * Not widened, the intervals are too narrow, and drawing longer runs of months does not help, so the week-to-week dependence of the noise is not the main reason. The rule chosen in advance takes the shortest run, then the smallest widening, that reaches 95% for both shares: one month, widened by 1.4. The joint model and the band of the population estimate use it.
+* **Accuracy, on new made-up data sets** (so that coverage is not measured on the data the widening was chosen on): errors from 200 data sets for each truth, coverage from 60 of them.
+
+| True shares away (summer, breaks) | Estimated on average | Typical error, mid-summer week (students) | 95% of errors within | Typical error, Thanksgiving week | 95% interval contains the true share (summer, breaks) | Band contains the true students away (mid-summer, Thanksgiving) |
+|---|---|---|---|---|---|---|
+| 0.50, 0.50 | 0.49, 0.50 | 13,892 | −34,630 to +28,712 | 17,622 | 100%, 97% | 100%, 100% |
+| 0.70, 0.60 | 0.70, 0.59 | 12,248 | −26,717 to +29,479 | 18,409 | 95%, 93% | 95%, 97% |
+| 0.90, 0.74 | 0.90, 0.74 | 1,013 | −11,176 to 0 | 13,545 | 90%, 92% | 100%, 93% |
+| 1.00, 1.00 | 1.01, 1.01 | 0 | 0 | 1,033 | 95%, 95% | 100%, 100% |
+| 0.70, 0.60, with students 20% more of weekend riders than the model assumes | 0.85, 0.73 | 25,241 | +5,163 to +30,030 | 22,026 | 52%, 80% | 52%, 80% |
+
+  * **When its assumptions hold, the method is unbiased**: on average it finds the true shares. A single summer or break week is typically off by 12,000–18,000 students (out of about 1.84 million residents); near the upper end of the range the error is smaller, because no estimate can exceed every student not living with their parents. Averaged over all the weeks of 2019, most of which have nobody out of session, the typical error is at most about 7,400 students.
+  * **The calibrated intervals hold on new data**: they contain the true share 95% of the time for summer and 94% for breaks on average (90–100% for single truths, each from 60 data sets and so uncertain by about ±6 points). The band of students away, which runs up to the most students who could be away, contains the truth in 97–100% of the weeks of 2019.
+  * **If the key assumption fails, the estimate is too high and the intervals miss.** If students make up a 20% larger share of weekend riders than of weekday riders, the method finds 0.85 and 0.73 instead of 0.70 and 0.60, about 25,000 more students away in mid-summer than the truth, and the summer interval contains the truth only 52% of the time: a widening calibrated on a correct model cannot make up for a wrong one.
 
 #### Scenarios
 
@@ -678,9 +690,9 @@ By university, all universities with assumed calendars (95% intervals; "verified
 | Remote fall term | 1,762,502 | 186,079 | 69,161 | 79,640 | −17,069 | −60,409 |
 
 * **Enrollment moves the term, not the summer low.** With 10% fewer students the population is 18,608 lower in every week in session and 10,525 lower on average, but the lowest week (summer, 1,674,320) does not change: in summer every student not living with their parents is away in the estimate anyway, so the summer low is the population without them.
-* **Aligned spring breaks make one deep dip instead of three shallow ones.** In the week of March 2, 176,400 students would be away (95% interval 86,645–176,400), almost as many as at the height of summer (186,079), and the population would be 107,239 lower than it is that week; in the weeks the breaks move from, it is up to 59,405 higher. The time away over the spring does not change.
-* **A remote fall term empties part of every fall week.** 60,409 students (95% interval 29,517–60,409), the remote institutions' students not living with their parents, would be away in each regular fall week, lowering the year's average population by 17,069.
-* **Limits.** Each scenario changes one input and keeps everything else, including how students behave: if every university broke the same week or a term went remote, more or fewer students might stay than in the years the model learned from. In a single long break or a remote term the band's lower end matters more, since it uses the share that leaves on breaks (as few as 42%). Only resident college students are modeled.
+* **Aligned spring breaks make one deep dip instead of three shallow ones.** In the week of March 2, 176,400 students would be away (95% interval 107,701–176,400), almost as many as at the height of summer (186,079), and the population would be 107,239 lower than it is that week; in the weeks the breaks move from, it is up to 59,405 higher. The time away over the spring does not change.
+* **A remote fall term empties part of every fall week.** 60,409 students (95% interval 36,690–60,409), the remote institutions' students not living with their parents, would be away in each regular fall week, lowering the year's average population by 17,069.
+* **Limits.** Each scenario changes one input and keeps everything else, including how students behave: if every university broke the same week or a term went remote, more or fewer students might stay than in the years the model learned from. In a single long break or a remote term the band's lower end matters more, since it uses the share that leaves on breaks (as few as 52%). Only resident college students are modeled.
 
 #### Presence evaluation
 
