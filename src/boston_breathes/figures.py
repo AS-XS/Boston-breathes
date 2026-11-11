@@ -754,15 +754,16 @@ def population_table() -> pl.DataFrame:
 def estimate_note() -> str:
     shares = read("population_model_shares.csv").filter(
         (pl.col("measure") == pm.MAIN_MEASURE) & (pl.col("period") == pm.MAIN_PERIOD)
-        & (pl.col("version") == pm.MAIN_VERSION))
+        & (pl.col("version") == pm.BAND_VERSION))
     share = lambda part: shares.filter(pl.col("parameter") == part).row(0, named=True)  # noqa: E731
-    text = lambda r: f"{r['estimate']:.0%} ({r['low']:.0%}–{r['high']:.0%})"  # noqa: E731
+    low = lambda part: f"{share(part)['low']:.0%}"  # noqa: E731
     return ("The darker band is the population model's estimate with its 95% interval. On weekdays, subway "
             "stations with more student riders lose more entries when students are out of session; on weekends, "
-            "when there are no classes, only when students have left. Compared over 2022–2025, that puts the share "
-            f"of students out of session who leave at {text(share('summer'))} in summer and "
-            f"{text(share('breaks'))} on breaks, kept inside the possible range. Not estimated in the COVID-19 "
-            "period.")
+            "when there are no classes, only when students have left. Of the versions of who leaves, the one in "
+            "which every student out of session not living with their parents leaves (the lower line) predicted "
+            "later years' travel best, so the estimate is that line; the band reaches up to the population that "
+            f"the fitted shares still allow, with as few as {low('summer')} of students out of session leaving in "
+            f"summer and {low('breaks')} on breaks. Not estimated in the COVID-19 period.")
 
 
 def away_note() -> str:

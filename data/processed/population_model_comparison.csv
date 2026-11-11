@@ -3,83 +3,83 @@ semester_pass_share,2022-2025,209,weekly slopes,corr_weekday_slope_vs_out_of_ses
 semester_pass_share,2022-2025,209,weekly slopes,corr_weekend_slope_vs_out_of_session,-0.5895
 semester_pass_share,2022-2025,209,no change,held_out_rmse,4.385
 semester_pass_share,2022-2025,209,no change,rmse_change_pct,0.0
-semester_pass_share,2022-2025,209,dorm closures only,held_out_rmse,3.8794
-semester_pass_share,2022-2025,209,dorm closures only,rmse_change_pct,-11.5315
-semester_pass_share,2022-2025,209,every student out of session not living with parents,held_out_rmse,3.5533
-semester_pass_share,2022-2025,209,every student out of session not living with parents,rmse_change_pct,-18.9664
-semester_pass_share,2022-2025,209,one share away,held_out_rmse,3.5709
-semester_pass_share,2022-2025,209,one share away,rmse_change_pct,-18.5656
-semester_pass_share,2022-2025,209,summer and breaks,held_out_rmse,3.605
-semester_pass_share,2022-2025,209,summer and breaks,rmse_change_pct,-17.7886
-semester_pass_share,2022-2025,209,each kind of break,held_out_rmse,3.6215
-semester_pass_share,2022-2025,209,each kind of break,rmse_change_pct,-17.412
+semester_pass_share,2022-2025,209,dorm closures only,held_out_rmse,3.8801
+semester_pass_share,2022-2025,209,dorm closures only,rmse_change_pct,-11.514
+semester_pass_share,2022-2025,209,every student out of session not living with parents,held_out_rmse,3.5547
+semester_pass_share,2022-2025,209,every student out of session not living with parents,rmse_change_pct,-18.9361
+semester_pass_share,2022-2025,209,one share away,held_out_rmse,3.5714
+semester_pass_share,2022-2025,209,one share away,rmse_change_pct,-18.5545
+semester_pass_share,2022-2025,209,summer and breaks,held_out_rmse,3.6055
+semester_pass_share,2022-2025,209,summer and breaks,rmse_change_pct,-17.7774
+semester_pass_share,2022-2025,209,each kind of break,held_out_rmse,3.622
+semester_pass_share,2022-2025,209,each kind of break,rmse_change_pct,-17.4005
 age_18_25_share,2022-2025,209,weekly slopes,corr_weekday_slope_vs_out_of_session,-0.7169
 age_18_25_share,2022-2025,209,weekly slopes,corr_weekend_slope_vs_out_of_session,-0.5571
 age_18_25_share,2022-2025,209,no change,held_out_rmse,0.8097
 age_18_25_share,2022-2025,209,no change,rmse_change_pct,0.0
 age_18_25_share,2022-2025,209,dorm closures only,held_out_rmse,0.7507
-age_18_25_share,2022-2025,209,dorm closures only,rmse_change_pct,-7.2949
+age_18_25_share,2022-2025,209,dorm closures only,rmse_change_pct,-7.2876
 age_18_25_share,2022-2025,209,every student out of session not living with parents,held_out_rmse,0.6753
-age_18_25_share,2022-2025,209,every student out of session not living with parents,rmse_change_pct,-16.6034
-age_18_25_share,2022-2025,209,one share away,held_out_rmse,0.6757
-age_18_25_share,2022-2025,209,one share away,rmse_change_pct,-16.5594
-age_18_25_share,2022-2025,209,summer and breaks,held_out_rmse,0.6704
-age_18_25_share,2022-2025,209,summer and breaks,rmse_change_pct,-17.2086
+age_18_25_share,2022-2025,209,every student out of session not living with parents,rmse_change_pct,-16.6013
+age_18_25_share,2022-2025,209,one share away,held_out_rmse,0.6756
+age_18_25_share,2022-2025,209,one share away,rmse_change_pct,-16.5621
+age_18_25_share,2022-2025,209,summer and breaks,held_out_rmse,0.6703
+age_18_25_share,2022-2025,209,summer and breaks,rmse_change_pct,-17.2156
 age_18_25_share,2022-2025,209,each kind of break,held_out_rmse,0.6727
-age_18_25_share,2022-2025,209,each kind of break,rmse_change_pct,-16.9229
+age_18_25_share,2022-2025,209,each kind of break,rmse_change_pct,-16.919
 school_trip_share,2022-2025,209,weekly slopes,corr_weekday_slope_vs_out_of_session,-0.7432
 school_trip_share,2022-2025,209,weekly slopes,corr_weekend_slope_vs_out_of_session,-0.4527
 school_trip_share,2022-2025,209,no change,held_out_rmse,0.6045
 school_trip_share,2022-2025,209,no change,rmse_change_pct,0.0
 school_trip_share,2022-2025,209,dorm closures only,held_out_rmse,0.5731
-school_trip_share,2022-2025,209,dorm closures only,rmse_change_pct,-5.2015
-school_trip_share,2022-2025,209,every student out of session not living with parents,held_out_rmse,0.5482
-school_trip_share,2022-2025,209,every student out of session not living with parents,rmse_change_pct,-9.3222
+school_trip_share,2022-2025,209,dorm closures only,rmse_change_pct,-5.1912
+school_trip_share,2022-2025,209,every student out of session not living with parents,held_out_rmse,0.5483
+school_trip_share,2022-2025,209,every student out of session not living with parents,rmse_change_pct,-9.307
 school_trip_share,2022-2025,209,one share away,held_out_rmse,0.5423
-school_trip_share,2022-2025,209,one share away,rmse_change_pct,-10.2947
-school_trip_share,2022-2025,209,summer and breaks,held_out_rmse,0.5367
-school_trip_share,2022-2025,209,summer and breaks,rmse_change_pct,-11.2154
+school_trip_share,2022-2025,209,one share away,rmse_change_pct,-10.291
+school_trip_share,2022-2025,209,summer and breaks,held_out_rmse,0.5368
+school_trip_share,2022-2025,209,summer and breaks,rmse_change_pct,-11.2094
 school_trip_share,2022-2025,209,each kind of break,held_out_rmse,0.5444
-school_trip_share,2022-2025,209,each kind of break,rmse_change_pct,-9.9516
+school_trip_share,2022-2025,209,each kind of break,rmse_change_pct,-9.9445
 semester_pass_share,2016-2019,209,weekly slopes,corr_weekday_slope_vs_out_of_session,-0.8861
 semester_pass_share,2016-2019,209,weekly slopes,corr_weekend_slope_vs_out_of_session,-0.3868
 semester_pass_share,2016-2019,209,no change,held_out_rmse,5.6413
 semester_pass_share,2016-2019,209,no change,rmse_change_pct,0.0
-semester_pass_share,2016-2019,209,dorm closures only,held_out_rmse,5.3558
-semester_pass_share,2016-2019,209,dorm closures only,rmse_change_pct,-5.0604
-semester_pass_share,2016-2019,209,every student out of session not living with parents,held_out_rmse,5.2278
-semester_pass_share,2016-2019,209,every student out of session not living with parents,rmse_change_pct,-7.3295
-semester_pass_share,2016-2019,209,one share away,held_out_rmse,5.2534
-semester_pass_share,2016-2019,209,one share away,rmse_change_pct,-6.8765
-semester_pass_share,2016-2019,209,summer and breaks,held_out_rmse,5.2708
-semester_pass_share,2016-2019,209,summer and breaks,rmse_change_pct,-6.5667
-semester_pass_share,2016-2019,209,each kind of break,held_out_rmse,5.2665
-semester_pass_share,2016-2019,209,each kind of break,rmse_change_pct,-6.6429
+semester_pass_share,2016-2019,209,dorm closures only,held_out_rmse,5.3555
+semester_pass_share,2016-2019,209,dorm closures only,rmse_change_pct,-5.0652
+semester_pass_share,2016-2019,209,every student out of session not living with parents,held_out_rmse,5.227
+semester_pass_share,2016-2019,209,every student out of session not living with parents,rmse_change_pct,-7.3434
+semester_pass_share,2016-2019,209,one share away,held_out_rmse,5.2523
+semester_pass_share,2016-2019,209,one share away,rmse_change_pct,-6.8958
+semester_pass_share,2016-2019,209,summer and breaks,held_out_rmse,5.27
+semester_pass_share,2016-2019,209,summer and breaks,rmse_change_pct,-6.5807
+semester_pass_share,2016-2019,209,each kind of break,held_out_rmse,5.2656
+semester_pass_share,2016-2019,209,each kind of break,rmse_change_pct,-6.66
 age_18_25_share,2016-2019,209,weekly slopes,corr_weekday_slope_vs_out_of_session,-0.9051
 age_18_25_share,2016-2019,209,weekly slopes,corr_weekend_slope_vs_out_of_session,-0.7124
 age_18_25_share,2016-2019,209,no change,held_out_rmse,0.9602
 age_18_25_share,2016-2019,209,no change,rmse_change_pct,0.0
 age_18_25_share,2016-2019,209,dorm closures only,held_out_rmse,0.8317
-age_18_25_share,2016-2019,209,dorm closures only,rmse_change_pct,-13.3824
+age_18_25_share,2016-2019,209,dorm closures only,rmse_change_pct,-13.3833
 age_18_25_share,2016-2019,209,every student out of session not living with parents,held_out_rmse,0.6804
-age_18_25_share,2016-2019,209,every student out of session not living with parents,rmse_change_pct,-29.1395
+age_18_25_share,2016-2019,209,every student out of session not living with parents,rmse_change_pct,-29.1409
 age_18_25_share,2016-2019,209,one share away,held_out_rmse,0.67
-age_18_25_share,2016-2019,209,one share away,rmse_change_pct,-30.2254
-age_18_25_share,2016-2019,209,summer and breaks,held_out_rmse,0.6738
-age_18_25_share,2016-2019,209,summer and breaks,rmse_change_pct,-29.8329
-age_18_25_share,2016-2019,209,each kind of break,held_out_rmse,0.6753
-age_18_25_share,2016-2019,209,each kind of break,rmse_change_pct,-29.67
+age_18_25_share,2016-2019,209,one share away,rmse_change_pct,-30.2242
+age_18_25_share,2016-2019,209,summer and breaks,held_out_rmse,0.6737
+age_18_25_share,2016-2019,209,summer and breaks,rmse_change_pct,-29.8403
+age_18_25_share,2016-2019,209,each kind of break,held_out_rmse,0.6752
+age_18_25_share,2016-2019,209,each kind of break,rmse_change_pct,-29.6837
 school_trip_share,2016-2019,209,weekly slopes,corr_weekday_slope_vs_out_of_session,-0.8816
 school_trip_share,2016-2019,209,weekly slopes,corr_weekend_slope_vs_out_of_session,-0.4144
 school_trip_share,2016-2019,209,no change,held_out_rmse,0.9476
 school_trip_share,2016-2019,209,no change,rmse_change_pct,0.0
 school_trip_share,2016-2019,209,dorm closures only,held_out_rmse,0.8966
-school_trip_share,2016-2019,209,dorm closures only,rmse_change_pct,-5.3732
+school_trip_share,2016-2019,209,dorm closures only,rmse_change_pct,-5.3753
 school_trip_share,2016-2019,209,every student out of session not living with parents,held_out_rmse,0.8646
-school_trip_share,2016-2019,209,every student out of session not living with parents,rmse_change_pct,-8.7513
+school_trip_share,2016-2019,209,every student out of session not living with parents,rmse_change_pct,-8.7558
 school_trip_share,2016-2019,209,one share away,held_out_rmse,0.8653
-school_trip_share,2016-2019,209,one share away,rmse_change_pct,-8.677
+school_trip_share,2016-2019,209,one share away,rmse_change_pct,-8.6811
 school_trip_share,2016-2019,209,summer and breaks,held_out_rmse,0.8657
-school_trip_share,2016-2019,209,summer and breaks,rmse_change_pct,-8.633
-school_trip_share,2016-2019,209,each kind of break,held_out_rmse,0.8656
-school_trip_share,2016-2019,209,each kind of break,rmse_change_pct,-8.644
+school_trip_share,2016-2019,209,summer and breaks,rmse_change_pct,-8.6407
+school_trip_share,2016-2019,209,each kind of break,held_out_rmse,0.8655
+school_trip_share,2016-2019,209,each kind of break,rmse_change_pct,-8.6558
