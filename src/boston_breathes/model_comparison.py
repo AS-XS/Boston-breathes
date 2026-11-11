@@ -57,7 +57,8 @@ Outputs in data/processed/:
   * model_comparison.csv          held-out scores and the index's effect, one row per target, family,
                                   model, subset and metric
   * model_coefficients.csv        every coefficient (except the year and week levels) of the linear models
-                                  with the index, with its Newey-West standard error
+                                  with the index, with its Newey-West standard error, and the combined
+                                  effect of warming from 0 to 20 °C through both temperature terms
   * model_feature_importance.csv  for the trees with the index, the increase in held-out error when each
                                   input is shuffled across weeks
 """
@@ -90,6 +91,7 @@ TREE_SETTINGS = {"max_iter": 300, "learning_rate": 0.05, "max_leaf_nodes": 15, "
 BUFFER_WEEKS = 1
 HAC_LAGS = 4
 IN_SESSION = 0.9  # weeks below this index are "not fully in session"
+WARMING = (0, 20)  # °C: a change in temperature reported as one effect, through both temperature terms
 
 
 def log_ratio(a: str, b: str) -> pl.Expr:
@@ -184,15 +186,30 @@ def scores(y: np.ndarray, pred: np.ndarray) -> dict[str, float]:
             "r2": float(1 - (err ** 2).sum() / ((y - y.mean()) ** 2).sum())}
 
 
-def newey_west(x: np.ndarray, resid: np.ndarray, lags: int = HAC_LAGS) -> np.ndarray:
-    """Standard errors of least-squares coefficients allowing autocorrelation up to `lags` rows apart."""
+def newey_west_cov(x: np.ndarray, resid: np.ndarray, lags: int = HAC_LAGS) -> np.ndarray:
+    """Covariance of least-squares coefficients allowing autocorrelation up to `lags` rows apart."""
     xe = x * resid[:, None]
     meat = xe.T @ xe
     for lag in range(1, lags + 1):
         g = xe[lag:].T @ xe[:-lag]
         meat += (1 - lag / (lags + 1)) * (g + g.T)
     bread = np.linalg.pinv(x.T @ x)
-    return np.sqrt(np.diag(bread @ meat @ bread))
+    return bread @ meat @ bread
+
+
+def newey_west(x: np.ndarray, resid: np.ndarray, lags: int = HAC_LAGS) -> np.ndarray:
+    """Standard errors of least-squares coefficients allowing autocorrelation up to `lags` rows apart."""
+    return np.sqrt(np.diag(newey_west_cov(x, resid, lags)))
+
+
+def warming_effect(names: list[str], beta: np.ndarray, cov: np.ndarray) -> tuple[float, float]:
+    """Change in the target from WARMING[0] to WARMING[1] °C, through both temperature terms, and its
+    standard error."""
+    low, high = WARMING
+    w = np.zeros(len(beta))
+    w[names.index("tmean_c")] = high - low
+    w[names.index("tmean_sq")] = high ** 2 - low ** 2
+    return float(w @ beta), float(np.sqrt(w @ cov @ w))
 
 
 def row(target: str, family: str, model: str, subset: str, metric: str, value: float, n: int) -> dict:
@@ -257,10 +274,13 @@ def compare(table: pl.DataFrame, target: str,
                 rows += effect_rows(target, family, model, df, x, extra)
             if family != TREES and model == "index":
                 beta = np.linalg.lstsq(x, y, rcond=None)[0]
-                se = newey_west(x, y - x @ beta)
-                coefficients += [{"target": target, "family": family, "model": model, "feature": name,
-                                  "coef": round(float(beta[i]), 6), "se": round(float(se[i]), 6), "n": len(df)}
-                                 for i, name in enumerate(names)]
+                cov = newey_west_cov(x, y - x @ beta)
+                se = np.sqrt(np.diag(cov))
+                coef = lambda feature, b, s: {"target": target, "family": family, "model": model,  # noqa: E731
+                                              "feature": feature, "coef": round(b, 6), "se": round(s, 6),
+                                              "n": len(df)}
+                coefficients += [coef(name, float(beta[i]), float(se[i])) for i, name in enumerate(names)]
+                coefficients.append(coef(f"tmean_{WARMING[0]}_to_{WARMING[1]}c", *warming_effect(names, beta, cov)))
     return rows, coefficients, importance
 
 

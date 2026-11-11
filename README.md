@@ -268,7 +268,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 15. Students away: weekly range | Steps 11 and 14 | Done | `students_away_weekly.csv` |
 | 16. Figures and year explorer | Steps 1–15 | Done | `figures/*.png`, `figures/*.html` (see [How to Read the Results](#how-to-read-the-results)) |
 | 17. Modeling table | Weekly tables of steps 1–15 | Done | `modeling_weekly.csv`: one row per week with travel records, weather, calendar, and student columns |
-| 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect; `model_coefficients.csv`, `model_feature_importance.csv`: what each input does (see [The models in detail](#the-models-in-detail)) |
+| 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect; `model_coefficients.csv` (with the combined effect of warming from 0 to 20 °C), `model_feature_importance.csv`: what each input does (see [The models in detail](#the-models-in-detail)) |
 | 19. Pooled campus model | Steps 8, 10, 12, and 14 | Done | `campus_panel.csv`: travel at each campus against its own university's calendar (all universities with assumed calendars, and verified calendars only), by university, with a placebo |
 | 20. Students away: estimate (step 3) | Steps 12, 15, and 19 | Done | `students_away_shares.csv`, `students_away_estimate.csv`: the share of students out of session who are away, and a weekly low and high estimate inside the range of step 15 |
 
@@ -610,11 +610,11 @@ By kind of week (typical error; 231 fully in-session weeks, 164 summer weeks and
 | MBTA total | linear, week of year | 7.3% | 7.4% | 8.3% |
 | MBTA total | gradient boosting | 7.8% | 8.1% | 9.5% |
 
-**What the inputs do** (linear, smooth season, with the index; the change in the target for each input, in bold where the 95% interval excludes zero; network size as an elasticity, the percentage change in activity for a 1% change in stations):
+**What the inputs do** (linear, smooth season, with the index; the change in the target for each input, in bold where the 95% interval excludes zero; the temperature row combines temperature and its square, and its interval allows for the two being estimated together; network size as an elasticity, the percentage change in activity for a 1% change in stations):
 
 | Input | Bluebikes campus ratio | MBTA campus ratio | Bluebikes total | MBTA total |
 |---|---|---|---|---|
-| Mean temperature 0 → 20 °C | **+11.5%** | −2.0% | **+88.6%** | **+5.0%** |
+| Mean temperature 0 → 20 °C | **+11.5%** | −2.0% | **+88.6%** | +5.0% |
 | Each rain day | −0.3% | −0.0% | **−3.5%** | −0.3% |
 | Each heavy-rain day (on top) | +0.2% | −0.7% | **−2.2%** | −0.6% |
 | Each snow day | −1.3% | +0.8% | −4.0% | −1.5% |
@@ -624,7 +624,7 @@ By kind of week (typical error; 231 fully in-session weeks, 164 summer weeks and
 | Network size (elasticity) | **0.61** | −0.23 | **1.08** | **1.62** |
 
 * *Bluebikes total* behaves as a bike-share system should: going from 0 °C to 20 °C almost doubles trips (+89%), with no further gain above about 24 °C; each rain day costs 3.5%, each holiday 5%, and the Christmas–New Year weeks 34%. Trips grow slightly faster than the network (elasticity 1.08).
-* *MBTA total* barely reacts to weather: holidays (−8% each) and the Christmas–New Year weeks (−18.5%) matter most, and closed stations cost more than their share of the network (elasticity 1.6), probably because closures come with line shutdowns.
+* *MBTA total* barely reacts to weather (0 °C to 20 °C: +5%, interval −2% to +12%): holidays (−8% each) and the Christmas–New Year weeks (−18.5%) matter most, and closed stations cost more than their share of the network (elasticity 1.6), probably because closures come with line shutdowns.
 * *The campus ratios* cancel most of the weather, as intended. The Bluebikes campus share rises a little in warm weather (+12% from 0 °C to 20 °C) and falls in the Christmas–New Year weeks (−10%); after the year levels, the index is its strongest input. Little explains the MBTA campus share apart from the index and holidays, hence its low R².
 
 **What the trees rely on** (permutation importance on held-out months: the increase in error when one input is shuffled across weeks):

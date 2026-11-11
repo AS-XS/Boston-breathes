@@ -15,6 +15,7 @@ Bluebikes campus ratio,"linear, smooth season",index,cos1,-0.053224,0.020369,534
 Bluebikes campus ratio,"linear, smooth season",index,sin2,0.002451,0.010473,534
 Bluebikes campus ratio,"linear, smooth season",index,cos2,0.011464,0.013982,534
 Bluebikes campus ratio,"linear, smooth season",index,presence_index,0.166452,0.019749,534
+Bluebikes campus ratio,"linear, smooth season",index,tmean_0_to_20c,0.109055,0.03712,534
 Bluebikes campus ratio,"linear, week of year",index,tmean_c,0.012025,0.005086,534
 Bluebikes campus ratio,"linear, week of year",index,tmean_sq,-0.000337,0.000191,534
 Bluebikes campus ratio,"linear, week of year",index,rain_days,-0.003141,0.0035,534
@@ -27,6 +28,7 @@ Bluebikes campus ratio,"linear, week of year",index,n_holidays,-0.009963,0.01091
 Bluebikes campus ratio,"linear, week of year",index,year_end_week,-0.051398,0.029608,534
 Bluebikes campus ratio,"linear, week of year",index,network,0.618681,0.107332,534
 Bluebikes campus ratio,"linear, week of year",index,presence_index,0.140523,0.050693,534
+Bluebikes campus ratio,"linear, week of year",index,tmean_0_to_20c,0.105716,0.04075,534
 MBTA campus ratio,"linear, smooth season",index,tmean_c,0.000579,0.002355,538
 MBTA campus ratio,"linear, smooth season",index,tmean_sq,-0.000079,0.0001,538
 MBTA campus ratio,"linear, smooth season",index,rain_days,-0.000079,0.002367,538
@@ -43,6 +45,7 @@ MBTA campus ratio,"linear, smooth season",index,cos1,-0.04555,0.01415,538
 MBTA campus ratio,"linear, smooth season",index,sin2,-0.000381,0.005758,538
 MBTA campus ratio,"linear, smooth season",index,cos2,-0.002594,0.006989,538
 MBTA campus ratio,"linear, smooth season",index,presence_index,0.051894,0.009626,538
+MBTA campus ratio,"linear, smooth season",index,tmean_0_to_20c,-0.020077,0.02446,538
 MBTA campus ratio,"linear, week of year",index,tmean_c,0.002885,0.002701,538
 MBTA campus ratio,"linear, week of year",index,tmean_sq,-0.000137,0.000107,538
 MBTA campus ratio,"linear, week of year",index,rain_days,0.000018,0.002504,538
@@ -55,6 +58,7 @@ MBTA campus ratio,"linear, week of year",index,n_holidays,0.016427,0.006277,538
 MBTA campus ratio,"linear, week of year",index,year_end_week,-0.029528,0.028151,538
 MBTA campus ratio,"linear, week of year",index,network,-0.338015,0.479009,538
 MBTA campus ratio,"linear, week of year",index,presence_index,-0.026577,0.037757,538
+MBTA campus ratio,"linear, week of year",index,tmean_0_to_20c,0.003095,0.026232,538
 Bluebikes total,"linear, smooth season",index,tmean_c,0.054679,0.00618,534
 Bluebikes total,"linear, smooth season",index,tmean_sq,-0.001148,0.000227,534
 Bluebikes total,"linear, smooth season",index,rain_days,-0.035567,0.004125,534
@@ -71,6 +75,7 @@ Bluebikes total,"linear, smooth season",index,cos1,-0.203428,0.029904,534
 Bluebikes total,"linear, smooth season",index,sin2,0.026359,0.01423,534
 Bluebikes total,"linear, smooth season",index,cos2,0.064719,0.016214,534
 Bluebikes total,"linear, smooth season",index,presence_index,0.252091,0.027774,534
+Bluebikes total,"linear, smooth season",index,tmean_0_to_20c,0.634422,0.055066,534
 Bluebikes total,"linear, week of year",index,tmean_c,0.050444,0.006259,534
 Bluebikes total,"linear, week of year",index,tmean_sq,-0.001005,0.000234,534
 Bluebikes total,"linear, week of year",index,rain_days,-0.033997,0.003992,534
@@ -83,6 +88,7 @@ Bluebikes total,"linear, week of year",index,n_holidays,-0.056462,0.013352,534
 Bluebikes total,"linear, week of year",index,year_end_week,-0.144122,0.058488,534
 Bluebikes total,"linear, week of year",index,network,1.102776,0.035333,534
 Bluebikes total,"linear, week of year",index,presence_index,0.274732,0.054618,534
+Bluebikes total,"linear, week of year",index,tmean_0_to_20c,0.606943,0.05665,534
 MBTA total,"linear, smooth season",index,tmean_c,0.008067,0.003563,538
 MBTA total,"linear, smooth season",index,tmean_sq,-0.000282,0.000135,538
 MBTA total,"linear, smooth season",index,rain_days,-0.002874,0.002472,538
@@ -99,6 +105,7 @@ MBTA total,"linear, smooth season",index,cos1,-0.057875,0.017055,538
 MBTA total,"linear, smooth season",index,sin2,-0.005908,0.007018,538
 MBTA total,"linear, smooth season",index,cos2,0.037566,0.009479,538
 MBTA total,"linear, smooth season",index,presence_index,0.145441,0.018984,538
+MBTA total,"linear, smooth season",index,tmean_0_to_20c,0.048696,0.034067,538
 MBTA total,"linear, week of year",index,tmean_c,0.005259,0.003917,538
 MBTA total,"linear, week of year",index,tmean_sq,-0.000184,0.000136,538
 MBTA total,"linear, week of year",index,rain_days,-0.002371,0.002371,538
@@ -111,3 +118,4 @@ MBTA total,"linear, week of year",index,n_holidays,-0.055767,0.010596,538
 MBTA total,"linear, week of year",index,year_end_week,-0.145009,0.033641,538
 MBTA total,"linear, week of year",index,network,1.792906,0.349321,538
 MBTA total,"linear, week of year",index,presence_index,0.161118,0.038453,538
+MBTA total,"linear, week of year",index,tmean_0_to_20c,0.031419,0.034214,538

@@ -89,9 +89,23 @@ def test_linear_coefficients_and_tree_importance_cover_every_named_input():
     _, coefficients, importance = mc.compare(synthetic(), "Bluebikes campus ratio",
                                              {mc.SMOOTH: ["baseline", "index"], mc.TREES: ["baseline", "index"]})
     coefs = {r["feature"]: r for r in coefficients}
-    assert list(coefs) == [*mc.FEATURES[mc.SMOOTH], "presence_index"]
+    assert list(coefs) == [*mc.FEATURES[mc.SMOOTH], "presence_index", "tmean_0_to_20c"]
     # The synthetic log ratio rises by 0.2 with the index and by 0.01 per degree.
     assert coefs["presence_index"]["coef"] == pytest.approx(0.2, abs=0.01)
     assert coefs["tmean_c"]["coef"] == pytest.approx(0.01, abs=0.003)
+    # Warming from 0 to 20 degrees: 20 x 0.01. The stored coefficients are rounded to 6 decimals.
+    warming = coefs["tmean_0_to_20c"]
+    assert warming["coef"] == pytest.approx(20 * coefs["tmean_c"]["coef"] + 400 * coefs["tmean_sq"]["coef"], abs=5e-4)
+    assert warming["coef"] == pytest.approx(0.2, abs=0.03)
     assert {r["feature"] for r in importance} == {*mc.FEATURES[mc.TREES], "presence_index"}
     assert max(importance, key=lambda r: r["rmse_increase_pct"])["feature"] == "presence_index"
+
+
+def test_warming_effect_combines_both_temperature_terms_with_their_covariance():
+    names = ["tmean_c", "tmean_sq", "other"]
+    beta = np.array([0.02, -0.0005, 1.0])
+    cov = np.array([[4e-6, -1e-7, 0], [-1e-7, 1e-8, 0], [0, 0, 1]])
+    effect, se = mc.warming_effect(names, beta, cov)
+    assert effect == pytest.approx(20 * 0.02 - 400 * 0.0005)
+    # var(20 a + 400 b) = 400 var(a) + 160,000 var(b) + 2 x 20 x 400 cov(a, b)
+    assert se == pytest.approx(np.sqrt(400 * 4e-6 + 160_000 * 1e-8 - 16_000 * 1e-7))
