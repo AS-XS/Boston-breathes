@@ -1,12 +1,18 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel students-away-estimate figures test clean-interim
+.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel students-away-estimate figures test clean-interim
+
+# Everything, from the downloads to the figures.
+all: data analysis figures
 
 install:
 	python3 -m venv .venv
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
+
+# Analysis of the processed tables (no downloads): evaluation, models and the estimate of students away.
+analysis: evaluate models campus-panel students-away-estimate
 
 data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table
 
@@ -62,8 +68,7 @@ student-residents:
 living-arrangements:
 	$(RUN) boston_breathes.living_arrangements
 
-# Student Presence Index and effective population by week
-# (needs universities, population, calendars, student-residents).
+# Student Presence Index by week (needs universities, population, calendars, student-residents).
 presence:
 	$(RUN) boston_breathes.presence
 

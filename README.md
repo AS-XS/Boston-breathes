@@ -137,6 +137,31 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 
 ---
 
+## How to Run
+
+You need Python 3.10 or later (the project was built with 3.11), `make`, and internet access for the downloads.
+
+```
+make install    # create .venv and install the pinned packages in requirements.txt
+make all        # make data, make analysis and make figures, in that order
+make test       # run the tests
+```
+
+| Command | What it does | Needs | Time |
+|---|---|---|---|
+| `make data` | Downloads every source and writes the processed tables to `data/processed/` | Internet; about 2 GB on the first run (1.3 GB of Bluebikes trip files, about 0.5 GB of Census microdata) | Long on the first run; later runs reuse the downloads and skip Bluebikes months already processed |
+| `make analysis` | The evaluation, the model comparison, the pooled campus model and the estimate of students away | `data/processed/` only | About 4 minutes, mostly the gradient-boosted trees |
+| `make figures` | The PNG images and HTML pages in `figures/` | `data/processed/`; downloads the chart libraries and town boundaries once | About a minute |
+| `make test` | The tests in `tests/` | `data/processed/`; town boundaries (downloaded once) | Under a minute |
+
+* The processed tables and figures are committed, so `make analysis`, `make figures` and `make test` work on a fresh clone without running `make data`.
+* Every step can also be run on its own (`make bluebikes`, `make presence`, `make models`, ...); the Makefile lists them in order, with what each one needs.
+* Downloads are kept in `data/raw/` and intermediate files in `data/interim/`; neither is committed. `make clean-interim` removes the intermediate files.
+* `make data` picks up whatever the sources have published since, such as new Bluebikes months or a newer MBTA file, so a full rebuild can change the numbers slightly. The numbers in this README are those of the committed tables.
+* The downloads come from s3.amazonaws.com (Bluebikes), www.arcgis.com and services1.arcgis.com (MBTA entries and passenger survey), api-v3.mbta.com (station locations), www2.census.gov (population, ACS, microdata, boundaries), nces.ed.gov (IPEDS), www.ncei.noaa.gov (weather), data.boston.gov and data.cambridgema.gov (city data), and registry.npmjs.org (the chart libraries embedded in the figure pages).
+
+---
+
 ## Data Sources and Collection
 
 ### Resident Population
