@@ -62,11 +62,11 @@ def test_universities_with_less_than_a_year_of_weeks_are_left_out():
     assert set(cp.panel(units, cal, "Bluebikes")["unitid"]) == {"u0", "u1", "u2", "u3"}
 
 
-def test_mbta_closures_are_left_out_but_low_holiday_weeks_stay():
+def test_mbta_weeks_with_a_closed_day_are_left_out_but_low_holiday_weeks_stay():
     weeks = [date(2019, 1, 7) + timedelta(weeks=i) for i in range(10)]
-    entries = [1000] * 8 + [500, 100]  # a holiday week at half the median, and a closure
+    entries = [1000] * 8 + [500, 900]  # a holiday week at half the usual entries, and a week with a closed day
     by_station = pl.DataFrame({"week_start": weeks, "stop_id": ["s"] * 10, "entries": entries,
-                               "complete_week": [True] * 10})
+                               "complete_week": [True] * 10, "closed_days": [0] * 9 + [1]})
     stations = pl.DataFrame({"stop_id": ["s"], "in_study_area": [True], "campus_zone": ["campus"],
                              "campus_institution": ["A College"]})
     universities = pl.DataFrame({"name": ["A College"], "unitid": ["1"]})

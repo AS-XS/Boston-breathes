@@ -61,7 +61,8 @@ BREAK_SPECS = {cp.ALL: False, cp.VERIFIED_ONLY: True}
 
 def day_entries(by_station: pl.DataFrame, day: str) -> pl.DataFrame:
     """Weekly station entries of one kind of day, under the name the shared functions read."""
-    return by_station.select("week_start", "stop_id", pl.col(DAYS[day]).alias("entries"), "complete_week")
+    return by_station.select("week_start", "stop_id", pl.col(DAYS[day]).alias("entries"), "complete_week",
+                             "closed_days")
 
 
 def slope(y: np.ndarray, x: np.ndarray) -> tuple[float, float]:

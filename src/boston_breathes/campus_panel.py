@@ -31,11 +31,9 @@ Two versions:
     weeks (one year), Bluebikes campuses with a median of at least 100 trips
     a week, and without Tufts' health-sciences campus.
 Both use weeks outside the COVID-19 period and complete weeks with activity.
-MBTA station-weeks with less than a quarter of the station's median entries
-that year are closures or diversions (the MBTA closes stations for repairs,
-often in summer and over breaks), not students, and are left out; in
-Christmas and New Year weeks, entries near campuses fall but mostly stay
-above 40% of the median, so those weeks stay in.
+MBTA station-weeks with a closed day (mbta.py: the station was shut for
+repairs, often on weekends and in summer, or has no entries that day) are
+left out, since the fall in entries is the closure, not students.
 
 Model, by least squares on the logarithm of activity:
 
@@ -76,7 +74,6 @@ from boston_breathes.paths import PROCESSED
 
 MIN_MEDIAN_TRIPS = 100
 MIN_UNIVERSITY_WEEKS = 52
-CLOSURE_SHARE = 0.25  # an MBTA station-week below this share of the station's median that year is a closure
 OTHER_CAMPUS = {  # at Tufts' Boston health-sciences campus, which follows other calendars than its main campus
     ("Bluebikes", "168148"): "Tufts University, health-sciences campus",
     ("MBTA", "place-tumnl"): "Tufts University, health-sciences campus",
@@ -114,9 +111,8 @@ def mbta_units(by_station: pl.DataFrame, stations: pl.DataFrame, universities: p
     names = universities.select(pl.col("name").alias("campus_institution"), "unitid").unique("campus_institution")
     campus = (stations.filter(pl.col("in_study_area") & (pl.col("campus_zone") == "campus"))
               .join(names, on="campus_institution").select("stop_id", "unitid"))
-    median = pl.col("entries").median().over("stop_id", pl.col("week_start").dt.year())
-    return (by_station.filter(pl.col("complete_week") & (pl.col("entries") > 0)).join(campus, on="stop_id")
-            .filter(pl.col("entries") >= CLOSURE_SHARE * median)
+    return (by_station.filter(pl.col("complete_week") & (pl.col("closed_days") == 0) & (pl.col("entries") > 0))
+            .join(campus, on="stop_id")
             .select("week_start", "unitid", pl.col("stop_id").alias("unit"), pl.col("entries").alias("activity")))
 
 

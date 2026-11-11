@@ -89,7 +89,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 
 **Question.** How does Greater Boston's effective population change throughout the year, and how much of that variation can be explained by university students? The study area is MAPC's Inner Core: 22 cities and towns with about 1.85 million residents, of whom about 220,000–230,000 are college students, followed week by week from 2015 to 2026.
 
-**In short.** Every summer, between about 90,000 and 190,000 resident college students are away (in 2019, 5–10% of the Census population), and fewer during breaks: in 2019, about 13,000–48,000 in a spring-break week and 25,000–92,000 at Thanksgiving. Travel records follow each university's own calendar: Bluebikes trips at a campus are 14–21% higher when its university is in session than when it is not, compared with other campuses in the same week.
+**In short.** Every summer, between about 105,000 and 195,000 resident college students are away (in 2019, 6–10% of the Census population), and fewer during breaks: in 2019, about 13,000–53,000 in a spring-break week and 24,000–101,000 at Thanksgiving. Travel records follow each university's own calendar: Bluebikes trips at a campus are 14–21% higher when its university is in session than when it is not, compared with other campuses in the same week.
 
 ### What the data show
 
@@ -98,8 +98,8 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 3. **Travel follows the students (goal 2).**
    * The share of Bluebikes trips near campuses rises and falls with the index (median correlation within a year 0.85). It dropped in 76% of 293 university breaks, and on weekdays in September bicycle counts near campuses are 17.5% above June, against 1% elsewhere, while motor-vehicle counts barely change.
    * Models of weekly travel, tested on months they were not fitted on: the best model of the near-campus share of Bluebikes trips explains 91% of its variation (typical error 6%, against 22% for guessing the average). For Bluebikes and MBTA, near campuses and in total, the best model includes the index. For Bluebikes and total MBTA entries it lowers the error by 0.7–1.9% once a model knows the typical week of the year, and by 6.7–7.9% against a smooth seasonal curve, because students leave at almost the same time every year; for the MBTA near-campus share it adds little or nothing ([Model comparison](#model-comparison-goal-2)).
-   * Comparing campuses in the same week, which removes weather, season, holidays and visitors: Bluebikes trips at a campus are 21% higher when its own university is in session (14% with every campus on assumed calendars), and subway entries at its stations 14% (9%). Other universities' calendars give at most 2–6%. The effect is largest at residential campuses (Northeastern +46%, MIT +34%) and absent downtown and at graduate and health-professions schools ([Pooled campus model](#pooled-campus-model)).
-4. **How many actually leave (step 3).** When universities are out, weekday travel near campuses falls more than weekend travel: students who stay stop going to classes but keep their weekend trips. The weekend loss over the weekday loss puts the share of students out of session who are away at 41–100% in summer and 16–56% on breaks. That gives the estimate in the first paragraph; averaged over 2019, between 33,000 and 74,000 resident college students were away in a given week (1.8–4.0% of residents) (figure B7, dark band; [Students away: estimate](#students-away-estimate-step-3)).
+   * Comparing campuses in the same week, which removes weather, season, holidays and visitors: Bluebikes trips at a campus are 21% higher when its own university is in session (14% with every campus on assumed calendars), and subway entries at its stations 11% (7%). Other universities' calendars give at most 2–6%. The effect is largest at residential campuses (Northeastern +46%, MIT +34%) and absent downtown and at graduate and health-professions schools ([Pooled campus model](#pooled-campus-model)).
+4. **How many actually leave (step 3).** When universities are out, weekday travel near campuses falls more than weekend travel: students who stay stop going to classes but keep their weekend trips. The weekend loss over the weekday loss puts the share of students out of session who are away at 49–94% in summer and 15–62% on breaks. That gives the estimate in the first paragraph; averaged over 2019, between 38,000 and 76,000 resident college students were away in a given week (2.1–4.1% of residents) (figure B7, dark band; [Students away: estimate](#students-away-estimate-step-3)).
 
 ### Limits
 
@@ -292,6 +292,8 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
   * Missing station IDs (newer Green Line Extension stations, and Charles/MGH in 2014–2019) are filled from the same station name.
   * Some campus-zone stations are also major downtown or event stations (e.g. Kenmore near Fenway Park), so station-level series are kept alongside the zone totals.
   * The weekly tables also split entries into weekdays (Monday to Friday) and weekends, by service date; step 3 compares the two.
+  * *Closures.* The MBTA shuts stations for repairs, mostly on weekends and sometimes for weeks (the Orange Line for 30 days in August–September 2022), with shuttle buses instead of gated entries. A station-day counts as closed when its entries are below half of its typical level for that kind of day (weekday, Saturday or Sunday: the median of the surrounding nine weeks), after scaling that level by how the whole system did that day, so holidays and storms are not closures; days with no entries at all count as closed too. `mbta_weekly_by_station.csv` gives each station-week's closed days. 2.3% of study-area station-days are closed (4.6% of weekend days, 1.3% of weekdays), and 8.6% of station-weeks have at least one closed day, rising to 13–15% in 2024–2025.
+  * Comparisons between stations (the passenger-survey check, the pooled campus model, step 3) leave out station-weeks with a closed day. The zone totals are not adjusted: closures cost a zone 1–2% of its weekly entries on average, and more than 5% in 6–9% of zone-weeks.
 * **MBTA passenger survey.** The MBTA's 2025 System-Wide Passenger Survey (the Rider Census) pools 2022–2025 responses and reports, for each station or small group of stops, the weighted share of riders in each answer with its number of respondents.
   * Four answers describe students: riders using a Semester Pass (sold through colleges and universities, so it marks college students but misses those who pay per ride or use passes their university provides), riders with middle- and high-school student fares, trips between home and school (college and school students alike), and riders aged 18–25. An answer nobody at a station chose has no row and counts as 0.
   * Gated stations are matched to the survey's groups by name; two stations sharing a group get its values, and stations on two lines (e.g. Park Street) combine their lines' groups weighted by respondents. 69 of the 72 gated stations match: the Silver Line stations are reported by route, not station, and Beachmont has no group.
@@ -432,9 +434,9 @@ Effect of the index (from no university in session to all in session), with a 95
 
 * **Campuses compared within the same week.** In the study-area models, students leave at the same time of year every year, so the index cannot be fully told apart from everything else that happens then. Universities do not break at the same time, though: spring breaks fall in different weeks, terms start before or after Labor Day, and some have a February break or a January term. `campus_panel.csv` pools the campuses and compares them week by week: the logarithm of activity at each campus is fitted with a level for every week, shared by all campuses (which removes weather, season, holidays, visitors and school vacations), a level for each campus in each year (size and new stations), and the share of the week its own university is in session.
   * *Units.* Bluebikes trips at the stations of each campus, and entries at each gated station in a campus zone, linked to the nearest campus's university.
-  * *All universities, assumed calendars.* Every campus with travel data (19 Bluebikes campuses, 8,988 campus-weeks; 16 subway stations near 9 universities, 7,579 station-weeks), each with the calendar the Student Presence Index assumes for its university: its own collected calendar, in verified years and in years estimated from its other years (keeping their offset from Labor Day or Martin Luther King Jr. Day), or, without a collected calendar, the typical calendar, the enrollment-weighted average of the collected ones. Tufts' Bluebikes stations and the Tufts Medical Center station are at its health-sciences campus, whose medical and dental schools follow other calendars than the main-campus calendar collected, so they are given the typical calendar and reported apart from Medford/Tufts.
-  * *Verified calendars only.* Universities with their own calendar, in academic years without estimated term or break dates, with at least a year of such weeks; Bluebikes campuses with a median of at least 100 trips a week; without Tufts' health-sciences campus (8 Bluebikes campuses, 2,480 campus-weeks; 11 subway stations of 6 universities, 2,368 station-weeks).
-  * *Closures.* MBTA station-weeks below a quarter of the station's median entries that year are closures or diversions, not students (the MBTA closes stations for repairs, often in summer and over breaks), and are left out: in the verified version 48 of 2,416 station-weeks, only 3 of them around Christmas and New Year, when entries near campuses fall but mostly stay above 40% of the median.
+  * *All universities, assumed calendars.* Every campus with travel data (19 Bluebikes campuses, 8,988 campus-weeks; 15 subway stations near 9 universities, 7,047 station-weeks), each with the calendar the Student Presence Index assumes for its university: its own collected calendar, in verified years and in years estimated from its other years (keeping their offset from Labor Day or Martin Luther King Jr. Day), or, without a collected calendar, the typical calendar, the enrollment-weighted average of the collected ones. Tufts' Bluebikes stations and the Tufts Medical Center station are at its health-sciences campus, whose medical and dental schools follow other calendars than the main-campus calendar collected, so they are given the typical calendar and reported apart from Medford/Tufts.
+  * *Verified calendars only.* Universities with their own calendar, in academic years without estimated term or break dates, with at least a year of such weeks; Bluebikes campuses with a median of at least 100 trips a week; without Tufts' health-sciences campus (8 Bluebikes campuses, 2,480 campus-weeks; 9 subway stations of 5 universities, 2,107 station-weeks).
+  * *Closures.* MBTA station-weeks with a closed day ([MBTA entries](#mbta-street-counts-and-campus-zones)) are left out, since the fall in entries is the closure, not students: 8% of the station-weeks in the all-universities version. This also drops Longwood, gated in 2026, whose few recorded entries (about one a day) are not real traffic, and Hynes Convention Center (Berklee) from the verified version, which no longer has a year of verified weeks.
   * *Uncertainty.* Standard errors are clustered by calendar month, so neighbouring weeks and nearby campuses count as alike.
   * *Placebo.* Each campus is also given another calendar, for every rotation of the list of calendars (the typical calendar counts as one). If activity follows each university's own students, the wrong calendars should give smaller effects.
 
@@ -442,8 +444,8 @@ Effect of the index (from no university in session to all in session), with a 95
 |---|---|---|---|---|
 | Bluebikes | all universities, assumed calendars | +14% (+10% to +18%) | +16% (+13% to +20%) | median 0%, at most +2% (14 rotations) |
 | Bluebikes | verified calendars only | +21% (+14% to +28%) | +26% (+21% to +33%) | median −4%, at most +6% (7 rotations) |
-| MBTA | all universities, assumed calendars | +9% (+7% to +12%) | +8% (+6% to +11%) | median +1%, at most +2% (7 rotations) |
-| MBTA | verified calendars only | +14% (+6% to +22%) | +12% (+5% to +20%) | median −3%, at most +6% (5 rotations) |
+| MBTA | all universities, assumed calendars | +7% (+5% to +10%) | +6% (+4% to +8%) | median 0%, at most +1% (7 rotations) |
+| MBTA | verified calendars only | +11% (+3% to +19%) | +9% (+2% to +15%) | median +1%, at most +6% (4 rotations) |
 
 By university, all universities with assumed calendars (95% intervals; "verified" is the share of the university's weeks with verified dates):
 
@@ -454,25 +456,25 @@ By university, all universities with assumed calendars (95% intervals; "verified
 | Massachusetts Institute of Technology | own, 85% verified | +34% (+25% to +43%) | +23% (+17% to +30%) |  |
 | Wentworth Institute of Technology | own, 62% verified | +23% (+14% to +32%) | +47% (+34% to +62%) |  |
 | Massachusetts College of Art and Design | own, 1% verified | +21% (+14% to +27%) | +24% (+15% to +35%) |  |
-| Boston University | own, 100% verified | +19% (+15% to +24%) | +26% (+20% to +32%) | −2% (−7% to +3%) |
-| Roxbury Community College | typical (assumed) | +16% (+9% to +23%) | +19% (+6% to +35%) | +17% (+12% to +21%) |
-| Harvard University | own, 39% verified | +13% (+8% to +18%) | +13% (+8% to +18%) | +6% (+2% to +9%) |
+| Boston University | own, 100% verified | +19% (+15% to +24%) | +26% (+20% to +32%) | −4% (−9% to +1%) |
+| Roxbury Community College | typical (assumed) | +16% (+9% to +23%) | +19% (+6% to +35%) | +18% (+13% to +22%) |
+| Harvard University | own, 39% verified | +13% (+8% to +18%) | +13% (+8% to +18%) | +5% (+2% to +9%) |
 | University of Massachusetts-Boston | own, 44% verified | +11% (−1% to +25%) | +37% (+16% to +62%) |  |
 | Emmanuel College | own, 1% verified | +4% (−2% to +10%) | +10% (+1% to +20%) |  |
-| Berklee College of Music | own, 13% verified | 0% (−5% to +6%) | −3% (−10% to +5%) | +17% (+13% to +20%) |
-| Bunker Hill Community College | own, 62% verified | −1% (−6% to +4%) | −6% (−11% to −1%) | +49% (+44% to +55%) |
+| Berklee College of Music | own, 13% verified | 0% (−5% to +6%) | −3% (−10% to +5%) | +15% (+12% to +18%) |
+| Bunker Hill Community College | own, 62% verified | −1% (−6% to +4%) | −6% (−11% to −1%) | +47% (+42% to +52%) |
 | Simmons University | own, 1% verified | −3% (−7% to +2%) | −6% (−11% to +1%) |  |
-| Tufts University, health-sciences campus | typical (assumed) | −5% (−10% to 0%) | −16% (−21% to −10%) | +9% (+5% to +13%) |
+| Tufts University, health-sciences campus | typical (assumed) | −5% (−10% to 0%) | −16% (−21% to −10%) | +7% (+4% to +11%) |
 | Hult International Business School | typical (assumed) | −6% (−11% to −1%) | 0% (−7% to +7%) |  |
-| Suffolk University | own, 42% verified | −8% (−12% to −5%) | −10% (−15% to −6%) | 0% (−2% to +3%) |
-| Emerson College | own, 1% verified | −11% (−15% to −7%) | −7% (−13% to −1%) | +13% (+9% to +16%) |
+| Suffolk University | own, 42% verified | −8% (−12% to −5%) | −10% (−15% to −6%) | −1% (−3% to +2%) |
+| Emerson College | own, 1% verified | −11% (−15% to −7%) | −7% (−13% to −1%) | +11% (+8% to +15%) |
 | Cambridge College | typical (assumed) | −13% (−18% to −7%) | −14% (−23% to −5%) |  |
 | MGH Institute of Health Professions | typical (assumed) | −14% (−20% to −7%) | −16% (−27% to −5%) |  |
-| Quincy College | typical (assumed) |  |  | +2% (−2% to +7%) |
-| Tufts University | own, 100% verified |  |  | −1% (−19% to +20%) |
+| Quincy College | typical (assumed) |  |  | +2% (−2% to +6%) |
+| Tufts University | own, 100% verified |  |  | −11% (−28% to +10%) |
 
-* **Activity follows each university's own calendar.** Every campus gets the same weather, season and holidays in a given week, yet trips at a campus are higher when its own university is in session, and no other calendar gives a comparable effect. With every campus and assumed calendars the effect is smaller (+14% for Bluebikes, +9% for the subway) than with verified calendars only (+21%, +14%): assumed dates blur the timing, and the added campuses include several where few riders are students. The placebo is clearer with more campuses: no other calendar reaches +2%.
-* **Where it is strong.** At residential campuses whose students ride near their stations: Northeastern, MIT, Wentworth, Boston University and Harvard for Bluebikes, and the Community College station for the subway. Some colleges known only from estimated calendars show it too (Lesley +42%, MassArt +21%), so their estimated calendars fit; Roxbury Community College shows it on the typical calendar (+16%, and +17% at Roxbury Crossing), although its stations may also serve Northeastern and Wentworth students. A campus's stations can serve neighbouring universities' students, so a university's effect is not only its own students.
+* **Activity follows each university's own calendar.** Every campus gets the same weather, season and holidays in a given week, yet trips at a campus are higher when its own university is in session, and no other calendar gives a comparable effect. With every campus and assumed calendars the effect is smaller (+14% for Bluebikes, +7% for the subway) than with verified calendars only (+21%, +11%): assumed dates blur the timing, and the added campuses include several where few riders are students. The placebo is clearer with more campuses: no other calendar reaches +2%.
+* **Where it is strong.** At residential campuses whose students ride near their stations: Northeastern, MIT, Wentworth, Boston University and Harvard for Bluebikes, and the Community College station for the subway. Some colleges known only from estimated calendars show it too (Lesley +42%, MassArt +21%), so their estimated calendars fit; Roxbury Community College shows it on the typical calendar (+16%, and +18% at Roxbury Crossing), although its stations may also serve Northeastern and Wentworth students. A campus's stations can serve neighbouring universities' students, so a university's effect is not only its own students.
 * **Where it is absent or negative.** At downtown campuses whose stations mostly serve commuters and visitors (Suffolk, Emerson for Bluebikes, Suffolk's five subway stations, Boston University's Kenmore and Longwood) and at graduate, health-professions and adult-learning institutions on the assumed typical calendar (MGH Institute of Health Professions, Cambridge College, Hult, Tufts' health-sciences campus), whose programmes often run through the summer, so the typical calendar probably does not fit them. Summer seasonality does not explain the negative effects: with a seasonal cycle for each campus, most stay negative.
 * **The pooled effects are steadier than the per-university ones.** With each campus's own seasonal cycle, some universities move a lot (Wentworth +23% to +47%, MIT +34% to +23%, UMass Boston +11% to +37%), while the pooled effects move by 1–6 points.
 * **Precise, but a small part of the noise.** After the week and campus-year levels, the own calendar explains 1–7% of the remaining week-to-week variation at a Bluebikes campus and about 0.5% at a subway station: single stations vary a lot from week to week (events, partial closures, local weather). The effect is precise because there are thousands of campus-weeks, not because it explains much of that noise.
@@ -480,28 +482,28 @@ By university, all universities with assumed calendars (95% intervals; "verified
 #### Students away: estimate (step 3)
 
 * **Leaving, or just not going to class.** When a university is out of session, travel near its campus falls for two reasons: students who leave the area, and students who stay but no longer travel to classes. Weekday travel loses both; weekend travel, when there are no classes, loses mostly the first. So the weekend loss divided by the weekday loss estimates the share of students out of session who are away (`students_away_shares.csv`):
-  * *Summer.* Across the 67 study-area gated stations, the change in entries from full in-session weeks to full summer weeks (2022–2025) is regressed on the station's share of student riders in the passenger survey, once for weekday and once for weekend entries. Two survey measures stand for student riders: riders aged 18–25, and trips between home and school.
+  * *Summer.* Across the 67 study-area gated stations, the change in entries from full in-session weeks to full summer weeks (2022–2025, without station-weeks with a closed day) is regressed on the station's share of student riders in the passenger survey, once for weekday and once for weekend entries. Two survey measures stand for student riders: riders aged 18–25, and trips between home and school.
   * *Breaks.* The pooled campus model is fitted on weekday and on weekend entries at campus stations. Its effect comes from weeks when one university is out of session and others are not: mostly spring breaks and the edges of terms.
 
 | Period | Method | Weekday | Weekend | Share away |
 |---|---|---|---|---|
-| Summer | Across stations, riders aged 18–25 (slope, 95% interval) | −0.81 (±0.74) | −0.87 (±0.71) | 100% (the ratio is above 1 and kept at 1) |
-| Summer | Across stations, trips between home and school (slope, 95% interval) | −0.92 (±0.51) | −0.38 (±0.50) | 41% |
-| Breaks | Campus stations, all universities, assumed calendars (effect of the own calendar) | +9.3% | +5.1% | 56% |
-| Breaks | Campus stations, verified calendars only (effect of the own calendar) | +15.1% | +2.2% | 16% |
+| Summer | Across stations, riders aged 18–25 (slope, 95% interval) | −1.07 (±0.76) | −1.00 (±0.75) | 94% |
+| Summer | Across stations, trips between home and school (slope, 95% interval) | −1.13 (±0.47) | −0.55 (±0.56) | 49% |
+| Breaks | Campus stations, all universities, assumed calendars (effect of the own calendar) | +7.5% | +4.5% | 62% |
+| Breaks | Campus stations, verified calendars only (effect of the own calendar) | +12.3% | +1.8% | 15% |
 
 * **Students away each week** (`students_away_estimate.csv`) = resident college students × (the summer share away × the share of them on summer break + the break share away × the share otherwise out of session), once with the lower and once with the higher share of each period, kept inside the range of step 15. Only weeks outside the COVID-19 period are estimated: students were sent home in the spring 2020 lockdown, and 2020–21 was taught remotely.
 
 | Week of 2019 | Range (step 15) | Estimate |
 |---|---|---|
-| Mid-summer (July 8) | 73,420–190,056 | 94,130–190,056 |
-| Spring breaks (March 11) | 1,826–72,254 | 13,246–48,059 |
-| Thanksgiving (November 25) | 1,815–135,180 | 25,253–91,624 |
-| After Christmas (December 30) | 36,168–189,248 | 36,168–128,271 |
+| Mid-summer (July 8) | 73,420–190,056 | 111,420–190,056 |
+| Spring breaks (March 11) | 1,826–72,254 | 12,778–52,774 |
+| Thanksgiving (November 25) | 1,815–135,180 | 24,362–100,613 |
+| After Christmas (December 30) | 36,168–189,248 | 36,168–140,855 |
 
-* **During breaks, most students out of session stay.** Weekend entries at campus stations fall only about a sixth to a half as much as weekday entries, so most of the break-time drop is students not travelling to classes.
-* **In summer, between two fifths and all of them are away.** The two survey measures disagree: stations with more riders aged 18–25 lose as much on weekends as on weekdays, while home-to-school riders lose far less on weekends. The second measure includes school children, who stop school trips in summer without leaving, which pulls it down.
-* **Narrower, not precise.** Over weeks outside the COVID-19 period, the estimate is on average 40,249 students wide, against 55,863 for the range. The weekday and weekend parts have wide intervals, and the low and high ends show the spread between methods, not a statistical interval.
+* **During breaks, the two versions disagree.** Weekend entries at campus stations fall 15% as much as weekday entries with verified calendars only, and 62% as much with every university on assumed calendars: from most students out of session staying to most of them leaving.
+* **In summer, between half and almost all of them are away.** The two survey measures disagree: stations with more riders aged 18–25 lose almost as much on weekends as on weekdays (94%), while home-to-school riders lose about half as much on weekends. The second measure includes school children, who stop school trips in summer without leaving, which pulls it down.
+* **Narrower, not precise.** Over weeks outside the COVID-19 period, the estimate is on average 36,798 students wide, against 55,863 for the range. The weekday and weekend parts have wide intervals, and the low and high ends show the spread between methods, not a statistical interval.
 * **Assumptions.** Students who stay keep their weekend travel, and students who leave stop all of it. Students are the same proportion of a measure's riders on weekends as on weekdays; they are probably a larger proportion of weekend riders, since commuters ride less on weekends, which makes the ratio overstate the share away. Subway riders stand for all resident college students. Thanksgiving and Christmas fall at the same time for every university, so they do not inform the break share, which comes from spring breaks and the edges of terms; more students may go home for those holidays, and at Christmas the closed residence halls keep the estimate at least at the range's minimum.
 
 #### Presence evaluation
@@ -512,9 +514,9 @@ By university, all universities with assumed calendars (95% intervals; "verified
   * It is weak while the network was small (−0.17 in 2015, −0.13 in 2016, 0.25–0.45 in 2017–2019) and strong from 2021 (0.85–0.91), as stations filled in around campuses.
   * The housing-weighted index fits equally well (0.85), so weighting by beds does not change the fit; its use is that it counts beds.
 * **MBTA.** The same ratio for gated MBTA entries correlates only weakly (median 0.30 within a year): campus-zone gated stations also serve commuters and events, and the street-level Green Line stops at Boston University and Northeastern have no gates.
-* **Student riders at MBTA stations.** Across 67 study-area gated stations, entries fell a median 4.5% from full in-session weeks to full summer weeks in 2022–2025, and they fell more where the passenger survey finds more student riders.
-  * The correlation with the station's semester-pass share is −0.52 (−0.45 by rank, −0.41 without the three highest), with home-to-school trips −0.43, and with riders aged 18–25 −0.36. Community College, Ruggles, and JFK/UMass lose 27–32% of entries in summer.
-  * Middle- and high-school fares correlate too (−0.33), since school children are also away in summer. Some stations gain in summer for other reasons (e.g. Kenmore with Fenway Park, Aquarium with visitors).
+* **Student riders at MBTA stations.** Across 67 study-area gated stations, entries fell a median 5.8% from full in-session weeks to full summer weeks in 2022–2025 (station-weeks with a closed day left out), and they fell more where the passenger survey finds more student riders.
+  * The correlation with home-to-school trips is −0.50, with the station's semester-pass share −0.48 (−0.44 by rank, −0.40 without the three highest), and with riders aged 18–25 −0.42. JFK/UMass, Community College, and Ruggles lose 28–31% of entries in summer.
+  * Middle- and high-school fares correlate too (−0.35), since school children are also away in summer. Some stations gain in summer for other reasons (e.g. Kenmore with Fenway Park, Aquarium with visitors).
 * **Breaks.** In 76% of 293 break weeks, a university's campus share of study-area Bluebikes trips fell compared with full in-session weeks around it.
   * Only academic years with no estimated term or break date are used, since an estimated break week would test the estimate rather than the index; this leaves out the universities with only a 2026–27 calendar, whose breaks are still ahead.
   * Median drops: Northeastern −54% (winter) and −40% (spring); Wentworth −47% and −34%; Boston University −27% and −15%; UMass Boston −22% and −19%; Harvard −18% and −20%; MIT −12% and −21%; Berklee about −10% (few verified weeks); Thanksgiving dips are smaller.
@@ -571,7 +573,7 @@ All models work on the logarithm of weekly activity, so effects are percentages.
 | Predicts | One of the four targets | One of the four targets | One of the four targets | Activity at one campus (Bluebikes) or campus station (MBTA) |
 | Named inputs | 16: 8 weather, 2 holiday, network size, 4 season terms, the index | 12: 8 weather, 2 holiday, network size, the index | 13: 7 weather, 2 holiday, network size, day of the year, year, the index | 1 (the share of the week the campus's own university is in session), plus stations in use for Bluebikes |
 | Also estimated | A level for each of the 12 years: 28 coefficients | 12 year levels and 52 week-of-year levels: 76 columns, 75 of them independent | 300 trees of at most 15 leaves, each leaf at least 10 weeks; learning rate 0.05, L2 penalty 1.0; fixed settings, not tuned | A level for each week and each campus-year |
-| Data | 534 weeks (Bluebikes), 538 (MBTA), outside the COVID-19 period | Same | Same | 8,988 campus-weeks (Bluebikes), 7,579 station-weeks (MBTA); 2,480 and 2,368 with verified calendars only |
+| Data | 534 weeks (Bluebikes), 538 (MBTA), outside the COVID-19 period | Same | Same | 8,988 campus-weeks (Bluebikes), 7,047 station-weeks (MBTA); 2,480 and 2,107 with verified calendars only |
 | Tested | Each month held out in turn, with the week on either side | Same | Same | Standard errors clustered by month; other universities' calendars as a placebo |
 
 A third smooth-season model also adds the summer-break share (17 named inputs); it does not improve on the model with the index.

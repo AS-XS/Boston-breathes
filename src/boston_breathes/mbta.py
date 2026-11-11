@@ -7,6 +7,13 @@ gates of subway, Silver Line and light rail stations, per service date
 fare evasion, free riders and times when gates are held open, so they track
 change in activity rather than total ridership.
 
+Stations close for repairs, mostly on weekends and sometimes for weeks (the
+Orange Line for 30 days in 2022), with shuttle buses instead of gated
+entries. A station-day counts as closed when its entries are below half of
+its typical level for that kind of day (weekday, Saturday or Sunday: the
+median of the surrounding nine weeks), after scaling the typical level by how
+the whole system did that day, so holidays and storms are not closures.
+
 Station locations come from the MBTA V3 API. Stations whose rows never carry
 a stop ID (e.g. Longwood, gated in 2026) get the ID of the API station with
 exactly the same name. Stations are assigned to a
@@ -15,7 +22,7 @@ municipality and a campus zone with the same rules as Bluebikes stations.
 Outputs in data/processed/:
   * mbta_stations.csv                  each gated station, its location, town and campus zone
   * mbta_weekly_by_station.csv         weekly entries per station, in all and on weekdays
-                                       (Monday to Friday) and weekends
+                                       (Monday to Friday) and weekends, and its closed days
   * mbta_weekly_by_campus_zone.csv     the same by campus zone, study-area stations
 Daily station totals are kept in data/interim/mbta/ (not committed).
 """
@@ -37,6 +44,8 @@ HISTORICAL_URL = ITEM_URL + "/data"
 STOPS_URL = "https://api-v3.mbta.com/stops"
 RAW_PATH = RAW / "mbta" / "gated_station_entries_historical.zip"
 INTERIM_DIR = INTERIM / "mbta"
+CLOSED_SHARE = 0.5  # a station-day below this share of its typical level (scaled to the system that day) is closed
+TYPICAL_WEEKS = 9  # the typical level is the median of the same kind of day over this many weeks, centred
 
 
 def is_stale(cached_mtime: float | None, published_ms: int) -> bool:
@@ -160,6 +169,39 @@ def station_locations(stop_ids: list[str]) -> pl.DataFrame:
     return found
 
 
+def closed_days(daily: pl.DataFrame) -> pl.DataFrame:
+    """Daily entries with a flag for days a station was closed.
+
+    The typical level is the centred median of the station's entries on the
+    same kind of day (weekday, Saturday, Sunday) over TYPICAL_WEEKS weeks, so a
+    closure of up to about four weeks does not lower it. The system's level
+    that day is the median, across stations, of entries over the typical
+    level.
+    """
+    kind = pl.when(pl.col("date").dt.weekday() <= 5).then(pl.lit("weekday")) \
+        .when(pl.col("date").dt.weekday() == 6).then(pl.lit("saturday")).otherwise(pl.lit("sunday"))
+    entries = pl.col("entries").cast(pl.Float64)
+    typical = pl.when(pl.col("_kind") == "weekday") \
+        .then(entries.rolling_median(5 * TYPICAL_WEEKS, center=True, min_samples=TYPICAL_WEEKS)) \
+        .otherwise(entries.rolling_median(TYPICAL_WEEKS, center=True, min_samples=TYPICAL_WEEKS // 2 + 1))
+    return (
+        daily.with_columns(kind.alias("_kind")).sort("stop_id", "_kind", "date")
+        .with_columns(typical.over("stop_id", "_kind").alias("_typical"))
+        .with_columns((pl.col("entries") / pl.col("_typical")).alias("_ratio"))
+        .with_columns(pl.col("_ratio").median().over("date").alias("_system"))
+        .with_columns((pl.col("_ratio") < CLOSED_SHARE * pl.col("_system")).fill_null(False).alias("closed"))
+        .drop("_kind", "_typical", "_ratio", "_system")
+        .sort("date", "stop_id")
+    )
+
+
+def weekly_closed_days(flagged: pl.DataFrame) -> pl.DataFrame:
+    """Days in each station-week without an open day's entries: closed, or missing from the data."""
+    week_start = (pl.col("date") - pl.duration(days=pl.col("date").dt.weekday() - 1)).alias("week_start")
+    return (flagged.with_columns(week_start).group_by("week_start", "stop_id")
+            .agg((7 - (~pl.col("closed")).sum()).cast(pl.Int64).alias("closed_days")))
+
+
 def weekly(daily: pl.DataFrame, by: tuple[str, ...]) -> pl.DataFrame:
     """Weekly entries on the shared Monday-to-Sunday timeline."""
     first, last = daily["date"].min(), daily["date"].max()
@@ -209,7 +251,9 @@ def main() -> None:
     PROCESSED.mkdir(parents=True, exist_ok=True)
     stations.write_csv(PROCESSED / "mbta_stations.csv")
 
-    weekly(daily, ("stop_id",)).write_csv(PROCESSED / "mbta_weekly_by_station.csv")
+    by_station = weekly(daily, ("stop_id",)).join(weekly_closed_days(closed_days(daily)), on=["week_start", "stop_id"],
+                                                  how="left", maintain_order="left")
+    by_station.write_csv(PROCESSED / "mbta_weekly_by_station.csv")
     tagged = daily.join(stations.select("stop_id", "campus_zone", "in_study_area"), on="stop_id", how="left")
     by_zone = weekly(
         tagged.filter(pl.col("in_study_area")).with_columns(pl.col("campus_zone").fill_null(UNKNOWN)), ("campus_zone",)

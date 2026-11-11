@@ -165,7 +165,7 @@ def station_summer_change(weekly_by_station: pl.DataFrame, presence: pl.DataFram
         .when(pl.col("summer_break_share") >= FULL_SHARE).then(pl.lit("summer")).alias("kind"),
     ).filter(pl.col("kind").is_not_null())
     return (
-        weekly_by_station.filter(pl.col("complete_week"))
+        weekly_by_station.filter(pl.col("complete_week") & (pl.col("closed_days") == 0))
         .join(kinds, on="week_start", how="inner")
         .group_by("stop_id", "kind")
         .agg(pl.col("entries").mean(), pl.len().alias("weeks"))

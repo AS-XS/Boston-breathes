@@ -130,7 +130,12 @@ def test_station_summer_change_and_survey_correlation():
                              "summer_break_share": [0.0] * 4 + [1.0] * 4, "covid_period": ["normal"] * 8})
     entries = {"a": (100, 50), "b": (100, 90), "c": (100, 100)}  # (in session, summer)
     weekly = pl.DataFrame([{"week_start": w, "stop_id": s, "entries": e[0] if w in session else e[1],
-                            "complete_week": True} for s, e in entries.items() for w in session + summer])
+                            "complete_week": True, "closed_days": 0} for s, e in entries.items() for w in session + summer])
+    # A summer week with a closed day at station c is left out, so c's summer is not pulled down.
+    weekly = pl.concat([weekly, pl.DataFrame({"week_start": [date(2023, 7, 31)], "stop_id": ["c"], "entries": [10],
+                                              "complete_week": [True], "closed_days": [2]})])
+    presence = pl.concat([presence, pl.DataFrame({"week_start": [date(2023, 7, 31)], "presence_index": [0.0],
+                                                  "summer_break_share": [1.0], "covid_period": ["normal"]})])
     change = ev.station_summer_change(weekly, presence)
     assert dict(change.sort("stop_id").rows()) == pytest.approx({"a": -0.6931, "b": -0.1054, "c": 0.0}, abs=1e-4)
     survey = pl.DataFrame({"stop_id": ["a", "b", "c"], "in_study_area": [True] * 3,

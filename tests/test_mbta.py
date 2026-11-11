@@ -66,6 +66,31 @@ def test_weekly_flags_partial_weeks():
     assert w["complete_week"].to_list() == [True, False]
 
 
+def test_closures_are_low_days_of_one_station_not_of_the_whole_system():
+    days = [date(2019, 1, 7) + timedelta(days=i) for i in range(18 * 7)]
+    weekend_shut = {date(2019, 1, 26), date(2019, 1, 27), date(2019, 2, 9), date(2019, 4, 20)}
+    rows = []
+    for d in days:
+        level = 1000 if d.weekday() < 5 else 400
+        holiday = d == date(2019, 2, 18)  # every station is quiet
+        for stop in ["a", "b", "c"]:
+            shut = stop == "a" and (d in weekend_shut or date(2019, 3, 4) <= d < date(2019, 3, 30))
+            entries = 3 if shut else (level // 3 if holiday else level)
+            rows.append({"date": d, "stop_id": stop, "station_name": stop, "entries": entries})
+    flagged = mbta.closed_days(pl.DataFrame(rows))
+    closed = set(flagged.filter(pl.col("closed")).select("stop_id", "date").iter_rows())
+    long_shut = {d for d in days if date(2019, 3, 4) <= d < date(2019, 3, 30)}
+    # Weekend closures and a closure of almost four weeks are found; the holiday is not a closure.
+    assert closed == {("a", d) for d in weekend_shut | long_shut}
+
+
+def test_weekly_closed_days_count_flagged_and_missing_days():
+    days = [date(2019, 6, 3) + timedelta(days=i) for i in range(7)]
+    flagged = pl.DataFrame({"date": days[:6], "stop_id": ["a"] * 6, "closed": [False] * 4 + [True, False]})
+    out = mbta.weekly_closed_days(flagged)
+    assert out.select("week_start", "closed_days").row(0) == (date(2019, 6, 3), 2)  # Friday closed, Sunday missing
+
+
 def test_placeholder_ids_matched_by_exact_name():
     daily = pl.DataFrame({
         "date": [date(2026, 6, 1)] * 3,
