@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model population-estimate scenarios forecast checks boston-311 presence-signals travel-models joint-population population-accuracy figures test clean-interim
+.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model population-estimate scenarios forecast checks boston-311 presence-signals travel-models joint-population population-accuracy weekend-riders figures test clean-interim
 
 # Everything, from the downloads to the figures.
 all: data analysis figures
@@ -136,6 +136,10 @@ joint-population:
 # Accuracy test with a known truth, and the calibration of the intervals (about 14 minutes).
 population-accuracy:
 	$(RUN) boston_breathes.population_accuracy
+
+# Are students the same share of weekend riders? Bluebikes riders' ages, 2016-2019 (downloads the trip files again).
+weekend-riders:
+	$(RUN) boston_breathes.weekend_riders
 
 # Forecast: the population model on the academic year 2026-27, with the published calendars.
 forecast:
