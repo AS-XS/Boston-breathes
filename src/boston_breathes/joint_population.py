@@ -28,8 +28,9 @@ the true shares about 95% of the time: unwidened, they did so only 79-86% of
 the time on average, whether the runs were one, three or six months long, so
 runs of one month are widened by 1.4.
 
-The subway and Bluebikes together, with no weather model, give the band of
-the population estimate (population_estimate.py).
+The subway and Bluebikes together, with no weather model, give the shares
+of the population estimate and their refits, divided by the weekend factor
+of weekend_riders.py (population_estimate.py).
 
 Fitted on 2022-2025 for: each signal alone, subway and bikes together, and
 all three signals together; and for the subway and bikes together with every
@@ -148,7 +149,7 @@ def interval(params: np.ndarray, draws: np.ndarray, inflation: float = INFLATION
 
 
 def main_shares(table: pl.DataFrame) -> tuple[np.ndarray, np.ndarray]:
-    """The shares away fitted on the subway and Bluebikes, and their widened refits (for the population band)."""
+    """The shares away fitted on the subway and Bluebikes, and their widened refits (for population_estimate.py)."""
     pieces = stacked(table, MAIN_SIGNALS, NO_MODEL)
     params = fit(pieces, MAIN_SIGNALS)
     return params[:2], widen(params, bootstrap(pieces, MAIN_SIGNALS, np.random.default_rng(0)))[:, :2]

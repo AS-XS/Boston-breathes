@@ -55,8 +55,10 @@ def test_processed_scenarios_keep_the_baseline_and_change_what_they_say():
     assert base.equals(e.join(base.select("week_start"), on="week_start").select(ps.COLUMNS))
     total = lambda name, months: s.filter((pl.col("scenario") == name)  # noqa: E731
                                           & ps.thursday_month().is_between(*months))["students_away"].sum()
-    # Aligning breaks moves the time away, it does not add any.
-    assert total(ps.ALIGNED, ps.SPRING_MONTHS) == pytest.approx(total(ps.BASELINE, ps.SPRING_MONTHS), abs=50)
+    # Aligning breaks moves the time away, it does not add any; where breaks bunch, the most that could be away
+    # (students_away.py) can cap a week a little.
+    assert total(ps.ALIGNED, ps.SPRING_MONTHS) == pytest.approx(total(ps.BASELINE, ps.SPRING_MONTHS), rel=0.005)
+    assert total(ps.ALIGNED, ps.SPRING_MONTHS) <= total(ps.BASELINE, ps.SPRING_MONTHS) + 50
     summary = {r["scenario"]: r for r in pl.read_csv(PROCESSED / "population_scenarios_summary.csv").iter_rows(named=True)}
     fewer, more = (summary[n]["average_change_from_baseline"] for n in ps.ENROLLMENT)
     assert fewer < 0 < more and fewer == pytest.approx(-more, abs=2)

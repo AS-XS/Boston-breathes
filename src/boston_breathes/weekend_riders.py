@@ -40,12 +40,15 @@ young excess on weekends means larger shortfalls of other ages.
 station with all its months and each month with all its stations, by
 multiplying their counts).
 
-What it would mean: weekend signals c times larger than the model expects.
-The joint model (joint_population.py, no weather model) is refitted with the
-weekend inputs of Bluebikes multiplied by c, and, as a what-if, those of the
-subway too; the shares give the students away in weeks of 2019
-(population_model.away). The factor is measured in 2016-2019 and applied to
-the fit on 2022-2025.
+What it means: weekend signals c times larger than the model expects. The
+joint model (joint_population.py, no weather model) is refitted with the
+weekend inputs of Bluebikes multiplied by c, and with those of the subway
+too; the shares give the students away in weeks of 2019
+(population_model.away). The population estimate (population_estimate.py)
+divides the shares by the factor of the student-dominated campuses for both
+signals, its refits by the factor's refits: the subway could not be tested,
+and the same reason, commuters on weekdays, applies to it. The factor is
+measured in 2016-2019 and applied to the fit on 2022-2025.
 
 Downloads the 2016-2019 trip files again (about 230 MB) and deletes them after
 counting.
@@ -57,6 +60,7 @@ Outputs:
                                                        of day and time of year
   * data/processed/weekend_riders.csv                  weekend factors, and the shares and students away with
                                                        the assumption corrected
+  * data/processed/weekend_factor_draws.csv            the refits of the factor of the student-dominated campuses
 """
 
 import numpy as np
@@ -187,6 +191,12 @@ def bootstrap(df: pl.DataFrame, campuses: list[str], rng: np.random.Generator,
     return {k: np.array([d[k] for d in out]) for k in out[0]}
 
 
+def weekend_factor() -> tuple[float, np.ndarray]:
+    """The weekend factor of the student-dominated campuses and its refits (for population_estimate.py)."""
+    factor = pl.read_csv(PROCESSED / "weekend_riders.csv").filter(pl.col("what") == "weekend_factor_student_campuses")
+    return factor["estimate"].item(), pl.read_csv(PROCESSED / "weekend_factor_draws.csv")["factor"].to_numpy()
+
+
 def corrected_shares(pieces: list[dict], signals: list[str], scaled: list[str], c: float) -> np.ndarray:
     """The joint fit with the weekend inputs of the scaled signals multiplied by c."""
     adjusted = [{**p, "x": p["x"] * c} if p["day"] == "weekend" and p["signal"] in scaled else p for p in pieces]
@@ -225,6 +235,8 @@ def main() -> None:
 
     campuses = student_campuses(df)
     point, draws = factors(df, campuses), bootstrap(df, campuses, np.random.default_rng(0))
+    pl.DataFrame({"draw": range(BOOTSTRAP), "factor": draws["weekend_factor_student_campuses"]}).write_csv(
+        PROCESSED / "weekend_factor_draws.csv")
     rows = [{"what": name, "estimate": value, "low": float(np.percentile(draws[name], 2.5)),
              "high": float(np.percentile(draws[name], 97.5))} for name, value in point.items()]
     year = pl.col("week_start").dt.year()

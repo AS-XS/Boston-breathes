@@ -53,16 +53,20 @@ on, against nobody leaving, with three survey measures of student riders
 The validation years chose the Semester Pass measure and the version in which
 every student out of session not living with their parents leaves: it had
 the lowest error in every validation year, while the fitted shares moved with
-the years they were fitted on. The estimate (population_estimate.py) is that
-version; its 95% band comes from the shares for summer and breaks fitted on
-the subway and Bluebikes together (joint_population.py). The intervals of the
-shares here come from refits on calendar months drawn with replacement (a
-block bootstrap); the known-truth test of population_accuracy.py found such
-intervals too narrow.
+the years they were fitted on. All of this assumes students are the same
+share of weekend riders as of weekday riders; weekend_riders.py finds them a
+larger one near campuses, which makes every version predict best at shares
+that large by the same factor. The estimate (population_estimate.py)
+therefore takes the shares for summer and breaks fitted on the subway and
+Bluebikes together (joint_population.py), which are close to this version,
+and divides them by that factor. The intervals of the shares here come from
+refits on calendar months drawn with replacement (a block bootstrap); the
+known-truth test of population_accuracy.py found such intervals too narrow.
 
 Assumptions: students are the same proportion of a station's riders on
-weekends as on weekdays (if they are a larger one, since commuters ride less
-on weekends, the shares away are overstated); students who stay keep their
+weekends as on weekdays (they are a larger one near campuses, since
+commuters ride less on weekends, so the shares away here are overstated;
+see weekend_riders.py); students who stay keep their
 weekend travel and those who leave stop it; the survey measure is
 proportional to student riders across stations; subway riders stand for all
 resident college students; the shares away are the same every year.
@@ -85,7 +89,8 @@ MEASURES = {"semester_pass_share": "riders with a Semester Pass", "age_18_25_sha
             "school_trip_share": "trips between home and school"}
 PERIODS = {"2022-2025": (2022, 2025), "2016-2019": (2016, 2019)}
 # Chosen on the validation years (the lowest error in each of them, with the largest gain of the three measures),
-# before the test year was scored. The summer-and-breaks shares, fitted on the subway and Bluebikes, give the band.
+# before the test year was scored, under the equal-share assumption; the estimate corrects the fitted summer-and-breaks
+# shares for students' larger share of weekend riders (population_estimate.py).
 MAIN_MEASURE, MAIN_PERIOD = "semester_pass_share", "2022-2025"
 MAIN_VERSION, BAND_VERSION = "every student out of session not living with parents", "summer and breaks"
 FIXED = {"no change": None, "dorm closures only": "min_share",

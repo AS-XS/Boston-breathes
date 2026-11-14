@@ -130,16 +130,15 @@ def rule(table: pl.DataFrame) -> tuple[int, float]:
 
 def accuracy(rep: dict, inputs: pl.DataFrame, block: int, inflation: float) -> dict:
     """Errors in students away, and how often the chosen intervals of the shares and the band of students away
-    contain the truth. The band is built as population_estimate.py builds it: from the 2.5th percentile of the
-    widened refits up to every student out of session not living with parents leaving, which the truth never
-    exceeds."""
+    contain the truth. The band is built as population_estimate.py builds it, from the 2.5th to the 97.5th
+    percentile of the students away that the widened refits give (with the weekend factor known here)."""
     truth, true_away, errors = np.array(rep["truth"]), rep["true_away"], rep["errors"]
     shares, band = [], []
     for est, refits in zip(rep["shares"], rep["refits"]):
         shares.append(covered(truth, est[:2], refits[block][:, :2], inflation))
         widened = jp.widen(est, refits[block], inflation)
-        low = np.percentile(students_away(inputs, widened[:, 0], widened[:, 1]), 2.5, axis=1)
-        band.append(low <= true_away)
+        low, high = np.percentile(students_away(inputs, widened[:, 0], widened[:, 1]), [2.5, 97.5], axis=1)
+        band.append((low <= true_away) & (true_away <= high))
     shares, band = np.array(shares), np.array(band)
     weeks = inputs["week_start"].to_list()
     row = {"true_summer": truth[0], "true_breaks": truth[1], "weekend_scale": rep["weekend_scale"],

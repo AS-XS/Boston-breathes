@@ -109,7 +109,7 @@ campus-panel:
 population-model:
 	$(RUN) boston_breathes.population_model
 
-# The weekly population estimate and its band from the subway and Bluebikes (needs presence-signals).
+# The weekly population estimate and its band from the subway and Bluebikes (needs presence-signals and weekend-riders).
 population-estimate:
 	$(RUN) boston_breathes.population_estimate
 
