@@ -4,6 +4,7 @@ import numpy as np
 import polars as pl
 import pytest
 
+from boston_breathes import bluebikes_ages as ba
 from boston_breathes import joint_population as jp
 from boston_breathes import weekend_riders as wr
 from boston_breathes.paths import PROCESSED
@@ -16,7 +17,7 @@ def test_member_trips_are_counted_by_age_band_without_casual_riders_or_the_place
         "rider_type": ["member", "member", "member", "member", "casual"],
         "birth_year": [1998, 1990, 1969, 1960, 1998],  # 20, 28, placeholder, 58; a casual 20-year-old
     })
-    out = wr.member_ages(trips).row(0, named=True)
+    out = ba.member_ages(trips).row(0, named=True)
     assert (out["known"], out["18_24"], out["25_29"], out["30_plus"]) == (3, 1, 1, 1)
 
 

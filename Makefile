@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model population-estimate scenarios forecast checks boston-311 presence-signals travel-models joint-population population-accuracy weekend-riders figures test clean-interim
+.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model population-estimate scenarios forecast checks boston-311 presence-signals travel-models joint-population population-accuracy bluebikes-ages weekend-riders figures test clean-interim
 
 # Everything, from the downloads to the figures.
 all: data analysis figures
@@ -11,10 +11,13 @@ install:
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install -r requirements.txt
 
-# Analysis of the processed tables (no downloads): evaluation, travel models, the population model, scenarios and forecast.
-analysis: evaluate models campus-panel population-model population-estimate scenarios forecast travel-models joint-population population-accuracy
+# Analysis of the processed tables (no downloads), in order: evaluation and travel models, the population model, the
+# exploration of models and signals, the joint model, the accuracy test (whose calibration sets the interval constants
+# in joint_population.py; a test checks they match), the weekend factor, then the estimate, scenarios and forecast,
+# which use the weekend factor's outputs.
+analysis: evaluate models campus-panel population-model travel-models joint-population population-accuracy weekend-riders population-estimate scenarios forecast
 
-data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table boston-311 presence-signals
+data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table boston-311 presence-signals bluebikes-ages
 
 weeks:
 	$(RUN) boston_breathes.weeks
@@ -109,12 +112,12 @@ campus-panel:
 population-model:
 	$(RUN) boston_breathes.population_model
 
-# The weekly population estimate and its band from the subway and Bluebikes (needs presence-signals and weekend-riders).
-population-estimate:
+# The weekly population estimate and its band from the subway and Bluebikes, corrected with the weekend factor.
+population-estimate: weekend-riders
 	$(RUN) boston_breathes.population_estimate
 
-# Scenarios: the 2025-26 population if one input were different (needs presence-signals).
-scenarios:
+# Scenarios: the 2025-26 population if one input were different, through the same steps as the estimate.
+scenarios: weekend-riders
 	$(RUN) boston_breathes.population_scenarios
 
 # Boston 311 requests from residents, by day and campus zone (downloads).
@@ -137,12 +140,16 @@ joint-population:
 population-accuracy:
 	$(RUN) boston_breathes.population_accuracy
 
-# Are students the same share of weekend riders? Bluebikes riders' ages, 2016-2019 (downloads the trip files again).
+# Bluebikes member trips by rider age, 2016-2019 (downloads the trip files again, about 230 MB, and deletes them).
+bluebikes-ages:
+	$(RUN) boston_breathes.bluebikes_ages
+
+# Are students the same share of weekend riders? The weekend factor from Bluebikes riders' ages (needs bluebikes-ages).
 weekend-riders:
 	$(RUN) boston_breathes.weekend_riders
 
 # Forecast: the population model on the academic year 2026-27, with the published calendars.
-forecast:
+forecast: weekend-riders
 	$(RUN) boston_breathes.population_forecast
 
 # Checks of the population model: COVID-19, size, and Bluebikes (needs bluebikes' station-day files in data/interim).

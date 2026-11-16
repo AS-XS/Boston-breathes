@@ -10,7 +10,7 @@ of 1.2 puts about 25,000 too many students away in mid-summer).
 The MBTA passenger survey does not split weekdays and weekends, but Bluebikes
 published riders' birth years until April 2020. Members' trips (residents
 rather than visitors, as in the Bluebikes signal) by riders aged 18-24 stand
-in for students' trips, in 2016-2019.
+in for students' trips, in 2016-2019 (counted by bluebikes_ages.py).
 
 The Bluebikes signal compares member trips at campus-zone stations with those
 at away-zone stations, so its k is proportional to how much larger students'
@@ -50,75 +50,28 @@ signals, its refits by the factor's refits: the subway could not be tested,
 and the same reason, commuters on weekdays, applies to it. The factor is
 measured in 2016-2019 and applied to the fit on 2022-2025.
 
-Downloads the 2016-2019 trip files again (about 230 MB) and deletes them after
-counting.
-
-Outputs:
-  * data/interim/bluebikes/member_ages/YYYYMM.parquet  member trips by station, day and age band
-  * data/processed/bluebikes_member_ages_weekly.csv    the same by station-week and kind of day
-  * data/processed/weekend_riders_shares.csv           share of member trips by each age band, by zone, kind
+Outputs in data/processed/:
+  * weekend_riders_shares.csv           share of member trips by each age band, by zone, kind
                                                        of day and time of year
-  * data/processed/weekend_riders.csv                  weekend factors, and the shares and students away with
+  * weekend_riders.csv                  weekend factors, and the shares and students away with
                                                        the assumption corrected
-  * data/processed/weekend_factor_draws.csv            the refits of the factor of the student-dominated campuses
+  * weekend_factor_draws.csv            the refits of the factor of the student-dominated campuses
 """
 
 import numpy as np
 import polars as pl
 
-from boston_breathes import bluebikes as bb
+from boston_breathes import bluebikes_ages as ba
 from boston_breathes import joint_population as jp
 from boston_breathes import population_model as pm
-from boston_breathes.paths import INTERIM, PROCESSED
+from boston_breathes.paths import PROCESSED
 
-MONTHS = ("201601", "201912")
-AGE_BANDS = {"18_24": (18, 24), "25_29": (25, 29), "30_plus": (30, bb.MAX_RIDER_AGE)}
+AGE_BANDS = ba.AGE_BANDS
 STUDENT_BAND = "18_24"
 IN_SESSION, SUMMER = 0.9, 0.9  # presence index, and share of students on summer break
 STUDENT_EXCESS = 0.10  # a university's campus-zone stations count as student-dominated above this weekday excess
 BOOTSTRAP = 1000
 WEEKS = {"mid-summer": "2019-07-08", "spring breaks": "2019-03-11", "Thanksgiving": "2019-11-25"}
-OUT_DIR = INTERIM / "bluebikes" / "member_ages"
-
-
-def member_ages(trips: pl.DataFrame) -> pl.DataFrame:
-    """Member trips with a known age, and those in each age band, by start station and day."""
-    age = bb.rider_age()
-    return (
-        trips.filter((pl.col("rider_type") == "member") & pl.col("start_station_id").is_not_null())
-        .with_columns(age.alias("age"), pl.col("started_at").dt.date().alias("date"))
-        .filter(pl.col("age").is_not_null())
-        .group_by("date", pl.col("start_station_id").alias("station_id"))
-        .agg(pl.len().alias("known"), *[pl.col("age").is_between(*b).sum().alias(n) for n, b in AGE_BANDS.items()])
-        .with_columns(pl.col("known", *AGE_BANDS).cast(pl.Int64))
-        .sort("date", "station_id")
-    )
-
-
-def count_month(month: str, key: str) -> pl.DataFrame:
-    """One month's counts, from the interim file if it was already made."""
-    out = OUT_DIR / f"{month}.parquet"
-    if out.exists():
-        return pl.read_parquet(out)
-    path = bb.download(key, bb.RAW_DIR / key)
-    trips, _ = bb.clean(bb.standardize(bb.read_zip_csv(path)))
-    start, end = bb.month_bounds(month)
-    counts = member_ages(trips.filter(pl.col("started_at").is_between(start, end, closed="left")))
-    out.parent.mkdir(parents=True, exist_ok=True)
-    counts.write_parquet(out)
-    path.unlink()
-    return counts
-
-
-def weekly(daily: pl.DataFrame) -> pl.DataFrame:
-    """Counts by station-week, on weekdays and on weekends."""
-    weekend = pl.col("date").dt.weekday() >= 6
-    return (
-        daily.with_columns((pl.col("date") - pl.duration(days=pl.col("date").dt.weekday() - 1)).alias("week_start"),
-                           pl.when(weekend).then(pl.lit("weekend")).otherwise(pl.lit("weekday")).alias("day"))
-        .group_by("week_start", "station_id", "day").agg(pl.col("known", *AGE_BANDS).sum())
-        .sort("week_start", "station_id", "day")
-    )
 
 
 def labelled(counts: pl.DataFrame, stations: pl.DataFrame, inputs: pl.DataFrame) -> pl.DataFrame:
@@ -224,9 +177,7 @@ def implications(table: pl.DataFrame, inputs_2019: pl.DataFrame, c: dict[str, fl
 
 def main() -> None:
     read = lambda name, **kw: pl.read_csv(PROCESSED / name, try_parse_dates=True, **kw)  # noqa: E731
-    files = {m: k for m, k in bb.list_month_files().items() if MONTHS[0] <= m <= MONTHS[1]}
-    counts = weekly(pl.concat([count_month(m, k) for m, k in files.items()]))
-    counts.write_csv(PROCESSED / "bluebikes_member_ages_weekly.csv")
+    counts = ba.load()
     inputs = pm.weekly_inputs(read("students_away_weekly.csv"), read("student_presence_weekly.csv",
                                                                       infer_schema_length=None))
     df = labelled(counts, read("bluebikes_station_campus.csv", schema_overrides={"station_id": pl.Utf8}), inputs)
