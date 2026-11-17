@@ -2,107 +2,105 @@
 
 ## Project Description
 
-Greater Boston has an unusually large university population, and the number of people physically present in the area changes noticeably throughout the academic year. Students arrive at the beginning of each semester, leave during winter and summer breaks, and temporarily leave during shorter academic breaks.
-
-In this project, **Greater Boston** refers to the **Inner Core** of the Metropolitan Area Planning Council (MAPC), the region's planning agency: 22 cities and towns, **Boston, Cambridge, Somerville, Brookline, Arlington, Belmont, Chelsea, Dedham, Everett, Lynn, Malden, Medford, Melrose, Milton, Needham, Newton, Quincy, Revere, Saugus, Waltham, Watertown, and Winthrop**. Together they contain the region's major universities, including Boston University, Northeastern, Harvard, MIT, Boston College, Tufts, Brandeis, and Bentley. Using an existing regional definition avoids drawing the boundary by hand.
-
-MAPC's subregion pages list these 22 members (checked October 2026); its older work plans and agendas list 21, without Dedham, which has no university, Bluebikes station, or gated MBTA station. Bluebikes has served Boston, Cambridge, Somerville, and Brookline, the original study area, since 2015, and the other Inner Core towns it reaches only since 2019–2022.
-
-The key question here would be:
+Greater Boston has an unusually large university population, and the number of people present changes through the academic year: students arrive each semester and leave for breaks and summer.
 
 > **How does Greater Boston's effective population change throughout the year, and how much of that variation can be explained by university students?**
 
-**Scope.** The quantity studied is the **seasonal resident population**: how many of the study area's residents are actually present in a given week. It starts from the Census resident population and takes away the university students who leave when their school is out of session. Commuters, tourists and other visitors, and people who come only for the summer, are outside this scope. Travel records (Bluebikes, MBTA, street counts) are not studied for their own sake; they serve as evidence of how many people are around.
+**Study area.** The **Inner Core** of the Metropolitan Area Planning Council (MAPC), the region's planning agency: 22 cities and towns (**Boston, Cambridge, Somerville, Brookline, Arlington, Belmont, Chelsea, Dedham, Everett, Lynn, Malden, Medford, Melrose, Milton, Needham, Newton, Quincy, Revere, Saugus, Waltham, Watertown, and Winthrop**) with about 1.85 million residents, of whom about 220,000–230,000 are college students, followed week by week from 2015 to 2026. They contain the major universities (Boston University, Northeastern, Harvard, MIT, Boston College, Tufts, Brandeis, Bentley), and an existing regional definition avoids drawing the boundary by hand. MAPC's subregion pages list these 22 members (checked October 2026); older work plans list 21, without Dedham, which has no university, Bluebikes station, or gated MBTA station.
 
-The project will estimate Greater Boston's population over time by combining a relatively stable **resident population baseline** with a **seasonal student population component**.
+**Scope.** The quantity studied is the **seasonal resident population**: how many of the study area's residents are present in a given week. Commuters, tourists and summer-only arrivals are outside the scope. Travel records (Bluebikes, MBTA, street counts) are evidence of how many people are around, not studied for their own sake.
 
-Rather than simply adding university enrollment to Census population, which would double-count some students already counted as residents of the study area, the project will estimate how student presence changes relative to its typical annual level.
+**Approach.** The Census already counts students where they live during the school year, so adding enrollment would double-count them; students leaving can only lower the population:
 
-A simplified version of the model is:
+**P<sub>effective</sub>(t) = P<sub>Census</sub>(y) − S<sub>away</sub>(t)**
 
-**P<sub>effective</sub>(t) = P<sub>baseline</sub>(y) + ΔP<sub>students</sub>(t)**
-
-where P<sub>baseline</sub>(y) is the combined annual resident population of the study-area municipalities and ΔP<sub>students</sub>(t) represents the seasonal change in student presence during a particular week or month.
-
-
-The final goal is to create an interactive visualization that allows users to move through a year and watch Greater Boston's estimated population rise and fall with the academic calendar.
+where P<sub>Census</sub>(y) is the study area's resident population in year y and S<sub>away</sub>(t) the resident college students away in week t. Academic calendars, enrollment and where students live give how many students are out of session each week; travel records give how many of them actually leave.
 
 ---
 
 ## Goals
 
-The project has three main goals.
+1. **Estimate Greater Boston's seasonal population** week by week since 2015, from the Census population, university enrollment, where students live, and the academic calendars.
+2. **Check it against signs of presence.** Nobody counts who is present, so travel records serve as evidence: Bluebikes trips and MBTA subway entries. Road traffic and rideshare data are not published weekly for the study area, and Boston 311 requests were tried and carry no student signal. Travel is modeled after accounting for weather, season, year, holidays and network size, and student activity is separated from residents' by comparing campus areas with the rest of the study area, by riders' ages (Bluebikes, until April 2020), and by each university's own calendar dates, which differ from year to year and from the seasons.
+3. **Build an interactive "Boston Breathes" visualization**: move through any academic year and watch the population rise and fall with the calendars (`figures/e_year_explorer.html`).
 
-### 1. Estimate Greater Boston's seasonal population
+---
 
-Construct a weekly or monthly estimate of Greater Boston's effective population for approximately the last 10–12 years.
+## Modeling Methods and Results
 
-This will combine:
+Two kinds of model answer two different questions:
 
-* annual resident population of each study-area municipality;
-* university enrollment;
-* the number or proportion of students living in the study area;
-* academic calendars and semester breaks.
+* **Travel models** (goal 2) predict weekly travel and test whether the **Student Presence Index**, the share of the area's students in session each week, improves the prediction. They show that travel follows the students.
+* **The population model** (goal 1) predicts the weekly population. Travel is its evidence, not its target: how much travel falls at stations with more student riders says how many students left.
 
+### Models attempted
 
-### 2. Check the estimated population against signs of presence
+| Model | Question | Method | Tested on | Main result |
+|---|---|---|---|---|
+| Travel models (`model_comparison.py`) | Does the index improve predictions of weekly travel? | Linear regression with a smooth seasonal curve; linear regression with a level for each week of the year; gradient-boosted trees. Each with and without the index, for Bluebikes and MBTA, near campuses and in total | Each calendar month held out in turn | The best model for every target includes the index; it lowers held-out error by 6.7–7.9% against a smooth seasonal curve and 0.7–1.9% against week-of-year levels (Bluebikes targets and MBTA total) |
+| Pooled campus model (`campus_panel.py`) | Does activity at a campus follow its own university's calendar? | Fixed-effects regression with a level for every week (shared by all campuses) and for every campus in each year | Placebo: each campus given other universities' calendars | Bluebikes trips +21% (95% CI +14% to +28%) and subway entries +11% (+3% to +19%) when the campus's own university is in session (verified calendars); other calendars at most +6% |
+| Population model (`population_model.py`) | How many of the students out of session leave? | Each week, the slope of station entries across stations on the station's share of student riders (MBTA passenger survey); weekday slopes fix the scale, weekend slopes measure leaving. Six versions of who leaves | Forward in time: validation years 2023–2025, and an untouched test year, 2026 | The version in which every student out of session not living with parents leaves predicts later years' weekend travel 18–24% better than nobody leaving, and 20% on the 2026 test; only residents of closed halls leaving, 8–13% |
+| Model families (`travel_models.py`) | Do flexible models or weather features read the signals better? | Linear, ridge, lasso, support vector machine, nearest neighbours, random forest, gradient boosting, neural network; six feature sets | Forward in time, as the population model | Simple linear models do as well as any (R² about 0.46–0.47); the student inputs explain 36–47% of the weekly variation, weather and calendar alone about a fifth |
+| Joint model (`joint_population.py`) | Do the subway and Bluebikes agree? | The shares away fitted on both signals at once, each with its own scale; weather removed first by each model family (cross-fitted) | Calendar months resampled | Summer share 0.83 (0.69–0.99), breaks 0.91 (0.52–1.28); removing weather gives 0.70–0.85 |
+| Known-truth simulation (`population_accuracy.py`) | How accurate is the method in people, and are its intervals right? | Signals simulated from chosen shares with the real noise, then refitted | 200 data sets for each of four truths; intervals checked on new data sets | Unbiased; a single summer or break week is typically off by 12,000–18,000 students; intervals widened by 1.4 contain the truth 94–95% of the time |
+| Weekend-rider check (`weekend_riders.py`) | Are students the same share of weekend riders as of weekday riders, as the population model assumes? | Bluebikes members' ages, 2016–2019, riders aged 18–24 standing in for students | Stations and months resampled | No: near the most student-heavy campuses their excess is 1.26 times as large on weekends (1.11–1.48), so the estimate divides the shares by this factor |
 
-How many people are present cannot be counted directly, so the estimate is checked against travel records, which rise and fall with the number of people around. Several independent sources are used rather than Bluebikes alone:
+The fitted model is then used for **scenarios** (2025–26 with one input changed) and a **forecast** of 2026–27 from the published calendars.
 
-* Bluebikes ridership (main signal);
-* MBTA subway station entries;
-* road traffic counts and rideshare trips, where data is available at a weekly or monthly level.
+### How performance was tested
 
-The project will test whether student presence helps explain changes in these travel records after accounting for factors such as:
+* **Travel models: held-out months.** Travel levels change far more between years than within them (the Bluebikes network grew fivefold; subway entries are still about a third below 2019), so a model fitted on earlier years cannot predict the level of later ones. Each calendar month is held out in turn, with the week on either side, and predicted from the other weeks; error is the RMSE of the logarithm of weekly travel.
+* **Population model and model families: forward in time.** Travel and inputs enter as deviations from their mean over the same year, so years can be compared despite their levels. Each version is fitted on earlier years and scores the weekend travel of later ones against a model in which nobody leaves: 2023 from 2022, 2024 from 2022–2023, 2025 from 2022–2024, and 2022–2025 from 2016–2019 across the COVID-19 gap (validation). January–September 2026 (38 weeks) is the test, scored once after the measure and version were chosen.
+* **Uncertainty:** refits on calendar months drawn with replacement, widened until intervals contain a known truth 95% of the time on simulated signals.
+* **Evidence not used in fitting:** the COVID-19 absences of 2020–2021, and Bluebikes fitted on its own ([Checks against other evidence](#checks-against-other-evidence)).
 
-* weather;
-* season;
-* year;
-* holidays;
-* changes in service, such as the size of the Bluebikes network.
+### Performance
 
-None of these sources identify riders as students, so student activity will be separated from resident activity in three ways:
+![Population model versions, tested on later years](figures/f16_population_model_tests.png)
 
-* comparing activity near university campuses with activity elsewhere;
-* for Bluebikes trips from 2015 to April 2020, which include rider birth year, comparing riders of typical college age with older riders;
-* checking whether changes line up with academic calendar dates, which differ from year to year and from general seasonal patterns.
+| Who leaves when out of session (Semester Pass measure) | 2023 from 2022 | 2024 from 2022–23 | 2025 from 2022–24 | 2022–25 from 2016–19 | Test: 2026 from 2022–25 |
+|---|---|---|---|---|---|
+| Only students in closed residence halls | −8.0% | −12.9% | −10.4% | −11.3% | −13.3% |
+| **Every student not living with parents (chosen)** | **−17.6%** | **−24.3%** | **−18.5%** | **−19.2%** | −19.8% |
+| One fitted share | −16.7% | −22.5% | −17.7% | −18.7% | **−20.0%** |
+| Fitted shares for summer and breaks | −15.8% | −20.1% | −17.0% | −18.9% | −19.1% |
+| Fitted shares for summer, Thanksgiving, winter and spring | −13.3% | −20.9% | −16.8% | −18.3% | −18.0% |
 
-A baseline model will be compared with a model that includes the estimated student population.
+* Change in the error of predicted weekend travel against nobody leaving; in bold, the best version of each run. Every version in which most students leave beats closed halls only in every run. The chosen version was best in all four validation runs and within 0.2 points of the best on the test.
 
-### 3. Build an interactive "Boston Breathes" visualization
+![Travel models: what the Student Presence Index adds](figures/f17_travel_models_index.png)
 
-The final visualization will allow users to select a year and move through the weeks or months of that year, or view the yearly trend.
+* Held-out R² of the travel models with the index: 0.91 (gradient boosting) for the near-campus share of Bluebikes trips, 0.94–0.98 for the Bluebikes and MBTA totals, and only about 0.3 for the near-campus share of subway entries, whose campus stations also serve commuters ([The models in detail](#travel-models-in-detail)).
 
-It will show:
+### Why these features and models
 
-* Greater Boston's resident population baseline;
-* estimated seasonal student contribution;
-* estimated effective population;
-* the travel records used as evidence, such as Bluebikes and MBTA ridership;
-* major academic periods such as semesters, summer break, winter break, and national holidays.
+* **The Student Presence Index** is enrollment times the share of each week the university is in session, from the calendars of 22 universities (93% of in-person students). Universities break at different times and their dates move between years, which is what lets the index be told apart from the seasons.
+* **Controls** remove what moves travel apart from students: weather (temperature, rain, snow, heat), holidays and the Christmas–New Year week, network size, year levels and season. Without the Christmas–New Year flag the index took credit for the citywide slowdown (total Bluebikes trips +47% instead of +29%).
+* **Comparisons within the same week** (campus areas against the rest, stations against each other) cancel the weather and citywide events that hit every station alike.
+* **Weekdays against weekends:** on weekdays every student out of session stops going to class; on weekends only those who left are missing. That difference is what identifies leaving.
+* **The Semester Pass share of riders** (sold through universities) was chosen among three survey measures of student riders on the validation years: it gave the largest gain (20% on average, against 14% and 11%).
+* **Linear models** were kept because they predicted later years as well as the flexible families with 50 to 150 training weeks, and their coefficients can be read. The trees fit the campus ratios best but the totals worst, because they cannot carry the networks' growth into a held-out month.
 
-This will allow the user to visually explore how Greater Boston "breathes" throughout the year.
+### What the results mean
+
+* **The population falls by about 8% in summer.** In mid-July 2019 about 151,000 of 1.84 million residents were away (95% interval 120,000–188,000); the week after Christmas is the year's low point (164,000 away). About two thirds of students out of session leave in summer and 72% on other breaks.
+* **Travel follows the students.** The index improves the best model of every travel target, and each campus follows its own university's calendar, not other universities'.
+* **Simple models suffice.** Flexible models and weather features did not read the signals better than linear ones.
+* **The main uncertainty is an assumption, not the fit.** Weekend travel overstates leaving because students are a larger share of weekend riders; the correction was measured on Bluebikes only (if the subway's factor were 1, mid-July 2019 would be about 190,000 away). The intervals are calibrated on simulated signals, since no counted population exists. See [Limits](#limits).
 
 ---
 
 ## Results
 
-**Question.** How does Greater Boston's effective population change throughout the year, and how much of that variation can be explained by university students? The study area is MAPC's Inner Core: 22 cities and towns with about 1.85 million residents, of whom about 220,000–230,000 are college students, followed week by week from 2015 to 2026.
-
-**In short.** The study area's resident population falls by about 8% in summer, when college students leave: in mid-July 2019, about 151,000 of 1.84 million residents were away (95% interval 120,000–188,000); in a spring-break week about 61,000 (35,000–72,000), at Thanksgiving about 117,000 (67,000–135,000), and in the week after Christmas, the year's low point, about 164,000 (93,000–189,000). The estimate comes from a population model with travel as evidence: subway and Bluebikes stations with more student riders lose more trips on weekdays whenever students are out of session, and on weekends only when they have left. Versions of who leaves were compared on years they were not fitted on, including an untouched test year, 2026, and those in which most students leave did best. Bluebikes riders' ages show that near campuses students make up a larger share of weekend riders than of weekday riders, so weekend travel overstates leaving; corrected for it, about two thirds of students out of session leave in summer and 72% on other breaks. The 95% interval covers both the fit and the correction, and was widened until, on signals made up from a known truth, it contained that truth 95% of the time; no counted population exists to check it against, and it does not cover whether the subway's weekend factor matches Bluebikes', which could not be tested, or errors in the Census and enrollment inputs. Two checks the model was not built from support it: the absences of COVID-19 show in 2020–2021 travel, and Bluebikes, fitted on its own, also finds most students leaving. Travel records also follow each university's own calendar: Bluebikes trips at a campus are 14–21% higher when its university is in session than when it is not, compared with other campuses in the same week.
-
 ### What the data show
 
-1. **When students are here.** The Student Presence Index, built from the calendars of 22 universities (93% of in-person students) and their enrollment, gives the share of the area's students in session each week (figures B5 and B6).
+1. **When students are here.** The Student Presence Index gives the share of the area's students in session each week (figures B5 and B6).
 2. **How many could leave.** At least the students whose residence halls close and at most every resident college student not living with their parents: in summer 2019, between 73,000 and 190,000 students (4.0–10.3% of residents) (figure B7, light band).
-3. **Travel follows the students (goal 2).**
-   * The share of Bluebikes trips near campuses rises and falls with the index (median correlation within a year 0.85). It dropped in 76% of 293 university breaks, and on weekdays in September bicycle counts near campuses are 17.5% above June, against 1% elsewhere, while motor-vehicle counts barely change.
-   * Models of weekly travel, tested on months they were not fitted on: the best model of the near-campus share of Bluebikes trips explains 91% of its variation (typical error 6%, against 22% for guessing the average). For Bluebikes and MBTA, near campuses and in total, the best model includes the index. For Bluebikes and total MBTA entries it lowers the error by 0.7–1.9% once a model knows the typical week of the year, and by 6.7–7.9% against a smooth seasonal curve, because students leave at almost the same time every year; for the MBTA near-campus share it adds little or nothing ([Model comparison](#model-comparison-goal-2)).
-   * Comparing campuses in the same week, which removes weather, season, holidays and visitors: Bluebikes trips at a campus are 21% higher when its own university is in session (14% with every campus on assumed calendars), and subway entries at its stations 11% (7%). Other universities' calendars give at most 2–6%. The effect is largest at residential campuses (Northeastern +46%, MIT +34%) and absent downtown and at graduate and health-professions schools ([Pooled campus model](#pooled-campus-model)).
-4. **How many actually leave (population model).** On weekdays, subway stations with more student riders lose more entries whenever students are out of session; on weekends, when there are no classes, only when students have left. Each version of who leaves was fitted on earlier years and scored on later ones. The version in which every student out of session not living with their parents leaves predicted each validation year best (18–24% better than nobody leaving, against 8–13% when only residents of closed halls leave) and the untouched test year, January–September 2026, 20% better, and the shares fitted on the subway and Bluebikes together are close to it (summer 0.83, breaks 0.91). These comparisons assume students are the same share of weekend riders as of weekday riders; near campuses they are 1.26 times as large a share (Bluebikes riders' ages), so the estimate divides the fitted shares by that factor: about 66% of students out of session leave in summer (95% interval 52–82%) and 72% on other breaks (41% to all). Averaged over 2019, about 67,000 resident college students were away in a given week (3.6% of residents) (figure B7, dark band; [Population model](#population-model)).
-5. **What if (scenarios).** Recomputing 2025–26 with one input changed: 10% fewer students lowers the term-time population by about 19,000 and the summer one by about 6,000; if every spring break fell in the same week, about 149,000 students would be away that week, more than in summer, instead of 53,000–58,000 in each of three weeks; a remote fall term like 2020's would keep about 51,000 students away in every fall week ([Scenarios](#scenarios)).
-6. **Forecast for 2026–27.** With the published calendars, 2026–27 looks like 2025–26 except that spring breaks bunch more: about 84,000 students away in the busiest week of March 2027, against 58,000 in 2026. The forecast holds enrollment and the Census at their latest values, which adds roughly ±1.5% to the population level ([Forecast](#forecast)).
-7. **Other models and signals.** Eight families of models (from linear regression to random forest and a neural network) and six feature sets were tried on each signal for years they had not seen: simple linear models did as well as any, the student inputs explained 36–47% of the weekly variation, weather helped for bikes but not the subway, and 311 requests carried no student signal. Fitted together, the subway and Bluebikes put the summer share away at 0.83 (95% interval 0.69–0.99), the population model's version, before the weekend correction. On signals made up from a known truth, a single summer or break week is typically off by 12,000–18,000 students; the 95% intervals were too narrow at first (they contained the truth 79–86% of the time) and were widened by 1.4, after which they contained it 94–95% of the time on new made-up data ([Exploring models and signals](#exploring-models-and-signals)).
+3. **Travel follows the students.** The share of Bluebikes trips near campuses rises and falls with the index (median correlation within a year 0.85) and dropped in 76% of 293 university breaks; on weekdays in September bicycle counts near campuses are 17.5% above June, against 1% elsewhere, while motor-vehicle counts barely change. Model results are under [Modeling Methods and Results](#modeling-methods-and-results); by university, the effect is largest at residential campuses (Northeastern +46%, MIT +34%) and absent downtown and at graduate and health-professions schools ([Pooled campus model](#pooled-campus-model)).
+4. **How many actually leave.** About 66% of students out of session leave in summer (95% interval 52–82%) and 72% on other breaks (41% to all): in 2019, about 151,000 students away in mid-July (120,000–188,000), 61,000 in a spring-break week (35,000–72,000), 117,000 at Thanksgiving (67,000–135,000) and 164,000 in the week after Christmas (93,000–189,000); 67,000 on average (3.6% of residents) (figure B7, dark band; [Population model](#population-model)).
+5. **Checks the model was not built from.** The absences of COVID-19 show in 2020–2021 travel, and Bluebikes, fitted on its own, also finds most students leaving ([Checks against other evidence](#checks-against-other-evidence)).
+6. **What if (scenarios).** Recomputing 2025–26 with one input changed: 10% fewer students lowers the term-time population by about 19,000 and the summer one by about 6,000; if every spring break fell in the same week, about 149,000 students would be away that week, more than in summer, instead of 53,000–58,000 in each of three weeks; a remote fall term like 2020's would keep about 51,000 students away in every fall week ([Scenarios](#scenarios)).
+7. **Forecast for 2026–27.** With the published calendars, 2026–27 looks like 2025–26 except that spring breaks bunch more: about 84,000 students away in the busiest week of March 2027, against 58,000 in 2026. The forecast holds enrollment and the Census at their latest values, which adds roughly ±1.5% to the population level ([Forecast](#forecast)).
 
 ### Limits
 
@@ -120,7 +118,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 
 ## How to Read the Results
 
-`make figures` writes every chart to `figures/` twice: as a PNG, and on one of five self-contained pages that open in any browser, work offline, and offer hover values, light and dark themes, and each chart's values as a table.
+`make figures` writes every chart to `figures/` twice: as a PNG, and on one of six self-contained pages that open in any browser, work offline, and offer hover values, light and dark themes, and each chart's values as a table.
 
 | Page | What it shows |
 |---|---|
@@ -129,6 +127,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
 | `c_activity_vs_presence.html` | whether Bluebikes, MBTA and street activity near campuses follows the students |
 | `d_map.html` | the campus zones and the Bluebikes and MBTA stations |
 | `e_year_explorer.html` | one academic year, week by week: choose a year, move the week slider or press Play |
+| `f_model_performance.html` | how well the population model and the travel models predict data they were not fitted on |
 
 * **Student Presence Index (0 to 1).** The share of the area's in-person students whose university is in session that week, from the academic calendars: 1 when every university is in session, 0 when all are on break. It says when students are expected to be here, not how many actually are.
 * **The population: a possible range, and an estimate inside it.** The Census resident population already includes the students who live here during the school year, so students leaving can only lower it.
@@ -136,7 +135,7 @@ This will allow the user to visually explore how Greater Boston "breathes" throu
   * The lower line takes away every resident college student not living with their parents whose school is out of session.
   * Counting only resident students who leave, and not visitors, commuters or summer arrivals, the population is somewhere between the two.
   * The population model places the population inside the range with travel records (`population_estimate.csv`): an estimate from how weekday and weekend subway and Bluebikes trips fall at stations with more student riders, corrected for students being a larger share of weekend riders, with a 95% interval; see [Population model](#population-model).
-* **Section C shows checks, not models.** It shows correlations and comparisons: when the ratio of activity near campuses to activity elsewhere rises and falls with the index, activity near campuses is following the students. The model comparison (goal 2) is in `model_comparison.csv` and summarized under [Model comparison](#model-comparison-goal-2).
+* **Section C shows checks, not models**: correlations and comparisons of activity near campuses with activity elsewhere. Model performance is in section F and under [Modeling Methods and Results](#modeling-methods-and-results).
 * **Caveats.**
   * COVID-19 is flagged: students count as away during the spring 2020 lockdown, and in 2020–21 the index peaks at about 0.59 because fewer students studied in person.
   * Academic years with a date estimated from the university's other years are starred in the calendar chart.
@@ -176,53 +175,27 @@ make test       # run the tests
 
 ### Resident Population
 
-Annual population estimates for each study-area municipality will be collected from the **U.S. Census Bureau** or **American Community Survey** and combined into a single study-area total.
-
-These values will provide the relatively stable population baseline for each year.
+Annual population estimates of each study-area municipality from the **U.S. Census Bureau** (2010–2020 intercensal estimates and the latest vintage), summed into the study-area total that is each year's baseline.
 
 ### University Enrollment and Housing
 
-Enrollment and student housing data will be collected from sources such as:
-
-* City of Boston Student Housing / University Accountability reports;
-* City of Cambridge Town Gown reports;
-* IPEDS enrollment data.
-
-These datasets contain information about university enrollment and, in some cases, where students live.
+**IPEDS** fall enrollment, distance education and university housing capacity; the **American Community Survey** and its microdata for how many college students live in the study area and where (university housing, with their parents, elsewhere); the 2020 Census; **City of Boston** student housing reports and **City of Cambridge** Town Gown reports.
 
 ### Academic Calendars
 
-Historical academic calendars will be collected from major universities in the study area.
-
-Important dates include:
-
-* semester start and end dates;
-* winter break;
-* spring break;
-* Thanksgiving break;
-* summer period.
-
-The project may initially focus on the largest universities in the study area and expand if time permits.
+Term start and end dates, winter, spring and Thanksgiving breaks, and summer, collected by hand from the official calendars of 22 universities (`data/manual/academic_calendar.csv`); years without a collected calendar are estimated from the university's other years.
 
 ### Bluebikes
 
-Historical Bluebikes trip data will be used as an observable sign of how many people are present.
-
-Trips will be aggregated by week, and variables such as total trips, trips per active station, and activity near major university areas may be examined.
-
-Each station will be assigned to a municipality based on its location, so activity can be analyzed both for the whole study area and for each municipality.
-
-From January 2015 to April 2020, trip records include rider birth year, which allows trips by riders of typical college age to be compared with trips by other riders. From May 2020 the records include a postal code instead, which may later help identify riders living in student-heavy areas.
+Bluebikes trip files from January 2015 onward, aggregated by week and by station; each station is assigned to a municipality and to a campus zone. From January 2015 to April 2020 the trip records include rider birth year, used to compare riders of college age with others; from May 2020 they include a postal code instead.
 
 ### MBTA Ridership
 
-Gated station entries from the **MBTA / MassDOT open data portal** will be used as a second activity signal, with particular attention to stations serving major universities, such as Kenmore, Harvard, and Kendall/MIT.
+Gated station entries from the **MBTA / MassDOT open data portal** (2014 onward), station locations from the MBTA API, and the **MBTA 2025 System-Wide Passenger Survey** for the share of student riders at each station.
 
 ### Traffic and Rideshare
 
-Road traffic counts from **MassDOT** and rideshare trip data published by the **Commonwealth of Massachusetts** will be explored as additional signals. They will be used only if they are available at a weekly or monthly level for the study area.
-
-Neither is: rideshare trips are published as yearly totals per town, and MassDOT traffic counts mostly as yearly averages, so there is no weekly signal of driving or ride-hailing for the study area. Boston's street counts cover a few days a year (see [MBTA, street counts, and campus zones](#mbta-street-counts-and-campus-zones)).
+Road traffic counts from **MassDOT** and rideshare trips published by the **Commonwealth of Massachusetts** were checked as further signals, but neither is published weekly or monthly for the study area: rideshare trips are yearly totals per town, and MassDOT counts mostly yearly averages. Boston's street counts cover a few days a year (see [MBTA, street counts, and campus zones](#mbta-street-counts-and-campus-zones)).
 
 ### Boston 311 Service Requests
 
@@ -230,37 +203,19 @@ The City of Boston publishes every 311 service request (data.boston.gov, one tab
 
 ### Weather
 
-Historical weather data for the Boston area will be used to control for variables such as temperature, rain, and snow, which strongly affect bicycle use and travel in general.
+Daily observations at Boston Logan Airport (**NOAA**): temperature, rain, snow and heat, which strongly affect bicycle use and travel in general.
 
 ---
 
 ## Data Cleaning and Feature Extraction
 
-The main cleaning challenges will include:
+The main cleaning steps (details under [Processing decisions](#processing-decisions)): standardizing university names across datasets and years; filling missing enrollment and housing years; putting every source on one Monday-to-Sunday weekly timeline; following Bluebikes stations as the network grew and assigning them to municipalities and campus zones; finding MBTA closure days; and flagging the COVID-19 period.
 
-* standardizing university names across datasets and years;
-* handling missing enrollment or housing data;
-* matching different datasets to a common weekly or monthly timeline;
-* accounting for changes in Bluebikes stations over time;
-* assigning Bluebikes stations to municipalities and handling municipalities that joined the network during the study period;
-* matching Bluebikes stations and MBTA stations to nearby university campuses;
-* identifying unusual periods such as COVID-19.
-
-The main derived feature will be a **Student Presence Index**, based on enrollment, student residence, and the academic calendar.
-
-Additional features may include:
-
-* semester-in-session indicators;
-* summer and winter break indicators;
-* weather variables;
-* Bluebikes network size;
-* distance from stations to university campuses;
-* share of Bluebikes trips by riders of typical college age (2015 – April 2020);
-* year and season.
+The main derived feature is the **Student Presence Index**, from enrollment and the academic calendars. Other features: the shares of students on summer break and otherwise out of session, the range of students away (from where students live and residence hall closures), weather, holidays, network size, campus zones, the share of Bluebikes trips by riders of college age (2015 – April 2020), year and season.
 
 ---
 
-## Data Processing Plan
+## Data Processing
 
 Every source is processed onto a common **Monday-to-Sunday weekly timeline** covering 2015–2026. Raw downloads are not stored in the repository; each step rebuilds them from the original source, and only small processed tables are kept in `data/processed/`.
 
@@ -283,7 +238,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 15. Students away: weekly range | Steps 11 and 14 | Done | `students_away_weekly.csv` |
 | 16. Figures and year explorer | Steps 1–15 | Done | `figures/*.png`, `figures/*.html` (see [How to Read the Results](#how-to-read-the-results)) |
 | 17. Modeling table | Weekly tables of steps 1–15 | Done | `modeling_weekly.csv`: one row per week with travel records, weather, calendar, and student columns |
-| 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect; `model_coefficients.csv` (with the combined effect of warming from 0 to 20 °C), `model_feature_importance.csv`: what each input does (see [The models in detail](#the-models-in-detail)) |
+| 18. Model comparison (goal 2) | Step 17 | Done | `model_comparison.csv`: held-out error of three model families with and without the index, and the index's effect; `model_coefficients.csv` (with the combined effect of warming from 0 to 20 °C), `model_feature_importance.csv`: what each input does (see [Travel Models in Detail](#travel-models-in-detail)) |
 | 19. Pooled campus model | Steps 8, 10, 12, and 14 | Done | `campus_panel.csv`: travel at each campus against its own university's calendar (all universities with assumed calendars, and verified calendars only), by university, with a placebo |
 | 20. Population model | Steps 12, 14, and 15 | Done | `population_model_forward.csv`, `population_model_comparison.csv`, `population_model_shares.csv`: versions of who leaves scored on later years (validation 2023–2025, test 2026) and on months within a period, and the fitted shares of students out of session who leave |
 | 21. Scenarios | Step 29 | Done | `population_scenarios.csv`, `population_scenarios_summary.csv`: the 2025–26 population with 10% fewer or more students, aligned spring breaks, or a remote fall term |
@@ -297,7 +252,7 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 | 29. Population estimate | Steps 20, 27, 28, and 30 | Done | `population_estimate.csv`: the weekly population from the subway and Bluebikes shares of step 27, corrected with the weekend factor of step 30, with a 95% band calibrated in step 28 |
 | 30. Weekend riders | Bluebikes trip files (2016–2019), steps 14, 25, and 27 | Done | `bluebikes_member_ages_weekly.csv`, `weekend_riders_shares.csv`, `weekend_riders.csv`, `weekend_factor_draws.csv`: member trips by age band, the share of trips by riders aged 18–24 on weekdays and weekends by zone, how much larger students' share of weekend riders is (with its refits), and the shares away corrected for it |
 
-### Processing decisions so far
+### Processing decisions
 
 #### Bluebikes and weather
 
@@ -421,22 +376,10 @@ Every source is processed onto a common **Monday-to-Sunday weekly timeline** cov
 
 #### Model comparison (goal 2)
 
-* **Three model families, each with and without the index, on the same held-out weeks.**
-  * *Linear, smooth season* (least squares): weather (temperature and its square, rain, heavy rain, snow, ice and hot days, wind), holidays, the weeks from December 24 to January 1, a smooth annual cycle (two pairs of sine and cosine terms), network size, and a separate level for each calendar year. The smooth cycle cannot copy the sharp changes of the academic calendar, so it leaves them to the index. A third version also adds the summer-break share.
-  * *Linear, week of year*: the same with a separate level for each week of the year instead of the smooth cycle. It learns the typical calendar, students included, so the index can only add what differs from year to year: when Labor Day falls, how spring breaks and commencements move.
-  * *Gradient boosting* (scikit-learn, fixed settings): the same weather, holidays and network size, with the day of the year and the year as plain inputs, so the trees find season, year levels and interactions themselves.
-  * Targets are logarithms of the campus ratio (campus-zone over away-zone activity) and of the study-area total, for Bluebikes trips and MBTA entries. The weeks are those with complete data outside the COVID-19 period: 534 for Bluebikes, 538 for MBTA.
-  * *Testing.* Travel levels change far more between years than within them (the Bluebikes network grew fivefold; subway entries are still about a third below 2019), so a model fitted on earlier years cannot predict the level of later ones. Each calendar month is therefore held out in turn, with the week on either side, and predicted from a model fitted on the other weeks. The blocks are contiguous months, not random weeks.
+* **Three model families, each with and without the index**: linear with a smooth seasonal curve, linear with a level for each week of the year, and gradient-boosted trees, for the campus ratio (campus-zone over away-zone activity) and the study-area total of Bluebikes trips and MBTA entries (inputs and settings under [Travel Models in Detail](#travel-models-in-detail); testing under [How performance was tested](#how-performance-was-tested)). The smooth curve cannot copy the calendar's sharp changes, so it leaves them to the index; the week-of-year levels learn the typical calendar, students included, so the index can only add what differs from year to year.
   * *Christmas and New Year.* The whole city slows down in the weeks from December 24 to January 1, which fall in the universities' winter break. Without a flag for those weeks, the index took credit for that slowdown: its effect on total Bluebikes trips came out at +47% instead of +29%, and on total MBTA entries at +23% instead of +16%. Flagging the weeks and dropping them give almost the same result. The campus ratio moves much less (Bluebikes +22% to +18%), since the slowdown hits both zones.
 
-Change in held-out error (RMSE of the logarithm) when the index is added, within each family; in bold, the family with the lowest error for that target:
-
-| Target | Linear, smooth season | Linear, week of year | Gradient boosting |
-|---|---|---|---|
-| Bluebikes campus ratio | −7.9% | −0.7% | **−3.9%** |
-| MBTA campus ratio | −1.6% | +0.3% | **−1.6%** |
-| Bluebikes total | −7.9% | **−1.8%** | −3.6% |
-| MBTA total | −6.7% | **−1.9%** | −4.5% |
+The change in held-out error when the index is added is in figure F17 ([Performance](#performance)). The lowest error for each target comes from gradient boosting for both campus ratios and from the week-of-year family for both totals.
 
 Effect of the index (from no university in session to all in session), with a 95% interval, in the two linear families:
 
@@ -517,18 +460,9 @@ By university, all universities with assumed calendars (95% intervals; "verified
   * *validation*, forward in time: 2023 from 2022, 2024 from 2022–2023, 2025 from 2022–2024, and, across the COVID-19 gap, 2022–2025 from 2016–2019;
   * *test*: January to September 2026 (38 weeks: 17 in summer, 20 with a break, 12 fully in session) from 2022–2025, scored once, after the measure and version were chosen on the validation years. Neither the model nor the exploration that led to it had used 2026.
   * Weekly calendar inputs enter as deviations from their mean over the same year, as travel does (it is measured against each station's level for the year), so a part of a year such as 2026 is scored on the same footing.
-
-| Who leaves when out of session (Semester Pass measure) | 2023 from 2022 | 2024 from 2022–23 | 2025 from 2022–24 | 2022–25 from 2016–19 | Test: 2026 from 2022–25 |
-|---|---|---|---|---|---|
-| Only students in closed residence halls | −8.0% | −12.9% | −10.4% | −11.3% | −13.3% |
-| **Every student not living with parents (chosen)** | **−17.6%** | **−24.3%** | **−18.5%** | **−19.2%** | −19.8% |
-| One fitted share | −16.7% | −22.5% | −17.7% | −18.7% | **−20.0%** |
-| Fitted shares for summer and breaks | −15.8% | −20.1% | −17.0% | −18.9% | −19.1% |
-| Fitted shares for summer, Thanksgiving, winter and spring | −13.3% | −20.9% | −16.8% | −18.3% | −18.0% |
-
+  * The results are in the table and figure under [Performance](#performance).
   * The validation years chose the measure and the version. With the Semester Pass measure, every student out of session not living with their parents leaving had the lowest error in each validation year and across the COVID-19 gap, and the Semester Pass measure gave the largest gain of the three (20% on average, against 14% for riders aged 18–25 and 11% for trips between home and school).
   * The fitted shares move with the years they learn from (summer 0.59 from 2022, 0.59 from 2022–2023, 0.76 from 2022–2024, 0.90 from 2022–2025), so with a few years of data they predict later years less well than the version with nothing to fit.
-  * On the test, the chosen version predicts 2026 weekend travel 19.8% better than nobody leaving, against 13.3% for only closed residence halls; one fitted share does about as well (20.0%).
   * With the other two measures 2026 is weaker: with riders aged 18–25 every version gains only 4–6%, and with trips between home and school the chosen version does worse than nobody leaving (+9.0%), as a measure that includes school children would. The result rests on the Semester Pass measure.
   * Within a period, predicting each calendar month from the other weeks gives the same ranking (`population_model_comparison.csv`): every student not living with parents is best with the Semester Pass measure in 2022–2025 (−18.9%) and 2016–2019 (−7.3%), and only closed residence halls is worse than it with every measure in both periods.
 * **The fitted shares** (summer and breaks; 95% intervals from refitting on calendar months drawn with replacement). The [known-truth test](#exploring-models-and-signals) found intervals made this way too narrow; widened as calibrated there, the Semester Pass shares of 2022–2025 are 0.64–1.20 and 0.27–1.30 (`joint_population_shares.csv`, subway alone):
@@ -759,29 +693,9 @@ By university, all universities with assumed calendars (95% intervals; "verified
 
 ---
 
-## Modeling and Evaluation
+## Travel Models in Detail
 
-The main modeling question is:
-
-> **Does information about student presence improve our ability to explain or predict changes in Greater Boston activity?**
-
-An initial regression model will predict weekly ridership (Bluebikes trips and MBTA station entries) using weather, seasonal, and time-based variables.
-
-A second model will add the Student Presence Index.
-
-The two models will be compared using metrics such as:
-
-* Mean Absolute Error;
-* Root Mean Squared Error;
-* \(R^2\).
-
-A second modeling approach, such as a tree-based model, may also be explored.
-
-Because the data are time-based, training and testing will use chronological rather than random splits.
-
-Done so far: three model families, two linear and one tree-based (gradient boosting), each with and without the index (see [Model comparison](#model-comparison-goal-2)). The final goal, though, is the population, not travel: the population model ([Population model](#population-model)) predicts the weekly resident population and uses travel only as evidence of it, while the travel models show that travel follows the students. Scenarios recompute 2025–26 with one input changed ([Scenarios](#scenarios)). Instead of training on early years and testing on later ones, each month is held out in turn, because travel levels shift between years (network growth, COVID-19) far more than with the students; the blocks are contiguous months, not random weeks.
-
-### The models in detail
+The methods, tests and results of all the models are summarized under [Modeling Methods and Results](#modeling-methods-and-results), and the population model, joint model, simulation and checks are detailed under [Processing decisions](#processing-decisions). This section details the travel models.
 
 All models work on the logarithm of weekly activity, so effects are percentages. The four targets are the campus ratio (campus-zone over away-zone activity) and the study-area total, for Bluebikes trips and for MBTA gated entries; each target has its own fit. The model comparison is in `src/boston_breathes/model_comparison.py`, the pooled campus model in `campus_panel.py`.
 
@@ -867,44 +781,11 @@ The year and network size come first because they set the level of activity, whi
 
 ## Visualization
 
-The main visualization will be an interactive timeline.
-
-Users will be able to select a year and move through the year to see how estimated population and activity change.
-
-Done so far: `figures/e_year_explorer.html` lets users choose an academic year (2015–16 to 2025–26) and move through its weeks, showing the week's Student Presence Index, the range of the population over the year with the population model's estimate (95% interval), and the calendars of the ten largest universities with collected calendars. The travel records are shown in section C rather than in the explorer.
-
-Additional visualizations may include:
-
-* seasonal population curves;
-* student presence versus Bluebikes activity;
-* comparisons between summer and academic semesters;
-* comparisons between normal years and the COVID-19 period;
-* maps of Bluebikes activity near university-heavy areas.
+The interactive year explorer (`figures/e_year_explorer.html`) lets users choose an academic year (2015–16 to 2025–26) and move through its weeks: the Student Presence Index, the range of the population with the estimate and its 95% interval, and the calendars of the ten largest universities with collected calendars. The other figure pages are listed under [How to Read the Results](#how-to-read-the-results).
 
 ---
 
-## Timeline
+## Status
 
-**Weeks 1–2:** Collect and clean resident population, university enrollment, and student housing data.
-
-**Weeks 3–4:** Collect academic calendars, Bluebikes, and weather data; combine datasets into a common timeline.
-
-**Week 5:** Build and evaluate the Student Presence Index and seasonal population estimate.
-
-**Week 6:** Train and compare predictive models.
-
-**Week 7:** Build the interactive visualization.
-
-**Week 8:** Finalize analysis, documentation, tests, Makefile, GitHub workflow, README, and presentation.
-
----
-
-## Expected Outcome
-
-The final project will produce:
-
-* a historical estimate of Greater Boston's seasonal population;
-* a Student Presence Index;
-* an analysis of whether student presence corresponds to observable changes in travel records (bike share, subway, and street counts);
-* an interactive visualization showing Greater Boston's annual population "pulse";
-* a reproducible GitHub repository containing the full data-processing and analysis pipeline.
+* **Done:** every data source processed onto the weekly timeline (steps 1–30), the Student Presence Index, the population model and estimate with calibrated intervals and the weekend correction, the travel models, the checks, scenarios and the 2026–27 forecast, the figures and year explorer, tests, and GitHub Actions.
+* **Still to do for the final submission:** draw the central estimate in figure B7 (it shows only the 95% band), the final report, and the presentation.

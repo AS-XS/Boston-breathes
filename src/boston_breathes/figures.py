@@ -57,6 +57,7 @@ import vl_convert as vlc
 
 from boston_breathes import evaluate_presence as ev
 from boston_breathes import joint_population as jp
+from boston_breathes import population_model as pm
 from boston_breathes import weekend_riders as wr
 from boston_breathes import http
 from boston_breathes.campus import CAMPUS_M, MAJOR_MIN_STUDENTS, NEAR_M
@@ -1710,6 +1711,102 @@ SECTION_D = {
     ],
 }
 
+VERSION_LABELS = {
+    "dorm closures only": "Only students in closed residence halls",
+    "every student out of session not living with parents": "Every student not living with parents (chosen)",
+    "one share away": "One fitted share",
+    "summer and breaks": "Fitted shares: summer, breaks",
+    "each kind of break": "Fitted shares: each kind of break",
+}
+TEST_LABEL = "Test: January–September 2026 from 2022–2025, scored once"
+VALIDATION_LABEL = "Validation: 2023, 2024, 2025 from the years before; 2022–25 from 2016–19"
+SIGNED_PCT = "(datum.value > 0 ? '+' : '') + datum.value + '%'"
+
+
+def version_test_data() -> pl.DataFrame:
+    forward = read("population_model_forward.csv").filter(
+        (pl.col("measure") == pm.MAIN_MEASURE) & (pl.col("metric") == "rmse_change_pct")
+        & pl.col("version").is_in(list(VERSION_LABELS)))
+    return forward.select(
+        pl.col("version").replace_strict(VERSION_LABELS).alias("version_label"),
+        pl.when(pl.col("evaluation") == "test").then(pl.lit(TEST_LABEL)).otherwise(pl.lit(VALIDATION_LABEL))
+        .alias("kind"),
+        pl.format("{} from {}", "test_years", "train_years").str.replace_all("-", "–").alias("split"),
+        pl.col("value").round(1).alias("change_pct"))
+
+
+def version_test_chart(t: dict) -> alt.TopLevelMixin:
+    df = version_test_data()
+    order = list(VERSION_LABELS.values())
+    kinds = alt.Scale(domain=[TEST_LABEL, VALIDATION_LABEL], range=[t["series1"], t["series2"]])
+    low = math.floor(df["change_pct"].min() / 5) * 5
+    x = alt.X("change_pct:Q", title="Change in error on later years' weekend travel, against nobody leaving (%)",
+              scale=alt.Scale(domain=[low, 0]), axis=alt.Axis(tickCount=6, labelExpr=SIGNED_PCT))
+    y = alt.Y("version_label:N", sort=order, title=None,
+              axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelPadding=8, labelLimit=320))
+    color = alt.Color("kind:N", title=None, scale=kinds, legend=alt.Legend(symbolOpacity=1, direction="vertical"))
+    tooltip = [alt.Tooltip("version_label:N", title="Who leaves"), alt.Tooltip("split:N", title="Predicted"),
+               alt.Tooltip("change_pct:Q", title="Change in error (%)", format="+.1f")]
+    test = df.filter(pl.col("kind") == TEST_LABEL)
+    bars = alt.Chart(test).mark_bar(height=14, cornerRadiusEnd=4).encode(x=x, y=y, color=color, tooltip=tooltip)
+    width = WIDTH - 340
+    # The test value inside the bar's end at zero, where no validation dot falls.
+    labels = alt.Chart(test).mark_text(align="right", dx=-6, fontSize=11, fontWeight=600, color=t["surface"]).encode(
+        x=alt.value(width), y=y, text=alt.Text("change_pct:Q", format="+.1f"))
+    dots = alt.Chart(df.filter(pl.col("kind") == VALIDATION_LABEL)).mark_circle(
+        size=70, opacity=1, stroke=t["surface"], strokeWidth=2).encode(x=x, y=y, color=color, tooltip=tooltip)
+    zero = alt.Chart(pl.DataFrame({"x": [0]})).mark_rule(color=t["muted"], strokeWidth=1).encode(x="x:Q")
+    return alt.layer(bars, dots, labels, zero).properties(width=width, height=alt.Step(34))
+
+
+def version_test_table() -> pl.DataFrame:
+    return version_test_data().select(
+        pl.col("version_label").alias("Who leaves when out of session"), pl.col("split").alias("Predicted"),
+        pl.col("change_pct").alias("Change in error against nobody leaving (%)"))
+
+
+FAMILIES = ["linear, smooth season", "linear, week of year", "gradient boosting"]
+TARGETS = ["Bluebikes campus ratio", "MBTA campus ratio", "Bluebikes total", "MBTA total"]
+
+
+def index_gain_data() -> pl.DataFrame:
+    return (read("model_comparison.csv")
+            .filter((pl.col("model") == "index") & (pl.col("subset") == "all weeks")
+                    & (pl.col("metric") == "rmse_change_pct"))
+            .select("target", "family", pl.col("value").round(1).alias("change_pct"), pl.col("n").alias("weeks")))
+
+
+def index_gain_chart(t: dict) -> alt.TopLevelMixin:
+    df = index_gain_data()
+    identity = alt.Scale(domain=FAMILIES, range=[t["series1"], t["series2"], t["series3"]])
+    low = math.floor(df["change_pct"].min() / 2) * 2
+    high = max(2, math.ceil(df["change_pct"].max() / 2) * 2)
+    x = alt.X("change_pct:Q", title="Change in held-out error when the Student Presence Index is added (%)",
+              scale=alt.Scale(domain=[low, high]), axis=alt.Axis(tickCount=6, labelExpr=SIGNED_PCT))
+    y = alt.Y("target:N", sort=TARGETS, title=None,
+              axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelFontWeight=600, labelPadding=8))
+    y_offset = alt.YOffset("family:N", sort=FAMILIES, scale=alt.Scale(paddingOuter=0.2))
+    color = alt.Color("family:N", title=None, scale=identity, sort=FAMILIES)
+    tooltip = [alt.Tooltip("target:N", title="Target"), alt.Tooltip("family:N", title="Model family"),
+               alt.Tooltip("change_pct:Q", title="Change in error (%)", format="+.1f"),
+               alt.Tooltip("weeks:Q", title="Weeks")]
+    bars = alt.Chart(df).mark_bar(height=12, cornerRadiusEnd=4).encode(
+        x=x, y=y, yOffset=y_offset, color=color, tooltip=tooltip)
+    label = lambda part, align, dx: alt.Chart(part).mark_text(  # noqa: E731
+        align=align, dx=dx, fontSize=10, color=t["ink2"]).encode(
+        x=x, y=y, yOffset=y_offset, text=alt.Text("change_pct:Q", format="+.1f"))
+    labels = [label(df.filter(pl.col("change_pct") < 0), "right", -5),
+              label(df.filter(pl.col("change_pct") >= 0), "left", 5)]
+    zero = alt.Chart(pl.DataFrame({"x": [0]})).mark_rule(color=t["muted"], strokeWidth=1).encode(x="x:Q")
+    return alt.layer(bars, *labels, zero).properties(width=WIDTH - 260, height=alt.Step(16))
+
+
+def index_gain_table() -> pl.DataFrame:
+    return index_gain_data().select(pl.col("target").alias("Target"), pl.col("family").alias("Model family"),
+                                    pl.col("change_pct").alias("Change in held-out error with the index (%)"),
+                                    pl.col("weeks").alias("Weeks"))
+
+
 SECTION_E = {
     "slug": "e_year_explorer",
     "title": "A year in Greater Boston",
@@ -1734,7 +1831,40 @@ SECTION_E = {
     ],
 }
 
-SECTIONS = [SECTION_A, SECTION_B, SECTION_C, SECTION_D, SECTION_E]
+SECTION_F = {
+    "slug": "f_model_performance",
+    "title": "How well do the models predict?",
+    "intro": "Section F of the Boston Breathes figures: each model scored on data it was not fitted on, against a "
+             "baseline. Values come from data/processed/population_model_forward.csv and model_comparison.csv.",
+    "charts": [
+        {
+            "name": "f16_population_model_tests",
+            "title": "Population model: who leaves, tested on later years",
+            "question": "Which version of who leaves best predicts travel in years it was not fitted on?",
+            "notes": ["Each version is fitted on earlier years and predicts the weekend subway slopes of later ones "
+                      "(Semester Pass measure); the change is in the error against a model in which nobody leaves, "
+                      "so lower is better. Bars: the untouched test year, scored once after the version was chosen "
+                      "on the validation years. Dots: the four validation runs.",
+                      "These comparisons assume students are the same share of weekend riders as of weekday riders. "
+                      "Bluebikes riders' ages show they are a larger one near campuses, so the estimate divides the "
+                      "fitted shares by that factor (see the README)."],
+            "chart": version_test_chart, "table": version_test_table,
+        },
+        {
+            "name": "f17_travel_models_index",
+            "title": "Travel models: what the Student Presence Index adds",
+            "question": "Does knowing when students are in session improve predictions of weekly travel?",
+            "notes": ["Change in held-out error (RMSE of the logarithm of weekly travel) when the index is added to "
+                      "each model family, with each calendar month held out in turn; lower is better. Campus ratio: "
+                      "activity in campus zones over activity away from campuses.",
+                      "Against a smooth seasonal curve the index carries the whole academic calendar; against a level "
+                      "for each week of the year it can only add the calendar's shifts from year to year."],
+            "chart": index_gain_chart, "table": index_gain_table,
+        },
+    ],
+}
+
+SECTIONS = [SECTION_A, SECTION_B, SECTION_C, SECTION_D, SECTION_E, SECTION_F]
 
 
 def resolve(notes: list) -> list[str]:

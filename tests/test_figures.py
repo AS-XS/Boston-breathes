@@ -183,3 +183,12 @@ def test_population_data_carries_the_estimate_and_says_when_there_is_none():
     covid = df.filter(pl.col("covid_period") != "normal")
     assert set(covid["est_population_text"]) == {fig.NO_ESTIMATE}
     assert normal["est_away_text"].str.contains("–").all()
+
+
+def test_model_performance_charts_show_every_version_split_and_travel_model():
+    versions = fig.version_test_data()
+    assert versions.group_by("version_label").len()["len"].to_list() == [5] * len(fig.VERSION_LABELS)
+    assert (versions["kind"] == fig.TEST_LABEL).sum() == len(fig.VERSION_LABELS)
+    gains = fig.index_gain_data()
+    assert set(gains["target"]) == set(fig.TARGETS) and set(gains["family"]) == set(fig.FAMILIES)
+    assert len(gains) == len(fig.TARGETS) * len(fig.FAMILIES)
