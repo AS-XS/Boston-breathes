@@ -192,3 +192,9 @@ def test_model_performance_charts_show_every_version_split_and_travel_model():
     gains = fig.index_gain_data()
     assert set(gains["target"]) == set(fig.TARGETS) and set(gains["family"]) == set(fig.FAMILIES)
     assert len(gains) == len(fig.TARGETS) * len(fig.FAMILIES)
+    accuracy = fig.family_accuracy_data()
+    assert len(accuracy) == len(gains) and accuracy["r2"].is_between(0, 1).all()
+    # The README's typical error is the RMSE of the logarithm as a percentage: 9.3% for this row.
+    smooth = accuracy.filter((pl.col("target") == "Bluebikes campus ratio")
+                             & (pl.col("family") == "linear, smooth season")).row(0, named=True)
+    assert smooth["error_pct"] == 9.3 and smooth["label"] == "9.3% · R² 0.80"

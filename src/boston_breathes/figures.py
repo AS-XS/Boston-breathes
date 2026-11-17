@@ -1807,6 +1807,44 @@ def index_gain_table() -> pl.DataFrame:
                                     pl.col("weeks").alias("Weeks"))
 
 
+def family_accuracy_data() -> pl.DataFrame:
+    """Held-out accuracy of each travel model family with the index: typical error (the RMSE of the logarithm as a
+    percentage) and R²."""
+    rows = read("model_comparison.csv").filter(
+        (pl.col("model") == "index") & (pl.col("subset") == "all weeks") & pl.col("metric").is_in(["rmse", "r2"]))
+    return (rows.pivot(on="metric", index=["target", "family"], values="value")
+            .with_columns((100 * (pl.col("rmse").exp() - 1)).round(1).alias("error_pct"), pl.col("r2").round(2))
+            .with_columns(pl.format("{}% · R² {}", "error_pct", pl.col("r2").cast(pl.Utf8).str.pad_end(4, "0"))
+                          .alias("label"))
+            .select("target", "family", "error_pct", "r2", "label"))
+
+
+def family_accuracy_chart(t: dict) -> alt.TopLevelMixin:
+    df = family_accuracy_data()
+    identity = alt.Scale(domain=FAMILIES, range=[t["series1"], t["series2"], t["series3"]])
+    high = math.ceil(df["error_pct"].max() / 5) * 5 + 5  # room for the labels
+    x = alt.X("error_pct:Q", title="Typical error on held-out months (%; lower is better)",
+              scale=alt.Scale(domain=[0, high]), axis=alt.Axis(tickCount=5, labelExpr="datum.value + '%'"))
+    y = alt.Y("target:N", sort=TARGETS, title=None,
+              axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelFontWeight=600, labelPadding=8))
+    y_offset = alt.YOffset("family:N", sort=FAMILIES, scale=alt.Scale(paddingOuter=0.2))
+    color = alt.Color("family:N", title=None, scale=identity, sort=FAMILIES)
+    tooltip = [alt.Tooltip("target:N", title="Target"), alt.Tooltip("family:N", title="Model family"),
+               alt.Tooltip("error_pct:Q", title="Typical error (%)", format=".1f"),
+               alt.Tooltip("r2:Q", title="R²", format=".2f")]
+    bars = alt.Chart(df).mark_bar(height=12, cornerRadiusEnd=4).encode(
+        x=x, y=y, yOffset=y_offset, color=color, tooltip=tooltip)
+    labels = alt.Chart(df).mark_text(align="left", dx=5, fontSize=10, color=t["ink2"]).encode(
+        x=x, y=y, yOffset=y_offset, text="label:N")
+    return alt.layer(bars, labels).properties(width=WIDTH - 260, height=alt.Step(16))
+
+
+def family_accuracy_table() -> pl.DataFrame:
+    return family_accuracy_data().select(
+        pl.col("target").alias("Target"), pl.col("family").alias("Model family"),
+        pl.col("error_pct").alias("Typical error on held-out months (%)"), pl.col("r2").alias("R²"))
+
+
 SECTION_E = {
     "slug": "e_year_explorer",
     "title": "A year in Greater Boston",
@@ -1860,6 +1898,18 @@ SECTION_F = {
                       "Against a smooth seasonal curve the index carries the whole academic calendar; against a level "
                       "for each week of the year it can only add the calendar's shifts from year to year."],
             "chart": index_gain_chart, "table": index_gain_table,
+        },
+        {
+            "name": "f18_travel_models_accuracy",
+            "title": "Travel models: accuracy of each family",
+            "question": "Which kind of model predicts weekly travel best?",
+            "notes": ["Typical error on held-out months (the RMSE of the logarithm of weekly travel, as a percentage) "
+                      "and the share of the week-to-week variance explained (R²), each model family with the Student "
+                      "Presence Index, each calendar month held out in turn.",
+                      "Gradient-boosted trees fit the campus ratios best but the Bluebikes total worst: trees cannot "
+                      "carry the network's growth into a held-out month the way a linear term in network size can. "
+                      "Campus stations of the subway also serve commuters, so little explains the MBTA campus ratio."],
+            "chart": family_accuracy_chart, "table": family_accuracy_table,
         },
     ],
 }

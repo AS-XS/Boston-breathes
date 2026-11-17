@@ -12,9 +12,9 @@ Greater Boston has an unusually large university population, and the number of p
 
 **Approach.** The Census already counts students where they live during the school year, so adding enrollment would double-count them; students leaving can only lower the population:
 
-**P<sub>effective</sub>(t) = P<sub>Census</sub>(y) − S<sub>away</sub>(t)**
+**P<sub>seasonal</sub>(t) = P<sub>Census</sub>(y) − N<sub>students away</sub>(t)**
 
-where P<sub>Census</sub>(y) is the study area's resident population in year y and S<sub>away</sub>(t) the resident college students away in week t. Academic calendars, enrollment and where students live give how many students are out of session each week; travel records give how many of them actually leave.
+where P<sub>seasonal</sub>(t) is the resident population present in week t, P<sub>Census</sub>(y) the study area's Census resident population in that year, and N<sub>students away</sub>(t) the number of resident college students away that week. Academic calendars, enrollment and where students live give how many students are out of session each week; travel records give how many of them actually leave.
 
 ---
 
@@ -28,7 +28,7 @@ where P<sub>Census</sub>(y) is the study area's resident population in year y an
 
 ## Modeling Methods and Results
 
-Two kinds of model answer two different questions:
+This section gives, in order, the [models attempted](#models-attempted), [how their performance was tested](#how-performance-was-tested), the [results](#performance), [why these features and models](#why-these-features-and-models) were chosen, and [what the results mean](#what-the-results-mean). Two kinds of model answer two different questions:
 
 * **Travel models** (goal 2) predict weekly travel and test whether the **Student Presence Index**, the share of the area's students in session each week, improves the prediction. They show that travel follows the students.
 * **The population model** (goal 1) predicts the weekly population. Travel is its evidence, not its target: how much travel falls at stations with more student riders says how many students left.
@@ -70,7 +70,9 @@ The fitted model is then used for **scenarios** (2025–26 with one input change
 
 ![Travel models: what the Student Presence Index adds](figures/f17_travel_models_index.png)
 
-* Held-out R² of the travel models with the index: 0.91 (gradient boosting) for the near-campus share of Bluebikes trips, 0.94–0.98 for the Bluebikes and MBTA totals, and only about 0.3 for the near-campus share of subway entries, whose campus stations also serve commuters ([The models in detail](#travel-models-in-detail)).
+![Travel models: accuracy of each family](figures/f18_travel_models_accuracy.png)
+
+* No family is best everywhere. Gradient-boosted trees predict the campus ratios best (Bluebikes: 6.3% typical error, R² 0.91), but the Bluebikes total worst (18.3%), because trees cannot carry the network's growth into a held-out month; the linear models with week-of-year levels predict both totals best. Little explains the near-campus share of subway entries (R² about 0.3), whose stations also serve commuters ([Travel Models in Detail](#travel-models-in-detail)).
 
 ### Why these features and models
 
@@ -86,7 +88,7 @@ The fitted model is then used for **scenarios** (2025–26 with one input change
 * **The population falls by about 8% in summer.** In mid-July 2019 about 151,000 of 1.84 million residents were away (95% interval 120,000–188,000); the week after Christmas is the year's low point (164,000 away). About two thirds of students out of session leave in summer and 72% on other breaks.
 * **Travel follows the students.** The index improves the best model of every travel target, and each campus follows its own university's calendar, not other universities'.
 * **Simple models suffice.** Flexible models and weather features did not read the signals better than linear ones.
-* **The main uncertainty is an assumption, not the fit.** Weekend travel overstates leaving because students are a larger share of weekend riders; the correction was measured on Bluebikes only (if the subway's factor were 1, mid-July 2019 would be about 190,000 away). The intervals are calibrated on simulated signals, since no counted population exists. See [Limits](#limits).
+* **The main uncertainty is an assumption, not the fit.** Weekend travel overstates leaving because students are a larger share of weekend riders; the correction was measured on Bluebikes only. If the subway needed no correction, about 164,000 students rather than 151,000 were away in mid-July 2019; with no correction for either signal, about 190,000. The intervals are calibrated on simulated signals, since no counted population exists. See [Limits](#limits).
 
 ---
 
@@ -104,7 +106,7 @@ The fitted model is then used for **scenarios** (2025–26 with one input change
 
 ### Limits
 
-* The estimate rests on a correction measured on Bluebikes only: near campuses, students make up a larger share of weekend riders than of weekday riders (members aged 18–24, 2016–2019: 1.26 times, 95% interval 1.11–1.48), so the shares read from weekend travel are divided by that factor. The subway could not be tested; if its factor were 1, about 190,000 rather than 151,000 students were away in mid-July 2019, at the top of the band. Riders aged 18–24 also include young people who are not students, and students who stay but stop weekend trips to campus would overstate leaving as well ([Checks against other evidence](#checks-against-other-evidence)). With riders aged 18–25 in 2016–2019 the share comes out above 1, which shows the assumption can fail; with trips between home and school, which include school children, the summer share is about half.
+* The estimate rests on a correction measured on Bluebikes only: near campuses, students make up a larger share of weekend riders than of weekday riders (members aged 18–24, 2016–2019: 1.26 times, 95% interval 1.11–1.48), so the shares read from weekend travel are divided by that factor. The subway could not be tested: if it needed no correction (Bluebikes still corrected), about 164,000 rather than 151,000 students were away in mid-July 2019; with no correction for either signal, about 190,000, just above the band (120,000–188,000). Riders aged 18–24 also include young people who are not students, and students who stay but stop weekend trips to campus would overstate leaving as well ([Checks against other evidence](#checks-against-other-evidence)). With riders aged 18–25 in 2016–2019 the share comes out above 1, which shows the assumption can fail; with trips between home and school, which include school children, the summer share is about half.
 * The size is consistent with travel but not pinned down: in years outside the fit, weekend travel moves 88–95% as much as the model implies (intervals of about ±30–50%).
 * The 95% intervals are calibrated on made-up data, not guaranteed: refitting alone gave intervals that contained a known truth only 79–86% of the time, so their spread is widened by 1.4, after which they did so 94–95% of the time on new made-up data (each figure uncertain by about ±3 points). The calibration assumes the model, with its weekend correction, is right: with a weekend factor 20% off the true one, the summer interval contains the truth only about half the time.
 * There is no weekly public data for driving or ride-hailing, and Boston's 311 requests carry no student signal, so the evidence is the subway and Bluebikes.
