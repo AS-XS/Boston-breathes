@@ -198,3 +198,11 @@ def test_model_performance_charts_show_every_version_split_and_travel_model():
     smooth = accuracy.filter((pl.col("target") == "Bluebikes campus ratio")
                              & (pl.col("family") == "linear, smooth season")).row(0, named=True)
     assert smooth["error_pct"] == 9.3 and smooth["label"] == "9.3% · R² 0.80"
+
+
+def test_central_estimate_line_breaks_over_the_weeks_without_an_estimate():
+    df = fig.away_data()
+    # Each run is either all weeks with an estimate or all weeks without one.
+    mixed = df.group_by("est_run").agg(pl.col("est_population").is_null().n_unique().alias("kinds"))
+    assert mixed["kinds"].max() == 1
+    assert df.filter(pl.col("est_population").is_not_null())["est_run"].n_unique() >= 2  # before and after COVID-19

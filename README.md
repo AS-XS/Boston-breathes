@@ -20,35 +20,39 @@ where P<sub>seasonal</sub>(t) is the resident population present in week t, P<su
 
 ---
 
-## Modeling Methods and Results
+## Modeling Methods and Evaluation
 
-This section gives, in order, the [models attempted](#models-attempted), [how their performance was tested](#how-performance-was-tested), the [results](#performance), [why these features and models](#why-these-features-and-models) were chosen, and [what the results mean](#what-the-results-mean). Two kinds of model answer two different questions:
+This section gives the [models attempted](#models-attempted), [how their performance was tested](#how-performance-was-tested), the [performance](#performance), and [why these features and models](#why-these-features-and-models) were chosen; the population findings are under [Results](#results).
 
-* **Travel models** (goal 2) predict weekly travel and test whether the **Student Presence Index**, the share of the area's students in session each week, improves the prediction. They show that travel follows the students.
-* **The population model** (goal 1) predicts the weekly population. Travel is its evidence, not its target: how much travel falls at stations with more student riders says how many students left.
+* **Travel models** (goal 2) predict weekly travel and test whether the **Student Presence Index**, the share of the area's students in session each week, improves the prediction.
+* **The population model** (goal 1) estimates the weekly population. Travel is its evidence, not its target: how much travel falls at stations with more student riders says how many students left.
+
+**What is validated.** Nobody counts the population each week, so no estimate of it can be checked against observed counts. What is observed, and scored on data the models were not fitted on, is travel: the population model is chosen by how well its versions predict later years' weekend subway travel, and the population is inferred from the best of them. How accurate that inference is in people is shown only on simulated signals with a known truth.
 
 ### Models attempted
 
-| Model | Question | Method | Tested on | Main result |
-|---|---|---|---|---|
-| Travel models (`model_comparison.py`) | Does the index improve predictions of weekly travel? | Linear regression with a smooth seasonal curve; linear regression with a level for each week of the year; gradient-boosted trees. Each with and without the index, for Bluebikes and MBTA, near campuses and in total | Each calendar month held out in turn | The best model for every target includes the index; it lowers held-out error by 6.7–7.9% against a smooth seasonal curve and 0.7–1.9% against week-of-year levels (Bluebikes targets and MBTA total) |
-| Pooled campus model (`campus_panel.py`) | Does activity at a campus follow its own university's calendar? | Fixed-effects regression with a level for every week (shared by all campuses) and for every campus in each year | Placebo: each campus given other universities' calendars | Bluebikes trips +21% (95% CI +14% to +28%) and subway entries +11% (+3% to +19%) when the campus's own university is in session (verified calendars); other calendars at most +6% |
-| Population model (`population_model.py`) | How many of the students out of session leave? | Each week, the slope of station entries across stations on the station's share of student riders (MBTA passenger survey); weekday slopes fix the scale, weekend slopes measure leaving. Six versions of who leaves | Forward in time: validation years 2023–2025, and an untouched test year, 2026 | The version in which every student out of session not living with parents leaves predicts later years' weekend travel 18–24% better than nobody leaving, and 20% on the 2026 test; only residents of closed halls leaving, 8–13% |
-| Model families (`travel_models.py`) | Do flexible models or weather features read the signals better? | Linear, ridge, lasso, support vector machine, nearest neighbours, random forest, gradient boosting, neural network; six feature sets | Forward in time, as the population model | On these signals, simple linear models do as well as any (R² about 0.46–0.47); the student inputs explain 36–47% of the weekly variation, weather and calendar alone about a fifth |
-| Joint model (`joint_population.py`) | Do the subway and Bluebikes agree? | The shares away fitted on both signals at once, each with its own scale; weather removed first by each model family (cross-fitted) | Calendar months resampled | Summer share 0.83 (0.69–0.99), breaks 0.91 (0.52–1.28); removing weather gives 0.70–0.85 |
-| Known-truth simulation (`population_accuracy.py`) | How accurate is the method in people, and are its intervals right? | Signals simulated from chosen shares with the real noise, then refitted | 200 data sets for each of four truths; intervals checked on new data sets | Unbiased; a single summer or break week is typically off by 12,000–18,000 students; intervals widened by 1.4 contain the truth 94–95% of the time |
-| Weekend-rider check (`weekend_riders.py`) | Are students the same share of weekend riders as of weekday riders, as the population model assumes? | Bluebikes members' ages, 2016–2019, riders aged 18–24 standing in for students | Stations and months resampled | No: near the most student-heavy campuses their excess is 1.26 times as large on weekends (1.11–1.48), so the estimate divides the shares by this factor |
+| Model | Question | Method | Main result |
+|---|---|---|---|
+| Travel models (`model_comparison.py`) | Does the index improve predictions of weekly travel? | Linear regression with a smooth seasonal curve or week-of-year levels; gradient-boosted trees; each with and without the index | The best model for every target includes the index |
+| Pooled campus model (`campus_panel.py`) | Does each campus follow its own university's calendar? | Fixed-effects regression: a level for every week and for every campus-year | Bluebikes +21%, subway +11% when the own university is in session (verified calendars); other universities' calendars at most +6% |
+| Population model (`population_model.py`) | How many students out of session leave? | Weekly slopes of station entries on the station's share of student riders; weekdays fix the scale, weekends measure leaving; six versions of who leaves | Every student not living with parents leaving predicts later years' weekend travel 18–24% better than nobody leaving, 20% on the 2026 test (closed halls only: 8–13%) |
+| Model families (`travel_models.py`) | Do flexible models or weather features read the signals better? | Eight families, from linear regression to a neural network; six feature sets | On these signals, linear models do as well as any |
+| Joint model (`joint_population.py`) | Do the subway and Bluebikes agree? | Shared shares away fitted on both signals; weather removed by each family | Summer share 0.83 (0.69–0.99), breaks 0.91 (0.52–1.28) |
+| Known-truth simulation (`population_accuracy.py`) | How accurate is the method in people? | Signals simulated from known shares with the real noise, then refitted | Unbiased; a summer or break week typically off by 12,000–18,000 students |
+| Weekend-rider check (`weekend_riders.py`) | Are students the same share of weekend riders as of weekday riders? | Bluebikes members' ages, 2016–2019 | No: near student-heavy campuses their excess is 1.26 times as large on weekends (1.11–1.48); the estimate corrects for it |
 
-The fitted model is then used for **scenarios** (2025–26 with one input changed) and a **forecast** of 2026–27 from the published calendars.
+The fitted model is also used for **scenarios** (2025–26 with one input changed) and a **forecast** of 2026–27.
 
 ### How performance was tested
 
 * **Travel models: held-out months.** Travel levels change far more between years than within them (the Bluebikes network grew fivefold; subway entries are still about a third below 2019), so a model fitted on earlier years cannot predict the level of later ones. Each calendar month is held out in turn, with the week on either side, and predicted from the other weeks; error is the RMSE of the logarithm of weekly travel.
 * **Population model and model families: forward in time.** Travel and inputs enter as deviations from their mean over the same year, so years can be compared despite their levels. Each version is fitted on earlier years and scores the weekend travel of later ones against a model in which nobody leaves: 2023 from 2022, 2024 from 2022–2023, 2025 from 2022–2024, and 2022–2025 from 2016–2019 across the COVID-19 gap (validation). January–September 2026 (38 weeks) is the test, scored once after the measure and version were chosen.
-* **Uncertainty:** refits on calendar months drawn with replacement, widened until intervals contain a known truth 95% of the time on simulated signals.
+* **Uncertainty:** refits on calendar months drawn with replacement, widened by 1.4 so that, on simulated signals, the intervals contained the known truth 94–95% of the time (79–86% before widening). This shows the method can give 95% intervals; it does not prove that the real population is inside them 95% of the time.
 * **Evidence not used in fitting:** the COVID-19 absences of 2020–2021, and Bluebikes fitted on its own ([Checks against other evidence](docs/technical_notes.md#checks-against-other-evidence)).
 
 ### Performance
+
+All scores are on travel the models were not fitted on.
 
 ![Population model versions, tested on later years](figures/f16_population_model_tests.png)
 
@@ -66,7 +70,7 @@ The fitted model is then used for **scenarios** (2025–26 with one input change
 
 ![Travel models: accuracy of each family](figures/f18_travel_models_accuracy.png)
 
-* No family is best everywhere. Gradient-boosted trees predict the campus ratios best (Bluebikes: 6.3% typical error, R² 0.91), but the Bluebikes total worst (18.3%), because trees cannot carry the network's growth into a held-out month; the linear models with week-of-year levels predict both totals best. Little explains the near-campus share of subway entries (R² about 0.3), whose stations also serve commuters ([Travel Models in Detail](docs/technical_notes.md#travel-models-in-detail)).
+* No family is best everywhere, so model complexity helps for some targets, not all. Gradient-boosted trees predict the campus ratios best (Bluebikes: 6.3% typical error, R² 0.91), but the Bluebikes total worst (18.3%), because trees cannot carry the network's growth into a held-out month; the linear models with week-of-year levels predict both totals best. Little explains the near-campus share of subway entries (R² about 0.3), whose stations also serve commuters ([Travel Models in Detail](docs/technical_notes.md#travel-models-in-detail)).
 
 ### Why these features and models
 
@@ -77,16 +81,13 @@ The fitted model is then used for **scenarios** (2025–26 with one input change
 * **The Semester Pass share of riders** (sold through universities) was chosen among three survey measures of student riders on the validation years: it gave the largest gain (20% on average, against 14% and 11%).
 * **Linear models** were kept because they predicted later years as well as the flexible families with 50 to 150 training weeks, and their coefficients can be read. The trees fit the campus ratios best but the totals worst, because they cannot carry the networks' growth into a held-out month.
 
-### What the results mean
-
-* **The population falls by about 8% in summer.** In mid-July 2019 about 151,000 of 1.84 million residents were away (95% interval 120,000–188,000); the week after Christmas is the year's low point (164,000 away). About two thirds of students out of session leave in summer and 72% on other breaks.
-* **Travel follows the students.** The index improves the best model of every travel target, and each campus follows its own university's calendar, not other universities'.
-* **Model complexity helps for some targets, not all.** On the weekly signals the population model reads, linear models matched or beat the flexible families on later years, and weather added little for the subway. Among the travel models, gradient-boosted trees predicted the near-campus ratios best but the Bluebikes total worst, because they cannot extrapolate the network's growth. The population model therefore stays linear.
-* **The main uncertainty is an assumption, not the fit.** Weekend travel overstates leaving because students are a larger share of weekend riders; the correction was measured on Bluebikes only. If the subway needed no correction, about 164,000 students rather than 151,000 were away in mid-July 2019; with no correction for either signal, about 190,000. The intervals are calibrated on simulated signals, since no counted population exists. See [Limits](#limits).
-
 ---
 
 ## Results
+
+The population is estimated from travel, not counted: the numbers below are what the best-validated model infers, with intervals whose 95% coverage was shown on simulated data (see [Limits](#limits)).
+
+![Resident population when students leave: possible range and estimate](figures/b7_population_bounds.png)
 
 1. **When students are here.** The Student Presence Index gives the share of the area's students in session each week (figures B5 and B6).
 2. **How many could leave.** Between the students whose residence halls close and every resident college student not living with their parents: 73,000–190,000 in summer 2019 (4.0–10.3% of residents) (figure B7, light band).
@@ -99,7 +100,7 @@ The fitted model is then used for **scenarios** (2025–26 with one input change
 ### Limits
 
 * **The weekend correction was measured on Bluebikes only.** Near campuses, students are a larger share of weekend riders than of weekday riders (members aged 18–24, 2016–2019: 1.26 times, 95% interval 1.11–1.48), so the shares read from weekend travel are divided by that factor. The subway could not be tested: if only Bluebikes needed the correction, about 164,000 rather than 151,000 students were away in mid-July 2019; with no correction at all, about 190,000, just above the band. Riders aged 18–24 also include young people who are not students.
-* **The intervals are calibrated on simulated data**, since nobody counts the population each week: refitting alone gave intervals that contained a known truth 79–86% of the time, so their spread is widened by 1.4, after which they did so 94–95% of the time. They assume the model is right.
+* **The 95% intervals are calibrated on simulated data, not checked against the real population**, since nobody counts it each week: on simulated signals they contained the truth 94–95% of the time after widening. That holds only if the model, with its weekend correction, is right.
 * **Travel pins down the shares over many weeks, not a single week**: read week by week, it misses the estimate by about ±89,000 students.
 * **One test year, one survey measure.** The test is January–September 2026, and the result rests on the Semester Pass measure: with the other two survey measures, 2026 shows little or no gain.
 * **Scope.** Only resident college students who leave are counted, not visitors, commuters or summer arrivals. No weekly public data exist for driving or ride-hailing, and Boston's 311 requests carry no student signal.
@@ -121,7 +122,7 @@ The fitted model is then used for **scenarios** (2025–26 with one input change
 | `f_model_performance.html` | how well the models predict data they were not fitted on |
 
 * **Student Presence Index (0 to 1):** the share of the area's in-person students whose university is in session that week: 1 when every university is in session, 0 when all are on break.
-* **The population range:** the upper line takes away only students whose residence halls are closed, the lower line every resident college student not living with their parents whose school is out of session; the estimate from travel records lies between them. COVID-19 weeks are flagged, and enrollment after fall 2023 and the Census after July 2025 are held at their latest values.
+* **The population range:** the upper line takes away only students whose residence halls are closed, the lower line every resident college student not living with their parents whose school is out of session; the estimate from travel records (dark line, with its 95% interval) lies between them. COVID-19 weeks are flagged, and enrollment after fall 2023 and the Census after July 2025 are held at their latest values.
 
 ---
 
@@ -167,4 +168,4 @@ The full record of how each source was processed, the decisions taken, and each 
 ## Status
 
 * **Done:** every source processed onto the weekly timeline, the Student Presence Index, the population model and estimate with calibrated intervals and the weekend correction, the travel models, the checks, scenarios and the 2026–27 forecast, the figures and year explorer, tests, and GitHub Actions.
-* **Still to do for the final submission:** draw the central estimate in figure B7 (it shows only the 95% band), the final report, and the presentation.
+* **Still to do for the final submission:** the final report and the presentation.

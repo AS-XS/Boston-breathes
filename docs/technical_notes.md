@@ -494,7 +494,7 @@ By university, all universities with assumed calendars (95% intervals; "verified
 
 ## Travel Models in Detail
 
-The methods, tests and results of all the models are summarized under [Modeling Methods and Results](../README.md#modeling-methods-and-results), and the population model, joint model, simulation and checks are detailed under [Processing decisions](#processing-decisions). This section details the travel models.
+The methods, tests and results of all the models are summarized under [Modeling Methods and Results](../README.md#modeling-methods-and-evaluation), and the population model, joint model, simulation and checks are detailed under [Processing decisions](#processing-decisions). This section details the travel models.
 
 All models work on the logarithm of weekly activity, so effects are percentages. The four targets are the campus ratio (campus-zone over away-zone activity) and the study-area total, for Bluebikes trips and for MBTA gated entries; each target has its own fit. The model comparison is in `src/boston_breathes/model_comparison.py`, the pooled campus model in `campus_panel.py`.
 
