@@ -1864,6 +1864,76 @@ def family_accuracy_table() -> pl.DataFrame:
         pl.col("error_pct").alias("Typical error on held-out months (%)"), pl.col("r2").alias("R²"))
 
 
+FINAL_STEPS = {"subway": "Subway alone", "bikes": "Bluebikes alone", "subway and bikes": "Subway and Bluebikes together",
+               "final": "Together, corrected for weekend riders (final)"}
+SHARE_PARTS = {"share_summer": "Summer", "share_breaks": "Other breaks"}
+
+
+def most_who_could_leave() -> float:
+    """Every resident college student not living with their parents, as a share of resident students, in weeks
+    when every student is out of session (median over those weeks)."""
+    weeks = read("students_away_weekly.csv").filter((pl.col("presence_index") == 0)
+                                                    & (pl.col("covid_period") == "normal"))
+    return float((weeks["max_students_away"] / weeks["resident_students"]).median())
+
+
+def final_choice_data() -> pl.DataFrame:
+    joint = read("joint_population_shares.csv").filter(
+        (pl.col("weather_model") == jp.NO_MODEL) & pl.col("signals").is_in(list(FINAL_STEPS))
+        & pl.col("parameter").is_in(list(SHARE_PARTS)))
+    final = read("population_estimate_shares.csv").with_columns(pl.lit("final").alias("signals"))
+    cols = ["signals", "parameter", "estimate", "low", "high"]
+    pct = lambda c: (pl.col(c) * 100).round(0).cast(pl.Int64)  # noqa: E731
+    return (pl.concat([joint.select(cols), final.select(cols)])
+            .with_columns(pl.col("signals").replace_strict(FINAL_STEPS).alias("step"),
+                          pl.col("parameter").replace_strict(SHARE_PARTS).alias("part"),
+                          (pl.col("signals") == "final").alias("final"), pct("estimate").alias("estimate_pct"),
+                          pct("low").alias("low_pct"), pct("high").alias("high_pct"))
+            .with_columns(pl.format("{}% ({}–{}%)", "estimate_pct", "low_pct", "high_pct").alias("label"))
+            .select("part", "step", "final", "estimate_pct", "low_pct", "high_pct", "label"))
+
+
+def final_choice_chart(t: dict) -> alt.TopLevelMixin:
+    df = final_choice_data()
+    most = round(most_who_could_leave() * 100)
+    high = max(160, math.ceil(df["high_pct"].max() / 20) * 20)
+    order = list(FINAL_STEPS.values())
+    kind = alt.Scale(domain=[False, True], range=[t["series1"], t["series2"]])
+    panels = []
+    for i, part in enumerate(SHARE_PARTS.values()):
+        data = df.filter(pl.col("part") == part)
+        x = alt.X("estimate_pct:Q", title=f"{part}: share of students out of session who leave (%)",
+                  scale=alt.Scale(domain=[0, high]), axis=alt.Axis(tickCount=5, labelExpr="datum.value + '%'"))
+        y = alt.Y("step:N", sort=order, title=None,
+                  axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelPadding=8, labelLimit=300)
+                  if i == 0 else None)
+        color = alt.Color("final:N", scale=kind, legend=None)
+        tooltip = [alt.Tooltip("step:N", title="Estimate"), alt.Tooltip("label:N", title=f"{part}, 95% interval")]
+        interval = alt.Chart(data).mark_rule(strokeWidth=3, strokeCap="round").encode(
+            x="low_pct:Q", x2="high_pct:Q", y=y, color=color, tooltip=tooltip)
+        dots = alt.Chart(data).mark_circle(size=110, opacity=1, stroke=t["surface"], strokeWidth=2).encode(
+            x=x, y=y, color=color, tooltip=tooltip)
+        # Each value label sits on a halo of the surface colour, so the dashed line breaks behind it.
+        label = lambda **style: alt.Chart(data).mark_text(dy=-13, fontSize=10, **style).encode(  # noqa: E731
+            x=x, y=y, text="label:N")
+        halo = label(color=t["surface"], stroke=t["surface"], strokeWidth=4)
+        labels = label(color=t["ink2"])
+        limit = alt.Chart(pl.DataFrame({"x": [most], "label": [f"most who could leave ({most}%)"]}))
+        rule = limit.mark_rule(color=t["muted"], strokeDash=[4, 3], strokeWidth=1).encode(x="x:Q")
+        rule_text = limit.mark_text(align="left", dx=4, baseline="bottom", fontSize=10, color=t["muted"]).encode(
+            x="x:Q", y=alt.value(4 * 46), text="label:N")
+        panels.append(alt.layer(rule, rule_text, interval, dots, halo, labels).properties(
+            width=(WIDTH - 300) // 2, height=alt.Step(46)))
+    return alt.hconcat(*panels, spacing=24)
+
+
+def final_choice_table() -> pl.DataFrame:
+    return final_choice_data().select(
+        pl.col("part").alias("Break"), pl.col("step").alias("Estimate"),
+        pl.col("estimate_pct").alias("Share who leave (%)"), pl.col("low_pct").alias("95% low (%)"),
+        pl.col("high_pct").alias("95% high (%)"))
+
+
 SECTION_E = {
     "slug": "e_year_explorer",
     "title": "A year in Greater Boston",
@@ -1892,7 +1962,9 @@ SECTION_F = {
     "slug": "f_model_performance",
     "title": "How well do the models predict?",
     "intro": "Section F of the Boston Breathes figures: each model scored on data it was not fitted on, against a "
-             "baseline. Values come from data/processed/population_model_forward.csv and model_comparison.csv.",
+             "baseline, and the steps to the final shares away. Values come from data/processed/"
+             "population_model_forward.csv, model_comparison.csv, joint_population_shares.csv and "
+             "population_estimate_shares.csv.",
     "charts": [
         {
             "name": "f16_population_model_tests",
@@ -1929,6 +2001,20 @@ SECTION_F = {
                       "carry the network's growth into a held-out month the way a linear term in network size can. "
                       "Campus stations of the subway also serve commuters, so little explains the MBTA campus ratio."],
             "chart": family_accuracy_chart, "table": family_accuracy_table,
+        },
+        {
+            "name": "f19_final_model",
+            "title": "The final estimate: what travel says, then the weekend correction",
+            "question": "How many students out of session leave, and how was the final number reached?",
+            "notes": ["Each row estimates the share of students out of session who leave the area, with its 95% "
+                      "interval: from the subway alone, from Bluebikes alone, and from both together. Students make "
+                      "up a larger share of weekend riders than of weekday riders (Bluebikes riders' ages), so "
+                      "weekend travel overstates leaving; the bottom row, the estimate used, divides the joint "
+                      "shares by that factor (1.26, 95% interval 1.11–1.48), and its interval covers both.",
+                      "The dashed line is the most who could leave: every student not living with their parents. "
+                      "Intervals reaching above it, or above 100%, go past what is possible; the estimate keeps the "
+                      "number of students away within the possible range."],
+            "chart": final_choice_chart, "table": final_choice_table,
         },
     ],
 }

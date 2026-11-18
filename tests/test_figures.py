@@ -206,3 +206,12 @@ def test_central_estimate_line_breaks_over_the_weeks_without_an_estimate():
     mixed = df.group_by("est_run").agg(pl.col("est_population").is_null().n_unique().alias("kinds"))
     assert mixed["kinds"].max() == 1
     assert df.filter(pl.col("est_population").is_not_null())["est_run"].n_unique() >= 2  # before and after COVID-19
+
+
+def test_final_model_chart_ends_with_the_shares_the_estimate_uses():
+    df = fig.final_choice_data()
+    assert len(df) == len(fig.FINAL_STEPS) * len(fig.SHARE_PARTS)
+    final = df.filter(pl.col("final"))
+    used = pl.read_csv(fig.PROCESSED / "population_estimate_shares.csv")
+    assert sorted(final["estimate_pct"]) == sorted((used["estimate"] * 100).round(0).cast(pl.Int64))
+    assert 0.8 < fig.most_who_could_leave() < 0.9

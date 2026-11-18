@@ -22,7 +22,7 @@ where P<sub>seasonal</sub>(t) is the resident population present in week t, P<su
 
 ## Modeling Methods and Evaluation
 
-This section gives the [models attempted](#models-attempted), [how their performance was tested](#how-performance-was-tested), the [performance](#performance), and [why these features and models](#why-these-features-and-models) were chosen; the population findings are under [Results](#results).
+This section gives the [models attempted](#models-attempted), [how their performance was tested](#how-performance-was-tested), the [performance](#performance), [the final model](#the-final-model), and [why these features and models](#why-these-features-and-models) were chosen; the population findings are under [Results](#results).
 
 * **Travel models** (goal 2) predict weekly travel and test whether the **Student Presence Index**, the share of the area's students in session each week, improves the prediction.
 * **The population model** (goal 1) estimates the weekly population. Travel is its evidence, not its target: how much travel falls at stations with more student riders says how many students left.
@@ -72,6 +72,18 @@ All scores are on travel the models were not fitted on.
 
 * No family is best everywhere, so model complexity helps for some targets, not all. Gradient-boosted trees predict the campus ratios best (Bluebikes: 6.3% typical error, R² 0.91), but the Bluebikes total worst (18.3%), because trees cannot carry the network's growth into a held-out month; the linear models with week-of-year levels predict both totals best. Little explains the near-campus share of subway entries (R² about 0.3), whose stations also serve commuters ([Travel Models in Detail](docs/technical_notes.md#travel-models-in-detail)).
 
+### The final model
+
+The population estimate takes the shares of students out of session who leave, fitted on the subway and Bluebikes together, and divides them by the weekend factor:
+
+1. **Most students out of session leave.** The versions of who leaves in which most do predict later years' travel far better than closed residence halls only (table above).
+2. **The subway and Bluebikes together** put the share at 83% in summer and 91% on other breaks, at or above what the chosen version assumes (every student not living with parents, about 83%), with narrower intervals than either signal alone.
+3. **Weekend correction.** Near campuses, students are a larger share of weekend riders than of weekday riders (1.26 times, from Bluebikes members' ages), so weekend travel overstates leaving by that factor. Divided by it: **66% in summer (95% interval 52–82%) and 72% on other breaks (41–107%)**. A share above about 83% means every student who could leave does, so the top of the breaks interval is all of them.
+
+![The final estimate: what travel says, then the weekend correction](figures/f19_final_model.png)
+
+**Students who walk, drive, or take a taxi or Uber.** The model does not need to see how each student travels. Subway and Bluebikes riders are a sample: how much travel falls at stations with more student riders measures what fraction of the student riders are missing, not how many students there are. That fraction is then applied to every resident college student out of session, counted from enrollment, where students live and the calendars, however they get around. This assumes students who walk, drive or use ride-hailing leave at the same rate as those who ride the subway or Bluebikes; there are no weekly public data on driving or ride-hailing to check it. Students who live with their parents (17%) are assumed to stay.
+
 ### Why these features and models
 
 * **The Student Presence Index** is enrollment times the share of each week the university is in session, from the calendars of 22 universities (93% of in-person students). Universities break at different times and their dates move between years, which is what lets the index be told apart from the seasons.
@@ -103,7 +115,7 @@ The population is estimated from travel, not counted: the numbers below are what
 * **The 95% intervals are calibrated on simulated data, not checked against the real population**, since nobody counts it each week: on simulated signals they contained the truth 94–95% of the time after widening. That holds only if the model, with its weekend correction, is right.
 * **Travel pins down the shares over many weeks, not a single week**: read week by week, it misses the estimate by about ±89,000 students.
 * **One test year, one survey measure.** The test is January–September 2026, and the result rests on the Semester Pass measure: with the other two survey measures, 2026 shows little or no gain.
-* **Scope.** Only resident college students who leave are counted, not visitors, commuters or summer arrivals. No weekly public data exist for driving or ride-hailing, and Boston's 311 requests carry no student signal.
+* **Scope.** Only resident college students who leave are counted, not visitors, commuters or summer arrivals. Students who walk, drive or use ride-hailing are assumed to leave at the same rate as subway and Bluebikes riders: no weekly public data exist for driving or ride-hailing, and Boston's 311 requests carry no student signal.
 * **Calendars and COVID-19.** Several smaller colleges have only one or two years of collected calendar; the COVID-19 period (spring 2020 to summer 2021) is not estimated. These are associations after accounting for weather, season and network growth, not a controlled experiment.
 
 ---
@@ -119,7 +131,7 @@ The population is estimated from travel, not counted: the numbers below are what
 | `c_activity_vs_presence.html` | whether Bluebikes, MBTA and street activity near campuses follows the students |
 | `d_map.html` | the campus zones and the Bluebikes and MBTA stations |
 | `e_year_explorer.html` | one academic year, week by week: choose a year, move the slider or press Play |
-| `f_model_performance.html` | how well the models predict data they were not fitted on |
+| `f_model_performance.html` | how well the models predict data they were not fitted on, and how the final estimate was reached |
 
 * **Student Presence Index (0 to 1):** the share of the area's in-person students whose university is in session that week: 1 when every university is in session, 0 when all are on break.
 * **The population range:** the upper line takes away only students whose residence halls are closed, the lower line every resident college student not living with their parents whose school is out of session; the estimate from travel records (dark line, with its 95% interval) lies between them. COVID-19 weeks are flagged, and enrollment after fall 2023 and the Census after July 2025 are held at their latest values.

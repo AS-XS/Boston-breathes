@@ -22,7 +22,10 @@
     mean; the estimate gives the mean.
 The COVID-19 period is not estimated.
 
-Output: data/processed/population_estimate.csv
+Outputs in data/processed/:
+  * population_estimate.csv         the weekly estimate, its 95% band, and the students away read off travel
+  * population_estimate_shares.csv  the shares away the estimate uses, with their 95% intervals, and the weekend
+                                    factor
 """
 
 import numpy as np
@@ -93,6 +96,9 @@ def main() -> None:
     weekly.write_csv(PROCESSED / "population_estimate.csv")
     shares, draws, factor = model[1], model[2], model[4]
     low, high = np.percentile(draws, [2.5, 97.5], axis=0)
+    pl.DataFrame({"parameter": ["share_summer", "share_breaks"], "estimate": shares, "low": low, "high": high,
+                  "weekend_factor": [factor] * 2}).with_columns(pl.col("estimate", "low", "high").round(4)).write_csv(
+        PROCESSED / "population_estimate_shares.csv")
     print(f"Shares away on the subway and Bluebikes, divided by the weekend factor {factor}: summer {shares[0]:.3f} "
           f"({low[0]:.3f}-{high[0]:.3f}), breaks {shares[1]:.3f} ({low[1]:.3f}-{high[1]:.3f})")
     y = weekly.filter(pl.col("week_start").dt.year() == 2019)
