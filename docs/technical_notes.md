@@ -341,9 +341,9 @@ By university, all universities with assumed calendars (95% intervals; "verified
 |---|---|---|---|---|---|
 | Only students in closed residence halls | −8.9% | −9.1% | −18.0% | −6.8% | −16.9% |
 | Every student not living with parents | −19.1% | −19.5% | **−36.8%** | −17.3% | −20.7% |
-| One fitted share | −18.9% | −19.6% | −35.9% | **−17.4%** | **−21.1%** |
-| Fitted shares for summer and breaks | −21.2% | −21.4% | −32.5% | −14.1% | −20.5% |
-| Fitted shares for summer, Thanksgiving, winter and spring | **−23.6%** | **−22.3%** | −33.2% | −14.5% | −17.3% |
+| The same fraction leaves on every break, estimated from travel | −18.9% | −19.6% | −35.9% | **−17.4%** | **−21.1%** |
+| One fraction for summer and another for other breaks, estimated | −21.2% | −21.4% | −32.5% | −14.1% | −20.5% |
+| A separate fraction for each kind of break (summer, Thanksgiving, winter, spring), estimated | **−23.6%** | **−22.3%** | −33.2% | −14.5% | −17.3% |
 
   * Bluebikes also prefers the versions in which most students leave to only closed residence halls in every column (by 4 points on the 2026 test, 11–19 points elsewhere), but it does not single out one of them: the finer fitted versions win 2023 and 2024, and every student not living with parents wins 2025.
   * Its fitted shares, summer 0.79 (0.67–0.90) and breaks 1.02 (0.59–1.39) (intervals not widened), overlap the subway's (0.90 and 0.74). The summer share is a little below the 0.83 of every student not living with their parents, as in the size check: about 95% of them leave rather than all.

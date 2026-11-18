@@ -1733,9 +1733,9 @@ SECTION_D = {
 VERSION_LABELS = {
     "dorm closures only": "Only students in closed residence halls",
     "every student out of session not living with parents": "Every student not living with parents (chosen)",
-    "one share away": "One fitted share",
-    "summer and breaks": "Fitted shares: summer, breaks",
-    "each kind of break": "Fitted shares: each kind of break",
+    "one share away": "Same fraction leaves every break (estimated)",
+    "summer and breaks": "One fraction for summer, one for breaks (estimated)",
+    "each kind of break": "A fraction for each kind of break (estimated)",
 }
 TEST_LABEL = "Test: January–September 2026 from 2022–2025, scored once"
 VALIDATION_LABEL = "Validation: 2023, 2024, 2025 from the years before; 2022–25 from 2016–19"
@@ -1762,7 +1762,7 @@ def version_test_chart(t: dict) -> alt.TopLevelMixin:
     x = alt.X("change_pct:Q", title="Change in error on later years' weekend travel, against nobody leaving (%)",
               scale=alt.Scale(domain=[low, 0]), axis=alt.Axis(tickCount=6, labelExpr=SIGNED_PCT))
     y = alt.Y("version_label:N", sort=order, title=None,
-              axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelPadding=8, labelLimit=320))
+              axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelPadding=8, labelLimit=340))
     color = alt.Color("kind:N", title=None, scale=kinds, legend=alt.Legend(symbolOpacity=1, direction="vertical"))
     tooltip = [alt.Tooltip("version_label:N", title="Who leaves"), alt.Tooltip("split:N", title="Predicted"),
                alt.Tooltip("change_pct:Q", title="Change in error (%)", format="+.1f")]
@@ -1904,7 +1904,7 @@ SECTION_F = {
                       "on the validation years. Dots: the four validation runs.",
                       "These comparisons assume students are the same share of weekend riders as of weekday riders. "
                       "Bluebikes riders' ages show they are a larger one near campuses, so the estimate divides the "
-                      "fitted shares by that factor (see the README)."],
+                      "estimated fractions by that factor (see the README)."],
             "chart": version_test_chart, "table": version_test_table,
         },
         {

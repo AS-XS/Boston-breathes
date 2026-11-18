@@ -60,11 +60,11 @@ All scores are on travel the models were not fitted on.
 |---|---|---|---|---|---|
 | Only students in closed residence halls | −8.0% | −12.9% | −10.4% | −11.3% | −13.3% |
 | **Every student not living with parents (chosen)** | **−17.6%** | **−24.3%** | **−18.5%** | **−19.2%** | −19.8% |
-| One fitted share | −16.7% | −22.5% | −17.7% | −18.7% | **−20.0%** |
-| Fitted shares for summer and breaks | −15.8% | −20.1% | −17.0% | −18.9% | −19.1% |
-| Fitted shares for summer, Thanksgiving, winter and spring | −13.3% | −20.9% | −16.8% | −18.3% | −18.0% |
+| The same fraction leaves on every break, estimated from travel | −16.7% | −22.5% | −17.7% | −18.7% | **−20.0%** |
+| One fraction for summer and another for other breaks, estimated | −15.8% | −20.1% | −17.0% | −18.9% | −19.1% |
+| A separate fraction for each kind of break (summer, Thanksgiving, winter, spring), estimated | −13.3% | −20.9% | −16.8% | −18.3% | −18.0% |
 
-* Change in the error of predicted weekend travel against nobody leaving; in bold, the best version of each run. Every version in which most students leave beats closed halls only in every run. The chosen version was best in all four validation runs and within 0.2 points of the best on the test.
+* Each row is a guess of who leaves when their school is out of session; "fraction" means the fraction of those students who leave the area, estimated from the earlier years' travel. Change in the error of predicted weekend travel against nobody leaving; in bold, the best version of each run. Every version in which most students leave beats closed halls only in every run. The chosen version was best in all four validation runs and within 0.2 points of the best on the test.
 
 ![Travel models: what the Student Presence Index adds](figures/f17_travel_models_index.png)
 
