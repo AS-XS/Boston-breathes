@@ -228,3 +228,12 @@ def test_combined_model_charts_compare_against_the_best_single_model():
     assert len(signals) == len(fig.SIGNAL_NAMES) * len(fig.SIGNAL_MODELS) * len(fig.EVALUATIONS)
     best = signals.filter(pl.col("entry") == "best single")
     assert set(best["model"]) <= set(en.FAMILIES)
+
+
+def test_model_search_chart_shows_every_model_with_both_sets_of_inputs():
+    df = fig.model_search_data()
+    assert set(df["label"]) == set(fig.SEARCH_MODELS.values()) and set(df["target"]) == set(fig.TARGETS)
+    assert df.group_by("target", "label").len()["len"].to_list() == [len(fig.SEARCH_INPUTS)] * (
+        len(fig.TARGETS) * len(fig.SEARCH_MODELS))
+    reference = df.filter((pl.col("model") == pl.col("reference")) & (pl.col("inputs") == "the comparison's"))
+    assert len(reference) == len(fig.TARGETS) and (reference["change_pct"] == 0).all()

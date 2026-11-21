@@ -1,0 +1,121 @@
+target,inputs,model,kind,reference,rmse,typical_error_pct,typical_error_pct_not_in_session,rmse_change_pct,rmse_change_pct_low,rmse_change_pct_high
+Bluebikes campus ratio,the comparison's,linear,single,gradient boosting,0.0914,9.5748,9.6299,50.5287,32.364,70.8601
+Bluebikes campus ratio,the comparison's,ridge,single,gradient boosting,0.0918,9.6194,9.6922,51.1978,32.7947,71.268
+Bluebikes campus ratio,the comparison's,gradient boosting,single,gradient boosting,0.0607,6.2627,6.6397,0.0,0.0,0.0
+Bluebikes campus ratio,the comparison's,"gradient boosting, tuned",single,gradient boosting,0.0602,6.2034,6.6639,-0.9191,-4.6084,3.2222
+Bluebikes campus ratio,the comparison's,random forest,single,gradient boosting,0.0702,7.2766,7.8902,15.6325,9.0479,22.941
+Bluebikes campus ratio,the comparison's,extra trees,single,gradient boosting,0.0648,6.6931,7.3291,6.654,-1.2045,14.9795
+Bluebikes campus ratio,the comparison's,neural network,single,gradient boosting,0.059,6.0802,6.2708,-2.8295,-13.3432,8.2291
+Bluebikes campus ratio,the comparison's,Gaussian process,single,gradient boosting,0.0676,6.9974,7.5141,11.3427,-0.792,25.778
+Bluebikes campus ratio,the comparison's,support vector machine,single,gradient boosting,0.0683,7.0723,7.4031,12.4949,0.0576,27.2284
+Bluebikes campus ratio,the comparison's,"ridge, then trees",single,gradient boosting,0.0611,6.3024,6.6708,0.6148,-10.0335,13.3489
+Bluebikes campus ratio,the comparison's,"ridge, then neural network",single,gradient boosting,0.0575,5.9201,6.1194,-5.3168,-14.281,3.8831
+Bluebikes campus ratio,the comparison's,"stacked, all",combined,gradient boosting,0.0546,5.6066,5.9006,-10.196,-17.9578,-2.5936
+Bluebikes campus ratio,the comparison's,"stacked: ridge, tuned trees, neural network",combined,gradient boosting,0.0555,5.71,6.025,-8.5851,-16.6754,-1.126
+Bluebikes campus ratio,the comparison's,mean of all,combined,gradient boosting,0.0567,5.8383,6.1303,-6.5881,-13.968,0.0417
+Bluebikes campus ratio,the comparison's,"mean: ridge, tuned trees, neural network",combined,gradient boosting,0.0593,6.11,6.3536,-2.368,-10.9331,5.3465
+Bluebikes campus ratio,more inputs,linear,single,gradient boosting,0.0932,9.7677,9.8057,53.4237,34.6154,75.0967
+Bluebikes campus ratio,more inputs,ridge,single,gradient boosting,0.0939,9.8395,9.8999,54.5005,35.2848,75.4559
+Bluebikes campus ratio,more inputs,gradient boosting,single,gradient boosting,0.0632,6.5224,6.9127,4.0175,0.3715,8.2606
+Bluebikes campus ratio,more inputs,"gradient boosting, tuned",single,gradient boosting,0.0604,6.2302,6.6172,-0.5045,-4.1866,3.9113
+Bluebikes campus ratio,more inputs,random forest,single,gradient boosting,0.0695,7.2017,7.6224,14.4834,8.2376,21.145
+Bluebikes campus ratio,more inputs,extra trees,single,gradient boosting,0.0625,6.4545,6.8503,2.9689,-2.372,8.5918
+Bluebikes campus ratio,more inputs,neural network,single,gradient boosting,0.0539,5.5341,5.6491,-11.3272,-18.8018,-4.3938
+Bluebikes campus ratio,more inputs,Gaussian process,single,gradient boosting,0.0617,6.369,6.8034,1.6453,-6.6644,10.5835
+Bluebikes campus ratio,more inputs,support vector machine,single,gradient boosting,0.0645,6.6661,7.1304,6.238,-2.9467,16.1816
+Bluebikes campus ratio,more inputs,"ridge, then trees",single,gradient boosting,0.0675,6.984,7.1489,11.137,0.3619,21.5164
+Bluebikes campus ratio,more inputs,"ridge, then neural network",single,gradient boosting,0.0589,6.0706,6.3107,-2.9793,-11.7441,5.8665
+Bluebikes campus ratio,more inputs,"stacked, all",combined,gradient boosting,0.0528,5.4253,5.6207,-13.0247,-18.8818,-7.4183
+Bluebikes campus ratio,more inputs,"stacked: ridge, tuned trees, neural network",combined,gradient boosting,0.0531,5.4547,5.6292,-12.5661,-19.014,-6.668
+Bluebikes campus ratio,more inputs,mean of all,combined,gradient boosting,0.0566,5.8251,6.0341,-6.7936,-13.6267,-0.5078
+Bluebikes campus ratio,more inputs,"mean: ridge, tuned trees, neural network",combined,gradient boosting,0.0584,6.0117,6.1776,-3.893,-11.6931,3.1624
+MBTA campus ratio,the comparison's,linear,single,gradient boosting,0.0638,6.585,6.6723,3.6613,-5.6877,14.9202
+MBTA campus ratio,the comparison's,ridge,single,gradient boosting,0.0597,6.1507,6.0777,-2.9762,-9.2699,3.4702
+MBTA campus ratio,the comparison's,gradient boosting,single,gradient boosting,0.0615,6.3452,6.2587,0.0,0.0,0.0
+MBTA campus ratio,the comparison's,"gradient boosting, tuned",single,gradient boosting,0.0615,6.3404,6.3231,-0.0734,-2.8955,2.1639
+MBTA campus ratio,the comparison's,random forest,single,gradient boosting,0.0585,6.0238,5.8856,-4.9197,-9.3663,-1.1269
+MBTA campus ratio,the comparison's,extra trees,single,gradient boosting,0.0586,6.0316,5.9201,-4.8005,-10.8738,0.8969
+MBTA campus ratio,the comparison's,neural network,single,gradient boosting,0.0716,7.4261,7.6619,16.4379,1.9346,32.5558
+MBTA campus ratio,the comparison's,Gaussian process,single,gradient boosting,0.0613,6.3186,6.3325,-0.4077,-9.3845,9.8161
+MBTA campus ratio,the comparison's,support vector machine,single,gradient boosting,0.0608,6.2659,6.3238,-1.2129,-10.1063,9.4174
+MBTA campus ratio,the comparison's,"ridge, then trees",single,gradient boosting,0.0632,6.5253,6.4708,2.75,0.1026,5.9287
+MBTA campus ratio,the comparison's,"ridge, then neural network",single,gradient boosting,0.0666,6.8906,7.0682,8.3143,-5.2108,24.4495
+MBTA campus ratio,the comparison's,"stacked, all",combined,gradient boosting,0.0586,6.0317,6.0337,-4.7985,-12.4635,4.3321
+MBTA campus ratio,the comparison's,"stacked: ridge, tuned trees, neural network",combined,gradient boosting,0.0596,6.1445,6.1438,-3.0702,-9.7505,5.1412
+MBTA campus ratio,the comparison's,mean of all,combined,gradient boosting,0.0582,5.9944,5.9589,-5.3704,-11.2051,1.6873
+MBTA campus ratio,the comparison's,"mean: ridge, tuned trees, neural network",combined,gradient boosting,0.0595,6.1285,6.1038,-3.316,-9.8377,4.6101
+MBTA campus ratio,more inputs,linear,single,gradient boosting,0.0652,6.7351,6.8757,5.9488,-4.7662,18.5174
+MBTA campus ratio,more inputs,ridge,single,gradient boosting,0.0597,6.1509,6.0419,-2.9732,-9.6975,4.0823
+MBTA campus ratio,more inputs,gradient boosting,single,gradient boosting,0.0621,6.4092,6.4554,0.9773,-2.4856,4.1722
+MBTA campus ratio,more inputs,"gradient boosting, tuned",single,gradient boosting,0.061,6.289,6.3539,-0.8592,-5.8397,3.9028
+MBTA campus ratio,more inputs,random forest,single,gradient boosting,0.0585,6.0288,5.9511,-4.8436,-9.1197,-1.2832
+MBTA campus ratio,more inputs,extra trees,single,gradient boosting,0.0576,5.9326,5.8373,-6.319,-12.1476,-1.4008
+MBTA campus ratio,more inputs,neural network,single,gradient boosting,0.0695,7.2008,7.7279,13.0248,-4.0386,32.0303
+MBTA campus ratio,more inputs,Gaussian process,single,gradient boosting,0.0614,6.3283,6.2793,-0.259,-8.0991,8.816
+MBTA campus ratio,more inputs,support vector machine,single,gradient boosting,0.0595,6.1306,5.94,-3.2835,-11.2849,5.6459
+MBTA campus ratio,more inputs,"ridge, then trees",single,gradient boosting,0.0635,6.5558,6.7011,3.215,-2.1506,8.8101
+MBTA campus ratio,more inputs,"ridge, then neural network",single,gradient boosting,0.0704,7.2921,7.7638,14.4091,-1.1032,32.6429
+MBTA campus ratio,more inputs,"stacked, all",combined,gradient boosting,0.0585,6.0255,6.0494,-4.8938,-12.1032,3.1056
+MBTA campus ratio,more inputs,"stacked: ridge, tuned trees, neural network",combined,gradient boosting,0.059,6.0758,6.1704,-4.1238,-10.9101,4.1828
+MBTA campus ratio,more inputs,mean of all,combined,gradient boosting,0.0585,6.0236,6.0773,-4.9236,-11.4897,3.0535
+MBTA campus ratio,more inputs,"mean: ridge, tuned trees, neural network",combined,gradient boosting,0.059,6.0798,6.1943,-4.0623,-11.7079,5.6743
+Bluebikes total,the comparison's,linear,single,linear,0.123,13.0895,12.9062,0.0,0.0,0.0
+Bluebikes total,the comparison's,ridge,single,linear,0.123,13.0935,12.971,0.0284,-0.3396,0.4024
+Bluebikes total,the comparison's,gradient boosting,single,linear,0.1681,18.3108,15.7943,36.6925,17.6309,52.8985
+Bluebikes total,the comparison's,"gradient boosting, tuned",single,linear,0.1649,17.93,14.9225,34.0719,14.4381,51.8812
+Bluebikes total,the comparison's,random forest,single,linear,0.2144,23.9072,22.4251,74.2652,51.6596,95.9851
+Bluebikes total,the comparison's,extra trees,single,linear,0.1825,20.0197,17.8561,48.3505,24.9337,67.9248
+Bluebikes total,the comparison's,neural network,single,linear,0.1142,12.1032,11.3842,-7.1212,-18.14,2.3392
+Bluebikes total,the comparison's,Gaussian process,single,linear,0.1167,12.3806,11.9858,-5.1122,-14.7384,3.415
+Bluebikes total,the comparison's,support vector machine,single,linear,0.1288,13.7515,12.5197,4.7444,-15.0659,22.5583
+Bluebikes total,the comparison's,"ridge, then trees",single,linear,0.114,12.0793,11.1024,-7.2946,-13.3104,-2.1883
+Bluebikes total,the comparison's,"ridge, then neural network",single,linear,0.1096,11.5813,10.4749,-10.9145,-19.2001,-3.3879
+Bluebikes total,the comparison's,"stacked, all",combined,linear,0.1072,11.3107,10.3619,-12.8891,-22.1877,-4.6427
+Bluebikes total,the comparison's,"stacked: ridge, tuned trees, neural network",combined,linear,0.1085,11.4616,10.7751,-11.7877,-20.1034,-4.4041
+Bluebikes total,the comparison's,mean of all,combined,linear,0.1196,12.7017,10.9927,-2.7929,-17.5059,11.4363
+Bluebikes total,the comparison's,"mean: ridge, tuned trees, neural network",combined,linear,0.1164,12.3424,10.948,-5.3888,-17.9555,6.6798
+Bluebikes total,more inputs,linear,single,linear,0.1197,12.7156,13.2145,-2.6926,-7.1553,2.6297
+Bluebikes total,more inputs,ridge,single,linear,0.1197,12.7172,13.2403,-2.6809,-7.1253,2.6176
+Bluebikes total,more inputs,gradient boosting,single,linear,0.1623,17.6242,14.9007,31.961,14.1233,46.9175
+Bluebikes total,more inputs,"gradient boosting, tuned",single,linear,0.1563,16.9139,14.5763,27.0369,11.456,40.7227
+Bluebikes total,more inputs,random forest,single,linear,0.213,23.7382,22.2408,73.1554,51.0263,94.0867
+Bluebikes total,more inputs,extra trees,single,linear,0.1783,19.5149,16.6824,44.9243,21.4934,65.2679
+Bluebikes total,more inputs,neural network,single,linear,0.1086,11.4735,11.831,-11.7008,-20.076,-3.3681
+Bluebikes total,more inputs,Gaussian process,single,linear,0.1154,12.2292,11.5353,-6.2083,-20.5135,7.6648
+Bluebikes total,more inputs,support vector machine,single,linear,0.1542,16.6727,12.9554,25.358,-11.0669,61.5374
+Bluebikes total,more inputs,"ridge, then trees",single,linear,0.106,11.1788,11.2325,-13.8526,-18.3352,-8.3785
+Bluebikes total,more inputs,"ridge, then neural network",single,linear,0.1073,11.3281,11.1822,-12.7615,-19.7407,-6.4541
+Bluebikes total,more inputs,"stacked, all",combined,linear,0.1002,10.5437,10.3432,-18.5096,-26.0866,-11.88
+Bluebikes total,more inputs,"stacked: ridge, tuned trees, neural network",combined,linear,0.1016,10.6948,10.78,-17.3996,-23.6986,-11.9643
+Bluebikes total,more inputs,mean of all,combined,linear,0.1146,12.1455,10.6246,-6.8147,-21.4928,7.8783
+Bluebikes total,more inputs,"mean: ridge, tuned trees, neural network",combined,linear,0.1078,11.3875,10.7508,-12.328,-20.9656,-4.6761
+MBTA total,the comparison's,linear,single,linear,0.0735,7.6295,7.8405,0.0,0.0,0.0
+MBTA total,the comparison's,ridge,single,linear,0.0733,7.6056,7.8275,-0.3025,-1.4591,0.7355
+MBTA total,the comparison's,gradient boosting,single,linear,0.0802,8.3461,8.7457,9.025,-0.0167,18.6913
+MBTA total,the comparison's,"gradient boosting, tuned",single,linear,0.0765,7.9474,8.0266,4.0104,-4.2044,12.0934
+MBTA total,the comparison's,random forest,single,linear,0.0903,9.4532,10.7087,22.8514,11.1869,36.245
+MBTA total,the comparison's,extra trees,single,linear,0.0893,9.342,10.2082,21.4701,9.2018,36.822
+MBTA total,the comparison's,neural network,single,linear,0.0811,8.4514,9.0574,10.3465,-1.5976,22.1769
+MBTA total,the comparison's,Gaussian process,single,linear,0.0804,8.376,8.636,9.4002,-0.4495,18.5237
+MBTA total,the comparison's,support vector machine,single,linear,0.0804,8.3677,9.1089,9.2956,-3.0858,21.4692
+MBTA total,the comparison's,"ridge, then trees",single,linear,0.0752,7.8059,7.8417,2.2266,-1.5149,5.9682
+MBTA total,the comparison's,"ridge, then neural network",single,linear,0.0777,8.0751,8.0305,5.619,-1.9475,12.3504
+MBTA total,the comparison's,"stacked, all",combined,linear,0.0725,7.5171,7.7703,-1.4218,-8.6629,4.95
+MBTA total,the comparison's,"stacked: ridge, tuned trees, neural network",combined,linear,0.071,7.3625,7.6378,-3.3791,-9.3023,1.4958
+MBTA total,the comparison's,mean of all,combined,linear,0.0713,7.3871,7.6424,-3.0666,-10.6442,3.0773
+MBTA total,the comparison's,"mean: ridge, tuned trees, neural network",combined,linear,0.0711,7.3652,7.6248,-3.3439,-10.5444,2.712
+MBTA total,more inputs,linear,single,linear,0.0729,7.5672,7.9014,-0.7881,-4.3661,2.8579
+MBTA total,more inputs,ridge,single,linear,0.0723,7.494,7.8894,-1.7141,-6.1997,2.392
+MBTA total,more inputs,gradient boosting,single,linear,0.0803,8.3627,8.6072,9.2335,0.8947,17.5718
+MBTA total,more inputs,"gradient boosting, tuned",single,linear,0.0753,7.8184,7.9999,2.3845,-5.059,9.6096
+MBTA total,more inputs,random forest,single,linear,0.0888,9.2858,10.352,20.7706,11.059,32.4433
+MBTA total,more inputs,extra trees,single,linear,0.0863,9.0106,9.6949,17.3406,6.3237,31.0415
+MBTA total,more inputs,neural network,single,linear,0.078,8.1166,8.6708,6.1404,-6.0018,17.96
+MBTA total,more inputs,Gaussian process,single,linear,0.0754,7.8342,8.263,2.584,-5.6088,10.5809
+MBTA total,more inputs,support vector machine,single,linear,0.0859,8.9671,9.7657,16.7988,1.4649,31.5093
+MBTA total,more inputs,"ridge, then trees",single,linear,0.0745,7.7299,7.9081,1.2678,-3.2814,5.9783
+MBTA total,more inputs,"ridge, then neural network",single,linear,0.0708,7.3385,7.6328,-3.683,-10.5516,2.8121
+MBTA total,more inputs,"stacked, all",combined,linear,0.0694,7.1826,7.5049,-5.6595,-12.5994,0.6096
+MBTA total,more inputs,"stacked: ridge, tuned trees, neural network",combined,linear,0.0695,7.1975,7.5641,-5.4707,-12.3242,0.8951
+MBTA total,more inputs,mean of all,combined,linear,0.0697,7.2157,7.5571,-5.239,-12.6927,1.3012
+MBTA total,more inputs,"mean: ridge, tuned trees, neural network",combined,linear,0.0696,7.2055,7.541,-5.3684,-12.8494,1.7047

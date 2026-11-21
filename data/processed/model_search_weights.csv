@@ -1,0 +1,89 @@
+target,inputs,model,weight
+Bluebikes campus ratio,the comparison's,linear,0.0002
+Bluebikes campus ratio,the comparison's,ridge,0.0
+Bluebikes campus ratio,the comparison's,gradient boosting,0.0755
+Bluebikes campus ratio,the comparison's,"gradient boosting, tuned",0.1416
+Bluebikes campus ratio,the comparison's,random forest,0.0
+Bluebikes campus ratio,the comparison's,extra trees,0.0991
+Bluebikes campus ratio,the comparison's,neural network,0.1945
+Bluebikes campus ratio,the comparison's,Gaussian process,0.0034
+Bluebikes campus ratio,the comparison's,support vector machine,0.1155
+Bluebikes campus ratio,the comparison's,"ridge, then trees",0.0482
+Bluebikes campus ratio,the comparison's,"ridge, then neural network",0.3221
+Bluebikes campus ratio,more inputs,linear,0.0084
+Bluebikes campus ratio,more inputs,ridge,0.0
+Bluebikes campus ratio,more inputs,gradient boosting,0.0054
+Bluebikes campus ratio,more inputs,"gradient boosting, tuned",0.0519
+Bluebikes campus ratio,more inputs,random forest,0.0009
+Bluebikes campus ratio,more inputs,extra trees,0.2248
+Bluebikes campus ratio,more inputs,neural network,0.3819
+Bluebikes campus ratio,more inputs,Gaussian process,0.0026
+Bluebikes campus ratio,more inputs,support vector machine,0.1009
+Bluebikes campus ratio,more inputs,"ridge, then trees",0.002
+Bluebikes campus ratio,more inputs,"ridge, then neural network",0.2212
+MBTA campus ratio,the comparison's,linear,0.0055
+MBTA campus ratio,the comparison's,ridge,0.0126
+MBTA campus ratio,the comparison's,gradient boosting,0.0184
+MBTA campus ratio,the comparison's,"gradient boosting, tuned",0.0148
+MBTA campus ratio,the comparison's,random forest,0.1743
+MBTA campus ratio,the comparison's,extra trees,0.1944
+MBTA campus ratio,the comparison's,neural network,0.0462
+MBTA campus ratio,the comparison's,Gaussian process,0.0432
+MBTA campus ratio,the comparison's,support vector machine,0.3334
+MBTA campus ratio,the comparison's,"ridge, then trees",0.0
+MBTA campus ratio,the comparison's,"ridge, then neural network",0.1571
+MBTA campus ratio,more inputs,linear,0.0058
+MBTA campus ratio,more inputs,ridge,0.0076
+MBTA campus ratio,more inputs,gradient boosting,0.0161
+MBTA campus ratio,more inputs,"gradient boosting, tuned",0.0145
+MBTA campus ratio,more inputs,random forest,0.0623
+MBTA campus ratio,more inputs,extra trees,0.42
+MBTA campus ratio,more inputs,neural network,0.0198
+MBTA campus ratio,more inputs,Gaussian process,0.0041
+MBTA campus ratio,more inputs,support vector machine,0.3679
+MBTA campus ratio,more inputs,"ridge, then trees",0.014
+MBTA campus ratio,more inputs,"ridge, then neural network",0.0678
+Bluebikes total,the comparison's,linear,0.0146
+Bluebikes total,the comparison's,ridge,0.0029
+Bluebikes total,the comparison's,gradient boosting,0.0072
+Bluebikes total,the comparison's,"gradient boosting, tuned",0.0038
+Bluebikes total,the comparison's,random forest,0.0038
+Bluebikes total,the comparison's,extra trees,0.0179
+Bluebikes total,the comparison's,neural network,0.2167
+Bluebikes total,the comparison's,Gaussian process,0.1807
+Bluebikes total,the comparison's,support vector machine,0.0108
+Bluebikes total,the comparison's,"ridge, then trees",0.1571
+Bluebikes total,the comparison's,"ridge, then neural network",0.3845
+Bluebikes total,more inputs,linear,0.0049
+Bluebikes total,more inputs,ridge,0.0001
+Bluebikes total,more inputs,gradient boosting,0.042
+Bluebikes total,more inputs,"gradient boosting, tuned",0.0156
+Bluebikes total,more inputs,random forest,0.0126
+Bluebikes total,more inputs,extra trees,0.0026
+Bluebikes total,more inputs,neural network,0.2485
+Bluebikes total,more inputs,Gaussian process,0.1769
+Bluebikes total,more inputs,support vector machine,0.0
+Bluebikes total,more inputs,"ridge, then trees",0.2244
+Bluebikes total,more inputs,"ridge, then neural network",0.2725
+MBTA total,the comparison's,linear,0.2557
+MBTA total,the comparison's,ridge,0.0062
+MBTA total,the comparison's,gradient boosting,0.0412
+MBTA total,the comparison's,"gradient boosting, tuned",0.0904
+MBTA total,the comparison's,random forest,0.0205
+MBTA total,the comparison's,extra trees,0.0901
+MBTA total,the comparison's,neural network,0.0135
+MBTA total,the comparison's,Gaussian process,0.1613
+MBTA total,the comparison's,support vector machine,0.0744
+MBTA total,the comparison's,"ridge, then trees",0.0208
+MBTA total,the comparison's,"ridge, then neural network",0.2259
+MBTA total,more inputs,linear,0.192
+MBTA total,more inputs,ridge,0.0877
+MBTA total,more inputs,gradient boosting,0.0861
+MBTA total,more inputs,"gradient boosting, tuned",0.1064
+MBTA total,more inputs,random forest,0.0106
+MBTA total,more inputs,extra trees,0.0881
+MBTA total,more inputs,neural network,0.098
+MBTA total,more inputs,Gaussian process,0.0826
+MBTA total,more inputs,support vector machine,0.0285
+MBTA total,more inputs,"ridge, then trees",0.0108
+MBTA total,more inputs,"ridge, then neural network",0.2092

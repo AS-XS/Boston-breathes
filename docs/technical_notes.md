@@ -620,3 +620,91 @@ Typical error on held-out months; in brackets, the change in RMSE against the be
 * The mean of ridge and the random forest, the two best families for Bluebikes weekdays in the comparison above, did as well as the mean of all eleven (validation 0.71 and 0.49, test 0.70 and 0.42), but it was chosen after seeing those results.
 
 **What it changes.** Nothing in the population estimate, which reads the shares away from the subway and Bluebikes slopes with a straight line, as these results support for the subway. Better predictions of travel cannot remove what limits the estimate: the weekend factor and the assumption about students who do not ride ([Limits](../README.md#limits)).
+
+### Model search
+
+`model_search.py` asks how far more inputs and more flexible models go, on the same held-out data as the comparisons above. It takes about 3 hours on 4 cores. The README summarizes it under [Performance](../README.md#performance).
+
+**Inputs.** *The comparison's*: weather, holidays, network size and the Student Presence Index, as in the travel models above. *More*: also the summer-break share; the housing presence index (the share of residence-hall beds in session); the shares out of session at Thanksgiving, in winter and in spring; the change in the index from the week before and to the week after; maximum and minimum temperature, total rain and snow; last week's mean temperature, rain days and snow days; and the share in session of each of the ten largest universities by students on campus (24 inputs in all). Every input comes from calendars and weather records; none is travel.
+
+**Models**, each fitted on the training weeks only, with any setting chosen by 3-fold cross-validation over calendar months inside the training weeks:
+* *linear, week of year* and *gradient boosting*: the comparison's own; *ridge*: the linear model with a penalty chosen by cross-validation;
+* *gradient boosting, tuned*: learning rate 0.05 or 0.1, 7 or 31 leaves; *random forest* and *extra trees*: 300 trees, at least 5 weeks a leaf;
+* *neural network*: a multi-layer perceptron with hidden layers of 32 and 16 units, its L2 penalty chosen from 0.3, 1 and 3, the mean of 3 fits from different starting weights. Its season comes from four pairs of sine and cosine terms of the day of the year, with a level for each year;
+* *Gaussian process* (radial kernel plus white noise) and *support vector machine* (radial kernel; C and the kernel width chosen), on the network's inputs;
+* *ridge, then trees* and *ridge, then a network*: the flexible model fitted to what ridge leaves on the training weeks;
+* combinations (in italics below), fixed before the full run: stacks (non-negative weights fitted on out-of-fold predictions inside the training weeks, adding up to one) and means, of all eleven models and of ridge, the tuned trees and the network.
+
+Typical error on held-out months; in brackets, the change in RMSE against the better of the comparison's linear model and trees for that target (in bold), with its 95% interval from resampling months, the same draws for every model (`model_search_targets.csv`):
+
+| Model | Inputs | Bluebikes campus ratio | MBTA campus ratio | Bluebikes total | MBTA total |
+|---|---|---|---|---|---|
+| Linear, week of year | comparison's | 9.6% (+50.5; +32.4 to +70.9) | 6.6% (+3.7; −5.7 to +14.9) | **13.1%** | **7.6%** |
+| Linear, week of year | more | 9.8% (+53.4; +34.6 to +75.1) | 6.7% (+5.9; −4.8 to +18.5) | 12.7% (−2.7; −7.2 to +2.6) | 7.6% (−0.8; −4.4 to +2.9) |
+| Ridge | comparison's | 9.6% (+51.2; +32.8 to +71.3) | 6.2% (−3.0; −9.3 to +3.5) | 13.1% (+0.0; −0.3 to +0.4) | 7.6% (−0.3; −1.5 to +0.7) |
+| Ridge | more | 9.8% (+54.5; +35.3 to +75.5) | 6.2% (−3.0; −9.7 to +4.1) | 12.7% (−2.7; −7.1 to +2.6) | 7.5% (−1.7; −6.2 to +2.4) |
+| Gradient boosting | comparison's | **6.3%** | **6.3%** | 18.3% (+36.7; +17.6 to +52.9) | 8.3% (+9.0; −0.0 to +18.7) |
+| Gradient boosting | more | 6.5% (+4.0; +0.4 to +8.3) | 6.4% (+1.0; −2.5 to +4.2) | 17.6% (+32.0; +14.1 to +46.9) | 8.4% (+9.2; +0.9 to +17.6) |
+| Gradient boosting, tuned | comparison's | 6.2% (−0.9; −4.6 to +3.2) | 6.3% (−0.1; −2.9 to +2.2) | 17.9% (+34.1; +14.4 to +51.9) | 7.9% (+4.0; −4.2 to +12.1) |
+| Gradient boosting, tuned | more | 6.2% (−0.5; −4.2 to +3.9) | 6.3% (−0.9; −5.8 to +3.9) | 16.9% (+27.0; +11.5 to +40.7) | 7.8% (+2.4; −5.1 to +9.6) |
+| Random forest | comparison's | 7.3% (+15.6; +9.0 to +22.9) | 6.0% (−4.9; −9.4 to −1.1) | 23.9% (+74.3; +51.7 to +96.0) | 9.5% (+22.9; +11.2 to +36.2) |
+| Random forest | more | 7.2% (+14.5; +8.2 to +21.1) | 6.0% (−4.8; −9.1 to −1.3) | 23.7% (+73.2; +51.0 to +94.1) | 9.3% (+20.8; +11.1 to +32.4) |
+| Extra trees | comparison's | 6.7% (+6.7; −1.2 to +15.0) | 6.0% (−4.8; −10.9 to +0.9) | 20.0% (+48.4; +24.9 to +67.9) | 9.3% (+21.5; +9.2 to +36.8) |
+| Extra trees | more | 6.5% (+3.0; −2.4 to +8.6) | 5.9% (−6.3; −12.1 to −1.4) | 19.5% (+44.9; +21.5 to +65.3) | 9.0% (+17.3; +6.3 to +31.0) |
+| Neural network | comparison's | 6.1% (−2.8; −13.3 to +8.2) | 7.4% (+16.4; +1.9 to +32.6) | 12.1% (−7.1; −18.1 to +2.3) | 8.5% (+10.3; −1.6 to +22.2) |
+| Neural network | more | 5.5% (−11.3; −18.8 to −4.4) | 7.2% (+13.0; −4.0 to +32.0) | 11.5% (−11.7; −20.1 to −3.4) | 8.1% (+6.1; −6.0 to +18.0) |
+| Gaussian process | comparison's | 7.0% (+11.3; −0.8 to +25.8) | 6.3% (−0.4; −9.4 to +9.8) | 12.4% (−5.1; −14.7 to +3.4) | 8.4% (+9.4; −0.4 to +18.5) |
+| Gaussian process | more | 6.4% (+1.6; −6.7 to +10.6) | 6.3% (−0.3; −8.1 to +8.8) | 12.2% (−6.2; −20.5 to +7.7) | 7.8% (+2.6; −5.6 to +10.6) |
+| Support vector machine | comparison's | 7.1% (+12.5; +0.1 to +27.2) | 6.3% (−1.2; −10.1 to +9.4) | 13.8% (+4.7; −15.1 to +22.6) | 8.4% (+9.3; −3.1 to +21.5) |
+| Support vector machine | more | 6.7% (+6.2; −2.9 to +16.2) | 6.1% (−3.3; −11.3 to +5.6) | 16.7% (+25.4; −11.1 to +61.5) | 9.0% (+16.8; +1.5 to +31.5) |
+| Ridge, then trees | comparison's | 6.3% (+0.6; −10.0 to +13.3) | 6.5% (+2.8; +0.1 to +5.9) | 12.1% (−7.3; −13.3 to −2.2) | 7.8% (+2.2; −1.5 to +6.0) |
+| Ridge, then trees | more | 7.0% (+11.1; +0.4 to +21.5) | 6.6% (+3.2; −2.2 to +8.8) | 11.2% (−13.9; −18.3 to −8.4) | 7.7% (+1.3; −3.3 to +6.0) |
+| Ridge, then a network | comparison's | 5.9% (−5.3; −14.3 to +3.9) | 6.9% (+8.3; −5.2 to +24.4) | 11.6% (−10.9; −19.2 to −3.4) | 8.1% (+5.6; −1.9 to +12.4) |
+| Ridge, then a network | more | 6.1% (−3.0; −11.7 to +5.9) | 7.3% (+14.4; −1.1 to +32.6) | 11.3% (−12.8; −19.7 to −6.5) | 7.3% (−3.7; −10.6 to +2.8) |
+| *Stacked, all eleven* | comparison's | 5.6% (−10.2; −18.0 to −2.6) | 6.0% (−4.8; −12.5 to +4.3) | 11.3% (−12.9; −22.2 to −4.6) | 7.5% (−1.4; −8.7 to +5.0) |
+| *Stacked, all eleven* | more | 5.4% (−13.0; −18.9 to −7.4) | 6.0% (−4.9; −12.1 to +3.1) | 10.5% (−18.5; −26.1 to −11.9) | 7.2% (−5.7; −12.6 to +0.6) |
+| *Stacked: ridge, tuned trees, network* | comparison's | 5.7% (−8.6; −16.7 to −1.1) | 6.1% (−3.1; −9.8 to +5.1) | 11.5% (−11.8; −20.1 to −4.4) | 7.4% (−3.4; −9.3 to +1.5) |
+| *Stacked: ridge, tuned trees, network* | more | 5.5% (−12.6; −19.0 to −6.7) | 6.1% (−4.1; −10.9 to +4.2) | 10.7% (−17.4; −23.7 to −12.0) | 7.2% (−5.5; −12.3 to +0.9) |
+| *Mean of all eleven* | comparison's | 5.8% (−6.6; −14.0 to +0.0) | 6.0% (−5.4; −11.2 to +1.7) | 12.7% (−2.8; −17.5 to +11.4) | 7.4% (−3.1; −10.6 to +3.1) |
+| *Mean of all eleven* | more | 5.8% (−6.8; −13.6 to −0.5) | 6.0% (−4.9; −11.5 to +3.1) | 12.1% (−6.8; −21.5 to +7.9) | 7.2% (−5.2; −12.7 to +1.3) |
+| *Mean: ridge, tuned trees, network* | comparison's | 6.1% (−2.4; −10.9 to +5.3) | 6.1% (−3.3; −9.8 to +4.6) | 12.3% (−5.4; −18.0 to +6.7) | 7.4% (−3.3; −10.5 to +2.7) |
+| *Mean: ridge, tuned trees, network* | more | 6.0% (−3.9; −11.7 to +3.2) | 6.1% (−4.1; −11.7 to +5.7) | 11.4% (−12.3; −21.0 to −4.7) | 7.2% (−5.4; −12.8 to +1.7) |
+
+* **The stack of all eleven with more inputs** was the best of the thirty entries for the Bluebikes campus ratio, the Bluebikes total and the MBTA total, and 0.1 points behind extra trees for the MBTA campus ratio. Its gains for the Bluebikes targets are clear (both intervals exclude zero); for the MBTA targets they are not.
+* **Thirty entries a target make the best single one's lead partly luck.** The combinations were fixed before the full run, but after a trial run on the two campus ratios, which showed the gain on the Bluebikes campus ratio; the two totals are the stack's cleaner test, and there it was best too.
+* **No single model is best everywhere.** The network is the best single model for the Bluebikes campus ratio (5.5%) and among the worst for the MBTA campus ratio (7.2–7.4%); the forests are the best for the MBTA campus ratio and the worst for both totals, whose levels they cannot carry into a held-out month. A stack does not have to choose.
+* **The extra inputs help the flexible models more than the linear one**: the network improves on all four targets with them, the linear model by at most 2.7% and on the campus ratios not at all. Some models do worse with them (the support vector machine on both totals, the trees fitted to what ridge misses on the Bluebikes campus ratio): more inputs are more ways to fit noise.
+* **The means of all eleven gain less than the stacks** on the Bluebikes targets, where a few models (the linear ones on the campus ratio, the forests on the total) are far behind: a mean needs its members to be good, a stack can drop them.
+
+Mean stacking weights of the eleven models, with the comparison's inputs / with more inputs (`model_search_weights.csv`). They are fitted on folds without the buffer week around each held-out month, which can make them less well chosen but cannot make the held-out errors above optimistic:
+
+| Model | Bluebikes campus ratio | MBTA campus ratio | Bluebikes total | MBTA total |
+|---|---|---|---|---|
+| Linear, week of year | 0.00 / 0.01 | 0.01 / 0.01 | 0.01 / 0.00 | 0.26 / 0.19 |
+| Ridge | 0.00 / 0.00 | 0.01 / 0.01 | 0.00 / 0.00 | 0.01 / 0.09 |
+| Gradient boosting | 0.08 / 0.01 | 0.02 / 0.02 | 0.01 / 0.04 | 0.04 / 0.09 |
+| Gradient boosting, tuned | 0.14 / 0.05 | 0.01 / 0.01 | 0.00 / 0.02 | 0.09 / 0.11 |
+| Random forest | 0.00 / 0.00 | 0.17 / 0.06 | 0.00 / 0.01 | 0.02 / 0.01 |
+| Extra trees | 0.10 / 0.22 | 0.19 / 0.42 | 0.02 / 0.00 | 0.09 / 0.09 |
+| Neural network | 0.19 / 0.38 | 0.05 / 0.02 | 0.22 / 0.25 | 0.01 / 0.10 |
+| Gaussian process | 0.00 / 0.00 | 0.04 / 0.00 | 0.18 / 0.18 | 0.16 / 0.08 |
+| Support vector machine | 0.12 / 0.10 | 0.33 / 0.37 | 0.01 / 0.00 | 0.07 / 0.03 |
+| Ridge, then trees | 0.05 / 0.00 | 0.00 / 0.01 | 0.16 / 0.22 | 0.02 / 0.01 |
+| Ridge, then a network | 0.32 / 0.22 | 0.16 / 0.07 | 0.38 / 0.27 | 0.23 / 0.21 |
+
+* **Ridge, then a network, is the one model with a weight of at least 0.07 on every target and set of inputs** (0.07 to 0.38): a straight line for the levels, with the network adding what is left.
+* The rest of the weight goes mostly to the network and extra trees for the Bluebikes campus ratio, extra trees and the support vector machine for the MBTA campus ratio, the network, the Gaussian process and ridge with trees for the Bluebikes total, and the linear model for the MBTA total.
+
+**Weekly signals** of the population model (subway and Bluebikes, weekdays and weekends; each validation year predicted from the years before it, and January–September 2026 from 2022–2025), with three sets of inputs: the population model's own (*students, everyone*: every student not living with their parents leaving), *everything* of the model families above, and *everything and universities*, with the ten universities' calendars. Models: linear regression, ridge, lasso, random forest, gradient boosting, a Gaussian process, three networks (hidden layers of 8; 32 and 16; 64, 32 and 16 units; L2 penalty chosen from 0.3 to 10; the mean of 5 fits), ridge then trees, ridge then a network, and the stack and mean of all. R² on the validation years (mean) and on the 2026 test, each model with the inputs that did best on the validation years (`model_search_signals.csv`):
+
+| Signal | Linear regression, the population model's inputs | Best on the validation years | Best network | Mean of all | Stacked, all |
+|---|---|---|---|---|---|
+| Subway, weekdays | 0.48, 0.55 | 0.48, 0.55 (linear regression; students, everyone) | 0.47, 0.54 (layers (32, 16); students, everyone) | 0.46, 0.51 (students, everyone) | 0.38, 0.48 (students, everyone) |
+| Subway, weekends | 0.34, 0.35 | 0.34, 0.35 (linear regression; students, everyone) | 0.33, 0.36 (layers (8); students, everyone) | 0.32, 0.35 (students, everyone) | 0.34, 0.34 (students, everyone) |
+| Bluebikes, weekdays | 0.62, 0.55 | 0.70, 0.69 (mean of all; everything) | 0.70, 0.70 (layers (8); everything and universities) | 0.70, 0.69 (everything) | 0.69, 0.69 (everything) |
+| Bluebikes, weekends | 0.43, 0.37 | 0.53, 0.37 (mean of all; everything and universities) | 0.51, 0.38 (layers (8); everything and universities) | 0.53, 0.37 (everything and universities) | 0.49, 0.33 (everything and universities) |
+
+* **The subway's signals are still best read by linear regression on the population model's own inputs**: nothing did better on the validation years, with any inputs. Some models with more inputs did better on the 2026 weekday test (a network, 0.59; ridge, 0.57), after doing worse on the validation years (0.44), so the test alone would not have picked them.
+* **For Bluebikes, weather and calendar inputs matter more than the model**: on weekdays, with them, linear regression scores 0.69 on the validation years and the best model 0.70, against 0.62 for the population model's own inputs. On the 2026 test the best network, the mean and the stack hold that (0.69–0.70), while linear regression with the same inputs falls to 0.61. On weekends the validation gain (0.53 against 0.43) does not carry over to the test (0.37 for both).
+
+**What it changes.** The best predictor of weekly travel is now a stack of eleven models with the extra inputs, clearly so for Bluebikes. The population estimate does not change: it reads the shares away from straight-line slopes, which remain the best reading of the subway signals, and better predictions of travel cannot remove what limits it, the weekend factor and the assumption about students who do not ride ([Limits](../README.md#limits)).

@@ -139,7 +139,7 @@ ensembles:
 
 # A broad search: more inputs (calendar detail, last week's weather, the largest universities' calendars) and more
 # models (tuned trees, neural networks, a Gaussian process, ridge with a flexible model on its residuals, stacks)
-# for the travel targets and the weekly signals (about 2 hours on 4 cores).
+# for the travel targets and the weekly signals (about 3 hours on 4 cores).
 model-search:
 	$(RUN) boston_breathes.model_search
 

@@ -1,0 +1,625 @@
+signal,inputs,model,kind,evaluation,test_year,weeks,r2,mae
+subway_weekday,"students, everyone",linear regression,single,validation,2023,52,0.6292,2.048
+subway_weekday,"students, everyone",ridge,single,validation,2023,52,0.6224,2.0701
+subway_weekday,"students, everyone",lasso,single,validation,2023,52,0.5961,2.1503
+subway_weekday,"students, everyone",random forest,single,validation,2023,52,0.5601,2.2769
+subway_weekday,"students, everyone",gradient boosting,single,validation,2023,52,0.5657,2.2739
+subway_weekday,"students, everyone",Gaussian process,single,validation,2023,52,0.5917,2.166
+subway_weekday,"students, everyone",neural network (8),single,validation,2023,52,0.5938,2.1523
+subway_weekday,"students, everyone","neural network (32, 16)",single,validation,2023,52,0.6099,2.1156
+subway_weekday,"students, everyone","neural network (64, 32, 16)",single,validation,2023,52,0.6099,2.1156
+subway_weekday,"students, everyone","ridge, then neural network",single,validation,2023,52,0.6224,2.0701
+subway_weekday,"students, everyone","ridge, then trees",single,validation,2023,52,0.5795,2.2402
+subway_weekday,"students, everyone","stacked, all",combined,validation,2023,52,0.5907,2.1923
+subway_weekday,"students, everyone",mean of all,combined,validation,2023,52,0.6095,2.121
+subway_weekday,"students, everyone",linear regression,single,validation,2024,53,0.3973,2.106
+subway_weekday,"students, everyone",ridge,single,validation,2024,53,0.3981,2.105
+subway_weekday,"students, everyone",lasso,single,validation,2024,53,0.3976,2.1057
+subway_weekday,"students, everyone",random forest,single,validation,2024,53,0.1514,2.4913
+subway_weekday,"students, everyone",gradient boosting,single,validation,2024,53,0.0431,2.698
+subway_weekday,"students, everyone",Gaussian process,single,validation,2024,53,0.4236,2.0532
+subway_weekday,"students, everyone",neural network (8),single,validation,2024,53,0.4087,2.0925
+subway_weekday,"students, everyone","neural network (32, 16)",single,validation,2024,53,0.4127,2.0856
+subway_weekday,"students, everyone","neural network (64, 32, 16)",single,validation,2024,53,0.4102,2.0908
+subway_weekday,"students, everyone","ridge, then neural network",single,validation,2024,53,0.3981,2.105
+subway_weekday,"students, everyone","ridge, then trees",single,validation,2024,53,0.0276,2.7308
+subway_weekday,"students, everyone","stacked, all",combined,validation,2024,53,0.1415,2.5229
+subway_weekday,"students, everyone",mean of all,combined,validation,2024,53,0.358,2.206
+subway_weekday,"students, everyone",linear regression,single,validation,2025,52,0.423,3.2345
+subway_weekday,"students, everyone",ridge,single,validation,2025,52,0.4219,3.2401
+subway_weekday,"students, everyone",lasso,single,validation,2025,52,0.4224,3.2372
+subway_weekday,"students, everyone",random forest,single,validation,2025,52,0.3809,3.3485
+subway_weekday,"students, everyone",gradient boosting,single,validation,2025,52,0.4169,3.303
+subway_weekday,"students, everyone",Gaussian process,single,validation,2025,52,0.3908,3.362
+subway_weekday,"students, everyone",neural network (8),single,validation,2025,52,0.3988,3.3308
+subway_weekday,"students, everyone","neural network (32, 16)",single,validation,2025,52,0.3969,3.3446
+subway_weekday,"students, everyone","neural network (64, 32, 16)",single,validation,2025,52,0.3949,3.3491
+subway_weekday,"students, everyone","ridge, then neural network",single,validation,2025,52,0.4219,3.2401
+subway_weekday,"students, everyone","ridge, then trees",single,validation,2025,52,0.3969,3.3486
+subway_weekday,"students, everyone","stacked, all",combined,validation,2025,52,0.4035,3.325
+subway_weekday,"students, everyone",mean of all,combined,validation,2025,52,0.4117,3.2889
+subway_weekday,"students, everyone",linear regression,single,test,2026,38,0.5489,2.0834
+subway_weekday,"students, everyone",ridge,single,test,2026,38,0.5487,2.0829
+subway_weekday,"students, everyone",lasso,single,test,2026,38,0.5488,2.0833
+subway_weekday,"students, everyone",random forest,single,test,2026,38,0.3389,2.5527
+subway_weekday,"students, everyone",gradient boosting,single,test,2026,38,0.2835,2.7331
+subway_weekday,"students, everyone",Gaussian process,single,test,2026,38,0.5525,2.0653
+subway_weekday,"students, everyone",neural network (8),single,test,2026,38,0.5468,2.0655
+subway_weekday,"students, everyone","neural network (32, 16)",single,test,2026,38,0.5444,2.0811
+subway_weekday,"students, everyone","neural network (64, 32, 16)",single,test,2026,38,0.5435,2.0809
+subway_weekday,"students, everyone","ridge, then neural network",single,test,2026,38,0.5487,2.0829
+subway_weekday,"students, everyone","ridge, then trees",single,test,2026,38,0.3216,2.634
+subway_weekday,"students, everyone","stacked, all",combined,test,2026,38,0.4797,2.2171
+subway_weekday,"students, everyone",mean of all,combined,test,2026,38,0.5118,2.1817
+subway_weekday,everything,linear regression,single,validation,2023,52,0.4304,2.6028
+subway_weekday,everything,ridge,single,validation,2023,52,0.4914,2.4595
+subway_weekday,everything,lasso,single,validation,2023,52,0.4162,2.6413
+subway_weekday,everything,random forest,single,validation,2023,52,0.5674,2.2608
+subway_weekday,everything,gradient boosting,single,validation,2023,52,0.4749,2.5154
+subway_weekday,everything,Gaussian process,single,validation,2023,52,0.451,2.5293
+subway_weekday,everything,neural network (8),single,validation,2023,52,0.3419,2.7957
+subway_weekday,everything,"neural network (32, 16)",single,validation,2023,52,0.4273,2.6405
+subway_weekday,everything,"neural network (64, 32, 16)",single,validation,2023,52,0.4272,2.6387
+subway_weekday,everything,"ridge, then neural network",single,validation,2023,52,0.4914,2.4595
+subway_weekday,everything,"ridge, then trees",single,validation,2023,52,0.3657,2.8224
+subway_weekday,everything,"stacked, all",combined,validation,2023,52,0.4407,2.6048
+subway_weekday,everything,mean of all,combined,validation,2023,52,0.4776,2.5089
+subway_weekday,everything,linear regression,single,validation,2024,53,0.3912,2.1264
+subway_weekday,everything,ridge,single,validation,2024,53,0.4022,2.0968
+subway_weekday,everything,lasso,single,validation,2024,53,0.4026,2.0779
+subway_weekday,everything,random forest,single,validation,2024,53,0.307,2.3013
+subway_weekday,everything,gradient boosting,single,validation,2024,53,0.276,2.5529
+subway_weekday,everything,Gaussian process,single,validation,2024,53,0.3872,2.1036
+subway_weekday,everything,neural network (8),single,validation,2024,53,0.406,2.082
+subway_weekday,everything,"neural network (32, 16)",single,validation,2024,53,0.4075,2.0857
+subway_weekday,everything,"neural network (64, 32, 16)",single,validation,2024,53,0.4132,2.0837
+subway_weekday,everything,"ridge, then neural network",single,validation,2024,53,0.4022,2.0968
+subway_weekday,everything,"ridge, then trees",single,validation,2024,53,0.2301,2.4442
+subway_weekday,everything,"stacked, all",combined,validation,2024,53,0.3381,2.231
+subway_weekday,everything,mean of all,combined,validation,2024,53,0.4024,2.1085
+subway_weekday,everything,linear regression,single,validation,2025,52,0.3174,3.6376
+subway_weekday,everything,ridge,single,validation,2025,52,0.3247,3.6147
+subway_weekday,everything,lasso,single,validation,2025,52,0.3881,3.417
+subway_weekday,everything,random forest,single,validation,2025,52,0.3314,3.5756
+subway_weekday,everything,gradient boosting,single,validation,2025,52,0.2906,3.7568
+subway_weekday,everything,Gaussian process,single,validation,2025,52,0.3739,3.4774
+subway_weekday,everything,neural network (8),single,validation,2025,52,0.3755,3.4572
+subway_weekday,everything,"neural network (32, 16)",single,validation,2025,52,0.3783,3.4498
+subway_weekday,everything,"neural network (64, 32, 16)",single,validation,2025,52,0.3766,3.4532
+subway_weekday,everything,"ridge, then neural network",single,validation,2025,52,0.3247,3.6147
+subway_weekday,everything,"ridge, then trees",single,validation,2025,52,0.2025,4.0305
+subway_weekday,everything,"stacked, all",combined,validation,2025,52,0.3405,3.5882
+subway_weekday,everything,mean of all,combined,validation,2025,52,0.3477,3.5608
+subway_weekday,everything,linear regression,single,test,2026,38,0.5594,1.9869
+subway_weekday,everything,ridge,single,test,2026,38,0.5442,2.0399
+subway_weekday,everything,lasso,single,test,2026,38,0.5521,2.0519
+subway_weekday,everything,random forest,single,test,2026,38,0.4886,2.1996
+subway_weekday,everything,gradient boosting,single,test,2026,38,0.2847,2.6663
+subway_weekday,everything,Gaussian process,single,test,2026,38,0.5438,2.0542
+subway_weekday,everything,neural network (8),single,test,2026,38,0.5568,2.0054
+subway_weekday,everything,"neural network (32, 16)",single,test,2026,38,0.5571,2.0031
+subway_weekday,everything,"neural network (64, 32, 16)",single,test,2026,38,0.5533,2.0139
+subway_weekday,everything,"ridge, then neural network",single,test,2026,38,0.5442,2.0399
+subway_weekday,everything,"ridge, then trees",single,test,2026,38,0.4428,2.3092
+subway_weekday,everything,"stacked, all",combined,test,2026,38,0.528,2.127
+subway_weekday,everything,mean of all,combined,test,2026,38,0.5364,2.0898
+subway_weekday,everything and universities,linear regression,single,validation,2023,52,0.2769,3.0823
+subway_weekday,everything and universities,ridge,single,validation,2023,52,0.515,2.4041
+subway_weekday,everything and universities,lasso,single,validation,2023,52,0.5077,2.4195
+subway_weekday,everything and universities,random forest,single,validation,2023,52,0.5627,2.2586
+subway_weekday,everything and universities,gradient boosting,single,validation,2023,52,0.4723,2.5264
+subway_weekday,everything and universities,Gaussian process,single,validation,2023,52,0.456,2.5267
+subway_weekday,everything and universities,neural network (8),single,validation,2023,52,0.3181,2.8345
+subway_weekday,everything and universities,"neural network (32, 16)",single,validation,2023,52,0.5535,2.3066
+subway_weekday,everything and universities,"neural network (64, 32, 16)",single,validation,2023,52,0.4706,2.5352
+subway_weekday,everything and universities,"ridge, then neural network",single,validation,2023,52,0.515,2.4041
+subway_weekday,everything and universities,"ridge, then trees",single,validation,2023,52,0.3654,2.7736
+subway_weekday,everything and universities,"stacked, all",combined,validation,2023,52,0.4123,2.6421
+subway_weekday,everything and universities,mean of all,combined,validation,2023,52,0.4939,2.4533
+subway_weekday,everything and universities,linear regression,single,validation,2024,53,0.3943,2.124
+subway_weekday,everything and universities,ridge,single,validation,2024,53,0.4091,2.1019
+subway_weekday,everything and universities,lasso,single,validation,2024,53,0.4009,2.1098
+subway_weekday,everything and universities,random forest,single,validation,2024,53,0.2897,2.3716
+subway_weekday,everything and universities,gradient boosting,single,validation,2024,53,0.2152,2.6645
+subway_weekday,everything and universities,Gaussian process,single,validation,2024,53,0.3929,2.0928
+subway_weekday,everything and universities,neural network (8),single,validation,2024,53,0.3924,2.0872
+subway_weekday,everything and universities,"neural network (32, 16)",single,validation,2024,53,0.397,2.1012
+subway_weekday,everything and universities,"neural network (64, 32, 16)",single,validation,2024,53,0.4035,2.1006
+subway_weekday,everything and universities,"ridge, then neural network",single,validation,2024,53,0.4091,2.1019
+subway_weekday,everything and universities,"ridge, then trees",single,validation,2024,53,0.2488,2.4678
+subway_weekday,everything and universities,"stacked, all",combined,validation,2024,53,0.3468,2.2642
+subway_weekday,everything and universities,mean of all,combined,validation,2024,53,0.3996,2.1561
+subway_weekday,everything and universities,linear regression,single,validation,2025,52,0.3056,3.6938
+subway_weekday,everything and universities,ridge,single,validation,2025,52,0.3851,3.423
+subway_weekday,everything and universities,lasso,single,validation,2025,52,0.3913,3.4255
+subway_weekday,everything and universities,random forest,single,validation,2025,52,0.3309,3.5509
+subway_weekday,everything and universities,gradient boosting,single,validation,2025,52,0.2593,3.8116
+subway_weekday,everything and universities,Gaussian process,single,validation,2025,52,0.3769,3.4631
+subway_weekday,everything and universities,neural network (8),single,validation,2025,52,0.3656,3.497
+subway_weekday,everything and universities,"neural network (32, 16)",single,validation,2025,52,0.3798,3.441
+subway_weekday,everything and universities,"neural network (64, 32, 16)",single,validation,2025,52,0.3853,3.417
+subway_weekday,everything and universities,"ridge, then neural network",single,validation,2025,52,0.3851,3.423
+subway_weekday,everything and universities,"ridge, then trees",single,validation,2025,52,0.2854,3.7513
+subway_weekday,everything and universities,"stacked, all",combined,validation,2025,52,0.3609,3.5067
+subway_weekday,everything and universities,mean of all,combined,validation,2025,52,0.363,3.51
+subway_weekday,everything and universities,linear regression,single,test,2026,38,0.5692,1.97
+subway_weekday,everything and universities,ridge,single,test,2026,38,0.5697,1.9477
+subway_weekday,everything and universities,lasso,single,test,2026,38,0.5841,1.8937
+subway_weekday,everything and universities,random forest,single,test,2026,38,0.539,2.0586
+subway_weekday,everything and universities,gradient boosting,single,test,2026,38,0.3408,2.5909
+subway_weekday,everything and universities,Gaussian process,single,test,2026,38,0.5859,1.9121
+subway_weekday,everything and universities,neural network (8),single,test,2026,38,0.5833,1.9219
+subway_weekday,everything and universities,"neural network (32, 16)",single,test,2026,38,0.5901,1.8867
+subway_weekday,everything and universities,"neural network (64, 32, 16)",single,test,2026,38,0.587,1.8903
+subway_weekday,everything and universities,"ridge, then neural network",single,test,2026,38,0.5847,1.8922
+subway_weekday,everything and universities,"ridge, then trees",single,test,2026,38,0.3549,2.3934
+subway_weekday,everything and universities,"stacked, all",combined,test,2026,38,0.5612,1.9833
+subway_weekday,everything and universities,mean of all,combined,test,2026,38,0.5598,1.9912
+subway_weekend,"students, everyone",linear regression,single,validation,2023,52,0.3037,2.3483
+subway_weekend,"students, everyone",ridge,single,validation,2023,52,0.2947,2.3644
+subway_weekend,"students, everyone",lasso,single,validation,2023,52,0.2965,2.3613
+subway_weekend,"students, everyone",random forest,single,validation,2023,52,0.0968,2.6955
+subway_weekend,"students, everyone",gradient boosting,single,validation,2023,52,0.106,2.7114
+subway_weekend,"students, everyone",Gaussian process,single,validation,2023,52,0.2463,2.4531
+subway_weekend,"students, everyone",neural network (8),single,validation,2023,52,0.2716,2.4123
+subway_weekend,"students, everyone","neural network (32, 16)",single,validation,2023,52,0.2724,2.4097
+subway_weekend,"students, everyone","neural network (64, 32, 16)",single,validation,2023,52,0.2706,2.4137
+subway_weekend,"students, everyone","ridge, then neural network",single,validation,2023,52,0.2947,2.3644
+subway_weekend,"students, everyone","ridge, then trees",single,validation,2023,52,0.1287,2.6696
+subway_weekend,"students, everyone","stacked, all",combined,validation,2023,52,0.3037,2.3483
+subway_weekend,"students, everyone",mean of all,combined,validation,2023,52,0.2472,2.4495
+subway_weekend,"students, everyone",linear regression,single,validation,2024,53,0.3965,2.2911
+subway_weekend,"students, everyone",ridge,single,validation,2024,53,0.391,2.2949
+subway_weekend,"students, everyone",lasso,single,validation,2024,53,0.3963,2.2912
+subway_weekend,"students, everyone",random forest,single,validation,2024,53,0.3195,2.4357
+subway_weekend,"students, everyone",gradient boosting,single,validation,2024,53,0.2816,2.5001
+subway_weekend,"students, everyone",Gaussian process,single,validation,2024,53,0.3911,2.2938
+subway_weekend,"students, everyone",neural network (8),single,validation,2024,53,0.3878,2.297
+subway_weekend,"students, everyone","neural network (32, 16)",single,validation,2024,53,0.3844,2.2993
+subway_weekend,"students, everyone","neural network (64, 32, 16)",single,validation,2024,53,0.3823,2.3004
+subway_weekend,"students, everyone","ridge, then neural network",single,validation,2024,53,0.391,2.2949
+subway_weekend,"students, everyone","ridge, then trees",single,validation,2024,53,0.2771,2.5206
+subway_weekend,"students, everyone","stacked, all",combined,validation,2024,53,0.3591,2.3507
+subway_weekend,"students, everyone",mean of all,combined,validation,2024,53,0.3776,2.31
+subway_weekend,"students, everyone",linear regression,single,validation,2025,52,0.324,3.8467
+subway_weekend,"students, everyone",ridge,single,validation,2025,52,0.3227,3.8517
+subway_weekend,"students, everyone",lasso,single,validation,2025,52,0.3171,3.8726
+subway_weekend,"students, everyone",random forest,single,validation,2025,52,0.3521,3.7657
+subway_weekend,"students, everyone",gradient boosting,single,validation,2025,52,0.3726,3.6727
+subway_weekend,"students, everyone",Gaussian process,single,validation,2025,52,0.3132,3.8865
+subway_weekend,"students, everyone",neural network (8),single,validation,2025,52,0.3193,3.8577
+subway_weekend,"students, everyone","neural network (32, 16)",single,validation,2025,52,0.3192,3.8589
+subway_weekend,"students, everyone","neural network (64, 32, 16)",single,validation,2025,52,0.3195,3.8584
+subway_weekend,"students, everyone","ridge, then neural network",single,validation,2025,52,0.3227,3.8517
+subway_weekend,"students, everyone","ridge, then trees",single,validation,2025,52,0.3782,3.6574
+subway_weekend,"students, everyone","stacked, all",combined,validation,2025,52,0.3504,3.7483
+subway_weekend,"students, everyone",mean of all,combined,validation,2025,52,0.3434,3.7741
+subway_weekend,"students, everyone",linear regression,single,test,2026,38,0.3534,2.196
+subway_weekend,"students, everyone",ridge,single,test,2026,38,0.3538,2.1951
+subway_weekend,"students, everyone",lasso,single,test,2026,38,0.3535,2.1958
+subway_weekend,"students, everyone",random forest,single,test,2026,38,0.2755,2.574
+subway_weekend,"students, everyone",gradient boosting,single,test,2026,38,0.2562,2.6467
+subway_weekend,"students, everyone",Gaussian process,single,test,2026,38,0.3571,2.2211
+subway_weekend,"students, everyone",neural network (8),single,test,2026,38,0.3556,2.1834
+subway_weekend,"students, everyone","neural network (32, 16)",single,test,2026,38,0.3573,2.2061
+subway_weekend,"students, everyone","neural network (64, 32, 16)",single,test,2026,38,0.3556,2.2103
+subway_weekend,"students, everyone","ridge, then neural network",single,test,2026,38,0.3538,2.1951
+subway_weekend,"students, everyone","ridge, then trees",single,test,2026,38,0.2738,2.573
+subway_weekend,"students, everyone","stacked, all",combined,test,2026,38,0.3381,2.3054
+subway_weekend,"students, everyone",mean of all,combined,test,2026,38,0.3507,2.2637
+subway_weekend,everything,linear regression,single,validation,2023,52,0.1357,2.82
+subway_weekend,everything,ridge,single,validation,2023,52,0.227,2.5354
+subway_weekend,everything,lasso,single,validation,2023,52,0.2246,2.503
+subway_weekend,everything,random forest,single,validation,2023,52,0.094,2.7016
+subway_weekend,everything,gradient boosting,single,validation,2023,52,-0.067,3.1411
+subway_weekend,everything,Gaussian process,single,validation,2023,52,0.2164,2.5679
+subway_weekend,everything,neural network (8),single,validation,2023,52,0.2236,2.5462
+subway_weekend,everything,"neural network (32, 16)",single,validation,2023,52,0.2227,2.545
+subway_weekend,everything,"neural network (64, 32, 16)",single,validation,2023,52,0.1506,2.6849
+subway_weekend,everything,"ridge, then neural network",single,validation,2023,52,0.227,2.5354
+subway_weekend,everything,"ridge, then trees",single,validation,2023,52,-0.1184,3.1993
+subway_weekend,everything,"stacked, all",combined,validation,2023,52,0.1835,2.6238
+subway_weekend,everything,mean of all,combined,validation,2023,52,0.1774,2.6477
+subway_weekend,everything,linear regression,single,validation,2024,53,0.3028,2.485
+subway_weekend,everything,ridge,single,validation,2024,53,0.2951,2.4202
+subway_weekend,everything,lasso,single,validation,2024,53,0.3096,2.4224
+subway_weekend,everything,random forest,single,validation,2024,53,0.289,2.4228
+subway_weekend,everything,gradient boosting,single,validation,2024,53,0.2284,2.6026
+subway_weekend,everything,Gaussian process,single,validation,2024,53,0.3109,2.426
+subway_weekend,everything,neural network (8),single,validation,2024,53,0.2816,2.4876
+subway_weekend,everything,"neural network (32, 16)",single,validation,2024,53,0.2905,2.4579
+subway_weekend,everything,"neural network (64, 32, 16)",single,validation,2024,53,0.2949,2.4418
+subway_weekend,everything,"ridge, then neural network",single,validation,2024,53,0.2951,2.4202
+subway_weekend,everything,"ridge, then trees",single,validation,2024,53,0.2125,2.6473
+subway_weekend,everything,"stacked, all",combined,validation,2024,53,0.3352,2.3798
+subway_weekend,everything,mean of all,combined,validation,2024,53,0.3248,2.4085
+subway_weekend,everything,linear regression,single,validation,2025,52,0.2371,4.049
+subway_weekend,everything,ridge,single,validation,2025,52,0.2458,4.0254
+subway_weekend,everything,lasso,single,validation,2025,52,0.2786,4.0145
+subway_weekend,everything,random forest,single,validation,2025,52,0.277,4.0637
+subway_weekend,everything,gradient boosting,single,validation,2025,52,0.2558,3.9736
+subway_weekend,everything,Gaussian process,single,validation,2025,52,0.2814,3.9901
+subway_weekend,everything,neural network (8),single,validation,2025,52,0.2839,3.9439
+subway_weekend,everything,"neural network (32, 16)",single,validation,2025,52,0.2831,3.9648
+subway_weekend,everything,"neural network (64, 32, 16)",single,validation,2025,52,0.2804,3.9824
+subway_weekend,everything,"ridge, then neural network",single,validation,2025,52,0.2458,4.0254
+subway_weekend,everything,"ridge, then trees",single,validation,2025,52,0.2688,3.978
+subway_weekend,everything,"stacked, all",combined,validation,2025,52,0.2893,3.9716
+subway_weekend,everything,mean of all,combined,validation,2025,52,0.2815,3.9824
+subway_weekend,everything,linear regression,single,test,2026,38,0.3097,2.251
+subway_weekend,everything,ridge,single,test,2026,38,0.3583,2.1262
+subway_weekend,everything,lasso,single,test,2026,38,0.3498,2.1642
+subway_weekend,everything,random forest,single,test,2026,38,0.3221,2.1856
+subway_weekend,everything,gradient boosting,single,test,2026,38,-0.0549,2.7041
+subway_weekend,everything,Gaussian process,single,test,2026,38,0.3719,2.147
+subway_weekend,everything,neural network (8),single,test,2026,38,0.3602,2.1528
+subway_weekend,everything,"neural network (32, 16)",single,test,2026,38,0.3616,2.1466
+subway_weekend,everything,"neural network (64, 32, 16)",single,test,2026,38,0.3622,2.141
+subway_weekend,everything,"ridge, then neural network",single,test,2026,38,0.3583,2.1262
+subway_weekend,everything,"ridge, then trees",single,test,2026,38,0.0281,2.635
+subway_weekend,everything,"stacked, all",combined,test,2026,38,0.3281,2.1682
+subway_weekend,everything,mean of all,combined,test,2026,38,0.3594,2.151
+subway_weekend,everything and universities,linear regression,single,validation,2023,52,-0.3284,3.478
+subway_weekend,everything and universities,ridge,single,validation,2023,52,0.2577,2.4558
+subway_weekend,everything and universities,lasso,single,validation,2023,52,0.2243,2.4702
+subway_weekend,everything and universities,random forest,single,validation,2023,52,0.1132,2.6715
+subway_weekend,everything and universities,gradient boosting,single,validation,2023,52,-0.031,3.0409
+subway_weekend,everything and universities,Gaussian process,single,validation,2023,52,0.2479,2.4795
+subway_weekend,everything and universities,neural network (8),single,validation,2023,52,0.253,2.477
+subway_weekend,everything and universities,"neural network (32, 16)",single,validation,2023,52,0.2615,2.4519
+subway_weekend,everything and universities,"neural network (64, 32, 16)",single,validation,2023,52,0.1342,2.7297
+subway_weekend,everything and universities,"ridge, then neural network",single,validation,2023,52,0.2577,2.4558
+subway_weekend,everything and universities,"ridge, then trees",single,validation,2023,52,-0.0684,3.0878
+subway_weekend,everything and universities,"stacked, all",combined,validation,2023,52,0.2608,2.4528
+subway_weekend,everything and universities,mean of all,combined,validation,2023,52,0.2,2.5648
+subway_weekend,everything and universities,linear regression,single,validation,2024,53,0.3374,2.4123
+subway_weekend,everything and universities,ridge,single,validation,2024,53,0.3486,2.3679
+subway_weekend,everything and universities,lasso,single,validation,2024,53,0.3417,2.3566
+subway_weekend,everything and universities,random forest,single,validation,2024,53,0.3201,2.382
+subway_weekend,everything and universities,gradient boosting,single,validation,2024,53,0.221,2.5657
+subway_weekend,everything and universities,Gaussian process,single,validation,2024,53,0.358,2.3443
+subway_weekend,everything and universities,neural network (8),single,validation,2024,53,0.349,2.3822
+subway_weekend,everything and universities,"neural network (32, 16)",single,validation,2024,53,0.345,2.3837
+subway_weekend,everything and universities,"neural network (64, 32, 16)",single,validation,2024,53,0.2405,2.5296
+subway_weekend,everything and universities,"ridge, then neural network",single,validation,2024,53,0.3486,2.3679
+subway_weekend,everything and universities,"ridge, then trees",single,validation,2024,53,0.2496,2.5707
+subway_weekend,everything and universities,"stacked, all",combined,validation,2024,53,0.3357,2.299
+subway_weekend,everything and universities,mean of all,combined,validation,2024,53,0.3634,2.3222
+subway_weekend,everything and universities,linear regression,single,validation,2025,52,0.1467,4.3306
+subway_weekend,everything and universities,ridge,single,validation,2025,52,0.2722,3.9931
+subway_weekend,everything and universities,lasso,single,validation,2025,52,0.2613,4.0283
+subway_weekend,everything and universities,random forest,single,validation,2025,52,0.2516,4.1283
+subway_weekend,everything and universities,gradient boosting,single,validation,2025,52,0.2497,3.9562
+subway_weekend,everything and universities,Gaussian process,single,validation,2025,52,0.2743,4.0112
+subway_weekend,everything and universities,neural network (8),single,validation,2025,52,0.2646,4.0151
+subway_weekend,everything and universities,"neural network (32, 16)",single,validation,2025,52,0.2645,4.0146
+subway_weekend,everything and universities,"neural network (64, 32, 16)",single,validation,2025,52,0.2722,4.004
+subway_weekend,everything and universities,"ridge, then neural network",single,validation,2025,52,0.2722,3.9931
+subway_weekend,everything and universities,"ridge, then trees",single,validation,2025,52,0.2071,4.0859
+subway_weekend,everything and universities,"stacked, all",combined,validation,2025,52,0.2633,4.0273
+subway_weekend,everything and universities,mean of all,combined,validation,2025,52,0.2631,4.0365
+subway_weekend,everything and universities,linear regression,single,test,2026,38,0.2063,2.4751
+subway_weekend,everything and universities,ridge,single,test,2026,38,0.3631,2.1301
+subway_weekend,everything and universities,lasso,single,test,2026,38,0.3463,2.1821
+subway_weekend,everything and universities,random forest,single,test,2026,38,0.2973,2.3397
+subway_weekend,everything and universities,gradient boosting,single,test,2026,38,-0.0136,2.9536
+subway_weekend,everything and universities,Gaussian process,single,test,2026,38,0.3567,2.2027
+subway_weekend,everything and universities,neural network (8),single,test,2026,38,0.3032,2.369
+subway_weekend,everything and universities,"neural network (32, 16)",single,test,2026,38,0.3391,2.2351
+subway_weekend,everything and universities,"neural network (64, 32, 16)",single,test,2026,38,0.3546,2.1869
+subway_weekend,everything and universities,"ridge, then neural network",single,test,2026,38,0.3631,2.1301
+subway_weekend,everything and universities,"ridge, then trees",single,test,2026,38,-0.0099,3.0241
+subway_weekend,everything and universities,"stacked, all",combined,test,2026,38,0.3006,2.3406
+subway_weekend,everything and universities,mean of all,combined,test,2026,38,0.3286,2.292
+bikes_weekday,"students, everyone",linear regression,single,validation,2023,51,0.7393,0.0354
+bikes_weekday,"students, everyone",ridge,single,validation,2023,51,0.7397,0.0352
+bikes_weekday,"students, everyone",lasso,single,validation,2023,51,0.74,0.0351
+bikes_weekday,"students, everyone",random forest,single,validation,2023,51,0.7099,0.0368
+bikes_weekday,"students, everyone",gradient boosting,single,validation,2023,51,0.5821,0.0419
+bikes_weekday,"students, everyone",Gaussian process,single,validation,2023,51,0.7323,0.0346
+bikes_weekday,"students, everyone",neural network (8),single,validation,2023,51,0.7401,0.0342
+bikes_weekday,"students, everyone","neural network (32, 16)",single,validation,2023,51,0.7397,0.0341
+bikes_weekday,"students, everyone","neural network (64, 32, 16)",single,validation,2023,51,0.7394,0.0341
+bikes_weekday,"students, everyone","ridge, then neural network",single,validation,2023,51,0.7397,0.0352
+bikes_weekday,"students, everyone","ridge, then trees",single,validation,2023,51,0.636,0.0404
+bikes_weekday,"students, everyone","stacked, all",combined,validation,2023,51,0.7393,0.0354
+bikes_weekday,"students, everyone",mean of all,combined,validation,2023,51,0.73,0.035
+bikes_weekday,"students, everyone",linear regression,single,validation,2024,53,0.4791,0.0736
+bikes_weekday,"students, everyone",ridge,single,validation,2024,53,0.4787,0.0736
+bikes_weekday,"students, everyone",lasso,single,validation,2024,53,0.4723,0.0736
+bikes_weekday,"students, everyone",random forest,single,validation,2024,53,0.4919,0.0738
+bikes_weekday,"students, everyone",gradient boosting,single,validation,2024,53,0.464,0.0742
+bikes_weekday,"students, everyone",Gaussian process,single,validation,2024,53,0.4779,0.0731
+bikes_weekday,"students, everyone",neural network (8),single,validation,2024,53,0.4741,0.0736
+bikes_weekday,"students, everyone","neural network (32, 16)",single,validation,2024,53,0.4737,0.0736
+bikes_weekday,"students, everyone","neural network (64, 32, 16)",single,validation,2024,53,0.4736,0.0736
+bikes_weekday,"students, everyone","ridge, then neural network",single,validation,2024,53,0.4787,0.0736
+bikes_weekday,"students, everyone","ridge, then trees",single,validation,2024,53,0.4528,0.075
+bikes_weekday,"students, everyone","stacked, all",combined,validation,2024,53,0.4769,0.0736
+bikes_weekday,"students, everyone",mean of all,combined,validation,2024,53,0.4776,0.0737
+bikes_weekday,"students, everyone",linear regression,single,validation,2025,52,0.627,0.0605
+bikes_weekday,"students, everyone",ridge,single,validation,2025,52,0.6265,0.0606
+bikes_weekday,"students, everyone",lasso,single,validation,2025,52,0.6268,0.0606
+bikes_weekday,"students, everyone",random forest,single,validation,2025,52,0.6481,0.0581
+bikes_weekday,"students, everyone",gradient boosting,single,validation,2025,52,0.6228,0.0615
+bikes_weekday,"students, everyone",Gaussian process,single,validation,2025,52,0.6381,0.0594
+bikes_weekday,"students, everyone",neural network (8),single,validation,2025,52,0.6301,0.0602
+bikes_weekday,"students, everyone","neural network (32, 16)",single,validation,2025,52,0.6287,0.0604
+bikes_weekday,"students, everyone","neural network (64, 32, 16)",single,validation,2025,52,0.6283,0.0605
+bikes_weekday,"students, everyone","ridge, then neural network",single,validation,2025,52,0.6265,0.0606
+bikes_weekday,"students, everyone","ridge, then trees",single,validation,2025,52,0.6125,0.0627
+bikes_weekday,"students, everyone","stacked, all",combined,validation,2025,52,0.6299,0.0603
+bikes_weekday,"students, everyone",mean of all,combined,validation,2025,52,0.6344,0.0596
+bikes_weekday,"students, everyone",linear regression,single,test,2026,34,0.5518,0.0542
+bikes_weekday,"students, everyone",ridge,single,test,2026,34,0.5522,0.0542
+bikes_weekday,"students, everyone",lasso,single,test,2026,34,0.552,0.0542
+bikes_weekday,"students, everyone",random forest,single,test,2026,34,0.3922,0.0564
+bikes_weekday,"students, everyone",gradient boosting,single,test,2026,34,0.3893,0.0573
+bikes_weekday,"students, everyone",Gaussian process,single,test,2026,34,0.4979,0.0547
+bikes_weekday,"students, everyone",neural network (8),single,test,2026,34,0.5277,0.054
+bikes_weekday,"students, everyone","neural network (32, 16)",single,test,2026,34,0.491,0.0546
+bikes_weekday,"students, everyone","neural network (64, 32, 16)",single,test,2026,34,0.4744,0.0552
+bikes_weekday,"students, everyone","ridge, then neural network",single,test,2026,34,0.5522,0.0542
+bikes_weekday,"students, everyone","ridge, then trees",single,test,2026,34,0.4382,0.0567
+bikes_weekday,"students, everyone","stacked, all",combined,test,2026,34,0.5333,0.0541
+bikes_weekday,"students, everyone",mean of all,combined,test,2026,34,0.5274,0.054
+bikes_weekday,everything,linear regression,single,validation,2023,51,0.6451,0.0401
+bikes_weekday,everything,ridge,single,validation,2023,51,0.6968,0.0364
+bikes_weekday,everything,lasso,single,validation,2023,51,0.7457,0.0318
+bikes_weekday,everything,random forest,single,validation,2023,51,0.7195,0.0355
+bikes_weekday,everything,gradient boosting,single,validation,2023,51,0.5659,0.0442
+bikes_weekday,everything,Gaussian process,single,validation,2023,51,0.504,0.0462
+bikes_weekday,everything,neural network (8),single,validation,2023,51,0.684,0.0359
+bikes_weekday,everything,"neural network (32, 16)",single,validation,2023,51,0.682,0.0365
+bikes_weekday,everything,"neural network (64, 32, 16)",single,validation,2023,51,0.6243,0.0401
+bikes_weekday,everything,"ridge, then neural network",single,validation,2023,51,0.6968,0.0364
+bikes_weekday,everything,"ridge, then trees",single,validation,2023,51,0.4992,0.0483
+bikes_weekday,everything,"stacked, all",combined,validation,2023,51,0.7199,0.0348
+bikes_weekday,everything,mean of all,combined,validation,2023,51,0.6993,0.036
+bikes_weekday,everything,linear regression,single,validation,2024,53,0.6229,0.0648
+bikes_weekday,everything,ridge,single,validation,2024,53,0.5993,0.0667
+bikes_weekday,everything,lasso,single,validation,2024,53,0.5261,0.0726
+bikes_weekday,everything,random forest,single,validation,2024,53,0.5715,0.0676
+bikes_weekday,everything,gradient boosting,single,validation,2024,53,0.5642,0.071
+bikes_weekday,everything,Gaussian process,single,validation,2024,53,0.6092,0.066
+bikes_weekday,everything,neural network (8),single,validation,2024,53,0.5836,0.0676
+bikes_weekday,everything,"neural network (32, 16)",single,validation,2024,53,0.5743,0.0682
+bikes_weekday,everything,"neural network (64, 32, 16)",single,validation,2024,53,0.5689,0.0686
+bikes_weekday,everything,"ridge, then neural network",single,validation,2024,53,0.5993,0.0667
+bikes_weekday,everything,"ridge, then trees",single,validation,2024,53,0.6176,0.0672
+bikes_weekday,everything,"stacked, all",combined,validation,2024,53,0.5363,0.0718
+bikes_weekday,everything,mean of all,combined,validation,2024,53,0.5943,0.0671
+bikes_weekday,everything,linear regression,single,validation,2025,52,0.8045,0.046
+bikes_weekday,everything,ridge,single,validation,2025,52,0.798,0.0464
+bikes_weekday,everything,lasso,single,validation,2025,52,0.8018,0.0461
+bikes_weekday,everything,random forest,single,validation,2025,52,0.797,0.0454
+bikes_weekday,everything,gradient boosting,single,validation,2025,52,0.762,0.0551
+bikes_weekday,everything,Gaussian process,single,validation,2025,52,0.8046,0.0461
+bikes_weekday,everything,neural network (8),single,validation,2025,52,0.8118,0.0469
+bikes_weekday,everything,"neural network (32, 16)",single,validation,2025,52,0.8011,0.0474
+bikes_weekday,everything,"neural network (64, 32, 16)",single,validation,2025,52,0.8012,0.0478
+bikes_weekday,everything,"ridge, then neural network",single,validation,2025,52,0.798,0.0464
+bikes_weekday,everything,"ridge, then trees",single,validation,2025,52,0.796,0.0489
+bikes_weekday,everything,"stacked, all",combined,validation,2025,52,0.8185,0.0446
+bikes_weekday,everything,mean of all,combined,validation,2025,52,0.8138,0.0446
+bikes_weekday,everything,linear regression,single,test,2026,34,0.6054,0.0517
+bikes_weekday,everything,ridge,single,test,2026,34,0.619,0.0508
+bikes_weekday,everything,lasso,single,test,2026,34,0.6208,0.0509
+bikes_weekday,everything,random forest,single,test,2026,34,0.737,0.0394
+bikes_weekday,everything,gradient boosting,single,test,2026,34,0.7051,0.042
+bikes_weekday,everything,Gaussian process,single,test,2026,34,0.6585,0.0472
+bikes_weekday,everything,neural network (8),single,test,2026,34,0.6681,0.046
+bikes_weekday,everything,"neural network (32, 16)",single,test,2026,34,0.6692,0.0459
+bikes_weekday,everything,"neural network (64, 32, 16)",single,test,2026,34,0.6481,0.0484
+bikes_weekday,everything,"ridge, then neural network",single,test,2026,34,0.619,0.0508
+bikes_weekday,everything,"ridge, then trees",single,test,2026,34,0.6561,0.0492
+bikes_weekday,everything,"stacked, all",combined,test,2026,34,0.6879,0.0449
+bikes_weekday,everything,mean of all,combined,test,2026,34,0.6876,0.0446
+bikes_weekday,everything and universities,linear regression,single,validation,2023,51,0.2579,0.0515
+bikes_weekday,everything and universities,ridge,single,validation,2023,51,0.5126,0.0459
+bikes_weekday,everything and universities,lasso,single,validation,2023,51,0.4663,0.0484
+bikes_weekday,everything and universities,random forest,single,validation,2023,51,0.7147,0.0367
+bikes_weekday,everything and universities,gradient boosting,single,validation,2023,51,0.3906,0.0488
+bikes_weekday,everything and universities,Gaussian process,single,validation,2023,51,0.5773,0.0428
+bikes_weekday,everything and universities,neural network (8),single,validation,2023,51,0.6905,0.035
+bikes_weekday,everything and universities,"neural network (32, 16)",single,validation,2023,51,0.6089,0.0405
+bikes_weekday,everything and universities,"neural network (64, 32, 16)",single,validation,2023,51,0.6094,0.0405
+bikes_weekday,everything and universities,"ridge, then neural network",single,validation,2023,51,0.5126,0.0459
+bikes_weekday,everything and universities,"ridge, then trees",single,validation,2023,51,0.3943,0.055
+bikes_weekday,everything and universities,"stacked, all",combined,validation,2023,51,0.5208,0.0477
+bikes_weekday,everything and universities,mean of all,combined,validation,2023,51,0.5919,0.0422
+bikes_weekday,everything and universities,linear regression,single,validation,2024,53,0.5854,0.0681
+bikes_weekday,everything and universities,ridge,single,validation,2024,53,0.5873,0.0673
+bikes_weekday,everything and universities,lasso,single,validation,2024,53,0.5446,0.071
+bikes_weekday,everything and universities,random forest,single,validation,2024,53,0.5861,0.0676
+bikes_weekday,everything and universities,gradient boosting,single,validation,2024,53,0.5779,0.0716
+bikes_weekday,everything and universities,Gaussian process,single,validation,2024,53,0.6243,0.0646
+bikes_weekday,everything and universities,neural network (8),single,validation,2024,53,0.5926,0.067
+bikes_weekday,everything and universities,"neural network (32, 16)",single,validation,2024,53,0.5775,0.068
+bikes_weekday,everything and universities,"neural network (64, 32, 16)",single,validation,2024,53,0.5672,0.0686
+bikes_weekday,everything and universities,"ridge, then neural network",single,validation,2024,53,0.5873,0.0673
+bikes_weekday,everything and universities,"ridge, then trees",single,validation,2024,53,0.6128,0.0698
+bikes_weekday,everything and universities,"stacked, all",combined,validation,2024,53,0.5789,0.0679
+bikes_weekday,everything and universities,mean of all,combined,validation,2024,53,0.5952,0.0677
+bikes_weekday,everything and universities,linear regression,single,validation,2025,52,0.838,0.0415
+bikes_weekday,everything and universities,ridge,single,validation,2025,52,0.7946,0.0455
+bikes_weekday,everything and universities,lasso,single,validation,2025,52,0.7985,0.0455
+bikes_weekday,everything and universities,random forest,single,validation,2025,52,0.7896,0.0469
+bikes_weekday,everything and universities,gradient boosting,single,validation,2025,52,0.7922,0.0497
+bikes_weekday,everything and universities,Gaussian process,single,validation,2025,52,0.8094,0.0457
+bikes_weekday,everything and universities,neural network (8),single,validation,2025,52,0.8182,0.0456
+bikes_weekday,everything and universities,"neural network (32, 16)",single,validation,2025,52,0.8252,0.0457
+bikes_weekday,everything and universities,"neural network (64, 32, 16)",single,validation,2025,52,0.8276,0.0454
+bikes_weekday,everything and universities,"ridge, then neural network",single,validation,2025,52,0.7946,0.0455
+bikes_weekday,everything and universities,"ridge, then trees",single,validation,2025,52,0.825,0.047
+bikes_weekday,everything and universities,"stacked, all",combined,validation,2025,52,0.8083,0.0451
+bikes_weekday,everything and universities,mean of all,combined,validation,2025,52,0.8235,0.0441
+bikes_weekday,everything and universities,linear regression,single,test,2026,34,0.5854,0.0498
+bikes_weekday,everything and universities,ridge,single,test,2026,34,0.6518,0.0468
+bikes_weekday,everything and universities,lasso,single,test,2026,34,0.6445,0.0478
+bikes_weekday,everything and universities,random forest,single,test,2026,34,0.7681,0.0365
+bikes_weekday,everything and universities,gradient boosting,single,test,2026,34,0.7042,0.0393
+bikes_weekday,everything and universities,Gaussian process,single,test,2026,34,0.6767,0.0456
+bikes_weekday,everything and universities,neural network (8),single,test,2026,34,0.7013,0.0429
+bikes_weekday,everything and universities,"neural network (32, 16)",single,test,2026,34,0.6952,0.0427
+bikes_weekday,everything and universities,"neural network (64, 32, 16)",single,test,2026,34,0.6878,0.0431
+bikes_weekday,everything and universities,"ridge, then neural network",single,test,2026,34,0.6518,0.0468
+bikes_weekday,everything and universities,"ridge, then trees",single,test,2026,34,0.6745,0.0418
+bikes_weekday,everything and universities,"stacked, all",combined,test,2026,34,0.683,0.0429
+bikes_weekday,everything and universities,mean of all,combined,test,2026,34,0.7029,0.042
+bikes_weekend,"students, everyone",linear regression,single,validation,2023,51,0.3458,0.0643
+bikes_weekend,"students, everyone",ridge,single,validation,2023,51,0.3458,0.0641
+bikes_weekend,"students, everyone",lasso,single,validation,2023,51,0.3454,0.064
+bikes_weekend,"students, everyone",random forest,single,validation,2023,51,0.3041,0.0665
+bikes_weekend,"students, everyone",gradient boosting,single,validation,2023,51,0.2338,0.0696
+bikes_weekend,"students, everyone",Gaussian process,single,validation,2023,51,0.3477,0.064
+bikes_weekend,"students, everyone",neural network (8),single,validation,2023,51,0.3429,0.0636
+bikes_weekend,"students, everyone","neural network (32, 16)",single,validation,2023,51,0.3414,0.0635
+bikes_weekend,"students, everyone","neural network (64, 32, 16)",single,validation,2023,51,0.3402,0.0635
+bikes_weekend,"students, everyone","ridge, then neural network",single,validation,2023,51,0.3458,0.0641
+bikes_weekend,"students, everyone","ridge, then trees",single,validation,2023,51,0.232,0.0701
+bikes_weekend,"students, everyone","stacked, all",combined,validation,2023,51,0.3454,0.064
+bikes_weekend,"students, everyone",mean of all,combined,validation,2023,51,0.3409,0.0636
+bikes_weekend,"students, everyone",linear regression,single,validation,2024,53,0.3517,0.0668
+bikes_weekend,"students, everyone",ridge,single,validation,2024,53,0.3515,0.0667
+bikes_weekend,"students, everyone",lasso,single,validation,2024,53,0.3485,0.0659
+bikes_weekend,"students, everyone",random forest,single,validation,2024,53,0.3584,0.0695
+bikes_weekend,"students, everyone",gradient boosting,single,validation,2024,53,0.3074,0.0729
+bikes_weekend,"students, everyone",Gaussian process,single,validation,2024,53,0.3547,0.0659
+bikes_weekend,"students, everyone",neural network (8),single,validation,2024,53,0.3402,0.0655
+bikes_weekend,"students, everyone","neural network (32, 16)",single,validation,2024,53,0.3546,0.0661
+bikes_weekend,"students, everyone","neural network (64, 32, 16)",single,validation,2024,53,0.3497,0.0659
+bikes_weekend,"students, everyone","ridge, then neural network",single,validation,2024,53,0.3515,0.0667
+bikes_weekend,"students, everyone","ridge, then trees",single,validation,2024,53,0.313,0.0726
+bikes_weekend,"students, everyone","stacked, all",combined,validation,2024,53,0.3509,0.0657
+bikes_weekend,"students, everyone",mean of all,combined,validation,2024,53,0.3641,0.0656
+bikes_weekend,"students, everyone",linear regression,single,validation,2025,52,0.5926,0.0624
+bikes_weekend,"students, everyone",ridge,single,validation,2025,52,0.5907,0.0625
+bikes_weekend,"students, everyone",lasso,single,validation,2025,52,0.5883,0.0627
+bikes_weekend,"students, everyone",random forest,single,validation,2025,52,0.5912,0.0606
+bikes_weekend,"students, everyone",gradient boosting,single,validation,2025,52,0.3342,0.0743
+bikes_weekend,"students, everyone",Gaussian process,single,validation,2025,52,0.5786,0.0636
+bikes_weekend,"students, everyone",neural network (8),single,validation,2025,52,0.5574,0.0647
+bikes_weekend,"students, everyone","neural network (32, 16)",single,validation,2025,52,0.5476,0.0653
+bikes_weekend,"students, everyone","neural network (64, 32, 16)",single,validation,2025,52,0.5411,0.0658
+bikes_weekend,"students, everyone","ridge, then neural network",single,validation,2025,52,0.5907,0.0625
+bikes_weekend,"students, everyone","ridge, then trees",single,validation,2025,52,0.3305,0.0747
+bikes_weekend,"students, everyone","stacked, all",combined,validation,2025,52,0.5947,0.0622
+bikes_weekend,"students, everyone",mean of all,combined,validation,2025,52,0.577,0.0625
+bikes_weekend,"students, everyone",linear regression,single,test,2026,34,0.3726,0.0632
+bikes_weekend,"students, everyone",ridge,single,test,2026,34,0.3735,0.0632
+bikes_weekend,"students, everyone",lasso,single,test,2026,34,0.3728,0.0632
+bikes_weekend,"students, everyone",random forest,single,test,2026,34,0.3954,0.0633
+bikes_weekend,"students, everyone",gradient boosting,single,test,2026,34,0.3816,0.0622
+bikes_weekend,"students, everyone",Gaussian process,single,test,2026,34,0.3765,0.0636
+bikes_weekend,"students, everyone",neural network (8),single,test,2026,34,0.3728,0.0626
+bikes_weekend,"students, everyone","neural network (32, 16)",single,test,2026,34,0.3793,0.0621
+bikes_weekend,"students, everyone","neural network (64, 32, 16)",single,test,2026,34,0.3738,0.0625
+bikes_weekend,"students, everyone","ridge, then neural network",single,test,2026,34,0.3735,0.0632
+bikes_weekend,"students, everyone","ridge, then trees",single,test,2026,34,0.4143,0.0615
+bikes_weekend,"students, everyone","stacked, all",combined,test,2026,34,0.3726,0.0632
+bikes_weekend,"students, everyone",mean of all,combined,test,2026,34,0.4052,0.0617
+bikes_weekend,everything,linear regression,single,validation,2023,51,0.4365,0.0641
+bikes_weekend,everything,ridge,single,validation,2023,51,0.4276,0.0648
+bikes_weekend,everything,lasso,single,validation,2023,51,0.5202,0.0592
+bikes_weekend,everything,random forest,single,validation,2023,51,0.3237,0.0643
+bikes_weekend,everything,gradient boosting,single,validation,2023,51,0.242,0.0694
+bikes_weekend,everything,Gaussian process,single,validation,2023,51,0.409,0.0637
+bikes_weekend,everything,neural network (8),single,validation,2023,51,0.2068,0.0719
+bikes_weekend,everything,"neural network (32, 16)",single,validation,2023,51,0.2215,0.0709
+bikes_weekend,everything,"neural network (64, 32, 16)",single,validation,2023,51,0.2372,0.0704
+bikes_weekend,everything,"ridge, then neural network",single,validation,2023,51,0.4276,0.0648
+bikes_weekend,everything,"ridge, then trees",single,validation,2023,51,0.3834,0.0675
+bikes_weekend,everything,"stacked, all",combined,validation,2023,51,0.3335,0.0646
+bikes_weekend,everything,mean of all,combined,validation,2023,51,0.4309,0.061
+bikes_weekend,everything,linear regression,single,validation,2024,53,0.2643,0.0682
+bikes_weekend,everything,ridge,single,validation,2024,53,0.2709,0.0677
+bikes_weekend,everything,lasso,single,validation,2024,53,0.373,0.064
+bikes_weekend,everything,random forest,single,validation,2024,53,0.3056,0.0666
+bikes_weekend,everything,gradient boosting,single,validation,2024,53,0.2532,0.071
+bikes_weekend,everything,Gaussian process,single,validation,2024,53,0.4038,0.0616
+bikes_weekend,everything,neural network (8),single,validation,2024,53,0.3963,0.0625
+bikes_weekend,everything,"neural network (32, 16)",single,validation,2024,53,0.309,0.0661
+bikes_weekend,everything,"neural network (64, 32, 16)",single,validation,2024,53,0.388,0.0632
+bikes_weekend,everything,"ridge, then neural network",single,validation,2024,53,0.2709,0.0677
+bikes_weekend,everything,"ridge, then trees",single,validation,2024,53,0.2241,0.0683
+bikes_weekend,everything,"stacked, all",combined,validation,2024,53,0.3854,0.0629
+bikes_weekend,everything,mean of all,combined,validation,2024,53,0.3603,0.0632
+bikes_weekend,everything,linear regression,single,validation,2025,52,0.615,0.0581
+bikes_weekend,everything,ridge,single,validation,2025,52,0.5888,0.0597
+bikes_weekend,everything,lasso,single,validation,2025,52,0.5444,0.0635
+bikes_weekend,everything,random forest,single,validation,2025,52,0.6728,0.054
+bikes_weekend,everything,gradient boosting,single,validation,2025,52,0.4577,0.0664
+bikes_weekend,everything,Gaussian process,single,validation,2025,52,0.539,0.0657
+bikes_weekend,everything,neural network (8),single,validation,2025,52,0.5835,0.0618
+bikes_weekend,everything,"neural network (32, 16)",single,validation,2025,52,0.5792,0.0619
+bikes_weekend,everything,"neural network (64, 32, 16)",single,validation,2025,52,0.5751,0.0624
+bikes_weekend,everything,"ridge, then neural network",single,validation,2025,52,0.5888,0.0597
+bikes_weekend,everything,"ridge, then trees",single,validation,2025,52,0.5045,0.0684
+bikes_weekend,everything,"stacked, all",combined,validation,2025,52,0.5751,0.0624
+bikes_weekend,everything,mean of all,combined,validation,2025,52,0.6345,0.057
+bikes_weekend,everything,linear regression,single,test,2026,34,0.2122,0.0757
+bikes_weekend,everything,ridge,single,test,2026,34,0.2216,0.0753
+bikes_weekend,everything,lasso,single,test,2026,34,0.3443,0.0681
+bikes_weekend,everything,random forest,single,test,2026,34,0.4534,0.0633
+bikes_weekend,everything,gradient boosting,single,test,2026,34,0.309,0.0659
+bikes_weekend,everything,Gaussian process,single,test,2026,34,0.3831,0.065
+bikes_weekend,everything,neural network (8),single,test,2026,34,0.3871,0.0669
+bikes_weekend,everything,"neural network (32, 16)",single,test,2026,34,0.3802,0.0674
+bikes_weekend,everything,"neural network (64, 32, 16)",single,test,2026,34,0.3712,0.0679
+bikes_weekend,everything,"ridge, then neural network",single,test,2026,34,0.2216,0.0753
+bikes_weekend,everything,"ridge, then trees",single,test,2026,34,0.2584,0.0697
+bikes_weekend,everything,"stacked, all",combined,test,2026,34,0.3154,0.0707
+bikes_weekend,everything,mean of all,combined,test,2026,34,0.3741,0.0674
+bikes_weekend,everything and universities,linear regression,single,validation,2023,51,-0.34,0.0926
+bikes_weekend,everything and universities,ridge,single,validation,2023,51,0.4085,0.0632
+bikes_weekend,everything and universities,lasso,single,validation,2023,51,0.5177,0.0581
+bikes_weekend,everything and universities,random forest,single,validation,2023,51,0.35,0.0626
+bikes_weekend,everything and universities,gradient boosting,single,validation,2023,51,0.2793,0.0668
+bikes_weekend,everything and universities,Gaussian process,single,validation,2023,51,0.4118,0.0615
+bikes_weekend,everything and universities,neural network (8),single,validation,2023,51,0.4524,0.0608
+bikes_weekend,everything and universities,"neural network (32, 16)",single,validation,2023,51,0.447,0.0623
+bikes_weekend,everything and universities,"neural network (64, 32, 16)",single,validation,2023,51,0.3079,0.0669
+bikes_weekend,everything and universities,"ridge, then neural network",single,validation,2023,51,0.4085,0.0632
+bikes_weekend,everything and universities,"ridge, then trees",single,validation,2023,51,0.3251,0.0692
+bikes_weekend,everything and universities,"stacked, all",combined,validation,2023,51,0.3979,0.0606
+bikes_weekend,everything and universities,mean of all,combined,validation,2023,51,0.479,0.0585
+bikes_weekend,everything and universities,linear regression,single,validation,2024,53,0.438,0.0613
+bikes_weekend,everything and universities,ridge,single,validation,2024,53,0.4562,0.0595
+bikes_weekend,everything and universities,lasso,single,validation,2024,53,0.4767,0.0585
+bikes_weekend,everything and universities,random forest,single,validation,2024,53,0.4684,0.0611
+bikes_weekend,everything and universities,gradient boosting,single,validation,2024,53,0.3125,0.0702
+bikes_weekend,everything and universities,Gaussian process,single,validation,2024,53,0.4817,0.0575
+bikes_weekend,everything and universities,neural network (8),single,validation,2024,53,0.4864,0.0567
+bikes_weekend,everything and universities,"neural network (32, 16)",single,validation,2024,53,0.2113,0.0715
+bikes_weekend,everything and universities,"neural network (64, 32, 16)",single,validation,2024,53,0.4779,0.0583
+bikes_weekend,everything and universities,"ridge, then neural network",single,validation,2024,53,0.4562,0.0595
+bikes_weekend,everything and universities,"ridge, then trees",single,validation,2024,53,0.3388,0.0662
+bikes_weekend,everything and universities,"stacked, all",combined,validation,2024,53,0.4757,0.0584
+bikes_weekend,everything and universities,mean of all,combined,validation,2024,53,0.4673,0.0583
+bikes_weekend,everything and universities,linear regression,single,validation,2025,52,0.5683,0.0623
+bikes_weekend,everything and universities,ridge,single,validation,2025,52,0.6007,0.0592
+bikes_weekend,everything and universities,lasso,single,validation,2025,52,0.5715,0.0631
+bikes_weekend,everything and universities,random forest,single,validation,2025,52,0.6713,0.0544
+bikes_weekend,everything and universities,gradient boosting,single,validation,2025,52,0.581,0.0621
+bikes_weekend,everything and universities,Gaussian process,single,validation,2025,52,0.5335,0.0664
+bikes_weekend,everything and universities,neural network (8),single,validation,2025,52,0.58,0.0625
+bikes_weekend,everything and universities,"neural network (32, 16)",single,validation,2025,52,0.5831,0.0615
+bikes_weekend,everything and universities,"neural network (64, 32, 16)",single,validation,2025,52,0.5888,0.0609
+bikes_weekend,everything and universities,"ridge, then neural network",single,validation,2025,52,0.6007,0.0592
+bikes_weekend,everything and universities,"ridge, then trees",single,validation,2025,52,0.5823,0.0622
+bikes_weekend,everything and universities,"stacked, all",combined,validation,2025,52,0.5888,0.0609
+bikes_weekend,everything and universities,mean of all,combined,validation,2025,52,0.6319,0.0574
+bikes_weekend,everything and universities,linear regression,single,test,2026,34,0.2086,0.0733
+bikes_weekend,everything and universities,ridge,single,test,2026,34,0.2282,0.0725
+bikes_weekend,everything and universities,lasso,single,test,2026,34,0.2252,0.073
+bikes_weekend,everything and universities,random forest,single,test,2026,34,0.4013,0.0657
+bikes_weekend,everything and universities,gradient boosting,single,test,2026,34,0.2775,0.0732
+bikes_weekend,everything and universities,Gaussian process,single,test,2026,34,0.4775,0.058
+bikes_weekend,everything and universities,neural network (8),single,test,2026,34,0.3754,0.0663
+bikes_weekend,everything and universities,"neural network (32, 16)",single,test,2026,34,0.3669,0.0672
+bikes_weekend,everything and universities,"neural network (64, 32, 16)",single,test,2026,34,0.3649,0.0675
+bikes_weekend,everything and universities,"ridge, then neural network",single,test,2026,34,0.2282,0.0725
+bikes_weekend,everything and universities,"ridge, then trees",single,test,2026,34,0.2261,0.0724
+bikes_weekend,everything and universities,"stacked, all",combined,test,2026,34,0.3318,0.0683
+bikes_weekend,everything and universities,mean of all,combined,test,2026,34,0.3674,0.0666

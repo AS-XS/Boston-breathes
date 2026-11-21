@@ -21,12 +21,13 @@ months within the training weeks:
     width chosen), on the network's inputs;
   * ridge, then trees, and ridge, then a neural network: the flexible model fitted to what ridge leaves on the
     training weeks;
-  * combinations, fixed before the search was run: stacked over all eleven models and over ridge, tuned trees and
+  * combinations, fixed before the full run: stacked over all eleven models and over ridge, tuned trees and
     the network (non-negative weights fitted on out-of-fold predictions within the training weeks, adding up to one),
     and the mean of the same.
 Each is compared with the better of model_comparison.py's linear model and trees for that target, as the change in
 RMSE with a 95% interval from drawing calendar months with replacement (the same draws for every model). With 30
-candidates per target, the best one's gain is partly luck; the combinations fixed in advance are not.
+candidates per target, the best one's gain is partly luck. The combinations were fixed in advance, but after a trial
+run on the two campus ratios, so the two totals are their cleaner test.
 
 Weekly presence signals of travel_models.py (subway and Bluebikes, weekdays and weekends; each validation year
 predicted from the years before it, and January-September 2026 from 2022-2025), with three sets of inputs: the
@@ -35,7 +36,7 @@ everything with the ten universities. Models: linear regression, ridge, lasso, r
 Gaussian process, three neural networks (hidden layers of 8; 32 and 16; 64, 32 and 16 units; L2 penalty chosen from
 0.3 to 10; the mean of 5 fits), ridge then trees, ridge then a neural network, and the stack and mean of all.
 
-Run time: about 2 hours on 4 cores.
+Run time: about 3 hours on 4 cores.
 
 Outputs in data/processed/:
   * model_search_targets.csv  typical error of each model and set of inputs for each travel target (all weeks, and

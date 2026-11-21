@@ -1995,6 +1995,76 @@ def ensemble_signals_table() -> pl.DataFrame:
         pl.col("evaluation").alias("Scored on"), pl.col("r2").alias("R²"))
 
 
+SEARCH_MODELS = {"linear": "Linear, week of year", "ridge": "Ridge", "gradient boosting": "Gradient boosting",
+                 "gradient boosting, tuned": "Gradient boosting, tuned", "random forest": "Random forest",
+                 "extra trees": "Extra trees", "neural network": "Neural network",
+                 "Gaussian process": "Gaussian process", "support vector machine": "Support vector machine",
+                 "ridge, then trees": "Ridge, then trees on what it misses",
+                 "ridge, then neural network": "Ridge, then a network on what it misses",
+                 "stacked, all": "Stacked: all eleven", "stacked: ridge, tuned trees, neural network":
+                 "Stacked: ridge, tuned trees, network", "mean of all": "Mean of all eleven",
+                 "mean: ridge, tuned trees, neural network": "Mean: ridge, tuned trees, network"}
+SEARCH_INPUTS = {"the comparison's": "The comparison's inputs", "more inputs": "More inputs"}
+
+
+def model_search_data() -> pl.DataFrame:
+    return (read("model_search_targets.csv")
+            .with_columns(pl.col("model").replace_strict(SEARCH_MODELS).alias("label"),
+                          pl.col("inputs").replace_strict(SEARCH_INPUTS).alias("inputs_label"),
+                          pl.col("typical_error_pct").round(2).alias("error_pct"),
+                          pl.col("rmse_change_pct").round(1).alias("change_pct"),
+                          pl.col("rmse_change_pct_low").round(1).alias("low_pct"),
+                          pl.col("rmse_change_pct_high").round(1).alias("high_pct")))
+
+
+def model_search_chart(t: dict) -> alt.TopLevelMixin:
+    df = model_search_data()
+    order = list(SEARCH_MODELS.values())
+    inputs = list(SEARCH_INPUTS.values())
+    shape = alt.Scale(domain=inputs, range=["circle", "diamond"])
+    color = alt.Scale(domain=inputs, range=[t["series1"], t["series2"]])
+    panels = []
+    for i, target in enumerate(TARGETS):
+        data = df.filter(pl.col("target") == target)
+        best = data.filter((pl.col("model") == pl.col("reference")) & (pl.col("inputs") == "the comparison's"))
+        reference = best.row(0, named=True)
+        low, high = math.floor(data["error_pct"].min()), math.ceil(data["error_pct"].max())
+        step = 1 if high - low <= 6 else 2 if high - low <= 10 else 4  # at most about six labels
+        x = alt.X("error_pct:Q", title="Typical error on held-out months (%)",
+                  scale=alt.Scale(domain=[low, high], zero=False),
+                  axis=alt.Axis(values=list(range(low, high + 1, step)), labelExpr="datum.value + '%'"))
+        y = alt.Y("label:N", sort=order, title=None,
+                  axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelPadding=8, labelLimit=300)
+                  if i % 2 == 0 else None)
+        tooltip = [alt.Tooltip("target:N", title="Target"), alt.Tooltip("label:N", title="Model"),
+                   alt.Tooltip("inputs_label:N", title="Inputs"),
+                   alt.Tooltip("error_pct:Q", title="Typical error (%)", format=".2f"),
+                   alt.Tooltip("change_pct:Q", title="Change against the best existing model (%)", format="+.1f"),
+                   alt.Tooltip("low_pct:Q", title="95% low (%)", format="+.1f"),
+                   alt.Tooltip("high_pct:Q", title="95% high (%)", format="+.1f")]
+        legend = alt.Legend(title=None, orient="top", direction="horizontal") if i == 0 else None
+        line = alt.Chart(data).mark_line(color=t["grid"], strokeWidth=2).encode(x=x, y=y, detail="label:N")
+        points = alt.Chart(data).mark_point(size=70, filled=True, opacity=1, stroke=t["surface"],
+                                            strokeWidth=1).encode(
+            x=x, y=y, shape=alt.Shape("inputs_label:N", scale=shape, legend=legend),
+            color=alt.Color("inputs_label:N", scale=color, legend=legend), tooltip=tooltip)
+        rule = alt.Chart(best).mark_rule(color=t["muted"], strokeDash=[4, 3]).encode(x=x)
+        subtitle = (f"dashed: the best existing model ({SEARCH_MODELS[reference['reference']].lower()}, "
+                    f"{reference['error_pct']:.1f}%)")
+        panels.append(alt.layer(rule, line, points).properties(
+            width=(WIDTH - 300) // 2, height=alt.Step(18),
+            title=alt.Title(target, subtitle=subtitle, fontSize=12, subtitleFontSize=10, anchor="start")))
+    return alt.vconcat(alt.hconcat(*panels[:2], spacing=24), alt.hconcat(*panels[2:], spacing=24), spacing=16)
+
+
+def model_search_table() -> pl.DataFrame:
+    return model_search_data().select(
+        pl.col("target").alias("Target"), pl.col("label").alias("Model"), pl.col("inputs_label").alias("Inputs"),
+        pl.col("error_pct").alias("Typical error on held-out months (%)"),
+        pl.col("change_pct").alias("Change against the best existing model (%)"),
+        pl.col("low_pct").alias("95% low (%)"), pl.col("high_pct").alias("95% high (%)"))
+
+
 FINAL_STEPS = {"subway": "Subway alone", "bikes": "Bluebikes alone", "subway and bikes": "Subway and Bluebikes together",
                "final": "Together, corrected for weekend riders (final)"}
 SHARE_PARTS = {"share_summer": "Summer", "share_breaks": "Other breaks"}
@@ -2095,7 +2165,8 @@ SECTION_F = {
     "intro": "Section F of the Boston Breathes figures: each model scored on data it was not fitted on, against a "
              "baseline, the steps to the final shares away, and combinations of models. Values come from "
              "data/processed/population_model_forward.csv, model_comparison.csv, joint_population_shares.csv, "
-             "population_estimate_shares.csv, ensemble_targets_accuracy.csv and ensemble_signals_accuracy.csv.",
+             "population_estimate_shares.csv, ensemble_targets_accuracy.csv, ensemble_signals_accuracy.csv and "
+             "model_search_targets.csv.",
     "charts": [
         {
             "name": "f16_population_model_tests",
@@ -2172,6 +2243,20 @@ SECTION_F = {
                       "and a Gaussian process. With one to three years to fit on, the stacking weights and the "
                       "cross-validated choice are noisy; a plain mean is steadier."],
             "chart": ensemble_signals_chart, "table": ensemble_signals_table,
+        },
+        {
+            "name": "f22_model_search",
+            "title": "Travel models: more inputs and more models",
+            "question": "How far do richer inputs, neural networks and stacks go?",
+            "notes": ["Typical error on held-out months (each calendar month held out in turn) of fifteen models, with "
+                      "the comparison's inputs (circles) and with more inputs (diamonds): calendar detail, last "
+                      "week's weather and the ten largest universities' calendars. Every setting and stacking weight "
+                      "is chosen within the training weeks; the dashed line is the best model of the comparison.",
+                      "The four combinations were fixed before the full run, after a trial run on the two campus "
+                      "ratios, so the totals are their cleaner test; with thirty candidates per target, the best "
+                      "single one's lead is partly luck. The table gives each change in error with its 95% interval "
+                      "from resampling months."],
+            "chart": model_search_chart, "table": model_search_table,
         },
     ],
 }
