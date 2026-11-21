@@ -1864,6 +1864,137 @@ def family_accuracy_table() -> pl.DataFrame:
         pl.col("error_pct").alias("Typical error on held-out months (%)"), pl.col("r2").alias("R²"))
 
 
+COMBINED = {"average": "Average of the two", "stacked": "Stacked: weights learned on training weeks",
+            "stacked, with the forest": "Stacked, with a random forest",
+            "hybrid": "Linear, then trees on what it misses",
+            "chosen by cross-validation": "The one chosen by cross-validation"}
+SINGLE_NAMES = {"linear, week of year": "linear, week of year", "gradient boosting": "gradient-boosted trees"}
+
+
+def ensemble_targets_data() -> pl.DataFrame:
+    """Held-out error of each combined travel model against the better of the linear model and the trees."""
+    return (read("ensemble_targets_accuracy.csv").filter(pl.col("subset") == "all weeks")
+            .with_columns(pl.col("model").replace(COMBINED).alias("label"),
+                          pl.col("rmse_change_pct").round(1).alias("change_pct"),
+                          pl.col("rmse_change_pct_low").round(1).alias("low_pct"),
+                          pl.col("rmse_change_pct_high").round(1).alias("high_pct"),
+                          pl.col("typical_error_pct").round(1).alias("error_pct"))
+            .with_columns(pl.when(pl.col("model") == pl.col("best_single")).then(pl.lit("the best single model"))
+                          .when((pl.col("low_pct") == 0) & (pl.col("high_pct") == 0)).then(pl.lit("same as the best single"))
+                          .otherwise(pl.format("{}%", pl.col("change_pct").map_elements(
+                              lambda v: f"{v:+.1f}".replace("-", "−"), return_dtype=pl.Utf8))).alias("text"))
+            .select("target", "model", "kind", "label", "best_single", "error_pct", "change_pct", "low_pct",
+                    "high_pct", "text"))
+
+
+def ensemble_targets_chart(t: dict) -> alt.TopLevelMixin:
+    df = ensemble_targets_data()
+    combined = df.filter(pl.col("kind") == "combined")
+    low = math.floor(combined["low_pct"].min() / 5) * 5
+    high = math.ceil(combined["high_pct"].max() / 5) * 5
+    order = list(COMBINED.values())
+    panels = []
+    for i, target in enumerate(TARGETS):
+        data = combined.filter(pl.col("target") == target)
+        best = df.filter((pl.col("target") == target) & (pl.col("model") == data["best_single"][0])).row(0, named=True)
+        x = alt.X("change_pct:Q", title="Change in held-out error against the best single model (%)",
+                  scale=alt.Scale(domain=[low, high]),
+                  axis=alt.Axis(values=list(range(math.ceil(low / 10) * 10, high + 1, 10)), labelExpr=SIGNED_PCT))
+        y = alt.Y("label:N", sort=order, title=None,
+                  axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelPadding=8, labelLimit=300)
+                  if i % 2 == 0 else None)
+        tooltip = [alt.Tooltip("target:N", title="Target"), alt.Tooltip("label:N", title="Combination"),
+                   alt.Tooltip("text:N", title="Change in error"),
+                   alt.Tooltip("low_pct:Q", title="95% low (%)", format="+.1f"),
+                   alt.Tooltip("high_pct:Q", title="95% high (%)", format="+.1f"),
+                   alt.Tooltip("error_pct:Q", title="Typical error (%)", format=".1f")]
+        zero = alt.Chart(pl.DataFrame({"x": [0]})).mark_rule(color=t["muted"], strokeDash=[4, 3]).encode(x="x:Q")
+        interval = alt.Chart(data).mark_rule(strokeWidth=3, strokeCap="round", color=t["series1"]).encode(
+            x="low_pct:Q", x2="high_pct:Q", y=y, tooltip=tooltip)
+        dots = alt.Chart(data).mark_circle(size=90, opacity=1, color=t["series1"], stroke=t["surface"],
+                                           strokeWidth=2).encode(x=x, y=y, tooltip=tooltip)
+        label = lambda **style: alt.Chart(data).mark_text(dy=-12, fontSize=10, **style).encode(  # noqa: E731
+            x=x, y=y, text="text:N")
+        subtitle = f"best single: {SINGLE_NAMES[best['model']]}, typical error {best['error_pct']:.1f}%"
+        panels.append(alt.layer(zero, interval, dots, label(color=t["surface"], stroke=t["surface"], strokeWidth=4),
+                                label(color=t["ink2"])).properties(
+            width=(WIDTH - 300) // 2, height=alt.Step(34),
+            title=alt.Title(target, subtitle=subtitle, fontSize=12, subtitleFontSize=10, anchor="start")))
+    return alt.vconcat(alt.hconcat(*panels[:2], spacing=24), alt.hconcat(*panels[2:], spacing=24), spacing=16)
+
+
+def ensemble_targets_table() -> pl.DataFrame:
+    return ensemble_targets_data().select(
+        pl.col("target").alias("Target"), pl.col("model").alias("Model"), pl.col("kind").alias("Kind"),
+        pl.col("error_pct").alias("Typical error on held-out months (%)"),
+        pl.col("change_pct").alias("Change against the best single model (%)"),
+        pl.col("low_pct").alias("95% low (%)"), pl.col("high_pct").alias("95% high (%)"))
+
+
+SIGNAL_NAMES = {"subway_weekday": "Subway, weekdays", "subway_weekend": "Subway, weekends",
+                "bikes_weekday": "Bluebikes, weekdays", "bikes_weekend": "Bluebikes, weekends"}
+SIGNAL_MODELS = {"best single": "Best single model", "mean of all eleven": "Mean of all eleven families",
+                 "stacked, all eleven": "Stacked: weights learned on training years",
+                 "chosen by cross-validation, all eleven": "The one chosen by cross-validation"}
+EVALUATIONS = ["Validation years (mean)", "2026 test"]
+
+
+def ensemble_signals_data() -> pl.DataFrame:
+    """For each signal, the R² of the best single model and of each combination of all eleven families, each with
+    the feature set (and, for the single model, the family) that did best on the validation years."""
+    df = read("ensemble_signals_accuracy.csv")
+    validation = (df.filter(pl.col("evaluation") == "validation").group_by("signal", "features", "model", "kind")
+                  .agg(pl.col("r2").mean().alias("validation")))
+    test = df.filter(pl.col("evaluation") == "test").select("signal", "features", "model", pl.col("r2").alias("test"))
+    both = validation.join(test, on=["signal", "features", "model"]).with_columns(
+        pl.when(pl.col("kind") == "single").then(pl.lit("best single")).otherwise(pl.col("model")).alias("entry"))
+    best = (both.filter(pl.col("entry").is_in(list(SIGNAL_MODELS))).sort("validation", descending=True)
+            .group_by("signal", "entry", maintain_order=True).head(1))
+    return (best.unpivot(index=["signal", "entry", "model", "features"], on=["validation", "test"],
+                         variable_name="evaluation", value_name="r2")
+            .with_columns(pl.col("signal").replace_strict(SIGNAL_NAMES).alias("signal_name"),
+                          pl.col("entry").replace_strict(SIGNAL_MODELS).alias("label"),
+                          pl.col("evaluation").replace_strict(dict(zip(["validation", "test"], EVALUATIONS))),
+                          pl.col("r2").round(3))
+            .sort("signal", "entry"))
+
+
+def ensemble_signals_chart(t: dict) -> alt.TopLevelMixin:
+    df = ensemble_signals_data()
+    order = list(SIGNAL_MODELS.values())
+    shape = alt.Scale(domain=EVALUATIONS, range=["circle", "diamond"])
+    color = alt.Scale(domain=EVALUATIONS, range=[t["series1"], t["series2"]])
+    panels = []
+    for i, signal in enumerate(SIGNAL_NAMES.values()):
+        data = df.filter(pl.col("signal_name") == signal)
+        single = data.filter(pl.col("entry") == "best single").row(0, named=True)
+        x = alt.X("r2:Q", title="Share of week-to-week variance explained (R²)", scale=alt.Scale(domain=[0, 0.8]),
+                  axis=alt.Axis(tickCount=5))
+        y = alt.Y("label:N", sort=order, title=None,
+                  axis=alt.Axis(ticks=False, domain=False, labelColor=t["ink2"], labelPadding=8, labelLimit=300)
+                  if i % 2 == 0 else None)
+        tooltip = [alt.Tooltip("signal_name:N", title="Signal"), alt.Tooltip("label:N", title="Model"),
+                   alt.Tooltip("model:N", title="Family or combination"), alt.Tooltip("features:N", title="Features"),
+                   alt.Tooltip("evaluation:N", title="Scored on"), alt.Tooltip("r2:Q", title="R²", format=".2f")]
+        legend = alt.Legend(title=None, orient="top", direction="horizontal") if i == 0 else None
+        line = alt.Chart(data).mark_line(color=t["grid"], strokeWidth=2).encode(x="r2:Q", y=y, detail="label:N")
+        points = alt.Chart(data).mark_point(size=90, filled=True, opacity=1, stroke=t["surface"], strokeWidth=1).encode(
+            x=x, y=y, shape=alt.Shape("evaluation:N", scale=shape, legend=legend),
+            color=alt.Color("evaluation:N", scale=color, legend=legend), tooltip=tooltip)
+        panels.append(alt.layer(line, points).properties(
+            width=(WIDTH - 300) // 2, height=alt.Step(30),
+            title=alt.Title(signal, subtitle=f"best single: {single['model']}, features: {single['features']}",
+                            fontSize=12, subtitleFontSize=10, anchor="start")))
+    return alt.vconcat(alt.hconcat(*panels[:2], spacing=24), alt.hconcat(*panels[2:], spacing=24), spacing=16)
+
+
+def ensemble_signals_table() -> pl.DataFrame:
+    return ensemble_signals_data().select(
+        pl.col("signal_name").alias("Signal"), pl.col("label").alias("Model"),
+        pl.col("model").alias("Family or combination"), pl.col("features").alias("Features"),
+        pl.col("evaluation").alias("Scored on"), pl.col("r2").alias("R²"))
+
+
 FINAL_STEPS = {"subway": "Subway alone", "bikes": "Bluebikes alone", "subway and bikes": "Subway and Bluebikes together",
                "final": "Together, corrected for weekend riders (final)"}
 SHARE_PARTS = {"share_summer": "Summer", "share_breaks": "Other breaks"}
@@ -1962,9 +2093,9 @@ SECTION_F = {
     "slug": "f_model_performance",
     "title": "How well do the models predict?",
     "intro": "Section F of the Boston Breathes figures: each model scored on data it was not fitted on, against a "
-             "baseline, and the steps to the final shares away. Values come from data/processed/"
-             "population_model_forward.csv, model_comparison.csv, joint_population_shares.csv and "
-             "population_estimate_shares.csv.",
+             "baseline, the steps to the final shares away, and combinations of models. Values come from "
+             "data/processed/population_model_forward.csv, model_comparison.csv, joint_population_shares.csv, "
+             "population_estimate_shares.csv, ensemble_targets_accuracy.csv and ensemble_signals_accuracy.csv.",
     "charts": [
         {
             "name": "f16_population_model_tests",
@@ -2015,6 +2146,32 @@ SECTION_F = {
                       "Intervals reaching above it, or above 100%, go past what is possible; the estimate keeps the "
                       "number of students away within the possible range."],
             "chart": final_choice_chart, "table": final_choice_table,
+        },
+        {
+            "name": "f20_combined_travel_models",
+            "title": "Travel models: do combined models predict better?",
+            "question": "Does combining the linear model and the trees beat the better of the two?",
+            "notes": ["Change in held-out error (RMSE of the logarithm of weekly travel, each calendar month held out "
+                      "in turn) of each combination against the better single model for that target, with a 95% "
+                      "interval from resampling months; lower is better. The better single model is picked after "
+                      "seeing the errors, which favours it; the combinations never see the held-out month.",
+                      "Stacked: a weighted mean whose weights are fitted on the training weeks alone. Linear, then "
+                      "trees: gradient-boosted trees fitted to what the linear model leaves, so the trees need not "
+                      "carry the growth of the network."],
+            "chart": ensemble_targets_chart, "table": ensemble_targets_table,
+        },
+        {
+            "name": "f21_combined_signal_models",
+            "title": "Weekly signals: do combined models predict better?",
+            "question": "Do averages or stacks of eleven model families read the weekly signals better than one?",
+            "notes": ["R² of the weekly signals of the population model, each year predicted from the years before it "
+                      "(circles: mean of 2023-2025; diamonds: January-September 2026, scored once). For each "
+                      "model, the feature set (and for the best single model, the family) that did best on the "
+                      "validation years.",
+                      "Eleven families: the eight of the travel-model comparison plus additive splines, extra trees "
+                      "and a Gaussian process. With one to three years to fit on, the stacking weights and the "
+                      "cross-validated choice are noisy; a plain mean is steadier."],
+            "chart": ensemble_signals_chart, "table": ensemble_signals_table,
         },
     ],
 }

@@ -2,6 +2,7 @@ from datetime import date
 
 import polars as pl
 
+from boston_breathes import ensembles as en
 from boston_breathes import figures as fig
 
 
@@ -215,3 +216,15 @@ def test_final_model_chart_ends_with_the_shares_the_estimate_uses():
     used = pl.read_csv(fig.PROCESSED / "population_estimate_shares.csv")
     assert sorted(final["estimate_pct"]) == sorted((used["estimate"] * 100).round(0).cast(pl.Int64))
     assert 0.8 < fig.most_who_could_leave() < 0.9
+
+
+def test_combined_model_charts_compare_against_the_best_single_model():
+    targets = fig.ensemble_targets_data()
+    assert set(targets["target"]) == set(fig.TARGETS)
+    combined = targets.filter(pl.col("kind") == "combined")
+    assert set(combined["model"]) == set(fig.COMBINED) and len(combined) == len(fig.TARGETS) * len(fig.COMBINED)
+    assert (targets.filter(pl.col("model") == pl.col("best_single"))["text"] == "the best single model").all()
+    signals = fig.ensemble_signals_data()
+    assert len(signals) == len(fig.SIGNAL_NAMES) * len(fig.SIGNAL_MODELS) * len(fig.EVALUATIONS)
+    best = signals.filter(pl.col("entry") == "best single")
+    assert set(best["model"]) <= set(en.FAMILIES)

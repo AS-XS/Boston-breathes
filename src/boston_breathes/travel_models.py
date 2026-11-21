@@ -94,9 +94,9 @@ def feature_sets(day: str) -> dict[str, list[str]]:
     }
 
 
-def model(family: str, settings: dict | None = None) -> TransformedTargetRegressor:
-    """The family's model with standardized inputs and target."""
-    estimator = FAMILIES[family][0]()
+def model(family: str, settings: dict | None = None, families: dict | None = None) -> TransformedTargetRegressor:
+    """The family's model (from FAMILIES, or from `families`) with standardized inputs and target."""
+    estimator = (families or FAMILIES)[family][0]()
     estimator.set_params(**(settings or {}))
     return TransformedTargetRegressor(regressor=make_pipeline(StandardScaler(), estimator),
                                       transformer=StandardScaler())

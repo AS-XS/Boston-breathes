@@ -1,7 +1,7 @@
 PYTHON := .venv/bin/python
 RUN := PYTHONPATH=src $(PYTHON) -m
 
-.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model population-estimate scenarios forecast checks boston-311 presence-signals travel-models joint-population population-accuracy bluebikes-ages weekend-riders figures test clean-interim
+.PHONY: all analysis install data weeks bluebikes bluebikes-weekly municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table evaluate models campus-panel population-model population-estimate scenarios forecast checks boston-311 presence-signals travel-models ensembles joint-population population-accuracy bluebikes-ages weekend-riders figures test clean-interim
 
 # Everything, from the downloads to the figures.
 all: data analysis figures
@@ -15,7 +15,7 @@ install:
 # exploration of models and signals, the joint model, the accuracy test (whose calibration sets the interval constants
 # in joint_population.py; a test checks they match), the weekend factor, then the estimate, scenarios and forecast,
 # which use the weekend factor's outputs.
-analysis: evaluate models campus-panel population-model travel-models joint-population population-accuracy weekend-riders population-estimate scenarios forecast
+analysis: evaluate models campus-panel population-model travel-models ensembles joint-population population-accuracy weekend-riders population-estimate scenarios forecast
 
 data: weeks bluebikes municipalities weather universities town-gown boston-housing campus population calendars student-residents living-arrangements presence students-away mbta mbta-survey street-counts modeling-table boston-311 presence-signals bluebikes-ages
 
@@ -131,6 +131,11 @@ presence-signals:
 # Eight model families and six feature sets on each signal, for later years (about 12 minutes).
 travel-models:
 	$(RUN) boston_breathes.travel_models
+
+# Combined models (averages, stacking, a linear model with trees on its residuals) against the best single model,
+# for the travel targets and the weekly signals (about 8 minutes on 4 cores).
+ensembles:
+	$(RUN) boston_breathes.ensembles
 
 # Shares away fitted on several signals at once, weather removed by each family.
 joint-population:

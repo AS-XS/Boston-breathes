@@ -37,6 +37,7 @@ This section gives the [models attempted](#models-attempted), [how their perform
 | Pooled campus model (`campus_panel.py`) | Does each campus follow its own university's calendar? | Fixed-effects regression: a level for every week and for every campus-year | Bluebikes +21%, subway +11% when the own university is in session (verified calendars); other universities' calendars at most +6% |
 | Population model (`population_model.py`) | How many students out of session leave? | Weekly slopes of station entries on the station's share of student riders; weekdays fix the scale, weekends measure leaving; six versions of who leaves | Every student not living with parents leaving predicts later years' weekend travel 18–24% better than nobody leaving, 20% on the 2026 test (closed halls only: 8–13%) |
 | Model families (`travel_models.py`) | Do flexible models or weather features read the signals better? | Eight families, from linear regression to a neural network; six feature sets | On these signals, linear models do as well as any |
+| Combined models (`ensembles.py`) | Do combinations of models predict travel better than the best single one? | Averages; stacking, with weights learned on the training data only; a linear model with trees fitted to what it misses; three more families | Small gains where models disagree; none for the subway signals |
 | Joint model (`joint_population.py`) | Do the subway and Bluebikes agree? | Shared shares away fitted on both signals; weather removed by each family | Summer share 0.83 (0.69–0.99), breaks 0.91 (0.52–1.28) |
 | Known-truth simulation (`population_accuracy.py`) | How accurate is the method in people? | Signals simulated from known shares with the real noise, then refitted | Unbiased; a summer or break week typically off by 12,000–18,000 students |
 | Weekend-rider check (`weekend_riders.py`) | Are students the same share of weekend riders as of weekday riders? | Bluebikes members' ages, 2016–2019 | No: near student-heavy campuses their excess is 1.26 times as large on weekends (1.11–1.48); the estimate corrects for it |
@@ -71,6 +72,10 @@ All scores are on travel the models were not fitted on.
 ![Travel models: accuracy of each family](figures/f18_travel_models_accuracy.png)
 
 * No family is best everywhere, so model complexity helps for some targets, not all. Gradient-boosted trees predict the campus ratios best (Bluebikes: 6.3% typical error, R² 0.91), but the Bluebikes total worst (18.3%), because trees cannot carry the network's growth into a held-out month; the linear models with week-of-year levels predict both totals best. Little explains the near-campus share of subway entries (R² about 0.3), whose stations also serve commuters ([Travel Models in Detail](docs/technical_notes.md#travel-models-in-detail)).
+
+![Travel models: do combined models predict better?](figures/f20_combined_travel_models.png)
+
+* **Combining models helps a little, and only where they disagree.** A stack of the linear model and the trees, its weights learned on the training weeks alone, has 1–3% less error than the better of the two on every target, though no single gain is clearly larger than noise. Fitting trees to what the linear model misses is the one clear gain, on the Bluebikes total (typical error 13.1% to 12.1%), but it is worse on the MBTA campus ratio. On the weekly signals of the population model, combinations of eleven families at best matched plain linear regression for the subway; for Bluebikes, the mean of all eleven held up better on the 2026 test (R² 0.69 and 0.43 on weekdays and weekends, against 0.62 and 0.34 for the family best on the validation years). Choosing a model by cross-validation never beat the better single model on the travel targets ([Combined models](docs/technical_notes.md#combined-models)).
 
 ### The final model
 
@@ -131,7 +136,7 @@ The population is estimated from travel, not counted: the numbers below are what
 | `c_activity_vs_presence.html` | whether Bluebikes, MBTA and street activity near campuses follows the students |
 | `d_map.html` | the campus zones and the Bluebikes and MBTA stations |
 | `e_year_explorer.html` | one academic year, week by week: choose a year, move the slider or press Play |
-| `f_model_performance.html` | how well the models predict data they were not fitted on, and how the final estimate was reached |
+| `f_model_performance.html` | how well the models predict data they were not fitted on, how the final estimate was reached, and whether combined models predict better |
 
 * **Student Presence Index (0 to 1):** the share of the area's in-person students whose university is in session that week: 1 when every university is in session, 0 when all are on break.
 * **The population range:** the upper line takes away only students whose residence halls are closed, the lower line every resident college student not living with their parents whose school is out of session; the estimate from travel records (dark line, with its 95% interval) lies between them. COVID-19 weeks are flagged, and enrollment after fall 2023 and the Census after July 2025 are held at their latest values.

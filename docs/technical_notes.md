@@ -575,3 +575,48 @@ The year and network size come first because they set the level of activity, whi
 * Breaks are the hardest weeks for every target: for the Bluebikes campus share, the typical error is 10.4% in breaks against 8.4% in summer with the smooth-season model, and 8.7% against 4.3% with the trees. Breaks are short, often start or end in the middle of a week, and differ between universities, which the study-area index averages.
 * The trees fit the campus ratios best, especially in summer, but the Bluebikes total worst (21% typical error in session weeks): trees cannot carry the network's growth into a held-out month the way a linear term in network size can.
 * No model explains more than about a third of the MBTA campus share.
+
+### Combined models
+
+`ensembles.py` asks whether combining models predicts travel better than the best single model, on the same held-out data as the comparisons it extends. The README summarizes it under [Performance](../README.md#performance).
+
+**Travel targets** (each calendar month held out in turn, with the week on either side; every model with the index). Single models: the week-of-year linear model and gradient boosting above, and a random forest on the trees' inputs (300 trees, at least 5 weeks a leaf). Combinations:
+* *average*: the mean of the linear model and the trees;
+* *stacked*: their weighted mean, with non-negative weights fitted on predictions for the training weeks made without those weeks (5 folds of calendar months, inside the training weeks only), scaled to add up to one; and the same with the random forest;
+* *hybrid*: the linear model, plus gradient boosting fitted to its residuals on the training weeks;
+* *chosen by cross-validation*: whichever of the linear model and the trees has the smaller error on those out-of-fold predictions.
+
+Typical error on held-out months; in brackets, the change in RMSE against the better of the linear model and the trees for that target (in bold), with its 95% interval from resampling months (`ensemble_targets_accuracy.csv`). The better model is picked after seeing the errors, which favours it; the combinations never see the held-out month.
+
+| Model | Bluebikes campus ratio | MBTA campus ratio | Bluebikes total | MBTA total |
+|---|---|---|---|---|
+| Linear, week of year | 9.6% (+50.5; +32.4 to +70.9) | 6.6% (+3.7; −5.7 to +14.9) | **13.1%** | **7.6%** |
+| Gradient boosting | **6.3%** | **6.3%** | 18.3% (+36.7; +17.6 to +52.9) | 8.3% (+9.0; −0.0 to +18.7) |
+| Random forest | 7.3% (+15.6; +9.0 to +22.9) | 6.0% (−4.9; −9.4 to −1.1) | 23.9% (+74.3; +51.7 to +96.0) | 9.5% (+22.9; +11.2 to +36.2) |
+| Average | 6.7% (+7.1; −0.9 to +15.2) | 6.2% (−2.4; −7.6 to +3.0) | 13.6% (+3.7; −8.6 to +15.4) | 7.4% (−2.9; −8.4 to +1.8) |
+| Stacked | 6.1% (−2.3; −6.3 to +1.4) | 6.3% (−1.2; −5.6 to +4.0) | 12.7% (−2.6; −8.8 to +3.2) | 7.4% (−2.8; −7.4 to +1.2) |
+| Stacked, with the forest | 6.2% (−1.5; −5.6 to +2.5) | 6.1% (−4.2; −9.2 to +0.4) | 12.7% (−2.6; −8.8 to +3.3) | 7.4% (−2.7; −7.4 to +1.3) |
+| Hybrid | 6.3% (+1.1; −9.4 to +13.7) | 6.7% (+6.0; +0.8 to +12.9) | 12.1% (−7.0; −13.5 to −1.5) | 7.8% (+2.5; −1.0 to +6.1) |
+| Chosen by cross-validation | 6.3% (+0.0; +0.0 to +0.0) | 6.7% (+4.7; +0.0 to +14.0) | 13.1% (+0.0; +0.0 to +0.0) | 7.9% (+3.4; +0.1 to +9.7) |
+
+* **Stacking learns which model to trust for each target**: on average 0.78 on the trees for the Bluebikes campus ratio and 0.76 on the linear model for the Bluebikes total, and, with the forest available, 0.73 on the forest for the MBTA campus ratio (`ensemble_targets_weights.csv`). It beat the better single model on all four targets, by 1–3%, but no interval excludes zero.
+* **The plain average needs both models to be good**: it is 7% worse than the trees on the Bluebikes campus ratio, where the linear model is far behind.
+* **The hybrid is the one clear gain**, on the Bluebikes total (13.1% to 12.1%; −7.0%, −13.5% to −1.5%; in weeks not fully in session 12.9% to 11.1%): the linear model carries the network's growth and the year levels, and the trees add what the season and weather do beyond them. On the MBTA campus ratio it is worse (+6.0%).
+* **The random forest alone** is the best model for the MBTA campus ratio (6.0%), and the worst for both totals, for the same reason as gradient boosting.
+* **Choosing by cross-validation** picked the better model in every month for the Bluebikes targets, and too often the wrong one for the MBTA targets (+4.7% and +3.4%): when two models are close, the choice is noisy.
+
+**Weekly signals** of the population model (subway and Bluebikes, weekdays and weekends; each validation year predicted from the years before it, and January–September 2026 from 2022–2025; the four feature sets with student inputs). Three more families: additive splines (cubic splines of each input, then ridge), extra trees (300 trees, at least 5 weeks a leaf) and a Gaussian process (a radial kernel plus white noise). Combinations, over the eight families of [Exploring models and signals](#exploring-models-and-signals) and over all eleven: the mean, a stack fitted on the training years' out-of-fold predictions (5 folds of calendar months), and the family with the smallest out-of-fold error. R² on the validation years (mean) and on the 2026 test, each with the feature set (and, for the best single model, the family) that did best on the validation years (`ensemble_signals_accuracy.csv`):
+
+| Signal | Best single model | Mean of all eleven | Stacked, all eleven | Chosen by cross-validation |
+|---|---|---|---|---|
+| Subway, weekdays | 0.48, 0.55 (linear regression) | 0.46, 0.52 | 0.44, 0.51 | 0.45, 0.54 |
+| Subway, weekends | 0.34, 0.35 (linear regression) | 0.32, 0.35 | 0.33, 0.33 | 0.32, 0.35 |
+| Bluebikes, weekdays | 0.70, 0.62 (ridge) | 0.69, 0.69 | 0.69, 0.72 | 0.69, 0.69 |
+| Bluebikes, weekends | 0.48, 0.34 (lasso) | 0.49, 0.43 | 0.44, 0.35 | 0.43, 0.37 |
+
+* **The subway's signals are still best read by plain linear regression** on the population model's own input: the combinations, and the best of the new families (additive splines, 0.48 on weekdays; the Gaussian process, 0.32 on weekends), at best match it. The relationship is a straight line, as the population model assumes.
+* **For Bluebikes, the mean of all eleven held up best on the 2026 test** (0.69 and 0.43, against 0.62 and 0.34 for the family best on the validation years), with about the same validation score. Averaging many families protects against picking one that happened to do well on three years.
+* **Stacking and the cross-validated choice were less steady**: the stack was best on the Bluebikes weekday test (0.72) but among the worst on weekends (0.35). With 50 to 200 training weeks, learned weights and choices are noisy, and a plain mean is the safer combination.
+* The mean of ridge and the random forest, the two best families for Bluebikes weekdays in the comparison above, did as well as the mean of all eleven (validation 0.71 and 0.49, test 0.70 and 0.42), but it was chosen after seeing those results.
+
+**What it changes.** Nothing in the population estimate, which reads the shares away from the subway and Bluebikes slopes with a straight line, as these results support for the subway. Better predictions of travel cannot remove what limits the estimate: the weekend factor and the assumption about students who do not ride ([Limits](../README.md#limits)).
